@@ -1,6 +1,6 @@
 class AlterUsersAddMembersReferences < ActiveRecord::Migration
   def change
-    add_foreign_key :users, :members
+    add_column :users, :member_id, :integer
   end
 
 end

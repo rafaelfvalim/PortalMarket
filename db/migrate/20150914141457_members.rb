@@ -7,7 +7,7 @@ class Members < ActiveRecord::Migration
       t.string :bank
       t.string :bank_ag
       t.string :bank_cc
-      t.boolean :client, null: true
+      t.boolean :customer, null: true
       t.boolean :contributor, null: true
       t.string :cpf, null: true, default: ""
       t.string :cnpj, null: true, default: ""

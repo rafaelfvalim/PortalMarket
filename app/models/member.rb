@@ -1,7 +1,7 @@
-class User < ActiveRecord::Base
+class Member < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-  belongs_to :member
+  has_many :users
 
   def set_default_role
     self.role ||= :user
@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
 end

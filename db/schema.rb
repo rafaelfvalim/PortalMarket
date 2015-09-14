@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914140425) do
+ActiveRecord::Schema.define(version: 20150914190348) do
+
+  create_table "members", force: :cascade do |t|
+    t.datetime "birthday"
+    t.string   "member_name",      limit: 255
+    t.string   "member_last_name", limit: 255
+    t.string   "bank",             limit: 255
+    t.string   "bank_ag",          limit: 255
+    t.string   "bank_cc",          limit: 255
+    t.boolean  "customer",           limit: 1
+    t.boolean  "contributor",      limit: 1
+    t.string   "cpf",              limit: 255, default: ""
+    t.string   "cnpj",             limit: 255, default: ""
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -41,12 +56,16 @@ ActiveRecord::Schema.define(version: 20150914140425) do
     t.string   "invited_by_type",        limit: 255
     t.integer  "invitations_count",      limit: 4,   default: 0
     t.datetime "effective_date"
+    t.integer  "member_id",              limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+  add_index "users", ["member_id"], name: "fk_rails_172a24c10d", using: :btree
+  add_index "users", ["members"], name: "FK_users_members", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "users", "members"
 end

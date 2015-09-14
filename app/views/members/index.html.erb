@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Members</h1>
+<% if @member.contributor %>
+    <%= link_to 'Contributors Dashboard', contributors_path %> <br>
+<% end %>
+<% if @member.customer %>
+    <%= link_to 'Customers Dashboard', customers_path %>
+
+<% end %>
+
