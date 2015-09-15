@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @script.description %>
+</p>
+
+<p>
+  <strong>Definition:</strong>
+  <%= @script.definition %>
+</p>
+
+<p>
+  <strong>Long text:</strong>
+  <%= @script.long_text %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @script.platform %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @script.industry %>
+</p>
+
+<p>
+  <strong>Solution type:</strong>
+  <%= @script.solution_type_id %>
+</p>
+
+<p>
+  <strong>Script file:</strong>
+  <%= @script.script_file %>
+</p>
+
+<p>
+  <strong>Pdf file:</strong>
+  <%= @script.pdf_file %>
+</p>
+
+<p>
+  <strong>Complexity:</strong>
+  <%= @script.complexity %>
+</p>
+
+<%= link_to 'Edit', edit_script_path(@script) %> |
+<%= link_to 'Back', scripts_path %>

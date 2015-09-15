@@ -1,0 +1,53 @@
+<%= form_for(@script) do |f| %>
+  <% if @script.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
+
+      <ul>
+      <% @script.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :definition %><br>
+    <%= f.text_area :definition %>
+  </div>
+  <div class="field">
+    <%= f.label :long_text %><br>
+    <%= f.text_area :long_text %>
+  </div>
+  <div class="field">
+    <%= f.label :platform %><br>
+    <%= f.text_field :platform %>
+  </div>
+  <div class="field">
+    <%= f.label :industry %><br>
+    <%= f.text_field :industry %>
+  </div>
+  <div class="field">
+    <%= f.label :solution_type_id %><br>
+    <%= f.number_field :solution_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :script_file %><br>
+    <%= f.text_field :script_file %>
+  </div>
+  <div class="field">
+    <%= f.label :pdf_file %><br>
+    <%= f.text_field :pdf_file %>
+  </div>
+  <div class="field">
+    <%= f.label :complexity %><br>
+    <%= f.text_field :complexity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

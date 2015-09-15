@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @member_script.member %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @member_script.script %>
+</p>
+
+<p>
+  <strong>Participation:</strong>
+  <%= @member_script.participation %>
+</p>
+
+<p>
+  <strong>Percentual:</strong>
+  <%= @member_script.percentual %>
+</p>
+
+<%= link_to 'Edit', edit_member_script_path(@member_script) %> |
+<%= link_to 'Back', member_scripts_path %>

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914190348) do
+ActiveRecord::Schema.define(version: 20150915220613) do
+
+  create_table "member_scripts", force: :cascade do |t|
+    t.integer  "member_id",     limit: 4
+    t.integer  "script_id",     limit: 4
+    t.float    "participation", limit: 24
+    t.float    "percentual",    limit: 24
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "member_scripts", ["member_id"], name: "fk_rails_7a622e4a02", using: :btree
+  add_index "member_scripts", ["script_id"], name: "fk_rails_72b8d352be", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.datetime "birthday"
@@ -26,6 +38,34 @@ ActiveRecord::Schema.define(version: 20150914190348) do
     t.string   "cnpj",             limit: 255, default: ""
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+  end
+
+  create_table "scipts", force: :cascade do |t|
+    t.string   "description",      limit: 255
+    t.text     "definition",       limit: 65535
+    t.text     "long_text",        limit: 65535
+    t.string   "plataform",        limit: 255
+    t.string   "industry",         limit: 255
+    t.integer  "solution_type_id", limit: 4
+    t.string   "script_file",      limit: 255
+    t.string   "pdf_file",         limit: 255
+    t.string   "complexity",       limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "scripts", force: :cascade do |t|
+    t.string   "description",      limit: 255
+    t.text     "definition",       limit: 65535
+    t.text     "long_text",        limit: 65535
+    t.string   "platform",         limit: 255
+    t.string   "industry",         limit: 255
+    t.integer  "solution_type_id", limit: 4
+    t.string   "script_file",      limit: 255
+    t.string   "pdf_file",         limit: 255
+    t.string   "complexity",       limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +106,7 @@ ActiveRecord::Schema.define(version: 20150914190348) do
   add_index "users", ["member_id"], name: "fk_rails_172a24c10d", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "member_scripts", "members"
+  add_foreign_key "member_scripts", "scripts"
   add_foreign_key "users", "members"
 end

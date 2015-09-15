@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Scipts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Definition</th>
+      <th>Plataform</th>
+      <th>Industry</th>
+      <th>Solution</th>
+      <th>Script file</th>
+      <th>Pdf file</th>
+      <th>Complexity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scipts.each do |scipt| %>
+      <tr>
+        <td><%= scipt.description %></td>
+        <td><%= scipt.definition %></td>
+        <td><%= scipt.plataform %></td>
+        <td><%= scipt.industry %></td>
+        <td><%= scipt.solution_id %></td>
+        <td><%= scipt.script_file %></td>
+        <td><%= scipt.pdf_file %></td>
+        <td><%= scipt.complexity %></td>
+        <td><%= link_to 'Show', scipt %></td>
+        <td><%= link_to 'Edit', edit_scipt_path(scipt) %></td>
+        <td><%= link_to 'Destroy', scipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scipt', new_scipt_path %>

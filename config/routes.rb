@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :scripts
+  resources :member_scripts
+  resources :scipts
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users

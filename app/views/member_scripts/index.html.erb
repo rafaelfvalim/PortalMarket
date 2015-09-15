@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Member Scripts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Script</th>
+      <th>Participation</th>
+      <th>Percentual</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @member_scripts.each do |member_script| %>
+      <tr>
+        <td><%= member_script.member %></td>
+        <td><%= member_script.script %></td>
+        <td><%= member_script.participation %></td>
+        <td><%= member_script.percentual %></td>
+        <td><%= link_to 'Show', member_script %></td>
+        <td><%= link_to 'Edit', edit_member_script_path(member_script) %></td>
+        <td><%= link_to 'Destroy', member_script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member script', new_member_script_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@member_script) do |f| %>
+  <% if @member_script.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member_script.errors.count, "error") %> prohibited this member_script from being saved:</h2>
+
+      <ul>
+      <% @member_script.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :member_id %><br>
+    <%= f.text_field :member_id %>
+  </div>
+  <div class="field">
+    <%= f.label :script_id %><br>
+    <%= f.text_field :script_id %>
+  </div>
+  <div class="field">
+    <%= f.label :participation %><br>
+    <%= f.text_field :participation %>
+  </div>
+  <div class="field">
+    <%= f.label :percentual %><br>
+    <%= f.text_field :percentual %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
