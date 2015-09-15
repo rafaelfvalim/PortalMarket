@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915220613) do
+ActiveRecord::Schema.define(version: 20150915223039) do
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -40,19 +40,20 @@ ActiveRecord::Schema.define(version: 20150915220613) do
     t.datetime "updated_at",                                null: false
   end
 
-  create_table "scipts", force: :cascade do |t|
-    t.string   "description",      limit: 255
-    t.text     "definition",       limit: 65535
-    t.text     "long_text",        limit: 65535
-    t.string   "plataform",        limit: 255
-    t.string   "industry",         limit: 255
-    t.integer  "solution_type_id", limit: 4
-    t.string   "script_file",      limit: 255
-    t.string   "pdf_file",         limit: 255
-    t.string   "complexity",       limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+  create_table "related_scripts", force: :cascade do |t|
+    t.integer "script_id",         limit: 4
+    t.integer "related_script_id", limit: 4
   end
+
+  add_index "related_scripts", ["related_script_id"], name: "fk_rails_450bed89bb", using: :btree
+  add_index "related_scripts", ["script_id"], name: "fk_rails_38571543db", using: :btree
+
+  create_table "requirements", force: :cascade do |t|
+    t.integer "script_id",   limit: 4
+    t.string  "requirement", limit: 255
+  end
+
+  add_index "requirements", ["script_id"], name: "fk_rails_ef7ba3079c", using: :btree
 
   create_table "scripts", force: :cascade do |t|
     t.string   "description",      limit: 255
@@ -66,6 +67,14 @@ ActiveRecord::Schema.define(version: 20150915220613) do
     t.string   "complexity",       limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  add_index "scripts", ["solution_type_id"], name: "fk_rails_7ad93069c3", using: :btree
+
+  create_table "solution_types", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,5 +117,9 @@ ActiveRecord::Schema.define(version: 20150915220613) do
 
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
+  add_foreign_key "related_scripts", "scripts", column: "related_script_id", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "requirements", "scripts"
+  add_foreign_key "scripts", "solution_types"
   add_foreign_key "users", "members"
 end
