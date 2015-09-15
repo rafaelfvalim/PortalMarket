@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150914190348) do
     t.string   "bank",             limit: 255
     t.string   "bank_ag",          limit: 255
     t.string   "bank_cc",          limit: 255
-    t.boolean  "customer",           limit: 1
+    t.boolean  "customer",         limit: 1
     t.boolean  "contributor",      limit: 1
     t.string   "cpf",              limit: 255, default: ""
     t.string   "cnpj",             limit: 255, default: ""
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150914190348) do
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["member_id"], name: "fk_rails_172a24c10d", using: :btree
-  add_index "users", ["members"], name: "FK_users_members", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "users", "members"

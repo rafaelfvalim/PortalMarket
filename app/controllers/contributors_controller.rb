@@ -1,3 +1,0 @@
-class ContributorsController < ApplicationController
-
-end

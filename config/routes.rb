@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :members
-  resources :customers
-  resources :contributors
+  match 'members/contributor/:id', controller: 'members', action: 'contributor', via: :get
+  match 'members/customer/:id', controller: 'members', action: 'customer', via: :get
 end

@@ -60,6 +60,14 @@ class MembersController < ApplicationController
     end
   end
 
+
+  def customer
+  end
+
+  def contributor
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
