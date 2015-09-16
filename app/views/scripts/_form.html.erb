@@ -25,15 +25,15 @@
   </div>
   <div class="field">
     <%= f.label :platform %><br>
-    <%= f.text_field :platform %>
+    <%= f.select :platform ,  ['SAP','Oracle','TOTVS','Java','PHP'], :include_blank => "Please select..."  %>
   </div>
   <div class="field">
     <%= f.label :industry %><br>
-    <%= f.text_field :industry %>
+    <%= f.select :industry, ['Aerospace and Defense','Automotive','Banking','Chemicals','Consumer Products','Defense and Security','Engineering, Construction, and Operations','Healthcare','High Tech','Higher Education and Research','Industrial Machinery and Components','Insurance','Life Sciences','Media','Mill Products','Mining','Oil and Gas','Professional Services','Public Sector','Retail','Sports and Entertainment','Telecommunications','Travel and Transportation','Utilities','Wholesale Distribution'], :include_blank => "Please select..."  %>
   </div>
   <div class="field">
     <%= f.label :solution_type_id %><br>
-    <%= f.number_field :solution_type_id %>
+    <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
   </div>
   <div class="field">
     <%= f.label :script_file %><br>
@@ -45,7 +45,7 @@
   </div>
   <div class="field">
     <%= f.label :complexity %><br>
-    <%= f.text_field :complexity %>
+    <%= f.select :complexity , ['Altamente Complexo AC6M','Altamente Complexo AC5M','Altamente Complexo AC4M','Altamente Complexo AC3M','Altamente Complexo AC2M','Muito complexo MCMAX','Muito complexo MCMIN','    Complexo MMAX','Complexo MMIN','Baixo BMAX','Baixo BMIN','Muito baixo MBMAX','Muito baixo MBMIN'], :include_blank => "Please select..."  %>
   </div>
   <div class="actions">
     <%= f.submit %>
