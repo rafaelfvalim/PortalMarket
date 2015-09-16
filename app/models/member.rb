@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_many :users
+  has_many :member_scripts
 
   def set_default_role
     self.role ||= :user

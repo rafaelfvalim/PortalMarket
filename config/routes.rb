@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :process_modules
   resources :scripts
   resources :member_scripts
   resources :scipts

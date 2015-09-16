@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915223039) do
+ActiveRecord::Schema.define(version: 20150916165655) do
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20150915223039) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  create_table "process_modules", force: :cascade do |t|
+    t.string   "description",            limit: 255
+    t.integer  "self_process_module_id", limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "process_modules", ["self_process_module_id"], name: "fk_rails_d4e9a1bef2", using: :btree
 
   create_table "related_scripts", force: :cascade do |t|
     t.integer "script_id",         limit: 4
@@ -117,6 +126,7 @@ ActiveRecord::Schema.define(version: 20150915223039) do
 
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
+  add_foreign_key "process_modules", "process_modules", column: "self_process_module_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", column: "related_script_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"
