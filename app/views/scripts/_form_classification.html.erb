@@ -36,9 +36,13 @@
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
     <div class="field">
-      <%= f.label 'Requirements' %>
-      <%= f.fields_for :requirements do |requirements| %>
-          <%= render 'form_requirements', f: requirements %>
+      <%= f.label 'Requirements' %> <br>
+      <%= fields_for :requirements do |requirements| %>
+          <%= requirements.label :script_id %>
+          <%= requirements.text_field :script_id %>  <br>
+          <%= requirements.label :requirement %>
+          <%= requirements.text_field :requirement %>
+
       <% end %>
     </div>
     <div class="field">
