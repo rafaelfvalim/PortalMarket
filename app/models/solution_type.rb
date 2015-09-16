@@ -1,3 +1,3 @@
 class SolutionType < ActiveRecord::Base
-  belongs_to :script
+  has_many :scripts
 end

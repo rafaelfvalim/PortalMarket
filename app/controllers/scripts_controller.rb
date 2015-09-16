@@ -28,13 +28,21 @@ class ScriptsController < ApplicationController
 
     respond_to do |format|
       if @script.save
-        format.html { redirect_to @script, notice: 'Script was successfully created.' }
+        # format.html { redirect_to @script, notice: 'Script was successfully created.' }
+        format.html { redirect_to script_classification_path(@script)}
         format.json { render :show, status: :created, location: @script }
+
       else
         format.html { render :new }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def classification
+    @script = Script.find_by id: params[:script_id]
+    @scripts = Script.includes(:requirements, :related_scripts).where('id =?',params[:script_id])
+
   end
 
   # PATCH/PUT /scripts/1
