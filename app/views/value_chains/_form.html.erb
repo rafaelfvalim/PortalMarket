@@ -1,0 +1,25 @@
+<%= form_for(@value_chain) do |f| %>
+  <% if @value_chain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@value_chain.errors.count, "error") %> prohibited this value_chain from being saved:</h2>
+
+      <ul>
+      <% @value_chain.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :process_module_id %><br>
+    <%= f.text_field :process_module_id %>
+  </div>
+  <div class="field">
+    <%= f.label :script_id %><br>
+    <%= f.text_field :script_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_for(@process_module) do |f| %>
+  <% if @process_module.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@process_module.errors.count, "error") %> prohibited this process_module from being saved:</h2>
+
+      <ul>
+      <% @process_module.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :self_process_module_id %><br>
+    <%= f.number_field :self_process_module_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

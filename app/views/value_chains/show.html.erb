@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Process module:</strong>
+  <%= @value_chain.process_module %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @value_chain.script %>
+</p>
+
+<%= link_to 'Edit', edit_value_chain_path(@value_chain) %> |
+<%= link_to 'Back', value_chains_path %>

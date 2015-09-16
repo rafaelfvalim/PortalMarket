@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :value_chains
   resources :process_modules
   resources :scripts
   resources :member_scripts

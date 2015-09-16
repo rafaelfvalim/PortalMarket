@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Process Modules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Self process module</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @process_modules.each do |process_module| %>
+      <tr>
+        <td><%= process_module.description %></td>
+        <td><%= process_module.self_process_module_id %></td>
+        <td><%= link_to 'Show', process_module %></td>
+        <td><%= link_to 'Edit', edit_process_module_path(process_module) %></td>
+        <td><%= link_to 'Destroy', process_module, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Process module', new_process_module_path %>

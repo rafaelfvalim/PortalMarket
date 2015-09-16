@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916165655) do
+ActiveRecord::Schema.define(version: 20150916170420) do
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -124,6 +124,16 @@ ActiveRecord::Schema.define(version: 20150916165655) do
   add_index "users", ["member_id"], name: "fk_rails_172a24c10d", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "value_chains", force: :cascade do |t|
+    t.integer  "process_module_id", limit: 4
+    t.integer  "script_id",         limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "value_chains", ["process_module_id"], name: "index_value_chains_on_process_module_id", using: :btree
+  add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
+
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
   add_foreign_key "process_modules", "process_modules", column: "self_process_module_id", on_update: :nullify, on_delete: :nullify
@@ -132,4 +142,6 @@ ActiveRecord::Schema.define(version: 20150916165655) do
   add_foreign_key "requirements", "scripts"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "users", "members"
+  add_foreign_key "value_chains", "process_modules"
+  add_foreign_key "value_chains", "scripts"
 end
