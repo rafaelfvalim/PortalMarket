@@ -35,29 +35,30 @@
       <%= f.label :solution_type_id %><br>
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
-    <div class="field">
-      <%= f.label 'Requirements' %> <br>
-      <%= fields_for :requirements do |requirements| %>
-          <%= requirements.label :script_id %>
-          <%= requirements.text_field :script_id %>  <br>
-          <%= requirements.label :requirement %>
-          <%= requirements.text_field :requirement %>
-
-      <% end %>
+    <div id="requirements">
+        <%= f.label 'Requiriments' %>
+        <input type="text" id="input-requeriment">
+        <input type="hidden" id="input-script_id" value="<%= @script.id %>" >
+        <%= link_to_add "new", "add_requeriment" %>
     </div>
-    <div class="field">
+    <div id="requeriments_list">
       <ul>
         <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
             <% r.requirements.each do |r2| %>
-                <li><%= r2.requeriment %></li>
+                <li><%= r2.requirement %></li>
             <% end %>
         <% end %>
       </ul>
     </div>
+    <div>
+      <%= f.nested_fields_for :related_scripts do |ff| %>
+          <%= ff.label 'Related Scripts' %>
+          <%= ff.text_field :script_id %>
+          <%= ff.text_field :related_script_id %>
+      <% end %>
+
+    </div>
     <div class="field">
-      <%= f.label 'Scripts Referrer' %><br>
-
-
       <ul>
         <% Script.includes(:related_scripts).where('id = ?', @script.id).each do |r| %>
             <% r.related_scripts.each do |r2| %>

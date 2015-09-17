@@ -25,12 +25,20 @@ class RequirementsController < ApplicationController
   # POST /requirements
   # POST /requirements.json
   def create
+    session[:referrer] = request.referrer
     @requirement = Requirement.new(requirement_params)
+    referrer = request.referer
 
     respond_to do |format|
       if @requirement.save
-        format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
-        format.json { render :show, status: :created, location: @requirement }
+        case referrer
+          when referrer.include?('classification')
+            format.json
+            format.html
+          else
+            format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
+            format.json { render :show, status: :created, location: @requirement }
+        end
       else
         format.html { render :new }
         format.json { render json: @requirement.errors, status: :unprocessable_entity }
@@ -62,6 +70,19 @@ class RequirementsController < ApplicationController
     end
   end
 
+  def create_ajax
+    @requirement = Requirement.new(requirement_params)
+    respond_to do |format|
+      if @requirement.save
+        format.html
+        format.json
+      else
+        format.html
+        format.json
+      end
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_requirement
@@ -70,6 +91,6 @@ class RequirementsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def requirement_params
-    params[:requirement]
+    params.require(:requirement).permit(:id, :script_id, :requirement)
   end
 end

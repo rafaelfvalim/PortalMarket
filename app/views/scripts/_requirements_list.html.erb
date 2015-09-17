@@ -1,0 +1,6 @@
+
+<% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
+    <% r.requirements.each do |r2| %>
+        <li><%= r2.requirement %></li>
+    <% end %>
+<% end %>

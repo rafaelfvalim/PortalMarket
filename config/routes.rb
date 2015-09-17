@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get :classification
   end
   resources :member_scripts
-  resources :scipts
+  resources :requirements do
+    post :create_ajax
+  end
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users

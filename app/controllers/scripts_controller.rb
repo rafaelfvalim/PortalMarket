@@ -15,6 +15,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/new
   def new
     @script = Script.new
+
   end
 
   # GET /scripts/1/edit
@@ -41,8 +42,9 @@ class ScriptsController < ApplicationController
 
   def classification
     @script = Script.find_by id: params[:script_id]
+    @script.requirements.build
+    @script.related_scripts.build
     @scripts = Script.includes(:requirements, :related_scripts).where('id =?',params[:script_id])
-
   end
 
   # PATCH/PUT /scripts/1
