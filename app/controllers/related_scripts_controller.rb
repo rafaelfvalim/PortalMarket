@@ -66,6 +66,6 @@ class RelatedScriptsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def related_script_params
-    params.require(:related_script).permit(:id, :script_id, :related_script_path)
+    params.require(:related_script).permit(:id, :script_id, :related_script_id)
   end
 end
