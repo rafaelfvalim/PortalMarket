@@ -25,14 +25,11 @@ class RelatedScriptsController < ApplicationController
   # POST /related_scripts.json
   def create
     @related_script = RelatedScript.new(related_script_params)
-
     respond_to do |format|
       if @related_script.save
-        format.html { redirect_to @related_script, notice: 'Related script was successfully created.' }
-        format.json { render :show, status: :created, location: @related_script }
+        app_custom_routes format, request.referrer, @related_script
       else
-        format.html { render :new }
-        format.json { render json: @related_script.errors, status: :unprocessable_entity }
+        app_custom_routes format, request.referrer, @related_script
       end
     end
   end
@@ -62,13 +59,13 @@ class RelatedScriptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_related_script
-      @related_script = RelatedScript.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_related_script
+    @related_script = RelatedScript.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def related_script_params
-      params.require(:related_script).permit(:related_script)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def related_script_params
+    params.require(:related_script).permit(:id, :script_id, :related_script_path)
+  end
 end

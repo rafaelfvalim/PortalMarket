@@ -25,26 +25,17 @@ class RequirementsController < ApplicationController
   # POST /requirements
   # POST /requirements.json
   def create
-    session[:referrer] = request.referrer
     @requirement = Requirement.new(requirement_params)
-    referrer = request.referer
 
     respond_to do |format|
       if @requirement.save
-        case referrer
-          when referrer.include?('classification')
-            format.json
-            format.html
-          else
-            format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
-            format.json { render :show, status: :created, location: @requirement }
-        end
+        app_custom_routes format, request.referrer, @requirement
       else
-        format.html { render :new }
-        format.json { render json: @requirement.errors, status: :unprocessable_entity }
+        app_custom_routes_errors format, request.referrer, @requirement
       end
     end
   end
+
 
   # PATCH/PUT /requirements/1
   # PATCH/PUT /requirements/1.json

@@ -35,37 +35,42 @@
       <%= f.label :solution_type_id %><br>
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
+    <label>Requirements</label>
     <div id="requirements">
-        <%= f.label 'Requiriments' %>
-        <input type="text" id="input-requeriment">
-        <input type="hidden" id="input-script_id" value="<%= @script.id %>" >
-        <%= link_to_add "new", "add_requeriment" %>
+      <%= text_field_tag 'requeriment', nil %>
+      <%= hidden_field_tag 'script_id', @script.id %>
+      <%= link_to_add "Add", "add_requeriment" %>
     </div>
+
     <div id="requeriments_list">
-      <ul>
+      <table>
         <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
             <% r.requirements.each do |r2| %>
-                <li><%= r2.requirement %></li>
+                <tr>
+                  <td><%= r2.requirement %></td>
+                </tr>
             <% end %>
         <% end %>
-      </ul>
+      </table>
     </div>
     <div>
-      <%= f.nested_fields_for :related_scripts do |ff| %>
-          <%= ff.label 'Related Scripts' %>
-          <%= ff.text_field :script_id %>
-          <%= ff.text_field :related_script_id %>
-      <% end %>
-
+      <label>Related Scripts</label>
+      <div id="related_scripts">
+        <%= text_field_tag 'related_script', nil %>
+        <%= hidden_field_tag 'script_id', @script.id %>
+        <%= link_to_add "Add", "add_related_script" %>
+      </div>
     </div>
-    <div class="field">
-      <ul>
+    <div id="related_script_list">
+      <table>
         <% Script.includes(:related_scripts).where('id = ?', @script.id).each do |r| %>
             <% r.related_scripts.each do |r2| %>
-                <li><%= r2.script.description %></li>
+                <tr>
+                  <td><%= r2.script.description %></td>
+                </tr>
             <% end %>
         <% end %>
-      </ul>
+      </table>
     </div>
     <div class="field">
       <%= f.label :script_file %><br>
