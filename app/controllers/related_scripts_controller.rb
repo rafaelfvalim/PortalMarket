@@ -27,7 +27,7 @@ class RelatedScriptsController < ApplicationController
     @related_script = RelatedScript.new(related_script_params)
     respond_to do |format|
       if @related_script.save
-        app_custom_routes format, request.referrer, @related_script
+        app_custom_routes format, request.referrer, @related_script.script
       else
         app_custom_routes format, request.referrer, @related_script
       end

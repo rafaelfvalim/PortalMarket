@@ -29,7 +29,7 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
-        app_custom_routes format, request.referrer, @requirement
+        app_custom_routes format, request.referrer, @requirement.script
       else
         app_custom_routes_errors format, request.referrer, @requirement
       end

@@ -27,7 +27,7 @@ $ ->
         data: {related_script: {script_id: script_id, related_script_id: related_script}},
         success: (data) ->
           $("#related_script").val('');
-          $("#related_script_list table ").append("<tr> <td>" + related_script + "</td></tr>");
+          $("#related_script_list table ").append("<tr> <td>" + data.description + "</td></tr>");
         errors: (data) ->
           alert data
 
