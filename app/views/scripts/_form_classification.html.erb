@@ -37,7 +37,7 @@
     </div>
     <label>Requirements</label>
     <div id="requirements">
-      <%= text_field_tag 'requeriment', nil %>
+      <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
       <%= hidden_field_tag 'script_id', @script.id %>
       <%= link_to_add "Add", "add_requeriment" %>
     </div>
@@ -56,7 +56,7 @@
     <div>
       <label>Related Scripts</label>
       <div id="related_scripts">
-        <%= text_field_tag 'related_script', nil %>
+        <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
         <%= hidden_field_tag 'script_id', @script.id %>
         <%= link_to_add "Add", "add_related_script" %>
       </div>

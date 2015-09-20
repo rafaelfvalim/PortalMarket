@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require nested_form_fields
+//= require jquery-ui
+//= require jquery-ui/autocomplete
 //= require_tree .
 

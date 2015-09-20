@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :process_modules
   resources :scripts do
     get :classification
+    collection do
+      get 'autocomplete_requeriment'
+      get 'autocomplete_related_script'
+    end
   end
   resources :member_scripts
   resources :requirements

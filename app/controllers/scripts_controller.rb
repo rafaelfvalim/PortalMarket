@@ -1,6 +1,7 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :edit, :update, :destroy]
 
+
   # GET /scripts
   # GET /scripts.json
   def index
@@ -15,7 +16,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/new
   def new
     @script = Script.new
-
+    @script.member_scripts.build
   end
 
   # GET /scripts/1/edit
@@ -26,13 +27,14 @@ class ScriptsController < ApplicationController
   # POST /scripts.json
   def create
     @script = Script.new(script_params)
-
+    @user = current_user
     respond_to do |format|
       if @script.save
+        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member_id, percentual: 0, participation: 0)
+        @member_script.save
         # format.html { redirect_to @script, notice: 'Script was successfully created.' }
-        format.html { redirect_to script_classification_path(@script)}
+        format.html { redirect_to script_classification_path(@script) }
         format.json { render :show, status: :created, location: @script }
-
       else
         format.html { render :new }
         format.json { render json: @script.errors, status: :unprocessable_entity }
@@ -44,7 +46,7 @@ class ScriptsController < ApplicationController
     @script = Script.find_by id: params[:script_id]
     @script.requirements.build
     @script.related_scripts.build
-    @scripts = Script.includes(:requirements, :related_scripts).where('id =?',params[:script_id])
+    @scripts = Script.includes(:requirements, :related_scripts).where('id =?', params[:script_id])
   end
 
   # PATCH/PUT /scripts/1
@@ -71,14 +73,32 @@ class ScriptsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_script
-      @script = Script.find(params[:id])
+  def autocomplete_requeriment
+    @requirements = Requirement.where('requirement LIKE ?', "%#{params[:term]}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: @requirements.map(&:requirement) }
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def script_params
-      params.require(:script).permit(:description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, requirements_attributes: [:id , :script_id, :requirement ])
+  #todo-ajustar retorno desse metodo json corretamente para garantir o id do elemento na pagina
+  def autocomplete_related_script
+    @scripts = Script.where('description LIKE ?', "%#{params[:term]}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: @scripts.map { |f| [f.id, [f.description]] } }
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_script
+    @script = Script.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def script_params
+    params.require(:script).permit(:id, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, requirements_attributes: [:id, :script_id, :requirement])
+  end
+
 end

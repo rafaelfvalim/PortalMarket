@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+#  Adicionar requeriments ajax
   $('#add_requeriment').click ->
     requeriment = $("#requeriment").val();
     script_id = $("#script_id").val();
@@ -16,6 +17,10 @@ $ ->
         errors: (data) ->
           alert data
 
+  #  Autocomplete
+  $('#requeriment').autocomplete source: '/scripts/autocomplete_requeriment.json'
+
+  # Adicionar related scripts ajax
   $('#add_related_script').click ->
     related_script = $("#related_script").val();
     script_id = $("#script_id").val();
@@ -30,5 +35,8 @@ $ ->
           $("#related_script_list table ").append("<tr> <td>" + data.description + "</td></tr>");
         errors: (data) ->
           alert data
+
+  #  Autocomplete
+  $('#related_script').autocomplete source: '/scripts/autocomplete_related_script.json'
 
 
