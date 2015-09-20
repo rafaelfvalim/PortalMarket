@@ -86,7 +86,8 @@ class ScriptsController < ApplicationController
     @scripts = Script.where('description LIKE ?', "%#{params[:term]}%")
     respond_to do |format|
       format.html
-      format.json { render json: @scripts.map { |f| [f.id, [f.description]] } }
+      #format.json { render json: @scripts.map{|c| {:description => c.description, :id => c.id } }}
+      format.json { render json: @scripts.to_json}
     end
   end
 

@@ -2,7 +2,9 @@ module ApplicationHelper
 
   def link_to_add(name, id)
     content_tag(:span, "<span>#{name}</span>".html_safe,
-                :id => "#{id}")
+                :id => "#{id}",
+                :class =>"btn btn-info"
+                )
 
   end
 

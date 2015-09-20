@@ -36,12 +36,15 @@
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
     <label>Requirements</label>
-    <div id="requirements">
-      <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
+    <div class="row">
+      <div id="requirements" class="col-lg-2">
+        <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
+      </div>
+      <div class="col-lg-2">
+        <%= link_to_add "Add", "add_requeriment" %>
+      </div>
       <%= hidden_field_tag 'script_id', @script.id %>
-      <%= link_to_add "Add", "add_requeriment" %>
     </div>
-
     <div id="requeriments_list">
       <table>
         <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
@@ -55,10 +58,16 @@
     </div>
     <div>
       <label>Related Scripts</label>
-      <div id="related_scripts">
-        <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
+
+      <div class="row">
+        <div id="related_scripts" class="col-lg-2">
+          <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
+        </div>
+        <div id="requirements" class="col-lg-2" >
+          <%= link_to_add "Add", "add_related_script"%>
+        </div>
         <%= hidden_field_tag 'script_id', @script.id %>
-        <%= link_to_add "Add", "add_related_script" %>
+        <%= hidden_field_tag 'related_script_id' %>
       </div>
     </div>
     <div id="related_script_list">
