@@ -81,7 +81,6 @@ class ScriptsController < ApplicationController
     end
   end
 
-  #todo-ajustar retorno desse metodo json corretamente para garantir o id do elemento na pagina
   def autocomplete_related_script
     @scripts = Script.where('description LIKE ?', "%#{params[:term]}%")
     respond_to do |format|

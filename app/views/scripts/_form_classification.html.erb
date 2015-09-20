@@ -36,6 +36,8 @@
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
     <label>Requirements</label>
+
+    <!--Todo adicionar botão para remover os requerimentos-->
     <div class="row">
       <div id="requirements" class="col-lg-2">
         <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
@@ -59,6 +61,7 @@
     <div>
       <label>Related Scripts</label>
 
+<!--Todo adicionar botão para remover os scripts relacionados-->
       <div class="row">
         <div id="related_scripts" class="col-lg-2">
           <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
