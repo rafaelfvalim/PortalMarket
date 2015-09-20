@@ -47,42 +47,46 @@
       </div>
       <%= hidden_field_tag 'script_id', @script.id %>
     </div>
-    <div id="requeriments_list">
-      <table>
-        <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
-            <% r.requirements.each do |r2| %>
-                <tr>
-                  <td><%= r2.requirement %></td>
-                </tr>
-            <% end %>
-        <% end %>
-      </table>
+    <div class="row">
+      <div id="requeriments_list" class="col-lg-2">
+        <table class="table table-bordered table-striped">
+          <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
+              <% r.requirements.each do |r2| %>
+                  <tr>
+                    <td><%= r2.requirement %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
     </div>
     <div>
       <label>Related Scripts</label>
 
-<!--Todo adicionar botão para remover os scripts relacionados-->
+      <!--Todo adicionar botão para remover os scripts relacionados-->
       <div class="row">
         <div id="related_scripts" class="col-lg-2">
           <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
         </div>
-        <div id="requirements" class="col-lg-2" >
-          <%= link_to_add "Add", "add_related_script"%>
+        <div id="requirements" class="col-lg-2">
+          <%= link_to_add "Add", "add_related_script" %>
         </div>
         <%= hidden_field_tag 'script_id', @script.id %>
         <%= hidden_field_tag 'related_script_id' %>
       </div>
     </div>
-    <div id="related_script_list">
-      <table>
-        <% Script.includes(:related_scripts).where('id = ?', @script.id).each do |r| %>
-            <% r.related_scripts.each do |r2| %>
-                <tr>
-                  <td><%= r2.script.description %></td>
-                </tr>
-            <% end %>
-        <% end %>
-      </table>
+    <div class="row">
+      <div id="related_script_list" class="col-lg-2">
+        <table class="table table-bordered table-striped">
+          <% Script.includes(:related_scripts).where('id = ?', @script.id).each do |r| %>
+              <% r.related_scripts.each do |r2| %>
+                  <tr>
+                    <td><%= r2.script.description %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
     </div>
     <div class="field">
       <%= f.label :script_file %><br>
