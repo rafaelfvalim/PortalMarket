@@ -8,9 +8,9 @@ module ApplicationHelper
 
   end
 
-  def link_to_remove(name)
-    content_tag(:div, "<span>Remove</span>".html_safe,
-                :class => "remove_child")
+  def link_to_remove(name,id)
+    content_tag(:div, "<span>#{name}</span>".html_safe,
+                :class => "btn btn-info",
+                :id => "#{id}" )
   end
-
 end

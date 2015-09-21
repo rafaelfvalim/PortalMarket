@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+
   resources :related_scripts do
     post :classification_create
   end
-
   resources :value_chains
   resources :process_modules
   resources :scripts do
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   resources :member_scripts
   resources :requirements
+
+
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users
@@ -21,5 +23,6 @@ Rails.application.routes.draw do
   resources :members
   match 'members/contributor/:id', controller: 'members', action: 'contributor', via: :get
   match 'members/customer/:id', controller: 'members', action: 'customer', via: :get
+  match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
 
 end

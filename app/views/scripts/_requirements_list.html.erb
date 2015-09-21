@@ -1,6 +1,11 @@
+<% Script.includes(:requirements).where('id = ?', @script.id).each do |f| %>
+    <% f.requirements.each do |requirement| %>
+        <tr id=<%=requirement.id%> >
+          <td><%= requirement.requirement %></td>
 
-<% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
-    <% r.requirements.each do |r2| %>
-        <li><%= r2.requirement %></li>
+          <td class="span1"><%= link_to "Destroy", {controller: "requirements", action: "destroy_ajax", id: requirement.id}, class: "btn btn-info", :remote => true, :onclick =>"remove_table_row(this)" %></td>
+
+        </tr>
     <% end %>
 <% end %>
+

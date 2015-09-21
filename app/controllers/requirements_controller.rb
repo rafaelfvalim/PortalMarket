@@ -29,7 +29,7 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
-        app_custom_routes format, request.referrer, @requirement.script
+        app_custom_routes format, request.referrer, @requirement
       else
         app_custom_routes_errors format, request.referrer, @requirement
       end
@@ -72,6 +72,15 @@ class RequirementsController < ApplicationController
         format.json
       end
     end
+  end
+
+  def destroy_ajax
+    @requirement = Requirement.where(id: params[:id]).first
+    @requirement.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+
   end
 
   private

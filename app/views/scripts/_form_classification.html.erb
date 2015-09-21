@@ -39,7 +39,7 @@
 
     <!--Todo adicionar botão para remover os requerimentos-->
     <div class="row">
-      <div id="requirements" class="col-lg-2">
+      <div id="requirements" class="col-lg-5">
         <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
       </div>
       <div class="col-lg-2">
@@ -48,15 +48,15 @@
       <%= hidden_field_tag 'script_id', @script.id %>
     </div>
     <div class="row">
-      <div id="requeriments_list" class="col-lg-2">
+      <div id="requeriments_list" class="col-lg-5">
         <table class="table table-bordered table-striped">
-          <% Script.includes(:requirements).where('id = ?', @script.id).each do |r| %>
-              <% r.requirements.each do |r2| %>
-                  <tr>
-                    <td><%= r2.requirement %></td>
-                  </tr>
-              <% end %>
-          <% end %>
+          <thead>
+          <th class="col-sm-4">Requirement</th>
+          <th class="col-sm-1"></th>
+          </thead>
+          <tbody>
+              <%= render partial: 'scripts/requirements_list', locals: { f: f } %>
+          </tbody>
         </table>
       </div>
     </div>

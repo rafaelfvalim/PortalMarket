@@ -1,8 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+
 $ ->
-#  Adicionar requeriments ajax
+#  Remover rows jsquery
+  @remove_table_row = (tr) ->
+    $(tr).closest("tr").remove();
+
+# Adiociona requerimentos
   $('#add_requeriment').click ->
     requeriment = $("#requeriment").val();
     script_id = $("#script_id").val();
@@ -12,8 +18,11 @@ $ ->
         url: '/requirements'
         data: {requirement: {script_id: script_id, requirement: requeriment}},
         success: (data) ->
+          remove_button = '<a class="btn btn-info" onclick="remove_table_row(this)" data-remote="true" rel="nofollow" data-method="delete" href="/requirements/'+data.id+'">Destroy</a>';
+          hidden_tag = '<input type="hidden" value='+data.id+'>';
+          table_row = "<tr><td>"+requeriment+"</td><td>"+remove_button+"</td> </tr>";
           $("#requeriment").val('');
-          $("#requeriments_list table ").append("<tr> <td>" + requeriment + "</td></tr>");
+          $("#requeriments_list table").prepend( table_row + hidden_tag);
         errors: (data) ->
           alert data
 
@@ -32,9 +41,12 @@ $ ->
         data: {related_script: {script_id: script_id, related_script_id: related_script_id}},
         success: (data) ->
           $("#related_script").val('');
-          $("#related_script_list table ").append("<tr> <td>" + data.description + "</td></tr>");
+         # $("#related_script_list table ").append("<tr> <td>" + data.description + "</td></tr>");
+          $("#related_script_list table ").html(data);
         errors: (data) ->
           alert data
+
+
   defaultVal = '';
   #  Autocomplete with response map for related_scripts
   $('#related_script').autocomplete
@@ -69,6 +81,5 @@ $ ->
 #
 #    close:(event , ui) ->
 #      $("#related_script").val(defaultVal);
-
 
 
