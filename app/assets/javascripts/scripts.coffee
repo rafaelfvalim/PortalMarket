@@ -5,27 +5,49 @@ $ ->
 #  Remover rows jsquery
   @remove_table_row = (tr) ->
     $(tr).closest("tr").remove();
-    #$('#requeriments_table tr:eq('+id+')').remove();
+  #$('#requeriments_table tr:eq('+id+')').remove();
 
-# Adiociona requerimentos
+  # Adiociona requerimentos
   $('#add_requeriment').click ->
     requeriment = $("#requeriment").val();
     script_id = $("#script_id").val();
+    script_id_requirement = $("#script_id_requirement").val();
     if requeriment != ''
       $.ajax
         type: 'POST'
         url: '/requirements'
-        data: {requirement: {script_id: script_id, requirement: requeriment}},
+        data: {
+          requirement: {script_id: script_id, requirement: requeriment, script_id_requirement: script_id_requirement}
+        },
         success: (data) ->
-          remove_button = '<a class="btn btn-info" onclick="remove_table_row(this)" data-remote="true" href="/requirements/destroy_ajax/'+data.id+'">Destroy</a>';
-          table_row = "<tr><td>"+requeriment+"</td><td>"+remove_button+"</td> </tr>";
+          remove_button = '<a class="btn btn-info" onclick="remove_table_row(this)" data-remote="true" href="/requirements/destroy_ajax/' + data.id + '">Destroy</a>';
+          table_row = "<tr><td>" + requeriment + "</td><td>" + remove_button + "</td> </tr>";
           $("#requeriment").val('');
           $("#requeriments_list table").prepend(table_row);
         errors: (data) ->
           alert data
 
-  #  Autocomplete normal
-  $('#requeriment').autocomplete source: '/scripts/autocomplete_requeriment.json'
+  #  Autocomplete
+  $('#requeriment').autocomplete
+    source: (request, response) ->
+      $.ajax(
+        url: '/scripts/autocomplete_requeriment.json',
+        dataType: 'json',
+        data: request,
+        success: (data) ->
+          response $.map(data, (script) ->
+            label: script.description
+            value: script.description
+            id: script.id
+          )
+      )
+    select: (event, ui) ->
+      $("#script_id_requirement").val(ui.item.id);
+
+    change: (event, ui) ->
+      if ui.item == null
+        $("#script_id_requirement").val('');
+
 
   # Adicionar related scripts ajax
   $('#add_related_script').click ->
@@ -60,7 +82,7 @@ $ ->
             id: script.id
           )
       )
-    change:(event , ui) ->
+    change: (event, ui) ->
       if ui.item == null
         $("#related_script_id").val('');
         $("#related_script").val('');

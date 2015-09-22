@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :related_scripts do
     post :classification_create
   end
-  resources :value_chains
+  resources :value_chains do
+    collection do
+      get 'build'
+    end
+  end
   resources :process_modules
   resources :scripts do
     get :classification

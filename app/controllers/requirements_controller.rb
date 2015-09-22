@@ -65,11 +65,9 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.new(requirement_params)
     respond_to do |format|
       if @requirement.save
-        format.html
-        format.json
+        app_custom_routes format, request.referrer, @requirement.script
       else
-        format.html
-        format.json
+        app_custom_routes format, request.referrer, @requirement
       end
     end
   end

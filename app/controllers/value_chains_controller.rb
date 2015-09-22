@@ -21,6 +21,10 @@ class ValueChainsController < ApplicationController
   def edit
   end
 
+  def build
+    @value_chain = ValueChain.new
+  end
+
   # POST /value_chains
   # POST /value_chains.json
   def create

@@ -52,17 +52,17 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1
   # PATCH/PUT /scripts/1.json
   def update
+    @referer = URI(request.referer).path
     respond_to do |format|
       if @script.update(script_params)
+        if @referer.include?('/classification')
+          format.html { redirect_to value_chains_path, notice: 'teste' }
+        end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }
       else
-        if request.referrer.includes?('classification')
-
-        else
-          format.html { render :edit }
-          format.json { render json: @script.errors, status: :unprocessable_entity }
-        end
+        format.html { render :edit }
+        format.json { render json: @script.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,10 +78,11 @@ class ScriptsController < ApplicationController
   end
 
   def autocomplete_requeriment
-    @requirements = Requirement.where('requirement LIKE ?', "%#{params[:term]}%")
+    @scripts = Script.where('description LIKE ?', "%#{params[:term]}%")
     respond_to do |format|
       format.html
-      format.json { render json: @requirements.map(&:requirement) }
+      #format.json { render json: @requirements.map(&:requirement) }
+      format.json { render json: @scripts.to_json }
     end
   end
 
