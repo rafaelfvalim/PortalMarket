@@ -58,6 +58,15 @@ class RelatedScriptsController < ApplicationController
     end
   end
 
+  def destroy_ajax
+    @related_script = RelatedScript.where(id: params[:id]).first
+    @related_script.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_related_script

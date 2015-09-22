@@ -36,8 +36,6 @@
       <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
     </div>
     <label>Requirements</label>
-
-    <!--Todo adicionar botão para remover os requerimentos-->
     <div class="row">
       <div id="requirements" class="col-lg-5">
         <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
@@ -49,23 +47,20 @@
     </div>
     <div class="row">
       <div id="requeriments_list" class="col-lg-5">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" id="requeriments_table">
           <thead>
           <th class="col-sm-4">Requirement</th>
           <th class="col-sm-1"></th>
           </thead>
           <tbody>
-              <%= render partial: 'scripts/requirements_list', locals: { f: f } %>
+          <%= render partial: 'scripts/requirements_list', locals: {f: f} %>
           </tbody>
         </table>
       </div>
     </div>
     <div>
-      <label>Related Scripts</label>
-
-      <!--Todo adicionar botão para remover os scripts relacionados-->
       <div class="row">
-        <div id="related_scripts" class="col-lg-2">
+        <div id="related_scripts" class="col-lg-5">
           <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
         </div>
         <div id="requirements" class="col-lg-2">
@@ -76,15 +71,15 @@
       </div>
     </div>
     <div class="row">
-      <div id="related_script_list" class="col-lg-2">
-        <table class="table table-bordered table-striped">
-          <% Script.includes(:related_scripts).where('id = ?', @script.id).each do |r| %>
-              <% r.related_scripts.each do |r2| %>
-                  <tr>
-                    <td><%= r2.script.description %></td>
-                  </tr>
-              <% end %>
-          <% end %>
+      <div id="related_script_list" class="col-lg-5">
+        <table class="table table-bordered table-striped" id="related_script_table">
+          <thead>
+          <th class="col-sm-4">Related Scripts</th>
+          <th class="col-sm-1"></th>
+          </thead>
+          <tbody>
+          <%= render 'scripts/related_list_list' %>
+          </tbody>
         </table>
       </div>
     </div>
@@ -101,6 +96,6 @@
       <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], :include_blank => "Please select..." %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit 'Next' %>
     </div>
 <% end %>

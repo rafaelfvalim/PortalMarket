@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   match 'members/contributor/:id', controller: 'members', action: 'contributor', via: :get
   match 'members/customer/:id', controller: 'members', action: 'customer', via: :get
   match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
+  match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
 
 end

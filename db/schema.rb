@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916170420) do
+ActiveRecord::Schema.define(version: 20150922183621) do
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -58,11 +58,13 @@ ActiveRecord::Schema.define(version: 20150916170420) do
   add_index "related_scripts", ["script_id"], name: "fk_rails_38571543db", using: :btree
 
   create_table "requirements", force: :cascade do |t|
-    t.integer "script_id",   limit: 4
-    t.string  "requirement", limit: 255
+    t.integer "script_id",             limit: 4
+    t.string  "requirement",           limit: 255
+    t.integer "script_id_requirement", limit: 4
   end
 
   add_index "requirements", ["script_id"], name: "fk_rails_ef7ba3079c", using: :btree
+  add_index "requirements", ["script_id_requirement"], name: "fk_rails_0be59936c9", using: :btree
 
   create_table "scripts", force: :cascade do |t|
     t.string   "description",      limit: 255
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 20150916170420) do
   add_foreign_key "related_scripts", "scripts", column: "related_script_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"
+  add_foreign_key "requirements", "scripts", column: "script_id_requirement"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "users", "members"
   add_foreign_key "value_chains", "process_modules"

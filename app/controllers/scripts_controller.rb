@@ -57,8 +57,12 @@ class ScriptsController < ApplicationController
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }
       else
-        format.html { render :edit }
-        format.json { render json: @script.errors, status: :unprocessable_entity }
+        if request.referrer.includes?('classification')
+
+        else
+          format.html { render :edit }
+          format.json { render json: @script.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -86,7 +90,7 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       format.html
       #format.json { render json: @scripts.map{|c| {:description => c.description, :id => c.id } }}
-      format.json { render json: @scripts.to_json}
+      format.json { render json: @scripts.to_json }
     end
   end
 

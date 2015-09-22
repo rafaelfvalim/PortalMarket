@@ -1,10 +1,8 @@
 <% Script.includes(:requirements).where('id = ?', @script.id).each do |f| %>
     <% f.requirements.each do |requirement| %>
-        <tr id=<%=requirement.id%> >
+        <tr id=<%= requirement.id %>>
           <td><%= requirement.requirement %></td>
-
-          <td class="span1"><%= link_to "Destroy", {controller: "requirements", action: "destroy_ajax", id: requirement.id}, class: "btn btn-info", :remote => true, :onclick =>"remove_table_row(this)" %></td>
-
+          <td class="span1"><%= link_to "Destroy", {controller: "requirements", action: "destroy_ajax", id: requirement.id}, class: "btn btn-info", :onclick => "remove_table_row(this)", :remote => true %></td>
         </tr>
     <% end %>
 <% end %>

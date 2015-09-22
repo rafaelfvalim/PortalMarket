@@ -91,6 +91,6 @@ class RequirementsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def requirement_params
-    params.require(:requirement).permit(:id, :script_id, :requirement)
+    params.require(:requirement).permit(:id, :script_id, :requirement, :script_id_requirement)
   end
 end
