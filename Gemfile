@@ -9,6 +9,10 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 gem 'nested_form_fields'
+# ajax tables
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails', '0.1.2'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
