@@ -1,39 +1,58 @@
+<div class="container-fluid">
+  <div class="panel panel-default center">
+    <div class="panel-heading center">Panel Scripts</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'New Script', new_script_path , :class => 'btn btn-primary'%>
+        </div>
+      </div>
 
-<h1>Listing Scripts</h1>
-<%= link_to 'New Script', new_script_path %>
+      <div class="row" role="contributor_dashboard">
+        <div class="col-md-12">
+          <div class="panel panel-default center">
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-condensed">
+                  <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Definition</th>
+                    <th>Long text</th>
+                    <th>Platform</th>
+                    <th>Industry</th>
+                    <th>Solution type</th>
+                    <th>Script file</th>
+                    <th>Pdf file</th>
+                    <th>Complexity</th>
+                    <th colspan="3"></th>
+                  </tr>
+                  </thead>
 
-<table>
-  <thead>
-  <tr>
-    <th>Description</th>
-    <th>Definition</th>
-    <th>Long text</th>
-    <th>Platform</th>
-    <th>Industry</th>
-    <th>Solution type</th>
-    <th>Script file</th>
-    <th>Pdf file</th>
-    <th>Complexity</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @member_scripts.each do |member_scripts| %>
-      <tr>
-        <td><%= member_scripts.script.description %></td>
-        <td><%= member_scripts.script.definition %></td>
-        <td><%= member_scripts.script.long_text %></td>
-        <td><%= member_scripts.script.platform %></td>
-        <td><%= member_scripts.script.industry %></td>
-        <td><%= member_scripts.script.solution_type_id %></td>
-        <td><%= member_scripts.script.script_file %></td>
-        <td><%= member_scripts.script.pdf_file %></td>
-        <td><%= member_scripts.script.complexity %></td>
-        <td><%= link_to 'Show', member_scripts.script %></td>
-        <td><%= link_to 'Edit', edit_script_path(member_scripts.script) %></td>
-        <td><%= link_to 'Destroy', member_scripts.script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+                  <tbody>
+                  <% @member_scripts.each do |member_scripts| %>
+                      <tr>
+                        <td><%= member_scripts.script.description %></td>
+                        <td><%= member_scripts.script.definition %></td>
+                        <td><%= member_scripts.script.long_text %></td>
+                        <td><%= member_scripts.script.platform %></td>
+                        <td><%= member_scripts.script.industry %></td>
+                        <td><%= member_scripts.script.solution_type_id %></td>
+                        <td><%= member_scripts.script.script_file %></td>
+                        <td><%= member_scripts.script.pdf_file %></td>
+                        <td><%= member_scripts.script.complexity %></td>
+                        <td><%= link_to 'Show', member_scripts.script %></td>
+                        <td><%= link_to 'Edit', edit_script_path(member_scripts.script) %></td>
+                        <td><%= link_to 'Destroy', member_scripts.script, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,42 @@
 // Place all the styles related to the member_scripts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div[role="member_dashboard"] {
+  height: 300px;
+}
+
+div[role="member_dashboard"] > div {
+  height: 300px;
+
+}
+
+div[role="member_dashboard"] > div > .panel {
+  height: 150px;
+
+}
+
+div[role="member_dashboard"] > div > .panel-boby {
+  height: 100px;
+}
+
+div[role="contributor_dashboard"] {
+  height: 450px;
+}
+
+//div[role="contributor_dashboard"] > table {
+//  height: 450px;
+//}
+//
+//div[role="contributor_dashboard"] > table > tr {
+//
+//  width: 100%;
+//  display: inline-table;
+//}
+//
+//div[role="contributor_dashboard"] > table > tbody {
+//  overflow-y: scroll;
+//  height: 200px; //  <-- Select the height of the body
+//  width: 100%;
+//  position: absolute;
+//}
+
