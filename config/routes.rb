@@ -24,9 +24,14 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   devise_for :users
   resources :users
-  resources :members
-  match 'members/contributor/:id', controller: 'members', action: 'contributor', via: :get
-  match 'members/customer/:id', controller: 'members', action: 'customer', via: :get
+  resources :members do
+    collection do
+      get 'contributor'
+      get 'customer'
+    end
+  end
+  # match 'members/contributor', controller: 'members', action: 'contributor', via: :get , as: :contributor_members
+  # match 'members/customer', controller: 'members', action: 'customer', via: :get, as
   match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
   match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
 

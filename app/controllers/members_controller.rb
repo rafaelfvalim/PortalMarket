@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @member = Member.find_by id: params[:member_id]
+    @member = Member.find_by id: current_user.member_id
   end
 
   # GET /members/1
@@ -61,11 +61,21 @@ class MembersController < ApplicationController
   end
 
   def customer
-    @member_scripts = MemberScript.includes(:script).where('member_id = ?',params[:id])
+    @member_scripts = MemberScript.includes(:scripts).where('member_id = ?',params[:id])
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: @member_scripts}
+    end
   end
 
   def contributor
-    @member_scripts = MemberScript.includes(:script).where('member_id = ?',params[:id])
+    p = params
+    p[:member_id] = current_user.member_id
+
+    respond_to do |format|
+       format.html #new.html.erb
+       format.json { render json: MemberScriptDatatable.new(view_context,params[:member_id])}
+     end
   end
 
 

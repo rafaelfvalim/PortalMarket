@@ -6,6 +6,7 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
   def index
     @scripts = Script.all
+
   end
 
   # GET /scripts/1

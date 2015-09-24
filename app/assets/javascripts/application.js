@@ -16,4 +16,5 @@
 //= require nested_form_fields
 //= require jquery-ui
 //= require jquery-ui/autocomplete
+//= require dataTables/jquery.dataTables
 //= require_tree .

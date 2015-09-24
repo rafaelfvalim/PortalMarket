@@ -4,7 +4,11 @@ class MemberScriptsController < ApplicationController
   # GET /member_scripts
   # GET /member_scripts.json
   def index
-    @member_scripts = MemberScript.all
+   # @member_scripts = MemberScript.all
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: MemberScriptDatatable.new(view_context)}
+    end
   end
 
   # GET /member_scripts/1
@@ -62,13 +66,13 @@ class MemberScriptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_member_script
-      @member_script = MemberScript.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_member_script
+    @member_script = MemberScript.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def member_script_params
-      params.require(:member_script).permit(:member_id, :script_id, :participation, :percentual)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def member_script_params
+    params.require(:member_script).permit(:id, :member_id, :script_id, :participation, :percentual)
+  end
 end
