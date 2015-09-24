@@ -1,54 +1,41 @@
-<%= form_for(@script) do |f| %>
-    <% if @script.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
-
-          <ul>
-            <% @script.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+<div class="row">
+  <div class="col-lg-7">
+    <div class="panel panel-default center">
+      <div class="panel-heading center"><h5>Form Script</h5></div>
+      <div class="panel-body">
+        <%= bootstrap_form_for(@script) do |f| %>
+            <% if @script.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
+                  <ul>
+                    <% @script.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
             <% end %>
-          </ul>
-        </div>
-    <% end %>
+            <%= f.text_field :description %>
+            <%= f.text_area :definition %>
+            <%= f.text_area :long_text %>
+            <%= f.select :platform, ['SAP', 'Oracle', 'TOTVS', 'Java', 'PHP'], {prompt: "Please Select ..."} %>
+            <%= f.select :industry, ['Aerospace and Defense', 'Automotive', 'Banking', 'Chemicals', 'Consumer Products', 'Defense and Security', 'Engineering, Construction, and Operations', 'Healthcare', 'High Tech', 'Higher Education and Research', 'Industrial Machinery and Components', 'Insurance', 'Life Sciences', 'Media', 'Mill Products', 'Mining', 'Oil and Gas', 'Professional Services', 'Public Sector', 'Retail', 'Sports and Entertainment', 'Telecommunications', 'Travel and Transportation', 'Utilities', 'Wholesale Distribution'], {prompt: "Please Select ..."} %>
+            <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ..."} %>
+            <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], {prompt: "Please Select ..."} %>
+            <%= f.file_field :script_file, :class => 'form-control' %>
+            <%= f.file_field :pdf_file, :class => 'form-control' %>
+            <%= link_to 'Back', scripts_path, :class => 'btn btn-default' %>
+            <%= f.submit 'Next' %>
 
-    <div class="field">
-      <%= f.label :description %><br>
-      <%= f.text_field :description %>
+        <% end %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :definition %><br>
-      <%= f.text_area :definition %>
+  </div>
+  <div class="col-lg-5">
+    <div class="panel panel-default center">
+      <div class="panel-heading center"><h5>Information</h5></div>
+      <div class="panel-body">
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :long_text %><br>
-      <%= f.text_area :long_text %>
-    </div>
-    <div class="field">
-      <%= f.label :platform %><br>
-      <%= f.select :platform, ['SAP', 'Oracle', 'TOTVS', 'Java', 'PHP'], :include_blank => "Please select..." %>
-    </div>
-    <div class="field">
-      <%= f.label :industry %><br>
-      <%= f.select :industry, ['Aerospace and Defense', 'Automotive', 'Banking', 'Chemicals', 'Consumer Products', 'Defense and Security', 'Engineering, Construction, and Operations', 'Healthcare', 'High Tech', 'Higher Education and Research', 'Industrial Machinery and Components', 'Insurance', 'Life Sciences', 'Media', 'Mill Products', 'Mining', 'Oil and Gas', 'Professional Services', 'Public Sector', 'Retail', 'Sports and Entertainment', 'Telecommunications', 'Travel and Transportation', 'Utilities', 'Wholesale Distribution'], :include_blank => "Please select..." %>
-    </div>
-    <div class="field">
-      <%= f.label :solution_type_id %><br>
-      <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, :include_blank => "Please select..." %>
-    </div>
-    <div class="field">
-      <%= f.label :script_file %><br>
-      <%= f.file_field :script_file %>
-    </div>
-    <div class="field">
-      <%= f.label :pdf_file %><br>
-      <%= f.file_field :pdf_file %>
-    </div>
-    <div class="field">
-      <%= f.label :complexity %><br>
-      <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], :include_blank => "Please select..." %>
-    </div>
+  </div>
 
-    <div class="actions">
-      <%= f.submit 'Next' %>
-    </div>
-<% end %>
+</div>

@@ -20,8 +20,8 @@ $ ->
           requirement: {script_id: script_id, requirement: requeriment, script_id_requirement: script_id_requirement}
         },
         success: (data) ->
-          remove_button = '<a class="btn btn-info" onclick="remove_table_row(this)" data-remote="true" href="/requirements/destroy_ajax/' + data.id + '">Destroy</a>';
-          table_row = "<tr><td>" + requeriment + "</td><td>" + remove_button + "</td> </tr>";
+          remove_button = '<a class="btn btn-primary btn-xs" onclick="remove_table_row(this)" data-remote="true" href="/requirements/destroy_ajax/' + data.id + '">Remove</a>';
+          table_row = "<tr><td class='col-xs-11'>" + requeriment + "</td><td  class='td_class_x1'>" + remove_button + "</td> </tr>";
           $("#requeriment").val('');
           $("#requeriments_list table").prepend(table_row);
         errors: (data) ->
@@ -60,8 +60,10 @@ $ ->
         url: '/related_scripts'
         data: {related_script: {script_id: script_id, related_script_id: related_script_id}},
         success: (data) ->
+          remove_button = '<a class="btn btn-primary btn-xs" onclick="remove_table_row(this)" data-remote="true" href="/related_scripts/destroy_ajax/' + data.id + '">Remove</a>';
+          table_row = "<tr><td class='col-xs-11'>" + requeriment + "</td><td class='td_class_x1'>" + remove_button + "</td> </tr>";
           $("#related_script").val('');
-          $("#related_script_list table ").append("<tr> <td>" + data.description + "</td></tr>");
+          $("#related_script_list table ").append(table_row);
         errors: (data) ->
           alert data
 

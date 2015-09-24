@@ -35,9 +35,9 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           record.platform,
           record.industry,
           record.complexity,
-          link_to('Show', record, :class => 'btn btn-primary'),
-          link_to('Edit', edit_script_path(record), :class => 'btn btn-primary'),
-          link_to('Delete', record, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary'),
+          link_to('Show', record, :class => 'btn btn-info btn-xs'),
+          link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs'),
+          # link_to('Delete', record, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-xs'),
       ]
     end
   end

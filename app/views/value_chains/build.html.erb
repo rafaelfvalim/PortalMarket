@@ -1,45 +1,9 @@
 <div class="container-fluid">
 
   <div class="panel panel-default center">
-    <div class="panel-heading center">Value Process Chain</div>
+    <div class="panel-heading center"><h1>Value Process Chain</h1></div>
     <div class="panel-body">
-
-      <div class="container" id="myWizard">
-        <div class="progress">
-          <div class="progress-bar" id="progressbar" style="width: 0%;">
-          </div>
-        </div>
-        <div class="navbar">
-          <div class="navbar-inner">
-            <ul class="nav nav-pills nav-wizard">
-              <li class="active"><a href="#step1" data-toggle="tab">Processo</a>
-
-                <div class="nav-arrow"></div>
-              </li>
-              <li>
-                <div class="nav-wedge"></div>
-                <a href="#step2" data-toggle="tab">Processo</a>
-
-                <div class="nav-arrow"></div>
-              </li>
-              <li>
-                <div class="nav-wedge"></div>
-                <a href="#step3" data-toggle="tab">Processo</a>
-
-                <div class="nav-arrow"></div>
-              </li>
-              <li>
-                <div class="nav-wedge"></div>
-                <a href="#step4" data-toggle="tab">Processo</a>
-
-                <div class="nav-arrow"></div>
-              </li>
-              <li>
-                <div class="nav-wedge"></div>
-                <a href="#step5" data-toggle="tab">Processo</a></li>
-            </ul>
-          </div>
-        </div>
+    <%= render 'process_steps' %>
         <div class="tab-content">
           <!--Step 1-->
           <div class="tab-pane active" id="step1">

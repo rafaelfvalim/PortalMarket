@@ -25,6 +25,8 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'high_voltage'
 gem 'mysql2', '~> 0.3.18'
 gem 'upmin-admin'
+gem 'bootstrap_form'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
