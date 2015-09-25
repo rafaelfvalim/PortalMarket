@@ -1,66 +1,53 @@
 <div class="container-fluid">
-
   <div class="panel panel-default center">
-    <div class="panel-heading center"><h1>Value Process Chain</h1></div>
-    <div class="panel-body">
-    <%= render 'process_steps' %>
+    <div class="panel-heading center"><h1>Process</h1></div>
+    <!--Painel Groupp-->
+    <div class="panel-body" id="panel_master">
+      <div class="tab-content">
+        <%= render 'process_tracker' %>
         <div class="tab-content">
-          <!--Step 1-->
-          <div class="tab-pane active" id="step1">
+          <!--Painel Groupp internal-->
+          <div class="panel-group" id="accordion">
             <div class="panel panel-default">
-              <div role="painel_process">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <div class="btn-group pull-right">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                      <i class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <span>Values Chain</span>
+                </h4>
+              </div>
+              <!-- panel body -->
+              <div id="accordionOne" class="panel-collapse collapse in">
                 <div class="panel-body">
-                  <%= render 'build_process' %>
-                  <a class="btn btn-default next" href="#">Continue</a>
+                  <ul class="breadcrumb">
+                    <li>Gestão de Controladoria e Custos</li>
+                    <li>Filho 1</li>
+                    <li>Filho 1.2</li>
+                  </ul>
+                  <ul class="breadcrumb">
+                    <li>Gestão de Controladoria e Custos</li>
+                    <li>Filho 1</li>
+                    <li>Filho 1.2</li>
+                  </ul>
+                  <ul class="breadcrumb">
+                    <li>Gestão de Controladoria e Custos</li>
+                    <li>Filho 1</li>
+                    <li>Filho 1.2</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-          <!--Step 2-->
-          <div class="tab-pane" id="step2">
-            <div class="panel panel-default">
-              <div role="painel_process">
-                <div class="panel-body">
-
-                  <a class="btn btn-default next" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Step 3-->
-          <div class="tab-pane" id="step3">
-            <div class="panel panel-default">
-              <div role="painel_process">
-                <div class="panel-body">
-
-                  <a class="btn btn-default next" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Step 4-->
-          <div class="tab-pane" id="step4">
-            <div class="panel panel-default">
-              <div role="painel_process">
-                <div class="panel-body">
-
-                  <a class="btn btn-default next" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Step 5-->
-          <div class="tab-pane" id="step5">
-            <div class="panel panel-default">
-              <div role="painel_process">
-                <div class="panel-body">
-
-                  <a class="btn btn-success first" href="#">Start over</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
+        </div>
+      </div>
+      <!--Painel Groupp-->
+      <div class="panel panel-default" id="painel_build">
+        <div class="panel-body" id="painel_body" >
+          <%= render 'build_process' %>
+          <a class="btn btn-default next" href="#">Continue</a>
         </div>
       </div>
     </div>

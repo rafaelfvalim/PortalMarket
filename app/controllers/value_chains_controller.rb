@@ -23,6 +23,9 @@ class ValueChainsController < ApplicationController
 
   def build
     @value_chain = ValueChain.new
+    @create_script_tracker = 'complete'
+    @classification_tracker = 'complete'
+    @value_chain_tracker = 'active'
   end
 
   # POST /value_chains

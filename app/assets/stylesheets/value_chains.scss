@@ -75,6 +75,25 @@ div[role="hub_process"] > div  {
 
 }
 
+.thumbnail {
+  position: relative;
+}
 
+.caption {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+}
+.white, .white a {
+  color: #fff;
+  background-color: transparent;
+}
+.btn-group.active, .btn-group:active {
+  background-color: #fff;
+}
 
-
+.list_process {
+  max-height: 167px;
+  overflow-y:scroll;
+}

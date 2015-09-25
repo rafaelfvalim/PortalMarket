@@ -71,7 +71,6 @@ class MembersController < ApplicationController
   def contributor
     p = params
     p[:member_id] = current_user.member_id
-
     respond_to do |format|
        format.html #new.html.erb
        format.json { render json: MemberScriptDatatable.new(view_context,params[:member_id])}

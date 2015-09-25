@@ -18,6 +18,7 @@ class ScriptsController < ApplicationController
   def new
     @script = Script.new
     @script.member_scripts.build
+    @create_script_tracker = 'active'
   end
 
   # GET /scripts/1/edit
@@ -48,6 +49,8 @@ class ScriptsController < ApplicationController
     @script.requirements.build
     @script.related_scripts.build
     @scripts = Script.includes(:requirements, :related_scripts).where('id =?', params[:script_id])
+    @create_script_tracker = 'complete'
+    @classification_tracker = 'active'
   end
 
   # PATCH/PUT /scripts/1
@@ -57,7 +60,7 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       if @script.update(script_params)
         if @referer.include?('/classification')
-          format.html { redirect_to build_value_chains_path, notice: 'teste' }
+          format.html { redirect_to value_chains_path, notice: 'teste' }
         end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }

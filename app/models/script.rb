@@ -1,4 +1,5 @@
 class Script < ActiveRecord::Base
+
   has_many :member_scripts
   has_many :solution_types
   has_many :requirements
