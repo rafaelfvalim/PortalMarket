@@ -7,7 +7,7 @@ $ ->
       step = $('#process input').val()
       if step == 'step1'
         $('#accordion').hide 'clip', ->
-          $('.row_panel_process').show 'drop', ->
+          $('#row_panel_process').show 'drop', ->
             $('#process input').val('step2')
             return false
       if step == 'step2'
