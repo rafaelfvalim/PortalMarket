@@ -1,0 +1,12 @@
+<div class="row row-horizon" id ="list_process_chain">
+  <div class="col-xs-4 col-md-2" id="value_chain_process">
+    <a href="#" class="thumbnail text-center" >
+      <%= hidden_field_tag 'process_id', @process_module.id %>
+      <%= hidden_field_tag 'active', 'true' %>
+      <%= image_tag("dummy.png") %>
+      <div class="caption">
+        <p><%= @process_module.description %></p>
+      </div>
+    </a>
+  </div>
+</div>

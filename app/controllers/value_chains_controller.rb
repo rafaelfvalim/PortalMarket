@@ -26,6 +26,11 @@ class ValueChainsController < ApplicationController
     @create_script_tracker = 'complete'
     @classification_tracker = 'complete'
     @value_chain_tracker = 'active'
+    @process_modules = ProcessModule.where('referrer_process_module_id is null')
+  end
+
+  def classification
+    @process_module = ProcessModule.find(params[:id])
   end
 
   # POST /value_chains
@@ -69,13 +74,13 @@ class ValueChainsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_value_chain
-      @value_chain = ValueChain.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_value_chain
+    @value_chain = ValueChain.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def value_chain_params
-      params.require(:value_chain).permit(:process_module_id, :script_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def value_chain_params
+    params.require(:value_chain).permit(:process_module_id, :script_id)
+  end
 end

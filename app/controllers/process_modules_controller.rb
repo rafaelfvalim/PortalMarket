@@ -37,6 +37,14 @@ class ProcessModulesController < ApplicationController
     end
   end
 
+  def get_list_ajax
+    respond_to do |format|
+      format.html
+      format.json { render json: ProcessModule.where('referrer_process_module_id = ?', params[:id])}
+    end
+  end
+
+
   # PATCH/PUT /process_modules/1
   # PATCH/PUT /process_modules/1.json
   def update
