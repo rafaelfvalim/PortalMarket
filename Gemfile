@@ -13,6 +13,7 @@ gem 'nested_form_fields'
 gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
+gem 'jquery-scrollto-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

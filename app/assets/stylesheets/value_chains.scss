@@ -70,7 +70,7 @@ div[role="hub_process"] {
   height: 300px;
 }
 
-div[role="hub_process"] > div  {
+div[role="hub_process"] > div {
   height: 150px;
 
 }
@@ -85,15 +85,37 @@ div[role="hub_process"] > div  {
   left: 0;
   width: 100%;
 }
+
 .white, .white a {
   color: #fff;
   background-color: transparent;
 }
+
 .btn-group.active, .btn-group:active {
   background-color: #fff;
 }
 
 .list_process {
   max-height: 167px;
-  overflow-y:scroll;
+  overflow-y: auto;
+  height: 180px;
+}
+
+#list_process_chain {
+  height: 100%;
+  overflow-x: auto;
+}
+
+.finish_process{
+  margin-top: 65px;
+  text-align: -webkit-center;
+  height: 102px;
+}
+
+.margem_left{
+  margin-left: 10px;
+}
+
+.border_col {
+  box-shadow: #000 2px 2px 1px
 }

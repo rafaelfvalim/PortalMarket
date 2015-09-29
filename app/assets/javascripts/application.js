@@ -17,11 +17,18 @@
 //= require jquery-ui
 //= require jquery-ui/autocomplete
 //= require dataTables/jquery.dataTables
+//= require jquery.scrollTo
 //= require_tree .
 
-//Process list Ajax - Cadeia de valores
+
+// ValueChain view logic - process classification
+var StatusEnum = {START: 'start', GENERATELIST: 'generate list', FINAL: 'final'};
+var valueChainStep = StatusEnum.START;
 var process_call_ajax;
-process_call_ajax = function (id) {
+var nivel = 1;
+var arrayLevels = [];
+
+process_call_ajax = function (id, e) {
     var url;
     url = '/process_modules/' + id + '/get_list_ajax.json';
     return $.ajax({
@@ -31,7 +38,7 @@ process_call_ajax = function (id) {
             id: id
         },
         success: function (data) {
-            return processListFactory($("#list_process_chain"), data);
+            return processListFactory($("#list_process_chain"), data, e);
         },
         errors: function (data) {
             return alert('error');
@@ -39,52 +46,75 @@ process_call_ajax = function (id) {
     });
 };
 
-//Process list Ajax - Cadeia de valores
 var processListFactory;
-processListFactory = function (e, data) {
-    var finish = $("#process").val()
-    alert(finish);
+processListFactory = function (root_element, data, e) {
+    var id = parseInt($(e).attr("id"), 10);
+    $("#list_process_chain").scrollTo(e);
+
+    arrayLevels.forEach(function (e) {
+        var element_id = parseInt($(e).attr("id"), 10);
+        if (id < element_id) {
+          $(e).remove();
+        }
+    })
 
     if ($.isEmptyObject(data)) {
-        finishStep(e);
-    } else {
-        listMaker(e, data);
+        showFinalStep(root_element);
+        valueChainStep = StatusEnum.FINAL;
     }
+
+    if (!$.isEmptyObject(data)) {
+        showList(root_element, data);
+        valueChainStep = StatusEnum.GENERATELIST;
+    }
+
 };
 
-var finishStep;
-finishStep = function (e) {
-    var div_container, link_to, image_link, div_caption, p, hidden_finish;
-    div_container = $('<div class="col-xs-4 col-md-2" id="value_chain_process_finish">');
-    link_to = $('<a href="#" class="thumbnail text-center" >');
-    image_link = $('<img src="/assets/dummy.png">');
-    div_caption = $('<div class="caption">');
-    p = $('<p>Finish</p>');
-    div_caption.append(p);
-    hidden_finish = $('<input type="hidden" value="complete" id="process">');
-    link_to.append(image_link);
-    link_to.append(div_caption);
-    div_container.append(hidden_finish)
-    div_container.append(link_to);
-    return e.append(div_container)
+var showFinalStep;
+showFinalStep = function (e) {
+    var div_container, link_to, div_content;
+    div_container = $('<div class="col-xs-6 col-sm-4 col-md-3 col-md-2 value_chain">');
+    div_container.attr("id", nivel);
+    div_content = $('<div class ="finish_process">');
+    link_to = $('<a href="#" class="btn btn-success" >');
+    link_to.text("Finish");
+    div_content.append(link_to);
+    div_container.append(div_content);
+    nivel++;
+    arrayLevels.push(div_container);
+    return e.append(div_container);
+
 };
 
-var listMaker;
-listMaker = function (e, data) {
+var showList;
+showList = function (e, data) {
     var divLisProcess, divListContainer, divListProcessListGroup;
     divListContainer = $('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">');
+    divListContainer.attr("id", nivel);
     divLisProcess = $('<div class="list_process">');
-    divListProcessListGroup = $('<div class="list-group">');
+    divListProcessListGroup = $('<ul class="list-unstyled">');
     $.each(data, function (key, value) {
         var divListProcessListGroupButton;
-        divListProcessListGroupButton = $('<a href="#" class="list-group-item">');
+        var li = $("<li>")
+        divListProcessListGroupButton = $('<a href="#">');
         divListProcessListGroupButton.text(value.description);
-        divListProcessListGroupButton.attr("id", value.id);
-        divListProcessListGroupButton.attr("onclick", "process_call_ajax(" + value.id + ")");
-        return divListProcessListGroup.append(divListProcessListGroupButton);
+        divListProcessListGroupButton.attr("id", nivel);
+        divListProcessListGroupButton.attr("onclick", "process_call_ajax(" + value.id + ", this)");
+        li.append(divListProcessListGroupButton);
+        return divListProcessListGroup.append(li);
     });
     divLisProcess.append(divListProcessListGroup);
     divListContainer.append(divLisProcess);
+    nivel++;
+    arrayLevels.push(divListContainer);
     return $(e).append(divListContainer);
-
 };
+
+var scrollPosition;
+scrollPosition = function (container, scrollTo){
+    container.animate({
+        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+    });
+
+}
+
