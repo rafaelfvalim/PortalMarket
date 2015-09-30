@@ -22,6 +22,7 @@ class ValueChainsController < ApplicationController
   end
 
   def build
+    @script = Script.find_by id: params[:id]
     @value_chain = ValueChain.new
     @create_script_tracker = 'complete'
     @classification_tracker = 'complete'
@@ -31,6 +32,19 @@ class ValueChainsController < ApplicationController
 
   def classification
     @process_module = ProcessModule.find(params[:id])
+    @script_id = params[:script_id]
+    gon.script_id = @script_id
+  end
+
+  def create_ajax
+    @script_id = params[:script_id]
+    @process_module_id = params[:process_module_id]
+    @value_chain = ValueChain.new(:process_module_id => @process_module_id, :script_id => @script_id)
+    respond_to do |format|
+      if @value_chain.save
+        format.html { redirect_to build_value_chain_path(@script_id), notice: 'Value chain was successfully created.' }
+      end
+    end
   end
 
   # POST /value_chains

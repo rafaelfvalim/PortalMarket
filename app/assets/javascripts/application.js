@@ -47,23 +47,23 @@ process_call_ajax = function (id, e) {
 };
 
 var processListFactory;
-processListFactory = function (root_element, data, e) {
-    var id = parseInt($(e).attr("id"), 10);
-    $("#list_process_chain").scrollTo(e);
+processListFactory = function (root_element, data, element) {
+    var selected = parseInt($(element).attr("data-level"), 10);
+    var last_selected = $(element).attr("id");
 
-    arrayLevels.forEach(function (e) {
-        var element_id = parseInt($(e).attr("id"), 10);
-        if (id < element_id) {
-          $(e).remove();
+    $("#list_process_chain").scrollTo(element);
+    arrayLevels.forEach(function (element) {
+        var data_level = parseInt($(element).attr("data-level"), 10);
+        if (selected < data_level) {
+            $(element).remove();
         }
     })
 
     if ($.isEmptyObject(data)) {
-        showFinalStep(root_element);
-        valueChainStep = StatusEnum.FINAL;
-    }
 
-    if (!$.isEmptyObject(data)) {
+        showFinalStep(root_element, last_selected);
+        valueChainStep = StatusEnum.FINAL;
+    } else {
         showList(root_element, data);
         valueChainStep = StatusEnum.GENERATELIST;
     }
@@ -71,13 +71,16 @@ processListFactory = function (root_element, data, e) {
 };
 
 var showFinalStep;
-showFinalStep = function (e) {
+showFinalStep = function (e, last_selected) {
     var div_container, link_to, div_content;
+    var process_module_id = last_selected;
+
     div_container = $('<div class="col-xs-6 col-sm-4 col-md-3 col-md-2 value_chain">');
-    div_container.attr("id", nivel);
+    div_container.attr("data-level", nivel);
     div_content = $('<div class ="finish_process">');
-    link_to = $('<a href="#" class="btn btn-success" >');
+    link_to = $('<a href="/value_chains/create/'+process_module_id+'/'+gon.script_id+'" class="btn btn-success">');
     link_to.text("Finish");
+    link_to.attr("data-level", nivel);
     div_content.append(link_to);
     div_container.append(div_content);
     nivel++;
@@ -90,7 +93,7 @@ var showList;
 showList = function (e, data) {
     var divLisProcess, divListContainer, divListProcessListGroup;
     divListContainer = $('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">');
-    divListContainer.attr("id", nivel);
+    divListContainer.attr("data-level", nivel);
     divLisProcess = $('<div class="list_process">');
     divListProcessListGroup = $('<ul class="list-unstyled">');
     $.each(data, function (key, value) {
@@ -98,7 +101,8 @@ showList = function (e, data) {
         var li = $("<li>")
         divListProcessListGroupButton = $('<a href="#">');
         divListProcessListGroupButton.text(value.description);
-        divListProcessListGroupButton.attr("id", nivel);
+        divListProcessListGroupButton.attr("id", value.id);
+        divListProcessListGroupButton.attr("data-level", nivel);
         divListProcessListGroupButton.attr("onclick", "process_call_ajax(" + value.id + ", this)");
         li.append(divListProcessListGroupButton);
         return divListProcessListGroup.append(li);
@@ -111,7 +115,7 @@ showList = function (e, data) {
 };
 
 var scrollPosition;
-scrollPosition = function (container, scrollTo){
+scrollPosition = function (container, scrollTo) {
     container.animate({
         scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
     });

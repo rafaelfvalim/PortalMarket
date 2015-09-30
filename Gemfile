@@ -14,6 +14,7 @@ gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-
 gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'jquery-scrollto-rails'
+gem 'gon'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

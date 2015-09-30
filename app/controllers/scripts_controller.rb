@@ -60,7 +60,7 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       if @script.update(script_params)
         if @referer.include?('/classification')
-          format.html { redirect_to value_chains_path, notice: 'teste' }
+          format.html { redirect_to build_value_chain_path(@script.id)}
         end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }

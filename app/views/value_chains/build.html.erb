@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="panel panel-default center">
-    <div class="panel-heading center"><h1>Process</h1></div>
+    <div class="panel-heading center"><h1>Process Script : <%= @script.description %></h1></div>
     <!--Painel Groupp-->
     <div class="panel-body" id="panel_master">
       <div class="tab-content">
@@ -19,9 +19,18 @@
                   <span>Values Chain</span>
                 </h4>
               </div>
+              <div>
+                <% @value_chains = ValueChain.where('script_id = ?', @script.id) %>
+                <ul>
+                  <% @value_chains.each do |value_chain| %>
+                      <li><%= get_breadcrumb_value_chain(value_chain.process_module_id) %></li>
+                  <% end %>
+                </ul>
+              </div>
               <!-- panel body -->
-              <div id="accordionOne" class="panel-collapse collapse in">
+              <div id="accordionOne" class="panel-collapse collapse">
                 <div class="panel-body">
+
                   <ul class="breadcrumb">
                     <li>Gestão de Controladoria e Custos</li>
                     <li>Filho 1</li>
@@ -45,7 +54,7 @@
       </div>
       <!--Painel Groupp-->
       <div class="panel panel-default" id="painel_build">
-        <div class="panel-body" id="painel_body" >
+        <div class="panel-body" id="painel_body">
           <%= render 'build_process' %>
           <a class="btn btn-default next" href="#">Continue</a>
         </div>
