@@ -44,13 +44,13 @@ class ScriptsController < ApplicationController
     end
   end
 
-  def classification
+  def additional_information
     @script = Script.find_by id: params[:script_id]
     @script.requirements.build
     @script.related_scripts.build
     @scripts = Script.includes(:requirements, :related_scripts).where('id =?', params[:script_id])
     @create_script_tracker = 'complete'
-    @classification_tracker = 'active'
+    @additional_information = 'active'
   end
 
   # PATCH/PUT /scripts/1
@@ -60,7 +60,7 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       if @script.update(script_params)
         if @referer.include?('/classification')
-          format.html { redirect_to build_value_chain_path(@script.id)}
+          format.html { redirect_to build_value_chain_path(@script.id) }
         end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }
@@ -97,6 +97,16 @@ class ScriptsController < ApplicationController
       #format.json { render json: @scripts.map{|c| {:description => c.description, :id => c.id } }}
       format.json { render json: @scripts.to_json }
     end
+  end
+
+  def final_details
+    @script = Script.find_by id: params[:id]
+    @value_chains = ValueChain.where('script_id = ?', @script.id)
+    @process_modules = ProcessModule.where('script_id = ?', @script.id)
+    @create_script_tracker = 'complete'
+    @additional_information = 'complete'
+    @value_chain_tracker = 'complete'
+    @finish_script_tracker = 'active'
   end
 
   private

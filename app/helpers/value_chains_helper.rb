@@ -1,22 +1,19 @@
 module ValueChainsHelper
 
   def get_breadcrumb_value_chain(process_module_id)
-    show = ''
+    breadcrumb ||= Array.new
     ProcessModule.where('id = ? ', process_module_id).each do |pp1|
-      breadcrumb ||= Array.new
       next_reference = pp1.referrer_process_module_id
-      breadcrumb.push(pp1.description)
+      breadcrumb.push("#{pp1.description}:#{pp1.id}")
       loop do
         break if next_reference.nil? || next_reference == ''
         ProcessModule.where('id = ? ', next_reference).each do |pp2|
-          breadcrumb.push(pp2.description)
+          breadcrumb.push("#{pp2.description}:#{pp2.id}" )
           next_reference = pp2.referrer_process_module_id
         end
       end
-      show = breadcrumb.reverse.to_sentence
-      breadcrumb.clear
     end
-    return show
+    return breadcrumb.reverse
   end
 
 end

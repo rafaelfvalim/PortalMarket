@@ -43,7 +43,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Script.select('*').joins(:member_scripts).where('scripts.id = member_scripts.script_id and member_scripts.member_id = ?', params[:member_id])
+     Script.joins(:member_scripts).where(' member_scripts.member_id = ?', params[:member_id]).group('scripts.id')
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

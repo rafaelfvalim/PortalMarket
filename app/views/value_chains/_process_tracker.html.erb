@@ -11,7 +11,7 @@
           <div class="bs-wizard-info text-center">Create Script.</div>
           <!--</div>-->
       <% end %>
-      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@classification_tracker or 'disabled'}" do -%>
+      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@additional_information or 'disabled'}" do -%>
           <!--<div class="col-xs-3 bs-wizard-step complete">&lt;!&ndash; complete &ndash;&gt;-->
           <div class="text-center bs-wizard-stepnum">2</div>
           <div class="progress">
@@ -19,7 +19,7 @@
           </div>
           <a href="#" class="bs-wizard-dot"></a>
 
-          <div class="bs-wizard-info text-center">Classification</div>
+          <div class="bs-wizard-info text-center">Additional Information</div>
       <% end %>
       <!--</div>-->
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@value_chain_tracker or 'disabled'}" do -%>

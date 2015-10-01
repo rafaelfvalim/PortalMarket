@@ -1,0 +1,13 @@
+<% @value_chains = ValueChain.where('script_id = ?', @script.id) %>
+<% @value_chains.each do |value_chain| %>
+    <%= content_tag(:ul, class: "breadcrumb", id: value_chain.id) do %>
+        <% get_breadcrumb_value_chain(value_chain.process_module_id).each do |value| %>
+            <li><%= value.to_s.split(':')[0] %></li>
+        <% end %>
+        <li>
+          <%= link_to value_chain, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, onclick: "$(this).one('ajax:beforeSend',function(e) { $('##{value_chain.id}').remove();});" do %>
+              <i class="glyphicon glyphicon-remove"></i>
+          <% end %>
+        </li>
+    <% end %>
+<% end %>

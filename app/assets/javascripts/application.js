@@ -28,6 +28,12 @@ var process_call_ajax;
 var nivel = 1;
 var arrayLevels = [];
 
+var remove_breadcrumb;
+
+remove_breadcrumb = function (e) {
+    $("#"+e).remove();
+}
+
 process_call_ajax = function (id, e) {
     var url;
     url = '/process_modules/' + id + '/get_list_ajax.json';
@@ -75,10 +81,14 @@ showFinalStep = function (e, last_selected) {
     var div_container, link_to, div_content;
     var process_module_id = last_selected;
 
+    if (process_module_id == null || process_module_id == '') {
+        process_module_id = $("#process_id").val()
+    }
+
     div_container = $('<div class="col-xs-6 col-sm-4 col-md-3 col-md-2 value_chain">');
     div_container.attr("data-level", nivel);
     div_content = $('<div class ="finish_process">');
-    link_to = $('<a href="/value_chains/create/'+process_module_id+'/'+gon.script_id+'" class="btn btn-success">');
+    link_to = $('<a href="/value_chains/create/' + process_module_id + '/' + gon.script_id + '" class="btn btn-success">');
     link_to.text("Finish");
     link_to.attr("data-level", nivel);
     div_content.append(link_to);
@@ -97,6 +107,7 @@ showList = function (e, data) {
     divLisProcess = $('<div class="list_process">');
     divListProcessListGroup = $('<ul class="list-unstyled">');
     $.each(data, function (key, value) {
+
         var divListProcessListGroupButton;
         var li = $("<li>")
         divListProcessListGroupButton = $('<a href="#">');

@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div class="panel panel-default center">
+    <div class="panel-heading center"><h1>Process Script : <%= @script.description %></h1></div>
+    <!--Painel Groupp-->
+    <div class="panel-body" id="panel_master">
+      <div class="tab-content">
+        <%= render 'value_chains/process_tracker' %>
+        <div class="tab-content">
+          <div class="panel panel-default" id="painel_build">
+            <div class="panel-body" id="painel_body">
+              <div class="row">
+                <div class="col-lg-9">
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Script :</legend>
+                    <div class="control-group">
+                      <p>
+                        <strong>Description:</strong>
+                        <%= @script.description %>
+                      </p>
+
+                      <p>
+                        <strong>Definition:</strong>
+                        <%= @script.definition %>
+                      </p>
+
+                      <p>
+                        <strong>Long text:</strong>
+                        <%= @script.long_text %>
+                      </p>
+
+                      <p>
+                        <strong>Platform:</strong>
+                        <%= @script.platform %>
+                      </p>
+
+                      <p>
+                        <strong>Industry:</strong>
+                        <%= @script.industry %>
+                      </p>
+
+                      <p>
+                        <strong>Solution type:</strong>
+                        <%= @script.solution_type_id %>
+                      </p>
+
+                      <p>
+                        <strong>Script file:</strong>
+                        <%= @script.script_file %>
+                      </p>
+
+                      <p>
+                        <strong>Pdf file:</strong>
+                        <%= @script.pdf_file %>
+                      </p>
+
+                      <p>
+                        <strong>Complexity:</strong>
+                        <%= @script.complexity %>
+                      </p>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-9">
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Classificated for :</legend>
+                    <div class="control-group">
+                      <%= render 'value_chains/breadcrumb_value_chain' %>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-9">
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Requeriments :</legend>
+                    <div class="control-group">
+                      
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-9">
+                  <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Referrer Scripts :</legend>
+                    <div class="control-group">
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

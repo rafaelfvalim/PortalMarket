@@ -25,7 +25,7 @@ class ValueChainsController < ApplicationController
     @script = Script.find_by id: params[:id]
     @value_chain = ValueChain.new
     @create_script_tracker = 'complete'
-    @classification_tracker = 'complete'
+    @additional_information = 'complete'
     @value_chain_tracker = 'active'
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
   end
@@ -81,11 +81,18 @@ class ValueChainsController < ApplicationController
   # DELETE /value_chains/1.json
   def destroy
     @value_chain.destroy
+    @referer = URI(request.referer).path
     respond_to do |format|
-      format.html { redirect_to value_chains_url, notice: 'Value chain was successfully destroyed.' }
-      format.json { head :no_content }
+      if @referer.include?('/value_chains/build/')
+        format.json { head :no_content }
+      else
+        format.html { redirect_to value_chains_url, notice: 'Value chain was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
+
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

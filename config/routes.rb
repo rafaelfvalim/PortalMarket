@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :value_chains
   resources :process_modules
   resources :scripts do
-    get :classification
     collection do
+      get :additional_information
       get 'autocomplete_requeriment'
+      get 'final_details'
       get 'autocomplete_related_script'
     end
   end
