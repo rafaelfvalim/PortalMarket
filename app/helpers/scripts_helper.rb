@@ -1,3 +1,2 @@
 module ScriptsHelper
-
 end

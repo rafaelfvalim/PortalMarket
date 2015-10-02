@@ -12,6 +12,16 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
+    respond_to do |format|
+      case
+        when request.referrer.include?('edit')
+          format.html { redirect_to :back }
+      end
+    end
+  end
+
+  def edit_additional_information
+    @script = Script.find_by id: params[:id]
   end
 
   # GET /scripts/new
@@ -19,10 +29,12 @@ class ScriptsController < ApplicationController
     @script = Script.new
     @script.member_scripts.build
     @create_script_tracker = 'active'
+    @action = 'create'
   end
 
   # GET /scripts/1/edit
   def edit
+    @action = 'edit'
   end
 
   # POST /scripts
@@ -45,6 +57,7 @@ class ScriptsController < ApplicationController
   end
 
   def additional_information
+    @action = 'create'
     @script = Script.find_by id: params[:id]
     @script.requirements.build
     @script.related_scripts.build
@@ -78,6 +91,34 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to scripts_url, notice: 'Script was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def roll_back_script
+    @script = Script.find_by id: params[:id]
+    if !@script.blank?
+      @member_script = MemberScript.find_by_script_id(@script.id)
+
+      if @member_script.blank?
+        @member_script.destroy
+      end
+      @related_scripts = RelatedScript.find_by_script_id(@script.id)
+
+      if !@related_scripts.blank?
+        @related_scripts.destroy_all
+      end
+      @requirements = Requirement.find_by_script_id(@script.id)
+      if !@requirements.blank?
+        @requirements.destroy_all
+      end
+      @value_chains = ValueChain.find_by_script_id(@script.id)
+      if !@value_chains.blank?
+        @value_chains.destroy_all
+      end
+      @script.destroy
+    end
+    respond_to do |format|
+      format.html { redirect_to contributor_members_path }
     end
   end
 

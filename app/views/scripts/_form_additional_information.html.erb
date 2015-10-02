@@ -1,85 +1,96 @@
-<div class="row">
-  <div class="col-lg-7">
-    <div class="panel panel-default center">
-      <div class="panel-heading center"><h5>Classific Script</h5></div>
-      <div class="panel-body">
-        <%= bootstrap_form_for(@script) do |f| %>
-            <% if @script.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
-                  <ul>
-                    <% @script.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                  </ul>
-                </div>
-            <% end %>
-
-            <%= f.label :description, @script.description %>
-
-            <label>Requirements</label>
-
-            <div class="row">
-              <div id="requirements" class="col-lg-10">
-                <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
-              </div>
-              <div class="col-lg-1">
-                <%= link_to_add "Add", "add_requeriment" %>
-              </div>
-              <%= hidden_field_tag 'script_id', @script.id %>
-              <%= hidden_field_tag 'script_id_requirement' %>
+<%= bootstrap_form_for(@script) do |f| %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <div class="pull-left">
+              <% if @action == 'create' %>
+                  <%= link_to 'Back', :back, :class => 'btn btn-default' %>
+                  <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default',data: { confirm: 'Are you sure?' } %>
+                  <%= f.submit 'Next', :class => 'btn btn-default' %>
+              <% else %>
+                  <%= f.submit 'Save', :class => 'btn btn-default' %>
+                  <%= link_to 'Cancel', contributor_members_path, :class => 'btn btn-default', data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit Script', edit_script_path(:id => @script.id), :class => 'btn btn-default' %>
+                  <%= link_to 'Edit Value Chain', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
+              <% end %>
             </div>
-            <div class="row">
-              <div id="requeriments_list" class="col-lg-10">
-                <table class="table table-bordered table-striped" id="requeriments_table">
-                  <thead>
-                  <th class="col-sm-4" colspan="2">Requirement</th>
-                  </thead>
-                  <tbody>
-                  <%= render partial: 'scripts/requirements_list', locals: {f: f} %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div>
+          </div>
+          <div class="panel-body">
+
+            <div class="col-lg-7">
+              <% if @script.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
+                    <ul>
+                      <% @script.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+
+              <label>Requirements</label>
+
               <div class="row">
-                <div id="related_scripts" class="col-lg-10">
-                  <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
+                <div id="requirements" class="col-lg-10">
+                  <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....' %>
                 </div>
                 <div class="col-lg-1">
-                  <%= link_to_add "Add", "add_related_script" %>
+                  <%= link_to_add "Add", "add_requeriment" %>
                 </div>
                 <%= hidden_field_tag 'script_id', @script.id %>
-                <%= hidden_field_tag 'related_script_id' %>
+                <%= hidden_field_tag 'script_id_requirement' %>
               </div>
-            </div>
-            <div class="row">
-              <div id="related_script_list" class="col-lg-10">
-                <table class="table table-bordered table-striped" id="related_script_table">
-                  <thead>
-                  <th class="col-sm-4" colspan="2">Related Scripts</th>
-                  </thead>
-                  <tbody>
-                  <%= render 'scripts/related_list_list' %>
-                  </tbody>
-                </table>
+              <div class="row">
+                <div id="requeriments_list" class="col-lg-10">
+                  <table class="table table-bordered table-striped" id="requeriments_table">
+                    <thead>
+                    <th class="col-sm-4" colspan="2">Requirement</th>
+                    </thead>
+                    <tbody>
+                    <%= render partial: 'scripts/requirements_list', locals: {f: f} %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
+              <div>
+                <div class="row">
+                  <div id="related_scripts" class="col-lg-10">
+                    <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....' %>
+                  </div>
+                  <div class="col-lg-1">
+                    <%= link_to_add "Add", "add_related_script" %>
+                  </div>
+                  <%= hidden_field_tag 'script_id', @script.id %>
+                  <%= hidden_field_tag 'related_script_id' %>
+                </div>
+              </div>
+              <div class="row">
+                <div id="related_script_list" class="col-lg-10">
+                  <table class="table table-bordered table-striped" id="related_script_table">
+                    <thead>
+                    <th class="col-sm-4" colspan="2">Related Scripts</th>
+                    </thead>
+                    <tbody>
+                    <%= render 'scripts/related_list_list' %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], {prompt: "Please Select ..."} %>
+              <%= f.file_field :script_file, :class => 'form-control' %>
+              <%= f.file_field :pdf_file, :class => 'form-control' %>
             </div>
-            <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], {prompt: "Please Select ..."} %>
-            <%= f.file_field :script_file, :class => 'form-control' %>
-            <%= f.file_field :pdf_file, :class => 'form-control' %>
+            <div class="col-lg-5">
+              <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Information :</legend>
+                <p>Aqui as algumas informações</p>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <%= link_to 'Back', scripts_path ,:class => 'btn btn-default'%>
-            <%= f.submit 'Next' %>
-        <% end %>
-      </div>
     </div>
-  </div>
-  <div class="col-lg-5">
-    <div class="panel panel-default center">
-      <div class="panel-heading center"><h5>Information</h5></div>
-      <div class="panel-body">
-      </div>
-    </div>
-  </div>
-</div>
+<% end %>

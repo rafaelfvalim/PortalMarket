@@ -1,24 +1,17 @@
 <div class="row_panel_build">
   <!--Row-->
   <input type="hidden" id="step" value="step1">
-
-  <div class="row">
-    <div class="col-xs-4 col-md-2" id="row_panel_process">
-      <%= link_to "Back", :back , class: "btn btn-default next"%>
-      <%= link_to "Next", final_details_scripts_path(:id => @script.id) , class: "btn btn-default next"%>
+    <div class="row">
+      <% @process_modules.each do |process| %>
+          <div class="col-xs-4 col-md-2" id="row_panel_process">
+            <%= link_to classification_value_chain_path(process.id, @script.id), :class => 'thumbnail text-center' do %>
+                <%= image_tag("dummy.png") %>
+                <div class="caption">
+                  <p><%= process.description %></p>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
     </div>
-  </div>
-  <hr>
-  <div class="row">
-    <% @process_modules.each do |process| %>
-        <div class="col-xs-4 col-md-2" id="row_panel_process">
-          <%= link_to classification_value_chain_path(process.id, @script.id), :class => 'thumbnail text-center' do %>
-              <%= image_tag("dummy.png") %>
-              <div class="caption">
-                <p><%= process.description %></p>
-              </div>
-          <% end %>
-        </div>
-    <% end %>
-  </div>
+
 </div>

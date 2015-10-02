@@ -4,7 +4,6 @@
     <!--Painel Groupp-->
     <div class="panel-body" id="panel_master">
       <div class="tab-content">
-        <%= render 'process_tracker' %>
         <div class="tab-content">
           <!--Painel Acordion-->
           <div class="panel-group" id="accordion">
@@ -33,9 +32,10 @@
       <div class="panel panel-default" id="painel_build">
         <div class="panel-heading clearfix">
           <div class="pull-left">
-            <%= link_to "Back", :back, class: "btn btn-default next" %>
-            <%= link_to "Cancel", roll_back_script_scripts_path(:id => @script.id), class: "btn btn-default next", data: { confirm: 'Are you sure?' } %>
-            <%= link_to "Next", final_details_scripts_path(:id => @script.id), class: "btn btn-default next" %>
+            <%= link_to 'Back',:back , :class => 'btn btn-default' %>
+            <%= link_to 'Cancel', contributor_members_path, :class => 'btn btn-default' %>
+            <%= link_to 'Edit Additional Information', edit_additional_information_scripts_path(:id => @script.id), :class => 'btn btn-default' %>
+            <%= link_to 'Edit Script', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
           </div>
         </div>
         <div class="panel-body" id="painel_body">

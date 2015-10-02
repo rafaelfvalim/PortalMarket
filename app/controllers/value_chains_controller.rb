@@ -22,6 +22,7 @@ class ValueChainsController < ApplicationController
   end
 
   def build
+    @action = 'create'
     @script = Script.find_by id: params[:id]
     @value_chain = ValueChain.new
     @create_script_tracker = 'complete'
@@ -29,6 +30,17 @@ class ValueChainsController < ApplicationController
     @value_chain_tracker = 'active'
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
   end
+
+  def edit_build
+    @action = 'edit'
+    @script = Script.find_by id: params[:id]
+    @value_chain = ValueChain.new
+    @create_script_tracker = 'complete'
+    @additional_information = 'complete'
+    @value_chain_tracker = 'active'
+    @process_modules = ProcessModule.where('referrer_process_module_id is null')
+  end
+
 
   def classification
     @process_module = ProcessModule.find(params[:id])
@@ -91,8 +103,6 @@ class ValueChainsController < ApplicationController
       end
     end
   end
-
-
 
   private
   # Use callbacks to share common setup or constraints between actions.
