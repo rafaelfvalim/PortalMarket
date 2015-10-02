@@ -35,7 +35,7 @@ class ScriptsController < ApplicationController
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member_id, percentual: 0, participation: 0)
         @member_script.save
         # format.html { redirect_to @script, notice: 'Script was successfully created.' }
-        format.html { redirect_to script_classification_path(@script) }
+        format.html { redirect_to additional_information_scripts_path(:id => @script.id) }
         format.json { render :show, status: :created, location: @script }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ScriptsController < ApplicationController
   end
 
   def additional_information
-    @script = Script.find_by id: params[:script_id]
+    @script = Script.find_by id: params[:id]
     @script.requirements.build
     @script.related_scripts.build
     @scripts = Script.includes(:requirements, :related_scripts).where('id =?', params[:script_id])
@@ -59,7 +59,7 @@ class ScriptsController < ApplicationController
     @referer = URI(request.referer).path
     respond_to do |format|
       if @script.update(script_params)
-        if @referer.include?('/classification')
+        if @referer.include?('/additional_information')
           format.html { redirect_to build_value_chain_path(@script.id) }
         end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
