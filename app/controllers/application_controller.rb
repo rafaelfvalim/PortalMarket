@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :app_custom_routes_errors
 
   def app_custom_routes(format, referrer, model)
-    if referrer.include?('classification')
+    if referrer.include?('additional_information')
       format.json { render json: model, notice: 'Process module was successfully created.' }
     else
       format.html { redirect_to model, notice: 'Process module was successfully created.' }
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def app_custom_routes_errors(format, referrer, model)
-    if referrer.include?('classification')
+    if referrer.include?('additional_information')
       format.json { render json: model.errors, status: :unprocessable_entity }
     else
       format.html { render :new }
