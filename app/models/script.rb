@@ -1,9 +1,9 @@
 class Script < ActiveRecord::Base
 
-  has_many :member_scripts
-  has_many :solution_types
-  has_many :requirements
-  has_many :related_scripts
+  has_many :member_scripts, :dependent => :destroy
+  has_many :requirements, :dependent => :destroy
+  has_many :related_scripts, :dependent => :destroy
+  belongs_to :solution_types
   accepts_nested_attributes_for :requirements
 
   mount_uploader :pdf_file, PdfUploader

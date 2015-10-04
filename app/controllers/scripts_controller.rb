@@ -102,16 +102,16 @@ class ScriptsController < ApplicationController
       if @member_script.blank?
         @member_script.destroy
       end
-      @related_scripts = RelatedScript.find_by_script_id(@script.id)
+      @related_scripts = RelatedScript.where(script_id: @script.id)
 
       if !@related_scripts.blank?
         @related_scripts.destroy_all
       end
-      @requirements = Requirement.find_by_script_id(@script.id)
+      @requirements = Requirement.where(script_id: @script.id)
       if !@requirements.blank?
         @requirements.destroy_all
       end
-      @value_chains = ValueChain.find_by_script_id(@script.id)
+      @value_chains = ValueChain.where(script_id: @script.id)
       if !@value_chains.blank?
         @value_chains.destroy_all
       end

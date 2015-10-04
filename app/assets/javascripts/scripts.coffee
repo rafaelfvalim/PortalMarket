@@ -61,7 +61,7 @@ $ ->
         data: {related_script: {script_id: script_id, related_script_id: related_script_id}},
         success: (data) ->
           remove_button = '<a class="btn btn-primary btn-xs" onclick="remove_table_row(this)" data-remote="true" href="/related_scripts/destroy_ajax/' + data.id + '">Remove</a>';
-          table_row = "<tr><td class='col-xs-11'>" + requeriment + "</td><td class='td_class_x1'>" + remove_button + "</td> </tr>";
+          table_row = "<tr><td class='col-xs-11'>" + data.description + "</td><td class='td_class_x1'>" + remove_button + "</td> </tr>";
           $("#related_script").val('');
           $("#related_script_list table ").append(table_row);
         errors: (data) ->
