@@ -1,49 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @script.description %>
-</p>
-
-<p>
-  <strong>Definition:</strong>
-  <%= @script.definition %>
-</p>
-
-<p>
-  <strong>Long text:</strong>
-  <%= @script.long_text %>
-</p>
-
-<p>
-  <strong>Platform:</strong>
-  <%= @script.platform %>
-</p>
-
-<p>
-  <strong>Industry:</strong>
-  <%= @script.industry %>
-</p>
-
-<p>
-  <strong>Solution type:</strong>
-  <%= @script.solution_type_id %>
-</p>
-
-<p>
-  <strong>Script file:</strong>
-  <%= @script.script_file %>
-</p>
-
-<p>
-  <strong>Pdf file:</strong>
-  <%= @script.pdf_file %>
-</p>
-
-<p>
-  <strong>Complexity:</strong>
-  <%= @script.complexity %>
-</p>
-
-<%= link_to 'Edit', edit_script_path(@script) %> |
-<%= link_to 'Back', scripts_path %>
+<div class="container">
+  <div class="panel panel-default center">
+    <div class="panel-heading center"><h1>Classification</h1></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+              <div class="pull-left">
+                <%= link_to 'Edit', edit_script_path(@script) , class: 'btn btn-default' %>
+                <%= link_to 'Back', scripts_path, class: 'btn btn-default'  %>
+              </div>
+            </div>
+            <div class="panel-body">
+              <%= render 'process_steps' %>
+              <p id="notice"><%= notice %></p>
+              <p>
+                <strong>Description:</strong>
+                <%= @script.description %>
+              </p>
+                <hr>
+              <p>
+                <strong>Definition:</strong>
+                <%= @script.definition %>
+              </p>
+              <hr>
+              <p>
+                <strong>Long text:</strong>
+                <%= @script.long_text %>
+              </p>
+              <hr>
+              <p>
+                <strong>Platform:</strong>
+                <%= @script.platform %>
+              </p>
+              <hr>
+              <p>
+                <strong>Industry:</strong>
+                <%= @script.industry %>
+              </p>
+              <hr>
+              <p>
+                <strong>Solution type:</strong>
+                <%= @script.solution_type_id %>
+              </p>
+              <hr>
+              <p>
+                <strong>Script file:</strong>
+                <%= @script.script_file %>
+              </p>
+              <hr>
+              <p>
+                <strong>Pdf file:</strong>
+                <%= @script.pdf_file %>
+              </p>
+              <hr>
+              <p>
+                <strong>Complexity:</strong>
+                <%= @script.complexity %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

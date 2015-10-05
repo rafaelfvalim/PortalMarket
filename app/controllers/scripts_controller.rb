@@ -16,6 +16,8 @@ class ScriptsController < ApplicationController
       case
         when request.referrer.include?('edit')
           format.html { redirect_to :back }
+        else
+          format.html
       end
     end
   end
