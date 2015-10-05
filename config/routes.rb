@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :statuses
   resources :related_scripts do
     post :classification_create
   end
