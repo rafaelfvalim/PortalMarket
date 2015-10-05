@@ -10,11 +10,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 gem 'nested_form_fields'
 # ajax tables
+gem 'thin'
 gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'jquery-scrollto-rails'
 gem 'gon'
+# font-awesome-rails
+gem 'font-awesome-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

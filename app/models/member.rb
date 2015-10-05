@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   has_many :users
   has_many :member_scripts
+  has_many :checking_accounts
 
   def set_default_role
     self.role ||= :user

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   resources :statuses
+  resources :checking_accounts do
+    collection do
+      get :member_ajax
+    end
+  end
   resources :related_scripts do
     post :classification_create
   end
