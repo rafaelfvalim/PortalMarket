@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005014455) do
+ActiveRecord::Schema.define(version: 20151005171902) do
+
+  create_table "checking_accounts", force: :cascade do |t|
+    t.string   "description",        limit: 255
+    t.datetime "payment_date_time"
+    t.datetime "movement_date_time"
+    t.string   "status",             limit: 255
+    t.decimal  "value",                          precision: 10
+    t.float    "interest",           limit: 24
+    t.integer  "member_id",          limit: 4
+    t.decimal  "commission",                     precision: 10
+    t.integer  "currency_id",        limit: 4
+    t.date     "currency_base_date"
+    t.integer  "script_id",          limit: 4
+    t.string   "code_type",          limit: 255
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "checking_accounts", ["currency_id"], name: "fk_rails_b7c2ffc1f2", using: :btree
+  add_index "checking_accounts", ["member_id"], name: "fk_rails_b10d6a3121", using: :btree
+  add_index "checking_accounts", ["script_id"], name: "fk_rails_c8832132dc", using: :btree
+
+  create_table "currencies", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -144,6 +171,9 @@ ActiveRecord::Schema.define(version: 20151005014455) do
   add_index "value_chains", ["process_module_id"], name: "index_value_chains_on_process_module_id", using: :btree
   add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
 
+  add_foreign_key "checking_accounts", "currencies"
+  add_foreign_key "checking_accounts", "members"
+  add_foreign_key "checking_accounts", "scripts"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
   add_foreign_key "process_modules", "process_modules", column: "referrer_process_module_id", on_update: :nullify, on_delete: :nullify
