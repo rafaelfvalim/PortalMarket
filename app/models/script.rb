@@ -9,4 +9,10 @@ class Script < ActiveRecord::Base
 
   mount_uploader :pdf_file, PdfUploader
   mount_uploader :script_file, ScriptUploader
+
+  before_update :set_status_script
+
+  def set_status_script
+    write_attribute(:status_id, 1)
+  end
 end

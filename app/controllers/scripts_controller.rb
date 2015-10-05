@@ -72,6 +72,7 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1.json
   def update
     @referer = URI(request.referer).path
+
     respond_to do |format|
       if @script.update(script_params)
         if @referer.include?('/additional_information')
@@ -85,6 +86,16 @@ class ScriptsController < ApplicationController
       end
     end
   end
+
+  def update_status
+    respond_to do |format|
+      @script = Script.find_by id: params[:id]
+      if @script.update_attribute(:status_id, 1)
+        format.html { redirect_to contributor_members_path }
+      end
+    end
+  end
+
 
   # DELETE /scripts/1
   # DELETE /scripts/1.json
@@ -160,7 +171,7 @@ class ScriptsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def script_params
-    params.require(:script).permit(:id, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, requirements_attributes: [:id, :script_id, :requirement])
+    params.require(:script).permit(:id, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, requirements_attributes: [:id, :script_id, :requirement])
   end
 
 end
