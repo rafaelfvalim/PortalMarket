@@ -17,19 +17,19 @@
       </li>
       <li>
         <%= link_to members_path do %>
-            <i class="glyphicon glyphicon-th" aria-hidden="true"></i> Dashboard
+            <i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Dashboard
         <% end %>
       </li>
       <% if @member.contributor %>
       <li>
         <%= link_to contributor_members_path do %>
-            <i class="glyphicon glyphicon-file" aria-hidden="true"></i> Scripts
+            <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
         <% end %>
       </li>
       <% end %>
       <li>
         <%= link_to checking_accounts_path do %>
-            <i class="glyphicon glyphicon-usd" aria-hidden="true"></i> Checking Account
+            <i class="fa fa-cc fa-fw" aria-hidden="true"></i> Checking Account
         <% end %>
       </li>
     </ul>
