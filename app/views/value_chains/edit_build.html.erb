@@ -1,46 +1,53 @@
-<div class="container-fluid">
-  <div class="panel panel-default center">
-    <div class="panel-heading center"><h1>Process Script : <%= @script.description %></h1></div>
-    <!--Painel Groupp-->
-    <div class="panel-body" id="panel_master">
-      <div class="tab-content">
-        <div class="tab-content">
-          <!--Painel Acordion-->
-          <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <div class="btn-group pull-right">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
-                      <i class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                  <span>Values Chain</span>
-                </h4>
-              </div>
-              <!-- panel acordion -->
-              <div id="accordionOne" class="panel-collapse collapse">
-                <div class="panel-body" id="breadcrumb_list">
-                  <%= render 'breadcrumb_value_chain' %>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Process Script : <%= @script.description %> </h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <div class="btn-group pull-right">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                    <i class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></i>
+                  </a>
                 </div>
+                <span>Values Chain</span>
+              </h4>
+            </div>
+            <!-- panel acordion -->
+            <div id="accordionOne" class="panel-collapse collapse">
+              <div class="panel-body" id="breadcrumb_list">
+                <%= render 'breadcrumb_value_chain' %>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--Painel Groupp-->
-      <div class="panel panel-default" id="painel_build">
-        <div class="panel-heading clearfix">
-          <div class="pull-left">
-            <%= link_to 'Back',:back , :class => 'btn btn-default' %>
-            <%= link_to 'Cancel', contributor_members_path, :class => 'btn btn-default' %>
-            <%= link_to 'Edit Additional Information', edit_additional_information_scripts_path(:id => @script.id), :class => 'btn btn-default' %>
-            <%= link_to 'Edit Script', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="pull-left">
+          <%= link_to :back, :class => 'btn btn-default' do %>
+              <i class="fa fa-chevron-left"></i> Back
+          <% end %>
+          <%= link_to 'Cancel', contributor_members_path, :class => 'btn btn-default' %>
+          <%= link_to 'Edit Additional Information', edit_additional_information_scripts_path(:id => @script.id), :class => 'btn btn-default' %>
+          <%= link_to 'Edit Script', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
         </div>
-        <div class="panel-body" id="painel_body">
-          <%= render 'build_process' %>
-        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'build_process' %>
       </div>
     </div>
   </div>

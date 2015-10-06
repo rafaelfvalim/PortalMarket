@@ -1,65 +1,68 @@
-<div class="container">
-  <div class="panel panel-default center">
-    <div class="panel-heading center"><h1>Details Script : <%= @script.description %> </h1></div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-              <div class="pull-left">
-                <%= link_to 'Back', contributor_members_path, class: 'btn btn-default'  %>
-                <%= link_to 'Edit', edit_script_path(@script) , class: 'btn btn-default' %>
-              </div>
-            </div>
-            <div class="panel-body">
-              <p>
-              <strong>Script Status: </strong>
-              <%= render 'status_script' %>
-              </p>
-              <p id="notice"><%= notice %></p>
-              <p>
-                <strong>Definition:</strong>
-                <%= @script.definition %>
-              </p>
-              <hr>
-              <p>
-                <strong>Long text:</strong>
-                <%= @script.long_text %>
-              </p>
-              <hr>
-              <p>
-                <strong>Platform:</strong>
-                <%= @script.platform %>
-              </p>
-              <hr>
-              <p>
-                <strong>Industry:</strong>
-                <%= @script.industry %>
-              </p>
-              <hr>
-              <p>
-                <strong>Solution type:</strong>
-                <%= @script.solution_type_id %>
-              </p>
-              <hr>
-              <p>
-                <strong>Script file:</strong>
-                <%= @script.script_file %>
-              </p>
-              <hr>
-              <p>
-                <strong>Pdf file:</strong>
-                <%= @script.pdf_file %>
-              </p>
-              <hr>
-              <p>
-                <strong>Complexity:</strong>
-                <%= @script.complexity %>
-              </p>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Detail Script : <%= @script.description %> </h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'Back', contributor_members_path, class: 'btn btn-default' %>
+        <%= link_to 'Edit', edit_script_path(@script), class: 'btn btn-default' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'status_script' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <p id="notice"><%= notice %></p>
+        <p>
+          <strong>Definition:</strong>
+          <%= @script.definition %>
+        </p>
+        <hr>
+        <p>
+          <strong>Long text:</strong>
+          <%= @script.long_text %>
+        </p>
+        <hr>
+        <p>
+          <strong>Platform:</strong>
+          <%= @script.platform %>
+        </p>
+        <hr>
+        <p>
+          <strong>Industry:</strong>
+          <%= @script.industry %>
+        </p>
+        <hr>
+        <p>
+          <strong>Solution type:</strong>
+          <%= @script.solution_type_id %>
+        </p>
+        <hr>
+        <p>
+          <strong>Script file:</strong>
+          <%= @script.script_file %>
+        </p>
+        <hr>
+        <p>
+          <strong>Pdf file:</strong>
+          <%= @script.pdf_file %>
+        </p>
+        <hr>
+        <p>
+          <strong>Complexity:</strong>
+          <%= @script.complexity %>
+        </p>
 
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

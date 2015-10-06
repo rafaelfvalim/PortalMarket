@@ -41,20 +41,29 @@ class ValueChainsController < ApplicationController
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
   end
 
-
   def classification
     @process_module = ProcessModule.find(params[:id])
     @script_id = params[:script_id]
     gon.script_id = @script_id
+    if request.referrer.include?('/edit_build')
+      gon.action = 'edit'
+    end
   end
 
   def create_ajax
     @script_id = params[:script_id]
     @process_module_id = params[:process_module_id]
+    action_veb = params[:action_veb]
+
     @value_chain = ValueChain.new(:process_module_id => @process_module_id, :script_id => @script_id)
     respond_to do |format|
+
       if @value_chain.save
-        format.html { redirect_to build_value_chain_path(@script_id), notice: 'Value chain was successfully created.' }
+        if action_veb == 'edit'
+          format.html { redirect_to edit_build_value_chains_path(:id => @script_id) }
+        else
+          format.html { redirect_to build_value_chain_path(@script_id)}
+        end
       end
     end
   end

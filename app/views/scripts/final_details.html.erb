@@ -1,108 +1,115 @@
-    <div class="container-fluid">
-      <div class="panel panel-default center">
-        <div class="panel-heading center"><h1>Process Script : <%= @script.description %></h1></div>
-        <!--Painel Groupp-->
-        <div class="panel-body" id="panel_master">
-          <div class="tab-content">
-            <%= render 'value_chains/process_tracker' %>
-            <div class="tab-content">
-              <div class="panel panel-default" id="painel_build">
-                <div class="panel-heading clearfix">
-                  <div class="pull-left">
-                    <%= link_to 'Back', :back, :class => 'btn btn-default' %>
-                    <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default', data: {confirm: 'Are you sure?'} %>
-                    <%= link_to 'Save', {:action => :update_status, :id => @script.id},  :method => :put, :class => 'btn btn-default' %>
-                  </div>
-                </div>
-                <div class="panel-body" id="painel_body">
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <fieldset class="scheduler-border">
-                        <legend class="scheduler-border">Script :</legend>
-                        <div class="control-group">
-                          <p>
-                           <strong>Definition: </strong>
-                            <span><%= @script.definition %></span>
-                          </p>
-
-                          <p>
-                            <strong>Long Text: </strong>
-                            <span><%= @script.long_text %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Platform: </strong>
-                            <span><%= @script.platform %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Industry: </strong>
-                            <span><%= @script.industry %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Soltion Type: </strong>
-                            <span><%= @script.solution_type_id %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Script: </strong>
-                            <span><%= @script.script_file %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Pdf: </strong>
-                            <span><%= @script.pdf_file %></span>
-
-                          </p>
-
-                          <p>
-                            <strong>Complexity: </strong>
-                            <span><%= @script.complexity %></span>
-
-                          </p>
-                        </div>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <fieldset class="scheduler-border">
-                        <legend class="scheduler-border">Classificated for :</legend>
-                        <div class="control-group">
-                          <%= render 'value_chains/breadcrumb_value_chain' %>
-                        </div>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <fieldset class="scheduler-border">
-                        <legend class="scheduler-border">Requeriments :</legend>
-                        <div class="control-group">
-
-                        </div>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-9">
-                      <fieldset class="scheduler-border">
-                        <legend class="scheduler-border">Referrer Scripts :</legend>
-                        <div class="control-group">
-                        </div>
-                      </fieldset>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Final</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'value_chains/process_tracker' %>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pull-left">
+              <%= link_to :back, :class => 'btn btn-default' do %>
+                  <i class="fa fa-chevron-left"></i> Back
+              <% end %>
+              <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default', data: {confirm: 'Are you sure?'} %>
             </div>
+            <div class="pull-right">
+              <%= link_to 'Save', {:action => :update_status, :id => @script.id}, :method => :put, :class => 'btn btn-default' %>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Script :</legend>
+              <div class="control-group">
+                <p>
+                  <strong>Definition: </strong>
+                  <span><%= @script.definition %></span>
+                </p>
+
+                <p>
+                  <strong>Long Text: </strong>
+                  <span><%= @script.long_text %></span>
+
+                </p>
+
+                <p>
+                  <strong>Platform: </strong>
+                  <span><%= @script.platform %></span>
+
+                </p>
+
+                <p>
+                  <strong>Industry: </strong>
+                  <span><%= @script.industry %></span>
+
+                </p>
+
+                <p>
+                  <strong>Soltion Type: </strong>
+                  <span><%= @script.solution_type_id %></span>
+
+                </p>
+
+                <p>
+                  <strong>Script: </strong>
+                  <span><%= @script.script_file %></span>
+
+                </p>
+
+                <p>
+                  <strong>Pdf: </strong>
+                  <span><%= @script.pdf_file %></span>
+
+                </p>
+
+                <p>
+                  <strong>Complexity: </strong>
+                  <span><%= @script.complexity %></span>
+
+                </p>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Classificated for :</legend>
+              <div class="control-group">
+                <%= render 'value_chains/breadcrumb_value_chain' %>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Requeriments :</legend>
+              <div class="control-group">
+
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Referrer Scripts :</legend>
+              <div class="control-group">
+              </div>
+            </fieldset>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+

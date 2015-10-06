@@ -31,7 +31,7 @@ var arrayLevels = [];
 var remove_breadcrumb;
 
 remove_breadcrumb = function (e) {
-    $("#"+e).remove();
+    $("#" + e).remove();
 }
 
 process_call_ajax = function (id, e) {
@@ -66,7 +66,6 @@ processListFactory = function (root_element, data, element) {
     })
 
     if ($.isEmptyObject(data)) {
-
         showFinalStep(root_element, last_selected);
         valueChainStep = StatusEnum.FINAL;
     } else {
@@ -88,7 +87,7 @@ showFinalStep = function (e, last_selected) {
     div_container = $('<div class="col-xs-6 col-sm-4 col-md-3 col-md-2 value_chain">');
     div_container.attr("data-level", nivel);
     div_content = $('<div class ="finish_process">');
-    link_to = $('<a href="/value_chains/create/' + process_module_id + '/' + gon.script_id + '" class="btn btn-success">');
+    link_to = $('<a href="' + getFinalStepUrl(gon.action, process_module_id, gon.script_id) + '" class="btn btn-success">');
     link_to.text("Finish");
     link_to.attr("data-level", nivel);
     div_content.append(link_to);
@@ -98,6 +97,16 @@ showFinalStep = function (e, last_selected) {
     return e.append(div_container);
 
 };
+
+var getFinalStepUrl;
+getFinalStepUrl = function (action, process_module_id, script_id) {
+    if (action == 'edit') {
+        return '/value_chains/create_ajax/' + process_module_id + '/' + script_id + '/edit';
+    } else {
+        return '/value_chains/create_ajax/' + process_module_id + '/' + script_id + '/create';
+    }
+
+}
 
 var showList;
 showList = function (e, data) {
