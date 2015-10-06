@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   resources :member_scripts
   resources :requirements
-
+  resources :searches
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users

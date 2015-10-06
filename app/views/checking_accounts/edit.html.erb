@@ -1,6 +1,15 @@
-<h1>Editing Checking Account</h1>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Sale Process Details
+          <small> Script : <%= @checking_account.script.description %> </small>
+        </h1>
+      </div>
+    </div>
+    <hr>
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @checking_account %> |
-<%= link_to 'Back', checking_accounts_path %>

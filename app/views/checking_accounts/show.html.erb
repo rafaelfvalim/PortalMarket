@@ -1,4 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Sale Process Details
+          <small> Script : <%= @checking_account.script.description %> </small>
+        </h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'Edit', edit_checking_account_path(@checking_account), class: 'btn btn-default' %>
+        <%= link_to 'Back', checking_accounts_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+    <br>
 
-<%= link_to 'Edit', edit_checking_account_path(@checking_account) %> |
-<%= link_to 'Back', checking_accounts_path %>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <strong>Status: </strong>
+          <%= @checking_account.status %>
+        </p>
+        <hr>
+        <p>
+          <strong>Description: </strong>
+          <%= @checking_account.description %>
+        </p>
+        <hr>
+        <p>
+          <strong>Payment Date: </strong>
+          <%= @checking_account.payment_date_time %>
+        </p>
+        <hr>
+        <p>
+          <strong>Movement Date: </strong>
+          <%= @checking_account.movement_date_time %>
+        </p>
+        <hr>
+        <p>
+          <strong>Value: </strong>
+          <%= @checking_account.value %>
+        </p>
+        <hr>
+        <p>
+          <strong>Interest: </strong>
+          <%= @checking_account.interest %>
+        </p>
+        <hr>
+        <p>
+          <strong>Commission: </strong>
+          <%= @checking_account.commission %>
+        </p>
+        <hr>
+        <p>
+          <strong>Currency id: </strong>
+          <%= @checking_account.currency_id %>
+        </p>
+        <hr>
+        <p>
+          <strong>Currency base date: </strong>
+          <%= @checking_account.currency_base_date %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

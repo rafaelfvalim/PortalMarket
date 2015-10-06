@@ -8,28 +8,45 @@
           <br>
           <p class="text-center">
             <a href="#">
-                <% @member = Member.find_by current_user.member_id %>
-                 <%="#{@member.member_name}  #{@member.member_last_name}"%>
+              <% @member = Member.find_by current_user.member_id %>
+              <%= "#{@member.member_name}  #{@member.member_last_name}" %>
             </a>
           </p>
         </div>
         <br>
       </li>
+      <% if @member.customer %>
+          <li>
+            <%= link_to searches_path do %>
+                <i class="fa fa-search fa-fw" aria-hidden="true"></i> Find Solutions
+            <% end %>
+          </li>
+      <% end %>
       <li>
         <%= link_to members_path do %>
             <i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Dashboard
         <% end %>
       </li>
       <% if @member.contributor %>
-      <li>
-        <%= link_to contributor_members_path do %>
-            <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
-        <% end %>
-      </li>
+          <li>
+            <%= link_to contributor_members_path do %>
+                <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
+            <% end %>
+          </li>
       <% end %>
       <li>
         <%= link_to checking_accounts_path do %>
             <i class="fa fa-cc fa-fw" aria-hidden="true"></i> Checking Account
+        <% end %>
+      </li>
+      <li>
+        <%= link_to members_path do %>
+            <i class="fa fa-envelope" aria-hidden="true"></i> Messages
+        <% end %>
+      </li>
+      <li>
+        <%= link_to members_path do %>
+            <i class="fa fa-life-ring" aria-hidden="true"></i> Support Tickets
         <% end %>
       </li>
     </ul>

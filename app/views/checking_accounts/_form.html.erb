@@ -1,17 +1,31 @@
 <%= form_for(@checking_account) do |f| %>
-  <% if @checking_account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@checking_account.errors.count, "error") %> prohibited this checking_account from being saved:</h2>
-
-      <ul>
-      <% @checking_account.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'Back', checking_accounts_path , class: 'btn btn-default' %>
+        <%= link_to 'Show', @checking_account, class: 'btn btn-default' %>
+        <%= button_tag(type: "submit", class: "btn btn-default") do %>
+            <i class="fa fa-floppy-o"></i> Salve
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <div class="col-md-12">
+        <% if @checking_account.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@checking_account.errors.count, "error") %> prohibited this checking_account from being
+                saved:</h2>
+              <ul>
+                <% @checking_account.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        Aqui conteudo que ele pode editar ( ainda a definir)
+      </div>
+    </div>
 <% end %>
