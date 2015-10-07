@@ -68,6 +68,8 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bootstrap-typeahead-rails (0.10.5.1)
+      railties (>= 3.0)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (6.0.2)
@@ -377,6 +379,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-typeahead-rails
   bootstrap_form
   byebug
   capybara

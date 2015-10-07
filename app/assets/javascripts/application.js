@@ -18,6 +18,8 @@
 //= require jquery-ui/autocomplete
 //= require dataTables/jquery.dataTables
 //= require jquery.scrollTo
+//= require bootstrap-typeahead-rails
+
 //= require_tree .
 
 

@@ -16,10 +16,12 @@ gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'jquery-scrollto-rails'
 gem 'gon'
-# font-awesome-rails
+# Font-awesome-rails
 gem 'font-awesome-rails'
 # Searchkick - Elasticsearch
 gem 'searchkick'
+# Bootstrap Typeahead for Rails
+gem 'bootstrap-typeahead-rails'
 
 group :development, :test do
   gem 'byebug'
