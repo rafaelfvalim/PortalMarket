@@ -18,6 +18,9 @@ gem 'jquery-scrollto-rails'
 gem 'gon'
 # font-awesome-rails
 gem 'font-awesome-rails'
+# Searchkick - Elasticsearch
+gem 'searchkick'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
