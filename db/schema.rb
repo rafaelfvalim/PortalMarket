@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005171902) do
+ActiveRecord::Schema.define(version: 20151007174504) do
 
   create_table "checking_accounts", force: :cascade do |t|
     t.string   "description",        limit: 255
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20151005171902) do
   add_index "requirements", ["script_id_requirement"], name: "fk_rails_0be59936c9", using: :btree
 
   create_table "scripts", force: :cascade do |t|
+    t.string   "name",             limit: 255
     t.string   "description",      limit: 255
     t.text     "definition",       limit: 65535
     t.text     "long_text",        limit: 65535

@@ -25,24 +25,33 @@
     <% if @scripts.present? %>
         <div class="row">
           <div class="col-md-12">
-            <p><%= @scripts.total_count %> Results</p>
-            <p><%= @scripts["took"] %> Results</p>
-
-            <p>Pages: <%= @scripts.current_page %> </p>
-
-            <p>Per Page: <%= @scripts.per_page %> </p>
-
-            <p>Total Pages: <%= @scripts.total_pages %> </p>
+            <p>
+              <small>
+                <%= @scripts.total_count %> results |
+                <%= @scripts.current_page %> pages |
+                Per Page: <%= @scripts.per_page %>  |
+                Total: <%= @scripts.total_pages %>
+              </small>
+            </p>
 
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <% @scripts.each do |script| %>
-                <ul>
-                  <li><%= script.id %></li>
-                  <li><%= script.description %></li>
-                </ul>
+                <div class="media">
+                  <div class="media-left media-middle">
+                    <i class="fa fa-file-code-o fa-3x"></i>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading"><%= script.description %></h4>
+                    <p>
+                      Definition: <%= script.definition %>
+                      Platform: <%= script.platform %>
+                    </p>
+                  </div>
+                </div>
+                <hr>
             <% end %>
           </div>
           <div class="row">

@@ -21,6 +21,9 @@ class ScriptsController < ApplicationController
       end
     end
   end
+  def autocomplete
+    render json: Script.search(params[:query], autocomplete: true, limit: 10).map(&:description)
+  end
 
   def edit_additional_information
     @script = Script.find_by id: params[:id]

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get 'final_details'
       get 'autocomplete_related_script'
       put :update_status
+      get :autocomplete
     end
   end
   resources :member_scripts
