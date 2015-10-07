@@ -4,6 +4,11 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
+    if params[:query].present?
+      @scripts = Script.search(params[:query]).page(params[:page]).per_page(20)
+    else
+      @scripts = []
+    end
   end
 
   # GET /searches/1

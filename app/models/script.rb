@@ -1,5 +1,5 @@
 class Script < ActiveRecord::Base
-
+  searchkick
   has_many :member_scripts, :dependent => :destroy
   has_many :requirements, :dependent => :destroy
   has_many :related_scripts, :dependent => :destroy
