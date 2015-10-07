@@ -13,13 +13,13 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= ['Script.id', 'Script.platform', 'Script.industry']
+    @sortable_columns ||= ['Script.id','Script.name', 'Script.platform', 'Script.industry']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.id', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
+    @searchable_columns ||= ['Script.id','Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
   end
 
   private
@@ -30,6 +30,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
           record.id,
+          record.name,
           record.description,
           record.definition,
           record.platform,

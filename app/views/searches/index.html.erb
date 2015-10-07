@@ -4,7 +4,7 @@
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-12 text-center">
-        <label><h2>Search Solutions</h2></label>
+        <label><h2>Search</h2></label>
       </div>
     </div>
     <div class="row">
@@ -30,12 +30,12 @@
                 <%= @scripts.total_count %> results |
                 <%= @scripts.current_page %> pages |
                 Per Page: <%= @scripts.per_page %>  |
-                Total: <%= @scripts.total_pages %>
+                Total Pages: <%= @scripts.total_pages %>
               </small>
             </p>
-
           </div>
         </div>
+        <br>
         <div class="row">
           <div class="col-md-12">
             <% @scripts.each do |script| %>
@@ -44,11 +44,28 @@
                     <i class="fa fa-file-code-o fa-3x"></i>
                   </div>
                   <div class="media-body">
-                    <h4 class="media-heading"><%= script.description %></h4>
-                    <p>
-                      Definition: <%= script.definition %>
-                      Platform: <%= script.platform %>
+                    <h4 class="media-heading">
+                      <%= link_to show_product_checking_accounts_path(id: script) do %>
+                          <%= script.name %>
+                      <% end %>
+                    </h4>
+
+                    <p>Description: <%= script.description %></p>
+
+                    <p>Cod: <%= script.id %></p>
+
+                    <p> Contributor(s):
+                      <% script.members.each do |member| %>
+                          <% if script.members.size > 1 %>
+                              <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
+                          <% else %>
+                              <%= "#{member.member_name} #{ member.member_last_name}" %>
+                          <% end %>
+                      <% end %> - created at : <%= script.created_at %>
                     </p>
+
+                    <p>Platform: <%= script.platform %></p>
+                    <p>Tags: <%= "#{script.industry} #{script.complexity}" %></p>
                   </div>
                 </div>
                 <hr>

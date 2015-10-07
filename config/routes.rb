@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :checking_accounts do
     collection do
       get :member_ajax
+      get :show_product
     end
   end
   resources :related_scripts do

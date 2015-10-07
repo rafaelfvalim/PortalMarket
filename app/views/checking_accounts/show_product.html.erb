@@ -1,0 +1,109 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Script : <%= @script.name %> </h3>
+      </div>
+      <div class="col-md-3">
+        <h4>
+          <strong><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></strong>
+        </h4>
+        <h4><strong>
+          <small>Price :</small>
+          R$000,00</strong></h4>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          <strong>Cod:</strong>
+          <%= @script.id %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Definition:</strong>
+          <%= @script.definition %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Platform:</strong>
+          <%= @script.platform %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Industry:</strong>
+          <%= @script.industry %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Requeriments :</strong>
+          <% if @script.requirements.size > 0 %>
+            <ul>
+              <% @script.requirements.each do |requirement| %>
+                  <li><%= requirement.requirement %></li>
+              <% end %>
+            </ul>
+        <% else %>
+            <small>N/A</small>
+        <% end %>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <strong>Description:</strong>
+          <%= @script.description %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Long text:</strong>
+          <%= @script.long_text %>
+        </p>
+        <br>
+
+        <p>
+          <strong>Solution type:</strong>
+          <%= @script.solution_type_id %>
+        </p>
+        <br>
+        <p>
+          <strong>Contributor :</strong>
+          <% @script.members.each do |member| %>
+              <% if @script.members.size > 1 %>
+                  <%= "#{member.member_name} #{ member.member_last_name}" %>,
+              <% else %>
+                  <%= "#{member.member_name} #{ member.member_last_name}" %>
+              <% end %>
+          <% end %> - created at : <%= @script.created_at %>
+        </p>
+        <br>
+        <% if @script.related_scripts.size > 0 %>
+            <p>
+              <strong>Relateds Scripts :</strong>
+            <ul>
+              <% @script.related_scripts.each do |related_script| %>
+                 <% @related_script =  Script.find_by id: related_script.script_id %>
+                  <li><%= @related_script.name %></li>
+              <% end %>
+            </ul>
+            </p>
+        <% end %>
+        <br>
+      </div>
+      <div class="col-md-12 text-center">
+        <hr>
+        <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
+        <%= link_to 'Buy', members_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>

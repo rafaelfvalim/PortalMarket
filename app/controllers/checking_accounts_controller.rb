@@ -37,6 +37,10 @@ class CheckingAccountsController < ApplicationController
     end
   end
 
+  def show_product
+    @script = Script.find_by id: params[:id]
+  end
+
   # PATCH/PUT /checking_accounts/1
   # PATCH/PUT /checking_accounts/1.json
   def update
@@ -66,17 +70,18 @@ class CheckingAccountsController < ApplicationController
     p[:member_id] = current_user.member_id
     respond_to do |format|
       format.html #new.html.erb
-      format.json { render json: CheckingAccountDatatable.new(view_context,params[:member_id])}
+      format.json { render json: CheckingAccountDatatable.new(view_context, params[:member_id]) }
     end
   end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_checking_account
-      @checking_account = CheckingAccount.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def checking_account_params
-      params[:checking_account]
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_checking_account
+    @checking_account = CheckingAccount.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def checking_account_params
+    params[:checking_account]
+  end
 end
