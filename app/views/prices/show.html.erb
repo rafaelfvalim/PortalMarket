@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @price.script_id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @price.value %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @price.currency_id %>
+</p>
+
+<p>
+  <strong>Currency data:</strong>
+  <%= @price.currency_data %>
+</p>
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>
