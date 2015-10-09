@@ -4,7 +4,7 @@
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-12">
-        <h1>Detail Script : <%= @script.description %> </h1>
+        <h2>Detail Script : <%= @script.description %> </h2>
       </div>
     </div>
     <hr>
@@ -15,59 +15,66 @@
       </div>
     </div>
     <br>
+
     <div class="row">
       <div class="col-md-12">
         <%= render 'status_script' %>
       </div>
     </div>
     <br>
+
     <div class="row">
       <div class="col-md-12">
         <p id="notice"><%= notice %></p>
+
         <p>
-          <strong>Definition:</strong>
-          <%= @script.name %>
-        </p>
-        <p>
-          <strong>Definition:</strong>
-          <%= @script.definition %>
+
+        <p><strong>Definition:</strong></p>
+        <%= @script.name %>
         </p>
         <hr>
         <p>
-          <strong>Long text:</strong>
-          <%= @script.long_text %>
+
+        <p><strong>Definition:</strong></p>
+        <%= @script.definition %>
         </p>
         <hr>
         <p>
-          <strong>Platform:</strong>
+
+        <p><strong>Long text:</strong></p>
+        <%= @script.long_text %>
+        </p>
+        <hr>
+        <p>
+        <p> <strong>Platform:</strong></p>
           <%= @script.platform %>
         </p>
         <hr>
         <p>
-          <strong>Industry:</strong>
+        <p> <strong>Industry:</strong> </p>
           <%= @script.industry %>
         </p>
         <hr>
         <p>
-          <strong>Solution type:</strong>
+        <p>  <strong>Complexity:</strong> </p>
+          <%= @script.complexity %>
+        </p>
+        <hr>
+        <p>
+        <p> <strong>Solution type:</strong> </p>
           <%= @script.solution_type_id %>
         </p>
         <hr>
         <p>
-          <strong>Script file:</strong>
-          <%= @script.script_file %>
+        <p><strong>Script file:</strong> </p>
+          <%= File.basename(@script.script_file.to_s) %>
         </p>
         <hr>
         <p>
-          <strong>Pdf file:</strong>
-          <%= @script.pdf_file %>
+        <p> <strong>Pdf file:</strong> </p>
+          <%= File.basename(@script.pdf_file.to_s) %>
         </p>
         <hr>
-        <p>
-          <strong>Complexity:</strong>
-          <%= @script.complexity %>
-        </p>
-
       </div>
     </div>
   </div>

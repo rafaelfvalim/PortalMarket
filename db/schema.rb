@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007174504) do
+ActiveRecord::Schema.define(version: 20151009191530) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "member_id",  limit: 4
+    t.integer  "script_id",  limit: 4
+    t.integer  "price_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "carts", ["member_id"], name: "fk_rails_13907fb032", using: :btree
+  add_index "carts", ["price_id"], name: "fk_rails_5fc637dbef", using: :btree
+  add_index "carts", ["script_id"], name: "fk_rails_2c575d99c1", using: :btree
 
   create_table "checking_accounts", force: :cascade do |t|
     t.string   "description",        limit: 255
@@ -66,6 +78,18 @@ ActiveRecord::Schema.define(version: 20151007174504) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  create_table "prices", force: :cascade do |t|
+    t.integer  "script_id",     limit: 4
+    t.decimal  "value",                   precision: 10
+    t.integer  "currency_id",   limit: 4
+    t.date     "currency_data"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "prices", ["currency_id"], name: "fk_rails_79acddd52f", using: :btree
+  add_index "prices", ["script_id"], name: "fk_rails_fa61386042", using: :btree
 
   create_table "process_modules", force: :cascade do |t|
     t.string   "description",                limit: 255
@@ -172,18 +196,23 @@ ActiveRecord::Schema.define(version: 20151007174504) do
   add_index "value_chains", ["process_module_id"], name: "index_value_chains_on_process_module_id", using: :btree
   add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
 
+  add_foreign_key "carts", "members"
+  add_foreign_key "carts", "prices"
+  add_foreign_key "carts", "scripts"
   add_foreign_key "checking_accounts", "currencies"
   add_foreign_key "checking_accounts", "members"
   add_foreign_key "checking_accounts", "scripts"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
+  add_foreign_key "prices", "currencies"
+  add_foreign_key "prices", "scripts"
   add_foreign_key "process_modules", "process_modules", column: "referrer_process_module_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", column: "related_script_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
-  add_foreign_key "scripts", "solution_types"
-  add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "scripts", "solution_types", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "scripts", "statuses"
   add_foreign_key "users", "members"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"

@@ -37,10 +37,6 @@ class CheckingAccountsController < ApplicationController
     end
   end
 
-  def show_product
-    @script = Script.find_by id: params[:id]
-  end
-
   # PATCH/PUT /checking_accounts/1
   # PATCH/PUT /checking_accounts/1.json
   def update

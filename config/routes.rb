@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :carts
+  resources :prices
   resources :statuses
+  resources :buys do
+    collection do
+      get :show_product
+    end
+  end
   resources :checking_accounts do
     collection do
       get :member_ajax
-      get :show_product
     end
   end
   resources :related_scripts do

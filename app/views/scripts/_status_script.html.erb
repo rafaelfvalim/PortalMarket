@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-md-12">
     <ul class='nav nav-wizard'>
-      <% Status.all.each do |status| %>
+     <small>
+       <% Status.all.each do |status| %>
            <%= generate_statsus_li status, @script %>
-      <% end %>
+       <% end %>
+     </small>
+
     </ul>
   </div>
 </div>

@@ -7,6 +7,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
+# Upload File
 gem 'carrierwave'
 gem 'nested_form_fields'
 # ajax tables

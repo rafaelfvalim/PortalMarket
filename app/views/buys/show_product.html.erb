@@ -75,6 +75,7 @@
           <%= @script.solution_type_id %>
         </p>
         <br>
+
         <p>
           <strong>Contributor :</strong>
           <% @script.members.each do |member| %>
@@ -91,7 +92,7 @@
               <strong>Relateds Scripts :</strong>
             <ul>
               <% @script.related_scripts.each do |related_script| %>
-                 <% @related_script =  Script.find_by id: related_script.script_id %>
+                  <% @related_script = Script.find_by id: related_script.script_id %>
                   <li><%= @related_script.name %></li>
               <% end %>
             </ul>
@@ -102,7 +103,9 @@
       <div class="col-md-12 text-center">
         <hr>
         <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
-        <%= link_to 'Buy', members_path, class: 'btn btn-success' %>
+        <%= link_to  members_path, class: 'btn btn-default' do %>
+            <i class="fa fa-cart-plus"></i> Add To Cart
+        <% end %>
       </div>
     </div>
   </div>

@@ -5,9 +5,9 @@
       <% @process_modules.each do |process| %>
           <div class="col-xs-4 col-md-2" id="row_panel_process">
             <%= link_to classification_value_chain_path(process.id, @script.id), :class => 'thumbnail text-center' do %>
-                <%= image_tag("dummy.png") %>
-                <div class="caption">
-                  <p><%= process.description %></p>
+                <%= image_tag("build.png") %>
+                <div class="caption text-muted">
+                  <strong><%= process.description %></strong>
                 </div>
             <% end %>
           </div>

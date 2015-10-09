@@ -4,7 +4,7 @@
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-12">
-        <h1>Process Script : <%= @script.description %> </h1>
+        <h2>Process Script : <%= @script.description %> </h2>
       </div>
     </div>
     <hr>
@@ -35,12 +35,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="pull-left">
-          <%= link_to :back, :class => 'btn btn-default' do %>
-              <i class="fa fa-chevron-left"></i> Back
+          <%= link_to contributor_members_path, :class => 'btn btn-default' do %>
+              <i class="fa fa-chevron-left"></i> Scripts
           <% end %>
           <%= link_to 'Cancel', contributor_members_path, :class => 'btn btn-default' %>
+          <%= link_to 'Edit Script', edit_script_path(:id => @script.id), :class => 'btn btn-default' %>
           <%= link_to 'Edit Additional Information', edit_additional_information_scripts_path(:id => @script.id), :class => 'btn btn-default' %>
-          <%= link_to 'Edit Script', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
         </div>
       </div>
     </div>

@@ -81,7 +81,7 @@ div[role="hub_process"] > div {
 
 .caption {
   position: absolute;
-  top: 20%;
+  top: 37%;
   left: 0;
   width: 100%;
 }
@@ -135,4 +135,10 @@ legend.scheduler-border {
   width:auto;
   padding:0 10px;
   border-bottom:none;
+}
+
+.thumbnail:hover,
+.thumbnail:hover a {
+  color: #0088cc;
+  background-color: #FFF;
 }
