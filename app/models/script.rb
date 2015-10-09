@@ -1,5 +1,7 @@
 class Script < ActiveRecord::Base
   searchkick
+  acts_as_shopping_cart_item_for :cart
+
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
   has_many :member_scripts, :dependent => :destroy
@@ -7,7 +9,9 @@ class Script < ActiveRecord::Base
   has_many :related_scripts, :dependent => :destroy
   has_many :checking_account, :dependent => :destroy
   has_many :members, through: :member_scripts
-
+  has_many :prices,  :dependent => :destroy
+  has_many :carts, :dependent =>  :destroy
+  
   belongs_to :solution_type
   belongs_to :status
   accepts_nested_attributes_for :requirements

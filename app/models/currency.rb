@@ -1,3 +1,4 @@
 class Currency < ActiveRecord::Base
- belongs_to :checking_account
+  has_many :checking_account
+  has_many :prices
 end
