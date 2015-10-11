@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     if params[:query].present?
-      @scripts = Script.search  params[:query], page: params[:page], per_page: 10
+      @scripts = Script.search params[:query], page: params[:page], per_page: 10
     else
       @scripts = Script.search '*', page: params[:page], per_page: 10
     end
@@ -40,13 +40,13 @@ class SearchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_search
-      @search = Search.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_search
+    @search = Search.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def search_params
-      params[:search]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def search_params
+    params[:search]
+  end
 end

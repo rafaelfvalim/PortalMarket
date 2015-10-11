@@ -5,6 +5,8 @@ class Script < ActiveRecord::Base
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
   scope :search_import, -> { includes(:price) }
+  scope :presence_of_price, -> {where("value is not null")}
+
 
   has_many :member_scripts, :dependent => :destroy
   has_many :requirements, :dependent => :destroy
