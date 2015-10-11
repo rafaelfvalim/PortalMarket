@@ -15,6 +15,10 @@ class BuysController < ApplicationController
 
   def show_product
     @script = Script.find_by id: params[:id]
+    @price = Price.find_by_script_id(@script.id)
+    gon.script_id = @script.id
+    gon.price_id = @price.id
+    gon.member_id =  current_user.member_id
   end
 
   # GET /buys/new

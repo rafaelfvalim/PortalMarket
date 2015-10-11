@@ -4,14 +4,16 @@ class Script < ActiveRecord::Base
 
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
+  scope :search_import, -> { includes(:price) }
+
   has_many :member_scripts, :dependent => :destroy
   has_many :requirements, :dependent => :destroy
   has_many :related_scripts, :dependent => :destroy
   has_many :checking_account, :dependent => :destroy
   has_many :members, through: :member_scripts
-  has_many :prices,  :dependent => :destroy
-  has_many :carts, :dependent =>  :destroy
-  
+  has_one :price, :dependent => :destroy
+  has_many :carts, :dependent => :destroy
+
   belongs_to :solution_type
   belongs_to :status
   accepts_nested_attributes_for :requirements

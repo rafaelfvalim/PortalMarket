@@ -12,7 +12,7 @@
         </h4>
         <h4><strong>
           <small>Price :</small>
-          R$000,00</strong></h4>
+          R$ <%= @price.value %></strong></h4>
       </div>
       <div class="col-md-3">
       </div>
@@ -103,7 +103,7 @@
       <div class="col-md-12 text-center">
         <hr>
         <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
-        <%= link_to  members_path, class: 'btn btn-default' do %>
+        <%= link_to  '#', class: 'btn btn-default', id: 'add_carts' do %>
             <i class="fa fa-cart-plus"></i> Add To Cart
         <% end %>
       </div>

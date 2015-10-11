@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = Cart.where('member_id = ?', current_user.member_id)
   end
 
   # GET /carts/1
@@ -56,7 +56,7 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to carts_url, notice: 'Cart was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:member_id, :script_id, :price_id)
+      params.require(:cart).permit(:member_id, :script_id, :price_id, :full_sale)
     end
 end

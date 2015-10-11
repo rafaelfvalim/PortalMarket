@@ -1,31 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Carts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Member</th>
-      <th>Script</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @carts.each do |cart| %>
-      <tr>
-        <td><%= cart.member_id %></td>
-        <td><%= cart.script_id %></td>
-        <td><%= cart.price_id %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Cart
+          <small></small>
+        </h2>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to searches_path, class: 'btn btn-default' do %>
+            <i class="fa fa-chevron-left"></i> Back
+        <% end %>
+        <%= link_to :back, class: 'btn btn-default' do %>
+            <i class="fa fa-money"></i> Pay
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Member</th>
+            <th>Script</th>
+            <th>Price</th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @carts.each do |cart| %>
+              <tr>
+                <td><%= "#{cart.member.member_name} #{cart.member.member_last_name}" %></td>
+                <td><%= cart.script.name %></td>
+                <td><%= cart.price.value %></td>
+                <td><%= link_to 'Remove', cart, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
