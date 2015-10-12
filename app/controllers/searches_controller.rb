@@ -4,10 +4,11 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
+    Script.reindex
     if params[:query].present?
-      @scripts = Script.search params[:query], page: params[:page], per_page: 10
+      @scripts = Script.search params[:query],where:{has_price:present?}, page: params[:page], per_page: 10
     else
-      @scripts = Script.search '*', page: params[:page], per_page: 10
+      @scripts = Script.search '*',where:{has_price:present?}, page: params[:page], per_page: 10
     end
   end
 

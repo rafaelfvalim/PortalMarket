@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011001527) do
+ActiveRecord::Schema.define(version: 20151012020550) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20151011001527) do
     t.string   "script_file",      limit: 255
     t.string   "pdf_file",         limit: 255
     t.string   "complexity",       limit: 255
+    t.boolean  "has_price",        limit: 1
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "status_id",        limit: 4
