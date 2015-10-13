@@ -1,0 +1,17 @@
+<div class="pull-right">
+  <a href="#" data-toggle="collapse" data-target="#filters">+Advance</a>
+</div>
+<div id="filters" class="collapse">
+  <div class="row" id="row_process">
+    <div class="col-md-3 text-center" id="0">
+      <div class="form-group">
+        <%= select_tag 'query_process', options_from_collection_for_select(@process_modules, 'id', 'description'), class: 'form-control', :data => {:level => "0"}, :onchange => 'searchProcess(this)', prompt: "Select ..." %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
