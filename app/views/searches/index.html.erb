@@ -9,78 +9,24 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= form_tag searches_path, id: 'search_form',method: :get  do %>
+        <%= form_tag searches_path, id: 'search_form', method: :get, remote: true do %>
             <div class="input-group">
-              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Search for..." %>
+
+              <%= text_field_tag :query, params[:query], class: 'form-control', id: 'query_search' %>
               <span class="input-group-btn">
-                <%= button_tag( class: "btn btn-default" ,id: "submit_search") do %>
+                <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_search") do %>
                   <i class="fa fa-search"></i>
                 <% end %>
               </span>
             </div>
             <br>
-            <%= render 'advance_search' %>
+              <%= render 'advance_search' %>
         <% end %>
       </div>
     </div>
     <br>
-    <% if @scripts.present? %>
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              <small>
-                <%= @scripts.total_count %> results |
-                <%= @scripts.current_page %> pages |
-                Per Page: <%= @scripts.per_page %>  |
-                Total Pages: <%= @scripts.total_pages %>
-              </small>
-            </p>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-md-12">
-            <% @scripts.each do |script| %>
-                <div class="media">
-                  <div class="media-left media-middle">
-                    <i class="fa fa-file-code-o fa-3x"></i>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">
-                      <%= link_to show_product_buys_path(id: script) do %>
-                          <%= script.name %>
-                      <% end %>
-                    </h4>
-
-                    <p>Description: <%= script.description %></p>
-
-                    <p>Cod: <%= script.id %></p>
-
-                    <p> Contributor(s):
-                      <% script.members.each do |member| %>
-                          <% if script.members.size > 1 %>
-                              <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
-                          <% else %>
-                              <%= "#{member.member_name} #{ member.member_last_name}" %>
-                          <% end %>
-                      <% end %> - created at : <%= script.created_at %>
-                    </p>
-
-                    <p>Platform: <%= script.platform %></p>
-
-                    <p>Tags: <%= "#{script.industry} #{script.complexity}" %></p>
-                  </div>
-                </div>
-                <hr>
-            <% end %>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <p><%= paginate @scripts %></p>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    <div id="search_results">
+      <%= render partial: 'results', locals: {scripts: @scripts} %>
+    </div>
   </div>
 </div>

@@ -6,20 +6,25 @@ class SearchesController < ApplicationController
   def index
     Script.reindex
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
-    if params[:query].present?
 
-      @scripts = Script.search params[:query], where:{has_price:present?}, page: params[:page], per_page: 10
-    else
-      # @scripts = Script.search '*',where:{has_price:present?}, page: params[:page], per_page: 10
-      @scripts = Script.search '*', where:{ has_price:present?, process_module_description:'Carregamento e Expedição'}, page: params[:page], per_page: 10
+    if params[:query].present? && params[:process_description_selected].present?
+      @scripts = Script.search params[:query], where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
     end
+
+    if !params[:query].present? && params[:process_description_selected].present?
+      @scripts = Script.search '*', where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
+    end
+
+    if params[:query].present?  && !params[:process_description_selected].present?
+      @scripts = Script.search params[:query], where: {has_price: present?}, page: params[:page], per_page: 10
+    end
+
+    respond_to do |format|
+      format.js { render "results" }
+      format.html {}
+    end
+
   end
-
-  def search_process
-    @process_modules = ProcessModule.where('referrer_process_module_id is null')
-  end
-
-
 
   # GET /searches/1
   # GET /searches/1.json

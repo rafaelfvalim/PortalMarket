@@ -1,0 +1,71 @@
+<% if scripts.present? %>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <small>
+            <%= scripts.total_count %> results |
+            <%= scripts.current_page %> pages |
+            Per Page: <%= scripts.per_page %>  |
+            Total Pages: <%= scripts.total_pages %>
+          </small>
+        </p>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <% scripts.each do |script| %>
+            <div class="media">
+              <div class="media-left media-middle">
+                <i class="fa fa-file-code-o fa-3x"></i>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <%= link_to show_product_buys_path(id: script) do %>
+                      <%= script.name %>
+                  <% end %>
+                </h4>
+
+                <p>Description: <%= script.description %></p>
+
+                <p>Cod: <%= script.id %></p>
+
+                <p> Contributor(s):
+                  <% script.members.each do |member| %>
+                      <% if script.members.size > 1 %>
+                          <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
+                      <% else %>
+                          <%= "#{member.member_name} #{ member.member_last_name}" %>
+                      <% end %>
+                  <% end %> - created at : <%= script.created_at %>
+                </p>
+
+                <p>Platform: <%= script.platform %></p>
+
+                <p>Tags: <%= "#{script.industry} #{script.complexity}" %></p>
+              </div>
+            </div>
+            <hr>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p><%= paginate scripts %></p>
+        </div>
+      </div>
+    </div>
+<% else %>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <small>
+            0 results |
+            0 pages |
+            Per Page: 0 |
+            Total Pages: 0
+          </small>
+        </p>
+      </div>
+    </div>
+<% end %>

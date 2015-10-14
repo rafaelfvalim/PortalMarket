@@ -1,11 +1,12 @@
-<div class="pull-right">
-  <a href="#" data-toggle="collapse" data-target="#filters">+Advance</a>
+<div class="row">
+  <a href="#" data-toggle="collapse" data-target="#filters" class="btn btn-link" id="link_show_process_filters"><i id="icon_search" class="fa fa-plus"></i>Show Process Filters</a>
 </div>
 <div id="filters" class="collapse">
-  <div class="row" id="row_process">
+  <div class="row row-horizon" id="row_process">
     <div class="col-md-3 text-center" id="0">
       <div class="form-group">
-        <%= select_tag 'query_process', options_from_collection_for_select(@process_modules, 'id', 'description'), class: 'form-control', :data => {:level => "0"}, :onchange => 'searchProcess(this)', prompt: "Select ..." %>
+        <%= select_tag :query_process, options_from_collection_for_select(@process_modules, 'id', 'description'), prompt: 'Select ...', id: 'query_process', class: 'form-control', :data => {:level => "0"}, :onchange => 'searchProcess(this)' %>
+        <%= hidden_field_tag :process_description_selected %>
       </div>
     </div>
   </div>
