@@ -13,15 +13,17 @@ window.process_call_ajax = (id, e) ->
   $.ajax
     type: 'GET',
     url: '/process_modules/' + id + '/get_list_ajax.json'
-    data: id: id
+    data:
+      id: id
     success: (data) ->
       processListFactory($("#list_process_chain"), data, e)
-    errors:  (data) ->
+    errors: (data) ->
       alert('error')
 
 processListFactory = (root_element, data, element) ->
   selected = parseInt($(element).attr("data-level"), 10)
   last_selected = $(element).attr("id")
+  $("#list_process_chain [data-level='" + selected + "'] #process_id").val(last_selected)
   $("#list_process_chain").scrollTo(element)
   clear_chain(selected)
   if ($.isEmptyObject(data))
@@ -38,10 +40,12 @@ showFinalStep = (e, last_selected) ->
   div_container = $('<div class="col-xs-6 col-sm-4 col-md-3 col-md-2 value_chain">')
   div_container.attr("data-level", nivel)
   div_content = $('<div class ="finish_process">')
-  link_to = $('<a href="' + getFinalStepUrl(gon.action, process_module_id, gon.script_id) + '" class="btn btn-success">')
-  link_to.text("Finish")
-  link_to.attr("data-level", nivel)
-  div_content.append(link_to)
+  submit_form = $('<input type="submit" value="Finish"  class="btn btn-success"/>')
+
+  #  link_to = $('<a href="' + getFinalStepUrl(gon.action, process_module_id, gon.script_id) + '" class="btn btn-success">')
+  #  link_to.text("Finish")
+  #  link_to.attr("data-level", nivel)
+  div_content.append(submit_form)
   div_container.append(div_content)
   nivel++
   arrayLevels.push(div_container)
@@ -57,7 +61,9 @@ showList = (e, data) ->
   divListContainer = $('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">')
   divListContainer.attr("data-level", nivel)
   divLisProcess = $('<div class="list_process">')
+  divLisProcess.attr("data-level", nivel)
   divListProcessListGroup = $('<ul class="list-unstyled">')
+  hidden_process_id = $('<input type="hidden" id="process_id" name="process[][id]">')
 
   $.each(data, (key, value) ->
     li = $("<li>")
@@ -70,12 +76,13 @@ showList = (e, data) ->
     return divListProcessListGroup.append(li)
   )
   divLisProcess.append(divListProcessListGroup)
+  divLisProcess.append(hidden_process_id)
   divListContainer.append(divLisProcess)
   nivel++
   arrayLevels.push(divListContainer)
   return $(e).append(divListContainer)
 
-clear_chain =(selected) ->
+clear_chain = (selected) ->
   arrayLevels.forEach((element) ->
     data_level = parseInt($(element).attr("data-level"), 10)
     if (selected < data_level)
@@ -88,7 +95,6 @@ $ ->
 
   $("#value_chain_process a ").click (e) ->
     clear_chain(1)
-
 
   setProgressBar = (tab) ->
     console.log(tab)

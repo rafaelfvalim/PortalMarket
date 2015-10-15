@@ -44,25 +44,33 @@ class ValueChainsController < ApplicationController
   def classification
     @process_module = ProcessModule.find(params[:id])
     @script_id = params[:script_id]
-    gon.script_id = @script_id
     if request.referrer.include?('/edit_build')
-      gon.action = 'edit'
+      @sub_action = 'edit'
+    else
+      @sub_action = 'create'
     end
   end
 
   def create_ajax
-    @script_id = params[:script_id]
-    @process_module_id = params[:process_module_id]
-    action_veb = params[:action_veb]
-
-    @value_chain = ValueChain.new(:process_module_id => @process_module_id, :script_id => @script_id)
+    @value_chains ||= []
+    @errors_list ||= []
+    params[:process].each do |process|
+      if process.present?
+        @value_chain = ValueChain.where(process_module_id: process[:id], script_id: params[:script_id]).first_or_create
+        if !@value_chain.save
+          @errors_list.push(@value_chain.errors.full_messages)
+        end
+      end
+    end
+    @value_chains.sort_by &:process_module_id
+    sub_action = params[:sub_action]
     respond_to do |format|
 
-      if @value_chain.save
-        if action_veb == 'edit'
-          format.html { redirect_to edit_build_value_chains_path(:id => @script_id) }
+      if @errors_list.size == 0
+        if sub_action == 'edit'
+          format.html { redirect_to edit_build_value_chains_path(:id => params[:script_id]) }
         else
-          format.html { redirect_to build_value_chain_path(@script_id)}
+          format.html { redirect_to build_value_chain_path(:id => params[:script_id]) }
         end
       end
     end
