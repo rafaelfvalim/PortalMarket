@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   # match 'members/customer', controller: 'members', action: 'customer', via: :get, as
   match 'value_chains/classification/:id', controller: 'value_chains', action: 'classification', via: :get, as: :process_value_chain
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
-  match 'value_chains/get_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain
+  match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain
   match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
   match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
   match 'value_chains/build/:id', controller: 'value_chains', action: 'build', via: :get, as: :build_value_chain
