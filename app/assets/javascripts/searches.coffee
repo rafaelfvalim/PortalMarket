@@ -52,9 +52,24 @@ getProcessById = (id, element) ->
           appendComboChield(createComboChield(data), element)
       errors: (data) ->
         alert 'erro' + data
+clearFilters = ->
+  arrayLevels.forEach (el) ->
+    data_level = parseInt($(el).attr("data-level"), 10)
+    if 0 < data_level
+      $(el).remove()
+    $('#query_process').val('');
+  $('#process_description_selected').val("")
+
+
 $ ->
   $("#link_show_process_filters").click () ->
     if $("#link_show_process_filters i").hasClass("fa fa-plus")
-      $("#link_show_process_filters i").removeClass("fa fa-plus").addClass("fa fa-minus")
+      $("#link_show_process_filters i").removeClass("fa fa-plus")
+      $("#link_show_process_filters i").addClass("fa fa-minus")
     else
-      $("#link_show_process_filters i").removeClass("fa fa-minus").addClass("fa fa-plus")
+      $("#link_show_process_filters i").removeClass("fa fa-minus")
+      $("#link_show_process_filters i").addClass("fa fa-plus")
+      clearFilters()
+
+  $("#clear_filters").click () ->
+    clearFilters()
