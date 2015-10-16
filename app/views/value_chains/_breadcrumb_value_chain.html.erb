@@ -1,20 +1,15 @@
-<% @value_chains = ValueChain.where(script_id: @script.id).order(:process_module_id) %>
+<% show_process_chain(@script.id).each do |process| %>
 
-<% @value_chains.each_with_index do |value_chain, index1| %>
+    <% show_process_chain(@script.id).each do |process| %>
+    <%  end %>
 
-    <%= content_tag(:ul, class: "breadcrumb", id: value_chain.id) do %>
 
-        <% values = get_breadcrumb_value_chain(value_chain.process_module_id) %>
-
-        <% values.each_with_index do |value, index| %>
-            <li><%= value.to_s %></li>
-        <% end %>
-        <li>
-          <%= link_to value_chain, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, onclick: "$(this).one('ajax:beforeSend',function(e) { $('##{value_chain.id}').remove();});" do %>
-              <i class="glyphicon glyphicon-remove"></i>
-          <% end %>
-        </li>
+    <%= content_tag(:a, class: "breadcrumb", id: process.id) do %>
+        <li><%= process.to_s %></li>
     <% end %>
-
-
+    <li>
+      <%= link_to process, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, onclick: "$(this).one('ajax:beforeSend',function(e) { $('##{process.id}').remove();});" do %>
+          <i class="glyasdphicon glyphicon-remove"></i>
+      <% end %>
+    </li>
 <% end %>
