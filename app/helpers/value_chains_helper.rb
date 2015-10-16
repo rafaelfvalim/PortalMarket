@@ -34,7 +34,7 @@ module ValueChainsHelper
       if index == 0
         line<< "#{process.description}"
       else
-        line<< "\\ #{process.description}"
+        line<< " \\ #{process.description}"
       end
       if index == process_array.size - 1
         chield_process = process
