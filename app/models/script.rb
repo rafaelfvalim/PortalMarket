@@ -1,10 +1,11 @@
 class Script < ActiveRecord::Base
   searchkick
-  acts_as_shopping_cart_item_for :cart
 
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
   scope :search_import, -> { includes(:price) }
+  scope :search_import, -> { includes(:value_chains) }
+  scope :search_import, -> { includes(:process_modules) }
 
   has_many :member_scripts, :dependent => :destroy
   has_many :requirements, :dependent => :destroy
@@ -13,6 +14,8 @@ class Script < ActiveRecord::Base
   has_many :members, through: :member_scripts
   has_one :price, :dependent => :destroy
   has_many :carts, :dependent => :destroy
+  has_many :value_chains, :dependent => :destroy
+  has_many :process_modules, through: :value_chains
 
   belongs_to :solution_type
   belongs_to :status
@@ -20,7 +23,15 @@ class Script < ActiveRecord::Base
   accepts_nested_attributes_for :member_scripts
   accepts_nested_attributes_for :related_scripts
   accepts_nested_attributes_for :checking_account
+  accepts_nested_attributes_for :value_chains
 
   mount_uploader :pdf_file, PdfUploader
   mount_uploader :script_file, ScriptUploader
+
+  def search_data
+    attributes.merge(
+        process_module_id: process_modules.map(&:id),
+        process_module_description: process_modules.map(&:description)
+    )
+  end
 end

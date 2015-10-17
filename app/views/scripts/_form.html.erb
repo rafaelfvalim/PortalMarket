@@ -64,7 +64,7 @@
         <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ..."} %>
         <%= f.select :complexity, ['Altamente Complexo AC6M', 'Altamente Complexo AC5M', 'Altamente Complexo AC4M', 'Altamente Complexo AC3M', 'Altamente Complexo AC2M', 'Muito complexo MCMAX', 'Muito complexo MCMIN', '    Complexo MMAX', 'Complexo MMIN', 'Baixo BMAX', 'Baixo BMIN', 'Muito baixo MBMAX', 'Muito baixo MBMIN'], {prompt: "Please Select ..."} %>
 
-        <% if @action == 'create' %>
+        <% if @sub_action == 'create' %>
             <%= f.file_field :script_file, :class => 'form-control' %>
             <%= f.file_field :pdf_file, :class => 'form-control' %>
         <% else %>

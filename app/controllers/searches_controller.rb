@@ -5,11 +5,25 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     Script.reindex
-    if params[:query].present?
-      @scripts = Script.search params[:query],where:{has_price:present?}, page: params[:page], per_page: 10
-    else
-      @scripts = Script.search '*',where:{has_price:present?}, page: params[:page], per_page: 10
+    @process_modules = ProcessModule.where('referrer_process_module_id is null')
+
+    if params[:query].present? && params[:process_description_selected].present?
+      @scripts = Script.search params[:query], where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
     end
+
+    if !params[:query].present? && params[:process_description_selected].present?
+      @scripts = Script.search '*', where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
+    end
+
+    if params[:query].present?  && !params[:process_description_selected].present?
+      @scripts = Script.search params[:query], where: {has_price: present?}, page: params[:page], per_page: 10
+    end
+
+    respond_to do |format|
+      format.js { render "results" }
+      format.html {}
+    end
+
   end
 
   # GET /searches/1
