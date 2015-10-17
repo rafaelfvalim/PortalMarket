@@ -17,6 +17,10 @@ class SearchesController < ApplicationController
   def show
   end
 
+  def find_process
+
+  end
+
   # GET /searches/new
   def new
   end
