@@ -21,9 +21,9 @@
 //= require bootstrap-typeahead-rails
 //= require_tree .
 
-$(function() {
+$(function () {
     var faye_client = new Faye.Client('http://localhost:9292/faye');
-    faye_client.subscribe('/chat' , function(data) {
+    faye_client.subscribe('/chat', function (data) {
         eval(data);
     });
 });
@@ -40,7 +40,7 @@ var codeStore;
 codeStore = codeStore || (function () {
         var pleaseWaitDiv = $('<div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"role="dialog" aria-hidden="true" data-backdrop="static"><div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title"> <span class="glyphicon glyphicon-time"> </span>Please Wait </h4> </div> <div class="modal-body"> <div class="progress"> <div class="progress-bar progress-bar-infoprogress-bar-striped active"style="width: 100%"> </div> </div> </div> </div> </div> </div>');
         return {
-            showPleaseWait: function() {
+            showPleaseWait: function () {
                 pleaseWaitDiv.modal();
             },
             hidePleaseWait: function () {
@@ -49,6 +49,12 @@ codeStore = codeStore || (function () {
 
         };
     })();
+
+var set_message_info;
+set_message_info = function (e) {
+    $("#info-message p").text()
+    $("#info-message p").text($(e).attr("data-info"))
+}
 
 
 

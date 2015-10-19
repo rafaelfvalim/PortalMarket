@@ -6,4 +6,4 @@ $ ->
     processing: true
     serverSide: true
     ajax: $('#script-table').data('source')
-    pagingType: 'full_numbers'
+    sPaginationType: 'full'

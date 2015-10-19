@@ -2,7 +2,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   # uncomment the appropriate paginator module,
   # depending on gems available in your project.
   include AjaxDatatablesRails::Extensions::Kaminari
-  # include AjaxDatatablesRails::Extensions::WillPaginate
+  #include AjaxDatatablesRails::Extensions::WillPaginate
   #include AjaxDatatablesRails::Extensions::SimplePaginator
   def_delegator :@view, :link_to
   def_delegator :@view, :h
@@ -13,13 +13,13 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= ['Script.id','Script.name', 'Script.platform', 'Script.industry']
+    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.platform', 'Script.industry']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.id','Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
+    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
   end
 
   private
@@ -32,7 +32,6 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           record.id,
           record.name,
           record.description,
-          record.definition,
           record.platform,
           record.industry,
           record.complexity,
@@ -43,7 +42,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-     Script.joins(:member_scripts).where(' member_scripts.member_id = ?', params[:member_id]).group('scripts.id')
+    Script.joins(:member_scripts).where(' member_scripts.member_id = ?', params[:member_id]).group('scripts.id')
   end
 
   # ==== Insert 'presenter'-like methods below if necessary
