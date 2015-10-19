@@ -25,6 +25,7 @@ gem 'searchkick'
 gem 'bootstrap-typeahead-rails'
 # Cart acts_as_shopping_cart
 gem 'acts_as_shopping_cart', '~> 0.2.1'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

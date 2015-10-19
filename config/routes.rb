@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   resources :carts
+  resources :messages
   resources :prices
   resources :statuses
   resources :buys do
@@ -62,5 +62,4 @@ Rails.application.routes.draw do
   match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
   match 'value_chains/build/:id', controller: 'value_chains', action: 'build', via: :get, as: :build_value_chain
   # match 'value_chains/create_ajax/:process_module_id/:script_id/:action_veb', controller: 'value_chains', action: 'create_ajax', via: :get, as: :create_ajax_value_chain
-
 end
