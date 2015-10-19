@@ -56,7 +56,7 @@ class ValueChainsController < ApplicationController
     @errors_list ||= []
     params[:process].each do |process|
       if process.present?
-        @value_chain = ValueChain.where(process_module_id: process[:id], script_id: params[:script_id]).first_or_create
+        @value_chain = ValueChain.new(process_module_id: process[:id], script_id: params[:script_id])
         if !@value_chain.save
           @errors_list.push(@value_chain.errors.full_messages)
         end
@@ -109,13 +109,22 @@ class ValueChainsController < ApplicationController
   # DELETE /value_chains/1
   # DELETE /value_chains/1.json
   def destroy
-    @value_chain.destroy
+    process = app_get_breadcrumb_value_chain(@value_chain.process_module_id)
+    if process.size > 0
+      process.each do |process|
+        value_chain =ValueChain.find_by process_module_id: process.id, script_id: @value_chain.script_id
+        value_chain.destroy
+      end
+    else
+      process.destroy
+    end
     @referer = URI(request.referer).path
     respond_to do |format|
       if @referer.include?('/value_chains/build/')
         format.json { head :no_content }
-      else
         format.html { redirect_to value_chains_url, notice: 'Value chain was successfully destroyed.' }
+      else
+        format.html { redirect_to edit_build_value_chains_path(id: @value_chain.script_id), notice: 'Value chain was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
@@ -131,4 +140,5 @@ class ValueChainsController < ApplicationController
   def value_chain_params
     params.require(:value_chain).permit(:process_module_id, :script_id)
   end
+
 end

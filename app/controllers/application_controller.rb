@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :app_custom_routes
   helper_method :app_custom_routes_errors
+  helper_method :app_get_breadcrumb_value_chain
 
   def app_custom_routes(format, referrer, model)
     if referrer.include?('additional_information')
@@ -22,6 +23,22 @@ class ApplicationController < ActionController::Base
       format.html { render :new }
       format.json { render json: model.errors, status: :unprocessable_entity }
     end
+  end
+
+  def app_get_breadcrumb_value_chain(id)
+    breadcrumb ||= Array.new
+    ProcessModule.where(id: id).each do |pp1|
+      next_id = pp1.referrer_process_module_id
+      breadcrumb.push(pp1)
+      loop do
+        break if next_id.nil? || next_id == ''
+        ProcessModule.where(id: next_id).each do |pp2|
+          breadcrumb.push(pp2)
+          next_id = pp2.referrer_process_module_id
+        end
+      end
+    end
+    return breadcrumb.reverse
   end
 
 end

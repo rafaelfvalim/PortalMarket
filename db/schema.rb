@@ -13,21 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151018163529) do
 
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace",     limit: 255
-    t.text     "body",          limit: 65535
-    t.string   "resource_id",   limit: 255,   null: false
-    t.string   "resource_type", limit: 255,   null: false
-    t.integer  "author_id",     limit: 4
-    t.string   "author_type",   limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-
   create_table "carts", force: :cascade do |t|
     t.integer  "member_id",  limit: 4
     t.integer  "script_id",  limit: 4
@@ -176,9 +161,6 @@ ActiveRecord::Schema.define(version: 20151018163529) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "table_statuses", force: :cascade do |t|
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -208,7 +190,6 @@ ActiveRecord::Schema.define(version: 20151018163529) do
     t.integer  "invitations_count",      limit: 4,   default: 0
     t.datetime "effective_date"
     t.integer  "member_id",              limit: 4
-    t.boolean  "complete",               limit: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -245,8 +226,8 @@ ActiveRecord::Schema.define(version: 20151018163529) do
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
-  add_foreign_key "scripts", "solution_types"
-  add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "scripts", "solution_types", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "scripts", "statuses"
   add_foreign_key "users", "members"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"
