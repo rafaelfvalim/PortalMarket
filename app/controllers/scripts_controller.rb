@@ -1,7 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :edit, :update, :destroy]
 
-
   # GET /scripts
   # GET /scripts.json
   def index
@@ -84,31 +83,42 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1.json
   def update
     @referer = URI(request.referer).path
+
     respond_to do |format|
       if @script.update(script_params)
-        if params[:sub_action] == 'back'
-          format.html { redirect_to edit_script_path(@script.id) }
+        case params[:sub_action]
+          when 'back' then
+            format.html { redirect_to edit_script_path(@script.id) }
+          when 'additional_information' then
+            format.html { redirect_to build_value_chain_path(@script.id) }
+          when 'create' then
+            @sub_action = params[:sub_action]
+            format.html { redirect_to edit_script_path(@script.id) }
+          when 'edit' then
+            @sub_action = params[:sub_action]
+            format.html { redirect_to edit_script_path(@script.id) }
+          else
+            format.html { redirect_to @script, notice: 'Script was successfully updated.' }
+            format.json { render :show, status: :ok, location: @script }
         end
-        if params[:sub_action] == 'additional_information'
-          format.html { redirect_to build_value_chain_path(@script.id) }
-        end
-        if params[:sub_action] == 'create'
-          @sub_action = params[:sub_action]
-          format.html { redirect_to additional_information_scripts_path(:id => @script.id) }
-        end
-        if params[:sub_action] == 'edit'
-          @sub_action = params[:sub_action]
-          format.html {  }
-        end
-        format.html { redirect_to @script, notice: 'Script was successfully updated.' }
-        format.json { render :show, status: :ok, location: @script }
       else
-        @sub_action = 'create'
-        @create_script_tracker = 'complete'
-        @additional_information = 'active'
-        flash.now[:danger] = "Script can not be saved, check the fields!"
-        format.html { render :additional_information }
-        format.json { render json: @script.errors, status: :unprocessable_entity }
+        case params[:sub_action]
+          when 'edit' then
+            @sub_action = params[:sub_action]
+            format.html { render :edit }
+            format.json { render json: @script.errors, status: :unprocessable_entity }
+          when 'edit_additional_information' then
+            @sub_action = params[:sub_action]
+            format.html { redirect_to edit_additional_information_scripts_path(id: @script.id) }
+            format.json { render json: @script.errors, status: :unprocessable_entity }
+          when 'create' then
+            @create_script_tracker = 'complete'
+            @additional_information = 'active'
+            flash.now[:danger] = "Script can not be saved, check the fields!"
+            @sub_action = params[:sub_action]
+            format.html { render :additional_information }
+            format.json { render json: @script.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

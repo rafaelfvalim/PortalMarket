@@ -48,7 +48,7 @@ module ScriptsHelper
       when :complexity
         return "Selecione a complexidade do script "
       when :definition
-        return "Informe para qual finalidade do script de forma objetiva "
+        return "Informe de forma objetiva qual a finalidade do script "
       when :long_text
         return "Informe uma descrição longa do script "
       when :requirements

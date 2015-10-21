@@ -1,13 +1,6 @@
 <%= bootstrap_form_for(@script) do |f| %>
     <div class="row">
       <div class="col-md-12">
-        <h2>Additional Information
-          <small><%= @script.description %></small>
-        </h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
         <% if @sub_action == 'create' %>
             <%= render 'value_chains/process_tracker' %>
             <div class="row">
@@ -32,9 +25,10 @@
                 <%= link_to contributor_members_path, :class => 'btn btn-default', data: {confirm: 'Are you sure?'} do %>
                     <i class="fa fa-chevron-left"></i> Scripts
                 <% end %>
-                <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                <%= f.button :submit, class: 'btn btn-default', name: "sub_action", value: "edit_additional_information" do %>
                     <i class="fa fa-floppy-o"></i> Save
                 <% end %>
+
                 <%= link_to 'Edit Script', edit_script_path(:id => @script.id), :class => 'btn btn-default' %>
                 <%= link_to 'Edit Value Chain', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
               </div>
