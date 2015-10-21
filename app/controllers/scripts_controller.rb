@@ -6,7 +6,6 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
   def index
     @scripts = Script.all
-
   end
 
   # GET /scripts/1
@@ -62,6 +61,9 @@ class ScriptsController < ApplicationController
         format.html { redirect_to additional_information_scripts_path(:id => @script.id) }
         format.json { render :show, status: :created, location: @script }
       else
+        @create_script_tracker = 'active'
+        @sub_action = 'create'
+        flash.now[:danger] = "Script can not be saved, check the fields!"
         format.html { render :new }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end
@@ -84,20 +86,28 @@ class ScriptsController < ApplicationController
     @referer = URI(request.referer).path
     respond_to do |format|
       if @script.update(script_params)
-        if @referer.include?('/additional_information')
-          if params[:sub_action] == 'back'
-            format.html { redirect_to edit_script_path(@script.id) }
-          end
+        if params[:sub_action] == 'back'
+          format.html { redirect_to edit_script_path(@script.id) }
+        end
+        if params[:sub_action] == 'additional_information'
           format.html { redirect_to build_value_chain_path(@script.id) }
         end
         if params[:sub_action] == 'create'
           @sub_action = params[:sub_action]
           format.html { redirect_to additional_information_scripts_path(:id => @script.id) }
         end
+        if params[:sub_action] == 'edit'
+          @sub_action = params[:sub_action]
+          format.html {  }
+        end
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { render :show, status: :ok, location: @script }
       else
-        format.html { render :edit }
+        @sub_action = 'create'
+        @create_script_tracker = 'complete'
+        @additional_information = 'active'
+        flash.now[:danger] = "Script can not be saved, check the fields!"
+        format.html { render :additional_information }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end
     end

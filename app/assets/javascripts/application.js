@@ -21,6 +21,17 @@
 //= require bootstrap-typeahead-rails
 //= require_tree .
 
+var ready;
+ready = function() {
+    $(".alert").delay(4000).slideUp(200, function() {
+        $(this).alert('close');
+    });
+
+};
+
+$(document).ready(ready);
+
+
 $(function () {
     var faye_client = new Faye.Client('http://localhost:9292/faye');
     faye_client.subscribe('/chat', function (data) {
@@ -52,8 +63,8 @@ codeStore = codeStore || (function () {
 
 var set_message_info;
 set_message_info = function (e) {
-    $("#info-message p").text()
-    $("#info-message p").text($(e).attr("data-info"))
+    $("#info-message p").text();
+    $("#info-message p").text(e);
 }
 
 
