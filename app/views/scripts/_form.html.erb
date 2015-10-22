@@ -48,14 +48,14 @@
     <br>
     <div class="row">
       <div class="col-lg-7">
-
         <%= f.text_field :name, :onclick => "set_message_info('#{set_info_script_messages(:name)}')" %>
         <%= f.text_field :description, :onclick => "set_message_info('#{set_info_script_messages(:description)}')" %>
         <%= f.select :platform, get_platforms, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:platform)}')" %>
         <%= f.select :industry, get_industries, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:industry)}')" %>
         <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:solution_type_id)}')" %>
         <%= f.select :complexity, get_complexities, {prompt: "Please Select ..."}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
-
+        <%= f.text_area :definition, :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
+        <%= f.text_area :long_text, :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
         <% if @sub_action == 'create' %>
             <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
             <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>

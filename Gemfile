@@ -25,6 +25,8 @@ gem 'searchkick'
 gem 'bootstrap-typeahead-rails'
 # Cart acts_as_shopping_cart
 gem 'acts_as_shopping_cart', '~> 0.2.1'
+# wicked wizard
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug'

@@ -83,19 +83,23 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1.json
   def update
     @referer = URI(request.referer).path
-
+    script_id = params[:script_id]
+    sub_action = params[:sub_action]
+    p script_id
+    p sub_action
+    p @script
     respond_to do |format|
       if @script.update(script_params)
-        case params[:sub_action]
-          when 'back' then
-            format.html { redirect_to edit_script_path(@script.id) }
+        case sub_action
+          when 'back_to_script' then
+            format.html { redirect_to edit_script_path(script_id) }
           when 'additional_information' then
             format.html { redirect_to build_value_chain_path(@script.id) }
           when 'create' then
-            @sub_action = params[:sub_action]
-            format.html { redirect_to edit_script_path(@script.id) }
+            @sub_action = sub_action
+            format.html { redirect_to additional_information_scripts_path(@script.id) }
           when 'edit' then
-            @sub_action = params[:sub_action]
+            @sub_action = sub_action
             format.html { redirect_to edit_script_path(@script.id) }
           else
             format.html { redirect_to @script, notice: 'Script was successfully updated.' }
@@ -131,7 +135,6 @@ class ScriptsController < ApplicationController
       end
     end
   end
-
   # DELETE /scripts/1
   # DELETE /scripts/1.json
   def destroy

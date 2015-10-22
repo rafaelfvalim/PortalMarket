@@ -1,13 +1,15 @@
 class Script < ActiveRecord::Base
   searchkick
-  validates :name, presence: true, length: { minimum: 5 , maximum: 50}, uniqueness: true
-  validates :description,length: { minimum: 10 , maximum: 50}, presence: true
-  validates :platform, presence: true
-  validates :industry, presence: true
-  validates :solution_type_id, presence: true
-  validates :complexity, presence: true
-  validates :script_file, presence: true
-  validates :pdf_file, presence: true
+  # validates :name, presence: true, length: { minimum: 5 , maximum: 50}, uniqueness: true
+  # validates :description,length: { minimum: 10 , maximum: 50}, presence: true
+  # validates :platform, presence: true
+  # validates :definition, presence: true,length: { minimum: 10 , maximum: 200}
+  # validates :long_text, presence: true , length: { minimum: 10 , maximum: 200}
+  # validates :industry, presence: true
+  # validates :solution_type_id, presence: true
+  # validates :complexity, presence: true
+  # validates :script_file, presence: true
+  # validates :pdf_file, presence: true
 
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
