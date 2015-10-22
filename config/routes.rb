@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :messages
   resources :prices
   resources :statuses
+  resources :wizard_scripts do
+    collection do
+      get :classification
+    end
+  end
   resources :buys do
     collection do
       get :show_product
@@ -32,8 +37,8 @@ Rails.application.routes.draw do
       get 'autocomplete_requeriment'
       get 'final_details'
       get 'autocomplete_related_script'
-      put :update_status
       get :autocomplete
+      get :update_status
     end
   end
   resources :member_scripts
@@ -55,7 +60,7 @@ Rails.application.routes.draw do
   end
   # match 'members/contributor', controller: 'members', action: 'contributor', via: :get , as: :contributor_members
   # match 'members/customer', controller: 'members', action: 'customer', via: :get, as
-  match 'value_chains/classification/:id', controller: 'value_chains', action: 'classification', via: :get, as: :process_value_chain
+  #match 'value_chains/classification/:id', controller: 'value_chains', action: 'classification', via: :get, as: :process_value_chain
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
   match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain
   match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get

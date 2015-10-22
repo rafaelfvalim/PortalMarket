@@ -63,15 +63,16 @@ class ValueChainsController < ApplicationController
       end
     end
     @value_chains.sort_by &:process_module_id
-    sub_action = params[:sub_action]
+    # sub_action = params[:sub_action]
     respond_to do |format|
 
       if @errors_list.size == 0
-        if sub_action == 'edit'
-          format.html { redirect_to edit_build_value_chains_path(:id => params[:script_id]) }
-        else
-          format.html { redirect_to build_value_chain_path(:id => params[:script_id]) }
-        end
+        # if sub_action == 'edit'
+        #   format.html { redirect_to edit_build_value_chains_path(:id => params[:script_id]) }
+        # else
+        #   format.html { redirect_to build_value_chain_path(:id => params[:script_id]) }
+        # end
+        format.html { redirect_to wizard_script_path(id:'step3', :script_id => params[:script_id]) }
       end
     end
   end
@@ -120,13 +121,14 @@ class ValueChainsController < ApplicationController
     end
     @referer = URI(request.referer).path
     respond_to do |format|
-      if @referer.include?('/value_chains/build/')
-        format.json { head :no_content }
-        format.html { redirect_to value_chains_url, notice: 'Value chain was successfully destroyed.' }
-      else
-        format.html { redirect_to edit_build_value_chains_path(id: @value_chain.script_id), notice: 'Value chain was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      # if @referer.include?('/value_chains/build/')
+      #   format.json { head :no_content }
+      #   format.html { redirect_to value_chains_url, notice: 'Value chain was successfully destroyed.' }
+      # else
+      #   format.html { redirect_to edit_build_value_chains_path(id: @value_chain.script_id), notice: 'Value chain was successfully destroyed.' }
+      #   format.json { head :no_content }
+      # end
+      format.html { redirect_to wizard_script_path(id:'step3', script_id: @value_chain.script_id) , notice: 'Value chain was successfully destroyed.' }
     end
   end
 

@@ -1,0 +1,112 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'process_tracker' %>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pull-left">
+              <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-default' do %>
+                  <i class="fa fa-chevron-left"></i> Back
+              <% end %>
+              <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default', data: {confirm: 'Are you sure?'} %>
+            </div>
+            <div class="pull-right">
+              <%= link_to 'Save', update_status_scripts_path(id: @script.id), :class => 'btn btn-default' %>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Script :</legend>
+              <div class="control-group">
+                <p>
+                  <strong>Definition: </strong>
+                  <span><%= @script.definition %></span>
+                </p>
+
+                <p>
+                  <strong>Long Text: </strong>
+                  <span><%= @script.long_text %></span>
+
+                </p>
+
+                <p>
+                  <strong>Platform: </strong>
+                  <span><%= @script.platform %></span>
+
+                </p>
+
+                <p>
+                  <strong>Industry: </strong>
+                  <span><%= @script.industry %></span>
+
+                </p>
+
+                <p>
+                  <strong>Soltion Type: </strong>
+                  <span><%= @script.solution_type_id %></span>
+
+                </p>
+
+                <p>
+                  <strong>Complexity: </strong>
+                  <span><%= @script.complexity %></span>
+
+                </p>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            <fieldset class="scheduler-border">
+              <legend class="scheduler-border">Classificated for :</legend>
+              <div class="control-group">
+                <%= render 'breadcrumb_value_chain' %>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <% if @script.requirements.size > 0 %>
+            <div class="row">
+              <div class="col-lg-9">
+                <fieldset class="scheduler-border">
+                  <legend class="scheduler-border">Requeriments :</legend>
+                  <div class="control-group">
+                    <ul>
+                      <% @script.requirements.each do |requirement| %>
+                          <li><%= requirement.requirement %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+        <% end %>
+        <% if @script.related_scripts.size > 0 %>
+            <div class="row">
+              <div class="col-lg-9">
+                <fieldset class="scheduler-border">
+                  <legend class="scheduler-border">Referrer Scripts :</legend>
+                  <div class="control-group">
+                    <ul>
+                      <% @script.related_scripts.each do |related_script| %>
+                          <li><%= related_script.script.description %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
