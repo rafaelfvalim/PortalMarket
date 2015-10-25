@@ -1,5 +1,5 @@
 <div>
   <% if @script.script_file.present? %>
-      <p><label>Script:</label> <%= File.basename(@script.script_file.to_s) %></p>
+      <p><label><%= File.basename(@script.script_file.to_s) %></label></p>
   <% end %>
 </div>
