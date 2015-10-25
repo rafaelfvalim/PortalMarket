@@ -41,6 +41,24 @@ class ApplicationController < ActionController::Base
     return breadcrumb.reverse
   end
 
-
-
+  def set_tracker_step(action)
+    case action
+      when :create then
+        @step1 = 'active'
+      when :edit then
+        @step1 = 'active'
+      when :additional_data then
+        @step1 = 'complete'
+        @step2 = 'active'
+      when :value_chain then
+        @step1 = 'complete'
+        @step2 = 'complete'
+        @step3 = 'active'
+      when :final then
+        @step1 = 'complete'
+        @step2 = 'complete'
+        @step3 = 'complete'
+        @final = 'active'
+    end
+  end
 end

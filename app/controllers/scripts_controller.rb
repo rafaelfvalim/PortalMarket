@@ -32,19 +32,12 @@ class ScriptsController < ApplicationController
   def new
     @script = Script.new
     @script.member_scripts.build
-    @create_script_tracker = 'active'
-    @sub_action = 'create'
+    set_tracker_step(:create)
   end
 
   # GET /scripts/1/edit
   def edit
-    @referer = URI(request.referer).path
-    if @referer.include?('/additional_information')
-      @sub_action = 'create'
-      @create_script_tracker = 'active'
-    else
-      @sub_action = 'edit'
-    end
+    set_tracker_step(:create)
   end
 
   # POST /scripts
@@ -56,12 +49,10 @@ class ScriptsController < ApplicationController
       if @script.save
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member_id, percentual: 0, participation: 0)
         @member_script.save
-        #format.html { redirect_to additional_information_scripts_path(:id => @script.id) }
-        format.html { redirect_to wizard_script_path(id: 'step2', script_id: @script.id) }
-        # format.json { render :show, status: :created, location: @script }
+        format.html { redirect_to wizard_scripts_path(id:'additional_data' , script_id: @script.id) }
       else
-        @create_script_tracker = 'active'
         flash.now[:danger] = "Script can not be saved, check the fields!"
+        set_tracker_step(:create)
         format.html { render :new }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end
@@ -81,48 +72,12 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1
   # PATCH/PUT /scripts/1.json
   def update
-    @referer = URI(request.referer).path
-    script_id = params[:script_id]
-    sub_action = params[:sub_action]
-
     respond_to do |format|
       if @script.update(script_params)
-        format.html { redirect_to wizard_script_path(id: 'step2', script_id: @script.id) }
-        # case sub_action
-        #   when 'back_to_script' then
-        #     format.html { redirect_to edit_script_path(script_id) }
-        #   when 'additional_information' then
-        #     format.html { redirect_to build_value_chain_path(@script.id) }
-        #   when 'create' then
-        #     @sub_action = sub_action
-        #     format.html { redirect_to additional_information_scripts_path(@script.id) }
-        #   when 'edit' then
-        #     @sub_action = sub_action
-        #     format.html { redirect_to edit_script_path(@script.id) }
-        #   else
-        #     format.html { redirect_to @script, notice: 'Script was successfully updated.' }
-        #     format.json { render :show, status: :ok, location: @script }
-        # end
+        format.html { redirect_to wizard_script_path(id: :additional_data, script_id: @script.id) }
       else
         format.html { render :edit }
         format.json { render json: @script.errors, status: :unprocessable_entity }
-        # case params[:sub_action]
-        #   when 'edit' then
-        #     @sub_action = params[:sub_action]
-        #     format.html { render :edit }
-        #     format.json { render json: @script.errors, status: :unprocessable_entity }
-        #   when 'edit_additional_information' then
-        #     @sub_action = params[:sub_action]
-        #     format.html { redirect_to edit_additional_information_scripts_path(id: @script.id) }
-        #     format.json { render json: @script.errors, status: :unprocessable_entity }
-        #   when 'create' then
-        #     @create_script_tracker = 'complete'
-        #     @additional_information = 'active'
-        #     flash.now[:danger] = "Script can not be saved, check the fields!"
-        #     @sub_action = params[:sub_action]
-        #     format.html { render :additional_information }
-        #     format.json { render json: @script.errors, status: :unprocessable_entity }
-        # end
       end
     end
   end
@@ -197,10 +152,6 @@ class ScriptsController < ApplicationController
     @script = Script.find_by id: params[:id]
     @value_chains = ValueChain.where('script_id = ?', @script.id)
     @process_modules = ProcessModule.where('script_id = ?', @script.id)
-    @create_script_tracker = 'complete'
-    @additional_information = 'complete'
-    @value_chain_tracker = 'complete'
-    @finish_script_tracker = 'active'
     # TODO localização provisória do reindex
     # TODO Tornar isso um JOB
     Script.reindex

@@ -1,49 +1,23 @@
 <%= bootstrap_form_for (@script) do |f| %>
-    <% if @sub_action == 'create' %>
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Create Script</h2>
-            <%= render 'value_chains/process_tracker' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="pull-left">
-              <%= link_to contributor_members_path, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default' do %>
-                  <i class="fa fa-chevron-left"></i> Scripts
-              <% end %>
-            </div>
-            <div class="pull-right">
-              <%= f.button :submit, class: 'btn btn-default', name: "sub_action", value: "#{@sub_action}" do %>
-                  Next <i class="fa fa-chevron-right"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
-    <% else %>
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Edit Script</h2>
-          </div>
-        </div>
-        <%= errors_for(@script)  %>
-        <hr>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="pull-left">
-              <%= link_to contributor_members_path, :class => 'btn btn-default', data: {confirm: 'Are you sure?'} do %>
-                  <i class="fa fa-chevron-left"></i> Scripts
-              <% end %>
-              <%= f.button :submit, class: 'btn btn-default', name: "sub_action", value: "edit" do %>
-                  <i class="fa fa-floppy-o"></i> Save
-              <% end %>
-              <%= link_to 'Edit Additional Information', edit_additional_information_scripts_path(:id => @script.id), :class => 'btn btn-default' %>
-              <%= link_to 'Edit Value Chain', edit_build_value_chains_path(:id => @script.id), :class => 'btn btn-default' %>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'layouts/process_tracker' %>
+        <%= errors_for(@script) %>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pull-left">
+          <%= link_to contributor_members_path, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default' do %>
+              <i class="fa fa-chevron-left"></i> Scripts
+          <% end %>
+        </div>
+        <div class="pull-right">
+          <%= f.button :submit, class: 'btn btn-default' do %>
+              Next <i class="fa fa-chevron-right"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
     <br>
     <div class="row">
@@ -56,19 +30,8 @@
         <%= f.select :complexity, get_complexities, {prompt: "Please Select ..."}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
         <%= f.text_area :definition, :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
         <%= f.text_area :long_text, :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
-        <% if @sub_action == 'create' %>
-            <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
-            <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
-        <% else %>
-            <p>
-
-            <p><strong> PFD:</strong></p> <%= File.basename(@script.script_file.to_s) %></p>
-
-            <p>
-
-            <p><strong> Script:</strong></p> <%= File.basename(@script.pdf_file.to_s) %></p>
-        <% end %>
-
+        <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
+        <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

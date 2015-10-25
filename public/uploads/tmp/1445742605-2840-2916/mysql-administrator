@@ -1,0 +1,20 @@
+PRG="$0"
+
+# need this for relative symlinks
+while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=`dirname "$PRG"`"/$link"
+    fi
+done
+
+DIRNAME=`dirname $PRG`
+DIRNAME=`cd $DIRNAME/..; pwd`
+                                                                                                    
+export MA_DIR="$DIRNAME"
+$PRG-bin $*
+
+

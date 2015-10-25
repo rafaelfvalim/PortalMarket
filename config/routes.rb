@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :prices
   resources :statuses
-  resources :wizard_scripts do
+  resources :wizard_scripts, path:  "scripts/configure" do
     collection do
       get :classification
     end
@@ -31,14 +31,13 @@ Rails.application.routes.draw do
   resources :process_modules
   resources :scripts do
     collection do
-      get :additional_information
-      get :edit_additional_information
       get :roll_back_script
       get 'autocomplete_requeriment'
       get 'final_details'
       get 'autocomplete_related_script'
       get :autocomplete
       get :update_status
+      get 'edit_additional_information'
     end
   end
   resources :member_scripts

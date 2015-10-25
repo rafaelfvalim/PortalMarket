@@ -8,7 +8,7 @@
             <div class="progress-bar"></div>
           </div>
           <a href="#" class="bs-wizard-dot"></a>
-          <div class="bs-wizard-info text-center">Create Script</div>
+          <div class="bs-wizard-info text-center">Create</div>
           <!--</div>-->
       <% end %>
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step2 or 'disabled'}" do -%>
@@ -19,7 +19,7 @@
           </div>
           <a href="#" class="bs-wizard-dot"></a>
 
-          <div class="bs-wizard-info text-center">Additional Information</div>
+          <div class="bs-wizard-info text-center">Additional Data</div>
       <% end %>
       <!--</div>-->
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step3 or 'disabled'}" do -%>
@@ -30,7 +30,7 @@
           </div>
           <a href="#" class="bs-wizard-dot"></a>
 
-          <div class="bs-wizard-info text-center">Value Chain</div>
+          <div class="bs-wizard-info text-center">Classification</div>
           <!--</div>-->
       <% end %>
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@final or 'disabled'}" do -%>
@@ -41,7 +41,7 @@
           </div>
           <a href="#" class="bs-wizard-dot"></a>
 
-          <div class="bs-wizard-info text-center">Complete</div>
+          <div class="bs-wizard-info text-center">Final</div>
           <!--</div>-->
       <% end %>
     </div>

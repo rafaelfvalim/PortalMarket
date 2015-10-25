@@ -1,25 +1,20 @@
 class WizardScriptsController < ApplicationController
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :final, :edit
+  steps :additional_data, :value_chain, :final
   #before_action :set_script, only: [:show, :edit, :update, :destroy]
-
 
   def show
     set_tracker_step(step)
+    p step
     case step
-      when :step1 then
-        @script = Script.new
-      when :step2 then
+      when :additional_data then
         set_script
-      when :step3 then
+      when :value_chain then
         set_script
         @value_chain = ValueChain.new
         @process_modules = ProcessModule.where('referrer_process_module_id is null')
       when :final then
         set_script
-      when :edit then
-        set_script
-
     end
     render_wizard
   end
@@ -34,32 +29,9 @@ class WizardScriptsController < ApplicationController
   end
 
   def classification
+    p 'auiiiiii'
     @process_module = ProcessModule.find(params[:process_id])
     @script_id = params[:script_id]
-  end
-
-  private
-
-  def set_tracker_step(action)
-    case action
-      when :step1 then
-        @step1 = 'active'
-      when :edit then
-        @step1 = 'active'
-      when :step2 then
-        @step1 = 'complete'
-        @step2 = 'active'
-      when :step3 then
-        @step1 = 'complete'
-        @step2 = 'complete'
-        @step3 = 'active'
-      when :final then
-        @step1 = 'complete'
-        @step2 = 'complete'
-        @step3 = 'complete'
-        @final = 'active'
-    end
-
   end
 
   private
