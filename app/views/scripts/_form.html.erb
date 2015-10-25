@@ -31,7 +31,9 @@
         <%= f.text_area :definition, :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
         <%= f.text_area :long_text, :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
         <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
+        <%= render 'upload_scrip' %>
         <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
+        <%= render 'upload_pdf' %>
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

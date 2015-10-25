@@ -1,0 +1,5 @@
+<div>
+  <% if @script.pdf_file.present? %>
+      <p><label>PDF:</label> <%= File.basename(@script.pdf_file.to_s) %></p>
+  <% end %>
+</div>

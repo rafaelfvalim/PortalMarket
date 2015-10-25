@@ -1,5 +1,11 @@
 class Script < ActiveRecord::Base
   searchkick
+
+  mount_uploader :pdf_file, PdfUploader
+  mount_uploader :script_file, ScriptUploader
+  validates_presence_of :pdf_file
+  validates_presence_of :script_file
+
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 50}, presence: true
   validates :platform, presence: true
@@ -8,8 +14,6 @@ class Script < ActiveRecord::Base
   validates :industry, presence: true
   validates :solution_type_id, presence: true
   validates :complexity, presence: true
-  validates :script_file, presence: true
-  validates :pdf_file, presence: true
 
   scope :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
@@ -35,8 +39,14 @@ class Script < ActiveRecord::Base
   accepts_nested_attributes_for :checking_account
   accepts_nested_attributes_for :value_chains
 
-  mount_uploader :pdf_file, PdfUploader
-  mount_uploader :script_file, ScriptUploader
+
+  def script_file_present?
+    self.script_file.present?
+  end
+
+  def pdf_file_present?
+    self.pdf_file.present?
+  end
 
   def search_data
     attributes.merge(
