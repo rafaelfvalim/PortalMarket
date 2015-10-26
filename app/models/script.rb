@@ -40,14 +40,6 @@ class Script < ActiveRecord::Base
   accepts_nested_attributes_for :value_chains
 
 
-  def script_file_present?
-    self.script_file.present?
-  end
-
-  def pdf_file_present?
-    self.pdf_file.present?
-  end
-
   def search_data
     attributes.merge(
         process_module_id: process_modules.map(&:id),

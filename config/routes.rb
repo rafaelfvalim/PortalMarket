@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   resources :messages
   resources :prices
   resources :statuses
-  resources :wizard_scripts, path:  "scripts/configure" do
+  resources :wizard_scripts do
     collection do
       get :classification
+      post :create_requeriement
+      post :create_related
+      get :destroy_requeriement
+      get :destroy_related
     end
   end
   resources :buys do
@@ -32,12 +36,12 @@ Rails.application.routes.draw do
   resources :scripts do
     collection do
       get :roll_back_script
-      get 'autocomplete_requeriment'
-      get 'final_details'
-      get 'autocomplete_related_script'
+      get :autocomplete_requeriment
+      get :final_details
+      get :autocomplete_related_script
       get :autocomplete
       get :update_status
-      get 'edit_additional_information'
+      get :edit_additional_information
     end
   end
   resources :member_scripts
@@ -62,7 +66,7 @@ Rails.application.routes.draw do
   #match 'value_chains/classification/:id', controller: 'value_chains', action: 'classification', via: :get, as: :process_value_chain
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
   match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain
-  match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
+  # match 'requirements/destroy_ajax/:id', controller: 'requirements', action: 'destroy_ajax', via: :get
   match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
   match 'value_chains/build/:id', controller: 'value_chains', action: 'build', via: :get, as: :build_value_chain
   # match 'value_chains/create_ajax/:process_module_id/:script_id/:action_veb', controller: 'value_chains', action: 'create_ajax', via: :get, as: :create_ajax_value_chain

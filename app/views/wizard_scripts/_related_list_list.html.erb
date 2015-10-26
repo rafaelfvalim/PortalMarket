@@ -1,8 +1,0 @@
-<% Script.includes(:related_scripts).where('id = ?', @script.id).each do |f| %>
-    <% f.related_scripts.each do |related_script| %>
-        <tr id="<%= related_script.id %>">
-          <td class="col-xs-11" ><%= related_script.script.description %></td>
-          <td class="td_class_x1"><%= link_to "Remove", {controller: "related_scripts", action: "destroy_ajax", id: related_script.id}, class: "btn btn-primary btn-xs", :remote => true, :onclick => "remove_table_row(this)" %></td>
-        </tr>
-    <% end %>
-<% end %>

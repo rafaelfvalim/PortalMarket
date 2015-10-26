@@ -26,12 +26,14 @@ class RequirementsController < ApplicationController
   # POST /requirements.json
   def create
     @requirement = Requirement.new(requirement_params)
-
+    p 'debug:: create requeriement'
     respond_to do |format|
       if @requirement.save
-        app_custom_routes format, request.referrer, @requirement
+        # app_custom_routes format, request.referrer, @requirement
+        format.js { render "wizard_scripts/form_additional_information" }
+        format.html {}
       else
-        app_custom_routes_errors format, request.referrer, @requirement
+        # app_custom_routes_errors format, request.referrer, @requirement
       end
     end
   end
@@ -70,15 +72,6 @@ class RequirementsController < ApplicationController
         app_custom_routes format, request.referrer, @requirement
       end
     end
-  end
-
-  def destroy_ajax
-    @requirement = Requirement.where(id: params[:id]).first
-    @requirement.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
-
   end
 
   private

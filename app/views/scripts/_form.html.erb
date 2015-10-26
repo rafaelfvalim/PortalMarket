@@ -1,4 +1,4 @@
-<%= bootstrap_form_for (@script) do |f| %>
+<%= bootstrap_form_for (@script), html: { multipart: true } do |f| %>
     <div class="row">
       <div class="col-md-12">
         <%= render 'layouts/process_tracker' %>
@@ -30,10 +30,13 @@
         <%= f.select :complexity, get_complexities, {prompt: "Please Select ..."}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
         <%= f.text_area :definition, :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
         <%= f.text_area :long_text, :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
+        <!--Upload de arquivos -->
         <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
         <%= render 'upload_scrip' %>
+
         <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
         <%= render 'upload_pdf' %>
+
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

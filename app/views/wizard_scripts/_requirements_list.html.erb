@@ -1,9 +1,17 @@
-<% Script.includes(:requirements).where('id = ?', @script.id).each do |f| %>
-    <% f.requirements.each do |requirement| %>
-        <tr id=<%= requirement.id %>>
-          <td class="col-xs-11"><%= requirement.requirement %> </td>
-          <td class="td_class_x1"><%= link_to "Remove", {controller: "requirements", action: "destroy_ajax", id: requirement.id}, class: "btn btn-primary btn-xs", :onclick => "remove_table_row(this)", :remote => true %></td>
-        </tr>
+<div id="requeriments_list" class="col-lg-10">
+  <table class="table table-bordered table-striped" id="requeriments_table">
+    <thead>
+    <th class="col-sm-4" colspan="2">Requirement</th>
+    </thead>
+    <tbody>
+    <% Script.includes(:requirements).where('id = ?', script.id).each do |f| %>
+        <% f.requirements.each do |requirement| %>
+            <tr id=<%= requirement.id %>>
+              <td class="col-xs-11"><%= requirement.requirement %> </td>
+              <td class="td_class_x1"><%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_requeriement, requirement_id: requirement.id, script_id: script.id}, class: "btn btn-primary btn-xs", remote: true %></td>
+            </tr>
+        <% end %>
     <% end %>
-<% end %>
-
+    </tbody>
+  </table>
+</div>

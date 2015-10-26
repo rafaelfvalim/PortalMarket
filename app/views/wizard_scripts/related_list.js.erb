@@ -1,0 +1,2 @@
+$("#related_script").val('');
+$('#related_script_table').html("<%= escape_javascript(render partial: "wizard_scripts/related_list", locals: { script: @script}) %>");

@@ -21,53 +21,40 @@
     <div class="row">
       <div class="col-lg-7">
         <label>Requirements</label>
-
-        <div class="row">
-          <div id="requirements" class="col-lg-10">
-            <%= text_field_tag :query, params[:query], id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....', :onclick => "set_message_info('#{set_info_script_messages(:requirements)}')" %>
-          </div>
-          <div class="col-lg-1">
-            <%= link_to_add "Add", "add_requeriment" %>
-          </div>
-          <%= hidden_field_tag 'script_id', @script.id %>
-          <%= hidden_field_tag 'script_id_requirement' %>
-        </div>
-        <div class="row">
-          <div id="requeriments_list" class="col-lg-10">
-            <table class="table table-bordered table-striped" id="requeriments_table">
-              <thead>
-              <th class="col-sm-4" colspan="2">Requirement</th>
-              </thead>
-              <tbody>
-              <%= render partial: 'requirements_list' %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div>
-          <div class="row">
-            <div id="related_scripts" class="col-lg-10">
-              <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....', :onclick => "set_message_info('#{set_info_script_messages(:related_scripts)}')" %>
+        <%= form_tag create_requeriement_wizard_scripts_path, method: :post, remote: true do %>
+            <div class="row">
+              <div id="requirements" class="col-lg-10">
+                <%= text_field_tag :query, params[:query], name: 'requirement[requirement]', id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....', :onclick => "set_message_info('#{set_info_script_messages(:requirements)}')" %>
+              </div>
+              <div class="col-lg-1">
+                <!--<%= link_to_add "Add", "add_requeriment" %>-->
+                <%= submit_tag 'Add' %>
+              </div>
+              <%= hidden_field_tag 'requirement[script_id]', @script.id %>
+              <%= hidden_field_tag 'requirement[script_id_requirement]' %>
             </div>
-            <div class="col-lg-1">
-              <%= link_to_add "Add", "add_related_script" %>
+            <div class="row">
+              <%= render partial: 'wizard_scripts/requirements_list', locals: {script: @script} %>
             </div>
-            <%= hidden_field_tag 'script_id', @script.id %>
-            <%= hidden_field_tag 'related_script_id' %>
-          </div>
-        </div>
-        <div class="row">
-          <div id="related_script_list" class="col-lg-10">
-            <table class="table table-bordered table-striped" id="related_script_table">
-              <thead>
-              <th class="col-sm-4" colspan="2">Related Scripts</th>
-              </thead>
-              <tbody>
-              <%= render 'related_list_list' %>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <% end %>
+        <%= form_tag create_related_wizard_scripts_path, method: :post, remote: true do %>
+            <div>
+              <div class="row">
+                <div id="related_scripts" class="col-lg-10">
+                  <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....', :onclick => "set_message_info('#{set_info_script_messages(:related_scripts)}')" %>
+                </div>
+                <div class="col-lg-1">
+                  <!--<%= link_to_add "Add", "add_related_script" %>-->
+                  <%= submit_tag 'Add' %>
+                </div>
+                <%= hidden_field_tag 'related_script[script_id]', @script.id %>
+                <%= hidden_field_tag 'related_script[related_script_id]' %>
+              </div>
+            </div>
+            <div class="row">
+              <%= render partial: 'wizard_scripts/related_list', locals: {script: @script} %>
+            </div>
+        <% end %>
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

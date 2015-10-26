@@ -2,32 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-#  Remover rows jsquery
-  @remove_table_row = (tr) ->
-    $(tr).closest("tr").remove();
-  #$('#requeriments_table tr:eq('+id+')').remove();
-
-  # Adiociona requerimentos
-  $('#add_requeriment').click ->
-    requeriment = $("#requeriment").val();
-    script_id = $("#script_id").val();
-    script_id_requirement = $("#script_id_requirement").val();
-    if requeriment != ''
-      $.ajax
-        type: 'POST'
-        url: '/requirements'
-        data: {
-          requirement: {script_id: script_id, requirement: requeriment, script_id_requirement: script_id_requirement}
-        },
-        success: (data) ->
-          remove_button = '<a class="btn btn-primary btn-xs" onclick="remove_table_row(this)" data-remote="true" href="/requirements/destroy_ajax/' + data.id + '">Remove</a>';
-          table_row = "<tr><td class='col-xs-11'>" + requeriment + "</td><td  class='td_class_x1'>" + remove_button + "</td> </tr>";
-          $("#requeriment").val('');
-          $("#requeriments_list table").prepend(table_row);
-        errors: (data) ->
-          alert data
-
-  #  Autocomplete
+#  Autocomplete
   $('#requeriment').autocomplete
     source: (request, response) ->
       $.ajax(
@@ -36,36 +11,17 @@ $ ->
         data: request,
         success: (data) ->
           response $.map(data, (script) ->
-            label: script.description
-            value: script.description
+            label: script.name
+            value: script.name
             id: script.id
           )
       )
     select: (event, ui) ->
-      $("#script_id_requirement").val(ui.item.id);
+      $("#requirement_script_id_requirement").val(ui.item.id);
 
     change: (event, ui) ->
       if ui.item == null
-        $("#script_id_requirement").val('');
-
-
-  # Adicionar related scripts ajax
-  $('#add_related_script').click ->
-    related_script = $("#related_script").val();
-    related_script_id = $("#related_script_id").val();
-    script_id = $("#script_id").val();
-    if related_script != null
-      $.ajax
-        type: 'POST'
-        url: '/related_scripts'
-        data: {related_script: {script_id: script_id, related_script_id: related_script_id}},
-        success: (data) ->
-          remove_button = '<a class="btn btn-primary btn-xs" onclick="remove_table_row(this)" data-remote="true" href="/related_scripts/destroy_ajax/' + data.id + '">Remove</a>';
-          table_row = "<tr><td class='col-xs-11'>" + data.description + "</td><td class='td_class_x1'>" + remove_button + "</td> </tr>";
-          $("#related_script").val('');
-          $("#related_script_list table ").append(table_row);
-        errors: (data) ->
-          alert data
+        $("#requirement_script_id_requirement").val('');
 
 
   defaultVal = '';
@@ -79,20 +35,20 @@ $ ->
         data: request,
         success: (data) ->
           response $.map(data, (script) ->
-            label: script.description
-            value: script.description
+            label: script.name
+            value: script.name
             id: script.id
           )
       )
     change: (event, ui) ->
       if ui.item == null
-        $("#related_script_id").val('');
-        $("#related_script").val('');
+        $("#related_script_script_id").val('');
+        $("#related_script_related_script_id").val('');
         alert 'Please select a value from the list'
 
     select: (event, ui) ->
-      $("#related_script_id").val(ui.item.id);
-
+      $("#related_script_related_script_id").val(ui.item.id);
+@requirement
 #    focus: (event , ui) ->
 #      console.log(ui)
 #      if ui != null
