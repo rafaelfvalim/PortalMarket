@@ -24,6 +24,14 @@ class InvoicesController < ApplicationController
   # POST /invoices
   # POST /invoices.json
   def create
+    carts = params[:carts]
+    total_value = params[:total_value]
+    carts.each do |cart|
+      @invoice = Invoice.new
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email'}
+      @invoice.save
+    end
+
     @invoice = Invoice.new(invoice_params)
     respond_to do |format|
       if @invoice.save
@@ -61,13 +69,14 @@ class InvoicesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invoice
-      @invoice = Invoice.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invoice
+    @invoice = Invoice.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def invoice_params
-      params.require(:invoice).permit(:id, :user_id, :script_id, :value, :invoice_status_id, :notes, :pay_date, :ship_date, :shipped_to, :shipped_via)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def invoice_params
+    params.require(:invoice).permit(:id, :user_id, :script_id, :value, :invoice_status_id, :notes, :pay_date, :ship_date, :shipped_to, :shipped_via)
+  end
+
 end

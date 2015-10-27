@@ -10,7 +10,7 @@
       </div>
     </div>
     <hr>
-    <%= form_tag invoice_path, id: 'invoice_create', method: :post do %>
+    <%= form_tag controller: :invoices, action: :create do %>
         <div class="row-fluid">
           <div class="col-md-10">
             <%= link_to searches_path, class: 'btn btn-default' do %>
@@ -22,10 +22,9 @@
             <% end %>
           </div>
           <div class="col-md-2">
-            <h5><b>Total: <%= get_total(@carts) %></b></h5>
+            <h5><b>Total: <%=  get_total(@carts) %></b></h5>
           </div>
           <br>
-
           <div class="row">
             <div class="col-md-12">
               <table class="table table-striped">
@@ -44,6 +43,7 @@
                       <td><%= cart.script.name %></td>
                       <td><%= cart.price.value %></td>
                       <td><%= link_to 'Remove', cart, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %></td>
+                      <%= hidden_field_tag cart.script.id %>
                     </tr>
                 <% end %>
                 </tbody>
