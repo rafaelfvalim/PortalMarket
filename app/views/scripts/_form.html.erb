@@ -1,8 +1,8 @@
-<%= bootstrap_form_for (@script), html: { multipart: true } do |f| %>
+<%= bootstrap_form_for(@script, label_errors: true, :html => {:multipart => true}) do |f| %>
     <div class="row">
       <div class="col-md-12">
         <%= render 'layouts/process_tracker' %>
-        <%= errors_for(@script) %>
+        <!--<%= errors_for(@script) %>-->
       </div>
     </div>
     <div class="row">
@@ -22,21 +22,25 @@
     <br>
     <div class="row">
       <div class="col-lg-7">
-        <%= f.text_field :name, :onclick => "set_message_info('#{set_info_script_messages(:name)}')" %>
-        <%= f.text_field :description, :onclick => "set_message_info('#{set_info_script_messages(:description)}')" %>
-        <%= f.select :platform, get_platforms, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:platform)}')" %>
-        <%= f.select :industry, get_industries, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:industry)}')" %>
-        <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ..."}, :onclick => "set_message_info('#{set_info_script_messages(:solution_type_id)}')" %>
+        <%= f.text_field :name, label: "Name:", :onclick => "set_message_info('#{set_info_script_messages(:name)}')" %>
+        <%= f.text_field :description, label: "Description:", :onclick => "set_message_info('#{set_info_script_messages(:description)}')" %>
+        <%= f.select :platform, get_platforms, {prompt: "Please Select ..."}, {label: "Choose platform:"} %>
+        <%= f.select :industry, get_industries, {prompt: "Please Select ..."}, {label: "Choose Industry:"} %>
+        <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ..."}, {label: "Choose Solution Type:"} %>
         <%= f.select :complexity, get_complexities, {prompt: "Please Select ..."}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
-        <%= f.text_area :definition, :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
-        <%= f.text_area :long_text, :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
+        <%= f.text_area :definition, label: "Script definition:", :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
+        <%= f.text_area :long_text, label: "Script long description:", :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
         <!--Upload de arquivos -->
-        <%= f.file_field :script_file, :class => 'form-control', :data => {:info => "Carrege o arquivo Script"}, :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
-        <%= render 'upload_scrip' %>
-
-        <%= f.file_field :pdf_file, :class => 'form-control', :onchange => "set_message_info('#{set_info_script_messages(:name)}')" %>
-        <%= render 'upload_pdf' %>
-
+            <%= f.file_field :script_file, label: "Upload Script file:", :onclick => "set_message_info('#{set_info_script_messages(:script_file)}')" %>
+            <%= f.hidden_field :script_file_cache %>
+            <div id="upload_script">
+              <%= render partial: 'scripts/upload_scrip', script: @script %>
+            </div>
+            <%= f.file_field :pdf_file, label: "Upload PDF paper:", :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
+            <%= f.hidden_field :pdf_file_cache %>
+            <div id="upload_pdf">
+              <%= render partial: 'scripts/upload_pdf', script: @script %>
+            </div>
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

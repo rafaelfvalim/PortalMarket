@@ -1,5 +1,8 @@
 <div>
-  <% if @script.pdf_file.present? %>
-      <p><label> <%= File.basename(@script.pdf_file.to_s) %> </label></p>
+  <% if @script.script_file.present? %>
+      <p><label> <%= File.basename(@script.pdf_file.to_s) %> </label>
+        <%= link_to remove_file_pdf_scripts_path(id: @script.id), class: "btn btn-danger", :remote => true do %>
+            <i class="fa fa-trash-o"></i>
+        <% end %></p>
   <% end %>
 </div>

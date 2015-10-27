@@ -40,7 +40,7 @@ $ ->
             id: script.id
           )
       )
-    change: (event, ui) ->
+    chaform-controlnge: (event, ui) ->
       if ui.item == null
         $("#related_script_script_id").val('');
         $("#related_script_related_script_id").val('');
@@ -48,7 +48,7 @@ $ ->
 
     select: (event, ui) ->
       $("#related_script_related_script_id").val(ui.item.id);
-@requirement
+
 #    focus: (event , ui) ->
 #      console.log(ui)
 #      if ui != null

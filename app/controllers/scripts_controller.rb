@@ -1,5 +1,5 @@
 class ScriptsController < ApplicationController
-  before_action :set_script, only: [:show, :edit, :update, :destroy]
+  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf]
 
   # GET /scripts
   # GET /scripts.json
@@ -49,12 +49,32 @@ class ScriptsController < ApplicationController
       if @script.save
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member_id, percentual: 0, participation: 0)
         @member_script.save
-        format.html { redirect_to wizard_scripts_path(id:'additional_data' , script_id: @script.id) }
+        format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
       else
         flash.now[:danger] = "Script can not be saved, check the fields!"
         set_tracker_step(:create)
         format.html { render :new }
         format.json { render json: @script.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def remove_file_script
+    @script.remove_script_file!
+    respond_to do |format|
+      if @script.reload
+        format.js { render "upload_scrip" }
+        format.html {}
+      end
+    end
+  end
+
+  def remove_file_pdf
+    @script.remove_pdf_file!
+    respond_to do |format|
+      if @script.reload
+        format.js { render "upload_pdf" }
+        format.html {}
       end
     end
   end
@@ -74,14 +94,15 @@ class ScriptsController < ApplicationController
   def update
     respond_to do |format|
       if @script.update(script_params)
+        set_tracker_step(:create)
         format.html { redirect_to wizard_script_path(id: :additional_data, script_id: @script.id) }
       else
+        set_tracker_step(:create)
         format.html { render :edit }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end
     end
   end
-
 
   # DELETE /scripts/1
   # DELETE /scripts/1.json
@@ -165,7 +186,7 @@ class ScriptsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def script_params
-    params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, requirements_attributes: [:id, :script_id, :requirement])
+    params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, :script_file_cache, :pdf_file_cache, requirements_attributes: [:id, :script_id, :requirement])
   end
 
 end

@@ -3,9 +3,9 @@ class Script < ActiveRecord::Base
 
   mount_uploader :pdf_file, PdfUploader
   mount_uploader :script_file, ScriptUploader
-  validates_presence_of :pdf_file
-  validates_presence_of :script_file
 
+  validate :check_presence_of_script
+  validate :check_presence_of_pdf
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 50}, presence: true
   validates :platform, presence: true
@@ -45,6 +45,14 @@ class Script < ActiveRecord::Base
         process_module_id: process_modules.map(&:id),
         process_module_description: process_modules.map(&:description)
     )
+  end
+
+  def check_presence_of_script
+    errors.add(:script_file, "select at least one") if self.script_file.size <= 0
+  end
+
+  def check_presence_of_pdf
+    errors.add(:pdf_file, "select at least one") if self.pdf_file.size <= 0
   end
 
 end

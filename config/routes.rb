@@ -42,6 +42,8 @@ Rails.application.routes.draw do
       get :autocomplete
       get :update_status
       get :edit_additional_information
+      get :remove_file_script
+      get :remove_file_pdf
     end
   end
   resources :member_scripts

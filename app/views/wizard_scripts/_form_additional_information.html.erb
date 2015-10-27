@@ -27,7 +27,6 @@
                 <%= text_field_tag :query, params[:query], name: 'requirement[requirement]', id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....', :onclick => "set_message_info('#{set_info_script_messages(:requirements)}')" %>
               </div>
               <div class="col-lg-1">
-                <!--<%= link_to_add "Add", "add_requeriment" %>-->
                 <%= submit_tag 'Add' %>
               </div>
               <%= hidden_field_tag 'requirement[script_id]', @script.id %>
@@ -44,7 +43,6 @@
                   <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....', :onclick => "set_message_info('#{set_info_script_messages(:related_scripts)}')" %>
                 </div>
                 <div class="col-lg-1">
-                  <!--<%= link_to_add "Add", "add_related_script" %>-->
                   <%= submit_tag 'Add' %>
                 </div>
                 <%= hidden_field_tag 'related_script[script_id]', @script.id %>

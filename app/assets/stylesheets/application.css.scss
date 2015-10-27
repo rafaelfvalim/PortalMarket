@@ -21,3 +21,6 @@
   pointer-events: none;
   cursor: default;
 }
+label.required:after {
+  content:" *";
+}
