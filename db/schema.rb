@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018163529) do
+ActiveRecord::Schema.define(version: 20151027200208) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -68,6 +68,33 @@ ActiveRecord::Schema.define(version: 20151018163529) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "invoice_statuses", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "script_id",         limit: 4
+    t.decimal  "value",                           precision: 10
+    t.integer  "invoice_status_id", limit: 4
+    t.text     "notes",             limit: 65535
+    t.datetime "invoice_date"
+    t.datetime "pay_date"
+    t.datetime "ship_date"
+    t.string   "shipped_to",        limit: 255
+    t.string   "shipped_via",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "pay_method_id",     limit: 4,                    null: false
+  end
+
+  add_index "invoices", ["invoice_status_id"], name: "fk_rails_9ac2ae7e8e", using: :btree
+  add_index "invoices", ["pay_method_id"], name: "fk_rails_c68b5c4063", using: :btree
+  add_index "invoices", ["script_id"], name: "fk_rails_6cb6b0f3a2", using: :btree
+  add_index "invoices", ["user_id"], name: "fk_rails_3d1522a0d8", using: :btree
+
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
     t.integer  "script_id",     limit: 4
@@ -105,6 +132,13 @@ ActiveRecord::Schema.define(version: 20151018163529) do
 
   add_index "messages", ["message_to"], name: "fk_rails_00179f15ce", using: :btree
   add_index "messages", ["user_id"], name: "fk_rails_273a25a7a6", using: :btree
+
+  create_table "pay_methods", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "notes",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "prices", force: :cascade do |t|
     t.integer  "script_id",     limit: 4
@@ -234,6 +268,10 @@ ActiveRecord::Schema.define(version: 20151018163529) do
   add_foreign_key "checking_accounts", "currencies"
   add_foreign_key "checking_accounts", "members"
   add_foreign_key "checking_accounts", "scripts"
+  add_foreign_key "invoices", "invoice_statuses"
+  add_foreign_key "invoices", "pay_methods"
+  add_foreign_key "invoices", "scripts"
+  add_foreign_key "invoices", "users"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
   add_foreign_key "messages", "users"

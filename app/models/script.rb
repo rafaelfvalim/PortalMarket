@@ -33,6 +33,8 @@ class Script < ActiveRecord::Base
 
   belongs_to :solution_type
   belongs_to :status
+  belongs_to :invoice
+
   accepts_nested_attributes_for :requirements
   accepts_nested_attributes_for :member_scripts
   accepts_nested_attributes_for :related_scripts

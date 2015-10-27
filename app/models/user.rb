@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   belongs_to :member
   has_many :messages
+  belongs_to :invoice
 
   def set_default_role
     self.role ||= :user
