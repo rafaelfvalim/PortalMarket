@@ -97,14 +97,20 @@
               <% end %>
             </ul>
             </p>
-        <% end %>
+        <% end %>POST
         <br>
       </div>
       <div class="col-md-12 text-center">
-        <hr>
-        <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
-        <%= link_to  '#', class: 'btn btn-default', id: 'add_carts' do %>
-            <i class="fa fa-cart-plus"></i> Add To Cart
+        <%= form_tag('/carts', method: :post, remote: true) do %>
+            <%= hidden_field_tag 'cart[member_id]', current_user.member_id %>
+            <%= hidden_field_tag 'cart[script_id]', @script.id %>
+            <%= hidden_field_tag 'cart[price_id]', @price.id %>
+            <%= hidden_field_tag 'cart[full_sale]', false %>
+            <hr>
+            <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
+            <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_invoice",  data: { confirm: 'Add item to cart?' }) do %>
+                <i class="fa fa-cart-plus"></i> Add To Cart
+            <% end %>
         <% end %>
       </div>
     </div>

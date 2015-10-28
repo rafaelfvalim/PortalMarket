@@ -4,12 +4,14 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @carts  = Cart.where(id: flash[:cart_ids])
+    # @invoices = Invoice.all
   end
 
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+
   end
 
   # GET /invoices/new
@@ -24,18 +26,23 @@ class InvoicesController < ApplicationController
   # POST /invoices
   # POST /invoices.json
   def create
-    carts = params[:carts]
-    total_value = params[:total_value]
-    carts.each do |cart|
+    @invoices ||= Array.new
+    @cart_ids = params[:cart]
+    @carts  = Cart.where(id: @cart_ids)
+
+    @carts.each do |cart|
       @invoice = Invoice.new
-      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email'}
-      @invoice.save
+      @checking_account = CheckingAccount.new
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1}
+      @invoices.push(@invoice)
+      cart.update_attribute(:full_sale,true)
+      InvoiceMail.invoice_mail(current_user).deliver_now
     end
 
-    @invoice = Invoice.new(invoice_params)
     respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+      if @invoices.each(&:save)
+        flash[:cart_ids] = @cart_ids
+        format.html { redirect_to invoices_path }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new }
