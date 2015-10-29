@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @carts  = Cart.where(id: flash[:cart_ids])
+    @carts = Cart.where(id: flash[:cart_ids])
     # @invoices = Invoice.all
   end
 
@@ -28,15 +28,15 @@ class InvoicesController < ApplicationController
   def create
     @invoices ||= Array.new
     @cart_ids = params[:cart]
-    @carts  = Cart.where(id: @cart_ids)
+    @carts = Cart.where(id: @cart_ids)
 
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
       @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1}
       @invoices.push(@invoice)
-      cart.update_attribute(:full_sale,true)
-      InvoiceMail.invoice_mail(current_user).deliver_now
+      cart.update_attribute(:full_sale, true)
+      InvoiceMail.invoice_mail(current_user, Script.find(cart.script_id)).deliver_now
     end
 
     respond_to do |format|

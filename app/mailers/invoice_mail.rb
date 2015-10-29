@@ -1,9 +1,10 @@
 class InvoiceMail < ApplicationMailer
-  default from: "from@example.com"
+  default from: "klustter.codestore@gilioconsultoria.com"
 
-  def invoice_mail(user)
+  def invoice_mail(user, script)
     @user = user
-    mail(to: @user.email, subject: 'Sample Email')
+    @script = script
+    mail(to: @user.email, subject: 'Klustter Code Store')
   end
 
 end

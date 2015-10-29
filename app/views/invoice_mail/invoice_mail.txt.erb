@@ -1,2 +1,11 @@
-Hi <%= @user.name %>
-Sample mail sent using smtp.
+<%= @user.name %> segue o link para download do script: <%= @script.name %>
+  https://www.google.com.br/
+  Definição:  <%= @script.definition %>
+  Descrição:  <%= @script.long_text %>
+  Plataforma: <%= @script.platform %>
+  <% @script.requirements.each do |requirement| %>
+  Requerimentos:  <%= requirement.requirement %>
+  <% end %>
+  <% @script.related_scripts.each do |related_script| %>
+  Script Relacionados: <%= related_script.script.description %>
+  <% end %>

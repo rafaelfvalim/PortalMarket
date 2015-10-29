@@ -31,13 +31,13 @@ ready = function() {
 
 $(document).ready(ready);
 
-
-$(function () {
-    var faye_client = new Faye.Client('http://localhost:9292/faye');
-    faye_client.subscribe('/chat', function (data) {
-        eval(data);
-    });
-});
+//
+//$(function () {
+//    var faye_client = new Faye.Client('http://localhost:9292/faye');
+//    faye_client.subscribe('/chat', function (data) {
+//        eval(data);
+//    });
+//});
 
 var scrollPosition;
 scrollPosition = function (container, scrollTo) {
