@@ -40,7 +40,7 @@ $ ->
             id: script.id
           )
       )
-    chaform-controlnge: (event, ui) ->
+    change: (event, ui) ->
       if ui.item == null
         $("#related_script_script_id").val('');
         $("#related_script_related_script_id").val('');

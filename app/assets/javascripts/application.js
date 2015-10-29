@@ -23,6 +23,7 @@
 
 var ready;
 ready = function() {
+
     $(".alert").delay(4000).slideUp(200, function() {
         $(this).alert('close');
     });
@@ -66,9 +67,6 @@ set_message_info = function (e) {
     $("#info-message p").text();
     $("#info-message p").text(e);
 }
-
-
-
 
 
 
