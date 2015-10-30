@@ -27,7 +27,7 @@ module ValueChainsHelper
     return process_modules
   end
 
-  def build_list_chain(process_array, script_id)
+  def build_list_chain(process_array, script_id, button_remove = true, clazz = "breadcrumb" )
     line = ''
     chield_process = nil
     process_array.each_with_index do |process, index|
@@ -41,10 +41,12 @@ module ValueChainsHelper
       end
     end
     value_chain = ValueChain.find_by(process_module_id: chield_process.id, script_id: script_id)
-    content_tag(:ul, class: "breadcrumb", id: chield_process.id) do
+    content_tag(:ul, class: clazz, id: chield_process.id) do
       concat content_tag(:li, line)
-      concat ' - '
-      concat link_to 'Remove', value_chain, method: :delete, data: {confirm: 'Are you sure?'}
+      if button_remove
+        concat ' - '
+        concat link_to 'Remove', value_chain, method: :delete, data: {confirm: 'Are you sure?'}
+      end
       #, onclick: "$(this).one('ajax:beforeSend',function(e) { $('##{chield_process.id}').remove();});"
     end
   end

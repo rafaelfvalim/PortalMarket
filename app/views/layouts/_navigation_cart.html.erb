@@ -1,7 +1,7 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <span class="badge">
-              <% carts = Cart.where('member_id = ? and full_sale = false', current_user.member_id) %>
-              <%= carts.size %>
+              <% @carts = Cart.where('member_id = ? and full_sale = false', current_user.member_id) %>
+              <%= @carts.size %>
             </span>
   <i class="fa fa-shopping-cart fa-fw"></i>
   <i class="fa fa-caret-down"></i>

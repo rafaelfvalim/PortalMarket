@@ -27,6 +27,8 @@ gem 'bootstrap-typeahead-rails'
 gem 'acts_as_shopping_cart', '~> 0.2.1'
 # wicked wizard
 gem 'wicked'
+# pdfobject-rails
+gem 'pdfobject-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

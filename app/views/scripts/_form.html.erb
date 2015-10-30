@@ -31,16 +31,16 @@
         <%= f.text_area :definition, label: "Script definition:", :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
         <%= f.text_area :long_text, label: "Script long description:", :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
         <!--Upload de arquivos -->
-            <%= f.file_field :script_file, label: "Upload Script file:", :onclick => "set_message_info('#{set_info_script_messages(:script_file)}')" %>
-            <%= f.hidden_field :script_file_cache %>
-            <div id="upload_script">
-              <%= render partial: 'scripts/upload_scrip', script: @script %>
-            </div>
-            <%= f.file_field :pdf_file, label: "Upload PDF paper:", :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
-            <%= f.hidden_field :pdf_file_cache %>
-            <div id="upload_pdf">
-              <%= render partial: 'scripts/upload_pdf', script: @script %>
-            </div>
+        <%= f.file_field :script_file, label: "Upload .edy file:", :onclick => "set_message_info('#{set_info_script_messages(:script_file)}')" %>
+        <%= f.hidden_field :script_file_cache %>
+        <div id="upload_script">
+          <%= render partial: 'scripts/upload_scrip', script: @script %>
+        </div>
+        <%= f.file_field :pdf_file, label: "Upload .pdf paper:", :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
+        <%= f.hidden_field :pdf_file_cache %>
+        <div id="upload_pdf">
+          <%= render partial: 'scripts/upload_pdf', script: @script %>
+        </div>
       </div>
       <div class="col-lg-5" id="info-message">
         <fieldset class="scheduler-border">

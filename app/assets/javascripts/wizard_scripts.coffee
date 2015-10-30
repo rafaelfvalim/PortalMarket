@@ -94,9 +94,9 @@ clear_chain = (selected) ->
 
 $ ->
   if $(".breadcrumb").length == 0
-    $(".badge").text(0)
+    $("#process_badge").text(0)
   else
-    $(".badge").text($(".breadcrumb").length)
+    $("#process_badge").text($(".breadcrumb").length)
 
   if valueChainStep == StatusEnum.START
     process_call_ajax($("#process_id").val())

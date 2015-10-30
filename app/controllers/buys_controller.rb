@@ -4,13 +4,11 @@ class BuysController < ApplicationController
   # GET /buys
   # GET /buys.json
   def index
-
   end
 
   # GET /buys/1
   # GET /buys/1.json
   def show
-
   end
 
   def show_product
@@ -19,6 +17,7 @@ class BuysController < ApplicationController
     gon.script_id = @script.id
     gon.price_id = @price.id
     gon.member_id =  current_user.member_id
+    gon.pdf_file = @script.pdf_file
   end
 
   # GET /buys/new
@@ -32,7 +31,6 @@ class BuysController < ApplicationController
   # POST /buys
   # POST /buys.json
   def create
-
   end
 
   # PATCH/PUT /buys/1

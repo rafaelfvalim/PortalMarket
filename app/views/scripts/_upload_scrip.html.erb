@@ -1,5 +1,5 @@
 <div>
-  <% if @script.script_file.present? %>
+  <% if @script.script_file.present? && !@script.id.nil?%>
       <p><label><%= File.basename(@script.script_file.to_s) %> </label>
         <%= link_to remove_file_script_scripts_path(id: @script.id), class: "btn btn-danger", :remote => true do %>
             <i class="fa fa-trash-o"></i>
