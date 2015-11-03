@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-  belongs_to :member
   has_many :messages
+  has_one :member, dependent: :destroy, autosave: true
   belongs_to :invoice
+  accepts_nested_attributes_for :member
 
   def set_default_role
     self.role ||= :user
@@ -13,4 +14,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
 end

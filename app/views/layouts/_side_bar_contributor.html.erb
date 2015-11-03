@@ -10,7 +10,7 @@
 
           <p class="text-center">
             <a href="#">
-              <% @member = Member.find_by current_user.member_id %>
+              <% @member = Member.find_by_user_id current_user.id %>
               <%= "#{@member.member_name}  #{@member.member_last_name}" %>
             </a>
           </p>

@@ -16,7 +16,7 @@ class BuysController < ApplicationController
     @price = Price.find_by_script_id(@script.id)
     gon.script_id = @script.id
     gon.price_id = @price.id
-    gon.member_id =  current_user.member_id
+    gon.member_id =  current_user.member.id
     gon.pdf_file = @script.pdf_file
   end
 

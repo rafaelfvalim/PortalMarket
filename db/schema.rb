@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027200208) do
+ActiveRecord::Schema.define(version: 20151103181753) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20151027200208) do
   add_index "member_scripts", ["script_id"], name: "fk_rails_72b8d352be", using: :btree
 
   create_table "members", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
     t.datetime "birthday"
     t.string   "member_name",      limit: 255
     t.string   "member_last_name", limit: 255
@@ -121,6 +122,8 @@ ActiveRecord::Schema.define(version: 20151027200208) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  add_index "members", ["user_id"], name: "fk_rails_2e88fb7ce9", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -241,7 +244,6 @@ ActiveRecord::Schema.define(version: 20151027200208) do
     t.string   "invited_by_type",        limit: 255
     t.integer  "invitations_count",      limit: 4,   default: 0
     t.datetime "effective_date"
-    t.integer  "member_id",              limit: 4
     t.boolean  "complete",               limit: 1
   end
 
@@ -249,7 +251,6 @@ ActiveRecord::Schema.define(version: 20151027200208) do
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
-  add_index "users", ["member_id"], name: "fk_rails_172a24c10d", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "value_chains", force: :cascade do |t|
@@ -274,6 +275,7 @@ ActiveRecord::Schema.define(version: 20151027200208) do
   add_foreign_key "invoices", "users"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
+  add_foreign_key "members", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "message_to"
   add_foreign_key "prices", "currencies"
@@ -285,7 +287,6 @@ ActiveRecord::Schema.define(version: 20151027200208) do
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
-  add_foreign_key "users", "members"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"
 end

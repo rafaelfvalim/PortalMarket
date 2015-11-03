@@ -119,7 +119,7 @@
             <% end %>
             <br>
           </div>
-          <%= hidden_field_tag 'cart[member_id]', current_user.member_id %>
+          <%= hidden_field_tag 'cart[member_id]', current_user.member.id %>
           <%= hidden_field_tag 'cart[script_id]', @script.id %>
           <%= hidden_field_tag 'cart[price_id]', @price.id %>
           <%= hidden_field_tag 'cart[full_sale]', false %>

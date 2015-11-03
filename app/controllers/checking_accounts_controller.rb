@@ -63,7 +63,7 @@ class CheckingAccountsController < ApplicationController
 
   def member_ajax
     p = params
-    p[:member_id] = current_user.member_id
+    p[:member_id] = current_user.member.id
     respond_to do |format|
       format.html #new.html.erb
       format.json { render json: CheckingAccountDatatable.new(view_context, params[:member_id]) }

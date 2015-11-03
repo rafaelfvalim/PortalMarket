@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @member = Member.find_by id: current_user.member_id
+    @member = Member.find_by_user_id current_user.id
   end
 
   # GET /members/1
@@ -70,7 +70,7 @@ class MembersController < ApplicationController
 
   def contributor
     p = params
-    p[:member_id] = current_user.member_id
+    p[:member_id] = current_user.member.id
     respond_to do |format|
        format.html #new.html.erb
        format.json { render json: MemberScriptDatatable.new(view_context,params[:member_id])}

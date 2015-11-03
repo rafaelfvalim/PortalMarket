@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.where('member_id = ? and full_sale = false', current_user.member_id)
+    @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id)
   end
 
   # GET /carts/1
@@ -56,7 +56,7 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart.destroy
-    @carts = Cart.where('member_id = ? and full_sale = false', current_user.member_id)
+    @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id)
     respond_to do |format|
       # format.html { redirect_to carts_url, notice: 'Cart was successfully removed.' }
       format.js { render "carts/form_resume_cart" }
