@@ -52,7 +52,6 @@
               <%= @script.industry %>
             </p>
             <br>
-
             <p>
               <strong>Requeriments :</strong>
               <% if @script.requirements.size > 0 %>
@@ -103,7 +102,6 @@
                   <% end %>
               <% end %>
             </p>
-
             <p>
               <strong>created at : <%= @script.created_at.to_s(:custom_datetime) %></strong>
             </p>
@@ -120,7 +118,6 @@
                 </p>
             <% end %>
             <br>
-
           </div>
           <%= hidden_field_tag 'cart[member_id]', current_user.member_id %>
           <%= hidden_field_tag 'cart[script_id]', @script.id %>
@@ -131,7 +128,7 @@
           <div class="col-md-12">
             <strong>Paper:</strong>
             <br>
-            <iframe src="<%= @script.pdf_file.url %>" width="100%" height="1075" frameborder="0"></iframe>
+            <iframe  src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
           </div>
         </div>
     <% end %>

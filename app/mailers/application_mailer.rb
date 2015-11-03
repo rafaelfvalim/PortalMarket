@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "code_store@agil.com"
+  default from: "klustter.codestore@gilioconsultoria.com"
   layout 'mailer'
 end

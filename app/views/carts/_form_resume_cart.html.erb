@@ -14,7 +14,6 @@
         <h5><b>Total: <%= get_total(carts) %></b></h5>
       </div>
       <br>
-
       <div class="row">
         <div class="col-md-12">
           <table class="table table-striped">
@@ -25,6 +24,7 @@
               <th>Description</th>
               <th>Platform</th>
               <th>Price</th>
+              <th>Paper</th>
               <th colspan="3"></th>
             </tr>
             </thead>
@@ -36,9 +36,14 @@
                   <td> <%= cart.script.description %> </td>
                   <td> <%= cart.script.platform %> </td>
                   <td><%= cart.price.value %></td>
-                  <td><%= link_to 'Remove', cart, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'btn btn-default' %></td>
+                  <td> <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#paperModal">Show Paper</button>
+                  </td>
+                  <td><%= link_to 'Remove', cart, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'btn btn-danger' %></td>
                   <%= hidden_field_tag 'cart[]', cart.id %>
                 </tr>
+                <!-- Modal -->
+               <%= render 'modal_paper', cart: cart %>
             <% end %>
             </tbody>
           </table>
