@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104184624) do
+ActiveRecord::Schema.define(version: 20151104204226) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20151104184624) do
     t.integer  "bank_id",          limit: 4,                null: false
     t.string   "bank_ag",          limit: 255
     t.string   "bank_cc",          limit: 255
+    t.string   "bank_cc_digit",    limit: 255
     t.string   "cpf",              limit: 255, default: ""
     t.string   "cnpj",             limit: 255, default: ""
     t.datetime "created_at",                                null: false

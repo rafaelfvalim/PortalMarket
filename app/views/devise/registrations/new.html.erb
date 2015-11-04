@@ -1,76 +1,88 @@
 <div id="wrapper">
-  <div class="span12 pagination-centered">
+  <div class="container">
+    <%= bootstrap_form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form'}) do |f| %>
+        <div class="row row-centered">
+          <p class="text-center">
 
-    <%= form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form'}) do |f| %>
-        <div class="row">
-          <div class="col-lg-10">
-            <h3>Sign up</h3>
-            <%= devise_error_messages! %>
-          </div>
+          <h3>Sign up</h3></p>
+          <%= devise_error_messages! %>
         </div>
         <%= f.fields_for :member_attributes do |member| %>
-            <div class="row">
-              <div class="col-lg-5">
-                <%= member.label 'Firts Name:' %>
-                <%= member.text_field :member_name, class: 'form-control', :autofocus => true %>
-              </div>
-              <div class="col-lg-5">
-                <%= member.label 'Last Name:' %>
-                <%= member.text_field :member_last_name, class: 'form-control' %>
+            <div class="row  row-centered">
+              <div class="col-lg-6 col-centered ">
+                <%= member.text_field :member_name, label: 'Name:', class: 'form-control', :autofocus => true %>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-5">
-                <label for="theme">Member Type:</label>
-                <% MemberType.all.each do |type| %>
-                    <br><%= member.radio_button :member_type_id, type.id %>
-                    <%= type.description %>
-                <% end %>
+            <div class="row  row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :member_last_name, label: 'Last Name:', class: 'form-control' %>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-2">
-                <%= member.label 'Bank:' %>
-                <%= member.text_field :bank, class: 'form-control' %>
+            <div class="row row-centered">
+              <div class="col-lg-6 col-centered">
+                <label>Profile:</label>
               </div>
-              <div class="col-lg-2">
-                <%= member.label 'Ag:' %>
-                <%= member.text_field :bank_ag, class: 'form-control' %>
+            </div>
+            <div class="row row-centered">
+              <% MemberType.all.each do |type| %>
+                  <div class="col-lg-2 col-centered">
+                    <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true %>
+                  </div>
+              <% end %>
+            </div>
+            <br>
+
+            <div class="row row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :cpf, label: 'CPF:', class: 'form-control' %>
               </div>
-              <div class="col-lg-2">
-                <%= member.label 'CC:' %>
-                <%= member.text_field :bank_cc, class: 'form-control' %>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :cnpj, label: 'CNPJ:', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= member.collection_select :bank_id, Bank.all, :id, :description, {prompt: "Please Select ..."}, label: "Choose Bank:" %>
+              </div>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-1 col-centered">
+                <%= member.text_field :bank_ag, label: 'Ag:', class: 'form-control' %>
+                authform
+              </div>
+              <div class="col-lg-4 col-centered">
+                <%= member.text_field :bank_cc, label: 'Cc:', class: 'form-control' %>
+              </div>
+              <div class="col-lg-1 col-centered">
+                <%= member.text_field :bank_cc_digit, label: 'Digit:', class: 'form-control' %>
               </div>
             </div>
         <% end %>
-        <div class="row">
-          <!--<div class="col-lg-5">-->
-          <!--<div class="form-group">-->
-          <%= f.hidden_field :name %>
-          <!--</div>-->
-          <!--</div>-->
-          <div class="col-lg-5">
-            <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, class: 'form-control' %>
-            </div>
+        <div class="row  row-centered">
+          <div class="col-lg-6 col-centered">
+            <%= f.email_field :email, label: 'Email:', class: 'form-control' %>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="form-group">
-              <%= f.label :password %>
-              <%= f.password_field :password, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="form-group">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, class: 'form-control' %>
-            </div>
+        <div class="row  row-centered">
+          <div class="col-lg-6 col-centered">
+            <%= f.password_field :password, class: 'form-control' %>
           </div>
         </div>
-        <%= f.submit 'Sign up', :class => 'button right' %>
+        <div class="row  row-centered">
+          <div class="col-lg-6 col-centered">
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row row-centered">
+          <div class="col-lg-2 col-centered"></div>
+          <div class="col-lg-2 col-centered">
+            <%= f.submit 'Sign up', class: 'btn btn-success btn-block' %>
+          </div>
+          <div class="col-lg-2 col-centered"></div>
+        </div>
+        <%= f.hidden_field :name %>
     <% end %>
   </div>
 </div>
