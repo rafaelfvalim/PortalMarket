@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103181753) do
+ActiveRecord::Schema.define(version: 20151104184624) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20151103181753) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "code",        limit: 255, null: false
+    t.string   "description", limit: 255, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.integer  "member_id",  limit: 4
@@ -107,22 +114,29 @@ ActiveRecord::Schema.define(version: 20151103181753) do
   add_index "member_scripts", ["member_id"], name: "fk_rails_7a622e4a02", using: :btree
   add_index "member_scripts", ["script_id"], name: "fk_rails_72b8d352be", using: :btree
 
+  create_table "member_types", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
+    t.integer  "member_type_id",   limit: 4,                null: false
     t.datetime "birthday"
     t.string   "member_name",      limit: 255
     t.string   "member_last_name", limit: 255
-    t.string   "bank",             limit: 255
+    t.integer  "bank_id",          limit: 4,                null: false
     t.string   "bank_ag",          limit: 255
     t.string   "bank_cc",          limit: 255
-    t.boolean  "customer",         limit: 1
-    t.boolean  "contributor",      limit: 1
     t.string   "cpf",              limit: 255, default: ""
     t.string   "cnpj",             limit: 255, default: ""
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
 
+  add_index "members", ["bank_id"], name: "fk_rails_d363d09855", using: :btree
+  add_index "members", ["member_type_id"], name: "fk_rails_9a10de6ee1", using: :btree
   add_index "members", ["user_id"], name: "fk_rails_2e88fb7ce9", using: :btree
 
   create_table "messages", force: :cascade do |t|
@@ -275,6 +289,8 @@ ActiveRecord::Schema.define(version: 20151103181753) do
   add_foreign_key "invoices", "users"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
+  add_foreign_key "members", "banks"
+  add_foreign_key "members", "member_types"
   add_foreign_key "members", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "message_to"

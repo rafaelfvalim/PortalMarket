@@ -1,28 +1,76 @@
-<div class="authform">
-  <%= form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form'}) do |f| %>
-      <h3>Sign up</h3>
-      <%= devise_error_messages! %>
+<div id="wrapper">
+  <div class="span12 pagination-centered">
 
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-      </div>
-
-      <%= f.submit 'Sign up', :class => 'button right' %>
-  <% end %>
+    <%= form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form'}) do |f| %>
+        <div class="row">
+          <div class="col-lg-10">
+            <h3>Sign up</h3>
+            <%= devise_error_messages! %>
+          </div>
+        </div>
+        <%= f.fields_for :member_attributes do |member| %>
+            <div class="row">
+              <div class="col-lg-5">
+                <%= member.label 'Firts Name:' %>
+                <%= member.text_field :member_name, class: 'form-control', :autofocus => true %>
+              </div>
+              <div class="col-lg-5">
+                <%= member.label 'Last Name:' %>
+                <%= member.text_field :member_last_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5">
+                <label for="theme">Member Type:</label>
+                <% MemberType.all.each do |type| %>
+                    <br><%= member.radio_button :member_type_id, type.id %>
+                    <%= type.description %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-2">
+                <%= member.label 'Bank:' %>
+                <%= member.text_field :bank, class: 'form-control' %>
+              </div>
+              <div class="col-lg-2">
+                <%= member.label 'Ag:' %>
+                <%= member.text_field :bank_ag, class: 'form-control' %>
+              </div>
+              <div class="col-lg-2">
+                <%= member.label 'CC:' %>
+                <%= member.text_field :bank_cc, class: 'form-control' %>
+              </div>
+            </div>
+        <% end %>
+        <div class="row">
+          <!--<div class="col-lg-5">-->
+          <!--<div class="form-group">-->
+          <%= f.hidden_field :name %>
+          <!--</div>-->
+          <!--</div>-->
+          <div class="col-lg-5">
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <%= f.submit 'Sign up', :class => 'button right' %>
+    <% end %>
+  </div>
 </div>

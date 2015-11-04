@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
   has_many :member_scripts
   has_many :checking_accounts
   has_many :carts
+  belongs_to :member_type
 
   # def set_default_role
   #   self.role ||= :user
