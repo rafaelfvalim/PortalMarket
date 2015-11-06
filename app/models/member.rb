@@ -16,4 +16,8 @@ class Member < ActiveRecord::Base
   # devise :invitable, :database_authenticatable, :registerable, :confirmable,
   #        :recoverable, :rememberable, :trackable, :validatable
 
+  CONTRIBUTOR = 'contributor'
+  CUSTOMER = 'customer'
+
+
 end

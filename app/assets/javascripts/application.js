@@ -22,9 +22,9 @@
 //= require_tree .
 
 var ready;
-ready = function() {
+ready = function () {
 
-    $(".alert").delay(4000).slideUp(200, function() {
+    $(".alert").delay(4000).slideUp(200, function () {
         $(this).alert('close');
     });
 
@@ -69,8 +69,14 @@ set_message_info = function (e) {
 }
 
 
+var membertype;
+membertype = function (e) {
 
-
+    if (e == 'contributor') {
+        alert(e)
+        $("cpf").removeClass('hidden')
+    }
+}
 
 
 
