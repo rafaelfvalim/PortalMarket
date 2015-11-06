@@ -17,7 +17,7 @@
         </div>
         <br>
       </li>
-      <% if @member.member_type %>
+      <% if @member.member_type.description == Member::CONTRIBUTOR %>
           <li>
             <%= link_to searches_path do %>
                 <i class="fa fa-search fa-fw" aria-hidden="true"></i> Find Solutions
@@ -29,7 +29,7 @@
             <i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Dashboard
         <% end %>
       </li>
-      <% if @member.contributor %>
+      <% if @member.member_type.description == Member::CUSTOMER %>
           <li>
             <%= link_to contributor_members_path do %>
                 <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts

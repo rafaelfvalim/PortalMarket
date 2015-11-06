@@ -1,53 +1,61 @@
 <div id="wrapper">
   <div class="container">
-    <%= bootstrap_form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form'}) do |f| %>
+    <%= bootstrap_form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form', id: 'singup_form'}) do |f| %>
         <div class="row row-centered">
           <p class="text-center">
 
           <h3>Sign up</h3></p>
-          <%= devise_error_messages! %>
+          <div class="row  row-centered">
+            <div class="col-lg-6 col-centered ">
+              <!--<%= devise_error_messages! %>-->
+            </div>
+          </div>
         </div>
         <%= f.fields_for :member_attributes do |member| %>
-            <div class="row  row-centered">
-              <div class="col-lg-6 col-centered ">
-                <%= member.text_field :member_name, label: 'Name:', class: 'form-control', :autofocus => true %>
-              </div>
-            </div>
-            <div class="row  row-centered">
+            <div class="row row-centered">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :member_last_name, label: 'Last Name:', class: 'form-control' %>
+                <label>Profile: <a href="#" data-toggle="modal" data-target="#help_modal">?</a></label>
               </div>
             </div>
             <div class="row row-centered">
-              <div class="col-lg-6 col-centered">
-                <label>Profile:</label>
-              </div>
-            </div>
-            <div class="row row-centered">
-              <% MemberType.all.each do |type| %>
+              <% MemberType.all.each_with_index do |type, index| %>
                   <div class="col-lg-2 col-centered">
-                    <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true %>
+                    <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true, onclick: "form_singup_member('#{type.description}')", checked: index == 0 ? true : false %>
                   </div>
               <% end %>
             </div>
             <br>
-
-            <div class="row row-centered">
-              <div class="col-lg-6 col-centered">
-                <%= member.text_field :cpf, label: 'CPF:', class: 'form-control' %>
+            <div class="row  row-centered hidden" id="name">
+              <div class="col-lg-6 col-centered ">
+                <%= member.text_field :member_name, label: 'Name:', class: 'form-control' %>
               </div>
             </div>
-            <div class="row  row-centered">
+            <div class="row  row-centered hidden" id="company_name">
+              <div class="col-lg-6 col-centered ">
+                <%= member.text_field :company_name, label: 'Company Name:', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row  row-centered hidden" id="last_name">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :member_last_name, label: 'Last Name:', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row row-centered hidden" id="cpf">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :cpf, label: 'CPF:', class: 'form-control', id: 'cpf_field' %>
+              </div>
+            </div>
+            <div class="row row-centered hidden" id="cnpj">
               <div class="col-lg-6 col-centered">
                 <%= member.text_field :cnpj, label: 'CNPJ:', class: 'form-control' %>
               </div>
             </div>
-            <div class="row row-centered">
+            <div class="row row-centered hidden" id="select_bank">
               <div class="col-lg-6 col-centered">
-                <%= member.                                                                                                                                                                                                                                                                                                                                                                                                                                 collection_select :bank_id, Bank.all, :id, :description, {prompt: "Please Select ..."}, label: "Choose Bank:" %>
+                <%= member.collection_select :bank_id, Bank.all, :id, :description, {prompt: "Please Select ..."}, label: "Choose Bank:" %>
               </div>
             </div>
-            <div class="row  row-centered">
+            <div class="row  row-centered hidden" id="bank_cc">
               <div class="col-lg-1 col-centered">
                 <%= member.text_field :bank_ag, label: 'Ag:', class: 'form-control' %>
               </div>
@@ -83,5 +91,26 @@
         </div>
         <%= f.hidden_field :name %>
     <% end %>
+  </div>
+</div>
+<div id="help_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Profiles:</h4>
+      </div>
+      <div class="modal-body">
+        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção <strong>contributor</strong>
+        </p>
+        <p class="lead"> Se você pretende comprar scripts para utiliza-los em sues sistemas selecione a opção
+          <strong>customer</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>

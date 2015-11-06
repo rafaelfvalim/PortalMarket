@@ -183,6 +183,9 @@ GEM
       railties (> 3.1, < 5.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
+    jquery-validation-rails (1.13.1)
+      railties (>= 3.2, < 5.0)
+      thor (~> 0.14)
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -408,6 +411,7 @@ DEPENDENCIES
   jquery-rails
   jquery-scrollto-rails
   jquery-ui-rails
+  jquery-validation-rails
   kaminari
   launchy
   mysql2 (~> 0.3.18)

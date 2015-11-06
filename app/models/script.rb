@@ -21,7 +21,7 @@ class Script < ActiveRecord::Base
   validates :solution_type_id, presence: true
   validates :complexity, presence: true
 
-  scope :search_import, -> { includes(:member_scripts) }
+  scopforme :search_import, -> { includes(:member_scripts) }
   scope :search_import, -> { includes(:members) }
   scope :search_import, -> { includes(:price) }
   scope :search_import, -> { includes(:value_chains) }

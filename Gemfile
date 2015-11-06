@@ -17,6 +17,8 @@ gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'jquery-scrollto-rails'
 gem 'gon'
+# Jquery Validate - ClientSide validations
+gem 'jquery-validation-rails'
 # Font-awesome-rails
 gem 'font-awesome-rails'
 # Searchkick - Elasticsearch
