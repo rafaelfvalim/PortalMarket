@@ -126,6 +126,7 @@ contributor_fields_singup = function (action) {
         $("#bank_cc").removeClass('hidden')
         $("#name").removeClass('hidden')
         $("#last_name").removeClass('hidden')
+        $("#birthday").removeClass('hidden')
     }
 
     if (action == 'hide') {
@@ -134,6 +135,7 @@ contributor_fields_singup = function (action) {
         $("#bank_cc").addClass('hidden')
         $("#name").addClass('hidden')
         $("#last_name").addClass('hidden')
+        $("#birthday").addClass('hidden')
     }
 
 }
@@ -145,14 +147,14 @@ validate_form_singup = function () {
         rules: {
             "user[member_attributes][member_name]": {minlength: 5, required: true},
             "user[member_attributes][member_last_name]": {minlength: 5, required: true},
-            "user[member_••••••••attributes][member_type_id]": {required: true},
+            "user[member_attributes][member_type_id]": {required: true},
             "user[member_attributes][cpf]": {cpfBR: true, required: true},
             "user[member_attributes][cnpj]": {cnpj: true, required: true},
             "user[member_attributes][bank_id]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_ag]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_cc]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_cc_digit]": {numbersOnly: true, required: true},
-            "user[member_attributes][company_name]": { required: true},
+            "user[member_attributes][company_name]": {required: true},
             "user[email]": {required: true},
             "user[password]": {
                 required: true,
