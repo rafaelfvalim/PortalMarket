@@ -47,7 +47,7 @@ class ScriptsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @script.save
-        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member_id, percentual: 0, participation: 0)
+        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 0, participation: 0)
         @member_script.save
         format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
       else
@@ -188,5 +188,11 @@ class ScriptsController < ApplicationController
   def script_params
     params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, :script_file_cache, :pdf_file_cache, requirements_attributes: [:id, :script_id, :requirement])
   end
+
+  def download
+    path = "/#{script.script}"
+    send_file path, :x_sendfile => true
+  end
+
 
 end
