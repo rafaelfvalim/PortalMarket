@@ -34,6 +34,7 @@ ready = function () {
     validate_form_singup();
     //before validation form submit
     before_action_singup_form();
+
 };
 
 $(document).ready(ready);

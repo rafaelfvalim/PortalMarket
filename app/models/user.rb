@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :member
 
 
-
   def set_default_role
     self.role ||= :user
   end

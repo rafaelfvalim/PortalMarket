@@ -65,6 +65,7 @@
             <% end %>
             </p>
             <p>
+              <strong>Processos :</strong>
             <p>
               <% show_process_chain(@script.id).each do |process| %>
                   <%= build_list_chain(process, @script.id, false) %>

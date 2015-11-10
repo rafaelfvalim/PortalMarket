@@ -10,6 +10,7 @@ remove_breadcrumb = (e) ->
   $("#" + e).remove()
 
 window.process_call_ajax = (id, e) ->
+  console.log("chamou o process modules")
   $.ajax
     type: 'GET',
     url: '/process_modules/' + id + '/get_list_ajax.json'
@@ -98,11 +99,10 @@ $ ->
   else
     $("#process_badge").text($(".breadcrumb").length)
 
-  if valueChainStep == StatusEnum.START
+  if $('#value_chain_process').length
     process_call_ajax($("#process_id").val())
 
   $("#value_chain_process a").click (e) ->
-    alert 'teste'
     clear_chain(1)
 
   setProgressBar = (tab) ->
