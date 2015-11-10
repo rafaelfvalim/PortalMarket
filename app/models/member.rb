@@ -17,7 +17,6 @@ class Member < ActiveRecord::Base
   validates :bank_ag, presence: true, allow_blank: true
   validates :bank_cc_digit, presence: true, allow_blank: true
 
-
   # def set_default_role
   #   self.role ||= :user
   # end
@@ -29,6 +28,6 @@ class Member < ActiveRecord::Base
 
   CONTRIBUTOR = 'contributor'
   CUSTOMER = 'customer'
-
+  GOD = 'god'
 
 end

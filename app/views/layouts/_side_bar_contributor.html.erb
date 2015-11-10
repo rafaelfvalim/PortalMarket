@@ -8,14 +8,13 @@
           <br>
           <p class="text-center">
             <a href="#">
-              <% @member = Member.find_by_user_id current_user.id %>
-              <%= "#{@member.member_name}  #{@member.member_last_name}" %>
+              <%= current_user.full_name %>
             </a>
           </p>
         </div>
         <br>
       </li>
-      <% if @member.member_type.description == Member::CUSTOMER %>
+      <% if current_user.is_customer? || current_user.is_god? %>
           <li>
             <%= link_to searches_path do %>
                 <i class="fa fa-search fa-fw" aria-hidden="true"></i> Find Solutions
@@ -27,7 +26,7 @@
             <i class="fa fa-dashboard fa-fw" aria-hidden="true"></i> Dashboard
         <% end %>
       </li>
-      <% if @member.member_type.description == Member::CONTRIBUTOR %>
+      <% if current_user.is_contributor? || current_user.is_god? %>
           <li>
             <%= link_to contributor_members_path do %>
                 <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
@@ -41,14 +40,16 @@
       </li>
       <!--TO DO : Funções futuras ...-->
       <!--<li>-->
-        <!--<%= link_to members_path do %>-->
-            <!--<i class="fa fa-envelope" aria-hidden="true"></i> Messages-->
-        <!--<% end %>-->
+      <!--<%= link_to members_path do %>-->
+          <!--<i class="fa fa-envelope" aria-hidden="true"></i> Messages-->
+          <!--
+      <% end %>-->
       <!--</li>-->
       <!--<li>-->
-        <!--<%= link_to members_path do %>-->
-            <!--<i class="fa fa-life-ring" aria-hidden="true"></i> Support Tickets-->
-        <!--<% end %>-->
+      <!--<%= link_to members_path do %>-->
+          <!--<i class="fa fa-life-ring" aria-hidden="true"></i> Support Tickets-->
+          <!--
+      <% end %>-->
       <!--</li>-->
     </ul>
   </div>

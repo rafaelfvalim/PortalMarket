@@ -15,8 +15,7 @@
   <ul class="nav navbar-top-links navbar-right">
     <% if user_signed_in? %>
 
-        <% @member = Member.find_by_user_id current_user.id %>
-        <% if @member.member_type.description == Member::CUSTOMER %>
+        <% if current_user.is_customer? || current_user.is_god? %>
             <li class="dropdown" id="navigation_cart">
               <%= render 'layouts/navigation_cart' %>
             </li>
