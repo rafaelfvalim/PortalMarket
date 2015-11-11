@@ -19,12 +19,15 @@
             </div>
             <div class="row row-centered">
               <% MemberType.all.each_with_index do |type, index| %>
-                  <div class="col-lg-2 col-centered">
-                    <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true, onclick: "form_singup_member('#{type.description}')", checked: index == 0 ? true : false %>
-                  </div>
+                  <% if type.description != Member::GOD %>
+                      <div class="col-lg-2 col-centered">
+                        <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true, onclick: "form_singup_member('#{type.description}')", checked: index == 0 ? true : false %>
+                      </div>
+                  <% end %>
               <% end %>
             </div>
             <br>
+
             <div class="row  row-centered hidden" id="name">
               <div class="col-lg-6 col-centered ">
                 <%= member.text_field :member_name, label: 'Name:', class: 'form-control' %>
@@ -73,6 +76,10 @@
             </div>
         <% end %>
         <div class="row  row-centered">
+          <div class="col-lg-6 col-centered" id="workplaces">
+          </div>
+        </div>
+        <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
             <%= f.email_field :email, label: 'Email:', class: 'form-control' %>
           </div>
@@ -107,8 +114,10 @@
         <h4 class="modal-title">Profiles:</h4>
       </div>
       <div class="modal-body">
-        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção <strong>contributor</strong>
+        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
+          <strong>contributor</strong>
         </p>
+
         <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
           <strong>customer</strong></p>
       </div>

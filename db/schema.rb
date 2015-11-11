@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111093802) do
+ActiveRecord::Schema.define(version: 20151111124813) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20151111093802) do
     t.integer  "script_id",         limit: 4
     t.decimal  "value",                           precision: 10
     t.integer  "invoice_status_id", limit: 4
+    t.integer  "workplace_id",      limit: 4,                    null: false
     t.text     "notes",             limit: 65535
     t.datetime "invoice_date"
     t.datetime "pay_date"
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 20151111093802) do
   add_index "invoices", ["pay_method_id"], name: "fk_rails_c68b5c4063", using: :btree
   add_index "invoices", ["script_id"], name: "fk_rails_6cb6b0f3a2", using: :btree
   add_index "invoices", ["user_id"], name: "fk_rails_3d1522a0d8", using: :btree
+  add_index "invoices", ["workplace_id"], name: "fk_rails_6662a5dccf", using: :btree
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -235,9 +237,6 @@ ActiveRecord::Schema.define(version: 20151111093802) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "table_statuses", force: :cascade do |t|
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -306,6 +305,7 @@ ActiveRecord::Schema.define(version: 20151111093802) do
   add_foreign_key "invoices", "pay_methods"
   add_foreign_key "invoices", "scripts"
   add_foreign_key "invoices", "users"
+  add_foreign_key "invoices", "workplaces"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
   add_foreign_key "members", "banks"

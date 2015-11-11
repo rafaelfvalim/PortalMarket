@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :workplaces, through: :members
   belongs_to :invoice
   accepts_nested_attributes_for :member
+  accepts_nested_attributes_for :workplaces
 
   def set_default_role
     self.role ||= :user
