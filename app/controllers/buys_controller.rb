@@ -11,11 +11,13 @@ class BuysController < ApplicationController
   def show
   end
 
+  # TODO adicionar melhoria na tela que permita a escolha de sistemas posteriormente criados pelo cliente ou apenas inserir um novo
   def show_product
     @script = Script.find_by id: params[:id]
     @price = Price.find_by_script_id(@script.id)
     @cart = Cart.new
     @cart.workplace = Workplace.new
+
     gon.script_id = @script.id
     gon.price_id = @price.id
     gon.member_id =  current_user.member.id
