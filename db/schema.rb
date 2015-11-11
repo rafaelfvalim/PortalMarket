@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106171941) do
+ActiveRecord::Schema.define(version: 20151111093802) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -229,6 +229,12 @@ ActiveRecord::Schema.define(version: 20151106171941) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "systems", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "table_statuses", force: :cascade do |t|
   end
 
@@ -279,6 +285,17 @@ ActiveRecord::Schema.define(version: 20151106171941) do
   add_index "value_chains", ["process_module_id"], name: "index_value_chains_on_process_module_id", using: :btree
   add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
 
+  create_table "workplaces", force: :cascade do |t|
+    t.integer  "member_id",     limit: 4,   null: false
+    t.integer  "system_id",     limit: 4
+    t.string   "system_number", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "workplaces", ["member_id"], name: "fk_rails_39fe69f690", using: :btree
+  add_index "workplaces", ["system_id"], name: "fk_rails_7f06ffdf18", using: :btree
+
   add_foreign_key "carts", "members"
   add_foreign_key "carts", "prices"
   add_foreign_key "carts", "scripts"
@@ -307,4 +324,6 @@ ActiveRecord::Schema.define(version: 20151106171941) do
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"
+  add_foreign_key "workplaces", "members"
+  add_foreign_key "workplaces", "systems"
 end

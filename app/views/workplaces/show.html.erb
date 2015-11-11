@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>System:</strong>
+  <%= @workplace.system_id %>
+</p>
+
+<p>
+  <strong>System number:</strong>
+  <%= @workplace.system_number %>
+</p>
+
+<%= link_to 'Edit', edit_workplace_path(@workplace) %> |
+<%= link_to 'Back', workplaces_path %>

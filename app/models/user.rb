@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
+  has_many :workplaces, through: :members
   belongs_to :invoice
   accepts_nested_attributes_for :member
 

@@ -6,6 +6,7 @@ class Member < ActiveRecord::Base
   has_many :checking_accounts
   has_many :carts
   belongs_to :member_type
+  has_many :workplaces ,dependent: :destroy, autosave: true
 
   validates :member_name, presence: true
   validates :member_last_name, presence: true
