@@ -17,6 +17,7 @@
           </div>
           <div class="col-md-3">
             <br>
+
             <div class="pull-rigth">
               <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
               <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_invoice", data: {confirm: 'Add item to cart?'}) do %>
@@ -51,6 +52,7 @@
               <%= @script.industry %>
             </p>
             <br>
+
             <p>
               <strong>Requeriments :</strong>
               <% if @script.requirements.size > 0 %>
@@ -65,6 +67,7 @@
             </p>
             <p>
               <strong>Processos :</strong>
+
             <p>
               <% show_process_chain(@script.id).each do |process| %>
                   <%= build_list_chain(process, @script.id, false) %>
@@ -102,6 +105,7 @@
                   <% end %>
               <% end %>
             </p>
+
             <p>
               <strong>created at : <%= @script.created_at.to_s(:custom_datetime) %></strong>
             </p>
@@ -124,13 +128,66 @@
           <%= hidden_field_tag 'cart[price_id]', @price.id %>
           <%= hidden_field_tag 'cart[full_sale]', false %>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <strong>Paper:</strong>
+        <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong>To organization:</strong></div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Destination System Number:</label>
+                <%= text_field_tag :system_number, nil, class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <label>Organization Name:</label>
+                <%= text_field_tag 'cart[organ]', nil, class: 'form-control' %>
+              </div>
+            </div>
             <br>
-            <iframe  src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
+          </div>
+        </div>
+        <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading">Paper:</div>
+          <div class="row">
+            <div class="col-md-12">
+              <iframe src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
+            </div>
           </div>
         </div>
     <% end %>
+  </div>
+</div>
+
+<div id="workplace_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sistema:</h4>
+      </div>
+      <div class="modal-body">
+        <p>Por favor, selecione o sistema em que o script será aplicado </p>
+        <%= bootstrap_form_for(@workplace) do |f| %>
+            <% if @workplace.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@workplace.errors.count, "error") %> prohibited this workplace from being
+                    saved:</h2>
+                  <ul>
+                    <% @workplace.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <%= f.collection_select :system_id, System.all, :id, :name, {prompt: "Please Select ..."}, {label: "Choose Sistem:"} %>
+            <%= f.text_field :system_number, label: 'System Number:', class: 'form-control' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>

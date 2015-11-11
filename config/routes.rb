@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :prices
   resources :statuses
+  resources :workplaces
   resources :wizard_scripts do
     collection do
       get :classification

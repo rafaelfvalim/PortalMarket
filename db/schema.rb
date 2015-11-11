@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111124813) do
+ActiveRecord::Schema.define(version: 20151111181334) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -36,17 +36,19 @@ ActiveRecord::Schema.define(version: 20151111124813) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer  "member_id",  limit: 4
-    t.integer  "script_id",  limit: 4
-    t.integer  "price_id",   limit: 4
-    t.boolean  "full_sale",  limit: 1
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "member_id",    limit: 4
+    t.integer  "script_id",    limit: 4
+    t.integer  "price_id",     limit: 4
+    t.integer  "workplace_id", limit: 4, null: false
+    t.boolean  "full_sale",    limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "carts", ["member_id"], name: "fk_rails_13907fb032", using: :btree
   add_index "carts", ["price_id"], name: "fk_rails_5fc637dbef", using: :btree
   add_index "carts", ["script_id"], name: "fk_rails_2c575d99c1", using: :btree
+  add_index "carts", ["workplace_id"], name: "fk_rails_4c065256ce", using: :btree
 
   create_table "checking_accounts", force: :cascade do |t|
     t.string   "description",        limit: 255
@@ -285,11 +287,12 @@ ActiveRecord::Schema.define(version: 20151111124813) do
   add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
 
   create_table "workplaces", force: :cascade do |t|
-    t.integer  "member_id",     limit: 4,   null: false
-    t.integer  "system_id",     limit: 4
-    t.string   "system_number", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "member_id",         limit: 4,   null: false
+    t.string   "organization_name", limit: 255
+    t.integer  "system_id",         limit: 4
+    t.string   "system_number",     limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "workplaces", ["member_id"], name: "fk_rails_39fe69f690", using: :btree
@@ -298,6 +301,7 @@ ActiveRecord::Schema.define(version: 20151111124813) do
   add_foreign_key "carts", "members"
   add_foreign_key "carts", "prices"
   add_foreign_key "carts", "scripts"
+  add_foreign_key "carts", "workplaces"
   add_foreign_key "checking_accounts", "currencies"
   add_foreign_key "checking_accounts", "members"
   add_foreign_key "checking_accounts", "scripts"

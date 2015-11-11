@@ -18,6 +18,7 @@ class BuysController < ApplicationController
     gon.price_id = @price.id
     gon.member_id =  current_user.member.id
     gon.pdf_file = @script.pdf_file
+    @workplace = Workplace.new
   end
 
   # GET /buys/new
