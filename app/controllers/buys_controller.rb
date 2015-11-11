@@ -14,11 +14,12 @@ class BuysController < ApplicationController
   def show_product
     @script = Script.find_by id: params[:id]
     @price = Price.find_by_script_id(@script.id)
+    @cart = Cart.new
+    @cart.workplace = Workplace.new
     gon.script_id = @script.id
     gon.price_id = @price.id
     gon.member_id =  current_user.member.id
     gon.pdf_file = @script.pdf_file
-    @workplace = Workplace.new
   end
 
   # GET /buys/new

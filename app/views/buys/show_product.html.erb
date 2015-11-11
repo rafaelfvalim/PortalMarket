@@ -2,7 +2,7 @@
   <%= render 'layouts/side_bar_contributor' %>
   <div id="page-wrapper">
     <%= render 'layouts/messages' %>
-    <%= form_tag('/carts', method: :post, remote: true) do %>
+    <%= bootstrap_form_for(@cart, remote: true , :html => {id: 'cart_form'}) do |c| %>
         <div class="row">
           <div class="col-md-6">
             <h3><%= @script.name %> </h3>
@@ -123,25 +123,25 @@
             <% end %>
             <br>
           </div>
-          <%= hidden_field_tag 'cart[member_id]', current_user.member.id %>
-          <%= hidden_field_tag 'cart[script_id]', @script.id %>
-          <%= hidden_field_tag 'cart[price_id]', @price.id %>
-          <%= hidden_field_tag 'cart[full_sale]', false %>
+          <%= c.hidden_field :member_id, value: current_user.member.id %>
+          <%= c.hidden_field :script_id, value: @script.id %>
+          <%= c.hidden_field :price_id, value: @price.id %>
+          <%= c.hidden_field :full_sale, value: false %>
         </div>
         <hr>
         <div class="panel panel-default">
-          <div class="panel-heading"><strong>To organization:</strong></div>
+          <div class="panel-heading"><strong>To organization:  <small>*system where you will install the script</small></strong></div>
           <div class="panel-body">
-            <div class="row">
-              <div class="col-md-6">
-                <label>Destination System Number:</label>
-                <%= text_field_tag :system_number, nil, class: 'form-control' %>
-              </div>
-              <div class="col-md-6">
-                <label>Organization Name:</label>
-                <%= text_field_tag 'cart[organ]', nil, class: 'form-control' %>
-              </div>
-            </div>
+            <%= c.fields_for :workplace do |w| %>
+                <div class="col-md-6">
+                  <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
+                </div>
+                <div class="col-md-6">
+                  <%= w.text_field :organization_name, label: "Organization Name:" %>
+                </div>
+                <%= w.hidden_field :system_id, value: get_system_id_by_name(@script.platform) %>
+                <%= w.hidden_field :member_id, value: current_user.member.id %>
+            <% end %>
             <br>
           </div>
         </div>
@@ -155,39 +155,5 @@
           </div>
         </div>
     <% end %>
-  </div>
-</div>
-
-<div id="workplace_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Sistema:</h4>
-      </div>
-      <div class="modal-body">
-        <p>Por favor, selecione o sistema em que o script será aplicado </p>
-        <%= bootstrap_form_for(@workplace) do |f| %>
-            <% if @workplace.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(@workplace.errors.count, "error") %> prohibited this workplace from being
-                    saved:</h2>
-                  <ul>
-                    <% @workplace.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                  </ul>
-                </div>
-            <% end %>
-            <%= f.collection_select :system_id, System.all, :id, :name, {prompt: "Please Select ..."}, {label: "Choose Sistem:"} %>
-            <%= f.text_field :system_number, label: 'System Number:', class: 'form-control' %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
   </div>
 </div>

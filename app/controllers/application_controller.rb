@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # helper_method :app_custom_routes
   # helper_method :app_custom_routes_errors
   helper_method :app_get_breadcrumb_value_chain
-
+  helper_method :app_get_system_id_by_name
   # def app_custom_routes(format, referrer, model)
   #   if referrer.include?('additional_information')
   #     format.json { render json: model, notice: 'Process module was successfully created.' }
@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   #     format.json { render json: model.errors, status: :unprocessable_entity }
   #   end
   # end
+
 
   def app_get_breadcrumb_value_chain(id)
     breadcrumb ||= Array.new
