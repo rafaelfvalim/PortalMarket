@@ -47,6 +47,14 @@ class BuysController < ApplicationController
   def destroy
   end
 
+  def autocomplete_organization
+    @workplace = Workplace.where('organization_name LIKE ?', "%#{params[:term]}%")
+    respond_to do |format|
+      format.html
+      #format.json { render json: @requirements.map(&:requirement) }
+      format.json { render json: @workplace.to_json }
+    end
+  end
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_buy
@@ -55,4 +63,6 @@ class BuysController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def buy_params
   end
+
+
 end

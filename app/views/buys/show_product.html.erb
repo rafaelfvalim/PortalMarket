@@ -2,7 +2,7 @@
   <%= render 'layouts/side_bar_contributor' %>
   <div id="page-wrapper">
     <%= render 'layouts/messages' %>
-    <%= bootstrap_form_for(@cart, remote: true , :html => {id: 'cart_form'}) do |c| %>
+    <%= bootstrap_form_for(@cart, remote: true, :html => {id: 'cart_form'}) do |c| %>
         <div class="row">
           <div class="col-md-6">
             <h3><%= @script.name %> </h3>
@@ -130,16 +130,18 @@
         </div>
         <hr>
         <div class="panel panel-default">
-          <div class="panel-heading"><strong>To organization:  <small>*system where you will install the script</small></strong></div>
+          <div class="panel-heading"><strong>To organization:
+            <small>*system where you will install the script</small>
+          </strong></div>
           <div class="panel-body">
             <%= c.fields_for :workplace do |w| %>
                 <div class="col-md-6">
-                  <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
+                  <%= w.text_field :organization_name, class: 'form-control autocomplete' %>
                 </div>
                 <div class="col-md-6">
-                  <%= w.text_field :organization_name, label: "Organization Name:" %>
+                  <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
                 </div>
-                <%= w.hidden_field :system_id, value: get_system_id_by_name(@script.platform) %>
+                <%= c.hidden_field :system_id, value: get_system_id_by_name(@script.platform) %>
                 <%= w.hidden_field :member_id, value: current_user.member.id %>
             <% end %>
             <br>

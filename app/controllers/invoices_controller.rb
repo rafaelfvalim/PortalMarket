@@ -33,7 +33,7 @@ class InvoicesController < ApplicationController
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
-      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1}
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
       @invoices.push(@invoice)
       cart.update_attribute(:full_sale, true)
       InvoiceMail.invoice_mail(current_user, Script.find(cart.script_id)).deliver_now
@@ -83,7 +83,7 @@ class InvoicesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
-    params.require(:invoice).permit(:id, :user_id, :script_id, :value, :invoice_status_id, :notes, :pay_date, :ship_date, :shipped_to, :shipped_via)
+    params.require(:invoice).permit(:id, :user_id, :script_id, :value, :invoice_status_id, :notes, :pay_date, :ship_date, :shipped_to, :shipped_via, :workplace_id)
   end
 
 end

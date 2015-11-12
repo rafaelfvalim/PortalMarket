@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :buys do
     collection do
       get :show_product
+      get :autocomplete_organization
     end
   end
   resources :checking_accounts do
