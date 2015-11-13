@@ -86,6 +86,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    chartkick (1.4.1)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
@@ -392,6 +393,7 @@ DEPENDENCIES
   byebug
   capybara
   carrierwave
+  chartkick
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
