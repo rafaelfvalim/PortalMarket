@@ -22,7 +22,7 @@
       </a>
     </div>
 
-
+    <%= line_chart User.group_by_day(:created_at).count %>
     <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
   </div>
 </div>

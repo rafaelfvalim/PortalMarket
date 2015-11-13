@@ -145,6 +145,8 @@ GEM
       json
       multi_json
       request_store (>= 1.0)
+    groupdate (2.5.0)
+      activesupport (>= 3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -403,6 +405,7 @@ DEPENDENCIES
   figaro (>= 1.0.0.rc1)
   font-awesome-rails
   gon
+  groupdate
   guard-bundler
   guard-rails
   guard-rspec

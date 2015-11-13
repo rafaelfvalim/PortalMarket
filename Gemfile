@@ -31,6 +31,9 @@ gem 'acts_as_shopping_cart', '~> 0.2.1'
 gem 'wicked'
 #http://chartkick.com/
 gem 'chartkick'
+#https://github.com/ankane/groupdate
+#Install Time zone support /Time_zone_support.sql
+gem 'groupdate'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
