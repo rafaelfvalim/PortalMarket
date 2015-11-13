@@ -59,7 +59,7 @@ Rails.application.routes.draw do
       get :find_process
     end
   end
-  mount Upmin::Engine => '/admin'
+  mount Upmin::Engine => '/iddqd'
   root to: 'visitors#index'
   devise_for :users
   resources :users

@@ -1,4 +1,5 @@
 class RelatedScriptsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_related_script, only: [:show, :edit, :update, :destroy]
 
   # GET /related_scripts

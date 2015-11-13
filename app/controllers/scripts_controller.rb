@@ -1,4 +1,6 @@
 class ScriptsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf]
 
   # GET /scripts

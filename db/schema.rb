@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111181334) do
+ActiveRecord::Schema.define(version: 20151112204557) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -183,6 +183,102 @@ ActiveRecord::Schema.define(version: 20151111181334) do
   end
 
   add_index "process_modules", ["referrer_process_module_id"], name: "fk_rails_77f666f400", using: :btree
+
+  create_table "rails_workflow_contexts", force: :cascade do |t|
+    t.integer  "parent_id",   limit: 4
+    t.string   "parent_type", limit: 255
+    t.text     "body",        limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_workflow_contexts", ["parent_id", "parent_type"], name: "index_rails_workflow_contexts_on_parent_id_and_parent_type", using: :btree
+
+  create_table "rails_workflow_errors", force: :cascade do |t|
+    t.string   "message",     limit: 255
+    t.text     "stack_trace", limit: 65535
+    t.integer  "parent_id",   limit: 4
+    t.string   "parent_type", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "resolved",    limit: 1
+  end
+
+  add_index "rails_workflow_errors", ["parent_id", "parent_type"], name: "index_rails_workflow_errors_on_parent_id_and_parent_type", using: :btree
+
+  create_table "rails_workflow_operation_templates", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.string   "version",             limit: 255
+    t.string   "tag",                 limit: 255
+    t.text     "source",              limit: 65535
+    t.text     "dependencies",        limit: 65535
+    t.string   "operation_class",     limit: 255
+    t.integer  "process_template_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "async",               limit: 1
+    t.integer  "child_process_id",    limit: 4
+    t.integer  "assignment_id",       limit: 4
+    t.string   "assignment_type",     limit: 255
+    t.string   "kind",                limit: 255
+    t.string   "role",                limit: 255
+    t.string   "group",               limit: 255
+    t.text     "instruction",         limit: 65535
+    t.boolean  "is_background",       limit: 1
+    t.string   "type",                limit: 255
+    t.string   "partial_name",        limit: 255
+  end
+
+  add_index "rails_workflow_operation_templates", ["process_template_id"], name: "index_rails_workflow_operation_templates_on_process_template_id", using: :btree
+
+  create_table "rails_workflow_operations", force: :cascade do |t|
+    t.integer  "status",           limit: 4
+    t.boolean  "async",            limit: 1
+    t.string   "version",          limit: 255
+    t.string   "tag",              limit: 255
+    t.string   "title",            limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "process_id",       limit: 4
+    t.integer  "template_id",      limit: 4
+    t.text     "dependencies",     limit: 65535
+    t.integer  "child_process_id", limit: 4
+    t.integer  "assignment_id",    limit: 4
+    t.string   "assignment_type",  limit: 255
+    t.datetime "assigned_at"
+    t.string   "type",             limit: 255
+    t.boolean  "is_active",        limit: 1
+    t.datetime "completed_at"
+    t.boolean  "is_background",    limit: 1
+  end
+
+  add_index "rails_workflow_operations", ["process_id"], name: "index_rails_workflow_operations_on_process_id", using: :btree
+  add_index "rails_workflow_operations", ["template_id"], name: "index_rails_workflow_operations_on_template_id", using: :btree
+
+  create_table "rails_workflow_process_templates", force: :cascade do |t|
+    t.string   "title",         limit: 255
+    t.text     "source",        limit: 65535
+    t.string   "version",       limit: 255
+    t.string   "tag",           limit: 255
+    t.string   "manager_class", limit: 255
+    t.string   "process_class", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type",          limit: 255
+    t.string   "partial_name",  limit: 255
+  end
+
+  create_table "rails_workflow_processes", force: :cascade do |t|
+    t.integer  "status",      limit: 4
+    t.string   "version",     limit: 255
+    t.string   "tag",         limit: 255
+    t.boolean  "async",       limit: 1
+    t.string   "title",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "template_id", limit: 4
+    t.string   "type",        limit: 255
+  end
 
   create_table "related_scripts", force: :cascade do |t|
     t.integer "script_id",         limit: 4

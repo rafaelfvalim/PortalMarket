@@ -1,5 +1,6 @@
 class WizardScriptsController < ApplicationController
   include Wicked::Wizard
+  before_action :authenticate_user!
   steps :additional_data, :value_chain, :final
   #before_action :set_script, only: [:show, :edit, :update, :destroy]
 

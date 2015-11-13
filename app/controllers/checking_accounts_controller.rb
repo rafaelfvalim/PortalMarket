@@ -1,4 +1,5 @@
 class CheckingAccountsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_checking_account, only: [:show, :edit, :update, :destroy]
 
   # GET /checking_accounts

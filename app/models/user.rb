@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
-
   after_initialize :set_default_role, :if => :new_record?
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true

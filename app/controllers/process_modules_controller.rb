@@ -1,4 +1,5 @@
 class ProcessModulesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_process_module, only: [:show, :edit, :update, :destroy]
 
   # GET /process_modules

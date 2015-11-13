@@ -1,4 +1,5 @@
 class PaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_pay, only: [:show, :edit, :update, :destroy]
 
   # GET /pays

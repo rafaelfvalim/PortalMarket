@@ -1,4 +1,5 @@
 class MemberScriptsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_member_script, only: [:show, :edit, :update, :destroy]
 
   # GET /member_scripts
