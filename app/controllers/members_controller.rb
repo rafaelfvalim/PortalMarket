@@ -42,6 +42,11 @@ class MembersController < ApplicationController
     end
   end
 
+  def script_orchestration
+    @scripts = Script.where(:status_id => params[:status_id])
+    @status = Status.find(params[:status_id])
+  end
+
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update

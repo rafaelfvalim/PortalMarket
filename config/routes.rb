@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       get :contributor
       get :customer
       get :admin
+      get :script_orchestration
     end
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get
