@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-bell fa-fw"></i> Invoices Notifications
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+      </a>
+      <a href="#" class="list-group-item">
+        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped Today
+                                    <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) = ? ', Date.today).count %></em>
+                                    </span>
+      </a>
+      <a href="#" class="list-group-item">
+        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Week
+                                    <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_week, Date.today.end_of_week).count %> </em>
+                                    </span>
+      </a>
+      <a href="#" class="list-group-item">
+        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Month
+                                    <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_month, Date.today.end_of_month).count %> </em>
+                                    </span>
+      </a>
+    </div>
+    <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
+  </div>
+</div>

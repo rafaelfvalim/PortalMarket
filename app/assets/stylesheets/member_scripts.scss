@@ -40,3 +40,40 @@ div[role="contributor_dashboard"] {
 //  position: absolute;
 //}
 
+.panel-orange {
+  border-color: #b88010;
+}
+
+.panel-orange .panel-heading {
+  border-color: #b88010;
+  color: #fff;
+  background-color: #b88010;
+}
+
+.panel-orange a {
+  color: #b88010;
+}
+
+.panel-orange a:hover {
+  color: #b87021;
+}
+
+
+.panel-blue {
+  border-color: #1b69b8;
+}
+
+.panel-blue .panel-heading {
+  border-color: #1b69b8;
+  color: #fff;
+  background-color: #1b69b8;
+}
+
+.panel-blue a {
+  color: #1b69b8;
+}
+
+.panel-blue a:hover {
+  color: #1351b8;
+}
+

@@ -14,7 +14,6 @@
   <!-- /.navbar-header -->
   <ul class="nav navbar-top-links navbar-right">
     <% if user_signed_in? %>
-
         <% if current_user.is_customer? || current_user.is_god? %>
             <li class="dropdown" id="navigation_cart">
               <%= render 'layouts/navigation_cart' %>
@@ -224,16 +223,18 @@
                   <i class="fa fa-gear fa-fw"></i> Edit Accound</a>
               <% end %>
             </li>
-            <% if current_user.try(:admin?) %>
+            <% if current_user.is_god? %>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to '/admin' do %>
-                      <i class="fa fa-laptop"></i> Admin
+                  <%= link_to '/iddqd' do %>
+                      <i class="fa fa-laptop"></i> SQLAdmin
                   <% end %>
                   <%= link_to users_path do %>
                       <i class="fa fa-users"></i> Users
                   <% end %>
-
+                  <%= link_to admin_members_path do %>
+                      <i class="fa fa-cog fa-spin"></i> Administrator
+                  <% end %>
                 </li>
             <% end %>
             <li class="divider"></li>

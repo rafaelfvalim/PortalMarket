@@ -18,6 +18,10 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
+  def admin
+  end
+
+
   # GET /members/1/edit
   def edit
   end

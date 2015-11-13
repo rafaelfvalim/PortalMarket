@@ -65,8 +65,9 @@ Rails.application.routes.draw do
   resources :users
   resources :members do
     collection do
-      get 'contributor'
-      get 'customer'
+      get :contributor
+      get :customer
+      get :admin
     end
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get

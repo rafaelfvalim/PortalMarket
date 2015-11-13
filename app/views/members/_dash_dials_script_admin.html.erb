@@ -1,0 +1,132 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong>Scripts Workflow </strong>
+  </div>
+  <div class="panel-body">
+    <% Status.all.each do |status| %>
+        <div class="col-lg-3 col-md-6">
+          <div class="panel panel-<%= dash_admin_panel_color(status.id) %>">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-3">
+                  <i class="<%= dash_admin_icon(status.id) %>"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                  <div class="huge"><%= Script.where('status_id = ?', status.id).count %></div>
+                  <br>
+
+                  <div> <%= "Com Status: #{status.description}" %></div>
+                </div>
+              </div>
+            </div>
+            <%= link_to checking_accounts_path do %>
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                  <div class="clearfix"></div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!--Dash Forum-->
+<!--<div class="col-lg-3 col-md-6">-->
+<!--<div class="panel panel-primary">-->
+<!--<div class="panel-heading">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-3">-->
+<!--<i class="fa fa-comments fa-5x"></i>-->
+<!--</div>-->
+<!--<div class="col-xs-9 text-right">-->
+<!--<div class="huge">26</div>-->
+<!--<div>New Comments!</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<a href="#">-->
+<!--<div class="panel-footer">-->
+<!--<span class="pull-left">View Details</span>-->
+<!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--Dash Tasks-->
+<!--<div class="col-lg-3 col-md-6">-->
+<!--<div class="panel panel-green">-->
+<!--<div class="panel-heading">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-3">-->
+<!--<i class="fa fa-tasks fa-5x"></i>-->
+<!--</div>-->
+<!--<div class="col-xs-9 text-right">-->
+<!--<div class="huge">12</div>-->
+<!--<div>New Tasks!</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<a href="#">-->
+<!--<div class="panel-footer">-->
+<!--<span class="pull-left">View Details</span>-->
+<!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--Dash Orders-->
+<!--<div class="col-lg-3 col-md-6">-->
+<!--<div class="panel panel-yellow">-->
+<!--<div class="panel-heading">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-3">-->
+<!--<i class="fa fa-shopping-cart fa-5x"></i>-->
+<!--</div>-->
+<!--<div class="col-xs-9 text-right">-->
+<!--<div class="huge"></div>-->
+<!--<div>New Orders!</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<%= link_to checking_accounts_path do %>-->
+    <!--<div class="panel-footer">-->
+    <!--<span class="pull-left">View Details</span>-->
+    <!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+
+    <!--<div class="clearfix"></div>-->
+    <!--</div>-->
+    <!--
+<% end %>-->
+<!--</div>-->
+<!--</div>-->
+<!--Dash Suport-->
+<!--<div class="col-lg-3 col-md-6">-->
+<!--<div class="panel panel-red">-->
+<!--<div class="panel-heading">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-3">-->
+<!--<i class="fa fa-support fa-5x"></i>-->
+<!--</div>-->
+<!--<div class="col-xs-9 text-right">-->
+<!--<div class="huge">13</div>-->
+<!--<div>Support Tickets!</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<a href="#">-->
+<!--<div class="panel-footer">-->
+<!--<span class="pull-left">View Details</span>-->
+<!--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->

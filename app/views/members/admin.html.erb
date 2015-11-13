@@ -1,0 +1,31 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Admin Dashboard</h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+    <%=  render 'dash_dials_script_admin' %>
+    <%=  render 'dash_dials_invoice_admin' %>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%=  render 'dash_notification__invoice_admin_panel' %>
+      </div>
+      <div class="col-lg-4">
+        <%=  render 'dash_notification__invoice_admin_panel' %>
+      </div>
+      <div class="col-lg-12">
+        <!--<%=  render 'dash_chat' %>-->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
