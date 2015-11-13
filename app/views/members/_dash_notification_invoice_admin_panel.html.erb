@@ -1,28 +1,74 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <i class="fa fa-bell fa-fw"></i> Invoices Notifications
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseInvoice"><i class="fa fa-bell fa-fw"></i> Invoices
+      Notifications</a>
   </div>
-  <div class="panel-body">
-    <div class="list-group">
-      </a>
-      <a href="#" class="list-group-item">
-        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped Today
+  <div id="collapseInvoice" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <div class="col-lg-12">
+        <div class="list-group">
+          </a>
+          <a href="#" class="list-group-item">
+            <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped Today
                                     <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) = ? ', Date.today).count %></em>
                                     </span>
-      </a>
-      <a href="#" class="list-group-item">
-        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Week
+
+          </a>
+          <a href="#" class="list-group-item">
+            <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Week
                                     <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_week, Date.today.end_of_week).count %> </em>
                                     </span>
-      </a>
-      <a href="#" class="list-group-item">
-        <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Month
+          </a>
+          <a href="#" class="list-group-item">
+            <i class="fa fa-money fa-fw"></i> Invoice(s) Shipped This Month
                                     <span class="pull-right text-muted small"><em><%= Invoice.where('shipped_to is not null and DATE(ship_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_month, Date.today.end_of_month).count %> </em>
                                     </span>
-      </a>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Invoices Payment
+          </div>
+          <div class="panel-body">
+            <%= line_chart Invoice.group_by_day(:pay_date).count %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Invoices Created
+          </div>
+          <div class="panel-body">
+            <%= line_chart Invoice.group_by_day(:created_at).count %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Invoices Shiped
+          </div>
+          <div class="panel-body">
+            <% InvoiceStatus.all do |status| %>
+                <%= status.description %>
+            <% end %>
+            <%= line_chart Invoice.group_by_day(:ship_date).count %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Invoices Status
+          </div>
+          <div class="panel-body">
+            <%= pie_chart Invoice.group(:invoice_status_id).count %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <%= line_chart User.group_by_day(:created_at).count %>
-    <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
   </div>
 </div>

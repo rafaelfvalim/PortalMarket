@@ -49,7 +49,7 @@ class ScriptsController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @script.save
-        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 0, participation: 0)
+        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 0, participation: 0, status_id: 6)
         @member_script.save
         format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
       else
