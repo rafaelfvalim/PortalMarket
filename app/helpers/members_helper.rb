@@ -35,4 +35,8 @@ module MembersHelper
     end
   end
 
+  def linK_status_disable(count)
+    return if count == 0 ? true : false
+  end
+
 end

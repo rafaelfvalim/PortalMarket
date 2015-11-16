@@ -91,6 +91,7 @@ class ScriptsController < ApplicationController
     @additional_information = 'active'
   end
 
+
   # PATCH/PUT /scripts/1
   # PATCH/PUT /scripts/1.json
   def update

@@ -1,0 +1,29 @@
+<table class="table table-bordered table-condensed" id="script-orchestration">
+  <thead>
+  <tr>
+    <th><input type="checkbox" id="check_all_orchestration" onclick="$('input:checkbox').not(this).prop('checked', this.checked)"></th>
+    <th>Code</th>
+    <th>Status</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Platform</th>
+    <th>Days</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @scripts.each do |script| %>
+      <tr>
+        <td><%= check_box_tag "script_ids[]", script.id %></td>
+        <td><%= script.id %></td>
+        <td><%= script.status.description %></td>
+        <td><%= script.name %></td>
+        <td><%= script.description %></td>
+        <td><%= script.platform %></td>
+        <td><%= (Date.today - script.updated_at.to_date).to_i %></td>
+        <td><%= link_to "Show" ,  script_path(script.id) , class: 'btn btn-default' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @scripts %>

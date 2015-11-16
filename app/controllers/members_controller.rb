@@ -43,10 +43,28 @@ class MembersController < ApplicationController
   end
 
   def script_orchestration
-    @scripts = Script.where(:status_id => params[:status_id]).paginate
-
+    @scripts = Script.where(:status_id => params[:status_id]).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     @status = Status.find(params[:status_id])
+    @statuses = Status.where('id != ?', params[:status_id])
+  end
 
+
+  def process_orchestration
+
+    @status_id = params[:status][:id]
+    current_status = params[:current_status]
+    scripts = Script.where(id: params[:script_ids])
+    @scripts = Script.where(:status_id => current_status).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+
+    respond_to do |format|
+      if @status_id.nil?
+        format.js { render "members/form_script_orchestration"}
+      elsif scripts.map { |s| s.update_attribute(:status_id, @status_id) }
+        format.js { render "members/form_script_orchestration" }
+        format.html {}
+      end
+
+    end
   end
 
   # PATCH/PUT /members/1
@@ -74,10 +92,10 @@ class MembersController < ApplicationController
   end
 
   def customer
-    @member_scripts = MemberScript.includes(:scripts).where('member_id = ?',params[:id])
+    @member_scripts = MemberScript.includes(:scripts).where('member_id = ?', params[:id])
     respond_to do |format|
       format.html #new.html.erb
-      format.json { render json: @member_scripts}
+      format.json { render json: @member_scripts }
     end
   end
 
@@ -85,9 +103,9 @@ class MembersController < ApplicationController
     p = params
     p[:member_id] = current_user.member.id
     respond_to do |format|
-       format.html #new.html.erb
-       format.json { render json: MemberScriptDatatable.new(view_context,params[:member_id])}
-     end
+      format.html #new.html.erb
+      format.json { render json: MemberScriptDatatable.new(view_context, params[:member_id]) }
+    end
   end
 
 

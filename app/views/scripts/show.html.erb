@@ -10,7 +10,11 @@
     <hr>
     <div class="row">
       <div class="col-md-12">
-        <%= link_to 'Back', contributor_members_path, class: 'btn btn-default' %>
+        <% if current_user.is_god? %>
+            <%= link_to 'Back', admin_members_path, class: 'btn btn-default' %>
+        <% else %>
+            <%= link_to 'Back', contributor_members_path, class: 'btn btn-default' %>
+        <% end %>
         <%= link_to 'Edit', edit_script_path(@script), class: 'btn btn-default' %>
       </div>
     </div>
@@ -26,9 +30,7 @@
     <div class="row">
       <div class="col-md-12">
         <p id="notice"><%= notice %></p>
-
         <p>
-
         <p><strong>Definition:</strong></p>
         <%= @script.name %>
         </p>
@@ -46,33 +48,45 @@
         </p>
         <hr>
         <p>
-        <p> <strong>Platform:</strong></p>
-          <%= @script.platform %>
+
+        <p><strong>Platform:</strong></p>
+        <%= @script.platform %>
         </p>
         <hr>
         <p>
-        <p> <strong>Industry:</strong> </p>
-          <%= @script.industry %>
+
+        <p><strong>Industry:</strong></p>
+        <%= @script.industry %>
         </p>
         <hr>
         <p>
-        <p>  <strong>Complexity:</strong> </p>
-          <%= @script.complexity %>
+
+        <p><strong>Complexity:</strong></p>
+        <%= @script.complexity %>
         </p>
         <hr>
         <p>
-        <p> <strong>Solution type:</strong> </p>
-          <%= @script.solution_type_id %>
+
+        <p><strong>Solution type:</strong></p>
+        <%= @script.solution_type_id %>
         </p>
         <hr>
         <p>
-        <p><strong>Script file:</strong> </p>
-          <%= File.basename(@script.script_file.to_s) %>
+
+        <p><strong>Script file:</strong></p>
+        <%= File.basename(@script.script_file.to_s) %>
+        <% if current_user.is_god? %>
+            <%= link_to 'Download file', @script.script_file.url %>
+        <% end %>
         </p>
         <hr>
         <p>
-        <p> <strong>Pdf file:</strong> </p>
-          <%= File.basename(@script.pdf_file.to_s) %>
+
+        <p><strong>Pdf file:</strong></p>
+        <%= File.basename(@script.pdf_file.to_s) %>
+        <% if current_user.is_god? %>
+            <%= link_to 'Download file', @script.pdf_file.url %>
+        <% end %>
         </p>
         <hr>
       </div>
