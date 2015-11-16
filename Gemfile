@@ -29,6 +29,8 @@ gem 'bootstrap-typeahead-rails'
 gem 'acts_as_shopping_cart', '~> 0.2.1'
 # wicked wizard
 gem 'wicked'
+#https://github.com/mislav/will_paginate
+gem 'will_paginate', '~> 3.0.6'
 #http://chartkick.com/
 gem 'chartkick'
 #https://github.com/ankane/groupdate

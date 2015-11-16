@@ -43,8 +43,10 @@ class MembersController < ApplicationController
   end
 
   def script_orchestration
-    @scripts = Script.where(:status_id => params[:status_id])
+    @scripts = Script.where(:status_id => params[:status_id]).paginate
+
     @status = Status.find(params[:status_id])
+
   end
 
   # PATCH/PUT /members/1
