@@ -1,7 +1,7 @@
 class ScriptsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf]
+  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update]
 
   # GET /scripts
   # GET /scripts.json
@@ -20,6 +20,10 @@ class ScriptsController < ApplicationController
           format.html
       end
     end
+  end
+
+  def check_complexity
+    @script = Script.find(params[:script_id])
   end
 
   def autocomplete
@@ -121,6 +125,23 @@ class ScriptsController < ApplicationController
       if @script.update(script_params)
         set_tracker_step(:create)
         format.html { redirect_to wizard_script_path(id: :additional_data, script_id: @script.id) }
+      else
+        set_tracker_step(:create)
+        format.html { render :edit }
+        format.json { render json: @script.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def admin_update
+    respond_to do |format|
+
+      if @script.update(script_params)
+        if params[:status_id].nil?
+          format.html { redirect_to admin_update_scripts_path }
+        else
+          format.html { redirect_to script_orchestration_scripts_path(status_id: params[:status_id]) }
+        end
       else
         set_tracker_step(:create)
         format.html { render :edit }

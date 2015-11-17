@@ -7,6 +7,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Platform</th>
+    <th>Complexity</th>
     <th>Days</th>
     <th>Actions</th>
   </tr>
@@ -20,8 +21,9 @@
         <td><%= script.name %></td>
         <td><%= script.description %></td>
         <td><%= script.platform %></td>
+        <td><%= script.complexity %></td>
         <td><%= (Date.today - script.updated_at.to_date).to_i %></td>
-        <td><%= link_to "Show" ,  script_path(script.id) , class: 'btn btn-default' %></td>
+        <td><%= get_action_for_script(@status.id, script) %></td>
       </tr>
   <% end %>
   </tbody>

@@ -1,0 +1,102 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Detail Script : <%= @script.description %> </h2>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'Admin Panel', admin_members_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'status_script' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <%= form_for(@script, url: admin_update_scripts_path, method: :put, :html => {:multipart => true}) do |f| %>
+          <%= hidden_field_tag 'id', @script.id %>
+          <%= hidden_field_tag 'status_id', @script.status_id %>
+          <div class="col-md-6">
+            <%= f.select :complexity, get_complexities, {prompt: "Please Select ..."}, class: 'form-control' %>
+          </div>
+          <div class="col-md-4">
+            <%= f.button :submit, class: 'btn btn-default' do %>
+                Alter
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p><strong>Definition:</strong></p>
+        <%= @script.name %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Definition:</strong></p>
+        <%= @script.definition %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Long text:</strong></p>
+        <%= @script.long_text %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Platform:</strong></p>
+        <%= @script.platform %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Industry:</strong></p>
+        <%= @script.industry %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Complexity:</strong></p>
+        <%= @script.complexity %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Solution type:</strong></p>
+        <%= @script.solution_type_id %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Script file:</strong></p>
+        <%= File.basename(@script.script_file.to_s) %>
+        <% if current_user.is_god? %>
+            <%= link_to 'Download file', @script.script_file.url %>
+        <% end %>
+        </p>
+        <hr>
+        <p>
+
+        <p><strong>Pdf file:</strong></p>
+        <%= File.basename(@script.pdf_file.to_s) %>
+        <% if current_user.is_god? %>
+            <%= link_to 'Download file', @script.pdf_file.url %>
+        <% end %>
+        </p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

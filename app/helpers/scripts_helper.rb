@@ -33,7 +33,7 @@ module ScriptsHelper
   end
 
   def set_info_script_messages(field)
-   # para facilitar a internacionalização
+    # para facilitar a internacionalização
     case field
       when :name
         return "Nome do Script"
@@ -58,5 +58,20 @@ module ScriptsHelper
     end
   end
 
+  def get_action_for_script(status_id, script)
+    case status_id
+      when 1 then
+        link_to "Show", script_path(script.id), class: 'btn btn-default'
+      when 2 then
+        link_to "Show", script_path(script.id), class: 'btn btn-default'
+      when 3 then
+        link_to "Show", script_path(script.id), class: 'btn btn-default'
+      when 4 then
+        link_to "Check Complexity", check_complexity_scripts_path(script_id: script.id), class: 'btn btn-default'
+      when 5 then
+        link_to "Show", script_path(script.id), class: 'btn btn-default'
+    end
+
+  end
 
 end

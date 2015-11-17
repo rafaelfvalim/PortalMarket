@@ -4,10 +4,10 @@
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-12">
-        <h2>Orchestration for status: <%= @status.description %> </h2>
+        <h2>Script Prices: </h2>
       </div>
     </div>
-    <%= form_for :script, url: process_orchestration_scripts_path, method: :get, remote: true , :html => {id: 'orchestration_form'} do |f| %>
+    <%= form_for :script, url: process_orchestration_invoices_path, method: :get, remote: true , :html => {id: 'orchestration_form'} do |f| %>
         <!-- /.row -->
         <div class="row">
           <hr>
@@ -21,7 +21,7 @@
                   <div class="row">
                     <div class="col-md-4">
                       <div class="pull-left">
-                        <%= collection_select(:status, :id,  @statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
+                        <%= collection_select(:invoice_status, :id,  @invoice_statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
                       </div>
                       <div class="pull-right">
                         <input type="submit" class="btn btn-default" value="Submit Status">
@@ -30,8 +30,8 @@
                   </div>
                   <hr>
                   <div class="table-responsive">
-                    <div id="script_orchestration">
-                      <%= render partial: 'scripts/form_script_orchestration', s: @scripts %>
+                    <div id="invoice_orchestration">
+                      <%= render partial: 'invoices/form_invoice_orchestration', i: @invoices %>
                     </div>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-        <%= hidden_field_tag :current_status , @status.id %>
+        <%= hidden_field_tag :current_status , @invoice_status.id %>
     <% end %>
     <br>
   </div>

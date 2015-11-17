@@ -18,6 +18,10 @@ class PricesController < ApplicationController
     @price = Price.new
   end
 
+  def script_prices
+
+  end
+
   # GET /prices/1/edit
   def edit
   end

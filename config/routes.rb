@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
   end
   resources :messages
-  resources :prices
+  resources :prices do
+    collection do
+      get :script_prices
+    end
+  end
   resources :statuses
   resources :workplaces
   resources :wizard_scripts do
@@ -56,6 +60,8 @@ Rails.application.routes.draw do
       get :remove_file_pdf
       get :script_orchestration
       get :process_orchestration
+      get :check_complexity
+      put :admin_update
     end
   end
   resources :member_scripts
