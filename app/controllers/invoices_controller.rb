@@ -76,6 +76,29 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def process_orchestration
+    @invoice_status_id = params[:invoice_status][:id]
+    current_status = params[:current_status]
+    invoices = Invoice.where(id: params[:invoices_ids])
+    @invoices = Invoice.where(:invoice_status_id => current_status).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+
+    respond_to do |format|
+      if @invoice_status_id.nil?
+        format.js { render "form_invoice_orchestration" }
+      elsif invoices.map { |i| i.update_attribute(:invoice_status_id, @invoice_status_id) }
+        format.js { render "form_invoice_orchestration" }
+        format.html {}
+      end
+    end
+
+  end
+
+  def invoice_orchestration
+    @invoices = Invoice.where(:invoice_status_id => params[:invoice_status_id]).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    @invoice_status = InvoiceStatus.find(params[:invoice_status_id])
+    @invoice_statuses = InvoiceStatus.where('id != ?', params[:invoice_status_id])
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_invoice

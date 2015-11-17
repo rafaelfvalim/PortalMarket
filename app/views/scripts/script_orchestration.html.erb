@@ -7,7 +7,7 @@
         <h2>Orchestration for status: <%= @status.description %> </h2>
       </div>
     </div>
-    <%= form_for :script, url: process_orchestration_members_path, method: :get, remote: true , :html => {id: 'orchestration_form'} do |f| %>
+    <%= form_for :script, url: process_orchestration_scripts_path, method: :get, remote: true , :html => {id: 'orchestration_form'} do |f| %>
         <!-- /.row -->
         <div class="row">
           <hr>

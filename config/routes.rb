@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :workplaces
   resources :banks
   resources :carts
-  resources :invoices
+  resources :invoices do
+    collection do
+      get :invoice_orchestration
+      get :process_orchestration
+    end
+  end
   resources :messages
   resources :prices
   resources :statuses
@@ -37,7 +42,6 @@ Rails.application.routes.draw do
       get :create_ajax
     end
   end
-
   resources :process_modules
   resources :scripts do
     collection do
@@ -50,6 +54,8 @@ Rails.application.routes.draw do
       get :edit_additional_information
       get :remove_file_script
       get :remove_file_pdf
+      get :script_orchestration
+      get :process_orchestration
     end
   end
   resources :member_scripts
@@ -68,8 +74,6 @@ Rails.application.routes.draw do
       get :contributor
       get :customer
       get :admin
-      get :script_orchestration
-      get :process_orchestration
     end
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get

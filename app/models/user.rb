@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
   has_many :workplaces, through: :members
-  belongs_to :invoice
+  has_many :invoice
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :workplaces
+  accepts_nested_attributes_for :invoice
 
   def set_default_role
     self.role ||= :user
   end
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

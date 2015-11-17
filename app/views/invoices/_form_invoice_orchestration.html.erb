@@ -1,0 +1,39 @@
+<table class="table table-bordered table-condensed" id="script-orchestration">
+  <thead>
+  <tr>
+    <th>
+      <input type="checkbox" id="check_all_orchestration" onclick="$('input:checkbox').not(this).prop('checked', this.checked)">
+    </th>
+    <th>User Invoice</th>
+    <th>Script Code</th>
+    <th>Value</th>
+    <th>Script To Organization</th>
+    <th>System ID</th>
+    <th>Invoice Date</th>
+    <th>Pay Date</th>
+    <th>Ship Date</th>
+    <th>Shipped To</th>
+    <th>Time</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= check_box_tag "invoices_ids[]", invoice.id %></td>
+        <td><%= invoice.user.full_name %></td>
+        <td><%= invoice.script_id %></td>
+        <td><%= invoice.value %></td>
+        <td><%= invoice.workplace.organization_name %></td>
+        <td><%= invoice.workplace.system_id %></td>
+        <td><%= invoice.invoice_date %></td>
+        <td><%= invoice.pay_date %></td>
+        <td><%= invoice.ship_date %></td>
+        <td><%= invoice.shipped_to %></td>
+        <td><%= (Date.today - invoice.updated_at.to_date).to_i %></td>
+        <td><%= link_to "Show", invoice_path(invoice.id), class: 'btn btn-default' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @invoices %>
