@@ -39,7 +39,7 @@ class Script < ActiveRecord::Base
 
   belongs_to :solution_type
   belongs_to :status
-  has_many :invoice
+  has_many :invoice,  :dependent => :destroy
 
   accepts_nested_attributes_for :requirements
   accepts_nested_attributes_for :member_scripts

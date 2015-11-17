@@ -1,4 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Detail Invoce ID: <%= @invoice.id %> </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'status_invoice_steps' %>
+      </div>
+    </div>
+    <br>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'Admin Panel', admin_members_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <strong>User:</strong> <br> <%= @invoice.user.full_name %><hr></div>
+      <div class="col-md-6"><strong>Script Name:</strong> <br>  <%= @invoice.script.name %><hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %><hr>
+      </div>
+      <div class="col-md-6"><strong>Invoice Value: </strong> <br><%= @invoice.value %><hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %><hr></div>
+      <div class="col-md-6"><strong>To Orgranization :</strong> <br><%= @invoice.workplace.organization_name %><hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>To System Number:</strong> <br> <%= @invoice.workplace.system_number %><hr></div>
+      <div class="col-md-6"><strong>Invoice Date:</strong> <br><%= format_date(@invoice.invoice_date) %><hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Pay Date:</strong> <br> <%= format_date(@invoice.pay_date) %> <hr></div>
+      <div class="col-md-6"><strong>Invoice Ship Date:</strong> <br>   <%= format_date(@invoice.ship_date) %>  <hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Shipped To: </strong> <br>  <%= @invoice.shipped_to %><hr> </div>
+      <div class="col-md-6"> <strong>Invoice Shipped Via: </strong> <br>   <%= @invoice.shipped_via %> <hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Pay Methodo: </strong> <br> <%= @invoice.pay_method.name %> <hr></div>
+      <div class="col-md-6"> </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :pay_method
   belongs_to :workplace
   belongs_to :user
+  belongs_to :script
   accepts_nested_attributes_for :workplace
   accepts_nested_attributes_for :user
 end

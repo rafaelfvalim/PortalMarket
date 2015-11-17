@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class='nav nav-wizard'>
+     <small>
+       <% InvoiceStatus.all.each do |invoice_status| %>
+           <%= generate_invoice_status_li invoice_status, @invoice %>
+       <% end %>
+     </small>
+
+    </ul>
+  </div>
+</div>
