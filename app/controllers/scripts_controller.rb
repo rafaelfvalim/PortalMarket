@@ -105,12 +105,12 @@ class ScriptsController < ApplicationController
     @status_id = params[:status][:id]
     current_status = params[:current_status]
     scripts = Script.where(id: params[:script_ids])
-    @scripts = Script.where(:status_id => current_status).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
 
     respond_to do |format|
       if @status_id.nil?
         format.js { render "form_script_orchestration" }
       elsif scripts.map { |s| s.update_attribute(:status_id, @status_id) }
+        @scripts = Script.where(:status_id => current_status).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
         format.js { render "form_script_orchestration" }
         format.html {}
       end
@@ -143,7 +143,6 @@ class ScriptsController < ApplicationController
           format.html { redirect_to script_orchestration_scripts_path(status_id: params[:status_id]) }
         end
       else
-        set_tracker_step(:create)
         format.html { render :edit }
         format.json { render json: @script.errors, status: :unprocessable_entity }
       end

@@ -18,10 +18,6 @@ class PricesController < ApplicationController
     @price = Price.new
   end
 
-  def script_prices
-
-  end
-
   # GET /prices/1/edit
   def edit
   end
@@ -66,17 +62,38 @@ class PricesController < ApplicationController
     end
   end
 
-  def script_price
-
+  def script_prices
+    @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
   end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_price
-      @price = Price.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def price_params
-      params.require(:price).permit(:script_id, :value, :currency_id, :currency_data)
+  def create_prices
+    @scripts = params[:scripts]
+    prices ||= Array.new
+    # scripts = Script.where(id: params[:script_ids])
+    respond_to do |format|
+      params[:scripts].each do |key, s|
+        Script.find(s[:id]).update_attribute(:complexity, s[:complexity])
+        price = Price.new
+        price.attributes = { script_id: s[:id], value: s[:value], currency_id: s[:currency_id], aggregate_percentage: s[:aggregate_percentage] }
+        prices.push(price)
+      end
+      if !script.errors.nil? and prices.each(&:save)
+        format.html { render :script_prices }
+      end
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_price
+    @price = Price.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def price_params
+    params.require(:price).permit(:script_id, :value, :currency_id, :currency_data)
+  end
+
+
 end
+

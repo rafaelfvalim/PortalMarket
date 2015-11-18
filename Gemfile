@@ -36,6 +36,9 @@ gem 'chartkick'
 #https://github.com/ankane/groupdate
 #Install Time zone support /Time_zone_support.sql
 gem 'groupdate'
+#https://github.com/TrevorS/bootstrap3-datetimepicker-rails
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

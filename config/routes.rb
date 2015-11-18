@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :prices do
     collection do
       get :script_prices
+      put :create_prices
     end
   end
   resources :statuses

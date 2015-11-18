@@ -13,6 +13,7 @@
  *= require dataTables/jquery.dataTables
  *= require font-awesome
  *= require bootstrap-typeahead-rails
+ *= require bootstrap-datetimepicker
  *= require_tree .
  *= require_self
  */
@@ -23,37 +24,43 @@
 }
 
 label.required:after {
-  content:" *";
+  content: " *";
 }
 
 /* centered columns styles */
 .row-centered {
-  text-align:center;
+  text-align: center;
 }
+
 .col-centered {
-  display:inline-block;
-  float:none;
+  display: inline-block;
+  float: none;
   /* reset the text-align */
-  text-align:left;
+  text-align: left;
   /* inline-block space fix */
-  margin-right:-4px;
+  margin-right: -4px;
 }
+
 .col-fixed {
   /* custom width */
-  width:320px;
+  width: 320px;
 }
+
 .col-min {
   /* custom min width */
-  min-width:320px;
+  min-width: 320px;
 }
+
 .col-max {
   /* custom max width */
-  max-width:320px;
+  max-width: 320px;
 }
+
 //Jquery Validation
 .error {
-  color:red;
+  color: red;
 }
+
 .valid {
-  color:green;
+  color: green;
 }

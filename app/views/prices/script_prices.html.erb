@@ -7,7 +7,64 @@
         <h2>Script Prices: </h2>
       </div>
     </div>
+    <hr>
+    <%= form_tag create_prices_prices_path, method: :put do %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="pull-left">
+              <%= submit_tag "Save", class: 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+        <br>
 
-    <br>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-condensed" id="script-orchestration">
+              <thead>
+              <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Platform</th>
+                <th>Complexity</th>
+                <th>Value $</th>
+                <th>Aggregate Percentage %</th>
+                <th>Currency</th>
+                <th>Currency Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @scripts.each_with_index do |script, i| %>
+                  <%= fields_for "scripts[#{i}]", script do |s| %>
+                      <%= s.hidden_field :id %>
+                      <tr>
+                        <td><%= script.id %></td>
+                        <td><%= script.name %></td>
+                        <td><%= script.platform %></td>
+                        <td><%= s.select :complexity, get_complexities, {prompt: "Please Select ..."}, class: 'form-control' %> </td>
+                        <%= s.fields_for :price do |p| %>
+                            <td width="100px"><%= p.text_field :value, class: 'form-control' %></td>
+                            <td width="100px"><%= p.text_field :aggregate_percentage, class: 'form-control' %></td>
+                            <td width="100px"><%= p.collection_select :currency_id, Currency.all, :id, :description, {prompt: "Select ..."}, class: 'form-control' %></td>
+                            <td width="200px">
+                              <div class="form-group">
+                                <div class='input-group date' id='datetimer_price'>
+                                  <%= p.text_field :currency_data, class: 'form-control' %>
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                              </div>
+                            </td>
+                        <% end %>
+                      </tr>
+                  <% end %>
+              <% end %>
+              </tbody>
+            </table>
+            <%= will_paginate @scripts %>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>

@@ -22,6 +22,8 @@
 //= require jquery.scrollTo
 //= require bootstrap-typeahead-rails
 //= jquery.validate.localization/messages_pt_BR.js
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 var ready;
@@ -183,5 +185,6 @@ before_action_singup_form = function () {
         return true;
     });
 }
+
 
 
