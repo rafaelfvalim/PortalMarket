@@ -14,4 +14,6 @@ class Price < ActiveRecord::Base
       @script.update_attribute(:has_price, false)
     end
   end
+
+
 end

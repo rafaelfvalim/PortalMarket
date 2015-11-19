@@ -69,16 +69,23 @@ class PricesController < ApplicationController
   def create_prices
     @scripts = params[:scripts]
     prices ||= Array.new
-    # scripts = Script.where(id: params[:script_ids])
-    respond_to do |format|
-      params[:scripts].each do |key, s|
-        Script.find(s[:id]).update_attribute(:complexity, s[:complexity])
-        price = Price.new
-        price.attributes = { script_id: s[:id], value: s[:value], currency_id: s[:currency_id], aggregate_percentage: s[:aggregate_percentage] }
+
+    @scripts.each do |key, s|
+      Script.find(s[:id]).update_attribute(:complexity, s[:complexity])
+      price = Price.new
+      price.attributes = {script_id: s[:id], value: s[:price][:value], currency_id: s[:price][:currency_id], currency_data: s[:price][:currency_data], aggregate_percentage: s[:price][:aggregate_percentage]}
+      unless price.value.nil? || price.currency_id.nil? ||
         prices.push(price)
       end
-      if !script.errors.nil? and prices.each(&:save)
-        format.html { render :script_prices }
+    end
+    respond_to do |format|
+      if prices.each(&:save)
+        @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+        format.js { render "form_script_prices" }
+        format.html { redirect_to script_prices_prices_path }
+      else
+        flash[:warning] = 'Not possible create price , please check if fields not blank'
+        format.html { redirect_to script_prices_prices_path }
       end
     end
   end
@@ -93,7 +100,6 @@ class PricesController < ApplicationController
   def price_params
     params.require(:price).permit(:script_id, :value, :currency_id, :currency_data)
   end
-
 
 end
 
