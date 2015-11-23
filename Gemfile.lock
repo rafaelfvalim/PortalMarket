@@ -356,6 +356,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    tooltipster-rails (3.2.6)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.6)
@@ -445,6 +446,7 @@ DEPENDENCIES
   selenium-webdriver
   spring-commands-rspec
   thin
+  tooltipster-rails
   tzinfo-data
   uglifier (>= 1.3.0)
   upmin-admin

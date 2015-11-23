@@ -103,6 +103,15 @@ $.validator.addMethod('passwordMatch', function (value, element) {
     }
 });
 
+$.validator.addMethod(
+    'money',
+    function(value, element) {
+        var isValidMoney = /^\d{0,4}(\.\d{0,2})?$/.test(value);
+        return this.optional(element) || isValidMoney;
+    }
+);
+
+
 
 
 

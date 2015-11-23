@@ -39,6 +39,8 @@ gem 'groupdate'
 #https://github.com/TrevorS/bootstrap3-datetimepicker-rails
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+#https://github.com/Amunds/tooltipster-rails
+gem 'tooltipster-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

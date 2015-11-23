@@ -22,19 +22,20 @@
             <td><%= script.platform %></td>
             <td><%= s.select :complexity, get_complexities, {prompt: "Please Select ..."}, class: 'form-control' %> </td>
             <%= s.fields_for :price do |p| %>
-                <td width="100px"><%= p.text_field :value, class: 'form-control' %></td>
-                <td width="100px"><%= p.text_field :aggregate_percentage, class: 'form-control' %></td>
+                <td width="100px"><%= p.text_field :value, class: 'form-control money' %></td>
+                <td width="100px"><%= p.text_field :aggregate_percentage, class: 'form-control number' %></td>
                 <td width="100px"><%= p.collection_select :currency_id, Currency.all, :id, :description, {prompt: "Select ..."}, class: 'form-control' %></td>
                 <td width="200px">
                   <div class="form-group">
-                    <div class='input-group date' id='datetimer_price'>
-                      <%= p.text_field :currency_data, class: 'form-control' %>
+                    <div class='input-group date'>
+                      <%= p.text_field :currency_data, class: 'form-control' ,data: { date_format: 'DD/MM/YYYY HH:mm' , date_pickDate:'false' } %>
                       <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                     </div>
                   </div>
                 </td>
+                <td><%= (Date.today - script.updated_at.to_date).to_i %></td>
             <% end %>
           </tr>
       <% end %>

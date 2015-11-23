@@ -23,7 +23,9 @@
 //= require bootstrap-typeahead-rails
 //= jquery.validate.localization/messages_pt_BR.js
 //= require moment
+//= require moment/pt-br.js
 //= require bootstrap-datetimepicker
+//= require jquery.tooltipster.min.js
 //= require_tree .
 
 var ready;

@@ -69,15 +69,7 @@ class PricesController < ApplicationController
   def create_prices
     @scripts = params[:scripts]
     prices ||= Array.new
-
-    @scripts.each do |key, s|
-      Script.find(s[:id]).update_attribute(:complexity, s[:complexity])
-      price = Price.new
-      price.attributes = {script_id: s[:id], value: s[:price][:value], currency_id: s[:price][:currency_id], currency_data: s[:price][:currency_data], aggregate_percentage: s[:price][:aggregate_percentage]}
-      unless price.value.nil? || price.currency_id.nil? ||
-        prices.push(price)
-      end
-    end
+    prices = PriceService.new().create_price(params)
     respond_to do |format|
       if prices.each(&:save)
         @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
