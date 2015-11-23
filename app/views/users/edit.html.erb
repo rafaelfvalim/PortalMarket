@@ -1,0 +1,15 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>User </h1>
+      </div>
+    </div>
+    <hr>
+    <p> <%= link_to 'Back', :back  , class: 'btn btn-default'%> </p>
+    <br>
+   <div><%= render 'users/form' %></div>
+  </div>
+</div>

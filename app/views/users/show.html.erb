@@ -1,3 +1,26 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>User </h1>
+      </div>
+    </div>
+    <hr>
+    <p> <%= link_to 'Back', :back  , class: 'btn btn-default'%> </p>
+    <br>
+    <p>Email: <%= @user.email if @user.email %></p>
+    <p>Member Type: <%= @user.member.member_type.description %></p>
+    <p>Member Name: <%= @user.full_name %></p>
+    <p>Bank: <%= @user.member.bank.description %></p>
+    <p>Bank AG: <%= @user.member.bank_ag %></p>
+    <p>Bank CC: <%= @user.member.bank_cc %></p>
+    <p>Bank DIGIT: <%= @user.member.bank_cc_digit %></p>
+    <p>CPF: <%= @user.member.cpf %></p>
+    <p>CNPJ: <%= @user.member.cnpj %></p>
+    <p>Comapany Name: <%= @user.member.company_name %></p>
+    <p>Created at: <%= @user.created_at %></p>
+    <p>Updated at: <%= @user.updated_at %></p>
+  </div>
+</div>

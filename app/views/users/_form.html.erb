@@ -1,0 +1,16 @@
+<td>
+  <%= bootstrap_form_for(@user) do |f| %>
+      <%= f.submit 'Update', :class => 'button-xs' %>
+      <%= f.text_field :email, :class => 'form-control' %>
+
+      <%= f.fields_for :members do |m| %>
+
+          <%= m.text_field :member_name, :class => 'form-control' %>
+          <%= m.text_field :member_last_name, :class => 'form-control' %>
+
+
+      <% end %>
+  <% end %>
+</td>
+<td>
+</td>

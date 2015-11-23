@@ -1,16 +1,21 @@
-<div class="container">
-  <div class="row">
-    <h3>Users</h3>
-    <div class="column">
-      <table class="table">
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <%= render user %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Users </h1>
+      </div>
     </div>
+    <hr>
+    <table class="table table-bordered table-condensed">
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+            <%= render user %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
