@@ -1,6 +1,14 @@
-<h1>Editing Price</h1>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Edit Price: </h2>
+      </div>
+    </div>
+    <hr>
+    <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @price %> |
-<%= link_to 'Back', prices_path %>
+  </div>
+</div>

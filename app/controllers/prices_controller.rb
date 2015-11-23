@@ -43,7 +43,8 @@ class PricesController < ApplicationController
   def update
     respond_to do |format|
       if @price.update(price_params)
-        format.html { redirect_to @price, notice: 'Price was successfully updated.' }
+        #format.html { redirect_to @price, notice: 'Price was successfully updated.' }
+        format.html { redirect_to prices_path, notice: 'Price was successfully updated.' }
         format.json { render :show, status: :ok, location: @price }
       else
         format.html { render :edit }
@@ -61,6 +62,8 @@ class PricesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   def script_prices
     @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')

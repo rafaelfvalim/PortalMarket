@@ -1,33 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div id="wrapper">
+  <%= render 'layouts/side_bar_contributor' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Listing Prices: </h2>
+      </div>
+    </div>
+    <hr>
+    <%= link_to "Admin" , admin_members_path , class: 'btn btn-success' %>
+    <p id="notice"><%= notice %></p>
 
-<h1>Listing Prices</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Script</th>
-      <th>Value</th>
-      <th>Currency</th>
-      <th>Currency data</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @prices.each do |price| %>
+    <table class="table table-bordered table-condensed">
+      <thead>
       <tr>
-        <td><%= price.script_id %></td>
-        <td><%= price.value %></td>
-        <td><%= price.currency_id %></td>
-        <td><%= price.currency_data %></td>
-        <td><%= link_to 'Show', price %></td>
-        <td><%= link_to 'Edit', edit_price_path(price) %></td>
-        <td><%= link_to 'Destroy', price, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Script</th>
+        <th>Value</th>
+        <th>Currency</th>
+        <th>Currency data</th>
+        <th>Actions </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @prices.each do |price| %>
+          <tr>
+            <td><%= price.script_id %></td>
+            <td><%= price.value %></td>
+            <td><%= Currency.find(price.currency_id).description %></td>
+            <td><%= price.currency_data %></td>
+            <td><%= link_to 'Edit', edit_price_path(price) , class: 'btn btn-default' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Price', new_price_path %>
+    <br>
+  </div>
+</div>

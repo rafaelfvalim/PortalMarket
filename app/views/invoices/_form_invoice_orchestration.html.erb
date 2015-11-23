@@ -31,7 +31,7 @@
         <td><%= invoice.ship_date %></td>
         <td><%= invoice.shipped_to %></td>
         <td><%= (Date.today - invoice.updated_at.to_date).to_i %></td>
-        <td><%= link_to "Show", invoice_path(invoice.id), class: 'btn btn-default' %></td>
+        <td><%=  get_action_for_invoice(@invoice_status.id, invoice) %></td>
       </tr>
   <% end %>
   </tbody>

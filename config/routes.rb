@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get :invoice_orchestration
       get :process_orchestration
+      get :resend_invoice
     end
   end
   resources :messages

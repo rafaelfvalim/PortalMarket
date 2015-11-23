@@ -29,4 +29,10 @@ module InvoicesHelper
     end
   end
 
+  def get_action_for_invoice(invoice_status_id, invoice)
+    case invoice_status_id
+      when 2 then
+        link_to "Resend", resend_invoice_invoices_path(script_id: invoice.script_id , id: invoice.id), class: 'btn btn-default'
+    end
+  end
 end

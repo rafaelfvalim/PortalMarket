@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :resend_invoice]
 
   # GET /invoices
   # GET /invoices.json
@@ -37,7 +37,12 @@ class InvoicesController < ApplicationController
       @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
       @invoices.push(@invoice)
       cart.update_attribute(:full_sale, true)
-      InvoiceMail.invoice_mail(current_user, Script.find(cart.script_id)).deliver_now
+      begin
+        InvoiceMail.invoice_mail(current_user, Script.find(cart.script_id)).deliver_now
+        flash[:success] = "#{@invoice} sent"
+      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+        flash[:error] = "#{@invoice} not sent "
+      end
     end
 
     respond_to do |format|
@@ -51,6 +56,14 @@ class InvoicesController < ApplicationController
       end
     end
   end
+
+  def resend_invoice
+    message = InvoiceService.new().send_invoice(@invoice)
+    respond_to do |format|
+      format.html { redirect_to invoice_orchestration_invoices_path(invoice_status_id: @invoice.invoice_status_id), notice: message }
+    end
+  end
+
 
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
