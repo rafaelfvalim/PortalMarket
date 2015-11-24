@@ -8,7 +8,19 @@
       </div>
     </div>
     <hr>
+    <%= form_tag request.path, :method => 'get' do %>
+        <% content_tag :label do %>
+            Search by Name:
+            <%= text_field_tag :search, params[:search] %>
+        <% end %>
+    <% end %>
     <table class="table table-bordered table-condensed">
+      <thead>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th colspan="2">Actions</th>
+      </thead>
       <tbody>
       <% @users.each do |user| %>
           <tr>
@@ -17,5 +29,53 @@
       <% end %>
       </tbody>
     </table>
+    <%= will_paginate @users %>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Users traffic
+          </div>
+          <div class="panel-body">
+            <%= line_chart User.group_by_day(:current_sign_in_at).count %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Users Types
+          </div>
+          <div class="panel-body">
+            <%= pie_chart User.joins(:member_type).group(:description).count %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Created Users
+          </div>
+          <div class="panel-body">
+            <%= line_chart User.group_by_day(:created_at).count %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Updated Users
+          </div>
+          <div class="panel-body">
+            <%= line_chart User.group_by_day(:updated_at).count %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>

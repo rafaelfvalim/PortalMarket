@@ -1,13 +1,22 @@
 <td>
+  <%= user.id %>
+</td>
+<td>
+  <%= user.member.member_name.present? ? user.member.member_name : user.full_name %>
+</td>
+<td>
   <%= link_to user.email, user %>
 </td>
+<!--<td>-->
+<!--<%= form_for(user) do |f| %>-->
+    <!--<%= f.select(:role, User.roles.keys.map { |role| [role.titleize, role] }) %>-->
+    <!--<%= f.submit 'Change Role', :class => 'button-xs' %>-->
+    <!--
+<% end %>-->
+<!--</td>-->
 <td>
-  <%= form_for(user) do |f| %>
-    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <%= f.submit 'Change Role', :class => 'button-xs' %>
-  <% end %>
+  <%= link_to("Edid user", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
 </td>
 <td>
-  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
-  <%= link_to("Edid user", edit_user_path(user), :class => 'button-xs') unless user == current_user %>
+  <%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
 </td>

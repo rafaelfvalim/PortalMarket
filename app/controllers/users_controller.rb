@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit]
+  before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.all
+    if params[:search].present?
+      @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search])
+    else
+      @users = User.all.paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    end
   end
 
+
   def show
-    @user = User.find(params[:id])
     unless current_user.admin? || current_user.is_god?
       unless @user == current_user
         redirect_to :back, :alert => "Access denied."
@@ -17,10 +21,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(secure_params)
+    if @user.update(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
+      Rails.logger.info(@user.errors.messages.inspect)
       redirect_to users_path, :alert => "Unable to update user."
     end
   end
@@ -42,13 +46,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def secure_params
-    params.require(:user).permit(:role, members_attributes: [:id, :user_id, :member_type_id, :birthday, :member_name, :member_last_name, :bank_id, :bank_ag, :bank_cc, :bank_cc_digit, :cpf, :cnpj, :company_name])
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def secure_params
+    params.require(:user).permit(:id, :role, :email, member_attributes: [:id, :member_type_id, :member_name, :company_name, :member_last_name, :birthday, :cpf, :cnpj, :bank_id, :bank_ag, :bank_cc, :bank_cc_digit, :created_at, :updated_at], member_type_attributes: [:id])
   end
 
 end

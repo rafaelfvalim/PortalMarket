@@ -1,14 +1,16 @@
 class Member < ActiveRecord::Base
+  after_initialize :init
   belongs_to :user
   has_many :member_scripts
   has_many :checking_accounts
   has_many :carts
   belongs_to :member_type
-  has_many :workplaces ,dependent: :destroy, autosave: true
+  has_many :workplaces, dependent: :destroy, autosave: true
   belongs_to :bank
-  validates :member_name, presence: true
-  validates :member_last_name, presence: true
-  validates :member_last_name, presence: true
+  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :member_type
+  validates :member_name, presence: true, allow_blank: true
+  validates :member_last_name, presence: true, allow_blank: true
   validates :member_type_id, presence: true
   validates :cpf, presence: true, allow_blank: true
   validates :cnpj, presence: true, allow_blank: true
@@ -19,5 +21,9 @@ class Member < ActiveRecord::Base
   CONTRIBUTOR = 'contributor'
   CUSTOMER = 'customer'
   GOD = 'god'
+
+  def init
+    self.bank_id ||= 0   #will set the default value only if it's nil
+  end
 
 end

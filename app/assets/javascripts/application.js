@@ -119,7 +119,9 @@ customer_fields_singup = function (action) {
 
     if (action == 'hide') {
         $("#cnpj").addClass('hidden')
+        $("#user_member_attributes_cnpj").val("")
         $("#company_name").addClass('hidden')
+        $("#user_member_attributes_company_name").val("")
     }
 }
 
@@ -136,10 +138,15 @@ contributor_fields_singup = function (action) {
 
     if (action == 'hide') {
         $("#cpf").addClass('hidden')
+        $("#cpf_field").val("")
         $("#select_bank").addClass('hidden')
+        $("#user_member_attributes_bank_id select").val("Please Select ...")
         $("#bank_cc").addClass('hidden')
+        $("#user_member_attributes_bank_cc").val("")
         $("#name").addClass('hidden')
+        $("#user_member_attributes_member_name").val("")
         $("#last_name").addClass('hidden')
+        $("#user_member_attributes_member_last_name").val("")
         $("#birthday").addClass('hidden')
     }
 
