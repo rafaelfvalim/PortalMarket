@@ -71,7 +71,46 @@
               </div>
             </div>
         <% end %>
+        <%= f.fields_for :address do |a| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= a.text_field :id, readonly: :true, label: 'Id endereço', class: 'form-control' %>
+              </div>
+              <div class="col-md-10">
+                <%= a.text_field :zip_code, class: 'form-control' %>
+              </div>
 
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <%= a.text_field :patio_type, class: 'form-control' %>
+              </div>
+              <div class="col-md-8">
+                <%= a.text_field :patio, class: 'form-control' %>
+              </div>
+              <div class="col-md-2">
+                <%= a.text_field :number, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= a.text_field :neighborhood, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= a.text_field :complement, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= a.text_field :city, class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= a.text_field :state, class: 'form-control' %>
+              </div>
+            </div>
+        <% end %>
         <div class="row">
           <div class="col-md-6">
             <%= m.text_field :created_at, readonly: :true, class: 'form-control' %>

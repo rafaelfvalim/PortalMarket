@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118121340) do
+ActiveRecord::Schema.define(version: 20151125174939) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20151118121340) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "zip_code",     limit: 255
+    t.string   "patio_type",   limit: 255
+    t.string   "patio",        limit: 255
+    t.string   "street",       limit: 255
+    t.string   "number",       limit: 255
+    t.string   "neighborhood", limit: 255
+    t.string   "city",         limit: 255
+    t.string   "state",        limit: 255
+    t.string   "complement",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "banks", force: :cascade do |t|
     t.string   "code",        limit: 255, null: false
@@ -242,6 +256,7 @@ ActiveRecord::Schema.define(version: 20151118121340) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
+    t.integer  "address_id",             limit: 4
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -271,6 +286,7 @@ ActiveRecord::Schema.define(version: 20151118121340) do
     t.boolean  "complete",               limit: 1
   end
 
+  add_index "users", ["address_id"], name: "fk_rails_eb2fc738e4", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
@@ -327,6 +343,7 @@ ActiveRecord::Schema.define(version: 20151118121340) do
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "users", "addresses"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"
   add_foreign_key "workplaces", "members"

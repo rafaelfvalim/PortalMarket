@@ -2,7 +2,7 @@
   <%= user.id %>
 </td>
 <td>
-  <%= user.member.member_name.present? ? user.member.member_name : user.full_name %>
+  <%= user.member.member_name.present? ?  user.full_name : user.member.company_name %>
 </td>
 <td>
   <%= link_to user.email, user %>

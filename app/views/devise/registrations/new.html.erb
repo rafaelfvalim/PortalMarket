@@ -94,6 +94,44 @@
             <%= f.password_field :password_confirmation, class: 'form-control' %>
           </div>
         </div>
+        <%= f.fields_for :address_attributes do |address| %>
+            <div class="row  row-centered">
+              <div class="col-lg-4 col-centered">
+                <%= address.text_field :zip_code, label: 'Digite seu CEP:', class: 'form-control' %>
+              </div>
+              <div class="col-lg-2 col-centered"></div>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-1 col-centered">
+                <%= address.text_field :patio_type, label: 'Tipo Logradouro:', class: 'form-control', 'data-cep' => 'tipo_logradouro' %>
+              </div>
+              <div class="col-lg-4 col-centered">
+                <%= address.text_field :patio, label: 'Logradouro:', class: 'form-control', 'data-cep' => 'logradouro' %>
+              </div>
+              <div class="col-lg-1 col-centered">
+                <%= address.text_field :number, label: 'Numero:', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= address.text_field :neighborhood, label: 'Bairro:', class: 'form-control', 'data-cep' => 'bairro' %>
+              </div>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-6 col-centered">
+                <%= address.text_field :complement, label: 'Complemento:', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row  row-centered">
+              <div class="col-lg-4 col-centered">
+                <%= address.text_field :city, label: 'Cidade:', class: 'form-control', 'data-cep' => 'cidade' %>
+              </div>
+              <div class="col-lg-2 col-centered">
+                <%= address.text_field :state, label: 'Estado:', class: 'form-control', 'data-cep' => 'uf' %>
+              </div>
+            </div>
+
+        <% end %>
         <div class="row row-centered">
           <div class="col-lg-2 col-centered"></div>
           <div class="col-lg-2 col-centered">
@@ -101,6 +139,7 @@
           </div>
           <div class="col-lg-2 col-centered"></div>
         </div>
+
     <% end %>
   </div>
 </div>

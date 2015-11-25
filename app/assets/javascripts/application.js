@@ -24,6 +24,7 @@
 //= jquery.validate.localization/messages_pt_BR.js
 //= require moment
 //= require moment/pt-br.js
+//= require jquery_cep/jquery.cep.js
 //= require bootstrap-datetimepicker
 //= require jquery.tooltipster.min.js
 //= require_tree .
@@ -177,6 +178,13 @@ validate_form_singup = function () {
                 minlength: 5,
                 equalTo: '[name="user[password]"]'
             },
+            "user[address_attributes][zip_code]": {required: true},
+            "user[address_attributes][patio_type]": {required: true},
+            "user[address_attributes][patio]": {required: true},
+            "user[address_attributes][number]": {required: true},
+            "user[address_attributes][neighborhood]": {required: true},
+            "user[address_attributes][city]": {required: true},
+            "user[address_attributes][state]": {required: true},
         }
     });
 }

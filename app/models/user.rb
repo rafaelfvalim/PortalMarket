@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   has_many :workplaces, through: :member
   has_one :member_type, through: :member, autosave: true
   has_many :invoice
+  belongs_to :address
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :member_type
   accepts_nested_attributes_for :workplaces
   accepts_nested_attributes_for :invoice
+  accepts_nested_attributes_for :address
   validate :validate_email_unique, on: :create
   validate :validate_member_name_unique, on: :create
   validate :validate_member_cpf_unique, on: :create
