@@ -1,9 +1,9 @@
 class ScriptDatatable < AjaxDatatablesRails::Base
   # uncomment the appropriate paginator module,
   # depending on gems available in your project.
-   include AjaxDatatablesRails::Extensions::Kaminari
-   include AjaxDatatablesRails::Extensions::WillPaginate
-   include AjaxDatatablesRails::Extensions::SimplePaginator
+  #include AjaxDatatablesRails::Extensions::Kaminari
+  include AjaxDatatablesRails::Extensions::WillPaginate
+  #include AjaxDatatablesRails::Extensions::SimplePaginator
 
   def sortable_columns
     # list columns inside the Array in string dot notation.
@@ -22,8 +22,8 @@ class ScriptDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        # comma separated list of the values for each cell of a table row
-        # example: record.attribute,
+          # comma separated list of the values for each cell of a table row
+          # example: record.attribute,
           record.id,
           record.description,
           record.plataform,

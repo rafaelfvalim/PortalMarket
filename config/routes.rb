@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :messages
+
   resources :prices do
     collection do
       get :script_prices
@@ -64,6 +65,7 @@ Rails.application.routes.draw do
       get :process_orchestration
       get :check_complexity
       put :admin_update
+      get :destroy_incomplete_script
     end
   end
   resources :member_scripts
@@ -82,6 +84,7 @@ Rails.application.routes.draw do
       get :contributor
       get :customer
       get :admin
+      get :contributor_incomplete_actions
     end
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get

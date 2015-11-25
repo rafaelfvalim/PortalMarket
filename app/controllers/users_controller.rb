@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     unless current_user.admin? || current_user.is_god?
       unless @user == current_user

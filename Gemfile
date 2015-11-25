@@ -41,6 +41,8 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 #https://github.com/Amunds/tooltipster-rails
 gem 'tooltipster-rails'
+#https://github.com/prodis/correios-cep
+gem 'correios-cep'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

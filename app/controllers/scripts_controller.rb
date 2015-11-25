@@ -1,7 +1,7 @@
 class ScriptsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update]
+  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update, :destroy_incomplete_script]
 
   # GET /scripts
   # GET /scripts.json
@@ -49,11 +49,12 @@ class ScriptsController < ApplicationController
   # POST /scripts
   # POST /scripts.json
   def create
+    params[:script][:status_id] = Status::INICIAL
     @script = Script.new(script_params)
     @user = current_user
     respond_to do |format|
       if @script.save
-        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 0, participation: 0, status_id: 6)
+        @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 0, participation: 0)
         @member_script.save
         format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
       else
@@ -154,8 +155,15 @@ class ScriptsController < ApplicationController
   def destroy
     @script.destroy
     respond_to do |format|
-      format.html { redirect_to scripts_url, notice: 'Script was successfully destroyed.' }
+      format.html { redirect_to scripts_path, notice: 'Script was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def destroy_incomplete_script
+    @script.destroy
+    respond_to do |format|
+      format.html { redirect_to contributor_incomplete_actions_members_path, notice: 'Script was successfully destroyed.' }
     end
   end
 

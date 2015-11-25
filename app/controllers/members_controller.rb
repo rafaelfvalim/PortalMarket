@@ -20,7 +20,9 @@ class MembersController < ApplicationController
 
   def admin
   end
-
+  def contributor_incomplete_actions
+    @scripts_incomplete = Script.joins(:member_scripts).where(status_id: Status::INICIAL , member_scripts: {:member_id => current_user.member.id})
+  end
 
   # GET /members/1/edit
   def edit

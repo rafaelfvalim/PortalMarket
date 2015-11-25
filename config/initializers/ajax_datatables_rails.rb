@@ -3,5 +3,5 @@ AjaxDatatablesRails.configure do |config|
    config.db_adapter = :mysql2
 
   # available options for paginator are: :simple_paginator, :kaminari, :will_paginate
-   config.paginator = :kaminari
+   config.paginator = :will_paginate
 end
