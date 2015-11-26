@@ -1,0 +1,21 @@
+class JavaService
+  require 'open3'
+
+  def cripty_file_job(input_file, output_file)
+    params ||= Array.new
+    params << "#{Rails.downloads_path}#{input_file}"
+    params << "#{Rails.uploads_path}#{output_file}"
+    return execute_jar(Rails.public_path, Rails.configuration.jar_encrypt, params)
+  end
+
+  def execute_jar(jar_path, jar_file, params)
+    cmd = " java -jar #{jar_file} #{params.join(' ')}"
+    cmdout = ''
+    Dir.chdir(jar_path) do
+      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+        cmdout = stdout.read
+      end
+    end
+    return cmdout
+  end
+end

@@ -10,4 +10,8 @@ class InvoiceService
     end
     message
   end
+
+  def create_download_file(invoice)
+
+  end
 end

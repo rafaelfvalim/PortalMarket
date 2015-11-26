@@ -38,5 +38,10 @@ module CodeStore
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+   #Custom configs for Klustter Portal - Code Store
+    config.jar_encrypt = 'Dummy.jar'
+    config.jars_path = "#{Rails.public_path}/jars/"
+    config.downloads_path = "#{Rails.public_path}/downloads/"
+    config.uploads_path = "#{Rails.public_path}/uploads/"
   end
 end

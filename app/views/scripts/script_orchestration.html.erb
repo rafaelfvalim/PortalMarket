@@ -19,12 +19,12 @@
               <div class="panel panel-default center">
                 <div class="panel-body">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                       <div class="pull-left">
                         <%= collection_select(:status, :id,  @statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
                       </div>
                       <div class="pull-right">
-                        <input type="submit" class="btn btn-default" value="Submit Status">
+                        <input type="submit" class="btn btn-success" value="Submit Status">
                       </div>
                     </div>
                   </div>

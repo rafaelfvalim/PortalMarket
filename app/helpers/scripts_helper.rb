@@ -61,15 +61,15 @@ module ScriptsHelper
   def get_action_for_script(status_id, script)
     case status_id
       when 1 then
-        link_to "Show", script_path(script.id), class: 'btn btn-default'
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
       when 2 then
-        link_to "Show", script_path(script.id), class: 'btn btn-default'
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
       when 3 then
-        link_to "Show", script_path(script.id), class: 'btn btn-default'
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
       when 4 then
-        link_to "Check Complexity", check_complexity_scripts_path(script_id: script.id), class: 'btn btn-default'
+        link_to "Check Complexity", check_complexity_scripts_path(script_id: script.id), class: 'btn btn-info'
       when 5 then
-        link_to "Show", script_path(script.id), class: 'btn btn-default'
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
     end
 
   end
