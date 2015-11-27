@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125174939) do
+ActiveRecord::Schema.define(version: 20151127160330) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20151125174939) do
     t.decimal  "value",                           precision: 10
     t.integer  "invoice_status_id", limit: 4
     t.integer  "workplace_id",      limit: 4,                    null: false
+    t.string   "script_file",       limit: 255
     t.text     "notes",             limit: 65535
     t.datetime "invoice_date"
     t.datetime "pay_date"
@@ -284,6 +285,7 @@ ActiveRecord::Schema.define(version: 20151125174939) do
     t.integer  "invitations_count",      limit: 4,   default: 0
     t.datetime "effective_date"
     t.boolean  "complete",               limit: 1
+    t.string   "key_phrase",             limit: 255
   end
 
   add_index "users", ["address_id"], name: "fk_rails_eb2fc738e4", using: :btree

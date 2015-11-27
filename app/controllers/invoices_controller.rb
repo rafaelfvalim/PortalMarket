@@ -34,19 +34,19 @@ class InvoicesController < ApplicationController
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
-      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, script_file: InvoiceService::generate_invoice_script_file(current_user, cart.script), notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
       @invoices.push(@invoice)
       cart.update_attribute(:full_sale, true)
-      begin
-        InvoiceMail.invoice_mail(current_user, Script.find(cart.script_id)).deliver_now
-        flash[:success] = "#{@invoice} sent"
-      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
-        flash[:error] = "#{@invoice} not sent "
-      end
     end
-
     respond_to do |format|
       if @invoices.each(&:save)
+        p 'aqui'
+        @invoices.each do |i|
+          if InvoiceSerice::create_download_file(i.script.script_file_url, i.invoice_script_url)
+            InvoiceSerice::send_invoice(i.user_id, i)
+          end
+
+        end
         flash[:cart_ids] = @cart_ids
         format.html { redirect_to invoices_path }
         format.json { render :show, status: :created, location: @invoice }
@@ -58,7 +58,7 @@ class InvoicesController < ApplicationController
   end
 
   def resend_invoice
-    message = InvoiceService.new().send_invoice(@invoice)
+    message = InvoiceService::send_invoice(@invoice.user_id, @invoice.script)
     respond_to do |format|
       format.html { redirect_to invoice_orchestration_invoices_path(invoice_status_id: @invoice.invoice_status_id), notice: message }
     end

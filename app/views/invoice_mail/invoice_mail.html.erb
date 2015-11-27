@@ -30,7 +30,7 @@
 
               <p><img src="http://placehold.it/600x300"/></p><!-- /hero -->
               <p class="callout">
-                Agora você pode realizar o download do script <a href="#">aqui!</a>
+                Agora você pode realizar o download do script <a href="">aqui!</a>
               </p>
 
               <h3>Próximos passos:</h3>
@@ -51,31 +51,31 @@
                 <p>
                   <strong>Definição:</strong>
                   <br>
-                  <span><%= @script.definition %></span>
+                  <span><%= @invoice.script.definition %></span>
                 </p>
                 <p>
                   <strong>Descrição: </strong>
                   <br>
-                  <span><%= @script.long_text %></span>
+                  <span><%= @invoice.script.long_text %></span>
                 </p>
                 <p>
                   <strong>Plataforma: </strong>
-                  <span><%= @script.platform %></span>
+                  <span><%= @invoice.scriopt.platform %></span>
                 </p>
-                <% if @script.requirements.size > 0 %>
+                <% if @invoice.script.requirements.size > 0 %>
                     <p>
                       <strong>Requerimentos: </strong>
                     </p>
                     <div>
                       <ul>
-                        <% @script.requirements.each do |requirement| %>
+                        <% @invoice.script.requirements.each do |requirement| %>
                             <li><%= requirement.requirement %></li>
                         <% end %>
                       </ul>
                     </div>
                 <% end %>
                 <hr>
-                <p class="callout">Valor: <%= @script.price.value %> </p>
+                <p class="callout">Valor: <%= @invoice.script.price.value %> </p>
               </fieldset>
               <hr>
               <br>
