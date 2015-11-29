@@ -26,7 +26,7 @@ class InvoiceService
     url = secure.decripty_url(url_encrypt, User.find(user_id))
     ivnoice = nil
     if User.exists?(user_id)
-      if (Date.strptime(url['url']['date'], "%m-%d-%Y") - Date.today).to_i < 60
+      if (Date.strptime(url['url']['date'], "%m-%d-%Y") - Date.today).to_i < Rails.configuration.download_url_days_expires
         ivnoice = Invoice.find(url['url']['invoice_id'])
       end
     end

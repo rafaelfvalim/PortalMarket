@@ -43,5 +43,6 @@ module CodeStore
     config.jars_path = "#{Rails.public_path}/jars/"
     config.downloads_path = "#{Rails.public_path}/downloads/"
     config.uploads_path = "#{Rails.public_path}/uploads/"
+    config.download_url_days_expires = 60
   end
 end
