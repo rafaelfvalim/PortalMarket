@@ -30,7 +30,7 @@
 
               <p><img src="http://placehold.it/600x300"/></p><!-- /hero -->
               <p class="callout">
-                Agora você pode realizar o download do script <a href="">aqui!</a>
+                Agora você pode realizar o download do script <a href="<%=@link_to_file %>"> aqui</a>
               </p>
 
               <h3>Próximos passos:</h3>
@@ -39,7 +39,7 @@
 
               <p>Siga os passos a seguir para realizar essa instalação:</p>
               <ul>
-                <li>Baixe o app no JAVA <a hrememeberf="#">link</a></li>
+                <li>Baixe o app no JAVA <a href="#">aqui</a></li>
                 <li>Execute os passo 1..</li>
                 <li>Execute os passo 2..</li>
                 <li>Execute os passo 3..</li>
@@ -53,19 +53,22 @@
                   <br>
                   <span><%= @invoice.script.definition %></span>
                 </p>
+
                 <p>
                   <strong>Descrição: </strong>
                   <br>
                   <span><%= @invoice.script.long_text %></span>
                 </p>
+
                 <p>
                   <strong>Plataforma: </strong>
-                  <span><%= @invoice.scriopt.platform %></span>
+                  <span><%= @invoice.script.platform %></span>
                 </p>
                 <% if @invoice.script.requirements.size > 0 %>
                     <p>
                       <strong>Requerimentos: </strong>
                     </p>
+
                     <div>
                       <ul>
                         <% @invoice.script.requirements.each do |requirement| %>

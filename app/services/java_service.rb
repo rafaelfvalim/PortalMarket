@@ -1,14 +1,14 @@
 class JavaService
   require 'open3'
 
-  def self.cripty_file_job(input_file, output_file)
+  def cripty_file_job(input_file, output_file)
     params ||= Array.new
     params << "#{Rails.public_path}#{input_file}"
     params << "#{Rails.public_path}#{output_file}"
     return execute_jar(Rails.configuration.jar_encrypt, params)
   end
 
-  def self.execute_jar(jar_path = Rails.public_path, jar_file, params)
+  def execute_jar(jar_path = Rails.public_path, jar_file, params)
     cmd = " java -jar #{jar_file} #{params.join(' ')}"
     cmdout = ''
     Dir.chdir(jar_path) do

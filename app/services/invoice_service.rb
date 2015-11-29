@@ -1,6 +1,6 @@
 class InvoiceService
 
-  def self.send_invoice(invoice_user_id, invoice)
+  def send_invoice(invoice_user_id, invoice)
     message = ''
     begin
       InvoiceMail.invoice_mail(User.find(invoice_user_id), invoice).deliver_now
@@ -11,15 +11,25 @@ class InvoiceService
     message
   end
 
-  def self.create_download_file(invoice)
+  def create_download_file(invoice)
     input_file = invoice.script.script_file_url
-    output_file = invoice.generate_script_url
-    result = JavaService::cripty_file_job(input_file, output_file)
+    output_file = invoice.invoice_script_url
+    result = JavaService.new.cripty_file_job(input_file, output_file)
   end
 
-  def self.generate_invoice_script_file(user, script)
+  def generate_invoice_script_file(user, script)
     "#{File.basename(script.script_file_url.gsub(/.edy/, "_#{Time.now.strftime("%Y%m%d%H%M%S")}.edy"))}"
   end
 
-
+  def url_get_invoice_id(user_id, url_encrypt)
+    secure = UtilSecurityService.new
+    url = secure.decripty_url(url_encrypt, User.find(user_id))
+    ivnoice = nil
+    if User.exists?(user_id)
+      if (Date.strptime(url['url']['date'], "%m-%d-%Y") - Date.today).to_i < 60
+        ivnoice = Invoice.find(url['url']['invoice_id'])
+      end
+    end
+    ivnoice
+  end
 end

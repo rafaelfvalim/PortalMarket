@@ -8,7 +8,7 @@ class UtilSecurityService
     encryptor.encrypt(url)
   end
 
-  def dencripty_url(url_encryptor, user)
+  def decripty_url(url_encryptor, user)
     dencryptor = EncryptorService.new(get_user_key(user), user.key_phrase)
     dencryptor.decrypt(url_encryptor)
   end

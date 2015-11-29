@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :invoice_orchestration
       get :process_orchestration
       get :resend_invoice
+      get :download
     end
   end
   resources :messages

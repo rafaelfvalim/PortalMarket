@@ -12,7 +12,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
-
   end
 
   # GET /invoices/new
@@ -30,22 +29,21 @@ class InvoicesController < ApplicationController
     @invoices ||= Array.new
     @cart_ids = params[:cart]
     @carts = Cart.where(id: @cart_ids)
+    invoice_service = InvoiceService.new
 
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
-      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, script_file: InvoiceService::generate_invoice_script_file(current_user, cart.script), notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, script_file: invoice_service.generate_invoice_script_file(current_user, cart.script), notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
       @invoices.push(@invoice)
       cart.update_attribute(:full_sale, true)
     end
     respond_to do |format|
       if @invoices.each(&:save)
-        p 'aqui'
         @invoices.each do |i|
-          if InvoiceSerice::create_download_file(i.script.script_file_url, i.invoice_script_url)
-            InvoiceSerice::send_invoice(i.user_id, i)
+          if invoice_service.create_download_file(i)
+            invoice_service.send_invoice(i.user_id, i)
           end
-
         end
         flash[:cart_ids] = @cart_ids
         format.html { redirect_to invoices_path }
@@ -54,6 +52,15 @@ class InvoicesController < ApplicationController
         format.html { render :new }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def download
+    invoice_service = InvoiceService.new
+    invoice_id = invoice_service.url_get_invoice_id(params[:user_id], params[:url])
+     unless invoice_id.nil?
+      invoice = Invoice.find(invoice_id)
+      send_file "#{Rails.public_path}#{invoice.invoice_script_url}", :disposition => 'attachment'
     end
   end
 
