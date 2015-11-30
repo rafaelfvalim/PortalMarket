@@ -229,6 +229,9 @@ GEM
     notiffany (0.0.7)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    odf-report (0.5.1)
+      nokogiri (>= 1.5.0)
+      rubyzip (~> 1.1.0)
     orm_adapter (0.5.0)
     ox (2.2.2)
     parser (2.2.2.6)
@@ -435,6 +438,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   mysql2 (~> 0.3.18)
   nested_form_fields
+  odf-report
   pry-rails
   pry-rescue
   quiet_assets
@@ -447,6 +451,7 @@ DEPENDENCIES
   rb-inotify
   rspec-rails
   rubocop
+  rubyzip
   sass-rails (~> 5.0)
   searchkick
   selenium-webdriver

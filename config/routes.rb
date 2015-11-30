@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   resources :workplaces
   resources :banks
   resources :carts
+  resources :reports do
+    collection do
+      get :invoice_report_per_date
+    end
+  end
   resources :invoices do
     collection do
       get :invoice_orchestration

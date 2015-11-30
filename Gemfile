@@ -43,6 +43,12 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'tooltipster-rails'
 #https://github.com/prodis/correios-cep
 gem 'correios-cep'
+#https://github.com/sandrods/odf-report
+gem 'odf-report'
+# requirement - odf-report and http://www.nokogiri.org/tutorials/installing_nokogiri.html
+# nokogiri
+gem 'rubyzip'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

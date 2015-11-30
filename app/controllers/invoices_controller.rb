@@ -30,7 +30,7 @@ class InvoicesController < ApplicationController
     @cart_ids = params[:cart]
     @carts = Cart.where(id: @cart_ids)
     invoice_service = InvoiceService.new
-
+    report = InvoiceReport.new().report_test('asdas')
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
