@@ -57,7 +57,7 @@ class InvoicesController < ApplicationController
 
   def download
     invoice_service = InvoiceService.new
-    invoice_id = invoice_service.url_get_invoice_id(params[:user_id], params[:url])
+    invoice_id = invoice_service.url_get_invoice_id(current_user.id, params[:url])
     unless invoice_id.nil?
       invoice = Invoice.find(invoice_id)
       send_file "#{Rails.public_path}#{invoice.invoice_script_url}", :disposition => 'attachment'

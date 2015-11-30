@@ -20,3 +20,4 @@ $ ->
       )
     select: (event, ui) ->
       $("#cart_workplace_attributes_system_number").val(ui.item.system_number);
+      $("html, body").animate({ scrollTop: 0 }, "fast");

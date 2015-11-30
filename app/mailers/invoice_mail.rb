@@ -6,7 +6,7 @@ class InvoiceMail < ApplicationMailer
   def invoice_mail(user, invoice)
     @user = user
     @invoice = invoice
-    @link_to_file = "http://localhost:3000#{download_invoices_path(user_id: invoice.user_id, url: invoice.encrypt_url)}"
+    @link_to_file = "#{Rails.configuration.absolute_site_url}#{download_invoices_path(url: invoice.encrypt_url)}"
     mail(to: @user.email, subject: 'Klustter Code Store')
   end
 
