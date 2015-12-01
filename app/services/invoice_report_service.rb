@@ -1,9 +1,7 @@
 class InvoiceReportService
 
 
-  def report_invoice_per_date(start_date, end_date, invoice_status_id)
-    invoices = Invoice.where('DATE(created_at) >= ? and DATE(created_at) <= ? and invoice_status_id = ?', start_date, end_date, invoice_status_id)
-
+  def report_invoice_per_date(start_date, end_date, invoice_status_id , invoices)
     report = ODFReport::Report.new("#{Rails.public_path}/reports/invoices_report.odt") do |r|
       r.add_field :start_date, start_date
       r.add_field :end_date, end_date

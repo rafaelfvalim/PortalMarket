@@ -36,12 +36,20 @@ class ReportsController < ApplicationController
     start_date = params[:invoices_start_date].to_date
     end_date = params[:invoices_end_date].to_date
     invoice_status_id = params[:invoice_status_id]
+    invoices = Invoice.where('DATE(created_at) >= ? and DATE(created_at) <= ? and invoice_status_id = ?', start_date, end_date, invoice_status_id)
+
     if start_date.present? && end_date.present? && start_date >= end_date
-      report = InvoiceReportService.new.report_invoice_per_date(start_date, end_date, invoice_status_id)
-      send_data report.generate, type: 'application/vnd.oasis.opendocument.text', disposition: 'attachment', filename: "report_invoice_#{Time.now.strftime("%Y%m%d%H%M%S")}.odt"
+      if invoices.size > 0
+        report = InvoiceReportService.new.report_invoice_per_date(start_date, end_date, invoice_status_id, invoices)
+        send_data report.generate, type: 'application/vnd.oasis.opendocument.text', disposition: 'attachment', filename: "report_invoice_#{Time.now.strftime("%Y%m%d%H%M%S")}.odt"
+      else
+        respond_to do |format|
+          format.html { redirect_to reports_path, notice: 'No data for this report' }
+        end
+      end
     else
       respond_to do |format|
-        format.html { redirect_to reports_path, notice: 'Start date must be less ' }
+        format.html { redirect_to reports_path, notice: 'The dates are invalid'  }
       end
     end
   end
