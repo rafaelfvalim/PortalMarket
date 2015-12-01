@@ -17,8 +17,12 @@
               <div class="col-md-12">
                 <%= form_tag(invoice_report_per_date_reports_path, method: :get) do %>
                     <p> Invoice per date</p>
-                    <p>Start date: <%= date_field_tag 'invoices_start_date', class: 'form-control' %> End
-                      date: <%= date_field_tag 'invoices_end_date' %> <%= submit_tag 'Generate report', class: 'btn btn-default' %></p>
+                    <p>
+                      Start date: <%= date_field_tag 'invoices_start_date', class: 'form-control' %>
+                      End date: <%= date_field_tag 'invoices_end_date' %>
+                      Status: <%= select_tag "invoice_status_id", options_from_collection_for_select(InvoiceStatus.all, :id, :description) %>
+                      <%= submit_tag 'Generate report', class: 'btn btn-default btn-xs' %>
+                    </p>
                 <% end %>
               </div>
             </div>
