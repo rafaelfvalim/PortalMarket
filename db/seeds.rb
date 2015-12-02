@@ -5,128 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#user = CreateAdminService.new.call
-#puts 'CREATED ADMIN USER: ' << user.email
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email
+
 #member = Member.create ([{ }])
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
-# Bank.create( code:"246", description:"Banco ABC Brasil S.A")
-# Bank.create( code:"025", description:"Banco Alfa S.A")
-# Bank.create( code:"641", description:"Banco Alvorada S.A")
-# Bank.create( code:"029", description:"Banco Banerj S.A")
-# Bank.create( code:"038", description:"Banco Banestado S.A")
-# Bank.create( code:"M01", description:"Banco Bankpar S.A")
-# Bank.create( code:"740", description:"Banco Barclays S.A")
-# Bank.create( code:"107", description:"Banco BBM S.A")
-# Bank.create( code:"031", description:"Banco Beg S.A")
-# Bank.create( code:"096", description:"Banco BM&F de Serviços de Liquidação e Custódia S.A")
-# Bank.create( code:"318", description:"Banco BMG S.A")
-# Bank.create( code:"752", description:"Banco BNP Paribas Brasil S.A")
-# Bank.create( code:"248", description:"Banco Boavista Interatlântico S.A")
-# Bank.create( code:"036", description:"Banco Bradesco BBI S.A")
-# Bank.create( code:"237", description:"Banco Bradesco S.A")
-# Bank.create( code:"225", description:"Banco Brascan S.A")
-# Bank.create( code:"044", description:"Banco BVA S.A")
-# Bank.create( code:"263", description:"Banco Cacique S.A")
-# Bank.create( code:"222", description:"Banco Calyon Brasil S.A")
-# Bank.create( code:"040", description:"Banco Cargill S.A")
-# Bank.create( code:"	  ", description:"Banco Carrefour S.A")
-# Bank.create( code:"745", description:"Banco Citibank S.A")
-# Bank.create( code:"M08", description:"Banco Citicard S.A")
-# Bank.create( code:"M19", description:"Banco CNH Capital S.A")
-# Bank.create( code:"215", description:"Banco Comercial e de Investimento Sudameris S.A")
-# Bank.create( code:"756", description:"Banco Cooperativo do Brasil S.A. – BANCOOB")
-# Bank.create( code:"748", description:"Banco Cooperativo Sicredi S.A")
-# Bank.create( code:"505", description:"Banco Credit Suisse (Brasil) S.A")
-# Bank.create( code:"229", description:"Banco Cruzeiro do Sul S.A")
-# Bank.create( code:"003", description:"Banco da Amazônia S.A")
-# Bank.create( code:"707", description:"Banco Daycoval S.A")
-# Bank.create( code:"M06", description:"Banco de Lage Landen Brasil S.A")
-# Bank.create( code:"024", description:"Banco de Pernambuco S.A. – BANDEPE")
-# Bank.create( code:"456", description:"Banco de Tokyo-Mitsubishi UFJ Brasil S.A")
-# Bank.create( code:"214", description:"Banco Dibens S.A")
-# Bank.create( code:"001", description:"Banco do Brasil S.A")
-# Bank.create( code:"027", description:"Banco do Estado de Santa Catarina S.A")
-# Bank.create( code:"047", description:"Banco do Estado de Sergipe S.A")
-# Bank.create( code:"037", description:"Banco do Estado do Pará S.A")
-# Bank.create( code:"041", description:"Banco do Estado do Rio Grande do Sul S.A")
-# Bank.create( code:"004", description:"Banco do Nordeste do Brasil S.A")
-# Bank.create( code:"265", description:"Banco Fator S.A")
-# Bank.create( code:"M03", description:"Banco Fiat S.A")
-# Bank.create( code:"224", description:"Banco Fibra S.A")
-# Bank.create( code:"626", description:"Banco Ficsa S.A")
-# Bank.create( code:"394", description:"Banco Finasa BMC S.A")
-# Bank.create( code:"175", description:"Banco Finasa S.A")
-# Bank.create( code:"252", description:"Banco Fininvest S.A")
-# Bank.create( code:"M18", description:"Banco Ford S.A")
-# Bank.create( code:"233", description:"Banco GE Capital S.A")
-# Bank.create( code:"734", description:"Banco Gerdau S.A")
-# Bank.create( code:"M07", description:"Banco GMAC S.A")
-# Bank.create( code:"612", description:"Banco Guanabara S.A")
-# Bank.create( code:"M22", description:"Banco Honda S.A")
-# Bank.create( code:"063", description:"Banco Ibi S.A. Banco Múltiplo")
-# Bank.create( code:"M11", description:"Banco IBM S.A")
-# Bank.create( code:"604", description:"Banco Industrial do Brasil S.A")
-# Bank.create( code:"320", description:"Banco Industrial e Comercial S.A")
-# Bank.create( code:"653", description:"Banco Indusval S.A")
-# Bank.create( code:"630", description:"Banco Intercap S.A")
-# Bank.create( code:"249", description:"Banco Investcred Unibanco S.A")
-# Bank.create( code:"184", description:"Banco Itaú BBA S.A")
-# Bank.create( code:"652", description:"Banco Itaú Holding Financeira S.A")
-# Bank.create( code:"341", description:"Banco Itaú S.A")
-# Bank.create( code:"479", description:"Banco ItaúBank S.A")
-# Bank.create( code:"M09", description:"Banco Itaucred Financiamentos S.A")
-# Bank.create( code:"376", description:"Banco J. P. Morgan S.A")
-# Bank.create( code:"074", description:"Banco J. Safra S.A")
-# Bank.create( code:"217", description:"Banco John Deere S.A")
-# Bank.create( code:"065", description:"Banco Lemon S.A")
-# Bank.create( code:"600", description:"Banco Luso Brasileiro S.A")
-# Bank.create( code:"389", description:"Banco Mercantil do Brasil S.A")
-# Bank.create( code:"755", description:"Banco Merrill Lynch de Investimentos S.A")
-# Bank.create( code:"746", description:"Banco Modal S.A")
-# Bank.create( code:"151", description:"Banco Nossa Caixa S.A")
-# Bank.create( code:"045", description:"Banco Opportunity S.A")
-# Bank.create( code:"623", description:"Banco Panamericano S.A")
-# Bank.create( code:"611", description:"Banco Paulista S.A")
-# Bank.create( code:"643", description:"Banco Pine S.A")
-# Bank.create( code:"	", 	 description:"Banco Porto Real de Investimentos S.A")
-# Bank.create( code:"638", description:"Banco Prosper S.A")
-# Bank.create( code:"747", description:"Banco Rabobank International Brasil S.A")
-# Bank.create( code:"356", description:"Banco Real S.A")
-# Bank.create( code:"633", description:"Banco Rendimento S.A")
-# Bank.create( code:"M16", description:"Banco Rodobens S.A")
-# Bank.create( code:"072", description:"Banco Rural Mais S.A")
-# Bank.create( code:"453", description:"Banco Rural S.A")
-# Bank.create( code:"422", description:"Banco Safra S.A")
-# Bank.create( code:"033", description:"Banco Santander S.A")
-# Bank.create( code:"250", description:"Banco Schahin S.A")
-# Bank.create( code:"749", description:"Banco Simples S.A")
-# Bank.create( code:"366", description:"Banco Société Générale Brasil S.A")
-# Bank.create( code:"637", description:"Banco Sofisa S.A")
-# Bank.create( code:"464", description:"Banco Sumitomo Mitsui Brasileiro S.A")
-# Bank.create( code:"M20", description:"Banco Toyota do Brasil S.A")
-# Bank.create( code:"634", description:"Banco Triângulo S.A")
-# Bank.create( code:"208", description:"Banco UBS Pactual S.A")
-# Bank.create( code:"116", description:"Banco Único S.A")
-# Bank.create( code:"M14", description:"Banco Volkswagen S.A")
-# Bank.create( code:"655", description:"Banco Votorantim S.A")
-# Bank.create( code:"610", description:"Banco VR S.A")
-# Bank.create( code:"370", description:"Banco WestLB do Brasil S.A")
-# Bank.create( code:"021", description:"BANESTES S.A. Banco do Estado do Espírito Santo")
-# Bank.create( code:"719", description:"Banif-Banco Internacional do Funchal (Brasil)S.A")
-# Bank.create( code:"204", description:"Bankpar Banco Multiplo S.A.")
-# Bank.create( code:"073", description:"BB Banco Popular do Brasil S.A")
-# Bank.create( code:"078", description:"BES Investimento do Brasil S.A.-Banco de Investimento")
-# Bank.create( code:"069", description:"BPN Brasil Banco Múltiplo S.A")
-# Bank.create( code:"070", description:"BRB – Banco de Brasília S.A")
-# Bank.create( code:"104", description:"Caixa Econômica Federal")
-# Bank.create( code:"477", description:"Citibank N.A")
-# Bank.create( code:"	  ", description:"Concórdia Banco S.A")
-# Bank.create( code:"487", description:"Deutsche Bank S.A. – Banco Alemão")
-# Bank.create( code:"751", description:"Dresdner Bank Brasil S.A. – Banco Múltiplo")
-# Bank.create( code:"062", description:"Hipercard Banco Múltiplo S.A")
-# Bank.create( code:"399", description:"HSBC Bank Brasil S.A. – Banco Múltiplo")
-# Bank.create( code:"492", description:"ING Bank N.V")
-# Bank.create( code:"488", description:"JPMorgan Chase Bank")
-# Bank.create( code:"409", description:"UNIBANCO – União de Bancos Brasileiros S.A")
-# Bank.create( code:"230", description:"Unicard Banco Múltiplo S.A")
+# Create Banks
+puts '---CREATE MEMBERTYPES-----'
+CreateMemberTypesService.new.call
+
+puts '---CREATE PAY METHODS-----'
+CreatePayMethodsService.new.call
+
+puts '---CREATE BANKS-----'
+CreateBanksService.new.call
+
+puts '---CREATE CURRENCIES-----'
+CreateCurrenciesService.new.call
+
+puts '---CREATE INVOICES-----'
+CreateInvoiceStatusesService.new.call
+
+puts '---CREATE STATUSES-----'
+CreateStatusesService.new.call
+
+puts '---CREATE SYSTEMS-----'
+CreateSystemsService.new.call

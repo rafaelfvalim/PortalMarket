@@ -1,0 +1,1 @@
+(function(){$(function(){return $("#script-table").dataTable({processing:!0,serverSide:!0,ajax:$("#script-table").data("source"),sPaginationType:"full"})})}).call(this);

@@ -11,7 +11,7 @@ class CreateInvoice < ActiveRecord::Migration
       t.datetime :ship_date
       t.string :shipped_to
       t.string :shipped_via
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

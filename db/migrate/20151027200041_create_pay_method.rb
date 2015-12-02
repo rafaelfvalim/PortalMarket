@@ -3,7 +3,7 @@ class CreatePayMethod < ActiveRecord::Migration
     create_table :pay_methods do |t|
       t.string :name
       t.string :notes
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
