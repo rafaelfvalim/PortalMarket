@@ -88,7 +88,7 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  #Execute this RAILS_ENV=production bundle exec rake assets:precompile for bootstrap classes
 end

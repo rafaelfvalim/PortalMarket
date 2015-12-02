@@ -6,6 +6,11 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @member = Member.find_by_user_id current_user.id
+    if current_user.is_god?
+      respond_to do |format|
+        format.html { redirect_to admin_members_path }
+      end
+    end
   end
 
   # GET /members/1
@@ -19,6 +24,12 @@ class MembersController < ApplicationController
   end
 
   def admin
+    unless current_user.is_god?
+      respond_to do |format|
+        format.html { redirect_to members_path }
+      end
+    end
+
   end
   def contributor_incomplete_actions
     @scripts_incomplete = Script.joins(:member_scripts).where(status_id: Status::INICIAL , member_scripts: {:member_id => current_user.member.id})
