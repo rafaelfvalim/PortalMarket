@@ -54,7 +54,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.2.0.2'
 gem 'devise'
 gem 'devise_invitable'
 gem 'figaro', '>= 1.0.0.rc1'
