@@ -40,6 +40,12 @@ ready = function () {
     //before validation form submit
     before_action_singup_form();
 
+    $("[data-mask]").each(function(index, value) {
+        var element;
+        element = $(value);
+        return element.mask($(value).data('mask'));
+    });
+
 };
 
 $(document).ready(ready);
@@ -114,12 +120,11 @@ form_singup_member = function (e) {
 var customer_fields_singup;
 customer_fields_singup = function (action) {
     if (action == 'show') {
-        $("#cnpj").removeClass('hidden')
         $("#company_name").removeClass('hidden')
+
     }
 
     if (action == 'hide') {
-        $("#cnpj").addClass('hidden')
         $("#user_member_attributes_cnpj").val("")
         $("#company_name").addClass('hidden')
         $("#user_member_attributes_company_name").val("")
@@ -129,7 +134,6 @@ customer_fields_singup = function (action) {
 var contributor_fields_singup;
 contributor_fields_singup = function (action) {
     if (action == 'show') {
-        $("#cpf").removeClass('hidden')
         $("#select_bank").removeClass('hidden')
         $("#bank_cc").removeClass('hidden')
         $("#name").removeClass('hidden')
@@ -138,8 +142,6 @@ contributor_fields_singup = function (action) {
     }
 
     if (action == 'hide') {
-        $("#cpf").addClass('hidden')
-        $("#cpf_field").val("")
         $("#select_bank").addClass('hidden')
         $("#user_member_attributes_bank_id select").val("Please Select ...")
         $("#bank_cc").addClass('hidden')
@@ -202,6 +204,5 @@ before_action_singup_form = function () {
         return true;
     });
 }
-
 
 

@@ -39,4 +39,14 @@ module MembersHelper
     return if count == 0 ? true : false
   end
 
+  def member_type_description
+    case
+      when current_user.is_god? then
+        'administradores'
+      when current_user.is_contributor? then
+        'colaboradores'
+      when current_user.is_customer? then
+        'empresas'
+    end
+  end
 end

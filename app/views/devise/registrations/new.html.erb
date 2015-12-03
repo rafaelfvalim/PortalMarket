@@ -48,16 +48,27 @@
                 <%= member.date_select :birthday, label: 'Birthday:' %>
               </div>
             </div>
-            <div class="row row-centered hidden" id="cpf">
+            <div class="row row-centered" id="cpf">
               <div class="col-lg-6 col-centered">
                 <%= member.text_field :cpf, label: 'CPF:', class: 'form-control', id: 'cpf_field' %>
               </div>
             </div>
-            <div class="row row-centered hidden" id="cnpj">
+            <div class="row row-centered" id="cnpj">
               <div class="col-lg-6 col-centered">
                 <%= member.text_field :cnpj, label: 'CNPJ:', class: 'form-control' %>
               </div>
             </div>
+            <div class="row row-centered" id="cnpj">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :telphone, label: 'Phone:', data: {mask: '(999) 999-9999'}, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row row-centered" id="cnpj">
+              <div class="col-lg-6 col-centered">
+                <%= member.text_field :cellphone, label: 'Cell Phone:', data: {mask: '(999) 999-9999'}, class: 'form-control' %>
+              </div>
+            </div>
+
             <div class="row row-centered hidden" id="select_bank">
               <div class="col-lg-6 col-centered">
                 <%= member.collection_select :bank_id, Bank.all, :id, :description, {prompt: "Please Select ..."}, label: "Choose Bank:" %>

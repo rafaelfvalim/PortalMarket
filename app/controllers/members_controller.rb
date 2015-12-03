@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :user_active
 
   # GET /members
   # GET /members.json
@@ -18,6 +19,21 @@ class MembersController < ApplicationController
   def show
   end
 
+  def lounge
+    unless current_user.inativo?
+      respond_to do |format|
+        case
+          when current_user.is_god? then
+            format.html { redirect_to admin_members_path }
+          when current_user.is_customer? then
+            format.html { redirect_to members_path }
+          when current_user.is_contributor? then
+            format.html { redirect_to members_path }
+        end
+      end
+    end
+  end
+
   # GET /members/new
   def new
     @member = Member.new
@@ -31,8 +47,9 @@ class MembersController < ApplicationController
     end
 
   end
+
   def contributor_incomplete_actions
-    @scripts_incomplete = Script.joins(:member_scripts).where(status_id: Status::INICIAL , member_scripts: {:member_id => current_user.member.id})
+    @scripts_incomplete = Script.joins(:member_scripts).where(status_id: Status::INICIAL, member_scripts: {:member_id => current_user.member.id})
   end
 
   # GET /members/1/edit
@@ -96,7 +113,6 @@ class MembersController < ApplicationController
     end
   end
 
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_member
@@ -107,4 +123,6 @@ class MembersController < ApplicationController
   def member_params
     params[:member]
   end
+
+
 end

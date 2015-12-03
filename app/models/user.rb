@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin, :god]
+  enum status: {inativo: 'inativo', ativo: 'ativo', cancelado: 'cancelado'}
+
   after_initialize :set_default_role, :if => :new_record?
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
@@ -51,6 +53,7 @@ class User < ActiveRecord::Base
       scoped
     end
   end
+
 
   def validate_email_unique
     if User.where(email: email).exists?

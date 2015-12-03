@@ -9,9 +9,12 @@
     </div>
     <hr>
     <div class="row">
-      <%= render 'dash_dials' %>
+      <% if current_user.is_contributor? %>
+          <%= render 'dash_dials_contributor' %>
+      <% elsif current_user.is_customer? %>
+          <%= render 'dash_dials_costumer' %>
+      <% end %>
     </div>
-
     <div class="row">
       <div class="col-lg-4">
         <!-- render 'dash_notification_panel'-->

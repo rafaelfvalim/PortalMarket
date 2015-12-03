@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  before_action :user_active
+
 
   # helper_method :app_custom_routes
   # helper_method :app_custom_routes_errors
@@ -25,7 +28,16 @@ class ApplicationController < ActionController::Base
   #     format.json { render json: model.errors, status: :unprocessable_entity }
   #   end
   # end
+  def user_active
+    unless current_user.nil?
+      unless current_user.ativo?
+        respond_to do |format|
+          format.html { render :lounge }
+        end
+      end
+    end
 
+  end
 
   def app_get_breadcrumb_value_chain(id)
     breadcrumb ||= Array.new

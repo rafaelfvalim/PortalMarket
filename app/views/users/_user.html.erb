@@ -2,10 +2,18 @@
   <%= user.id %>
 </td>
 <td>
-  <%= user.member.member_name.present? ?  user.full_name : user.member.company_name %>
+  <%= user.member.member_name.present? ? user.full_name : user.member.company_name %>
 </td>
 <td>
   <%= link_to user.email, user %>
+</td>
+<td>
+  <% unless user == current_user %>
+      <%= form_for(user) do |f| %>
+          <%= f.select(:status, User.statuses.keys.map { |status| [status.titleize, status] }) %>
+          <%= f.submit 'Change Status', :class => 'button-xs' %>
+      <% end %>
+  <% end %>
 </td>
 <!--<td>-->
 <!--<%= form_for(user) do |f| %>-->

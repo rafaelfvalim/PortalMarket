@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127160330) do
+ActiveRecord::Schema.define(version: 20151203190553) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
+    t.text     "body",          limit: 65535
+    t.string   "resource_id",   limit: 255,   null: false
+    t.string   "resource_type", limit: 255,   null: false
+    t.integer  "author_id",     limit: 4
+    t.string   "author_type",   limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -78,8 +93,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
 
   create_table "invoice_statuses", force: :cascade do |t|
     t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -95,8 +110,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
     t.datetime "ship_date"
     t.string   "shipped_to",        limit: 255
     t.string   "shipped_via",       limit: 255
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "pay_method_id",     limit: 4,                    null: false
   end
 
@@ -120,8 +135,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
 
   create_table "member_types", force: :cascade do |t|
     t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "members", force: :cascade do |t|
@@ -130,6 +145,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
     t.datetime "birthday"
     t.string   "member_name",      limit: 255
     t.string   "member_last_name", limit: 255
+    t.string   "telephone",        limit: 255
+    t.string   "cellphone",        limit: 255
     t.integer  "bank_id",          limit: 4,                null: false
     t.string   "bank_ag",          limit: 255
     t.string   "bank_cc",          limit: 255
@@ -147,8 +164,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "message_to", limit: 4,     null: false
     t.integer  "user_id",    limit: 4,     null: false
   end
@@ -159,8 +176,8 @@ ActiveRecord::Schema.define(version: 20151127160330) do
   create_table "pay_methods", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "notes",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -241,19 +258,20 @@ ActiveRecord::Schema.define(version: 20151127160330) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",        null: false
     t.integer  "address_id",             limit: 4
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "status",                 limit: 255, default: "inativo"
+    t.string   "encrypted_password",     limit: 255, default: "",        null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,         null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.string   "name",                   limit: 255
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
@@ -269,6 +287,7 @@ ActiveRecord::Schema.define(version: 20151127160330) do
     t.string   "invited_by_type",        limit: 255
     t.integer  "invitations_count",      limit: 4,   default: 0
     t.datetime "effective_date"
+    t.boolean  "complete",               limit: 1
     t.string   "key_phrase",             limit: 255
   end
 

@@ -48,6 +48,8 @@ gem 'odf-report'
 # requirement - odf-report and http://www.nokogiri.org/tutorials/installing_nokogiri.html
 # nokogiri
 gem 'rubyzip'
+#http://www.rubydoc.info/gems/maskedinput-rails/1.4.0.0
+gem 'maskedinput-rails'
 
 group :development, :test do
   gem 'byebug'

@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       get :customer
       get :admin
       get :contributor_incomplete_actions
+      get :lounge
     end
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get
