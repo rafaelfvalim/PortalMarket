@@ -27,18 +27,18 @@
               <% end %>
             </div>
             <br>
-
-            <div class="row  row-centered hidden" id="name">
-              <div class="col-lg-6 col-centered ">
-                <%= member.text_field :member_name, label: 'Name:', class: 'form-control' %>
-              </div>
-            </div>
             <div class="row  row-centered hidden" id="company_name">
               <div class="col-lg-6 col-centered ">
                 <%= member.text_field :company_name, label: 'Company Name:', class: 'form-control' %>
               </div>
             </div>
-            <div class="row  row-centered hidden" id="last_name">
+            <div class="row  row-centered " id="name">
+              <div class="col-lg-6 col-centered ">
+                <%= member.text_field :member_name, label: 'Name:', class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="row  row-centered " id="last_name">
               <div class="col-lg-6 col-centered">
                 <%= member.text_field :member_last_name, label: 'Last Name:', class: 'form-control' %>
               </div>
@@ -50,22 +50,22 @@
             </div>
             <div class="row row-centered" id="cpf">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cpf, label: 'CPF:', class: 'form-control', id: 'cpf_field' %>
+                <%= member.text_field :cpf, label: 'CPF:', data: {mask: '999.999.999-99'}, class: 'form-control', id: 'cpf_field' %>
               </div>
             </div>
             <div class="row row-centered" id="cnpj">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cnpj, label: 'CNPJ:', class: 'form-control' %>
+                <%= member.text_field :cnpj, label: 'CNPJ:',  data: {mask: '99.999.999/9999-99'}, class: 'form-control' %>
               </div>
             </div>
             <div class="row row-centered" id="cnpj">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :telphone, label: 'Phone:', data: {mask: '(999) 999-9999'}, class: 'form-control' %>
+                <%= member.text_field :phone_number, label: 'Phone:', data: {mask: '(99) 9999-9999'}, class: 'form-control' %>
               </div>
             </div>
             <div class="row row-centered" id="cnpj">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cellphone, label: 'Cell Phone:', data: {mask: '(999) 999-9999'}, class: 'form-control' %>
+                <%= member.text_field :cellphone_number, label: 'Cell Phone:', data: {mask: '(99) 99999-9999'}, class: 'form-control' %>
               </div>
             </div>
 

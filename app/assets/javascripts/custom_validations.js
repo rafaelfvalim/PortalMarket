@@ -35,18 +35,25 @@ $.validator.addMethod("cpfBR", function (value, element) {
 });
 
 $.validator.addMethod("cnpj", function (cnpj, element) {
+    cnpj = jQuery.trim(cnpj);// retira espaços em branco
+    // DEIXA APENAS OS NÚMEROS
+    cnpj = cnpj.replace('/', '');
+    cnpj = cnpj.replace('.', '');
+    cnpj = cnpj.replace('.', '');
+    cnpj = cnpj.replace('-', '');
 
-    var numeros, digitos, soma, resultado, pos, tamanho,
-        digitos_iguais = true;
+    var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
+    digitos_iguais = 1;
 
-    if (cnpj.length < 14 && cnpj.length > 15)
+    if (cnpj.length < 14 && cnpj.length < 15) {
         return false;
-
-    for (var i = 0; i < cnpj.length - 1; i++)
+    }
+    for (i = 0; i < cnpj.length - 1; i++) {
         if (cnpj.charAt(i) != cnpj.charAt(i + 1)) {
-            digitos_iguais = false;
+            digitos_iguais = 0;
             break;
         }
+    }
 
     if (!digitos_iguais) {
         tamanho = cnpj.length - 2
@@ -57,36 +64,33 @@ $.validator.addMethod("cnpj", function (cnpj, element) {
 
         for (i = tamanho; i >= 1; i--) {
             soma += numeros.charAt(tamanho - i) * pos--;
-            if (pos < 2)
+            if (pos < 2) {
                 pos = 9;
+            }
         }
-
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-
-        if (resultado != digitos.charAt(0))
+        if (resultado != digitos.charAt(0)) {
             return false;
-
+        }
         tamanho = tamanho + 1;
         numeros = cnpj.substring(0, tamanho);
         soma = 0;
         pos = tamanho - 7;
-
         for (i = tamanho; i >= 1; i--) {
             soma += numeros.charAt(tamanho - i) * pos--;
-            if (pos < 2)
+            if (pos < 2) {
                 pos = 9;
+            }
         }
-
         resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-
-        if (resultado != digitos.charAt(1))
+        if (resultado != digitos.charAt(1)) {
             return false;
-
+        }
         return true;
+    } else {
+        return false;
     }
-
-    return false;
-});
+}, "Informe um CNPJ válido."); // Mensagem padrão
 
 $.validator.addMethod("numbersOnly", function (value, element) {
     return this.optional(element) || /^[0-9\-\+()\s]+$/i.test(value);
@@ -105,7 +109,7 @@ $.validator.addMethod('passwordMatch', function (value, element) {
 
 $.validator.addMethod(
     'money',
-    function(value, element) {
+    function (value, element) {
         var isValidMoney = /^\d{0,4}(\.\d{0,2})?$/.test(value);
         return this.optional(element) || isValidMoney;
     }

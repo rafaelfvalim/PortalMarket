@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(version: 20151203190553) do
     t.datetime "birthday"
     t.string   "member_name",      limit: 255
     t.string   "member_last_name", limit: 255
-    t.string   "telephone",        limit: 255
-    t.string   "cellphone",        limit: 255
+    t.string   "phone_number",     limit: 255
+    t.string   "cellphone_number", limit: 255
     t.integer  "bank_id",          limit: 4,                null: false
     t.string   "bank_ag",          limit: 255
     t.string   "bank_cc",          limit: 255

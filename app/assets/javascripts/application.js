@@ -27,6 +27,7 @@
 //= require jquery_cep/jquery.cep.js
 //= require bootstrap-datetimepicker
 //= require jquery.tooltipster.min.js
+//= require maskedinput
 //= require_tree .
 
 var ready;
@@ -136,8 +137,6 @@ contributor_fields_singup = function (action) {
     if (action == 'show') {
         $("#select_bank").removeClass('hidden')
         $("#bank_cc").removeClass('hidden')
-        $("#name").removeClass('hidden')
-        $("#last_name").removeClass('hidden')
         $("#birthday").removeClass('hidden')
     }
 
@@ -146,10 +145,6 @@ contributor_fields_singup = function (action) {
         $("#user_member_attributes_bank_id select").val("Please Select ...")
         $("#bank_cc").addClass('hidden')
         $("#user_member_attributes_bank_cc").val("")
-        $("#name").addClass('hidden')
-        $("#user_member_attributes_member_name").val("")
-        $("#last_name").addClass('hidden')
-        $("#user_member_attributes_member_last_name").val("")
         $("#birthday").addClass('hidden')
     }
 
@@ -171,6 +166,7 @@ validate_form_singup = function () {
             "user[member_attributes][bank_cc_digit]": {numbersOnly: true, required: true},
             "user[member_attributes][company_name]": {required: true},
             "user[email]": {required: true},
+            "user[member_attributes][cellphone]" : {required: true},
             "user[password]": {
                 required: true,
                 minlength: 5
