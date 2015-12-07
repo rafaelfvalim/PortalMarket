@@ -41,10 +41,14 @@ ready = function () {
     //before validation form submit
     before_action_singup_form();
 
-    $("[data-mask]").each(function(index, value) {
+    $("[data-mask]").each(function (index, value) {
         var element;
         element = $(value);
         return element.mask($(value).data('mask'));
+    });
+
+    $("#singup_form input[type='radio']").click(function () {
+        form_singup_member($(this).val());
     });
 
 };
@@ -96,7 +100,8 @@ set_message_info = function (e) {
 
 var init_form_singup;
 init_form_singup = function (e) {
-    before_action_singup_form
+    //before_action_singup_form
+
     if (e == 1) {
         contributor_fields_singup('show')
     } else {
@@ -106,13 +111,11 @@ init_form_singup = function (e) {
 
 var form_singup_member;
 form_singup_member = function (e) {
-
-    if (e == 'contributor') {
+    if (e == 1) {
         customer_fields_singup('hide')
         contributor_fields_singup('show')
     }
-
-    if (e == 'customer') {
+    if (e == 2) {
         customer_fields_singup('show')
         contributor_fields_singup('hide')
     }
@@ -152,7 +155,7 @@ contributor_fields_singup = function (action) {
 
 var validate_form_singup;
 validate_form_singup = function () {
-    $("#singup_form").validate({
+    $("#").validate({
         ignore: ":hidden",
         rules: {
             "user[member_attributes][member_name]": {minlength: 5, required: true},
@@ -166,7 +169,7 @@ validate_form_singup = function () {
             "user[member_attributes][bank_cc_digit]": {numbersOnly: true, required: true},
             "user[member_attributes][company_name]": {required: true},
             "user[email]": {required: true},
-            "user[member_attributes][cellphone]" : {required: true},
+            "user[member_attributes][cellphone]": {required: true},
             "user[password]": {
                 required: true,
                 minlength: 5

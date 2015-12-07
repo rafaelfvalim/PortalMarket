@@ -1,89 +1,90 @@
 <div id="wrapper">
   <div class="container">
-    <%= bootstrap_form_for(resource_name, url: registration_path(resource_name), :html => {:role => 'form', id: 'singup_form'}) do |f| %>
+    <%= simple_form_for(@user, :html => {class: 'form-horizontal', id: 'singup_form'}) do |f| %>
         <div class="row row-centered">
           <p class="text-center">
 
           <h3>Sign up</h3></p>
           <div class="row  row-centered">
             <div class="col-lg-6 col-centered ">
-              <%= devise_error_messages! %>
+              <%= f.error_notification %>
             </div>
           </div>
         </div>
-        <%= f.fields_for :member_attributes do |member| %>
+        <%= f.simple_fields_for :member_attributes, @user.member do |member| %>
             <div class="row row-centered">
-              <div class="col-lg-6 col-centered">
-                <label>Profile: <a href="#" data-toggle="modal" data-target="#help_modal">?</a></label>
+              <div class="col-lg-6 col-centered ">
+                <%= member.input :member_type_id,
+                                 as: :radio_buttons,
+                                 item_wrapper_class: 'inline',
+                                 collection: MemberType.where("description != 'god'"),
+                                 label_method: :description,
+                                 checked: selected_profile(@user),
+                                 label: "Profile <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe
+                %>
               </div>
             </div>
-            <div class="row row-centered">
-              <% MemberType.all.each_with_index do |type, index| %>
-                  <% if type.description != Member::GOD %>
-                      <div class="col-lg-2 col-centered">
-                        <%= member.radio_button :member_type_id, type.id, label: "#{type.description.camelize}", inline: true, onclick: "form_singup_member('#{type.description}')", checked: index == 0 ? true : false %>
-                      </div>
-                  <% end %>
-              <% end %>
-            </div>
-            <br>
             <div class="row  row-centered hidden" id="company_name">
               <div class="col-lg-6 col-centered ">
-                <%= member.text_field :company_name, label: 'Company Name:', class: 'form-control' %>
+                <%= member.input :company_name, label: 'Company Name:' %>
               </div>
             </div>
             <div class="row  row-centered " id="name">
               <div class="col-lg-6 col-centered ">
-                <%= member.text_field :member_name, label: 'Name:', class: 'form-control' %>
+                <%= member.input :member_name, label: 'Name:', class: 'form-control' %>
               </div>
             </div>
-
             <div class="row  row-centered " id="last_name">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :member_last_name, label: 'Last Name:', class: 'form-control' %>
+                <%= member.input :member_last_name, label: 'Last Name:', class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered hidden" id="birthday">
               <div class="col-lg-6 col-centered">
-                <%= member.date_select :birthday, label: 'Birthday:' %>
+                <%= member.input :birthday, as: :date, label: 'Birthday:' %>
               </div>
             </div>
+
             <div class="row row-centered" id="cpf">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cpf, label: 'CPF:', data: {mask: '999.999.999-99'}, class: 'form-control', id: 'cpf_field' %>
+                <%= member.input :cpf, label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
               </div>
             </div>
             <div class="row row-centered" id="cnpj">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cnpj, label: 'CNPJ:',  data: {mask: '99.999.999/9999-99'}, class: 'form-control' %>
+                <%= member.input :cnpj, label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}}, class: 'form-control' %>
               </div>
             </div>
-            <div class="row row-centered" id="cnpj">
+            <div class="row row-centered" id="phone">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :phone_number, label: 'Phone:', data: {mask: '(99) 9999-9999'}, class: 'form-control' %>
+                <%= member.input :phone_number, label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
               </div>
             </div>
-            <div class="row row-centered" id="cnpj">
+            <div class="row row-centered" id="cellphone">
               <div class="col-lg-6 col-centered">
-                <%= member.text_field :cellphone_number, label: 'Cell Phone:', data: {mask: '(99) 99999-9999'}, class: 'form-control' %>
+                <%= member.input :cellphone_number, label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
               </div>
             </div>
 
             <div class="row row-centered hidden" id="select_bank">
               <div class="col-lg-6 col-centered">
-                <%= member.collection_select :bank_id, Bank.all, :id, :description, {prompt: "Please Select ..."}, label: "Choose Bank:" %>
+                <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "Choose Bank:", include_blank: 'Please Select..' %>
               </div>
             </div>
-            <div class="row  row-centered hidden" id="bank_cc">
-              <div class="col-lg-1 col-centered">
-                <%= member.text_field :bank_ag, label: 'Ag:', class: 'form-control' %>
+            <div class="row  row-centered hidden  " id="bank_cc">
+
+              <div class="col-lg-1 col-centered ">
+                <%= member.input :bank_ag, label: 'Ag:', class: 'form-control' %>
               </div>
+
               <div class="col-lg-4 col-centered">
-                <%= member.text_field :bank_cc, label: 'Cc:', class: 'form-control' %>
+                <%= member.input :bank_cc, label: 'Cc:', class: 'form-control' %>
               </div>
+
               <div class="col-lg-1 col-centered">
-                <%= member.text_field :bank_cc_digit, label: 'Digit:', class: 'form-control' %>
+                <%= member.input :bank_cc_digit, label: 'Digit:', class: 'form-control' %>
               </div>
+
             </div>
         <% end %>
         <div class="row  row-centered">
@@ -92,56 +93,55 @@
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.email_field :email, label: 'Email:', class: 'form-control' %>
+            <%= f.input :email, label: 'Email:', class: 'form-control' %>
           </div>
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.password_field :password, class: 'form-control' %>
+            <%= f.input :password, class: 'form-control' %>
           </div>
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
+            <%= f.input :password_confirmation, class: 'form-control' %>
           </div>
         </div>
-        <%= f.fields_for :address_attributes do |address| %>
+        <%= f.simple_fields_for :address_attributes, @user.address do |address| %>
             <div class="row  row-centered">
               <div class="col-lg-4 col-centered">
-                <%= address.text_field :zip_code, label: 'Digite seu CEP:', class: 'form-control' %>
+                <%= address.input :zip_code, label: 'Digite seu CEP:', class: 'form-control' %>
               </div>
               <div class="col-lg-2 col-centered"></div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-1 col-centered">
-                <%= address.text_field :patio_type, label: 'Tipo Logradouro:', class: 'form-control', 'data-cep' => 'tipo_logradouro' %>
+                <%= address.input :patio_type, label: 'Tipo Log:', class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
               </div>
               <div class="col-lg-4 col-centered">
-                <%= address.text_field :patio, label: 'Logradouro:', class: 'form-control', 'data-cep' => 'logradouro' %>
+                <%= address.input :patio, label: 'Logradouro:', class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
               </div>
               <div class="col-lg-1 col-centered">
-                <%= address.text_field :number, label: 'Numero:', class: 'form-control' %>
+                <%= address.input :number, label: 'Numero:', class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-6 col-centered">
-                <%= address.text_field :neighborhood, label: 'Bairro:', class: 'form-control', 'data-cep' => 'bairro' %>
+                <%= address.input :neighborhood, label: 'Bairro:', class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-6 col-centered">
-                <%= address.text_field :complement, label: 'Complemento:', class: 'form-control' %>
+                <%= address.input :complement, label: 'Complemento:', class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-4 col-centered">
-                <%= address.text_field :city, label: 'Cidade:', class: 'form-control', 'data-cep' => 'cidade' %>
+                <%= address.input :city, label: 'Cidade:', class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
               </div>
               <div class="col-lg-2 col-centered">
-                <%= address.text_field :state, label: 'Estado:', class: 'form-control', 'data-cep' => 'uf' %>
+                <%= address.input :state, label: 'Estado:', class: 'form-control', input_html: {data: {cep: 'uf'}} %>
               </div>
             </div>
-
         <% end %>
         <div class="row row-centered">
           <div class="col-lg-2 col-centered"></div>
@@ -150,30 +150,32 @@
           </div>
           <div class="col-lg-2 col-centered"></div>
         </div>
+        <%= render :partial => "devise/shared/links" %>
 
     <% end %>
-  </div>
-</div>
-<div id="help_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Profiles:</h4>
-      </div>
-      <div class="modal-body">
-        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-          <strong>contributor</strong>
-        </p>
-
-        <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
-          <strong>customer</strong></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+    </div>
     </div>
 
-  </div>
-</div>
+    <div id="help_modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Profiles:</h4>
+          </div>
+          <div class="modal-body">
+            <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
+              <strong>contributor</strong>
+            </p>
+
+            <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
+              <strong>customer</strong></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>

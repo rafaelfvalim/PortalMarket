@@ -14,16 +14,24 @@ class Member < ActiveRecord::Base
   validates :member_type_id, presence: true
   validates :cpf, presence: true, allow_blank: true
   validates :cnpj, presence: true, allow_blank: true
+  validates :company_name, presence: true, allow_blank: true
   validates :bank_id, presence: true, allow_blank: true
   validates :bank_ag, presence: true, allow_blank: true
+  validates :bank_cc, presence: true, allow_blank: true
   validates :bank_cc_digit, presence: true, allow_blank: true
+  validates :phone_number, presence: true, allow_blank: true
+  validates :cellphone_number, presence: true, allow_blank: true
+  validates_uniqueness_of :cnpj
+  validates_uniqueness_of :cpf
 
   CONTRIBUTOR = 'contributor'
-  CUSTOMER = 'customer'
+  CUSTOMER = 'cus tomer'
   GOD = 'god'
 
   def init
     self.bank_id ||= 0   #will set the default value only if it's nil
   end
+
+
 
 end

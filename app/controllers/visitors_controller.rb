@@ -11,4 +11,7 @@ class VisitorsController < ApplicationController
 
   end
 
+  def lounge_sing_up
+  end
+
 end

@@ -14,12 +14,15 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :workplaces
   accepts_nested_attributes_for :invoice
   accepts_nested_attributes_for :address
-  validate :validate_email_unique, on: :create
-  validate :validate_member_name_unique, on: :create
-  validate :validate_member_cpf_unique, on: :create
-  validate :validate_member_cnpj_unique, on: :create
-  validate :validate_member_company_name_unique, on: :create
-  validate :validate_member_name_format, on: :create
+  #validate :validate_email_unique, on: :create
+  #validate :validate_member_name_unique, on: :create
+  #validate :validate_member_cpf_unique, on: :create
+  #validate :validate_member_cnpj_unique, on: :create
+  #alidate :validate_member_company_name_unique, on: :create
+  #validate :validate_member_name_format, on: :create
+  validates :email, presence: true, allow_blank: true
+  validates_uniqueness_of :email
+
 
   def set_default_role
     self.role ||= :user

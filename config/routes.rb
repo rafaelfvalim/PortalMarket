@@ -84,7 +84,7 @@ Rails.application.routes.draw do
   end
   mount Upmin::Engine => '/iddqd'
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users
   resources :members do
     collection do

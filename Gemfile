@@ -64,6 +64,8 @@ gem 'high_voltage'
 gem 'mysql2', '~> 0.3.18'
 gem 'upmin-admin'
 gem 'bootstrap_form'
+#https://github.com/plataformatec/simple_form
+gem 'simple_form'
 
 group :development do
   gem 'better_errors'

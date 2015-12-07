@@ -51,7 +51,34 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:id, :role, :email, :status, member_attributes: [:id, :member_type_id, :member_name, :company_name, :member_last_name, :birthday, :cpf, :cnpj, :bank_id, :bank_ag, :bank_cc, :bank_cc_digit, :created_at, :updated_at], member_type_attributes: [:id], address_attributes: [:id, :zip_code, :patio_type, :patio, :number, :neighborhood, :city, :state, :complement])
+    params.require(:user).permit(:name,
+                                 :email,
+                                 :password,
+                                 :password_confirmation,
+                                 member_attributes:
+                                     [:member_type_id,
+                                      :member_name,
+                                      :company_name,
+                                      :member_last_name,
+                                      :phone_number,
+                                      :cellphone_number,
+                                      :birthday,
+                                      :cpf,
+                                      :cnpj,
+                                      :bank_id,
+                                      :bank_ag,
+                                      :bank_cc,
+                                      :bank_cc_digit
+                                     ],
+                                 address_attributes:
+                                     [:zip_code,
+                                      :patio_type,
+                                      :patio,
+                                      :number,
+                                      :neighborhood,
+                                      :city,
+                                      :state,
+                                      :complement])
   end
 
 end
