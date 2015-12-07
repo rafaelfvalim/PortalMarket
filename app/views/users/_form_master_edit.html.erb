@@ -1,0 +1,123 @@
+<%= bootstrap_form_for(@user) do |f| %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="pull-right">
+          <%= f.submit 'Save', class: 'btn btn-success' %>
+        </div>
+        <div class="pull-left">
+          <%= link_to 'Back', :back, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_field :id, readonly: :true, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.fields_for :member_type do |mt| %>
+            <%= mt.text_field :description, readonly: :true, class: 'form-control' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <%= f.fields_for :member do |m| %>
+        <% if @user.member_type.id == 1 %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= m.text_field :member_name, class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= m.text_field :member_last_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "Bank:"} %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <%= m.text_field :bank_ag, class: 'form-control' %>
+              </div>
+              <div class="col-md-8">
+                <%= m.text_field :bank_cc, class: 'form-control' %>
+              </div>
+              <div class="col-md-2">
+                <%= m.text_field :bank_cc_digit, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= m.text_field :cpf, class: 'form-control' %>
+              </div>
+            </div>
+        <% else %>
+            <div class="row">
+              <div class="col-md-12">
+                <%= m.text_field :company_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= m.text_field :cnpj, class: 'form-control' %>
+              </div>
+            </div>
+        <% end %>
+        <%= f.fields_for :address do |a| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= a.text_field :id, readonly: :true, label: 'Id endereço', class: 'form-control' %>
+              </div>
+              <div class="col-md-10">
+                <%= a.text_field :zip_code, class: 'form-control' %>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <%= a.text_field :patio_type, class: 'form-control' %>
+              </div>
+              <div class="col-md-8">
+                <%= a.text_field :patio, class: 'form-control' %>
+              </div>
+              <div class="col-md-2">
+                <%= a.text_field :number, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= a.text_field :neighborhood, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= a.text_field :complement, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= a.text_field :city, class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= a.text_field :state, class: 'form-control' %>
+              </div>
+            </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= m.text_field :created_at, readonly: :true, class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= m.text_field :updated_at, readonly: :true, class: 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+<% end %>

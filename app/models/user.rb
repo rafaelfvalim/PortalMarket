@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     self.member.member_type.description == Member::GOD
   end
 
+  def master_user_id?
+    self.member.master_user_id.nil?
+  end
+
   def self.search(search)
     if search
       User.joins(:member).where('member_name LIKE ?', "%#{search}%").all
@@ -56,6 +60,15 @@ class User < ActiveRecord::Base
       scoped
     end
   end
+
+  def self.search_members(search)
+    if search
+      User.joins(:member).where('member_name LIKE ? AND users.id != ? AND users.confirmed_at NOT NULL', "%#{search}%" , current_user.id).all
+    else
+      scoped
+    end
+  end
+
 
 
   def validate_email_unique

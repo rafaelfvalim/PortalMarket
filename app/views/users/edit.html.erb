@@ -8,6 +8,10 @@
       </div>
     </div>
     <hr>
-   <div><%= render 'users/form' %></div>
+    <% if current_user.is_god? %>
+        <div><%= render 'users/form' %></div>
+    <% else %>
+        <div><%= render 'users/form_master_edit' %></div>
+    <% end %>
   </div>
 </div>

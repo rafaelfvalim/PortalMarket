@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203190553) do
+ActiveRecord::Schema.define(version: 20151207174739) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20151203190553) do
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
+    t.integer  "master_user_id",   limit: 4
     t.integer  "member_type_id",   limit: 4,                null: false
     t.datetime "birthday"
     t.string   "member_name",      limit: 255
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(version: 20151203190553) do
   end
 
   add_index "members", ["bank_id"], name: "fk_rails_d363d09855", using: :btree
+  add_index "members", ["master_user_id"], name: "fk_rails_dfbee4202f", using: :btree
   add_index "members", ["member_type_id"], name: "fk_rails_9a10de6ee1", using: :btree
   add_index "members", ["user_id"], name: "fk_rails_2e88fb7ce9", using: :btree
 
@@ -337,6 +339,7 @@ ActiveRecord::Schema.define(version: 20151203190553) do
   add_foreign_key "members", "banks"
   add_foreign_key "members", "member_types"
   add_foreign_key "members", "users"
+  add_foreign_key "members", "users", column: "master_user_id"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "message_to"
   add_foreign_key "prices", "currencies"

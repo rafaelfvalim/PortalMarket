@@ -28,7 +28,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def master_user
+    @users = User.joins(:member).where("members.master_user_id = ?", current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+  end
+
+  def master_registration
+    @user = User.new
+    @user.build_member
+    @user.build_address
+  end
+
   def edit
+
   end
 
   def destroy

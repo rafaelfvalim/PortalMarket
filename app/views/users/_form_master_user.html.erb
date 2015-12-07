@@ -1,0 +1,44 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+  <th>Id</th>
+  <th>Nome</th>
+  <th>Empresa</th>
+  <th>Email</th>
+  <th>Status</th>
+  <th>Confirmado</th>
+  <th colspan="3">Actions</th>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+        <td>
+          <%= user.full_name %>
+        </td>
+        <td>
+          <%= user.member.company_name %>
+        </td>
+        <td>
+          <%= link_to user.email, user %>
+        </td>
+        <td>
+          <%= user.status %>
+        </td>
+        <td>
+          <%= user.confirmed_at.present? %>
+        </td>
+        <td>
+          <%= link_to("Edid user", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
+        </td>
+        <td>
+          <%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
+        </td>
+        <td>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @users %>

@@ -34,8 +34,17 @@
                   <i class="fa fa-gear fa-fw"></i> Edit Accound</a>
               <% end %>
             </li>
+            <li class="divider"></li>
+
+            <% if current_user.master_user_id? && current_user.ativo? %>
+                <li>
+                  <%= link_to master_user_users_path do %>
+                      <i class="fa fa-users"></i> Add User
+                  <% end %>
+                </li>
+            <% end %>
+
             <% if current_user.is_god? && current_user.ativo? %>
-                <li class="divider"></li>
                 <li>
                   <%= link_to '/iddqd' do %>
                       <i class="fa fa-laptop"></i> SQLAdmin

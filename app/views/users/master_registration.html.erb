@@ -1,0 +1,18 @@
+<div id="wrapper">
+  <%= render 'layouts/side_bar' %>
+  <div id="page-wrapper">
+    <%= render 'layouts/messages' %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>New User </h1>
+      </div>
+    </div>
+    <hr>
+    <% if current_user.is_customer? %>
+        <div><%= render 'form_register_customer' %></div>
+    <% end %>
+    <% if current_user.is_contributor? %>
+        <div><%= render 'form_register_contributor' %></div>
+    <% end %>
+  </div>
+</div>

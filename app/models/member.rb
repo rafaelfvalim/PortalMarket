@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
   validates_uniqueness_of :cpf
 
   CONTRIBUTOR = 'contributor'
-  CUSTOMER = 'cus tomer'
+  CUSTOMER = 'customer'
   GOD = 'god'
 
   def init
