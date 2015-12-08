@@ -7,12 +7,14 @@
         <h1>New User </h1>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to master_user_users_path, class: 'btn btn-default' do %>
+            <i class="fa fa-angle-left fa-lg"></i> Back
+        <% end %>
+      </div>
+    </div>
     <hr>
-    <% if current_user.is_customer? %>
-        <div><%= render 'form_register_customer' %></div>
-    <% end %>
-    <% if current_user.is_contributor? %>
-        <div><%= render 'form_register_contributor' %></div>
-    <% end %>
+    <div><%= render 'form_add_user' %></div>
   </div>
 </div>

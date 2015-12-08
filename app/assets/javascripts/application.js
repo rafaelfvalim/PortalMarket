@@ -155,40 +155,20 @@ contributor_fields_singup = function (action) {
 
 var validate_form_singup;
 validate_form_singup = function () {
-    $("#").validate({
+    $("#singup_form").validate({
         ignore: ":hidden",
         rules: {
-            "user[member_attributes][member_name]": {minlength: 5, required: true},
-            "user[member_attributes][member_last_name]": {minlength: 5, required: true},
-            "user[member_attributes][member_type_id]": {required: true},
             "user[member_attributes][cpf]": {cpfBR: true, required: true},
             "user[member_attributes][cnpj]": {cnpj: true, required: true},
             "user[member_attributes][bank_id]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_ag]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_cc]": {numbersOnly: true, required: true},
             "user[member_attributes][bank_cc_digit]": {numbersOnly: true, required: true},
-            "user[member_attributes][company_name]": {required: true},
-            "user[email]": {required: true},
-            "user[member_attributes][cellphone]": {required: true},
-            "user[password]": {
-                required: true,
-                minlength: 5
-            },
-            "user[password_confirmation]": {
-                required: true,
-                minlength: 5,
-                equalTo: '[name="user[password]"]'
-            },
-            "user[address_attributes][zip_code]": {required: true},
-            "user[address_attributes][patio_type]": {required: true},
-            "user[address_attributes][patio]": {required: true},
-            "user[address_attributes][number]": {required: true},
-            "user[address_attributes][neighborhood]": {required: true},
-            "user[address_attributes][city]": {required: true},
-            "user[address_attributes][state]": {required: true},
         }
     });
 }
+
+
 
 var before_action_singup_form;
 before_action_singup_form = function () {

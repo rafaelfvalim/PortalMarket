@@ -4,20 +4,24 @@
     <%= render 'layouts/messages' %>
     <div class="row">
       <div class="col-md-12">
-        <h1>User Admin </h1>
+        <h1>Master User Admin </h1>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-12">
-        <%= link_to 'New User', master_registration_users_path , class: 'btn btn-default'  %>
+        <%= link_to 'New User', master_registration_users_path, class: 'btn btn-default' %>
       </div>
     </div>
     <hr>
     <%= form_tag request.path, :method => 'get' do %>
         <% content_tag :label do %>
-            Search by Name:
+            Search by:
             <%= text_field_tag :search_members, params[:search] %>
+            <input type="radio" name="search_by" value="name" checked="true">Name
+            <input type="radio" name="search_by" value="email">Email
+            <br>
+            <small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>
         <% end %>
     <% end %>
     <%= render 'form_master_user' %>

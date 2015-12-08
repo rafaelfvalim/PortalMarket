@@ -29,7 +29,11 @@ class UsersController < ApplicationController
   end
 
   def master_user
-    @users = User.joins(:member).where("members.master_user_id = ?", current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    if params[:search_members].present?
+      @users = User.paginate(:page => params[:page], :per_page => 30).search_members(params[:search_members],params[:search_by], current_user)
+    else
+      @users = User.joins(:member).where("members.master_user_id = ?", current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    end
   end
 
   def master_registration
@@ -46,6 +50,24 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+  def create_sub_user
+
+    @user = User.new(secure_params)
+    @user.member.member_type_id = current_user.member_type.id
+    @user.member.master_user_id = current_user.id
+    @user.member.company_name = current_user.member.company_name
+    respond_to do |format|
+      if @user.save
+        @user.ativo!
+        format.html { redirect_to master_user_users_path, notice: 'Welcome! Your account has been created successfully. A confirmation link has been sent to your email address.' }
+        format.json { render json: master_user_users_path, status: :created, location: @user }
+      else
+        format.html { render action: "master_registration" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -68,6 +90,7 @@ class UsersController < ApplicationController
                                  :password_confirmation,
                                  member_attributes:
                                      [:member_type_id,
+                                      :master_user_id,
                                       :member_name,
                                       :company_name,
                                       :member_last_name,

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :queries
   resources :addresses
   resources :systems
   resources :workplaces
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
     collection do
       get :master_user
       get :master_registration
+      post :create_sub_user
     end
   end
   resources :members do

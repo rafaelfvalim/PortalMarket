@@ -21,12 +21,12 @@ gem 'gon'
 gem 'jquery-validation-rails'
 # Font-awesome-rails
 gem 'font-awesome-rails'
-# Searchkick - Elasticsearch
+# Searchkick - Elasticsearch - https://github.com/ankane/searchkick
 gem 'searchkick'
-# Bootstrap Typeahead for Rails
+# http://ankane.github.io/searchjoy/
+gem 'searchjoy'
+#Bootstrap Typeahead for Rails
 gem 'bootstrap-typeahead-rails'
-# Cart acts_as_shopping_cart
-gem 'acts_as_shopping_cart', '~> 0.2.1'
 # wicked wizard
 gem 'wicked'
 #https://github.com/mislav/will_paginate
@@ -41,8 +41,6 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 #https://github.com/Amunds/tooltipster-rails
 gem 'tooltipster-rails'
-#https://github.com/prodis/correios-cep
-gem 'correios-cep'
 #https://github.com/sandrods/odf-report
 gem 'odf-report'
 # requirement - odf-report and http://www.nokogiri.org/tutorials/installing_nokogiri.html
@@ -50,6 +48,8 @@ gem 'odf-report'
 gem 'rubyzip'
 #http://www.rubydoc.info/gems/maskedinput-rails/1.4.0.0
 gem 'maskedinput-rails'
+
+
 
 group :development, :test do
   gem 'byebug'

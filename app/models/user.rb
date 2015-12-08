@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   #alidate :validate_member_company_name_unique, on: :create
   #validate :validate_member_name_format, on: :create
   validates :email, presence: true, allow_blank: true
+  validates_format_of :email,:with => Devise::email_regexp
   validates_uniqueness_of :email
-
 
   def set_default_role
     self.role ||= :user
@@ -61,14 +61,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search_members(search)
+  def self.search_members(search, search_by = 'name', current_user)
     if search
-      User.joins(:member).where('member_name LIKE ? AND users.id != ? AND users.confirmed_at NOT NULL', "%#{search}%" , current_user.id).all
+      case search_by
+        when 'name' then
+          User.joins(:member).where('member_name LIKE ? AND users.id != ? AND master_user_id = ?', "%#{search}%", current_user.id, current_user.id).all
+        when 'email' then
+          User.joins(:member).where('users.email LIKE ? AND users.id != ? AND master_user_id = ?', "%#{search}%", current_user.id, current_user.id).all
+      end
     else
       scoped
     end
   end
-
 
 
   def validate_email_unique

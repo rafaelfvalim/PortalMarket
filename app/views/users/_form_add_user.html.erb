@@ -1,0 +1,61 @@
+<%= simple_form_for(@user, url: create_sub_user_users_path, html: {class: 'form-horizontal', id: 'master_user_form'}) do |f| %>
+
+    <div class="row row-centered">
+      <div class="col-lg-6 col-centered">
+        <%= f.error_notification %>
+      </div>
+    </div>
+    <%= f.simple_fields_for :member_attributes, @user.member do |member| %>
+
+        <div class="row row-centered" id="name">
+          <div class="col-lg-6 col-centered ">
+            <%= member.input :member_name, label: 'Name:', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row row-centered" id="last_name">
+          <div class="col-lg-6 col-centered">
+            <%= member.input :member_last_name, label: 'Last Name:', class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row row-centered" id="birthday">
+          <div class="col-lg-6 col-centered">
+            <%= member.input :birthday, as: :date, label: 'Birthday:' %>
+          </div>
+        </div>
+        <div class="row row-centered" id="cpf">
+          <div class="col-lg-6 col-centered">
+            <%= member.input :cpf, label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
+          </div>
+        </div>
+        <div class="row row-centered" id="phone">
+          <div class="col-lg-6 col-centered">
+            <%= member.input :phone_number, label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row row-centered" id="cellphone">
+          <div class="col-lg-6 col-centered">
+            <%= member.input :cellphone_number, label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
+          </div>
+        </div>
+    <% end %>
+    <div class="row row-centered">
+      <div class="col-lg-6 col-centered">
+        <%= f.input :email, label: 'Email:', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row row-centered">
+      <div class="col-lg-6 col-centered">
+        <%= f.input :password, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row row-centered">
+      <div class="col-lg-6 col-centered">
+        <%= f.input :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row row-centered">
+      <div class="col-lg-2 col-centered">
+        <%= f.submit 'Save', class: 'btn btn-success btn-block' %>
+      </div>
+    </div>
+<% end %>

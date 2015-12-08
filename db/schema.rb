@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207174739) do
+ActiveRecord::Schema.define(version: 20151208174353) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -203,6 +203,13 @@ ActiveRecord::Schema.define(version: 20151207174739) do
   end
 
   add_index "process_modules", ["referrer_process_module_id"], name: "fk_rails_77f666f400", using: :btree
+
+  create_table "queries", force: :cascade do |t|
+    t.string   "search_term", limit: 255
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "related_scripts", force: :cascade do |t|
     t.integer "script_id",         limit: 4

@@ -16,8 +16,13 @@ class SearchesController < ApplicationController
       @scripts = Script.search '*', where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
     end
 
-    if params[:query].present?  && !params[:process_description_selected].present?
+    if params[:query].present? && !params[:process_description_selected].present?
       @scripts = Script.search params[:query], where: {has_price: present?}, page: params[:page], per_page: 10
+    end
+
+    if params[:query].present?
+      query = Query.find_or_initialize_by search_term: params[:query]
+      query.update_attributes(search_term: params[:query], user_id: current_user.id)
     end
 
     respond_to do |format|
