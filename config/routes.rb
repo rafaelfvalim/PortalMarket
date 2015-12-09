@@ -102,6 +102,10 @@ Rails.application.routes.draw do
       get :lounge
     end
   end
+  authenticate :user, lambda{|user| user.admin? } do
+    mount Searchjoy::Engine, at: 'admin/searchjoy'
+  end
+
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
   match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain

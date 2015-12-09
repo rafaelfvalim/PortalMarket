@@ -8,6 +8,7 @@
       </div>
     </div>
     <hr>
+    <% ActiveRecord::Base.default_timezone = :utc %>
     <div class="row">
       <%= render 'dash_dials_script_admin' %>
       <%= render 'dash_dials_invoice_admin' %>
@@ -19,7 +20,7 @@
         <!--<%= render 'dash_chat' %>-->
       </div>
     </div>
-
+    <% ActiveRecord::Base.default_timezone = :local %>
   </div>
 </div>
 

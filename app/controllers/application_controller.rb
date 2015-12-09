@@ -5,27 +5,10 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_user!
   before_action :user_active, if: :signed_in?
 
-  # helper_method :app_custom_routes
-  # helper_method :app_custom_routes_errors
   helper_method :app_get_breadcrumb_value_chain
   helper_method :app_get_system_id_by_name
-  # def app_custom_routes(format, referrer, model)
-  #   if referrer.include?('additional_information')
-  #     format.json { render json: model, notice: 'Process module was successfully created.' }
-  #   else
-  #     format.html { redirect_to model, notice: 'Process module was successfully created.' }
-  #     format.json { render :show, status: :created, location: model }
-  #   end
-  # end
-  #
-  # def app_custom_routes_errors(format, referrer, model)
-  #   if referrer.include?('additional_information')
-  #     format.json { render json: model.errors, status: :unprocessable_entity }
-  #   else
-  #     format.html { render :new }
-  #     format.json { render json: model.errors, status: :unprocessable_entity }
-  #   end
-  # end
+
+
   def user_active
     unless current_user.ativo?
       respond_to do |format|
@@ -37,6 +20,8 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     'visitors/lounge_sing_up'
   end
+
+
 
   def app_get_breadcrumb_value_chain(id)
     breadcrumb ||= Array.new

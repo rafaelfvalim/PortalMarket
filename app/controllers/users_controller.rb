@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :admin_only, :except => :show
   before_action :set_user, only: [:edit, :update, :show]
 
+  def self.default_timezone
+    :utc
+  end
+
+
   def index
     if params[:search].present?
       @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search])
@@ -89,7 +94,8 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation,
                                  member_attributes:
-                                     [:member_type_id,
+                                     [:id,
+                                      :member_type_id,
                                       :master_user_id,
                                       :member_name,
                                       :company_name,
@@ -102,8 +108,12 @@ class UsersController < ApplicationController
                                       :bank_id,
                                       :bank_ag,
                                       :bank_cc,
-                                      :bank_cc_digit
+                                      :bank_cc_digit,
+                                      :created_at,
+                                      :updated_at
                                      ],
+                                 member_type_attributes:
+                                 [:id],
                                  address_attributes:
                                      [:zip_code,
                                       :patio_type,

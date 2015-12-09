@@ -8,6 +8,10 @@ class SearchesController < ApplicationController
     Script.reindex
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
 
+    if params[:query].present?
+      Script.search params[:query], track: true
+    end
+
     if params[:query].present? && params[:process_description_selected].present?
       @scripts = Script.search params[:query], where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, page: params[:page], per_page: 10
     end

@@ -40,22 +40,6 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "Bank:"} %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= m.text_field :bank_ag, class: 'form-control' %>
-              </div>
-              <div class="col-md-8">
-                <%= m.text_field :bank_cc, class: 'form-control' %>
-              </div>
-              <div class="col-md-2">
-                <%= m.text_field :bank_cc_digit, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
                 <%= m.text_field :cpf, class: 'form-control' %>
               </div>
             </div>

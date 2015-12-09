@@ -65,16 +65,18 @@
         <hr>
         <p><h4><strong>Confirmation Token: </strong> <%= @user.confirmation_token %></h4></p>
         <hr>
-        <p><h4><strong>Zip Code: </strong> <%= @user.address.zip_code %></h4></p>
-        <hr>
-        <p><h4><strong>Logradouro: </strong> <%= @user.address.patio %></h4></p>
-        <hr>
-        <p><h4><strong>Neighborhood: </strong> <%= @user.address.neighborhood %></h4></p>
-        <hr>
-        <p><h4><strong>City: </strong> <%= @user.address.city %></h4></p>
-        <hr>
-        <p><h4><strong>State: </strong> <%= @user.address.state %></h4></p>
-        <hr>
+        <% if @user.address.present? %>
+            <p><h4><strong>Zip Code: </strong> <%= @user.address.zip_code %></h4></p>
+            <hr>
+            <p><h4><strong>Logradouro: </strong> <%= @user.address.patio %></h4></p>
+            <hr>
+            <p><h4><strong>Neighborhood: </strong> <%= @user.address.neighborhood %></h4></p>
+            <hr>
+            <p><h4><strong>City: </strong> <%= @user.address.city %></h4></p>
+            <hr>
+            <p><h4><strong>State: </strong> <%= @user.address.state %></h4></p>
+            <hr>
+        <% end %>
       </div>
     </div>
   </div>

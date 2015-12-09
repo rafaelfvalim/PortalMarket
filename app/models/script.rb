@@ -47,6 +47,10 @@ class Script < ActiveRecord::Base
   accepts_nested_attributes_for :checking_account
   accepts_nested_attributes_for :value_chains
 
+  def self.default_timezone
+    :utc
+  end
+
   def search_data
     attributes.merge(
         process_module_id: process_modules.map(&:id),
