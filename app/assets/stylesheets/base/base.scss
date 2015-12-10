@@ -1,3 +1,5 @@
+@import 'variables';
+
 body {
   font-family: $font-stack;
   background-color: $nav-bg;
@@ -171,6 +173,7 @@ video {
 #wrapper {
   width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .wrapper {
@@ -657,13 +660,28 @@ table.table-mail tr td {
   color: #ffffff;
 }
 
+.green-bg {
+  background-color: $navy;
+  color: #ffffff;
+}
+
 .yellow-bg {
   background-color: $yellow;
   color: #ffffff;
 }
 
+.yellow_lazy-bg {
+  background-color: $yellow_lazy;
+  color: #ffffff;
+}
+
 .red-bg {
   background-color: $red;
+  color: #ffffff;
+}
+
+.orange-bg {
+  background-color: $orage;
   color: #ffffff;
 }
 

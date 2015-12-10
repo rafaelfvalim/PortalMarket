@@ -1,28 +1,37 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Admin Dashboard</h1>
-      </div>
-    </div>
-    <hr>
-    <% ActiveRecord::Base.default_timezone = :utc %>
-    <div class="row">
-      <%= render 'dash_dials_script_admin' %>
-      <%= render 'dash_dials_invoice_admin' %>
-    </div>
-    <div class="row">
-      <%= render 'dash_notification_invoice_admin_panel' %>
-      <%= render 'dash_notification_script_admin_panel' %>
-      <div class="col-lg-12">
-        <!--<%= render 'dash_chat' %>-->
-      </div>
-    </div>
-    <% ActiveRecord::Base.default_timezone = :local %>
+<%= render 'layouts/messages' %>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Admin Dashboard</h2>
   </div>
 </div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content text-center p-md">
+          <h2>
+            <span class="text-navy">Painel Administrativo</span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <br/>in ullamcorper nunc. Aliquam convallis faucibus risus, ac ultricies est auctor at.
+          </h2>
 
+          <p>
+            Curabitur pulvinar ex non urna luctus, sed sollicitudin diam fringilla.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% ActiveRecord::Base.default_timezone = :utc %>
+    <%= render 'dash_dials_script_admin' %>
+    <%= render 'dash_dials_invoice_admin' %>
+
+    <%=render 'dash_notification_invoice_admin_panel' %>
+
+    <% render 'dash_notification_script_admin_panel' %>
+  <% ActiveRecord::Base.default_timezone = :local %>
+</div>
 
 

@@ -1,81 +1,43 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to root_path, class: 'navbar-brand' do %>
-        <h5><i class="fa fa-code fa-lg"></i> Code Store</h5>
-    <% end %>
-  </div>
-  <!-- /.navbar-header -->
-  <ul class="nav navbar-top-links navbar-right">
-    <% if user_signed_in? %>
-
-        <% if current_user.is_customer? || current_user.is_god? && current_user.ativo? %>
-            <li class="dropdown" id="navigation_cart">
-              <%= render 'layouts/navigation_cart' %>
-            </li>
-        <% end %>
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+                    </span>
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold"><%= current_user.full_name %></strong>
+                            </span> <span class="text-muted text-xs block"><%= get_function %>
+                          <b class="caret"></b></span>
+                        </span>
           </a>
-
-          <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-            </li>
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                  <i class="fa fa-gear fa-fw"></i> Edit Accound</a>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-
-            <% if current_user.master_user_id? && current_user.ativo? %>
-                <li>
-                  <%= link_to master_user_users_path do %>
-                      <i class="fa fa-users"></i> Adm User
-                  <% end %>
+          <!--  <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="">Profile</a>
                 </li>
-            <% end %>
-
-            <% if current_user.is_god? && current_user.ativo? %>
-                <li>
-                  <%= link_to '/iddqd' do %>
-                      <i class="fa fa-laptop"></i> SQLAdmin
-                  <% end %>
-                  <%= link_to users_path do %>
-                      <i class="fa fa-users"></i> Users
-                  <% end %>
-                  <%= link_to reports_path do %>
-                      <i class="fa fa-bar-chart"></i> Reports
-                  <% end %>
+                <li><a href="">Contacts</a>
                 </li>
-            <% end %>
-            <li class="divider"></li>
-            <li>
-              <%= link_to destroy_user_session_path, :method => 'delete' do %>
-                  <i class="fa fa-sign-out fa-fw"></i> Logout
-              <% end %>
-            </li>
-
-          </ul>
-          <!-- /.dropdown-user -->
-        </li>
-    <% else %>
-        <li><%= link_to new_user_session_path do %>
-              <i class="fa fa-sign-in"></i> Sing in
-          <% end %>
-        </li>
-        <li><%= link_to new_user_registration_path do %>
-              <i class="fa fa-caret-square-o-up"></i> Sing up
-          <% end %>
-        </li>
-    <% end %>
-  </ul>
+                <li><a href="">Mailbox</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="">Logout</a>
+                </li>
+            </ul>
+          -->
+        </div>
+        <div class="logo-element">
+          IN+
+        </div>
+      </li>
+      <% if current_user.is_customer? %>
+          <%= render 'layouts/bar_customer' %>
+      <% elsif current_user.is_contributor? %>
+          <%= render 'layouts/bar_contributor' %>
+      <% elsif current_user.is_god? %>
+          <%= render 'layouts/bar_admin' %>
+      <% end %>
+    </ul>
+  </div>
 </nav>

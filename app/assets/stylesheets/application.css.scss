@@ -15,9 +15,12 @@
  *= require bootstrap-typeahead-rails
  *= require bootstrap-datetimepicker
  *= require tooltipster
- *= require_tree .
+ *= require style
+ *require_tree .
  *= require_self
+ *= require animate/animate.css
  */
+@import 'style';
 
 .inactiveLink {
   pointer-events: none;
@@ -67,9 +70,21 @@ label.required:after {
 }
 
 .divider-vertical {
-  height: 100px;                   // any height
-  border-left: 1px solid gray;     // right or left is the same
-  float: left;                     // so BS grid doesn't break
-  opacity: 0.5;                    // optional
-  margin: 0 15px;                  // optional
+  height: 100px; // any height
+  border-left: 1px solid gray; // right or left is the same
+  float: left; // so BS grid doesn't break
+  opacity: 0.5; // optional
+  margin: 0 15px; // optional
+}
+
+.dash_links a:visited {
+  color: #fff !important;
+}
+
+.dash_links a:active {
+  color: #fff !important;
+}
+
+.dash_links a {
+  color: #fff !important;
 }

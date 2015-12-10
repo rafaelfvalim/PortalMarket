@@ -1,64 +1,27 @@
-<div class="navbar-default sidebar" role="navigation">
-  <div class="sidebar-nav navbar-collapse">
-    <ul class="nav" id="side-menu">
-      <!--Inicio Avatar-->
-      <li>
-        <br>
+<!--Fim Avatar-->
+<!--Inicio Pesquisa-->
+<!--Fim Pesquisa -->
+<!--Inicio Dashboard-->
+<li>
+  <%= link_to members_path do %>
+      <i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
+<% end %>
+</li>
+<!--Fim Dashboard-->
 
-        <div>
-          <%= image_tag "avatar-n-60x60.png", class: 'profile-image img-circle' %>
-          <br>
+<!--Inicio Scripts-->
+<li>
+  <%= link_to contributor_members_path do %>
+      <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
+  <% end %>
+</li>
+<!--Fim Scripts-->
 
-          <p class="text-center">
-            <a href="#">
-              <%= current_user.full_name %>
-            </a>
-          </p>
-        </div>
-        <br>
-      </li>
-      <!--Fim Avatar-->
-      <!--Inicio Pesquisa-->
-      <!--Fim Pesquisa -->
-      <!--Inicio Dashboard-->
-      <li>
-        <%= link_to members_path do %>
-            <i class="fa fa-dashboard fa-fw"></i> Dashboard
-        <% end %>
-      </li>
-      <!--Fim Dashboard-->
+<!--Incio Conta Corrente-->
+<li>
+  <%= link_to checking_accounts_path do %>
+      <i class="fa fa-cc fa-fw" aria-hidden="true"></i> Checking Account
+  <% end %>
+</li>
+<!--Fim Conta Corrente-->
 
-      <!--Inicio Scripts-->
-      <li>
-        <%= link_to contributor_members_path do %>
-            <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i> Scripts
-        <% end %>
-      </li>
-      <!--Fim Scripts-->
-
-      <!--Incio Conta Corrente-->
-      <li>
-        <%= link_to checking_accounts_path do %>
-            <i class="fa fa-cc fa-fw" aria-hidden="true"></i> Checking Account
-        <% end %>
-      </li>
-      <!--Fim Conta Corrente-->
-
-      <!--TO DO : Funções futuras ...-->
-      <!--<li>-->
-      <!--<%= link_to members_path do %>-->
-          <!--<i class="fa fa-envelope" aria-hidden="true"></i> Messages-->
-          <!--
-      <% end %>-->
-      <!--</li>-->
-      <!--<li>-->
-      <!--<%= link_to members_path do %>-->
-          <!--<i class="fa fa-life-ring" aria-hidden="true"></i> Support Tickets-->
-          <!--
-      <% end %>-->
-      <!--</li>-->
-    </ul>
-  </div>
-  <!-- /.sidebar-collapse -->
-</div>
-<!-- /.navbar-static-side -->

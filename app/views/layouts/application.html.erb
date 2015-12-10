@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Code Store" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Code Store" %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= Gon::Base.render_data %>
-      <%= render 'layouts/navigation' %>
-      <%# javascript_include_tag "http://localhost:9292/faye.js" %>
-    </header>
-    <main role="main">
-       <!--  render 'layouts/messages' %>-->
-       <%= yield %>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Code Store" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Code Store" %>">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= Gon::Base.render_data %>
 
-    </main>
-  </body>
+<!-- Wrapper-->
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+  <!-- Navigation -->
+  <%= render 'layouts/navigation' %>
+
+  <!-- Page wraper -->
+  <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+    <!-- Page wrapper -->
+    <%= render 'layouts/topnavbar' %>
+
+    <!-- Main view  -->
+    <%= yield %>
+
+    <!-- Footer -->
+    <%= render 'layouts/footer' %>
+
+  </div>
+  <!-- End page wrapper-->
+
+  <!-- Right sidebar -->
+
+</div>
+</body>
 </html>

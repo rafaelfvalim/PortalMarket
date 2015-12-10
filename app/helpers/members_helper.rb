@@ -22,16 +22,16 @@ module MembersHelper
 
   def dash_admin_panel_color(id)
     case id
-      when 1 then
-        'red'
-      when 2 then
-        'orange'
-      when 3 then
-        'yellow'
-      when 4 then
-        'green'
-      when 5 then
-        'blue'
+      when 1 then #Gravado
+        'red-bg'
+      when 2 then #Verificação de Duplicidade
+        'yellow-bg'
+      when 3 then #Verificação de Consistência
+        'orange-bg'
+      when 4 then #Verficação de Complexidade
+        'navy-bg'
+      when 5 then #Aprovado
+        'lazur-bg'
     end
   end
 
@@ -47,6 +47,17 @@ module MembersHelper
         'colaboradores'
       when current_user.is_customer? then
         'empresas'
+    end
+  end
+
+  def get_function
+    case
+      when current_user.is_god? then
+        'Administrador'
+      when current_user.is_contributor? then
+        'Colaborador'
+      when current_user.is_customer? then
+        'Cliente'
     end
   end
 end

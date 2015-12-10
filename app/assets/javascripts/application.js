@@ -13,11 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.validate
+//= require jquery-ui
+//= require jquery-ui/autocomplete
 //= require jquery.validate.additional-methods
 //= require bootstrap-sprockets
 //= require nested_form_fields
-//= require jquery-ui
-//= require jquery-ui/autocomplete
 //= require dataTables/jquery.dataTables
 //= require jquery.scrollTo
 //= require bootstrap-typeahead-rails
@@ -28,6 +28,12 @@
 //= require bootstrap-datetimepicker
 //= require jquery.tooltipster.min.js
 //= require maskedinput
+//= require metisMenu/jquery.metisMenu.js
+//= require pace/pace.min.js
+//= require peity/jquery.peity.min.js
+//= require slimscroll/jquery.slimscroll.min.js
+//= require inspinia.js
+
 //= require_tree .
 
 var ready;
