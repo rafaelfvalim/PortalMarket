@@ -3,6 +3,7 @@
   <div id="page-wrapper">
     <%= render 'layouts/messages' %>
     <%= bootstrap_form_for(@cart, remote: true, :html => {id: 'cart_form'}) do |c| %>
+        <%= hidden_field_tag :id_search, @id_search %>
         <div class="row">
           <div class="col-md-6">
             <h3><%= @script.name %> </h3>

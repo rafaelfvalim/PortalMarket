@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209144157) do
+ActiveRecord::Schema.define(version: 20151210124747) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 20151209144157) do
   add_index "scripts", ["status_id"], name: "fk_rails_4a68ce8b17", using: :btree
 
   create_table "searchjoy_searches", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
     t.string   "search_type",      limit: 255
     t.string   "query",            limit: 255
     t.string   "normalized_query", limit: 255
@@ -256,6 +257,7 @@ ActiveRecord::Schema.define(version: 20151209144157) do
   add_index "searchjoy_searches", ["created_at"], name: "index_searchjoy_searches_on_created_at", using: :btree
   add_index "searchjoy_searches", ["search_type", "created_at"], name: "index_searchjoy_searches_on_search_type_and_created_at", using: :btree
   add_index "searchjoy_searches", ["search_type", "normalized_query", "created_at"], name: "index_searchjoy_searches_on_search_type_and_normalized_query_an", using: :btree
+  add_index "searchjoy_searches", ["user_id"], name: "fk_rails_13bf622557", using: :btree
 
   create_table "solution_types", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -307,6 +309,7 @@ ActiveRecord::Schema.define(version: 20151209144157) do
     t.datetime "effective_date"
     t.boolean  "complete",               limit: 1
     t.string   "key_phrase",             limit: 255
+    t.string   "timezone",               limit: 255
   end
 
   add_index "users", ["address_id"], name: "fk_rails_eb2fc738e4", using: :btree
@@ -367,6 +370,7 @@ ActiveRecord::Schema.define(version: 20151209144157) do
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "searchjoy_searches", "users"
   add_foreign_key "users", "addresses"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"

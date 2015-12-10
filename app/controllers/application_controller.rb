@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #before_action :authenticate_user!
   before_action :user_active, if: :signed_in?
+  before_action :set_timezone, if: :current_user
 
   helper_method :app_get_breadcrumb_value_chain
   helper_method :app_get_system_id_by_name
@@ -20,7 +21,6 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     'visitors/lounge_sing_up'
   end
-
 
 
   def app_get_breadcrumb_value_chain(id)
@@ -58,6 +58,13 @@ class ApplicationController < ActionController::Base
         @step3 = 'complete'
         @final = 'active'
     end
+  end
+
+  private
+
+  def set_timezone
+    tz = current_user ? current_user.timezone : nil
+    Time.zone = tz || ActiveSupport::TimeZone["Brasilia"]
   end
 
 end

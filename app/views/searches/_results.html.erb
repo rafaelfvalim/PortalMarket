@@ -15,6 +15,7 @@
 
     <div class="row">
       <div class="col-md-12">
+
         <% scripts.each do |script| %>
             <div class="media">
               <div class="media-left media-middle">
@@ -22,7 +23,7 @@
               </div>
               <div class="media-body">
                 <h4 class="media-heading">
-                  <%= link_to show_product_buys_path(id: script) do %>
+                  <%= link_to show_product_buys_path(id: script, id_search: scripts.search.id) do %>
                       <%= script.name %>
                   <% end %>
                 </h4>

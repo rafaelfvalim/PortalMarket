@@ -29,6 +29,8 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
+        search = Searchjoy::Search.find params[:id_search]
+        search.convert
         # format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
         format.js { render "layouts/navigation_cart" }
         format.json { render :show, status: :created, location: @cart }
