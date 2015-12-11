@@ -1,0 +1,57 @@
+<% if user_signed_in? %>
+
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+      </a>
+
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        </li>
+        <li>
+          <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-gear fa-fw"></i> Edit Accound</a>
+          <% end %>
+        </li>
+        <li class="divider"></li>
+        <% if current_user.master_user_id? && current_user.ativo? %>
+            <li>
+              <%= link_to master_user_users_path do %>
+                  <i class="fa fa-users"></i> Adm User
+              <% end %>
+            </li>
+        <% end %>
+
+        <li>
+          <%= link_to '/iddqd' do %>
+              <i class="fa fa-laptop"></i> SQLAdmin
+          <% end %>
+          <%= link_to users_path do %>
+              <i class="fa fa-users"></i> Users
+          <% end %>
+          <%= link_to reports_path do %>
+              <i class="fa fa-bar-chart"></i> Reports
+          <% end %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to destroy_user_session_path, :method => 'delete' do %>
+              <i class="fa fa-sign-out fa-fw"></i> Logout
+          <% end %>
+        </li>
+
+      </ul>
+      <!-- /.dropdown-user -->
+    </li>
+<% else %>
+    <li><%= link_to new_user_session_path do %>
+          <i class="fa fa-sign-in"></i> Sing in
+      <% end %>
+    </li>
+    <li><%= link_to new_user_registration_path do %>
+          <i class="fa fa-caret-square-o-up"></i> Sing up
+      <% end %>
+    </li>
+<% end %>
+</ul>
+</nav>
