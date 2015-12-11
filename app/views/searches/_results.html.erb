@@ -12,43 +12,54 @@
       </div>
     </div>
     <br>
-
     <div class="row">
       <div class="col-md-12">
+        <div class="container">
+          <% scripts.each do |script| %>
+              <div class="col-md-4">
+                <div class="ibox">
+                  <div class="ibox-content product-box">
 
-        <% scripts.each do |script| %>
-            <div class="media">
-              <div class="media-left media-middle">
-                <i class="fa fa-file-code-o fa-3x"></i>
+                    <div class="product-imitation">
+                      Imagem ou texto
+                      [ INFO ]
+                    </div>
+                    <div class="product-desc">
+                                <span class="product-price">
+                                <%= number_to_currency(script.price.value,"R$") %>
+                                </span>
+                      <small class="text-muted">Name</small>
+                      <span class="product-name"> <%= script.name %> </span>
+
+                      <div class="row">
+                        Platform: <%= script.platform %></br>
+                        Tags: <%= "#{script.industry} #{script.complexity}" %></br>
+                        Cod: <%= script.id %></br>
+                        <div class="small m-t-xs">
+
+                          Contributor(s):
+                          <% script.members.each do |member| %>
+                              <% if script.members.size > 1 %>
+                                  <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
+                              <% else %>
+                                  <%= "#{member.member_name} #{ member.member_last_name}" %>
+                              <% end %>
+                          <% end %> - created at : <%= script.created_at %>
+                          </br>
+
+                        </div>
+                      </div>
+                      <div class="m-t text-righ">
+                        <%= link_to show_product_buys_path(id: script, id_search: scripts.search.id), class: "btn btn-xs btn-outline btn-primary" do %>
+                            Details <i class="fa fa-long-arrow-right"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="media-body">
-                <h4 class="media-heading">
-                  <%= link_to show_product_buys_path(id: script, id_search: scripts.search.id) do %>
-                      <%= script.name %>
-                  <% end %>
-                </h4>
-
-                <p>Description: <%= script.description %></p>
-
-                <p>Cod: <%= script.id %></p>
-
-                <p> Contributor(s):
-                  <% script.members.each do |member| %>
-                      <% if script.members.size > 1 %>
-                          <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
-                      <% else %>
-                          <%= "#{member.member_name} #{ member.member_last_name}" %>
-                      <% end %>
-                  <% end %> - created at : <%= script.created_at %>
-                </p>
-
-                <p>Platform: <%= script.platform %></p>
-
-                <p>Tags: <%= "#{script.industry} #{script.complexity}" %></p>
-              </div>
-            </div>
-            <hr>
-        <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12 text-center">

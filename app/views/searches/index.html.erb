@@ -1,32 +1,29 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <label><h2>Search</h2></label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= form_tag searches_path, id: 'search_form', method: :get, remote: true do %>
-            <div class="input-group">
+<%= render 'layouts/messages' %>
 
-              <%= text_field_tag :query, params[:query], class: 'form-control', id: 'query_search' %>
-              <span class="input-group-btn">
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Search</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag searches_path, id: 'search_form', method: :get, remote: true do %>
+          <div class="input-group">
+
+            <%= text_field_tag :query, params[:query], class: 'form-control', id: 'query_search' %>
+            <span class="input-group-btn">
                 <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_search") do %>
                   <i class="fa fa-search"></i>
                 <% end %>
               </span>
-            </div>
-            <br>
-              <%= render 'advance_search' %>
-        <% end %>
-      </div>
+          </div>
+          <br>
+          <%= render 'advance_search' %>
+      <% end %>
     </div>
-    <br>
-    <div id="search_results">
-      <%= render partial: 'results', locals: {scripts: @scripts} %>
-    </div>
+  </div>
+  <br>
+
+  <div id="search_results">
+    <%= render partial: 'results', locals: {scripts: @scripts} %>
   </div>
 </div>
