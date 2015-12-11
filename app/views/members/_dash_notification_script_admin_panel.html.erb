@@ -1,11 +1,18 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapseScript"><i class="fa fa-bell fa-fw"></i> Scripts
-      Notifications</a>
-  </div>
-  <div id="collapseScript" class="panel-collapse collapse in">
-    <div class="panel-body">
-      <div class="col-lg-12">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>Script Panel
+          <small class="m-l-sm">notifications</small>
+        </h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+
+        </div>
+      </div>
+      <div class="ibox-content">
         <div class="list-group">
           </a>
           <a href="#" class="list-group-item">
@@ -24,8 +31,6 @@
                                     </span>
           </a>
         </div>
-      </div>
-      <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             Script Sold
@@ -34,8 +39,6 @@
             <%= line_chart Invoice.group_by_day(:pay_date).count %>
           </div>
         </div>
-      </div>
-      <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             Script Created
@@ -44,8 +47,6 @@
             <%= line_chart Script.group_by_day(:created_at).count %>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading">
             Script Platform
@@ -55,8 +56,6 @@
           </div>
           <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
-      </div>
-      <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading">
             Script Industry
@@ -66,8 +65,6 @@
           </div>
           <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
-      </div>
-      <div class="col-lg-6">
         <div class="panel panel-default">
           <div class="panel-heading">
             Script Complexity
@@ -78,7 +75,12 @@
           <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
       </div>
-      <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
+      <div class="ibox-footer">
+                        <span class="pull-right">
+                          Code Store
+                    </span>
+        Klustter
+      </div>
     </div>
   </div>
 </div>
