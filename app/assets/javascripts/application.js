@@ -46,17 +46,14 @@ ready = function () {
     validate_form_singup();
     //before validation form submit
     before_action_singup_form();
-
     $("[data-mask]").each(function (index, value) {
         var element;
         element = $(value);
         return element.mask($(value).data('mask'));
     });
-
     $("#singup_form input[type='radio']").click(function () {
         form_singup_member($(this).val());
     });
-
 };
 
 $(document).ready(ready);

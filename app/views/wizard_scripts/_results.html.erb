@@ -1,0 +1,52 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Plataform</th>
+  <th>
+    <small>Requirement</small>
+  </th>
+  <th>
+    <small>Related</small>
+  </th>
+  </thead>
+  <tbody>
+  <% found_scripts.each do |s| %>
+      <tr>
+        <td><%= s.id %></td>
+        <td><%= s.name %></td>
+        <td><%= s.description %></td>
+        <td><%= s.platform %></td>
+        <td class="col-xs-1">
+          <%= link_to "Add", {controller:
+                                      :wizard_scripts,
+                              action: :create_requeriement,
+                              script_id: script.id,
+                              requirement: {
+                                      script_id: script.id,
+                                      requirement: '',
+                                      script_id_requirement: s.id
+                              }
+                           }, class: "btn btn-primary btn-xs",
+                      remote: true,
+                      method: :post,
+                      disabled: @script.requirements.map(&:script_id_requirement).include?(s.id) %>
+        </td>
+        <td class="col-xs-1"><%= link_to "Add", {controller:
+                                                         :wizard_scripts,
+                                                 action: :create_related,
+                                                 script_id: script.id,
+                                                 related_script: {
+                                                         script_id: script.id,
+                                                         related_script_id: s.id
+                                                 }
+                                              }, class: "btn btn-primary btn-xs",
+                                         remote: true,
+                                         method: :post,
+                                         disabled: @script.related_scripts.map(&:related_script_id).include?(s.id) %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

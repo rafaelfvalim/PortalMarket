@@ -1,17 +1,15 @@
-<div id="related_script_list" class="col-lg-10">
-  <table class="table table-bordered table-striped" id="related_script_table">
-    <thead>
-    <th class="col-sm-4" colspan="2">Related Scripts</th>
-    </thead>
-    <tbody>
-    <% Script.includes(:related_scripts).where('id = ?', script.id).each do |f| %>
-        <% f.related_scripts.each do |related_script| %>
-            <tr id="<%= related_script.id %>">
-              <td class="col-xs-11"><%= related_script.script.name %></td>
-              <td class="td_class_x1"><%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_related, related_script_id: related_script.id, script_id: script.id}, class: "btn btn-primary btn-xs", :remote => true %></td>
-            </tr>
-        <% end %>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+  <th>Description</th>
+  <th class="col-xs-1"></th>
+  </thead>
+  <tbody>
+  <% RelatedScript.where("script_id = ? ", script.id).each do |r| %>
+      <tr>
+        <td><%= r.script.name %></td>
+        <td class="col-xs-1"><%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_related, related_script_id: r.id, script_id: script.id}, class: "btn btn-primary btn-xs", remote: true %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

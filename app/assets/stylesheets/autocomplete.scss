@@ -1,7 +1,3 @@
-// Place all the styles related to the scripts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-//=require bs-wizard
 
 .ui-autocomplete {
   position: absolute;
@@ -27,21 +23,7 @@
 .ui-autocomplete > li.ui-state-focus {
   background-color: #DDD;
 }
+
 .ui-helper-hidden-accessible {
   display: none;
-}
-
-html, body {
-  height: 100%;
-}
-
-.container, .panel {
-  width: 100%;
-}
-
-.td_class_x1 {
-  width: 80px;
-  overflow: hidden;
-  display: inline-block;
-  white-space: nowrap;
 }

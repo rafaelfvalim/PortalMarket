@@ -3,19 +3,17 @@ class WizardScriptsController < ApplicationController
   before_action :authenticate_user!
   steps :additional_data, :value_chain, :final
   #before_action :set_script, only: [:show, :edit, :update, :destroy]
+  before_action :set_script, only: [:show]
 
   def show
     set_tracker_step(step)
-    p step
     case step
       when :additional_data then
-        set_script
+        search_script(params[:search], params[:select_field])
       when :value_chain then
-        set_script
         @value_chain = ValueChain.new
         @process_modules = ProcessModule.where('referrer_process_module_id is null')
       when :final then
-        set_script
     end
     render_wizard
   end
@@ -36,27 +34,26 @@ class WizardScriptsController < ApplicationController
     respond_to do |format|
       if @requirement.save
         # app_custom_routes format, request.referrer, @requirement
-        format.js { render "requeriement_list" }
+        search_script(params[:search], params[:select_field])
+        format.js { render "requirements_list" }
         format.html {}
       else
         # TODO: adicionar pagina de erro genérica
-        # app_custom_routes_errors format, request.referrer, @requirement
       end
     end
   end
 
   def create_related
     @related_script = RelatedScript.new(related_script_params)
-    params[:script_id] = @related_script.script_id
-    set_script
     respond_to do |format|
+      set_script
+      search_script(params[:search], params[:select_field])
+
       if @related_script.save
-        # app_custom_routes format, request.referrer, @requirement
         format.js { render "related_list" }
         format.html {}
       else
         # TODO: adicionar pagina de erro genérica
-        # app_custom_routes_errors format, request.referrer, @requirement
       end
     end
   end
@@ -66,7 +63,8 @@ class WizardScriptsController < ApplicationController
     @requirement = Requirement.where(id: params[:requirement_id]).first
     @requirement.destroy
     respond_to do |format|
-      format.js { render "requeriement_list" }
+      search_script(params[:search], params[:select_field])
+      format.js { render "requirements_list" }
       format.html {}
     end
   end
@@ -75,23 +73,30 @@ class WizardScriptsController < ApplicationController
     set_script
     @related_script = RelatedScript.where(id: params[:related_script_id]).first
     @related_script.destroy
+    search_script(params[:search], params[:select_field])
     respond_to do |format|
       format.js { render "related_list" }
       format.html {}
     end
   end
 
-
   def classification
     @process_module = ProcessModule.find(params[:process_id])
     @script_id = params[:script_id]
+  end
+
+  def search_script(search, field = 'name')
+    if search.present?
+      @found_scripts = Script.includes(:related_scripts).paginate(:page => params[:page], :per_page => 30).search_related(search, field)
+    else
+      @found_scripts = Script.where("has_price = 1 AND status_id != 6").paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_script
     @script = Script.find(params[:script_id])
-
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

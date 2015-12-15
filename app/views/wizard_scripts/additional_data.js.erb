@@ -1,0 +1,5 @@
+$('#results').html("<%= escape_javascript(render partial: "wizard_scripts/results", locals: {script: @script, found_scripts: @found_scripts}) %>");
+$('#requirements_list').html("<%= escape_javascript(render partial: "wizard_scripts/requirements_list", locals: {script: @script, requirements_list: @related_list}) %>");
+$('#related_list').html("<%= escape_javascript(render partial: "wizard_scripts/related_list", locals: {script: @script, related_list: @related_list}) %>");
+
+

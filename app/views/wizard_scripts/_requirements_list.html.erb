@@ -1,17 +1,18 @@
-<div id="requeriments_list" class="col-lg-10">
-  <table class="table table-bordered table-striped" id="requeriments_table">
-    <thead>
-    <th class="col-sm-4" colspan="2">Requirement</th>
-    </thead>
-    <tbody>
-    <% Script.includes(:requirements).where('id = ?', script.id).each do |f| %>
-        <% f.requirements.each do |requirement| %>
-            <tr id=<%= requirement.id %>>
-              <td class="col-xs-11"><%= requirement.requirement %> </td>
-              <td class="td_class_x1"><%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_requeriement, requirement_id: requirement.id, script_id: script.id}, class: "btn btn-primary btn-xs", remote: true %></td>
-            </tr>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+  <th>Description</th>
+  <th class="col-xs-1"></th>
+  </thead>
+  <tbody>
+  <% Requirement.where("script_id = ? ", script.id).each do |r| %>
+      <tr>
+        <% if r.requirement == '' %>
+            <td><%= Script.find(r.script_id_requirement).name %></td>
+        <% else %>
+            <td><%= r.requirement %></td>
         <% end %>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+        <td class="col-xs-1"> <%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_requeriement, requirement_id: r.id, script_id: script.id}, class: "btn btn-primary btn-xs", remote: true %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

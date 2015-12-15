@@ -1,18 +1,14 @@
-div class="row">
-  <div class="container">
+<div class="row">
     <div class="row bs-wizard" style="border-bottom:0;">
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step1 or 'disabled'}" do -%>
-          <!--<div class=col-xs-3 bs-wizard-step complete}">-->
           <div class="text-center bs-wizard-stepnum">1</div>
           <div class="progress">
             <div class="progress-bar"></div>
           </div>
           <a href="#" class="bs-wizard-dot"></a>
           <div class="bs-wizard-info text-center">Create</div>
-          <!--</div>-->
       <% end %>
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step2 or 'disabled'}" do -%>
-          <!--<div class="col-xs-3 bs-wizard-step complete">&lt;!&ndash; complete &ndash;&gt;-->
           <div class="text-center bs-wizard-stepnum">2</div>
           <div class="progress">
             <div class="progress-bar"></div>
@@ -21,9 +17,7 @@ div class="row">
 
           <div class="bs-wizard-info text-center">Additional Data</div>
       <% end %>
-      <!--</div>-->
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step3 or 'disabled'}" do -%>
-          <!--<div class="col-xs-3 bs-wizard-step active">&lt;!&ndash; complete &ndash;&gt;-->
           <div class="text-center bs-wizard-stepnum">3</div>
           <div class="progress">
             <div class="progress-bar"></div>
@@ -31,20 +25,14 @@ div class="row">
           <a href="#" class="bs-wizard-dot"></a>
 
           <div class="bs-wizard-info text-center">Classification</div>
-          <!--</div>-->
       <% end %>
       <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@final or 'disabled'}" do -%>
-          <!--<div class="col-xs-3 bs-wizard-step disabled">&lt;!&ndash; active &ndash;&gt;-->
           <div class="text-center bs-wizard-stepnum">4</div>
           <div class="progress">
             <div class="progress-bar"></div>
           </div>
           <a href="#" class="bs-wizard-dot"></a>
-
           <div class="bs-wizard-info text-center">Final</div>
-          <!--</div>-->
       <% end %>
     </div>
-  </div>
 </div>
-<hr>

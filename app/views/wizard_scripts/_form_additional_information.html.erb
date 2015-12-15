@@ -1,65 +1,91 @@
+<%= render 'layouts/process_tracker' %>
 <div class="row">
-  <div class="col-md-12">
-    <%= render 'layouts/process_tracker' %>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="pull-left">
-          <%= link_to edit_script_path(id: @script.id), :class => 'btn btn-default' do %>
-              <i class="fa fa-chevron-left"></i> Back
-          <% end %>
-          <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default', data: {confirm: 'Are you sure?'} %>
-        </div>
-        <div class="pull-right">
-          <%= link_to next_wizard_path(script_id: @script.id), :class => 'btn btn-default' do %>
-              <i class="fa fa-chevron-right"></i> Next
-          <% end %>
-        </div>
-      </div>
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <%= link_to edit_script_path(id: @script.id), :class => 'btn btn-primary' do %>
+          <i class="fa fa-chevron-left"></i> Back
+      <% end %>
+      <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-warning', data: {confirm: 'Are you sure?'} %>
     </div>
-    <br>
-
-    <div class="row">
-      <div class="col-lg-7">
-        <label>Requirements</label>
-        <%= form_tag create_requeriement_wizard_scripts_path, method: :post, remote: true do %>
-            <div class="row">
-              <div id="requirements" class="col-lg-10">
-                <%= text_field_tag :query, params[:query], name: 'requirement[requirement]', id: 'requeriment', class: 'form-control autocomplete', placeholder: 'Requirement.....', :onclick => "set_message_info('#{set_info_script_messages(:requirements)}')" %>
+    <div class="pull-right">
+      <%= link_to next_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
+          <i class="fa fa-chevron-right"></i> Next
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>Requerimentos e Depencias
+        <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
+      </h5>
+    </div>
+    <div class="ibox-content">
+      <div class="row">
+        <div class="col-md-12">
+          <smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span></smal>
+          <%= form_tag request.path, method: :get, remote: true do %>
+              <div class="input-group">
+                <%= text_field_tag :search, params[:search], class: 'form-control' %>
+                <span class="input-group-btn">
+                <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_search") do %>
+                  <i class="fa fa-search"></i>
+                <% end %>
+                    </span>
               </div>
-              <div class="col-lg-1">
-                <%= submit_tag 'Add' %>
-              </div>
-              <%= hidden_field_tag 'requirement[script_id]', @script.id %>
-              <%= hidden_field_tag 'requirement[script_id_requirement]' %>
-            </div>
-            <div class="row">
-              <%= render partial: 'wizard_scripts/requirements_list', locals: {script: @script} %>
-            </div>
-        <% end %>
-        <%= form_tag create_related_wizard_scripts_path, method: :post, remote: true do %>
-            <div>
               <div class="row">
-                <div id="related_scripts" class="col-lg-10">
-                  <%= text_field_tag :query, params[:query], id: 'related_script', class: 'form-control autocomplete', placeholder: 'Related Scrips.....', :onclick => "set_message_info('#{set_info_script_messages(:related_scripts)}')" %>
+                <div class="col-sm-2">
+                  <label> <input type="radio" checked="true" value="name" id="select_field1" name="select_field">
+                    Name </label></div>
+                <div class="col-sm-2">
+                  <label> <input type="radio" value="description" id="select_field2" name="select_field">
+                    Description </label>
                 </div>
-                <div class="col-lg-1">
-                  <%= submit_tag 'Add' %>
-                </div>
-                <%= hidden_field_tag 'related_script[script_id]', @script.id %>
-                <%= hidden_field_tag 'related_script[related_script_id]' %>
               </div>
-            </div>
-            <div class="row">
-              <%= render partial: 'wizard_scripts/related_list', locals: {script: @script} %>
-            </div>
-        <% end %>
+              <%= hidden_field_tag :script_id, @script.id %>
+          <% end %>
+          <br>
+          <div id="results">
+            <%= render partial: 'results', locals: {found_scripts: @found_scripts, script: @script} %>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-5" id="info-message">
-        <fieldset class="scheduler-border">
-          <legend class="scheduler-border">Information :</legend>
-          <p></p>
-        </fieldset>
+      <div class="hr-line-dashed"></div>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Requirements</h5>
+          <%= form_tag create_requeriement_wizard_scripts_path , remote: true, method: :post  do %>
+              <div class="input-group">
+                <%= text_field_tag 'requirement[requirement]', nil,  class: 'form-control' %>
+                <span class="input-group-btn">
+                <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                 <i class="fa fa-plus"></i>
+                <% end %>
+                    </span>
+              </div>
+
+              <%= hidden_field_tag :script_id, @script.id %>
+              <%= hidden_field_tag 'requirement[script_id]', @script.id %>
+              <%= hidden_field_tag 'requirement[script_id_requirement]', '' %>
+          <% end %>
+
+          <div id="requirements_list">
+            <%= render partial: 'requirements_list', locals: {requirements: @requirements, script: @script} %>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <h5>Related Scripts</h5>
+          <br>
+          <br>
+          <div id="related_list">
+            <%= render partial: 'related_list', locals: {related_scripts: @related_scripts, script: @script} %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

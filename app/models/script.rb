@@ -78,4 +78,13 @@ class Script < ActiveRecord::Base
     end
   end
 
+
+  def self.search_related(search, field)
+    if search
+      Script.where(" has_price = 1 AND status_id != 6 AND #{field} LIKE ?", "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end

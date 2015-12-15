@@ -1,2 +1,3 @@
-$('#related_list').html("<%= escape_javascript(render partial: "wizard_scripts/related_list", locals: {script: @script}) %>");
+$('#requirements_list').html("<%= escape_javascript(render partial: "wizard_scripts/requirements_list", locals: {script: @script}) %>");
 $('#results').html("<%= escape_javascript(render partial: "wizard_scripts/results", locals: {script: @script, found_scripts: @found_scripts}) %>");
+
