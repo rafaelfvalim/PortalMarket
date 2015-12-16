@@ -62,14 +62,15 @@ module ApplicationHelper
 
 
   def navbar_render
-    case
-      when current_user.is_god? then
-        render "layouts/navbar_god"
-      when current_user.is_contributor? then
-        render "layouts/navbar_contributor"
-      when current_user.is_customer? then
-        render "layouts/navbar_customer"
-    end
+
+      case
+        when current_user.is_god? then
+          render "layouts/navbar_god"
+        when current_user.is_contributor? then
+          render "layouts/navbar_contributor"
+        when current_user.is_customer? then
+          render "layouts/navbar_customer"
+      end
   end
 
 end

@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_user!
   before_action :user_active, if: :signed_in?
   before_action :set_timezone, if: :current_user
+  layout :layout_by_resource
 
   helper_method :app_get_breadcrumb_value_chain
   helper_method :app_get_system_id_by_name
-
 
   def user_active
     unless current_user.ativo?
@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     'visitors/lounge_sing_up'
   end
-
 
   def app_get_breadcrumb_value_chain(id)
     breadcrumb ||= Array.new
@@ -61,7 +60,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+  def layout_by_resource
+    if devise_controller? && resource_name == :user
+      "empty"
+    else
+      "application"
+    end
+  end
   def set_timezone
     tz = current_user ? current_user.timezone : nil
     Time.zone = tz || ActiveSupport::TimeZone["Brasilia"]

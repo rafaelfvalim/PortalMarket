@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_member
     @user.build_address
+    render layout:  "empty"
   end
 
 # POST /resource

@@ -1,5 +1,11 @@
-<div id="wrapper">
-  <div class="container">
+<div class="text-center loginscreen   animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">K</h1>
+    </div>
+    <h3>Register to Klustter</h3>
+
+    <p>Create account to see it in action.</p>
     <%= simple_form_for(@user, :html => {class: 'form-horizontal', id: 'singup_form'}) do |f| %>
         <div class="row row-centered">
           <p class="text-center">
@@ -18,9 +24,9 @@
                                  as: :radio_buttons,
                                  item_wrapper_class: 'inline',
                                  collection: MemberType.where("description != 'god'"),
-                                 label_method: :description,
+                                 label_method: lambda { |m| "#{m.description.humanize}" },
                                  checked: selected_profile(@user),
-                                 label: "Profile <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe
+                                 label: "Profile <a href='#' data-toggle='modal' data-target='#help_modal'>?</a><br>".html_safe
                 %>
               </div>
             </div>
@@ -146,35 +152,48 @@
         <div class="row row-centered">
           <div class="col-lg-2 col-centered"></div>
           <div class="col-lg-2 col-centered">
-            <%= f.submit 'Sign up', class: 'btn btn-success btn-block' %>
+            <%= f.submit 'Sign up', class: 'btn btn-primary block full-width m-b' %>
           </div>
           <div class="col-lg-2 col-centered"></div>
         </div>
 
     <% end %>
+    <p class="text-muted text-center">
+      <small>Already have an account?</small>
+    </p>
+    <div class="row row-centered">
+      <div class="col-lg-2 col-centered"></div>
+      <div class="col-lg-2 col-centered">
+        <a class="btn btn-sm btn-white btn-block" href="/users/sign_in">Login</a>
+      </div>
+      <div class="col-lg-2 col-centered"></div>
     </div>
-    </div>
+    <p class="m-t">
+      <small>Klustter Company &copy; 2015</small>
+    </p>
+  </div>
+</div>
 
-    <div id="help_modal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Profiles:</h4>
-          </div>
-          <div class="modal-body">
-            <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-              <strong>contributor</strong>
-            </p>
+<div id="help_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Profiles:</h4>
+      </div>
+      <div class="modal-body">
+        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
+          <strong>contributor</strong>
+        </p>
 
-            <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
-              <strong>customer</strong></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
+        <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
+          <strong>customer</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
+
+  </div>
+</div>
