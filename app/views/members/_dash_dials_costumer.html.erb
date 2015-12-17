@@ -1,28 +1,40 @@
-<div class="col-lg-3 col-md-6">
-  <div class="panel panel-yellow">
-    <div class="panel-heading">
-      <div class="row">
-        <div class="col-xs-3">
-          <i class="fa fa-shopping-cart fa-5x"></i>
-        </div>
-        <div class="col-xs-9 text-right">
-          <div class="huge"><%= CheckingAccount.where('member_id = ?', @member.id).count %></div>
-          <br>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox">
+      <div class="ibox-title">
+        <h5>Panel
+        </h5>
+      </div>
+      <div class="ibox-content">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 ">
+            <div class="widget style1 navy-bg">
+              <div class="row">
+                <div class="col-xs-4">
+                  <i class="fa fa-shopping-cart fa-5x"></i>
+                </div>
+                <div class="col-xs-8 text-right">
+                  <h4>New Orders!</h4>
 
-          <div>New Orders! <br>
-            <small>check now!</small>
+                  <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', @member.id).count %></h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-xs-12 dash_links">
+                  <%= link_to checking_accounts_path do %>
+                      <span class="pull-left">View Details</span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                      <div class="huge"></div>
+                      <div class="clearfix"></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <%= link_to checking_accounts_path do %>
-        <div class="panel-footer">
-          <span class="pull-left">View Details</span>
-          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-          <div class="huge"></div>
-          <div class="clearfix"></div>
-        </div>
-    <% end %>
   </div>
 </div>

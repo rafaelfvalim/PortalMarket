@@ -1,17 +1,14 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>User </h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>User </h1>
     </div>
-    <hr>
-    <% if current_user.is_god? %>
-        <div><%= render 'users/form' %></div>
-    <% else %>
-        <div><%= render 'users/form_master_edit' %></div>
-    <% end %>
   </div>
+  <hr>
+  <% if current_user.is_god? %>
+      <div><%= render 'users/form' %></div>
+  <% else %>
+      <div><%= render 'users/form_master_edit' %></div>
+  <% end %>
 </div>

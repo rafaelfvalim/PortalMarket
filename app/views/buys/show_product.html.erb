@@ -1,162 +1,161 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <%= bootstrap_form_for(@cart, remote: true, :html => {id: 'cart_form'}) do |c| %>
-        <%= hidden_field_tag :id_search, @id_search %>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <%= bootstrap_form_for(@cart, remote: true, :html => {id: 'cart_form'}) do |c| %>
+      <%= hidden_field_tag :id_search, @id_search %>
+      <div class="row">
+        <div class="col-md-6">
+          <h3><%= @script.name %> </h3>
+        </div>
+        <div class="col-md-3">
+          <h4>
+            <strong><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></strong>
+          </h4>
+          <h4><strong>
+            <small>Price :</small>
+            R$ <%= @price.value %></strong></h4>
+        </div>
+        <div class="col-md-3">
+          <br>
+
+          <div class="pull-rigth">
+            <%= link_to searches_path, class: 'btn btn-primary' do %>
+                <i class="fa fa-chevron-left"> Back</i>
+            <% end %>
+            <%= button_tag(type: "submit", class: "btn btn-success", id: "submit_invoice", data: {confirm: 'Add item to cart?'}) do %>
+                <i class="fa fa-cart-plus"></i> Add To Cart
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+            <strong>Cod:</strong>
+            <%= @script.id %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Definition:</strong>
+            <%= @script.definition %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Platform:</strong>
+            <%= @script.platform %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Industry:</strong>
+            <%= @script.industry %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Requeriments :</strong>
+            <% if @script.requirements.size > 0 %>
+              <ul>
+                <% @script.requirements.each do |requirement| %>
+                    <li><%= requirement.requirement %></li>
+                <% end %>
+              </ul>
+          <% else %>
+              <small>N/A</small>
+          <% end %>
+          </p>
+          <p>
+            <strong>Processos :</strong>
+
+          <p>
+            <% show_process_chain(@script.id).each do |process| %>
+                <%= build_list_chain(process, @script.id, false) %>
+            <% end %>
+          </p>
+          </p>
+
+        </div>
+        <div class="col-md-6">
+          <p>
+            <strong>Description:</strong>
+            <%= @script.description %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Long text:</strong>
+            <%= @script.long_text %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Solution type:</strong>
+            <%= @script.solution_type_id %>
+          </p>
+          <br>
+
+          <p>
+            <strong>Contributor :</strong>
+            <% @script.members.each do |member| %>
+                <% if @script.members.size > 1 %>
+                    <%= "#{member.member_name} #{ member.member_last_name}" %>,
+                <% else %>
+                    <%= "#{member.member_name} #{ member.member_last_name}" %>
+                <% end %>
+            <% end %>
+          </p>
+
+          <p>
+            <strong>created at : <%= @script.created_at.to_s(:custom_datetime) %></strong>
+          </p>
+          <br>
+          <% if @script.related_scripts.size > 0 %>
+              <p>
+                <strong>Relateds Scripts :</strong>
+              <ul>
+                <% @script.related_scripts.each do |related_script| %>
+                    <% @related_script = Script.find_by id: related_script.script_id %>
+                    <li><%= @related_script.name %></li>
+                <% end %>
+              </ul>
+              </p>
+          <% end %>
+          <br>
+        </div>
+        <%= c.hidden_field :member_id, value: current_user.member.id %>
+        <%= c.hidden_field :script_id, value: @script.id %>
+        <%= c.hidden_field :price_id, value: @price.id %>
+        <%= c.hidden_field :full_sale, value: false %>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>To organization:
+          <small>*system where you will install the script</small>
+        </strong></div>
+        <div class="panel-body">
+          <%= c.fields_for :workplace do |w| %>
+              <div class="col-md-6">
+                <%= w.text_field :organization_name, class: 'form-control autocomplete' %>
+              </div>
+              <div class="col-md-6">
+                <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
+              </div>
+              <%= c.hidden_field :system_id, value: get_system_id_by_name(@script.platform) %>
+              <%= w.hidden_field :member_id, value: current_user.member.id %>
+          <% end %>
+          <br>
+        </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">Paper:</div>
         <div class="row">
-          <div class="col-md-6">
-            <h3><%= @script.name %> </h3>
-          </div>
-          <div class="col-md-3">
-            <h4>
-              <strong><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></strong>
-            </h4>
-            <h4><strong>
-              <small>Price :</small>
-              R$ <%= @price.value %></strong></h4>
-          </div>
-          <div class="col-md-3">
-            <br>
-
-            <div class="pull-rigth">
-              <%= link_to 'Back', searches_path, class: 'btn btn-default' %>
-              <%= button_tag(type: "submit", class: "btn btn-default", id: "submit_invoice", data: {confirm: 'Add item to cart?'}) do %>
-                  <i class="fa fa-cart-plus"></i> Add To Cart
-              <% end %>
-            </div>
+          <div class="col-md-12">
+            <iframe src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
           </div>
         </div>
-        <hr>
-        <div class="row">
-          <div class="col-md-6">
-            <p>
-              <strong>Cod:</strong>
-              <%= @script.id %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Definition:</strong>
-              <%= @script.definition %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Platform:</strong>
-              <%= @script.platform %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Industry:</strong>
-              <%= @script.industry %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Requeriments :</strong>
-              <% if @script.requirements.size > 0 %>
-                <ul>
-                  <% @script.requirements.each do |requirement| %>
-                      <li><%= requirement.requirement %></li>
-                  <% end %>
-                </ul>
-            <% else %>
-                <small>N/A</small>
-            <% end %>
-            </p>
-            <p>
-              <strong>Processos :</strong>
-
-            <p>
-              <% show_process_chain(@script.id).each do |process| %>
-                  <%= build_list_chain(process, @script.id, false) %>
-              <% end %>
-            </p>
-            </p>
-
-          </div>
-          <div class="col-md-6">
-            <p>
-              <strong>Description:</strong>
-              <%= @script.description %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Long text:</strong>
-              <%= @script.long_text %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Solution type:</strong>
-              <%= @script.solution_type_id %>
-            </p>
-            <br>
-
-            <p>
-              <strong>Contributor :</strong>
-              <% @script.members.each do |member| %>
-                  <% if @script.members.size > 1 %>
-                      <%= "#{member.member_name} #{ member.member_last_name}" %>,
-                  <% else %>
-                      <%= "#{member.member_name} #{ member.member_last_name}" %>
-                  <% end %>
-              <% end %>
-            </p>
-
-            <p>
-              <strong>created at : <%= @script.created_at.to_s(:custom_datetime) %></strong>
-            </p>
-            <br>
-            <% if @script.related_scripts.size > 0 %>
-                <p>
-                  <strong>Relateds Scripts :</strong>
-                <ul>
-                  <% @script.related_scripts.each do |related_script| %>
-                      <% @related_script = Script.find_by id: related_script.script_id %>
-                      <li><%= @related_script.name %></li>
-                  <% end %>
-                </ul>
-                </p>
-            <% end %>
-            <br>
-          </div>
-          <%= c.hidden_field :member_id, value: current_user.member.id %>
-          <%= c.hidden_field :script_id, value: @script.id %>
-          <%= c.hidden_field :price_id, value: @price.id %>
-          <%= c.hidden_field :full_sale, value: false %>
-        </div>
-        <hr>
-        <div class="panel panel-default">
-          <div class="panel-heading"><strong>To organization:
-            <small>*system where you will install the script</small>
-          </strong></div>
-          <div class="panel-body">
-            <%= c.fields_for :workplace do |w| %>
-                <div class="col-md-6">
-                  <%= w.text_field :organization_name, class: 'form-control autocomplete' %>
-                </div>
-                <div class="col-md-6">
-                  <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
-                </div>
-                <%= c.hidden_field :system_id, value: get_system_id_by_name(@script.platform) %>
-                <%= w.hidden_field :member_id, value: current_user.member.id %>
-            <% end %>
-            <br>
-          </div>
-        </div>
-        <hr>
-        <div class="panel panel-default">
-          <div class="panel-heading">Paper:</div>
-          <div class="row">
-            <div class="col-md-12">
-              <iframe src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
-            </div>
-          </div>
-        </div>
-    <% end %>
-  </div>
+      </div>
+  <% end %>
 </div>

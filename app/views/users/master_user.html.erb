@@ -1,29 +1,27 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Master User Admin </h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Master User Admin </h1>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <%= link_to 'New User', master_registration_users_path, class: 'btn btn-default' %>
-      </div>
-    </div>
-    <hr>
-    <%= form_tag request.path, :method => 'get' do %>
-        <% content_tag :label do %>
-            Search by:
-            <%= text_field_tag :search_members, params[:search] %>
-            <input type="radio" name="search_by" value="name" checked="true">Name
-            <input type="radio" name="search_by" value="email">Email
-            <br>
-            <small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>
-        <% end %>
-    <% end %>
-    <%= render 'form_master_user' %>
   </div>
+  <br>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'New User', master_registration_users_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+  <hr>
+  <%= form_tag request.path, :method => 'get' do %>
+      <% content_tag :label do %>
+          Search by:
+          <%= text_field_tag :search_members, params[:search] %>
+          <input type="radio" name="search_by" value="members.member_name" checked="true">Name
+          <input type="radio" name="search_by" value="email">Email
+          <br>
+          <small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>
+      <% end %>
+  <% end %>
+  <%= render 'form_master_user' %>
 </div>

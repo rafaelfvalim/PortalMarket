@@ -1,20 +1,14 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>New User </h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>New User </h1>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= link_to master_user_users_path, class: 'btn btn-default' do %>
-            <i class="fa fa-angle-left fa-lg"></i> Back
-        <% end %>
-      </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'form_add_user' %>
     </div>
-    <hr>
-    <div><%= render 'form_add_user' %></div>
   </div>
 </div>

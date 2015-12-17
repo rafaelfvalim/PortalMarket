@@ -60,14 +60,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search_members(search, search_by = 'name', current_user)
+  def self.search_members(search, search_by = 'member_name', current_user)
     if search
-      case search_by
-        when 'name' then
-          User.joins(:member).where('member_name LIKE ? AND users.id != ? AND master_user_id = ?', "%#{search}%", current_user.id, current_user.id).all
-        when 'email' then
-          User.joins(:member).where('users.email LIKE ? AND users.id != ? AND master_user_id = ?', "%#{search}%", current_user.id, current_user.id).all
-      end
+      User.joins(:member).where(" #{search_by} LIKE ? AND users.id != ? AND master_user_id = ?", "%#{search}%", current_user.id, current_user.id).all
     else
       scoped
     end

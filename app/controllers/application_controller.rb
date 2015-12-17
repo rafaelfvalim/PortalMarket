@@ -62,11 +62,19 @@ class ApplicationController < ActionController::Base
   private
   def layout_by_resource
     if devise_controller? && resource_name == :user
-      "empty"
+    #algumas paginas do devise devem aparecer dentro do site
+      case action_name
+        when 'edit' then
+          'application'
+        else
+          "empty"
+      end
+
     else
       "application"
     end
   end
+
   def set_timezone
     tz = current_user ? current_user.timezone : nil
     Time.zone = tz || ActiveSupport::TimeZone["Brasilia"]
