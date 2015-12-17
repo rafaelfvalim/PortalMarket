@@ -1,31 +1,28 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Script Prices: </h2>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Script Prices: </h2>
     </div>
-    <hr>
-    <%= form_tag create_prices_prices_path, method: :put, id: 'create_price_form' do %>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="pull-left">
-              <%= submit_tag "Save", class: 'btn btn-success' %>
-              <%= link_to "Show Prices" , prices_path , class: 'btn btn-success' %>
-            </div>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div id="script_prices">
-              <%= render "prices/form_script_prices" %>
-            </div>
-          </div>
-        </div>
-    <% end %>
   </div>
+  <hr>
+  <%= form_tag create_prices_prices_path, method: :put, id: 'create_price_form' do %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="pull-left">
+            <%= submit_tag "Save", class: 'btn btn-success' %>
+            <%= link_to "Show Prices", prices_path, class: 'btn btn-success' %>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="script_prices">
+            <%= render "prices/form_script_prices" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>

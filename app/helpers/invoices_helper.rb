@@ -22,12 +22,7 @@ module InvoicesHelper
     return member_script.member
   end
 
-  def format_date(date)
-    # formatting date: Aug, 31 2007 - 9:55PM
-    unless date.nil?
-      date.strftime("%b, %m %Y - %H:%M")
-    end
-  end
+
 
   def get_action_for_invoice(invoice_status_id, invoice)
     case invoice_status_id

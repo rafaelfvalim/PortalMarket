@@ -1,53 +1,83 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <%= render 'layouts/process_tracker' %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="pull-left">
-          <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-default' do %>
-              <i class="fa fa-chevron-left"></i> Back
-          <% end %>
-          <%= link_to "Cancel", roll_back_script_scripts_path(:id => @script.id), class: "btn btn-default next", data: {confirm: 'Are you sure?'} %>
-        </div>
-        <div class="pull-right">
-          <%= link_to next_wizard_path(script_id: @script.id), class: "btn btn-default next" do %>
-              <i class="fa fa-chevron-right"></i> Next
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <div class="btn-group pull-right">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
-                    <i class="fa fa-caret-square-o-down"></i>
-                  </a>
-                </div>
-                <span>classified into </span>
-                <span class="badge" id="process_badge"></span> processes
-              </h4>
-            </div>
-            <!-- panel acordion -->
-            <div id="accordionOne" class="panel-collapse collapse">
-              <div class="panel-body" id="breadcrumb_list">
-                <%= render 'breadcrumb_value_chain' %>
-              </div>
-            </div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'layouts/process_tracker' %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pull-left">
+            <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
+                <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to "Cancel", roll_back_script_scripts_path(:id => @script.id), class: 'btn btn-warning next', data: {confirm: 'Are you sure?'} %>
+          </div>
+          <div class="pull-right">
+            <%= link_to next_wizard_path(script_id: @script.id), class: 'btn btn-primary next' do %>
+                <i class="fa fa-chevron-right"></i> Next
+            <% end %>
           </div>
         </div>
       </div>
+      <br>
+
+      <div class="row">
+        <div class="col-md-12">
+          <divComercial class="panel-group" id="accordion">
+            <div class="breadcrumbpanel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <div class="btn-group pull-right">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                      <i class="fa fa-caret-square-o-down"></i>
+                    </a>
+                  </div>
+                  <span>classified into </span>
+                  <span class="badge" id="process_badge"></span> processes
+                </h4>
+              </div>
+              <!-- panel acordion -->
+              <div id="accordionOne" class="panel-collapse collapse">
+                <div class="panel-body" id="breadcrumb_list">
+                  <%= render 'breadcrumb_value_chain' %>
+                </div>
+              </div>
+            </div>
+          </divComercial>
+        </div>
+      </div>
+      <div class="row_panel_build">
+        <!--Row-->
+        <input type="hidden" id="step" value="step1">
+        <div class="row">
+          <% @process_modules.each do |process| %>
+              <div class="col-md-3">
+                <div class="ibox">
+                  <div class="ibox-content product-box">
+
+                    <div class="product-imitation">
+                      [IMAGE]
+                    </div>
+                    <div class="product-desc">
+                      <small class="text-muted">Category</small>
+                      <a href="#" class="product-name"> <%= process.description %></a>
+
+                      <div class="small m-t-xs">
+                        Esta categoria de classificação é ....
+                      </div>
+                      <div class="m-t text-righ">
+                        <%= link_to classification_wizard_scripts_path(process_id: process.id, script_id: @script.id), :class => 'btn btn-xs btn-outline btn-primary' do %>
+                            Go <i class="fa fa-long-arrow-right"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= render 'build_process' %>
   </div>
 </div>
-
 
 
 

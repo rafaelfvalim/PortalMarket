@@ -62,9 +62,10 @@ getFinalStepUrl = (action, process_module_id, script_id) ->
 chains/create_ajax/' + process_module_id + '/' + script_id + '/create'
 
 showList = (e, data) ->
-  divListContainer = $('<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 ">')
+  divListContainer = $('<div class="col-md-3">')
   divListContainer.attr("data-level", nivel)
-  divLisProcess = $('<div class="list_process">')
+
+  divLisProcess = $('<div class="list-group">')
   divLisProcess.attr("data-level", nivel)
   divListProcessListGroup = $('<ul class="list-unstyled">')
   hidden_process_id = $('<input type="hidden" id="process_id" name="process[][id]">')
@@ -75,6 +76,7 @@ showList = (e, data) ->
     divListProcessListGroupButton.text(value.description)
     divListProcessListGroupButton.attr("id", value.id)
     divListProcessListGroupButton.attr("data-level", nivel)
+    divListProcessListGroupButton.attr("class", "list-group-item")
     divListProcessListGroupButton.attr("onclick", "process_call_ajax(" + value.id + ", this)")
     li.append(divListProcessListGroupButton)
     return divListProcessListGroup.append(li)

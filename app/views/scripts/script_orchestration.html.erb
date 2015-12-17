@@ -1,46 +1,44 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Orchestration for status: <%= @status.description %> </h2>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Orchestration for status: <%= @status.description %> </h2>
     </div>
-    <%= form_for :script, url: process_orchestration_scripts_path, method: :get, remote: true , :html => {id: 'orchestration_form'} do |f| %>
-        <!-- /.row -->
+  </div>
+  <%= form_for :script, url: process_orchestration_scripts_path, method: :get, remote: true, :html => {id: 'orchestration_form'} do |f| %>
+      <!-- /.row -->
+      <div class="row">
+        <hr>
+        <%= link_to 'Admin Dashboard', admin_members_path, class: 'btn btn-primary' %>
+        <br>
+        <br>
+
         <div class="row">
-          <hr>
-          <%= link_to 'Admin Dashboard', admin_members_path, class: 'btn btn-default' %>
-          <br>
-          <br>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="panel panel-default center">
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="pull-left">
-                        <%= collection_select(:status, :id,  @statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
-                      </div>
-                      <div class="pull-right">
-                        <input type="submit" class="btn btn-success" value="Submit Status">
-                      </div>
+          <div class="col-md-12">
+            <div class="panel panel-default center">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="pull-left">
+                      <%= collection_select(:status, :id, @statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
+                    </div>
+                    <div class="pull-right">
+                      <input type="submit" class="btn btn-success" value="Submit Status">
                     </div>
                   </div>
-                  <hr>
-                  <div class="table-responsive">
-                    <div id="script_orchestration">
-                      <%= render partial: 'scripts/form_script_orchestration', s: @scripts %>
-                    </div>
+                </div>
+                <hr>
+                <div class="table-responsive">
+                  <div id="script_orchestration">
+                    <%= render partial: 'scripts/form_script_orchestration', s: @scripts %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <%= hidden_field_tag :current_status , @status.id %>
-    <% end %>
-    <br>
-  </div>
+      </div>
+      <%= hidden_field_tag :current_status, @status.id %>
+  <% end %>
+  <br>
 </div>

@@ -1,109 +1,124 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <%= render 'layouts/process_tracker' %>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="pull-left">
-              <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-default' do %>
-                  <i class="fa fa-chevron-left"></i> Back
-              <% end %>
-              <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-default', data: {confirm: 'Are you sure?'} %>
-            </div>
-            <div class="pull-right">
-              <%= link_to 'Save', update_status_scripts_path(id: @script.id), :class => 'btn btn-default' %>
-            </div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'layouts/process_tracker' %>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="pull-left">
+            <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
+                <i class="fa fa-chevron-left"></i> Back
+            <% end %>
+            <%= link_to 'Cancel', roll_back_script_scripts_path(:id => @script.id), :class => 'btn btn-warning', data: {confirm: 'Are you sure?'} %>
+          </div>
+          <div class="pull-right">
+            <%= link_to 'Save', update_status_scripts_path(id: @script.id), :class => 'btn btn-primary' %>
           </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-9">
-            <fieldset class="scheduler-border">
-              <legend class="scheduler-border">Script :</legend>
-              <div class="control-group">
-                <p>
-                  <strong>Definition: </strong>
-                  <span><%= @script.definition %></span>
-                </p>
+      </div>
+      <br>
 
-                <p>
-                  <strong>Long Text: </strong>
-                  <span><%= @script.long_text %></span>
+      <div class="ibox">
+        <div class="ibox-content">
 
-                </p>
-
-                <p>
-                  <strong>Platform: </strong>
-                  <span><%= @script.platform %></span>
-
-                </p>
-
-                <p>
-                  <strong>Industry: </strong>
-                  <span><%= @script.industry %></span>
-
-                </p>
-
-                <p>
-                  <strong>Soltion Type: </strong>
-                  <span><%= @script.solution_type_id %></span>
-
-                </p>
-
-                <p>
-                  <strong>Complexity: </strong>
-                  <span><%= @script.complexity %></span>
-
-                </p>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="m-b-md">
+                <h2><%= @script.name %></h2>
               </div>
-            </fieldset>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-9">
-            <fieldset class="scheduler-border">
-              <legend class="scheduler-border">Classificated for :</legend>
-              <div class="control-group">
-                <%= render 'breadcrumb_value_chain' %>
-              </div>
-            </fieldset>
+          <div class="row">
+            <div class="col-lg-5">
+              <dl class="dl-horizontal">
+
+                <dt>Created by:</dt>
+                <% @script.member_scripts.each do |ms| %>
+                    <dd><%= "#{ms.member.member_name} #{ms.member.member_last_name}  " %></dd>
+                <% end %>
+                <dt>Messages:</dt>
+                <dd>0</dd>
+                <dt>Version:</dt>
+                <dd> v1</dd>
+              </dl>
+            </div>
+            <div class="col-lg-7" id="cluster_info">
+              <dl class="dl-horizontal">
+                <dt>Last Updated:</dt>
+                <dd><%= format_date(@script.updated_at) %></dd>
+                <dt>Created:</dt>
+                <dd><%= format_date(@script.created_at) %></dd>
+              </dl>
+            </div>
           </div>
-        </div>
-        <% if @script.requirements.size > 0 %>
-            <div class="row">
-              <div class="col-lg-9">
-                <fieldset class="scheduler-border">
-                  <legend class="scheduler-border">Requeriments :</legend>
-                  <div class="control-group">
-                    <ul>
-                      <% @script.requirements.each do |requirement| %>
-                          <li><%= requirement.requirement %></li>
-                      <% end %>
+          <div class="row m-t-sm">
+            <div class="col-lg-12">
+              <div class="panel blank-panel">
+                <div class="panel-heading">
+                  <div class="panel-options">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a href="#tab-1" data-toggle="tab">Script</a></li>
+                      <li class=""><a href="#tab-2" data-toggle="tab">Classification</a></li>
+                      <li class=""><a href="#tab-3" data-toggle="tab">Requirements Scripts</a></li>
+                      <li class=""><a href="#tab-4" data-toggle="tab">Related Scripts</a></li>
                     </ul>
                   </div>
-                </fieldset>
-              </div>
-            </div>
-        <% end %>
-        <% if @script.related_scripts.size > 0 %>
-            <div class="row">
-              <div class="col-lg-9">
-                <fieldset class="scheduler-border">
-                  <legend class="scheduler-border">Referrer Scripts :</legend>
-                  <div class="control-group">
-                    <ul>
-                      <% @script.related_scripts.each do |related_script| %>
-                          <li><%= related_script.script.description %></li>
-                      <% end %>
-                    </ul>
+                </div>
+                <div class="panel-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab-1">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dt>Definition:</dt>
+                          <dd><%= @script.definition %></dd>
+                          <dt>Long Text:</dt>
+                          <dd><%= @script.long_text %></dd>
+                          <dt>Platform:</dt>
+                          <dd> <%= @script.platform %></dd>
+                          <dt>Industry:</dt>
+                          <dd> <%= @script.industry %></dd>
+                          <dt>Soltion Type:</dt>
+                          <dd> <%= @script.solution_type_id %></dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dd>Process:</dd>
+                          <%= render 'breadcrumb_value_chain' %>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dt>Scripts:</dt>
+                          <% if @script.requirements.size > 0 %>
+                              <% @script.requirements.each do |requirement| %>
+                                  <dd><%= requirement.requirement %></dd>
+                              <% end %>
+                          <% end %>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-4">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dt>Scripts:</dt>
+                          <% if @script.related_scripts.size > 0 %>
+                              <% @script.related_scripts.each do |r| %>
+                                  <dd><%= r.script.description %></dd>
+                              <% end %>
+                          <% end %>
+                        </dl>
+                      </div>
+                    </div>
                   </div>
-                </fieldset>
+                </div>
               </div>
             </div>
-        <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

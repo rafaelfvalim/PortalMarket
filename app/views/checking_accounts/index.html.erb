@@ -1,40 +1,37 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Checking Account</h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Checking Account</h1>
     </div>
-    <hr>
-    <h3>Scripts in sale process</h3>
+  </div>
+  <hr>
+  <h3>Scripts in sale process</h3>
 
-    <div class="row">
-      <div class="row" role="contributor_dashboard">
-        <div class="col-md-12">
-          <div class="panel panel-default center">
-            <div class="panel-body">
-              <table class="table table-striped table-condensed" id="script-table" data-source="<%= member_ajax_checking_accounts_path(format: :json) %>">
-                <thead>
-                <tr>
-                  <th>Script</th>
-                  <th>Description</th>
-                  <th>Payment Date</th>
-                  <th>Moviment Date</th>
-                  <th>Status</th>
-                  <th>Value</th>
-                  <th>Interest</th>
-                  <th>Commission</th>
-                  <th>Currency</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
+  <div class="row">
+    <div class="row" role="contributor_dashboard">
+      <div class="col-md-12">
+        <div class="panel panel-default center">
+          <div class="panel-body">
+            <table class="table table-striped table-condensed" id="script-table" data-source="<%= member_ajax_checking_accounts_path(format: :json) %>">
+              <thead>
+              <tr>
+                <th>Script</th>
+                <th>Description</th>
+                <th>Payment Date</th>
+                <th>Moviment Date</th>
+                <th>Status</th>
+                <th>Value</th>
+                <th>Interest</th>
+                <th>Commission</th>
+                <th>Currency</th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

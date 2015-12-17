@@ -1,95 +1,71 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Detail Script : <%= @script.description %> </h2>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Detail Script : <%= @script.description %> </h2>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-12">
-        <% if current_user.is_god? %>
-            <%= link_to 'Back', admin_members_path, class: 'btn btn-default' %>
-        <% else %>
-            <%= link_to 'Back', contributor_members_path, class: 'btn btn-default' %>
-        <% end %>
-        <%= link_to 'Edit', edit_script_path(@script), class: 'btn btn-default' %>
-      </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <% if current_user.is_god? %>
+          <%= link_to 'Back', admin_members_path, class: 'btn btn-primary' %>
+      <% else %>
+          <%= link_to 'Back', contributor_members_path, class: 'btn btn-primay' %>
+      <% end %>
+      <%= link_to 'Edit', edit_script_path(@script), class: 'btn btn-primary' %>
     </div>
-    <br>
+  </div>
+  <br>
 
-    <div class="row">
-      <div class="col-md-12">
-        <%= render 'status_script' %>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'status_script' %>
     </div>
-    <br>
+  </div>
+  <br>
 
-    <div class="row">
-      <div class="col-md-12">
-        <p id="notice"><%= notice %></p>
-        <p>
-        <p><strong>Definition:</strong></p>
-        <%= @script.name %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Definition:</strong></p>
-        <%= @script.definition %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Long text:</strong></p>
-        <%= @script.long_text %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Platform:</strong></p>
-        <%= @script.platform %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Industry:</strong></p>
-        <%= @script.industry %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Complexity:</strong></p>
-        <%= @script.complexity %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Solution type:</strong></p>
-        <%= @script.solution_type_id %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Script file:</strong></p>
-        <%= File.basename(@script.script_file.to_s) %>
-        <% if current_user.is_god? %>
-            <%= link_to 'Download file', @script.script_file.url %>
-        <% end %>
-        </p>
-        <hr>
-        <p>
-
-        <p><strong>Pdf file:</strong></p>
-        <%= File.basename(@script.pdf_file.to_s) %>
-        <% if current_user.is_god? %>
-            <%= link_to 'Download file', @script.pdf_file.url %>
-        <% end %>
-        </p>
-        <hr>
-      </div>
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <div class="col-md-12">
+      <dl>
+        <dt>Name:</dt>
+        <dd><%= @script.name %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Definition:</dt>
+        <dd><%= @script.definition %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Long text:</dt>
+        <dd><%= @script.long_text %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Platform:</dt>
+        <dd><%= @script.platform %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Industry:</dt>
+        <dd><%= @script.industry %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Complexity:</dt>
+        <dd><%= @script.complexity %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Solution Type:</dt>
+        <dd><%= @script.solution_type.id %></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Script File:</dt>
+        <dd>
+          <%= File.basename(@script.script_file.to_s) %>
+          <% if current_user.is_god? %>
+              <%= link_to 'Download file', @script.script_file.url %>
+          <% end %>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Pdf File:</dt>
+        <dd>
+          <%= File.basename(@script.pdf_file.to_s) %>
+          <% if current_user.is_god? %>
+              <%= link_to 'Download file', @script.pdf_file.url %>
+          <% end %>
+        </dd>
+      </dl>
     </div>
   </div>
 </div>

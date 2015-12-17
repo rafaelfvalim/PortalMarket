@@ -1,40 +1,39 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Listing Prices: </h2>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Listing Prices: </h2>
     </div>
-    <hr>
-    <%= link_to "Admin" , admin_members_path , class: 'btn btn-success' %>
-    <p id="notice"><%= notice %></p>
-
-    <table class="table table-bordered table-condensed">
-      <thead>
-      <tr>
-        <th>Script</th>
-        <th>Value</th>
-        <th>Currency</th>
-        <th>Currency data</th>
-        <th>Actions </th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @prices.each do |price| %>
-          <tr>
-            <td><%= price.script_id %></td>
-            <td><%= price.value %></td>
-            <td><%= Currency.find(price.currency_id).description %></td>
-            <td><%= price.currency_data %></td>
-            <td><%= link_to 'Edit', edit_price_path(price) , class: 'btn btn-default' %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-
-    <br>
   </div>
+  <hr>
+  <%= link_to "Admin", admin_members_path, class: 'btn btn-success' %>
+  <p id="notice"><%= notice %></p>
+
+  <table class="table table-bordered table-condensed">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Currency</th>
+      <th>Currency data</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @prices.each do |price| %>
+        <tr>
+          <td><%= link_to price.script_id , price.script %></td>
+          <td><%= price.script.name %></td>
+          <td><%= price.value %></td>
+          <td><%= Currency.find(price.currency_id).description %></td>
+          <td><%= price.currency_data %></td>
+          <td><%= link_to 'Edit', edit_price_path(price), class: 'btn btn-primary' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
 </div>
