@@ -1,29 +1,46 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Member Dashboard</h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Member Dashboard</h1>
     </div>
-    <hr>
-    <div class="row">
-      <% if current_user.is_contributor? %>
-          <%= render 'dash_dials_contributor' %>
-      <% elsif current_user.is_customer? %>
-          <%= render 'dash_dials_costumer' %>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <!-- render 'dash_notification_panel'-->
-      </div>
-      <div class="col-lg-8">
-        <!-- render 'dash_chat' -->
-      </div>
-    </div>
+  </div>
+  <hr>
 
+  <div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-content text-center p-md">
+            <h2>
+              <span class="text-navy">Painel Member</span>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <br/>in ullamcorper nunc. Aliquam convallis faucibus risus, ac ultricies est auctor at.
+            </h2>
+
+            <p>
+              Curabitur pulvinar ex non urna luctus, sed sollicitudin diam fringilla.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <% if current_user.is_contributor? %>
+        <%= render 'dash_dials_contributor' %>
+    <% elsif current_user.is_customer? %>
+        <%= render 'dash_dials_costumer' %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <!-- render 'dash_notification_panel'-->
+    </div>
+    <div class="col-lg-8">
+      <!-- render 'dash_chat' -->
+    </div>
   </div>
 </div>
 
