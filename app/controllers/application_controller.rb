@@ -66,6 +66,8 @@ class ApplicationController < ActionController::Base
       case action_name
         when 'edit' then
           'application'
+        when 'update' then
+          'application'
         else
           "empty"
       end

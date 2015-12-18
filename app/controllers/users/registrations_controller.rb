@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_member
     @user.build_address
-    render layout:  "empty"
+    render layout: "empupdate as Hty"
   end
 
 # POST /resource
@@ -26,14 +26,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 # GET /resource/edit
-# def edit
-#   super
-# end
+  def edit
+    super
+  end
 
 # PUT /resource
-# def update
-#   super
-# end
+  def update
+    super
+  end
 
 # DELETE /resource
 # def destroy
@@ -54,7 +54,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:name,
+      u.permit(:id,
+               :name,
                :email,
                :password,
                :password_confirmation,
@@ -88,12 +89,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name,
+      u.permit(:id,
+               :current_password,
+               :name,
                :email,
                :password,
                :password_confirmation,
                member_attributes:
-                   [:member_type_id,
+                   [:id,
+                    :member_type_id,
                     :member_name,
                     :company_name,
                     :member_last_name,
@@ -108,7 +112,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
                     :bank_cc_digit
                    ],
                address_attributes:
-                   [:zip_code,
+                   [:id,
+                    :zip_code,
                     :patio_type,
                     :patio,
                     :number,
@@ -131,10 +136,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:name,
+    params.require(:user).permit(:id,
+                                 :name,
                                  :email,
                                  :password,
                                  :password_confirmation,
+                                 :current_password,
                                  member_attributes:
                                      [:member_type_id,
                                       :member_name,

@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
   has_many :checking_accounts
   has_many :carts
   belongs_to :member_type
-  has_many :workplaces, dependent: :destroy, autosave: true
+  has_many :workplaces
   belongs_to :bank
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :member_type
