@@ -1,0 +1,26 @@
+<div id="percent">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <th>Name</th>
+    <th>CNPJ</th>
+    <th class="col-sm-2"><span id="total_percent"> Total: <%= MemberScript.where(script_id: @script.id).sum(:percentual) %></span>%</th>
+    <th colspan="2">Action</th>
+    </thead>
+    <tbody>
+    <% MemberScript.includes(:member).where(script_id: script.id).each do |ms| %>
+        <tr>
+          <td><%= ms.member.company_name %></td>
+          <td><%= ms.member.cnpj %></td>
+          <td>
+            <%= form_tag add_percentual_participation_wizard_scripts_path, remote: true, method: :get, id: 'percentage_participation' do |f| %>
+                <%= text_field_tag :percentual, ms.percentual, class: 'form-control', onblur: "percentage_participation(this)" %>
+                <%= hidden_field_tag :member_script_id, ms.id %>
+                <%= hidden_field_tag :script_id, script.id %>
+            <% end %>
+          </td>
+          <td><%= link_to("Delete", remove_participation_member_wizard_scripts_path(member_script_id: ms.id, script_id: script.id), class: "btn btn-primary btn-xs", remote: true, method: :get) unless ms.member_id == current_user.member.id %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

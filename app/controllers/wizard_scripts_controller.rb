@@ -14,6 +14,7 @@ class WizardScriptsController < ApplicationController
         @value_chain = ValueChain.new
         @process_modules = ProcessModule.where('referrer_process_module_id is null')
       when :final then
+        search_company_controller(params[:search], params[:select_field])
     end
     render_wizard
   end
@@ -85,11 +86,56 @@ class WizardScriptsController < ApplicationController
     @script_id = params[:script_id]
   end
 
+  def add_participation_member
+    set_script
+    MemberScript.create(member_id: params[:member_id], script_id: params[:script_id], percentual: 0, participation: 0, partner: true)
+    search_company_controller(" ", " ")
+    respond_to do |format|
+      format.js { render "final" }
+      format.html {}
+    end
+  end
+
+  def add_percentual_participation
+    set_script
+    member_script = MemberScript.find(params[:member_script_id])
+    member_script.update_attribute(:percentual, params[:percentual])
+    @total_percent = MemberScript.where(script_id: @script.id).sum(:percentual)
+
+    if @total_percent > 100.0
+      member_script.update_attribute(:percentual, 0.0)
+    end
+    search_company_controller(" ", " ")
+    respond_to do |format|
+      format.js { render "final" }
+      format.html {}
+    end
+  end
+
+  def remove_participation_member
+    set_script
+    search_company_controller(" ", " ")
+    if MemberScript.destroy(params[:member_script_id])
+      respond_to do |format|
+        format.js { render "final" }
+        format.html {}
+      end
+    end
+  end
+
+  def search_company_controller(search, field = 'company_name')
+    if search.present?
+      @members_participation = Member.includes(:user).paginate(:page => params[:page], :per_page => 10).search_company(search, field)
+    else
+      @members_participation = Member.where.not(cnpj: '').paginate(:page => params[:page], :per_page => 10).order('updated_at ASC')
+    end
+  end
+
   def search_script(search, field = 'name')
     if search.present?
-      @found_scripts = Script.includes(:related_scripts).paginate(:page => params[:page], :per_page => 30).search_related(search, field)
+      @found_scripts = Script.includes(:related_scripts).paginate(:page => params[:page], :per_page => 10).search_related(search, field)
     else
-      @found_scripts = Script.where("has_price = 1 AND status_id != 6").paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+      @found_scripts = Script.where("has_price = 1 AND status_id != 6").paginate(:page => params[:page], :per_page => 10).order('updated_at ASC')
     end
   end
 

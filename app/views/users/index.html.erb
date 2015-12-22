@@ -1,101 +1,100 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Users </h1>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Users </h1>
     </div>
-    <hr>
-    <%= form_tag request.path, :method => 'get' do %>
-        <% content_tag :label do %>
-            Search by Name:
-            <%= text_field_tag :search, params[:search] %>
-        <% end %>
-    <% end %>
-    <table class="table table-bordered table-condensed">
-      <thead>
-      <th>Id</th>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>Status</th>
-      <th colspan="2">Actions</th>
-      </thead>
-      <tbody>
-      <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= user.id %>
-            </td>
-            <td>
-              <%= user.full_name  %>
-            </td>
-            <td>
-              <%= link_to user.email, user %>
-            </td>
-            <td>
-              <% unless user == current_user %>
-                  <%= form_for(user) do |f| %>
-                      <%= f.select(:status, User.statuses.keys.map { |status| [status.titleize, status] }) %>
-                      <%= f.submit 'Change Status', :class => 'button-xs' %>
-                  <% end %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to("Edid user", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
-            </td>
-            <td>
-              <%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
-            </td>
-          </tr>
+  </div>
+  <hr>
+  <%= form_tag request.path, :method => 'get' do %>
+      <% content_tag :label do %>
+          Search by Name:
+          <%= text_field_tag :search, params[:search] %>
       <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @users %>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Users traffic
-          </div>
-          <div class="panel-body">
-            <%= line_chart User.group_by_day(:current_sign_in_at).count %>
-          </div>
+  <% end %>
+  <table class="table table-bordered table-condensed">
+    <thead>
+    <th>Id</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Status</th>
+    <th colspan="2">Actions</th>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.id %>
+          </td>
+          <td>
+            <%= user.full_name %>
+          </td>
+          <td>
+            <%= link_to user.email, user %>
+          </td>
+          <td>
+            <% unless user == current_user %>
+                <%= form_for(user) do |f| %>
+                    <%= f.select(:status, User.statuses.keys.map { |status| [status.titleize, status] }) %>
+                    <%= f.submit 'Change Status', :class => 'button-xs' %>
+                <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to("Edid user", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
+          </td>
+          <td>
+            <%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @users %>
+  <% ActiveRecord::Base.default_timezone = :utc %>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Users traffic
         </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Users Types
-          </div>
-          <div class="panel-body">
-            <%= pie_chart User.joins(:member_type).group(:description).count %>
-          </div>
+        <div class="panel-body">
+          <%= line_chart User.group_by_day(:current_sign_in_at).count %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Created Users
-          </div>
-          <div class="panel-body">
-            <%= line_chart User.group_by_day(:created_at).count %>
-          </div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Users Types
+        </div>
+        <div class="panel-body">
+          <%= pie_chart User.joins(:member_type).group(:description).count %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Updated Users
-          </div>
-          <div class="panel-body">
-            <%= line_chart User.group_by_day(:updated_at).count %>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Created Users
+        </div>
+        <div class="panel-body">
+          <%= line_chart User.group_by_day(:created_at).count %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Updated Users
+        </div>
+        <div class="panel-body">
+          <%= line_chart User.group_by_day(:updated_at).count %>
         </div>
       </div>
     </div>

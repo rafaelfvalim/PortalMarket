@@ -32,6 +32,13 @@ class Member < ActiveRecord::Base
     self.bank_id ||= 0   #will set the default value only if it's nil
   end
 
+  def self.search_company(search, field)
+    if search
+      Member.where("cnpj != '' AND #{field} LIKE ?", "%#{search}%")
+    else
+      scoped
+    end
+  end
 
 
 end

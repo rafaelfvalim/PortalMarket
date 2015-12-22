@@ -108,7 +108,6 @@ $ ->
     clear_chain(1)
 
   setProgressBar = (tab) ->
-    console.log(tab)
     switch tab
       when 'step1'
         $('#progressbar').width('0%')

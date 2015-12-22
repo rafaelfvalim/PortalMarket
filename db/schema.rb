@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210124747) do
+ActiveRecord::Schema.define(version: 20151222213844) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -125,9 +125,10 @@ ActiveRecord::Schema.define(version: 20151210124747) do
     t.integer  "member_id",     limit: 4
     t.integer  "script_id",     limit: 4
     t.float    "participation", limit: 24
-    t.float    "percentual",    limit: 24
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.decimal  "percentual",               precision: 5, scale: 1
+    t.boolean  "partner",       limit: 1
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "member_scripts", ["member_id"], name: "fk_rails_7a622e4a02", using: :btree

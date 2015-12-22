@@ -1,0 +1,2 @@
+$('#participation').html("<%= escape_javascript(render partial: "wizard_scripts/participation_list", locals: {script: @script, members_participation: @members_participation}) %>");
+$('#members_percental').html("<%= escape_javascript(render partial: "wizard_scripts/members_percentual_list", locals: {script: @script}) %>");

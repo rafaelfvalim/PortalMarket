@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       post :create_related
       get :destroy_requeriement
       get :destroy_related
+      get :add_participation_member
+      get :remove_participation_member
+      get :add_percentual_participation
     end
   end
   resources :buys do
