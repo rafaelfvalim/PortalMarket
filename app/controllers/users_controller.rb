@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :remove_avatar]
 
   def self.default_timezone
     :utc
@@ -28,14 +28,13 @@ class UsersController < ApplicationController
     if @user.update(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
-      Rails.logger.info(@user.errors.messages.inspect)
       redirect_to users_path, :alert => "Unable to update user."
     end
   end
 
-  def master_user
+  def master_userupload_avatar
     if params[:search_members].present?
-      @users = User.paginate(:page => params[:page], :per_page => 30).search_members(params[:search_members],params[:search_by], current_user)
+      @users = User.paginate(:page => params[:page], :per_page => 30).search_members(params[:search_members], params[:search_by], current_user)
     else
       @users = User.joins(:member).where("members.master_user_id = ?", current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     end
@@ -58,7 +57,6 @@ class UsersController < ApplicationController
   end
 
   def create_sub_user
-
     @user = User.new(secure_params)
     @user.member.member_type_id = current_user.member_type.id
     @user.member.master_user_id = current_user.id
@@ -72,6 +70,14 @@ class UsersController < ApplicationController
         format.html { render action: "master_registration" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+
+  def remove_avatar
+    @user.remove_avatar!
+    if @user.save
+      redirect_to :back
     end
   end
 
@@ -93,6 +99,7 @@ class UsersController < ApplicationController
                                  :email,
                                  :password,
                                  :password_confirmation,
+                                 :avatar,
                                  member_attributes:
                                      [:id,
                                       :member_type_id,
@@ -113,7 +120,7 @@ class UsersController < ApplicationController
                                       :updated_at
                                      ],
                                  member_type_attributes:
-                                 [:id],
+                                     [:id],
                                  address_attributes:
                                      [:zip_code,
                                       :patio_type,

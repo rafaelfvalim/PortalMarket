@@ -1,30 +1,52 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', id: 'edit_profile_form'}) do |f| %>
+      <div class="row">
+        <div class="col-lg-12">
+          <% unless @current_user.avatar_url.present? %>
+              <img alt="image" class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+          <% else %>
+              <%= image_tag @current_user.avatar.circle_avatar.url.to_s %>
+              <br>
+              <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
+                  <i class="fa fa-trash"></i> Remove
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-6 ">
+          <%= f.label 'Upload Avatar:' %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+          <%= f.input :avatar_cache, as: :hidden %>
+        </div>
+      </div>
+      <br>
       <%= f.fields_for :member, resource.member do |m| %>
           <div class="row">
             <div class="col-lg-6 ">
-              <%= m.input :member_name, label: 'Name:',:autofocus => true, class: 'form-control' %>
+              <%= m.input :member_name, label: 'Name:', :autofocus => true, class: 'form-control' %>
             </div>
             <div class="col-lg-6 ">
-              <%= m.input :member_last_name, label: 'Last Name:',class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 ">
-              <%= m.input :phone_number, class: 'form-control' , label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}} %>
-            </div>
-            <div class="col-lg-6 ">
-              <%= m.input :cellphone_number, class: 'form-control',  label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}} %>
+              <%= m.input :member_last_name, label: 'Last Name:', class: 'form-control' %>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-6 ">
-              <%= m.input :cpf, class: 'form-control' , label:'CPF:', input_html: {data: {mask: '999.999.999-99'}}%>
+              <%= m.input :phone_number, class: 'form-control', label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}} %>
+            </div>
+            <div class="col-lg-6 ">
+              <%= m.input :cellphone_number, class: 'form-control', label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}} %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 ">
+              <%= m.input :cpf, class: 'form-control', label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}} %>
             </div>
             <% unless current_user.member.master_user_id? %>
                 <div class="col-lg-6 ">
-                  <%= m.input :cnpj, class: 'form-control',label: 'CNPJ:' , input_html: {data: {mask: '99.999.999/9999-99'}} %>
+                  <%= m.input :cnpj, class: 'form-control', label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}} %>
                 </div>
             <% end %>
           </div>
@@ -139,4 +161,3 @@
   <br>
   <br>
 </div>
-

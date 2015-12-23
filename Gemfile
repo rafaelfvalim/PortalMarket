@@ -9,6 +9,10 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 # Upload File
 gem 'carrierwave'
+# https://github.com/rmagick/rmagick - sudo apt-get install libmagickwand-dev
+gem 'rmagick'
+#https://github.com/minimagick/minimagick
+gem 'mini_magick'
 gem 'nested_form_fields'
 # ajax tables
 gem 'thin'

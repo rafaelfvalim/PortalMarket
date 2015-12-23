@@ -6,6 +6,7 @@
     </div>
   </div>
   <hr>
+
   <% if current_user.is_god? %>
       <div><%= render 'users/form' %></div>
   <% else %>

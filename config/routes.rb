@@ -94,6 +94,7 @@ Rails.application.routes.draw do
       get :master_user
       get :master_registration
       post :create_sub_user
+      get :remove_avatar
     end
   end
   resources :members do
@@ -105,7 +106,7 @@ Rails.application.routes.draw do
       get :lounge
     end
   end
-  authenticate :user, lambda{|user| user.admin? } do
+  authenticate :user, lambda { |user| user.admin? } do
     mount Searchjoy::Engine, at: 'admin/searchjoy'
   end
 

@@ -95,6 +95,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
                :email,
                :password,
                :password_confirmation,
+               :avatar,
+               :avatar_cache,
                member_attributes:
                    [:id,
                     :member_type_id,

@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true, allow_blank: true
   validates_format_of :email,:with => Devise::email_regexp
   validates_uniqueness_of :email
+  mount_uploader :avatar, AvatarUploader
+  validate :file_size_avatar
+
+  validates_integrity_of :avatar
+  validates_processing_of :avatar
 
   def set_default_role
     self.role ||= :user
@@ -31,6 +36,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def file_size_avatar
+    if self.avatar.size > 1.megabytes
+      errors.add(:avatar, "File  should be less than 1MB")
+    end
+  end
 
   def full_name
     "#{self.member.member_name} #{self.member.member_last_name}"
