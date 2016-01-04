@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def master_userupload_avatar
+  def master_user
     if params[:search_members].present?
       @users = User.paginate(:page => params[:page], :per_page => 30).search_members(params[:search_members], params[:search_by], current_user)
     else
