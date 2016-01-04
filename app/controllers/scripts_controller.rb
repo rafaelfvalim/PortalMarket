@@ -97,6 +97,7 @@ class ScriptsController < ApplicationController
   end
 
   def script_orchestration
+
     @scripts = Script.where(:status_id => params[:status_id]).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     @status = Status.find(params[:status_id])
     @statuses = Status.where('id != ?', params[:status_id])

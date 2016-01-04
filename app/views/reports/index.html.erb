@@ -1,35 +1,33 @@
-<div id="wrapper">
-  <%= render 'layouts/side_bar' %>
-  <div id="page-wrapper">
-    <%= render 'layouts/messages' %>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Reports </h2>
-      </div>
+<%= render 'layouts/messages' %>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Reports </h2>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">Invoice Report</div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <%= form_tag(invoice_report_per_date_reports_path, method: :get) do %>
-                    <p> Invoice per date</p>
-                    <p>
-                      Start date: <%= date_field_tag 'invoices_start_date', class: 'form-control' %>
-                      End date: <%= date_field_tag 'invoices_end_date' %>
-                      Status: <%= select_tag "invoice_status_id", options_from_collection_for_select(InvoiceStatus.all, :id, :description) %>
-                      <%= submit_tag 'Generate report', class: 'btn btn-default btn-xs' %>
-                    </p>
-                <% end %>
-              </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Invoice Report</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <%= form_tag(invoice_report_per_date_reports_path, method: :get) do %>
+                  <p> Invoice per date</p>
+
+                  <p>
+                    Start date: <%= date_field_tag 'invoices_start_date', class: 'form-control' %>
+                    End date: <%= date_field_tag 'invoices_end_date' %>
+                    Status: <%= select_tag "invoice_status_id", options_from_collection_for_select(InvoiceStatus.all, :id, :description) %>
+                    <%= submit_tag 'Generate report', class: 'btn btn-success btn-xs' %>
+                  </p>
+              <% end %>
             </div>
           </div>
         </div>
-
       </div>
+
     </div>
   </div>
 </div>
