@@ -5,8 +5,11 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @carts = Cart.where(id: flash[:cart_ids])
-    # @invoices = Invoice.all
+    if current_user.is_god?
+      @invoices = Invoice.all
+    else
+      render_404
+    end
   end
 
   # GET /invoices/1
@@ -45,7 +48,7 @@ class InvoicesController < ApplicationController
           end
         end
         flash[:cart_ids] = @cart_ids
-        format.html { redirect_to invoices_path }
+        format.html { redirect_to final_buys_path }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new }

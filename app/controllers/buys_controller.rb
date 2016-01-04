@@ -14,14 +14,14 @@ class BuysController < ApplicationController
 
   def show_product
     @script = Script.find_by id: params[:id]
-    @id_search = params[:id_search]  #SearchJoy Analitics
+    @id_search = params[:id_search] #SearchJoy Analitics
     @price = Price.find_by_script_id(@script.id)
     @cart = Cart.new
     @cart.workplace = Workplace.new
 
     gon.script_id = @script.id
     gon.price_id = @price.id
-    gon.member_id =  current_user.member.id
+    gon.member_id = current_user.member.id
     gon.pdf_file = @script.pdf_file
   end
 
@@ -36,6 +36,10 @@ class BuysController < ApplicationController
   # POST /buys
   # POST /buys.json
   def create
+  end
+
+  def final
+    @carts = Cart.where(id: flash[:cart_ids])
   end
 
   # PATCH/PUT /buys/1
@@ -56,6 +60,7 @@ class BuysController < ApplicationController
       format.json { render json: @workplace.to_json }
     end
   end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_buy

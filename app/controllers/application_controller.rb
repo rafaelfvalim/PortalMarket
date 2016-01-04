@@ -59,6 +59,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :status => :not_found }
+    end
+  end
+
+
   private
   def layout_by_resource
     if devise_controller? && resource_name == :user

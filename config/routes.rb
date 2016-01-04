@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     collection do
       get :show_product
       get :autocomplete_organization
+      get :final
     end
   end
   resources :checking_accounts do
