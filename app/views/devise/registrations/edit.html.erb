@@ -1,28 +1,25 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', id: 'edit_profile_form'}) do |f| %>
-      <div class="row">
-        <div class="col-lg-12">
-          <% unless @current_user.avatar_url.present? %>
-              <img alt="image" class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
-          <% else %>
-              <%= image_tag @current_user.avatar.circle_avatar.url.to_s %>
-              <br>
-              <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
-                  <i class="fa fa-trash"></i> Remove
-              <% end %>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <% unless @current_user.avatar_url.present? %>
+          <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+            <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+          </a>
+      <% else %>
+          <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+            <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
+          </a>
+          <br>
+          <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
+              <i class="fa fa-trash"></i> Remove
           <% end %>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-lg-6 ">
-          <%= f.label 'Upload Avatar:' %>
-          <%= f.file_field :avatar, class: 'form-control' %>
-          <%= f.input :avatar_cache, as: :hidden %>
-        </div>
-      </div>
-      <br>
+      <% end %>
+    </div>
+  </div>
+
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', id: 'edit_profile_form'}) do |f| %>
       <%= f.fields_for :member, resource.member do |m| %>
           <div class="row">
             <div class="col-lg-6 ">
@@ -160,4 +157,36 @@
   </div>
   <br>
   <br>
+</div>
+
+<div id="avatar_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Avatar:</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @current_user, url: upload_avatar_users_path(id: @current_user.id), html: {id: 'upload_avatar', method: :put, multipart: true} do |u| %>
+            <div class="row">
+              <div class="col-lg-12 thumbnail">
+                <% unless @current_user.avatar_url.present? %>
+                    <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+                <% else %>
+                    <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
+                <% end %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 ">
+                <%= u.file_field :avatar, class: 'form-control', onchange: "readURL(this);" %>
+                <%= u.input :avatar_cache, as: :hidden %>
+              </div>
+            </div>
+            <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

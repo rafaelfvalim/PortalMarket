@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit, :update, :show, :remove_avatar]
+  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar]
 
   def self.default_timezone
     :utc
@@ -79,6 +79,11 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to :back
     end
+  end
+
+  def upload_avatar
+    @user.update(secure_params)
+    redirect_to :back
   end
 
   private

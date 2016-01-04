@@ -95,6 +95,7 @@ Rails.application.routes.draw do
       get :master_registration
       post :create_sub_user
       get :remove_avatar
+      put :upload_avatar
     end
   end
   resources :members do
