@@ -9,22 +9,22 @@ class InvoiceDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
     @sortable_columns ||= [
-                      'Invoice.id',
-                      'User.name',
-                      'Invoice.script_id',
-                      'Script.name',
-                      'Script.platform',
-                      'Workplace.organization_name',
-                      'Workplace.system_number',
-                      'Invoice.value',
-                      'Invoice.shipped_to',
-                      'Invoice.created_at',
-                      ]
+        'Invoice.id',
+        'User.name',
+        'Invoice.script_id',
+        'Script.name',
+        'Script.platform',
+        'Workplace.organization_name',
+        'Workplace.system_number',
+        'Invoice.value',
+        'Invoice.shipped_to',
+        'Invoice.created_at',
+    ]
   end
 
   def searchable_columns
     # Declare strings in this format: ModelName.column_name
-    @searchable_columns ||= ['Invoice.id', 'Member.member_name', 'Script.name', 'Script.platform', 'Workplace.organization_name', 'Workplace.system_number', 'Invoice.value', 'Invoice.shipped_to', 'Invoice.created_at',]
+    @searchable_columns ||= ['Invoice.id', 'Member.member_name', 'Invoice.script_id', 'Script.name', 'Script.platform', 'Workplace.organization_name', 'Workplace.system_number', 'Invoice.value', 'Invoice.shipped_to', 'Invoice.created_at',]
   end
 
   private
