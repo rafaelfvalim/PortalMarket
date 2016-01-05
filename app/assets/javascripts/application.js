@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require nested_form_fields
 //= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jquery.scrollTo
 //= require bootstrap-typeahead-rails
 //= jquery.validate.localization/messages_pt_BR.js

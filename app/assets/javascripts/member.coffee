@@ -14,3 +14,4 @@ $ ->
     rules:
       'status[id]':
         required: true
+

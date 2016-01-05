@@ -8,13 +8,13 @@ class ScriptDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= %w(Script.id Script.plataform Script.industry Script.complexity)
+    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= %w(Script.description Script.plataform Script.industry Script.complexity)
+    @searchable_columns ||= ['Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
   end
 
   private
@@ -26,7 +26,7 @@ class ScriptDatatable < AjaxDatatablesRails::Base
           # example: record.attribute,
           record.id,
           record.description,
-          record.plataform,
+          record.platform,
           record.industry,
           record.solution_type_id,
           record.script_file,

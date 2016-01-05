@@ -2,9 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('#script-table').dataTable
+  $('#invoice-table').dataTable
     processing: true
     serverSide: true
-    ajax: $('#script-table').data('source')
+    ajax: $('#invoice-table').data('source')
     sPaginationType: 'full'
-    columnDefs: [{orderable: false, targets: [6, 7]}]
+   # columnDefs: [ { orderable: false, targets: [1,2,3] } ]
+

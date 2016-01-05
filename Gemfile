@@ -16,7 +16,7 @@ gem 'mini_magick'
 gem 'nested_form_fields'
 # ajax tables
 gem 'thin'
-gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'jquery-scrollto-rails'

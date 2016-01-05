@@ -4,6 +4,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :workplace
   belongs_to :user
   belongs_to :script
+  has_one :member, through: :user
   accepts_nested_attributes_for :workplace
   accepts_nested_attributes_for :user
 

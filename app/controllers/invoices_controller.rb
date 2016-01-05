@@ -12,6 +12,13 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def invoices_ajax
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: InvoiceDatatable.new(view_context) }
+    end
+  end
+
   # GET /invoices/1
   # GET /invoices/1.json
   def show
