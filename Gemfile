@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 # for Passanger
-gem 'therubyracer'
+#gem 'therubyracer'
 # Upload File
 gem 'carrierwave'
 # https://github.com/rmagick/rmagick - sudo apt-get install libmagickwand-dev

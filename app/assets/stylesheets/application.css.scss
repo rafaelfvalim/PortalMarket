@@ -21,11 +21,14 @@
  *require_tree .
  *= require_self
  *= require animate/animate.css
+ *= require style
+ *= require bootstrap-horizon
+ *= require registrations
+ *= require bootstrap-nav-wizard
+ *= require base/variables
  */
-@import 'style';
-@import 'bootstrap-horizon';
-@import 'registrations';
-@import 'bootstrap-nav-wizard';
+
+
 
 .inactiveLink {
   pointer-events: none;
