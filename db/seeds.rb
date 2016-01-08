@@ -15,11 +15,14 @@ puts 'CREATED ADMIN USER: ' << user.email
 puts '---CREATE MEMBERTYPES-----'
 CreateMemberTypesService.new.call
 
-puts '---CREATE PAY METHODS-----'
-CreatePayMethodsService.new.call
-
 puts '---CREATE BANKS-----'
 CreateBanksService.new.call
+
+puts '---CREATE MEMBERS-----'
+CreateMembersService.new.call(user)
+
+puts '---CREATE PAY METHODS-----'
+CreatePayMethodsService.new.call
 
 puts '---CREATE CURRENCIES-----'
 CreateCurrenciesService.new.call
