@@ -63,6 +63,10 @@ class User < ActiveRecord::Base
     self.member.master_user_id.nil?
   end
 
+  def active?
+    self.confirmation_token.present?
+  end
+
   def self.search(search)
     if search
       User.joins(:member).where('member_name LIKE ?', "%#{search}%").all

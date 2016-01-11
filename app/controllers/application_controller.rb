@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :app_get_system_id_by_name
 
   def user_active
-    unless current_user.ativo?
+    unless current_user.active? && controller_name != 'SessionsController' && action_name != 'destroy'
       respond_to do |format|
         format.html { render 'members/lounge' }
       end
