@@ -11,9 +11,12 @@ class ApplicationController < ActionController::Base
   helper_method :app_get_system_id_by_name
 
   def user_active
-    unless current_user.active? && controller_name != 'SessionsController' && action_name != 'destroy'
-      respond_to do |format|
-        format.html { render 'members/lounge' }
+
+    unless current_user.active?
+      if controller_name != "sessions" && action_name != "destroy"
+        respond_to do |format|
+          format.html { render 'members/lounge' }
+        end
       end
     end
   end
@@ -69,7 +72,7 @@ class ApplicationController < ActionController::Base
   private
   def layout_by_resource
     if devise_controller? && resource_name == :user
-    #algumas paginas do devise devem aparecer dentro do site
+      #algumas paginas do devise devem aparecer dentro do site
       case action_name
         when 'edit' then
           'application'
