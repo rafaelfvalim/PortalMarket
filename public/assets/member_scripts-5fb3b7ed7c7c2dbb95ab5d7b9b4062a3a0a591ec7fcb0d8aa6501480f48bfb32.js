@@ -1,0 +1,1 @@
+(function(){$(function(){return $("#script-table").dataTable({processing:!0,serverSide:!0,ajax:$("#script-table").data("source"),sPaginationType:"full",columnDefs:[{orderable:!1,targets:[6,7]}]})})}).call(this);

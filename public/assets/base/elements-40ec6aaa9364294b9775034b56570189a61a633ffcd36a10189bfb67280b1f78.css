@@ -1,0 +1,2680 @@
+/* TOOGLE SWICH */
+/* line 5, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch {
+  position: relative;
+  width: 64px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* line 13, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox {
+  display: none;
+}
+
+/* line 17, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #1ab394;
+  border-radius: 2px;
+}
+
+/* line 25, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+
+/* line 34, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 20px;
+  padding: 0;
+  line-height: 20px;
+  font-size: 12px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 49, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #1ab394;
+  color: white;
+}
+
+/* line 56, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: white;
+  color: #999999;
+  text-align: right;
+}
+
+/* line 64, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-switch {
+  width: 20px;
+  margin: 0px;
+  background: white;
+  border: 2px solid #1ab394;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 44px;
+  -moz-transition: all 0.3s ease-in 0s;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+/* line 80, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+/* line 84, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+/* CHOSEN PLUGIN */
+/* line 90, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chosen-container-single .chosen-single {
+  background: white;
+  box-shadow: none;
+  -moz-box-sizing: border-box;
+  background-color: white;
+  border: 1px solid #cbd5dd;
+  border-radius: 2px;
+  cursor: text;
+  height: auto !important;
+  margin: 0;
+  min-height: 30px;
+  overflow: hidden;
+  padding: 4px 12px;
+  position: relative;
+  width: 100%;
+}
+
+/* line 107, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chosen-container-multi .chosen-choices li.search-choice {
+  background: #f1f1f1;
+  border: 1px solid #ededed;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #333333;
+  cursor: default;
+  line-height: 13px;
+  margin: 3px 0 3px 5px;
+  padding: 3px 20px 3px 5px;
+  position: relative;
+}
+
+/* PAGINATIN */
+/* line 122, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #f4f4f4;
+  border-color: #dddddd;
+  color: inherit;
+  cursor: default;
+  z-index: 2;
+}
+
+/* line 130, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pagination > li > a, .pagination > li > span {
+  background-color: white;
+  border: 1px solid #dddddd;
+  color: inherit;
+  float: left;
+  line-height: 1.42857;
+  margin-left: -1px;
+  padding: 4px 10px;
+  position: relative;
+  text-decoration: none;
+}
+
+/* TOOLTIPS */
+/* line 144, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tooltip-inner {
+  background-color: #2f4050;
+}
+
+/* line 148, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tooltip.top .tooltip-arrow {
+  border-top-color: #2f4050;
+}
+
+/* line 152, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tooltip.right .tooltip-arrow {
+  border-right-color: #2f4050;
+}
+
+/* line 156, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #2f4050;
+}
+
+/* line 160, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tooltip.left .tooltip-arrow {
+  border-left-color: #2f4050;
+}
+
+/* EASY PIE CHART */
+/* line 166, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.easypiechart {
+  position: relative;
+  text-align: center;
+}
+
+/* line 171, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.easypiechart .h2 {
+  margin-left: 10px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* line 177, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.easypiechart canvas {
+  top: 0;
+  left: 0;
+}
+
+/* line 182, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.easypiechart .easypie-text {
+  line-height: 1;
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* line 190, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.easypiechart img {
+  margin-top: -4px;
+}
+
+/* line 194, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jqstooltip {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* FULLCALENDAR */
+/* line 202, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-state-default {
+  background-color: white;
+  background-image: none;
+  background-repeat: repeat-x;
+  box-shadow: none;
+  color: #333333;
+  text-shadow: none;
+}
+
+/* line 211, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-state-default {
+  border: 1px solid;
+}
+
+/* line 215, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-button {
+  color: inherit;
+  border: 1px solid #e7eaec;
+  cursor: pointer;
+  display: inline-block;
+  height: 1.9em;
+  line-height: 1.9em;
+  overflow: hidden;
+  padding: 0 0.6em;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* line 228, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-state-active {
+  background-color: #1ab394;
+  border-color: #1ab394;
+  color: white;
+}
+
+/* line 234, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-header-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* line 240, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-content .fc-widget-header, .fc-content .fc-widget-content {
+  border-color: #e7eaec;
+  font-weight: normal;
+}
+
+/* line 245, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-border-separate tbody {
+  background-color: #f8f8f8;
+}
+
+/* line 249, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-state-highlight {
+  background: none repeat scroll 0 0 #fcf8e3;
+}
+
+/* line 253, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.external-event {
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+/* line 260, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-ltr .fc-event-hori.fc-event-end, .fc-rtl .fc-event-hori.fc-event-start {
+  border-radius: 2px;
+}
+
+/* line 264, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-event,
+.fc-agenda .fc-event-time,
+.fc-event a {
+  padding: 4px 6px;
+  background-color: #1ab394;
+  border-color: #1ab394;
+}
+
+/* line 272, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.fc-event-time, .fc-event-title {
+  color: #717171;
+  padding: 0 1px;
+}
+
+/* line 277, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-calendar .fc-event-time, .ui-calendar .fc-event-title {
+  color: white;
+}
+
+/* Chat */
+/* line 282, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-activity-list .chat-element {
+  border-bottom: 1px solid #e7eaec;
+}
+
+/* line 286, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element:first-child {
+  margin-top: 0;
+}
+
+/* line 290, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element {
+  padding-bottom: 15px;
+}
+
+/* line 294, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element, .chat-element .media {
+  margin-top: 15px;
+}
+
+/* line 298, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element, .media-body {
+  overflow: hidden;
+}
+
+/* line 302, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element .media-body {
+  display: block;
+}
+
+/* line 306, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.media-body {
+  display: block;
+}
+
+/* line 310, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element > .pull-left {
+  margin-right: 10px;
+}
+
+/* line 314, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element img.img-circle, .dropdown-messages-box img.img-circle {
+  width: 38px;
+  height: 38px;
+}
+
+/* line 319, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element .well {
+  border: 1px solid #e7eaec;
+  box-shadow: none;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+/* line 329, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element .actions {
+  margin-top: 10px;
+}
+
+/* line 333, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-element .photos {
+  margin: 10px 0;
+}
+
+/* line 337, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.right.chat-element > .pull-right {
+  margin-left: 10px;
+}
+
+/* line 341, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-photo {
+  max-height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 349, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 355, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #b3a9a9;
+}
+
+/* line 361, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat li.left .chat-body {
+  margin-left: 60px;
+}
+
+/* line 365, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat li.right .chat-body {
+  margin-right: 60px;
+}
+
+/* line 369, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat li .chat-body p {
+  margin: 0;
+  color: #777777;
+}
+
+/* line 374, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+  margin-right: 5px;
+}
+
+/* line 379, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.chat-panel .panel-body {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+/* LIST GROUP */
+/* line 386, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+  background-color: #1ab394;
+  border-color: #1ab394;
+  color: white;
+  z-index: 2;
+}
+
+/* line 393, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.list-group-item-heading {
+  margin-top: 10px;
+}
+
+/* line 397, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.list-group-item-text {
+  margin: 0 0 10px;
+  color: inherit;
+  font-size: 12px;
+  line-height: inherit;
+}
+
+/* line 404, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.no-padding .list-group-item {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* line 410, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.no-padding .list-group-item:first-child {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+/* line 417, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.no-padding .list-group {
+  margin-bottom: 0;
+}
+
+/* line 421, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.list-group-item {
+  background-color: inherit;
+  border: 1px solid #e7eaec;
+  display: block;
+  margin-bottom: -1px;
+  padding: 10px 15px;
+  position: relative;
+}
+
+/* line 430, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list .list-group-item {
+  border-left: none;
+  border-right: none;
+  padding: 15px 25px;
+}
+
+/* line 437, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list .list-group-item:first-child {
+  border-left: none;
+  border-right: none;
+  border-top: none !important;
+}
+
+/* line 443, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list .list-group {
+  margin-bottom: 0;
+}
+
+/* line 447, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list a {
+  color: inherit;
+}
+
+/* line 451, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list .list-group-item.active,
+.elements-list .list-group-item:hover {
+  background: #f3f3f4;
+  color: inherit;
+  border-color: #e7eaec;
+  border-radius: 0;
+}
+
+/* line 459, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.elements-list li.active {
+  transition: none;
+}
+
+/* line 463, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.element-detail-box {
+  padding: 25px;
+}
+
+/* FLOT CHART  */
+/* line 470, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.flot-chart {
+  display: block;
+  height: 200px;
+}
+
+/* line 475, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget .flot-chart.dashboard-chart {
+  display: block;
+  height: 120px;
+  margin-top: 40px;
+}
+
+/* line 481, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.flot-chart.dashboard-chart {
+  display: block;
+  height: 180px;
+  margin-top: 40px;
+}
+
+/* line 487, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.flot-chart-content {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 492, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.flot-chart-pie-content {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+/* line 498, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jqstooltip {
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+  visibility: hidden;
+  background: #2b303a;
+  background-color: rgba(43, 48, 58, 0.8);
+  color: white;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 10000;
+  padding: 5px 5px 5px 5px;
+  min-height: 22px;
+  border-radius: 3px;
+}
+
+/* line 515, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jqsfield {
+  color: white;
+  text-align: left;
+}
+
+/* line 520, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.h-200 {
+  min-height: 200px;
+}
+
+/* line 524, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.legendLabel {
+  padding-left: 5px;
+}
+
+/* line 528, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.stat-list li:first-child {
+  margin-top: 0;
+}
+
+/* line 532, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.stat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 538, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.stat-percent {
+  float: right;
+}
+
+/* line 542, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.stat-list li {
+  margin-top: 15px;
+  position: relative;
+}
+
+/* DATATABLES */
+/* line 550, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  background: transparent;
+}
+
+/* line 558, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dataTables_wrapper {
+  padding-bottom: 30px;
+}
+
+/* line 562, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dataTables_length {
+  float: left;
+}
+
+/* line 566, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+body.DTTT_Print {
+  background: #fff;
+}
+
+/* line 570, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.DTTT_Print #page-wrapper {
+  margin: 0;
+  background: #fff;
+}
+
+/* line 575, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+button.DTTT_button, div.DTTT_button, a.DTTT_button {
+  border: 1px solid #e7eaec;
+  background: #fff;
+  color: #676a6c;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+
+/* line 582, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  color: #676a6c;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+
+/* line 590, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+button.DTTT_button:hover:not(.DTTT_disabled), div.DTTT_button:hover:not(.DTTT_disabled), a.DTTT_button:hover:not(.DTTT_disabled) {
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  box-shadow: none;
+}
+
+/* line 596, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dataTables_filter label {
+  margin-right: 5px;
+}
+
+/* CIRCLE */
+/* line 603, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.img-circle {
+  border-radius: 50%;
+}
+
+/* line 607, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+}
+
+/* line 617, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+/* line 626, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+/* line 635, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.show-grid [class^="col-"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #dddddd;
+  background-color: #eeeeee !important;
+}
+
+/* line 642, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.show-grid {
+  margin: 15px 0;
+}
+
+/* ANIMATION */
+/* line 648, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.css-animation-box h1 {
+  font-size: 44px;
+}
+
+/* line 652, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.animation-efect-links a {
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+/* line 657, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#animation_box {
+  background-color: #f9f8f8;
+  border-radius: 16px;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+/* line 665, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.animation-text-box {
+  position: absolute;
+  margin-top: 40px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+}
+
+/* line 673, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.animation-text-info {
+  position: absolute;
+  margin-top: -60px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  font-size: 10px;
+}
+
+/* line 682, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.animation-text-box h2 {
+  font-size: 54px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* line 688, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.animation-text-box p {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* PEACE */
+/* line 695, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* line 703, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pace-inactive {
+  display: none;
+}
+
+/* line 707, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pace .pace-progress {
+  background: #1ab394;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+/* line 717, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.pace-inactive {
+  display: none;
+}
+
+/* WIDGETS */
+/* line 723, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget {
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* line 730, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget.style1 h2 {
+  font-size: 30px;
+}
+
+/* line 734, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget h2, .widget h3 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* line 739, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget-text-box {
+  padding: 20px;
+  border: 1px solid #e7eaec;
+  background: white;
+}
+
+/* line 745, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget-head-color-box {
+  border-radius: 5px 5px 0px 0px;
+  margin-top: 10px;
+}
+
+/* line 750, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.widget .flot-chart {
+  height: 100px;
+}
+
+/* line 754, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-align div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 759, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-align h2, .vertical-align h3 {
+  margin: 0;
+}
+
+/* line 763, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* line 770, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list.small-list {
+  font-size: 12px;
+}
+
+/* line 774, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list.small-list > li {
+  background: #f3f3f4;
+  border-left: none;
+  border-right: none;
+  border-radius: 4px;
+  color: inherit;
+  margin-bottom: 2px;
+  padding: 6px 6px 6px 12px;
+}
+
+/* line 784, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list.small-list .btn-xs, .todo-list.small-list .btn-group-xs > .btn {
+  border-radius: 5px;
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 1px 2px 1px 5px;
+}
+
+/* line 791, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list > li {
+  background: #f3f3f4;
+  border-left: 6px solid #e7eaec;
+  border-right: 6px solid #e7eaec;
+  border-radius: 4px;
+  color: inherit;
+  margin-bottom: 2px;
+  padding: 10px;
+}
+
+/* line 801, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list .handle {
+  cursor: move;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+/* line 808, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-list > li .label {
+  font-size: 9px;
+  margin-left: 10px;
+}
+
+/* line 813, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.check-link {
+  font-size: 16px;
+}
+
+/* line 817, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.todo-completed {
+  text-decoration: line-through;
+}
+
+/* line 821, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.geo-statistic h1 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+
+/* line 826, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.glyphicon.fa {
+  font-family: "FontAwesome";
+}
+
+/* INPUTS */
+/* line 831, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.inline {
+  display: inline-block !important;
+}
+
+/* line 835, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.input-s-sm {
+  width: 120px;
+}
+
+/* line 839, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.input-s {
+  width: 200px;
+}
+
+/* line 843, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.input-s-lg {
+  width: 250px;
+}
+
+/* line 847, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.i-checks {
+  padding-left: 0;
+}
+
+/* line 851, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.form-control, .single-line {
+  background-color: white;
+  background-image: none;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
+
+/* line 863, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.form-control:focus, .single-line:focus {
+  border-color: #1ab394 !important;
+}
+
+/* line 867, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-success .form-control {
+  border-color: #1ab394;
+}
+
+/* line 871, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-warning .form-control {
+  border-color: #f8ac59;
+}
+
+/* line 875, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-error .form-control {
+  border-color: #ed5565;
+}
+
+/* line 879, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-success .control-label {
+  color: #1ab394;
+}
+
+/* line 883, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-warning .control-label {
+  color: #f8ac59;
+}
+
+/* line 887, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.has-error .control-label {
+  color: #ed5565;
+}
+
+/* line 891, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.input-group-addon {
+  background-color: white;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+/* line 903, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.spinner-buttons.input-group-btn .btn-xs {
+  line-height: 1.13;
+}
+
+/* line 907, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.spinner-buttons.input-group-btn {
+  width: 20%;
+}
+
+/* line 911, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.noUi-connect {
+  background: none repeat scroll 0 0 #1ab394;
+  box-shadow: none;
+}
+
+/* line 916, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.slider_red .noUi-connect {
+  background: none repeat scroll 0 0 #ed5565;
+  box-shadow: none;
+}
+
+/* UI Sortable */
+/* line 923, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-sortable .ibox-title {
+  cursor: move;
+}
+
+/* line 927, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-sortable-placeholder {
+  border: 1px dashed #cecece !important;
+  visibility: visible !important;
+  background: #e7eaec;
+}
+
+/* line 933, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ibox.ui-sortable-placeholder {
+  margin: 0px 0px 23px !important;
+}
+
+/* SWITCHES */
+/* line 938, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch {
+  position: relative;
+  width: 54px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* line 946, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox {
+  display: none;
+}
+
+/* line 950, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #1ab394;
+  border-radius: 3px;
+}
+
+/* line 958, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+
+/* line 968, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 16px;
+  padding: 0;
+  line-height: 16px;
+  font-size: 10px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 984, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 7px;
+  background-color: #1ab394;
+  color: white;
+}
+
+/* line 991, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 7px;
+  background-color: white;
+  color: #919191;
+  text-align: right;
+}
+
+/* line 999, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-switch {
+  display: block;
+  width: 18px;
+  margin: 0px;
+  background: white;
+  border: 2px solid #1ab394;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 36px;
+  -moz-transition: all 0.3s ease-in 0s;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+/* line 1016, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+/* line 1020, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+/* jqGrid */
+/* line 1026, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid {
+  -moz-box-sizing: content-box;
+}
+
+/* line 1030, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid-btable {
+  border-collapse: separate;
+}
+
+/* line 1034, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid-htable {
+  border-collapse: separate;
+}
+
+/* line 1038, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid-titlebar {
+  height: 40px;
+  line-height: 15px;
+  color: #676a6c;
+  background-color: #f9f9f9;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* line 1046, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-jqgrid-title {
+  float: left;
+  margin: 1.1em 1em 0.2em;
+}
+
+/* line 1051, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-jqgrid-titlebar {
+  position: relative;
+  border-left: 0px solid;
+  border-right: 0px solid;
+  border-top: 0px solid;
+}
+
+/* line 1058, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-widget-header {
+  background: none;
+  background-image: none;
+  background-color: #f5f5f6;
+  text-transform: uppercase;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+/* line 1067, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid tr.ui-row-ltr td {
+  border-right-color: inherit;
+  border-right-style: solid;
+  border-right-width: 1px;
+  text-align: left;
+  border-color: #dddddd;
+  background-color: inherit;
+}
+
+/* line 1076, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-search-toolbar input[type="text"] {
+  font-size: 12px;
+  height: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 0px;
+}
+
+/* line 1083, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: #f9f9f9;
+  border: 1px solid #dddddd;
+  line-height: 15px;
+  font-weight: bold;
+  color: #676a6c;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* line 1092, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-widget-content {
+  box-sizing: content-box;
+}
+
+/* line 1096, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-icon-triangle-1-n {
+  background-position: 1px -16px;
+}
+
+/* line 1100, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid tr.ui-search-toolbar th {
+  border-top-width: 0px !important;
+  border-top-color: inherit !important;
+  border-top-style: ridge !important;
+}
+
+/* line 1106, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  background: whitesmoke;
+  border-collapse: separate;
+}
+
+/* line 1111, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+  background: #f2fbff;
+}
+
+/* line 1115, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border: 1px solid #dddddd;
+  background: white;
+  font-weight: normal;
+  color: #212121;
+}
+
+/* line 1122, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-pg-input {
+  font-size: inherit;
+  width: 50px;
+  border: 1px solid #cccccc;
+  height: 15px;
+}
+
+/* line 1129, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-pg-selbox {
+  display: block;
+  font-size: 1em;
+  height: 25px;
+  line-height: 18px;
+  margin: 0;
+  width: auto;
+}
+
+/* line 1138, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-pager-control {
+  position: relative;
+}
+
+/* line 1142, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-jqgrid-pager {
+  height: 32px;
+  position: relative;
+}
+
+/* line 1147, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-pg-table .navtable .ui-corner-all {
+  border-radius: 0px;
+}
+
+/* line 1151, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-pg-button:hover {
+  padding: 1px;
+  border: 0px;
+}
+
+/* line 1156, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .loading {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: auto;
+  height: auto;
+  z-index: 101;
+  padding: 6px;
+  margin: 5px;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+  border-width: 2px !important;
+  font-size: 11px;
+}
+
+/* line 1172, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .form-control {
+  height: 10px;
+  width: auto;
+  display: inline;
+  padding: 10px 12px;
+}
+
+/* line 1179, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid-pager {
+  height: 32px;
+}
+
+/* line 1183, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+  border-top-left-radius: 0;
+}
+
+/* line 1187, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+  border-top-right-radius: 0;
+}
+
+/* line 1191, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+  border-bottom-left-radius: 0;
+}
+
+/* line 1195, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+  border-bottom-right-radius: 0;
+}
+
+/* line 1199, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-widget-content {
+  border: 1px solid #dddddd;
+}
+
+/* line 1203, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-jqgrid-titlebar {
+  padding: 0;
+}
+
+/* line 1207, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid .ui-jqgrid-titlebar {
+  border-bottom: 1px solid #dddddd;
+}
+
+/* line 1211, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqgrid tr.jqgrow td {
+  padding: 6px;
+}
+
+/* line 1215, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqdialog .ui-jqdialog-titlebar {
+  padding: 10px 10px;
+}
+
+/* line 1219, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqdialog .ui-jqdialog-title {
+  float: none !important;
+}
+
+/* line 1223, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ui-jqdialog > .ui-resizable-se {
+  position: absolute;
+}
+
+/* Nestable list */
+/* line 1229, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* line 1239, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-list {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 1247, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-list .dd-list {
+  padding-left: 30px;
+}
+
+/* line 1251, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-collapsed .dd-list {
+  display: none;
+}
+
+/* line 1255, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-item,
+.dd-empty,
+.dd-placeholder {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* line 1267, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-handle {
+  display: block;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #333333;
+  text-decoration: none;
+  border: 1px solid #e7eaec;
+  background: whitesmoke;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 1281, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-handle span {
+  font-weight: bold;
+}
+
+/* line 1285, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-handle:hover {
+  background: #f0f0f0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* line 1291, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-item > button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  float: left;
+  width: 25px;
+  height: 20px;
+  margin: 5px 0;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* line 1311, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-item > button:before {
+  content: "+";
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
+}
+
+/* line 1320, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-item > button[data-action="collapse"]:before {
+  content: "-";
+}
+
+/* line 1324, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable2 .dd-item > button {
+  font-family: FontAwesome;
+  height: 34px;
+  width: 33px;
+  color: #c1c1c1;
+}
+
+/* line 1331, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable2 .dd-item > button:before {
+  content: "\f067";
+}
+
+/* line 1335, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable2 .dd-item > button[data-action="collapse"]:before {
+  content: "\f068";
+}
+
+/* line 1339, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-placeholder,
+.dd-empty {
+  margin: 5px 0;
+  padding: 0;
+  min-height: 30px;
+  background: #f2fbff;
+  border: 1px dashed #b6bcbf;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 1350, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-empty {
+  border: 1px dashed #bbbbbb;
+  min-height: 100px;
+  background-color: #e5e5e5;
+  background-image: -webkit-linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white), -webkit-linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white);
+  background-image: -moz-linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white), -moz-linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white);
+  background-image: linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white), linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+/* line 1361, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-dragel {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* line 1367, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-dragel > .dd-item .dd-handle {
+  margin-top: 0;
+}
+
+/* line 1371, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dd-dragel .dd-handle {
+  -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Nestable List */
+/* line 1377, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.nestable-lists {
+  display: block;
+  clear: both;
+  padding: 30px 0;
+  width: 100%;
+  border: 0;
+  border-top: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
+}
+
+/* line 1387, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable-menu {
+  padding: 0;
+  margin: 10px 0 20px 0;
+}
+
+/* line 1392, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable-output,
+#nestable2-output {
+  width: 100%;
+  font-size: 0.75em;
+  line-height: 1.33333em;
+  font-family: open sans, lucida grande, lucida sans unicode, helvetica, arial, sans-serif;
+  padding: 5px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 1403, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable2 .dd-handle {
+  color: inherit;
+  border: 1px dashed #e7eaec;
+  background: #f3f3f4;
+  padding: 10px;
+}
+
+/* line 1410, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable2 span.label {
+  margin-right: 10px;
+}
+
+/* line 1414, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#nestable-output,
+#nestable2-output {
+  font-size: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* CodeMirror */
+/* line 1423, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.CodeMirror {
+  border: 1px solid #eeeeee;
+  height: auto;
+}
+
+/* line 1428, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+/* Google Maps */
+/* line 1434, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.google-map {
+  height: 300px;
+}
+
+/* Validation */
+/* line 1439, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+label.error {
+  color: #cc5965;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* line 1445, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.form-control.error {
+  border: 1px dotted #cc5965;
+}
+
+/* ngGrid */
+/* line 1450, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.gridStyle {
+  border: 1px solid #d4d4d4;
+  width: 100%;
+  height: 400px;
+}
+
+/* line 1456, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.gridStyle2 {
+  border: 1px solid #d4d4d4;
+  width: 500px;
+  height: 300px;
+}
+
+/* line 1462, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngHeaderCell {
+  border-right: none;
+  border-bottom: 1px solid #e7eaec;
+}
+
+/* line 1467, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngCell {
+  border-right: none;
+}
+
+/* line 1471, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngTopPanel {
+  background: #f5f5f6;
+}
+
+/* line 1475, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngRow.even {
+  background: #f9f9f9;
+}
+
+/* line 1479, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngRow.selected {
+  background: #ebf2f1;
+}
+
+/* line 1483, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngRow {
+  border-bottom: 1px solid #e7eaec;
+}
+
+/* line 1487, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngCell {
+  background-color: transparent;
+}
+
+/* line 1491, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.ngHeaderCell {
+  border-right: none;
+}
+
+/* Toastr custom style */
+/* line 1497, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast {
+  background-image: none !important;
+}
+
+/* line 1501, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast:before {
+  position: fixed;
+  font-family: FontAwesome;
+  font-size: 24px;
+  line-height: 24px;
+  float: left;
+  color: #FFF;
+  padding-right: 0.5em;
+  margin: auto 0.5em auto -1.5em;
+}
+
+/* line 1511, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast-warning:before {
+  content: "\f0e7";
+}
+
+/* line 1514, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast-error:before {
+  content: "\f071";
+}
+
+/* line 1517, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast-info:before {
+  content: "\f005";
+}
+
+/* line 1520, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > .toast-success:before {
+  content: "\f00C";
+}
+
+/* line 1524, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > div {
+  -moz-box-shadow: 0 0 3px #999;
+  -webkit-box-shadow: 0 0 3px #999;
+  box-shadow: 0 0 3px #999;
+  opacity: .9;
+  -ms-filter: alpha(Opacity=90);
+  filter: alpha(opacity=90);
+}
+
+/* line 1533, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#toast-container > :hover {
+  -moz-box-shadow: 0 0 4px #999;
+  -webkit-box-shadow: 0 0 4px #999;
+  box-shadow: 0 0 4px #999;
+  opacity: 1;
+  -ms-filter: alpha(Opacity=100);
+  filter: alpha(opacity=100);
+  cursor: pointer;
+}
+
+/* line 1543, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast {
+  background-color: #1ab394;
+}
+
+/* line 1547, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-success {
+  background-color: #1ab394;
+}
+
+/* line 1551, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-error {
+  background-color: #ed5565;
+}
+
+/* line 1555, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-info {
+  background-color: #23c6c8;
+}
+
+/* line 1559, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-warning {
+  background-color: #f8ac59;
+}
+
+/* line 1563, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-top-full-width {
+  margin-top: 20px;
+}
+
+/* line 1567, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.toast-bottom-full-width {
+  margin-bottom: 20px;
+}
+
+/* Notifie */
+/* line 1572, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.cg-notify-message.inspinia-notify {
+  background: #fff;
+  padding: 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 1 px rgba(0, 0, 0, 0.1), 0 2 px 4 px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 1 px rgba(0, 0, 0, 0.1), 0 2 px 4 px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 30px;
+  color: inherit;
+}
+
+/* line 1583, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.inspinia-notify.alert-warning {
+  border-left: 6px solid #f8ac59;
+}
+
+/* line 1586, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.inspinia-notify.alert-success {
+  border-left: 6px solid #1c84c6;
+}
+
+/* line 1590, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.inspinia-notify.alert-danger {
+  border-left: 6px solid #ed5565;
+}
+
+/* line 1594, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.inspinia-notify.alert-info {
+  border-left: 6px solid #1ab394;
+}
+
+/* Image cropper style */
+/* line 1599, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.img-container, .img-preview {
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+
+/* line 1604, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.img-preview-sm {
+  height: 130px;
+  width: 200px;
+}
+
+/* Forum styles  */
+/* line 1610, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-post-container .media {
+  margin: 10px 10px 10px 10px;
+  padding: 20px 10px 20px 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+/* line 1616, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-avatar {
+  float: left;
+  margin-right: 20px;
+  text-align: center;
+  width: 110px;
+}
+
+/* line 1623, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-avatar .img-circle {
+  height: 48px;
+  width: 48px;
+}
+
+/* line 1628, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.author-info {
+  color: #676a6c;
+  font-size: 11px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* line 1635, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-post-info {
+  padding: 9px 12px 6px 12px;
+  background: #f9f9f9;
+  border: 1px solid #f1f1f1;
+}
+
+/* line 1641, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.media-body > .media {
+  background: #f9f9f9;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+}
+
+/* line 1647, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-post-container .media-body .photos {
+  margin: 10px 0;
+}
+
+/* line 1651, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-photo {
+  max-width: 140px;
+  border-radius: 3px;
+}
+
+/* line 1657, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.media-body > .media .forum-avatar {
+  width: 70px;
+  margin-right: 10px;
+}
+
+/* line 1661, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.media-body > .media .forum-avatar .img-circle {
+  height: 38px;
+  width: 38px;
+}
+
+/* line 1666, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.mid-icon {
+  font-size: 66px;
+}
+
+/* line 1670, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-item {
+  margin: 10px 0;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+/* line 1676, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.views-number {
+  font-size: 24px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+/* line 1682, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-container, .forum-post-container {
+  padding: 30px !important;
+}
+
+/* line 1686, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-item small {
+  color: #999;
+}
+
+/* line 1690, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-item .forum-sub-title {
+  color: #999;
+  margin-left: 50px;
+}
+
+/* line 1695, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-title {
+  margin: 15px 0 15px 0;
+}
+
+/* line 1699, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-info {
+  text-align: center;
+}
+
+/* line 1703, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-desc {
+  color: #999;
+}
+
+/* line 1707, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-icon {
+  float: left;
+  width: 30px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+/* line 1714, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+a.forum-item-title {
+  color: inherit;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* line 1721, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+a.forum-item-title:hover {
+  color: inherit;
+}
+
+/* line 1725, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-icon .fa {
+  font-size: 30px;
+  margin-top: 8px;
+  color: #9b9b9b;
+}
+
+/* line 1731, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-item.active .fa {
+  color: #1ab394;
+}
+
+/* line 1735, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.forum-item.active a.forum-item-title {
+  color: #1ab394;
+}
+
+@media (max-width: 992px) {
+  /* line 1741, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .forum-info {
+    margin: 15px 0 10px 0px;
+    /* Comment this is you want to show forum info in small devices */
+    display: none;
+  }
+
+  /* line 1748, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .forum-desc {
+    float: none !important;
+  }
+}
+/* New Timeline style */
+/* line 1756, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+/* line 1762, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 1769, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#vertical-timeline {
+  position: relative;
+  padding: 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* line 1775, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#vertical-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #f1f1f1;
+}
+
+/* line 1786, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content .btn {
+  float: right;
+}
+
+/* line 1790, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+#vertical-timeline.light-timeline:before {
+  background: #e7eaec;
+}
+
+/* line 1795, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dark-timeline .vertical-timeline-content:before {
+  border-color: transparent #f5f5f5 transparent transparent;
+}
+
+/* line 1800, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dark-timeline.center-orientation .vertical-timeline-content:before {
+  border-color: transparent  transparent transparent #f5f5f5;
+}
+
+/* line 1805, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dark-timeline .vertical-timeline-block:nth-child(2n) .vertical-timeline-content:before,
+.dark-timeline.center-orientation .vertical-timeline-block:nth-child(2n) .vertical-timeline-content:before {
+  border-color: transparent #f5f5f5 transparent transparent;
+}
+
+/* line 1811, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.dark-timeline .vertical-timeline-content,
+.dark-timeline.center-orientation .vertical-timeline-content {
+  background: #f5f5f5;
+}
+
+@media only screen and (min-width: 1170px) {
+  /* line 1818, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  #vertical-timeline.center-orientation {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  /* line 1822, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  #vertical-timeline.center-orientation:before {
+    left: 50%;
+    margin-left: -2px;
+  }
+}
+@media only screen and (max-width: 1170px) {
+  /* line 1829, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation.dark-timeline .vertical-timeline-content:before {
+    border-color: transparent #f5f5f5 transparent transparent;
+  }
+}
+/* line 1834, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-block {
+  position: relative;
+  margin: 2em 0;
+}
+
+/* line 1838, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-block:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 1843, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-block:first-child {
+  margin-top: 0;
+}
+
+/* line 1846, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-block:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1170px) {
+  /* line 1850, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block {
+    margin: 4em 0;
+  }
+
+  /* line 1853, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:first-child {
+    margin-top: 0;
+  }
+
+  /* line 1856, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:last-child {
+    margin-bottom: 0;
+  }
+}
+/* line 1861, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  border: 3px solid #f1f1f1;
+  text-align: center;
+}
+
+/* line 1872, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-icon i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -9px;
+}
+
+@media only screen and (min-width: 1170px) {
+  /* line 1884, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-icon {
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    margin-left: -25px;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    font-size: 19px;
+  }
+
+  /* line 1893, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-icon i {
+    margin-left: -12px;
+    margin-top: -10px;
+  }
+
+  /* line 1897, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .cssanimations .vertical-timeline-icon.is-hidden {
+    visibility: hidden;
+  }
+}
+/* line 1903, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content {
+  position: relative;
+  margin-left: 60px;
+  background: white;
+  border-radius: 0.25em;
+  padding: 1em;
+}
+
+/* line 1910, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 1915, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content h2 {
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* line 1921, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+
+/* line 1927, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content .vertical-date {
+  float: left;
+  font-weight: 500;
+}
+
+/* line 1932, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-date small {
+  color: #1ab394;
+  font-weight: 400;
+}
+
+/* line 1937, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.vertical-timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid white;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 1948, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .vertical-timeline-content h2 {
+    font-size: 18px;
+  }
+
+  /* line 1951, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .vertical-timeline-content p {
+    font-size: 13px;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  /* line 1957, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-content {
+    margin-left: 0;
+    padding: 1.6em;
+    width: 45%;
+  }
+
+  /* line 1962, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-content::before {
+    top: 24px;
+    left: 100%;
+    border-color: transparent;
+    border-left-color: white;
+  }
+
+  /* line 1969, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-content .btn {
+    float: left;
+  }
+
+  /* line 1972, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-content .vertical-date {
+    position: absolute;
+    width: 100%;
+    left: 122%;
+    top: 2px;
+    font-size: 14px;
+  }
+
+  /* line 1979, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:nth-child(even) .vertical-timeline-content {
+    float: right;
+  }
+
+  /* line 1982, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:nth-child(even) .vertical-timeline-content::before {
+    top: 24px;
+    left: auto;
+    right: 100%;
+    border-color: transparent;
+    border-right-color: white;
+  }
+
+  /* line 1989, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:nth-child(even) .vertical-timeline-content .btn {
+    float: right;
+  }
+
+  /* line 1992, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .vertical-timeline-block:nth-child(even) .vertical-timeline-content .vertical-date {
+    left: auto;
+    right: 122%;
+    text-align: right;
+  }
+
+  /* line 1997, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+  .center-orientation .cssanimations .vertical-timeline-content.is-hidden {
+    visibility: hidden;
+  }
+}
+/* Tabs */
+/* line 2007, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .panel-body {
+  background: #fff;
+  border: 1px solid #e7eaec;
+  border-radius: 2px;
+  padding: 20px;
+  position: relative;
+}
+/* line 2015, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .nav-tabs > li.active > a,
+.tabs-container .nav-tabs > li.active > a:hover,
+.tabs-container .nav-tabs > li.active > a:focus {
+  border: 1px solid #e7eaec;
+  border-bottom-color: transparent;
+  background-color: #fff;
+}
+/* line 2023, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+/* line 2028, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tab-pane .panel-body {
+  border-top: none;
+}
+/* line 2032, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .nav-tabs > li.active > a, .tabs-container .nav-tabs > li.active > a:hover, .tabs-container .nav-tabs > li.active > a:focus {
+  border: 1px solid #e7eaec;
+  border-bottom-color: transparent;
+}
+/* line 2037, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .nav-tabs {
+  border-bottom: 1px solid #e7eaec;
+}
+/* line 2041, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tab-pane .panel-body {
+  border-top: none;
+}
+/* line 2045, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left .tab-pane .panel-body, .tabs-container .tabs-right .tab-pane .panel-body {
+  border-top: 1px solid #e7eaec;
+}
+/* line 2049, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .nav-tabs > li a:hover {
+  background: transparent;
+  border-color: transparent;
+}
+/* line 2054, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-below > .nav-tabs,
+.tabs-container .tabs-right > .nav-tabs,
+.tabs-container .tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+/* line 2060, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left .panel-body {
+  position: static;
+}
+/* line 2064, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs, .tabs-container .tabs-right > .nav-tabs {
+  width: 20%;
+}
+/* line 2068, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left .panel-body {
+  width: 80%;
+  margin-left: 20%;
+}
+/* line 2073, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-right .panel-body {
+  width: 80%;
+  margin-right: 20%;
+}
+/* line 2078, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tab-content > .tab-pane,
+.tabs-container .pill-content > .pill-pane {
+  display: none;
+}
+/* line 2083, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tab-content > .active,
+.tabs-container .pill-content > .active {
+  display: block;
+}
+/* line 2088, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-below > .nav-tabs {
+  border-top: 1px solid #e7eaec;
+}
+/* line 2092, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-below > .nav-tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+/* line 2097, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-below > .nav-tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+/* line 2103, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-below > .nav-tabs > li > a:hover,
+.tabs-container .tabs-below > .nav-tabs > li > a:focus {
+  border-top-color: #e7eaec;
+  border-bottom-color: transparent;
+}
+/* line 2110, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs > li,
+.tabs-container .tabs-right > .nav-tabs > li {
+  float: none;
+}
+/* line 2115, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs > li > a,
+.tabs-container .tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+/* line 2122, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+}
+/* line 2127, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+/* line 2134, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-left > .nav-tabs .active > a,
+.tabs-container .tabs-left > .nav-tabs .active > a:hover,
+.tabs-container .tabs-left > .nav-tabs .active > a:focus {
+  border-color: #e7eaec transparent #e7eaec #e7eaec;
+  *border-right-color: #ffffff;
+}
+/* line 2141, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+}
+/* line 2146, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-right > .nav-tabs > li > a {
+  margin-left: -1px;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+}
+/* line 2153, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.tabs-container .tabs-right > .nav-tabs .active > a,
+.tabs-container .tabs-right > .nav-tabs .active > a:hover,
+.tabs-container .tabs-right > .nav-tabs .active > a:focus {
+  border-color: #e7eaec #e7eaec #e7eaec transparent;
+  *border-left-color: #ffffff;
+  z-index: 1;
+}
+
+/* jsvectormap */
+/* line 2164, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 2171, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-tip {
+  position: absolute;
+  display: none;
+  border: solid 1px #CDCDCD;
+  border-radius: 3px;
+  background: #292929;
+  color: white;
+  font-family: sans-serif, Verdana;
+  font-size: smaller;
+  padding: 5px;
+}
+
+/* line 2183, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+  position: absolute;
+  left: 10px;
+  border-radius: 3px;
+  background: #1ab394;
+  padding: 3px;
+  color: white;
+  cursor: pointer;
+  line-height: 10px;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+/* line 2196, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-zoomin, .jvectormap-zoomout {
+  width: 10px;
+  height: 10px;
+}
+
+/* line 2201, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-zoomin {
+  top: 10px;
+}
+
+/* line 2205, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-zoomout {
+  top: 30px;
+}
+
+/* line 2209, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-goback {
+  bottom: 10px;
+  z-index: 1000;
+  padding: 6px;
+}
+
+/* line 2215, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-spinner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: center no-repeat url(data:image/gif;base64,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);
+}
+
+/* line 2224, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-title {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* line 2230, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt {
+  position: absolute;
+}
+
+/* line 2234, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h {
+  bottom: 0;
+  right: 0;
+}
+
+/* line 2239, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-v {
+  top: 0;
+  right: 0;
+}
+
+/* line 2244, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend {
+  background: black;
+  color: white;
+  border-radius: 3px;
+}
+
+/* line 2250, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h .jvectormap-legend {
+  float: left;
+  margin: 0 10px 10px 0;
+  padding: 3px 3px 1px 3px;
+}
+
+/* line 2256, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h .jvectormap-legend .jvectormap-legend-tick {
+  float: left;
+}
+
+/* line 2260, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-v .jvectormap-legend {
+  margin: 10px 10px 0 0;
+  padding: 3px;
+}
+
+/* line 2265, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h .jvectormap-legend-tick {
+  width: 40px;
+}
+
+/* line 2269, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {
+  height: 15px;
+}
+
+/* line 2273, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-v .jvectormap-legend-tick-sample {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 2280, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-tick-text {
+  font-size: 12px;
+}
+
+/* line 2284, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {
+  text-align: center;
+}
+
+/* line 2288, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.jvectormap-legend-cnt-v .jvectormap-legend-tick-text {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px;
+  padding-left: 3px;
+}
+
+/*Slick Carousel */
+/* line 2298, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.slick-prev:before,
+.slick-next:before {
+  color: #1ab394 !important;
+}
+
+/* Payments */
+/* line 2306, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payment-card {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #e7eaec;
+}
+
+/* line 2313, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payment-icon-big {
+  font-size: 60px !important;
+  color: #d1dade;
+}
+
+/* line 2318, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payments-method.panel-group .panel + .panel {
+  margin-top: -1px;
+}
+
+/* line 2322, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payments-method .panel-heading {
+  padding: 15px;
+}
+
+/* line 2326, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payments-method .panel {
+  border-radius: 0;
+}
+
+/* line 2330, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payments-method .panel-heading h5 {
+  margin-bottom: 5px;
+}
+
+/* line 2334, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.payments-method .panel-heading i {
+  font-size: 26px;
+}
+
+/* Select2 custom styles */
+/* line 2340, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/elements.scss */
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  border-color: #e7eaec;
+}

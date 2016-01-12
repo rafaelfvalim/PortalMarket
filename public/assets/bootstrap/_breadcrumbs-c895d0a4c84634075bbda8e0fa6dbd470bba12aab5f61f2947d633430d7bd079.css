@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* line 8, /home/sandbox/Desktop/RubymineProjects/code_store/vendor/bootstrap-sass-master/assets/stylesheets/bootstrap/_breadcrumbs.scss */
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+/* line 15, /home/sandbox/Desktop/RubymineProjects/code_store/vendor/bootstrap-sass-master/assets/stylesheets/bootstrap/_breadcrumbs.scss */
+.breadcrumb > li {
+  display: inline-block;
+}
+/* line 18, /home/sandbox/Desktop/RubymineProjects/code_store/vendor/bootstrap-sass-master/assets/stylesheets/bootstrap/_breadcrumbs.scss */
+.breadcrumb > li + li:before {
+  content: "/ ";
+  padding: 0 5px;
+  color: #ccc;
+}
+/* line 27, /home/sandbox/Desktop/RubymineProjects/code_store/vendor/bootstrap-sass-master/assets/stylesheets/bootstrap/_breadcrumbs.scss */
+.breadcrumb > .active {
+  color: #777777;
+}

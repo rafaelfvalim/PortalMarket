@@ -1,0 +1,7 @@
+/* line 1, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/actions.css.scss */
+.action-well input.boolean {
+  float: left;
+  height: auto;
+  margin: 4px 8px;
+  clear: both;
+}

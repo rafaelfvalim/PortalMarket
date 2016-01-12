@@ -1,0 +1,27 @@
+/* Block out what is behind the fixed column's header and footer */
+/* line 5, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/bundler/gems/jquery-datatables-rails-9eee0a1975b5/app/assets/stylesheets/dataTables/extras/dataTables.fixedColumns.scss */
+table.DTFC_Cloned thead,
+table.DTFC_Cloned tfoot {
+  background-color: white;
+}
+
+/* Block out the gap above the scrollbar on the right, when there is a fixed
+ * right column
+ */
+/* line 13, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/bundler/gems/jquery-datatables-rails-9eee0a1975b5/app/assets/stylesheets/dataTables/extras/dataTables.fixedColumns.scss */
+div.DTFC_Blocker {
+  background-color: white;
+}
+
+/* line 17, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/bundler/gems/jquery-datatables-rails-9eee0a1975b5/app/assets/stylesheets/dataTables/extras/dataTables.fixedColumns.scss */
+div.DTFC_LeftWrapper table.dataTable,
+div.DTFC_RightWrapper table.dataTable {
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+/* line 23, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/bundler/gems/jquery-datatables-rails-9eee0a1975b5/app/assets/stylesheets/dataTables/extras/dataTables.fixedColumns.scss */
+div.DTFC_LeftWrapper table.dataTable.no-footer,
+div.DTFC_RightWrapper table.dataTable.no-footer {
+  border-bottom: none;
+}

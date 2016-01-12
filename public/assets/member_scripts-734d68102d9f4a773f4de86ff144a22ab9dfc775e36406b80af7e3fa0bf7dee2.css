@@ -1,0 +1,68 @@
+/* line 4, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+div[role="member_dashboard"] {
+  height: 300px;
+}
+
+/* line 8, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+div[role="member_dashboard"] > div {
+  height: 300px;
+}
+
+/* line 13, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+div[role="member_dashboard"] > div > .panel {
+  height: 150px;
+}
+
+/* line 18, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+div[role="member_dashboard"] > div > .panel-boby {
+  height: 100px;
+}
+
+/* line 22, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+div[role="contributor_dashboard"] {
+  height: 450px;
+}
+
+/* line 43, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-orange {
+  border-color: #b88010;
+}
+
+/* line 47, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-orange .panel-heading {
+  border-color: #b88010;
+  color: #fff;
+  background-color: #b88010;
+}
+
+/* line 53, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-orange a {
+  color: #b88010;
+}
+
+/* line 57, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-orange a:hover {
+  color: #b87021;
+}
+
+/* line 62, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-blue {
+  border-color: #1b69b8;
+}
+
+/* line 66, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-blue .panel-heading {
+  border-color: #1b69b8;
+  color: #fff;
+  background-color: #1b69b8;
+}
+
+/* line 72, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-blue a {
+  color: #1b69b8;
+}
+
+/* line 76, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/member_scripts.scss */
+.panel-blue a:hover {
+  color: #1351b8;
+}

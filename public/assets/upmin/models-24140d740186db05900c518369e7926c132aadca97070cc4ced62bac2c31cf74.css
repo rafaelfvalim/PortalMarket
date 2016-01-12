@@ -1,0 +1,201 @@
+/* line 5, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search a.search-result-link {
+  color: #333;
+  text-decoration: none;
+}
+/* line 9, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search a.search-result-link:hover, .c-models.a-search a.search-result-link:active {
+  color: #333;
+}
+/* line 15, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-container {
+  padding-top: 7px;
+}
+/* line 20, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result {
+  background-color: white;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 40px;
+  min-height: 110px;
+}
+/* line 27, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result dl.dl-horizontal {
+  margin-bottom: 4px;
+}
+/* line 31, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result em {
+  font-weight: bold;
+  color: #18BC9C;
+  font-style: normal;
+}
+/* line 37, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer {
+  position: absolute;
+  top: 10px;
+  left: -40px;
+}
+/* line 42, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer .icon-upper {
+  color: white;
+  border-radius: 8px 8px 0 0;
+  padding: 0px 4px 0px 4px;
+  width: 80px;
+  height: 68px;
+}
+/* line 49, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer .icon-upper .icon-letter {
+  color: white;
+  font-size: 48px;
+  text-align: center;
+  line-height: 40px;
+  padding-top: 4px;
+}
+/* line 57, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer .icon-upper .icon-name {
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  padding-top: 4px;
+}
+/* line 65, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer .icon-lower {
+  border-radius: 0 0 8px 8px;
+  background-color: white;
+  text-align: center;
+}
+/* line 72, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.yellow .icon-upper {
+  background-color: #F1C40F;
+}
+/* line 75, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.yellow .icon-lower {
+  border: 1px solid #F1C40F;
+  color: #F1C40F;
+}
+/* line 81, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.orange .icon-upper {
+  background-color: #F39C12;
+}
+/* line 84, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.orange .icon-lower {
+  border: 1px solid #F39C12;
+  color: #F39C12;
+}
+/* line 90, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.red .icon-upper {
+  background-color: #E74C3C;
+}
+/* line 93, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.red .icon-lower {
+  border: 1px solid #E74C3C;
+  color: #E74C3C;
+}
+/* line 99, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.dark_red .icon-upper {
+  background-color: #AB3326;
+}
+/* line 102, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.dark_red .icon-lower {
+  border: 1px solid #AB3326;
+  color: #AB3326;
+}
+/* line 108, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.purple .icon-upper {
+  background-color: #9B59B6;
+}
+/* line 111, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.purple .icon-lower {
+  border: 1px solid #9B59B6;
+  color: #9B59B6;
+}
+/* line 117, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.dark_blue .icon-upper {
+  background-color: #2C3E50;
+}
+/* line 120, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.dark_blue .icon-lower {
+  border: 1px solid #2C3E50;
+  color: #2C3E50;
+}
+/* line 126, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.light_blue .icon-upper {
+  background-color: #3498DB;
+}
+/* line 129, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.light_blue .icon-lower {
+  border: 1px solid #3498DB;
+  color: #3498DB;
+}
+/* line 135, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.blue_green .icon-upper {
+  background-color: #18BC9C;
+}
+/* line 138, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.blue_green .icon-lower {
+  border: 1px solid #18BC9C;
+  color: #18BC9C;
+}
+/* line 144, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.green .icon-upper {
+  background-color: #01C94F;
+}
+/* line 147, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .search-results .search-result .icon-outer.green .icon-lower {
+  border: 1px solid #01C94F;
+  color: #01C94F;
+}
+/* line 158, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li:before {
+  content: "]";
+  padding-left: 1px;
+}
+/* line 163, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li {
+  padding-left: 2px;
+}
+/* line 166, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.yellow:before {
+  color: #F1C40F;
+  background-color: #F1C40F;
+}
+/* line 170, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.orange:before {
+  color: #F39C12;
+  background-color: #F39C12;
+}
+/* line 174, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.red:before {
+  color: #E74C3C;
+  background-color: #E74C3C;
+}
+/* line 178, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.dark_red:before {
+  color: #AB3326;
+  background-color: #AB3326;
+}
+/* line 182, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.purple:before {
+  color: #9B59B6;
+  background-color: #9B59B6;
+}
+/* line 186, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.dark_blue:before {
+  color: #2C3E50;
+  background-color: #2C3E50;
+}
+/* line 190, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.light_blue:before {
+  color: #3498DB;
+  background-color: #3498DB;
+}
+/* line 194, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.blue_green:before {
+  color: #18BC9C;
+  background-color: #18BC9C;
+}
+/* line 198, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/models.css.scss */
+.c-models.a-search .list-model-facets li.green:before {
+  color: #01C94F;
+  background-color: #01C94F;
+}

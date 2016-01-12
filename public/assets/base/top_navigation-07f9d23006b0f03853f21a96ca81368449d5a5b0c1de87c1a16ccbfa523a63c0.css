@@ -1,0 +1,156 @@
+/* line 3, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation #page-wrapper {
+  margin-left: 0;
+}
+
+/* line 8, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-nav .dropdown-menu > .active > a {
+  background: white;
+  color: #1ab394;
+  font-weight: bold;
+}
+
+/* line 14, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.white-bg .navbar-fixed-top, .white-bg .navbar-static-top {
+  background: #fff;
+}
+
+/* line 18, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar {
+  margin-bottom: 0;
+}
+
+/* line 22, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .nav > li > a {
+  padding: 15px 20px;
+  color: #676a6c;
+}
+
+/* line 27, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .nav > li a:hover, .top-navigation .nav > li a:focus {
+  background: #fff;
+  color: #1ab394;
+}
+
+/* line 32, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .nav > li.active {
+  background: #fff;
+  border: none;
+}
+
+/* line 36, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .nav > li.active > a {
+  color: #1ab394;
+}
+
+/* line 39, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-right {
+  margin-right: 10px;
+}
+
+/* line 43, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-nav .dropdown-menu {
+  box-shadow: none;
+  border: 1px solid #e7eaec;
+}
+
+/* line 48, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .dropdown-menu > li > a {
+  margin: 0;
+  padding: 7px 20px;
+}
+
+/* line 53, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.navbar .dropdown-menu {
+  margin-top: 0px;
+}
+
+/* line 57, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-brand {
+  background: #1ab394;
+  color: #fff;
+  padding: 15px 25px;
+}
+
+/* line 63, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-top-links li:last-child {
+  margin-right: 0;
+}
+
+/* line 67, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation.mini-navbar #page-wrapper,
+.top-navigation.body-small.fixed-sidebar.mini-navbar #page-wrapper,
+.mini-navbar .top-navigation #page-wrapper,
+.body-small.fixed-sidebar.mini-navbar .top-navigation #page-wrapper,
+.canvas-menu #page-wrapper {
+  margin: 0;
+}
+
+/* line 75, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation.fixed-nav #wrapper, .fixed-nav #wrapper.top-navigation {
+  margin-top: 50px;
+}
+
+/* line 79, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .footer.fixed {
+  margin-left: 0 !important;
+}
+
+/* line 83, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .wrapper.wrapper-content {
+  padding: 40px;
+}
+
+/* line 86, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation.body-small .wrapper.wrapper-content, .body-small .top-navigation .wrapper.wrapper-content {
+  padding: 40px 0px 40px 0px;
+}
+
+/* line 90, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.navbar-toggle {
+  background-color: #1ab394;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+/* line 97, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.top-navigation .navbar-nav .open .dropdown-menu > li > a, .top-navigation .navbar-nav .open .dropdown-menu .dropdown-header {
+  padding: 10px 15px 10px 20px;
+}
+
+@media (max-width: 768px) {
+  /* line 102, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+  .top-navigation .navbar-header {
+    display: block;
+    float: none;
+  }
+}
+/* line 108, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+.menu-visible-lg, .menu-visible-md {
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  /* line 113, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+  .menu-visible-lg {
+    display: block !important;
+  }
+}
+@media (min-width: 992px) {
+  /* line 118, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+  .menu-visible-md {
+    display: block !important;
+  }
+}
+@media (max-width: 767px) {
+  /* line 124, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+  .menu-visible-md {
+    display: block !important;
+  }
+
+  /* line 127, /home/sandbox/Desktop/RubymineProjects/code_store/app/assets/stylesheets/base/top_navigation.scss */
+  .menu-visible-lg {
+    display: block !important;
+  }
+}

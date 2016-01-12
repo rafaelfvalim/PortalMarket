@@ -1,0 +1,108 @@
+/* line 1, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+.upmin-model input.boolean {
+  float: left;
+  height: auto;
+  margin: 4px 8px;
+  clear: both;
+}
+
+/* line 8, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar {
+  margin: 0 0 50px 0;
+  padding: 0;
+  list-style-typ: none;
+}
+
+/* line 14, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li {
+  display: inline-block;
+  text-align: center;
+  line-height: 3em;
+}
+
+/* line 20, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="2"] li {
+  width: 49%;
+}
+
+/* line 21, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="3"] li {
+  width: 33%;
+}
+
+/* line 22, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="4"] li {
+  width: 24%;
+}
+
+/* line 23, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="5"] li {
+  width: 19%;
+}
+
+/* line 24, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="6"] li {
+  width: 16%;
+}
+
+/* line 25, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="7"] li {
+  width: 14%;
+}
+
+/* line 26, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="8"] li {
+  width: 12%;
+}
+
+/* line 27, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar[data-progbar-steps="9"] li {
+  width: 11%;
+}
+
+/* line 29, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li.progbar-done {
+  color: black;
+  border-bottom: 4px solid yellowgreen;
+}
+
+/* line 33, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li.progbar-todo {
+  color: silver;
+  border-bottom: 4px solid silver;
+}
+
+/* line 38, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li:after {
+  content: "\00a0\00a0";
+}
+
+/* line 41, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li:before {
+  position: relative;
+  bottom: -2.5em;
+  float: left;
+  left: 50%;
+  line-height: 1em;
+}
+
+/* line 48, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li.progbar-done:before {
+  content: "\2713";
+  color: white;
+  background-color: yellowgreen;
+  height: 1.2em;
+  width: 1.2em;
+  line-height: 1.2em;
+  border: none;
+  border-radius: 1.2em;
+}
+
+/* line 58, /home/sandbox/rubystack-2.0.0-30/ruby/lib/ruby/gems/2.0.0/gems/upmin-admin-0.1.01/app/assets/stylesheets/upmin/attributes.css.scss */
+ol.progbar li.progbar-todo:before {
+  content: "\039F";
+  color: silver;
+  background-color: white;
+  font-size: 1.5em;
+  bottom: -1.6em;
+}
