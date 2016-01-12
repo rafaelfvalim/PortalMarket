@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def master_user_id?
-    self.member.master_user_id.nil?
+    self.member.master_user_id.present?
   end
 
   def active?
