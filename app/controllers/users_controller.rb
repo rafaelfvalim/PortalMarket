@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
     unless current_user.admin? || current_user.is_god?
       unless @user == current_user
         redirect_to :back, :alert => "Access denied."
