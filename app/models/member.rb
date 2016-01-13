@@ -29,7 +29,7 @@ class Member < ActiveRecord::Base
   GOD = 'god'
 
   def init
-    self.bank_id ||= 0   #will set the default value only if it's nil
+    #self.bank_id ||= 0   #will set the default value only if it's nil
   end
 
   def self.search_company(search, field)
