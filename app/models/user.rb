@@ -83,6 +83,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_my_master(user)
+     self.member.master_user_id == user.id
+  end
 
   def validate_email_unique
     if User.where(email: email).exists?

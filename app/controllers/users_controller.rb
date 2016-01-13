@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar]
+  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar, :resend_confirmation_email]
 
   def self.default_timezone
     :utc
@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     else
       @users = User.all.paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     end
+  end
+
+  def resend_confirmation_email
+      @user.send_confirmation_instructions
+      redirect_to :back, :notice => "Sent to " + @user.email
   end
 
   def show

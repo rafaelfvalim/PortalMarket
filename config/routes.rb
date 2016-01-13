@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       post :create_sub_user
       get :remove_avatar
       put :upload_avatar
+      get :resend_confirmation_email
     end
   end
   resources :members do
