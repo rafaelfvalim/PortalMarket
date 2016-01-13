@@ -47,7 +47,7 @@
             </div>
             <div class="row  row-centered hidden" id="birthday">
               <div class="col-lg-6 col-centered">
-                <%= member.input :birthday, as: :date, label: 'Birthday:' %>
+                <%= member.input :birthday, start_year: Date.today.year - 110 , end_year: Date.today.year, as: :date, label: 'Birthday:' %>
               </div>
             </div>
 
