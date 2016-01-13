@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   #alidate :validate_member_company_name_unique, on: :create
   #validate :validate_member_name_format, on: :create
   validates :email, presence: true, allow_blank: true
-  validates_format_of :email,:with => Devise::email_regexp
+  validates_format_of :email, :with => Devise::email_regexp
   validates_uniqueness_of :email
   mount_uploader :avatar, AvatarUploader
   validate :file_size_avatar
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def file_size_avatar
-    if self.avatar.size > 1.megabytes
+    if self.avatar.size > 2.megabytes
       errors.add(:avatar, "File  should be less than 1MB")
     end
   end
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def is_my_master(user)
-     self.member.master_user_id == user.id
+    self.member.master_user_id == user.id
   end
 
   def validate_email_unique

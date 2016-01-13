@@ -7,6 +7,7 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
   def index
     @scripts = Script.all
+    redirect_to members_path , :notice =>  "not acessible"
   end
 
   # GET /scripts/1

@@ -29,7 +29,7 @@ $(document).ready(ready);
 
 var alert_delay;
 alert_delay = function () {
-    $(".alert").delay(4000).slideUp(200, function () {
+    $(".alert").delay(6000).slideUp(200, function () {
         $(this).alert('close');
     });
 }

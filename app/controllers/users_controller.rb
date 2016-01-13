@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   end
 
   def resend_confirmation_email
-      @user.send_confirmation_instructions
-      redirect_to :back, :notice => "Sent to " + @user.email
+    @user.send_confirmation_instructions
+    redirect_to :back, :notice => "Sent to " + @user.email
   end
 
   def show
@@ -92,8 +92,11 @@ class UsersController < ApplicationController
   end
 
   def upload_avatar
-    @user.update(secure_params)
-    redirect_to :back
+    if @user.update(secure_params)
+      redirect_to edit_user_registration_path
+    else
+      redirect_to edit_user_registration_path , :alert => "Error :: Verifique o formato eo tamanho do arquivo"
+    end
   end
 
   private

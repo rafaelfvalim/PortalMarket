@@ -1,6 +1,7 @@
+<%= render 'layouts/messages' %>
+
 <div class="wrapper wrapper-content animated fadeIn">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
-
   <div class="row">
     <div class="col-lg-12">
       <% unless @current_user.avatar_url.present? %>
@@ -169,6 +170,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @current_user, url: upload_avatar_users_path(id: @current_user.id), html: {id: 'upload_avatar', method: :put, multipart: true} do |u| %>
+
             <div class="row">
               <div class="col-lg-12 thumbnail">
                 <% unless @current_user.avatar_url.present? %>
@@ -182,6 +184,12 @@
               <div class="col-lg-12 ">
                 <%= u.file_field :avatar, class: 'form-control', onchange: "readURL(this);" %>
                 <%= u.input :avatar_cache, as: :hidden %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-12 ">
+              <p>Imagem deve ser menor que 2MB <br>Formatos aceitos JPG, PNG, GIF</p>
               </div>
             </div>
             <br>

@@ -1,29 +1,39 @@
+<%= render 'layouts/messages' %>
 <p id="notice"><%= notice %></p>
+<div class="row wrapper border-bottom white-bg page-heading">
 
-<h1>Listing Process Modules</h1>
+  <h1>Listing Process Modules</h1>
+  <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Self process module</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'New Process module', new_process_module_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <br>
 
-  <tbody>
-    <% @process_modules.each do |process_module| %>
-      <tr>
-        <td><%= process_module.description %></td>
-        <td><%= process_module.self_process_module_id %></td>
-        <td><%= link_to 'Show', process_module %></td>
-        <td><%= link_to 'Edit', edit_process_module_path(process_module) %></td>
-        <td><%= link_to 'Destroy', process_module, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Process module', new_process_module_path %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Description</th>
+          <th>Referrer Process Module</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @process_modules.each do |process_module| %>
+            <tr>
+              <td><%= process_module.description %></td>
+              <td><%= process_module.referrer_process_module_id %></td>
+              <td><%= link_to 'Show', process_module, class: 'btn btn-success btn-xs' %></td>
+              <td><%= link_to 'Edit', edit_process_module_path(process_module), class: 'btn btn-primary btn-xs' %></td>
+              <td><%= link_to 'Destroy', process_module, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
