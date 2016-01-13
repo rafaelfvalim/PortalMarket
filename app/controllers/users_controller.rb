@@ -21,6 +21,10 @@ class UsersController < ApplicationController
       unless @user == current_user
         redirect_to :back, :alert => "Access denied."
       end
+    else
+      if current_user.id != @user.member.master_user_id
+        redirect_to :back, :alert => "Access denied."
+      end
     end
   end
 
@@ -94,7 +98,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+# Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
