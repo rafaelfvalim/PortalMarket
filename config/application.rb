@@ -47,11 +47,8 @@ module CodeStore
     config.downloads_path = "#{Rails.public_path}/downloads/"
     config.uploads_path = "#{Rails.public_path}/uploads/"
     config.download_url_days_expires = 60
-<<<<<<< HEAD
+
     config.absolute_site_url = 'http://10.11.50.132'
-=======
-    config.absolute_site_url = 'http://10.11.50.69:3000'
-    config.adm_server = 'http://10.11.50.69:10000'
->>>>>>> 642a66e1a6d00e596a3b1bfc3e9513fb68223b73
+    config.adm_server = 'http://10.11.50.132:10000'
   end
 end
