@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar]
+  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar, :resend_confirmation_email]
 
   def self.default_timezone
     :utc
@@ -16,9 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def resend_confirmation_email
+      @user.send_confirmation_instructions
+      redirect_to :back, :notice => "Sent to " + @user.email
+  end
+
   def show
     unless current_user.admin? || current_user.is_god?
       unless @user == current_user
+        redirect_to :back, :alert => "Access denied."
+      end
+    else
+      if current_user.id != @user.member.master_user_id
         redirect_to :back, :alert => "Access denied."
       end
     end
@@ -94,7 +103,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+# Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
