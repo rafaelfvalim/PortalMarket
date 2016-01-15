@@ -2,6 +2,7 @@
 
 <div class="wrapper wrapper-content animated fadeIn">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
+
   <div class="row">
     <div class="col-lg-12">
       <% unless @current_user.avatar_url.present? %>
@@ -117,23 +118,28 @@
           <% end %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          Leave these fields blank if you don't want to change your password
+      <div class="well well-lg">
+        <div class="text-center">
+          <div class="row">
+            <div class="col-lg-12">
+              Change your password
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <%= f.input :password, class: 'form-control' %>
+            </div>
+            <div class="col-lg-6">
+              <%= f.input :password_confirmation, class: 'form-control' %>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <%= f.input :password, class: 'form-control' %>
-        </div>
-        <div class="col-lg-6">
-          <%= f.input :password_confirmation, class: 'form-control' %>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-          <p>You must enter your current password to make changes.</p>
+          <p>Para efetivar as alterações por favor informe sua senha atual</p>
           <%= f.input :current_password, class: 'form-control' %>
         </div>
         <div class="col-lg-4"></div>
@@ -187,9 +193,10 @@
               </div>
             </div>
             <br>
+
             <div class="row">
               <div class="col-lg-12 ">
-              <p>Imagem deve ser menor que 2MB <br>Formatos aceitos JPG, PNG, GIF</p>
+                <p>Imagem deve ser menor que 2MB <br>Formatos aceitos JPG, PNG, GIF</p>
               </div>
             </div>
             <br>
