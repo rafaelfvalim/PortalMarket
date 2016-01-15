@@ -63,7 +63,8 @@
             </div>
             <div class="hr-line-dashed"></div>
 
-            <%= f.file_field :pdf_file, label: "Upload .pdf paper:", :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
+            <%= link_to 'Download Modelo ', download_documento_modelo_scripts_path %>
+            <%= f.file_field :pdf_file, label: "Upload .pdf paper:" , :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
             <div class="hr-line-dashed"></div>
 
             <%= f.hidden_field :pdf_file_cache %>

@@ -7,7 +7,7 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
   def index
     @scripts = Script.all
-    redirect_to members_path , :notice =>  "not acessible"
+    redirect_to members_path, :notice => "not acessible"
   end
 
   # GET /scripts/1
@@ -231,6 +231,14 @@ class ScriptsController < ApplicationController
     # TODO localização provisória do reindex
     # TODO Tornar isso um JOB
     Script.reindex
+  end
+
+  def download_documento_modelo
+    send_file(
+        "#{Rails.root}/public/uploads/documentos_portal/Documento_Geral_do_Script.docx",
+        filename: "documento_modelo.docx",
+        type: "application/docx"
+    )
   end
 
   private

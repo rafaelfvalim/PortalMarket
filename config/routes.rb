@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       get :check_complexity
       put :admin_update
       get :destroy_incomplete_script
+      get :download_documento_modelo
     end
   end
   resources :member_scripts
