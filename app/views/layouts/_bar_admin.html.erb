@@ -2,7 +2,7 @@
 <!--Inicio Pesquisa-->
 <li>
   <%= link_to searches_path do %>
-      <i class="fa fa-search fa-fw" aria-hidden="true"></i>  <span class="nav-label"> Find Solutions </span>
+      <i class="fa fa-search fa-fw" aria-hidden="true"></i> <span class="nav-label"> Find Solutions </span>
   <% end %>
 </li>
 <!--Fim Pesquisa -->
@@ -10,7 +10,7 @@
 <li>
   <%= link_to admin_members_path do %>
       <i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
-<% end %>
+  <% end %>
 </li>
 <!--Fim Dashboard-->
 
@@ -46,5 +46,26 @@
   <% end %>
 </li>
 <!--Fim ProcessModules-->
+<!--Incio Reports-->
+<li>
+  <%= link_to reports_path do %>
+      <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i> <span class="nav-label"> Reports</span>
+  <% end %>
+</li>
+<!--Fim Reports-->
+<!--Incio  Server Tools-->
+<li>
+  <%= link_to Rails.configuration.adm_server do %>
+      <i class="fa fa-server fa-fw" aria-hidden="true"></i> <span class="nav-label"> Server tools</span>
+  <% end %>
+</li>
+<!--Fim Server Tools-->
 
+<!--Incio Searchjoy-->
+<li>
+  <%= link_to '/admin/searchjoy' do %>
+      <i class="fa fa-line-chart fa-fw" aria-hidden="true"></i> <span class="nav-label">Analytics</span>
+  <% end %>
 
+</li>
+<!--Fim Searchjoy-->

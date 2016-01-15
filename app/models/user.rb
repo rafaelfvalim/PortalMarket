@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
+  #enum standart do devise de role - não utilizado no sistema
   enum role: [:user, :vip, :admin, :god]
+  # enum de status self.ativo? , self.inativo?
   enum status: {inativo: 'inativo', ativo: 'ativo', cancelado: 'cancelado'}
   after_initialize :set_default_role, :if => :new_record?
+
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
   has_many :workplaces, through: :member
@@ -61,10 +64,6 @@ class User < ActiveRecord::Base
 
   def master_user_id?
     self.member.master_user_id.present?
-  end
-
-  def active?
-    self.confirmation_token.present?
   end
 
   def self.search(search)

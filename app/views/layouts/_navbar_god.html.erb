@@ -16,7 +16,7 @@
           <% end %>
         </li>
         <li class="divider"></li>
-        <% if !current_user.master_user_id? && current_user.active? %>
+        <% if !current_user.master_user_id? && current_user.ativo? %>
             <li>
               <%= link_to master_user_users_path do %>
                   <i class="fa fa-users"></i> Adm User
@@ -31,12 +31,7 @@
           <%= link_to users_path do %>
               <i class="fa fa-users"></i> Users
           <% end %>
-          <%= link_to reports_path do %>
-              <i class="fa fa-bar-chart"></i> Reports
-          <% end %>
-          <%= link_to Rails.configuration.adm_server do %>
-              <i class="fa fa-server"></i> Server tools
-          <% end %>
+
         </li>
         <li class="divider"></li>
         <li>

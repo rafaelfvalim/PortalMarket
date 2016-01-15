@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def user_active
 
-    unless current_user.active?
+    unless current_user.ativo?
       if controller_name != "sessions" && action_name != "destroy"
         respond_to do |format|
           format.html { render 'members/lounge' }
