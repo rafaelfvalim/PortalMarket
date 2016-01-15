@@ -1,6 +1,18 @@
-<h1>Editing Process Module</h1>
+<%= render 'layouts/messages' %>
+<div class="row wrapper border-bottom white-bg page-heading">
 
-<%= render 'form' %>
+  <h1>Editing Process Module</h1>
 
-<%= link_to 'Show', @process_module %> |
-<%= link_to 'Back', process_modules_path %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Show', @process_module , class:'btn btn-primary'%>
+      <%= link_to 'Back', process_modules_path, class:'btn btn-primary' %>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

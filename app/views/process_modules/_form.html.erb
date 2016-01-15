@@ -1,25 +1,56 @@
-<%= form_for(@process_module) do |f| %>
-  <% if @process_module.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@process_module.errors.count, "error") %> prohibited this process_module from being saved:</h2>
-
-      <ul>
-      <% @process_module.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for(@process_module, multipart: true) do |f| %>
+    <div class="row">
+      <div class="col-md-8">
+        <img src="<%= image_url @process_module.image.thumb.url.to_s %>"/>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :self_process_module_id %><br>
-    <%= f.number_field :self_process_module_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <% if @process_module.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@process_module.errors.count, "error") %> prohibited this process_module from being
+            saved:</h2>
+          <ul>
+            <% @process_module.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.input :description, label: 'Name:' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.input :referrer_process_module_id,
+                    collection: ProcessModule.where(' referrer_process_module_id is not null'),
+                    label_method: lambda { |m| "#{m.description.humanize}" },
+                    label: "Refererr Process:",
+                    prompt: "Select..."
+        %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.input :long_description, label: 'Description:' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.label 'Image:' %>
+        <%= f.file_field :image, class: 'form-control' %>
+        <%= f.input :image_cache, as: :hidden %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <strong>JPG, PNG, GIF, size 229.5px 198.px</strong>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.submit :class => "btn btn-success" %>
+      </div>
+    </div>
 <% end %>

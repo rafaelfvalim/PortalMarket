@@ -1,8 +1,10 @@
 <%= render 'layouts/messages' %>
-<p id="notice"><%= notice %></p>
 <div class="row wrapper border-bottom white-bg page-heading">
+  <p>
+    <strong>Image:</strong> <br>
+    <img src="<%= @process_module.image.thumb.url.to_s %>" />
+  </p>
 
-  <p id="notice"><%= notice %></p>
   <p>
     <strong>Id:</strong>
     <%= @process_module.id %>
@@ -14,10 +16,15 @@
   </p>
 
   <p>
+    <strong>Long Decription:</strong>
+    <%= @process_module.long_description %>
+  </p>
+
+  <p>
     <strong>Referrer Process:</strong>
     <%= @process_module.referrer_process_module_id %>
   </p>
 
-  <%= link_to 'Edit', edit_process_module_path(@process_module),class: 'btn btn-primary'%>
+  <%= link_to 'Edit', edit_process_module_path(@process_module), class: 'btn btn-primary' %>
   <%= link_to 'Back', process_modules_path, class: 'btn btn-primary' %>
 </div>

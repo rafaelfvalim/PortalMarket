@@ -62,7 +62,11 @@ Rails.application.routes.draw do
       get :create_ajax
     end
   end
-  resources :process_modules
+  resources :process_modules do
+    collection do
+      get :remove_image
+    end
+  end
   resources :scripts do
     collection do
       get :roll_back_script

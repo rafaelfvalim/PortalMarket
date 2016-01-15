@@ -47,21 +47,26 @@
       <div class="row_panel_build">
         <!--Row-->
         <input type="hidden" id="step" value="step1">
+
         <div class="row">
           <% @process_modules.each do |process| %>
               <div class="col-md-3">
                 <div class="ibox">
                   <div class="ibox-content product-box">
-
-                    <div class="product-imitation">
-                      [IMAGE]
-                    </div>
+                    <% if process.image.present? %>
+                        <div class="process_image">
+                          <img class="process_image" src="<%= process.image.thumb.url.to_s %>"/>
+                        </div>
+                    <% else %>
+                        <div class="product-imitation">
+                          [IMAGE]
+                        </div>
+                    <% end %>
                     <div class="product-desc">
                       <small class="text-muted">Category</small>
                       <a href="#" class="product-name"> <%= process.description %></a>
-
                       <div class="small m-t-xs">
-                        Esta categoria de classificação é ....
+                        <%= process.long_description %>
                       </div>
                       <div class="m-t text-righ">
                         <%= link_to classification_wizard_scripts_path(process_id: process.id, script_id: @script.id), :class => 'btn btn-xs btn-outline btn-primary' do %>

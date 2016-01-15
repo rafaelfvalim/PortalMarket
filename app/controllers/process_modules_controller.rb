@@ -1,6 +1,7 @@
 class ProcessModulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_process_module, only: [:show, :edit, :update, :destroy]
+  before_action :set_process_module, only: [:show, :edit, :update, :destroy, :remove_image]
+  before_action :acess_control
 
   # GET /process_modules
   # GET /process_modules.json
@@ -41,7 +42,7 @@ class ProcessModulesController < ApplicationController
   def get_list_ajax
     respond_to do |format|
       format.html
-      format.json { render json: ProcessModule.where('referrer_process_module_id = ?', params[:id])}
+      format.json { render json: ProcessModule.where('referrer_process_module_id = ?', params[:id]) }
     end
   end
 
@@ -70,14 +71,32 @@ class ProcessModulesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_process_module
-      @process_module = ProcessModule.find(params[:id])
+  def remove_image
+    @process_module.remove_image!
+    respond_to do |format|
+      if @process_module.save
+        format.html { redirect_to process_modules_url, notice: 'Image was successfully removed.' }
+        format.json { head :no_content }
+      end
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def process_module_params
-      params.require(:process_module).permit(:description, :self_process_module_id)
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_process_module
+    @process_module = ProcessModule.find(params[:id])
+  end
+
+  def acess_control
+    unless current_user.is_god?
+      redirect_to members_path , :alert => "Restricted access! "
     end
+  end
+
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def process_module_params
+    params.require(:process_module).permit(:description,:referrer_process_module_id,:image ,:image_cache)
+  end
 end
