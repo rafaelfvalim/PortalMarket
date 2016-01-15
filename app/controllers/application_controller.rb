@@ -71,20 +71,27 @@ class ApplicationController < ActionController::Base
 
   private
   def layout_by_resource
-    if devise_controller? && resource_name == :user
+    if controller_name == 'registrations'
       #algumas paginas do devise devem aparecer dentro do site
       case action_name
         when 'edit' then
-          'application'
+          return 'application'
         when 'update' then
-          'application'
+          return 'application'
         else
-          "empty"
+          return 'empty'
       end
-
-    else
-      "application"
     end
+    if controller_name == 'passwords'
+      return 'empty'
+    end
+    if controller_name == 'sessions'
+      return 'empty'
+    end
+
+     if controller_name == 'confirmations'
+       return 'empty'
+     end
   end
 
   def set_timezone
