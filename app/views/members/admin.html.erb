@@ -22,15 +22,10 @@
       </div>
     </div>
   </div>
-
-  <% ActiveRecord::Base.default_timezone = :utc %>
     <%= render 'dash_dials_script_admin' %>
     <%= render 'dash_dials_invoice_admin' %>
-
     <%=render 'dash_notification_invoice_admin_panel' %>
-
     <%= render 'dash_notification_script_admin_panel' %>
-  <% ActiveRecord::Base.default_timezone = :local %>
 </div>
 
 
