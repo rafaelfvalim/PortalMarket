@@ -42,7 +42,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
           link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs'),
           unless record.has_price
-            link_to("Delete", roll_back_script_scripts_path(id: record.id), :class => 'btn btn-primary btn-xs')
+            link_to('Delete', roll_back_script_scripts_path(id: record.id), data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs')
           end
       ]
     end
