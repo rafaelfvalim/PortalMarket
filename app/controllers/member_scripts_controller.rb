@@ -5,10 +5,13 @@ class MemberScriptsController < ApplicationController
   # GET /member_scripts
   # GET /member_scripts.json
   def index
-   # @member_scripts = MemberScript.all
+   #passando via parâmetros para class MemberScriptDatatable
+    p = params
+    p[:member_id] = current_user.member.id
+
     respond_to do |format|
       format.html #new.html.erb
-      format.json { render json: MemberScriptDatatable.new(view_context)}
+      format.json { render json: MemberScriptDatatable.new(view_context, params) }
     end
   end
 

@@ -16,7 +16,7 @@
                 <div class="col-xs-8 text-right">
                   <h4>New Orders!</h4>
 
-                  <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', @member.id).count %></h2>
+                  <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', current_user.member.id).count %></h2>
                 </div>
               </div>
               <hr>

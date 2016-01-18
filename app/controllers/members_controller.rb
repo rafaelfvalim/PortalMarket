@@ -6,10 +6,19 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @member = Member.find_by_user_id current_user.id
     if current_user.is_god?
       respond_to do |format|
         format.html { redirect_to admin_members_path }
+      end
+    end
+    if current_user.is_customer?
+      respond_to do |format|
+        format.html { redirect_to customer_members_path }
+      end
+    end
+    if current_user.is_contributor?
+      respond_to do |format|
+        format.html { redirect_to contributor_members_path }
       end
     end
   end
@@ -45,7 +54,6 @@ class MembersController < ApplicationController
         format.html { redirect_to members_path }
       end
     end
-
   end
 
   def contributor_incomplete_actions
@@ -97,19 +105,18 @@ class MembersController < ApplicationController
   end
 
   def customer
-    @member_scripts = MemberScript.includes(:scripts).where('member_id = ?', params[:id])
-    respond_to do |format|
-      format.html #new.html.erb
-      format.json { render json: @member_scripts }
+    unless current_user.is_customer?
+      respond_to do |format|
+        format.html { redirect_to members_path }
+      end
     end
   end
 
   def contributor
-    p = params
-    p[:member_id] = current_user.member.id
-    respond_to do |format|
-      format.html #new.html.erb
-      format.json { render json: MemberScriptDatatable.new(view_context, params[:member_id]) }
+    unless current_user.is_contributor?
+      respond_to do |format|
+        format.html { redirect_to members_path }
+      end
     end
   end
 
