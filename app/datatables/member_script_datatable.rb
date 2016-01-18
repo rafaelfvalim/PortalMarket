@@ -22,7 +22,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity' , 'Status.description']
+    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity', 'Status.description']
   end
 
   private
@@ -40,9 +40,11 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           record.complexity,
           record.status.description,
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
-          link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs'),
           unless record.has_price
-            link_to('Delete', roll_back_script_scripts_path(id: record.id), data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs')
+            link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs')
+          end,
+          unless record.has_price
+            link_to('Delete', roll_back_script_scripts_path(id: record.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs')
           end
       ]
     end
