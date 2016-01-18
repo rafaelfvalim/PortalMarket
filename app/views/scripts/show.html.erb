@@ -8,16 +8,11 @@
   <hr>
   <div class="row">
     <div class="col-md-12">
-      <% if current_user.is_god? %>
-          <%= link_to 'Back', admin_members_path, class: 'btn btn-primary' %>
-      <% else %>
-          <%= link_to 'Back', contributor_members_path, class: 'btn btn-primay' %>
-      <% end %>
+      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_script_path(@script), class: 'btn btn-primary' %>
     </div>
   </div>
   <br>
-
   <div class="row">
     <div class="col-md-12">
       <%= render 'status_script' %>
@@ -27,6 +22,7 @@
 
   <div class="row">
     <p id="notice"><%= notice %></p>
+
     <div class="col-md-12">
       <dl>
         <dt>Name:</dt>
