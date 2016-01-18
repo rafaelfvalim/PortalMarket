@@ -234,11 +234,13 @@ class ScriptsController < ApplicationController
   end
 
   def download_documento_modelo
-    send_file(
-        "#{Rails.root}/public/uploads/documentos_portal/Documento_Geral_do_Script.docx",
-        filename: "documento_modelo.docx",
-        type: "application/docx"
-    )
+    # send_file(
+    #     "#{Rails.root}/public/uploads/documentos_portal/Documento_Geral_do_Script.docx",
+    #     filename: "documento_modelo.docx",
+    #     type: "application/docx"
+    # )
+    @file_name = "#{Rails.root}/public/uploads/documentos_portal/Documento_Geral_do_Script.docx"
+    send_file(@file_name, :filename => "paper_modelo.docx")
   end
 
   private
