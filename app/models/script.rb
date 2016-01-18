@@ -15,10 +15,10 @@ class Script < ActiveRecord::Base
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 50}, presence: true
   validates :platform, presence: true
-  validates :definition, presence: true, length: {minimum: 10, maximum: 200}
-  validates :long_text, presence: true, length: {minimum: 10, maximum: 200}
+  validates :definition , length: {minimum: 10, maximum: 200}
+  validates :long_text, length: {minimum: 10, maximum: 200}
   validates :industry, presence: true
-  validates :solution_type_id, presence: true
+  #validates :solution_type_id, presence: true
   validates :complexity, presence: true
 
   scope :search_import, -> { includes(:member_scripts) }
@@ -65,14 +65,14 @@ class Script < ActiveRecord::Base
   end
 
   def file_size_pdf
-    if self.pdf_file.size > 1.megabytes
+    if self.pdf_file.size > 2.megabytes
       errors.add(:pdf_file, "PDF  should be less than 1MB")
       errors.add(:script_file, "select file: ") if self.pdf_file.size <= 0
     end
   end
 
   def file_size_script
-    if self.script_file.size > 1.megabytes
+    if self.script_file.size > 2.megabytes
       errors.add(:script_file, "Scrip should be less than 1MB")
       errors.add(:pdf_file, "select file again ") if self.pdf_file.size <= 0
     end
