@@ -8,7 +8,6 @@
             <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
                 <i class="fa fa-chevron-left"></i> Back
             <% end %>
-            <%= link_to "Cancel", roll_back_script_scripts_path(:id => @script.id), class: 'btn btn-warning next', data: {confirm: 'Are you sure?'} %>
           </div>
           <div class="pull-right">
             <%= link_to next_wizard_path(script_id: @script.id), class: 'btn btn-primary next' do %>

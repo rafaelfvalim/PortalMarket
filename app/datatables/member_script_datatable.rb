@@ -5,21 +5,24 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
   #include AjaxDatatablesRails::Extensions::WillPaginate
   #include AjaxDatatablesRails::Extensions::SimplePaginator
   def_delegator :@view, :link_to
+  def_delegator :@view, :link_to_if
   def_delegator :@view, :h
   def_delegator :@view, :mail_to
   def_delegator :@view, :edit_script_path
+  def_delegator :@view, :roll_back_script_scripts_path
+  def_delegator :@view, :disabled
 
 
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= ['Script.id', 'Script.name','Script.description','Script.platform', 'Script.industry','Script.complexity']
+    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity', 'Status.description']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
+    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity' , 'Status.description']
   end
 
   private
@@ -35,14 +38,18 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           record.platform,
           record.industry,
           record.complexity,
+          record.status.description,
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
           link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs'),
+          unless record.has_price
+            link_to("Delete", roll_back_script_scripts_path(id: record.id), :class => 'btn btn-primary btn-xs')
+          end
       ]
     end
   end
 
   def get_raw_records
-    Script.joins(:member_scripts).where(' member_scripts.member_id = ? AND member_scripts.partner = false', params[:member_id]).group('scripts.id')
+    Script.joins(:member_scripts, :status).where(' member_scripts.member_id = ? AND member_scripts.partner = false', params[:member_id]).group('scripts.id')
   end
 
   # ==== Insert 'presenter'-like methods below if necessary
