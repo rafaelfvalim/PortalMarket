@@ -27,7 +27,11 @@
     <div class="col-md-6">
       <div class="ibox-content">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:role => 'form', :class => 'm-t'}) do |f| %>
-            <%= devise_error_messages! %>
+            <% if alert.present? %>
+                <div class="alert alert-danger">
+                  <%= alert %>
+                </div>
+            <% end %>
             <div class="form-group">
               <%= f.email_field :email, :autofocus => true, class: 'form-control', :placeholder => 'Email ' %>
             </div>
