@@ -36,11 +36,19 @@
               </div>
               <div class="row">
                 <div class="col-sm-2">
-                  <label> <input type="radio" checked="true" value="name" id="select_field1" name="select_field">
-                    Name </label></div>
+                    <label>Find by: </label>
+                </div>
+                <div class="col-sm-2">
+
+                  <label>  <input type="radio" checked="true" value="name" id="select_field1" name="select_field">
+                   name </label></div>
                 <div class="col-sm-2">
                   <label> <input type="radio" value="description" id="select_field2" name="select_field">
-                    Description </label>
+                    description </label>
+                </div>
+                <div class="col-sm-2">
+                  <label> <input type="radio" value="platform" id="select_field3" name="select_field">
+                    platform </label>
                 </div>
               </div>
               <%= hidden_field_tag :script_id, @script.id %>
