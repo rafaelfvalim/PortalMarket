@@ -16,7 +16,8 @@ class JavaService
         cmdout = stdout.read
       end
     end
-    return cmdout.gsub(/\n/,'') == 'sucess' ? true : false
+    #return cmdout.gsub(/\n/,'') == 'sucess' ? true : false
+    return cmdout
   end
 
 end

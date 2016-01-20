@@ -50,8 +50,11 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoices.each(&:save)
         @invoices.each do |i|
-          if invoice_service.create_download_file(i)
+        @java_execution = invoice_service.create_download_file(i)
+          if @java_execution.nil?
             invoice_service.send_invoice(i.user_id, i)
+          else
+            logger.info @java_execution
           end
         end
         flash[:cart_ids] = @cart_ids
