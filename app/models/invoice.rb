@@ -9,7 +9,7 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
   def invoice_script_url
-    "#{Rails.public_path}/downloads/script/script_file/#{self.id}/#{self.user_id}/#{self.script_file}"
+    "/downloads/script/script_file/#{self.id}/#{self.user_id}/#{self.script_file}"
   end
 
   def encrypt_url
