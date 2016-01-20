@@ -5,9 +5,9 @@ class JavaService
     params ||= Array.new
     params << "#{Rails.public_path}#{input_file}"
     params << "#{Rails.public_path}#{output_file}"
-    p 'geração do arquivo'
-    p input_file
-    p output_file
+    logger.info 'geração do arquivo'
+    logger.info input_file
+    logger.info output_file
     return execute_jar(Rails.configuration.jar_encrypt, params)
   end
 
