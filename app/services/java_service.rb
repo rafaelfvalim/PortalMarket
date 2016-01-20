@@ -11,18 +11,14 @@ class JavaService
   def execute_jar(jar_path = Rails.public_path, jar_file, params)
     cmd = " java -jar #{jar_file} #{params.join(' ')}"
     cmdout_read = ''
-    cmdout_err = ''
-    cmdout_din = ''
 
     Dir.chdir(jar_path) do
       Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        cmdout_read = stdout.read
-        cmdout_err = stderr.read
-        cmdout_din = stdin.read
+        cmdout_read = stderr.read
       end
     end
     #return cmdout.gsub(/\n/,'') == 'sucess' ? true : false
-    return cmdout_read + cmdout_err + cmdout_din + cmdout_wait
+    return cmdout_read
   end
 
 end
