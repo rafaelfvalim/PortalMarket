@@ -14,7 +14,7 @@ class JavaService
 
     Dir.chdir(jar_path) do
       Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        cmdout_read = stderr.read
+        cmdout_read = stdout.read
       end
     end
     #return cmdout.gsub(/\n/,'') == 'sucess' ? true : false
