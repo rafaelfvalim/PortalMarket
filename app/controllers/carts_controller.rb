@@ -26,7 +26,10 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
+    workplace = Workplace.where('member_id = ? and organization_name = ? and system_number = ?',params[:cart][:workplace_attributes][:member_id], params[:cart][:workplace_attributes][:organization_name], params[:cart][:workplace_attributes][:system_number]).first
+    unless workplace.nil?
+      @cart.workplace_id = workplace.id
+    end
     respond_to do |format|
       if @cart.save
         search = Searchjoy::Search.find params[:id_search]
@@ -73,9 +76,13 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
   end
 
+  def set_unique_workplace(cart)
+
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def cart_params
-    params.require(:cart).permit(:member_id, :script_id, :price_id, :full_sale ,workplace_attributes: [:member_id, :organization_name, :system_id, :system_number])
+    params.require(:cart).permit(:member_id, :script_id, :price_id, :full_sale, workplace_attributes: [:member_id, :organization_name, :system_id, :system_number])
   end
 
 end

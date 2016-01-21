@@ -134,10 +134,12 @@
         <div class="panel-heading"><strong>To organization:
           <small>*system where you will install the script</small>
         </strong></div>
+        <div class="well"> Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo</div>
+
         <div class="panel-body">
           <%= c.fields_for :workplace do |w| %>
               <div class="col-md-6">
-                <%= w.text_field :organization_name, class: 'form-control autocomplete' %>
+                <%= w.text_field :organization_name, label: 'System Alias:', class: 'form-control autocomplete' %>
               </div>
               <div class="col-md-6">
                 <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>
