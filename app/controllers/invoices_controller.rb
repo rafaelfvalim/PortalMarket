@@ -50,9 +50,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoices.each(&:save)
         @invoices.each do |i|
-          @java_execution = invoice_service.create_download_file(i)
-          p @java_execution
-          if @java_execution.nil?
+          unless invoice_service.create_download_file(i).blank?
             invoice_service.send_invoice(i.user_id, i)
           else
             logger.info @java_execution
