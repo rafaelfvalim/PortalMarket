@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing View Publications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Publication</th>
+      <th>Visited</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @view_publications.each do |view_publication| %>
+      <tr>
+        <td><%= view_publication.publication_id %></td>
+        <td><%= view_publication.visited %></td>
+        <td><%= view_publication.user_id %></td>
+        <td><%= link_to 'Show', view_publication %></td>
+        <td><%= link_to 'Edit', edit_view_publication_path(view_publication) %></td>
+        <td><%= link_to 'Destroy', view_publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New View publication', new_view_publication_path %>

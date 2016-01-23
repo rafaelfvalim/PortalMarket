@@ -14,6 +14,7 @@ ready = function () {
         form_singup_member($(this).val());
     });
 
+
 };
 
 $(document).ready(ready);

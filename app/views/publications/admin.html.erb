@@ -61,13 +61,20 @@
           <% @publications.each do |p| %>
               <div class="file-box">
                 <div class="file">
+                  <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
+                      <span class="label label-primary" id="visited-<%= p.id %>">New</span>
+                  <% else %>
+                      <span class="label label-success">Visited</span>
+                  <% end %>
+
                   <a href="#">
                     <span class="corner"></span>
+
                     <div class="icon">
                       <i class="<%= get_icon_file(p.file_name) %>"></i>
                     </div>
                     <div class="file-name">
-                      <%= link_to File.basename(p.file_name.to_s), p.file_name.url %>
+                      <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
                       <br/>
                       <small>Added: <%= format_date(p.created_at) %></small>
                       <%= link_to 'Remove', p, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %>

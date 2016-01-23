@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :view_publications
   resources :file_tags
   resources :folders
   resources :addresses
@@ -91,6 +92,8 @@ Rails.application.routes.draw do
   resources :publications do
     collection do
       get :admin
+      get :download
+      get :get_news_count
     end
   end
   resources :requirements

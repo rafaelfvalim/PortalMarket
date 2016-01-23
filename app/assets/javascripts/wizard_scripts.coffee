@@ -10,7 +10,6 @@ remove_breadcrumb = (e) ->
   $("#" + e).remove()
 
 window.process_call_ajax = (id, e) ->
-  console.log("chamou o process modules")
   $.ajax
     type: 'GET',
     url: '/process_modules/' + id + '/get_list_ajax.json'

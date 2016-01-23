@@ -1,0 +1,2 @@
+module ViewPublicationsHelper
+end

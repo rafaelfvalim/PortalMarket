@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121190710) do
+ActiveRecord::Schema.define(version: 20160123080901) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -359,6 +359,17 @@ ActiveRecord::Schema.define(version: 20160121190710) do
   add_index "value_chains", ["process_module_id"], name: "index_value_chains_on_process_module_id", using: :btree
   add_index "value_chains", ["script_id"], name: "index_value_chains_on_script_id", using: :btree
 
+  create_table "view_publications", force: :cascade do |t|
+    t.integer  "publication_id", limit: 4
+    t.boolean  "visited",        limit: 1
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "view_publications", ["publication_id"], name: "fk_rails_82ce7d7e68", using: :btree
+  add_index "view_publications", ["user_id"], name: "fk_rails_7456f81929", using: :btree
+
   create_table "workplaces", force: :cascade do |t|
     t.integer  "member_id",         limit: 4,   null: false
     t.string   "organization_name", limit: 255
@@ -407,6 +418,8 @@ ActiveRecord::Schema.define(version: 20160121190710) do
   add_foreign_key "users", "addresses"
   add_foreign_key "value_chains", "process_modules"
   add_foreign_key "value_chains", "scripts"
+  add_foreign_key "view_publications", "publications"
+  add_foreign_key "view_publications", "users"
   add_foreign_key "workplaces", "members"
   add_foreign_key "workplaces", "systems"
 end

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :invoice
   belongs_to :address
   has_many :publications
+  has_many :view_publications
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :member_type
   accepts_nested_attributes_for :workplaces

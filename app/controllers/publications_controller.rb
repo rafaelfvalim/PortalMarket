@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_action :set_publication, only: [:show, :edit, :update, :destroy, :download, :get_news_count]
 
   # GET /publications
   # GET /publications.json
@@ -33,9 +33,23 @@ class PublicationsController < ApplicationController
     @folder = Folder.new
   end
 
+  def download
+    @file_name = "#{Rails.root}/public#{@publication.file_name.url}"
+    send_file(@file_name)
+  end
+
   # GET /publications/new
   def new
     @publication = Publication.new
+  end
+
+  def get_news_count
+    ViewPublication.where(publication_id: @publication.id, visited: true, user_id: current_user.id).first_or_create
+    count = Publication.all.count -  ViewPublication.where(user_id: current_user.id).count
+    respond_to do |format|
+      format.html
+      format.json { render json: count }
+    end
   end
 
   # GET /publications/1/edit
