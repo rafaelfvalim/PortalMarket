@@ -1,0 +1,59 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-9">
+    <h2>Publications</h2>
+  </div>
+</div>
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <div class="file-manager">
+            <h5>Folders</h5>
+            <ul class="folder-list" style="padding: 0">
+              <% Folder.all.each do |f| %>
+                  <li>
+                    <%= link_to publications_path(query: f.name) do %>
+                        <i class="fa fa-folder"></i> <%= f.name %>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+            <!--<h5 class="tag-title">Tags</h5>-->
+            <!--<ul class="tag-list" style="padding: 0">-->
+            <!--
+            <% FileTag.all.each do |t| %>-->
+                <!--<li><a href=""><%= t.name %></a></li>-->
+                <!--
+            <% end %>-->
+            <!--</ul>-->
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <% @publications.each do |p| %>
+              <div class="file-box">
+                <div class="file">
+                  <a href="#">
+                    <span class="corner"></span>
+                    <div class="icon">
+                      <i class="<%= get_icon_file(p.file_name) %>"></i>
+                    </div>
+                    <div class="file-name">
+                      <%= link_to File.basename(p.file_name.to_s), p.file_name.url %>
+                      <br/>
+                      <small>Added: <%= format_date(p.created_at) %></small>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

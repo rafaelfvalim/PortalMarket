@@ -1,0 +1,2 @@
+module FileTagsHelper
+end

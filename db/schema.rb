@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113122802) do
+ActiveRecord::Schema.define(version: 20160121190710) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -89,6 +89,18 @@ ActiveRecord::Schema.define(version: 20160113122802) do
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "file_tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "invoice_statuses", force: :cascade do |t|
@@ -206,6 +218,20 @@ ActiveRecord::Schema.define(version: 20160113122802) do
   end
 
   add_index "process_modules", ["referrer_process_module_id"], name: "fk_rails_77f666f400", using: :btree
+
+  create_table "publications", force: :cascade do |t|
+    t.string   "file_name",   limit: 255
+    t.string   "file_type",   limit: 255
+    t.integer  "user_id",     limit: 4
+    t.integer  "folder_id",   limit: 4
+    t.integer  "file_tag_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "publications", ["file_tag_id"], name: "fk_rails_781b7a040a", using: :btree
+  add_index "publications", ["folder_id"], name: "fk_rails_5d410aacbf", using: :btree
+  add_index "publications", ["user_id"], name: "fk_rails_5b8fd83dce", using: :btree
 
   create_table "related_scripts", force: :cascade do |t|
     t.integer "script_id",         limit: 4
@@ -368,6 +394,9 @@ ActiveRecord::Schema.define(version: 20160113122802) do
   add_foreign_key "prices", "currencies"
   add_foreign_key "prices", "scripts"
   add_foreign_key "process_modules", "process_modules", column: "referrer_process_module_id", on_update: :nullify, on_delete: :nullify
+  add_foreign_key "publications", "file_tags"
+  add_foreign_key "publications", "folders"
+  add_foreign_key "publications", "users"
   add_foreign_key "related_scripts", "scripts", column: "related_script_id", on_update: :nullify, on_delete: :nullify
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"

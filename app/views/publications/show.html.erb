@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @publication.file_name %>
+</p>
+
+<p>
+  <strong>File type:</strong>
+  <%= @publication.file_type %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @publication.owner %>
+</p>
+
+<p>
+  <strong>Folder:</strong>
+  <%= @publication.folder %>
+</p>
+
+<%= link_to 'Edit', edit_publication_path(@publication) %> |
+<%= link_to 'Back', publications_path %>

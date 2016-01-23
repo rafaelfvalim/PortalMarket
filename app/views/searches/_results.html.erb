@@ -21,22 +21,17 @@
                   <div class="ibox-content product-box">
 
                     <div class="product-imitation">
-                      Imagem ou texto
-                      [ INFO ]
+                      <span class="product-name"> <%= script.name %> </span>
                     </div>
                     <div class="product-desc">
                                 <span class="product-price">
                                 <%= number_to_currency_br(script.price.value) %>
                                 </span>
-                      <small class="text-muted">Name</small>
-                      <span class="product-name"> <%= script.name %> </span>
-
                       <div class="row">
                         Platform: <%= script.platform %></br>
                         Tags: <%= "#{script.industry} #{script.complexity}" %></br>
                         Cod: <%= script.id %></br>
                         <div class="small m-t-xs">
-
                           Contributor(s):
                           <% script.members.each do |member| %>
                               <% if script.members.size > 1 %>
@@ -44,7 +39,7 @@
                               <% else %>
                                   <%= "#{member.member_name} #{ member.member_last_name}" %>
                               <% end %>
-                          <% end %> - created at : <%= script.created_at %>
+                          <% end %>
                           </br>
 
                         </div>

@@ -1,0 +1,23 @@
+// Place all the styles related to the publications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.folder-list-custom li {
+  display:  inline-block;
+  width: 45%;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.folder-list-custom li i {
+  margin-right: 8px;
+  color: #3d4d5d;
+}
+
+.folder-list-custom li a {
+  color: #666666;
+  display: inline;
+  padding: 5px 0;
+}
+

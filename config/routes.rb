@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :file_tags
+  resources :folders
   resources :addresses
   resources :systems
   resources :workplaces
@@ -86,6 +88,11 @@ Rails.application.routes.draw do
     end
   end
   resources :member_scripts
+  resources :publications do
+    collection do
+      get :admin
+    end
+  end
   resources :requirements
   resources :searches do
     collection do

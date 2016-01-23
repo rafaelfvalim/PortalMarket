@@ -14,6 +14,13 @@
           <% end %>
         </li>
         <li class="divider"></li>
+        <% if current_user.is_master_user_id?&& current_user.ativo? %>
+            <li>
+              <%= link_to master_user_users_path do %>
+                  <i class="fa fa-users"></i> Adm User
+              <% end %>
+            </li>
+        <% end %>
         <li>
           <%= link_to destroy_user_session_path, :method => 'delete' do %>
               <i class="fa fa-sign-out fa-fw"></i> Logout
