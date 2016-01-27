@@ -36,6 +36,7 @@ pt-BR:
         are_you_sure: Você tem certeza?
         change_status: Mudar status
         change_role: Mudar regra
+        search_by: Buscar por
         email:
           resent_confirmation : Reenviar email de confirmação
         menu:
@@ -147,6 +148,7 @@ pt-BR:
           description: Descrição
         user_attribures:
           user: Usuário
+          users: Usuários
           name: Nome
           cnpj: CNPJ
           company_name: Nome Empresa
@@ -196,6 +198,7 @@ pt-BR:
           cpf: CPF
           phone_number: Tel
           cellphone_number: Cel
+          birthday: Data Nasc
         address_attribures:
           zip_code: Codigo Postal
           patio_type: Tipo Logradouro
@@ -205,7 +208,8 @@ pt-BR:
           city: Cidade
           state: Estado
           complement: Complemento
-          birthday: Data Nasc.
+        master_user:
+          page_header: Administração Usuários
 
 
 

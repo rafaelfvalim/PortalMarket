@@ -2,7 +2,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="row">
     <div class="col-md-12">
-      <h1>Master User Admin </h1>
+      <h1><%= t 'labels.master_user.page_header'%> </h1>
     </div>
   </div>
   <br>
@@ -15,7 +15,7 @@
   <hr>
   <%= form_tag request.path, :method => 'get' do %>
       <% content_tag :label do %>
-          Search by:
+          <%=t 'labels.search_by' %>:
           <%= text_field_tag :search_members, params[:search] %>
           <input type="radio" name="search_by" value="members.member_name" checked="true"><%= t 'labels.user_attribures.name' %>
           <input type="radio" name="search_by" value="email">Email
