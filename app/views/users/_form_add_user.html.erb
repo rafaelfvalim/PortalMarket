@@ -7,7 +7,7 @@
           <% end %>
         </div>
         <div class="pull-right">
-          <%= f.submit 'Save', class: 'btn btn-success' %>
+          <%= f.submit "#{t 'labels.buttons.save'}", class: 'btn btn-success' %>
         </div>
       </div>
     </div>
@@ -34,32 +34,32 @@
             <% end %>
             <div class="row" id="name">
               <div class="col-lg-8">
-                <%= member.input :member_name, label: 'Name:', class: 'form-control' %>
+                <%= member.input :member_name , label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row" id="last_name">
               <div class="col-lg-8">
-                <%= member.input :member_last_name, label: 'Last Name:', class: 'form-control' %>
+                <%= member.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row" id="birthday">
               <div class="col-lg-8 ">
-                <%= member.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year, as: :date, label: 'Birthday:' %>
+                <%= member.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year, as: :date, label: "#{t 'labels.address_attribures.birthday'}" %>
               </div>
             </div>
             <div class="row" id="cpf">
               <div class="col-lg-8">
-                <%= member.input :cpf, label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
+                <%= member.input :cpf, label: "#{t 'labels.member_attributes.cpf'}", input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
               </div>
             </div>
             <div class="row" id="phone">
               <div class="col-lg-8">
-                <%= member.input :phone_number, label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
+                <%= member.input :phone_number, label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
               </div>
             </div>
             <div class="row" id="cellphone">
               <div class="col-lg-8">
-                <%= member.input :cellphone_number, label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
+                <%= member.input :cellphone_number, label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
               </div>
             </div>
         <% end %>
@@ -70,12 +70,12 @@
         </div>
         <div class="row">
           <div class="col-lg-8">
-            <%= f.input :password, class: 'form-control' %>
+            <%= f.input :password, "#{t 'labels.user_attribures.password'}", class: 'form-control' %>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-8">
-            <%= f.input :password_confirmation, class: 'form-control' %>
+            <%= f.input :password_confirmation, "#{t 'labels.user_attribures.password_confirmation'}", class: 'form-control' %>
           </div>
         </div>
       </div>

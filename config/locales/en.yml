@@ -116,8 +116,7 @@ en:
           show: Show
           edit: Edit
           delete: Delete
-  simple_form:
-     labels:
-      script:
-        name: Name
+        additional_information:
+          panel_requierement_header: Requirements related
+          panel_requierement_header_description: indicating the conditions so that the script needs to function.
 

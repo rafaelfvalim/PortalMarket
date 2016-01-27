@@ -6,12 +6,12 @@
         <div class="col-md-12">
           <div class="pull-left">
             <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
-                <i class="fa fa-chevron-left"></i> Back
+                <i class="fa fa-chevron-left"></i> <%= t 'labels.buttons.back'%>
             <% end %>
           </div>
           <div class="pull-right">
             <%= link_to next_wizard_path(script_id: @script.id), class: 'btn btn-primary next' do %>
-                <i class="fa fa-chevron-right"></i> Next
+                <i class="fa fa-chevron-right"></i> <%= t 'labels.buttons.next'%>
             <% end %>
           </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="col-md-12">
           <div class="ibox float-e-margins">
             <div class="ibox-title">
-              <h5>Classificações
+              <h5><%= t 'labels.value_chain.classification' %>
                 <span class="badge" id="process_badge"></span>
               </h5>
 
@@ -57,14 +57,14 @@
                         </div>
                     <% end %>
                     <div class="product-desc">
-                      <small class="text-muted">Category</small>
+                      <small class="text-muted"><%= t 'labels.value_chain.category'%></small>
                       <%= link_to process.description, classification_wizard_scripts_path(process_id: process.id, script_id: @script.id), :class=> 'product-name' %>
                       <div class="small m-t-xs">
                         <%= process.long_description %>
                       </div>
                       <div class="m-t text-righ">
                         <%= link_to classification_wizard_scripts_path(process_id: process.id, script_id: @script.id), :class => 'btn btn-xs btn-outline btn-primary' do %>
-                            Go <i class="fa fa-long-arrow-right"></i>
+                            <%= t 'labels.buttons.go' %> <i class="fa fa-long-arrow-right"></i>
                         <% end %>
                       </div>
                     </div>

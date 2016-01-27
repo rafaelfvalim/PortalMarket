@@ -6,7 +6,7 @@
         </div>
         <div class="pull-left">
           <%= link_to :back, class: 'btn btn-primary next' do %>
-              <i class="fa fa-chevron-left"> Back</i>
+              <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back'%></i>
           <% end %>
         </div>
       </div>
@@ -34,41 +34,41 @@
         <% if @user.member_type.id == 1 %>
             <div class="row">
               <div class="col-md-6">
-                <%= m.text_field :member_name, class: 'form-control' %>
+                <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}",  class: 'form-control' %>
               </div>
               <div class="col-md-6">
-                <%= m.text_field :member_last_name, class: 'form-control' %>
+                <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "Bank:"} %>
+                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "#{t 'labels.member_attributes.banco'}"} %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2">
-                <%= m.text_field :bank_ag, class: 'form-control' %>
+                <%= m.text_field :bank_ag,label: "#{t 'labels.member_attributes.banco_agencia'}" , class: 'form-control' %>
               </div>
               <div class="col-md-8">
-                <%= m.text_field :bank_cc, class: 'form-control' %>
+                <%= m.text_field :bank_cc,label: "#{t 'labels.member_attributes.banco_conta_corrente'}", class: 'form-control' %>
               </div>
               <div class="col-md-2">
-                <%= m.text_field :bank_cc_digit, class: 'form-control' %>
+                <%= m.text_field :bank_cc_digit,label: "#{t 'labels.member_attributes.banco_conta_corrente_digito'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= m.text_field :cpf, class: 'form-control' %>
+                <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.banco_conta_corrente_digito'}", class: 'form-control' %>
               </div>
             </div>
         <% else %>
             <div class="row">
               <div class="col-md-12">
-                <%= m.text_field :company_name, class: 'form-control' %>
+                <%= m.text_field :company_name,label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12">c
                 <%= m.text_field :cnpj, class: 'form-control' %>
               </div>
             </div>
@@ -76,40 +76,40 @@
         <%= f.fields_for :address do |a| %>
             <div class="row">
               <div class="col-md-2">
-                <%= a.text_field :id, readonly: :true, label: 'Id endereço', class: 'form-control' %>
+                <%= a.text_field :id, readonly: :true, label: 'Id', class: 'form-control' %>
               </div>
               <div class="col-md-10">
-                <%= a.text_field :zip_code, class: 'form-control' %>
+                <%= a.text_field :zip_code , label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
               </div>
 
             </div>
             <div class="row">
               <div class="col-md-2">
-                user<%= a.text_field :patio_type, class: 'form-control' %>
+                user<%= a.text_field :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control' %>
               </div>
               <div class="col-md-8">
-                <%= a.text_field :patio, class: 'form-control' %>
+                <%= a.text_field :patio, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control' %>
               </div>
               <div class="col-md-2">
-                <%= a.text_field :number, class: 'form-control' %>
+                <%= a.text_field :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= a.text_field :neighborhood, class: 'form-control' %>
+                <%= a.text_field :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= a.text_field :complement, class: 'form-control' %>
+                <%= a.text_field :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <%= a.text_field :city, class: 'form-control' %>
+                <%= a.text_field :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control' %>
               </div>
               <div class="col-md-6">
-                <%= a.text_field :state, class: 'form-control' %>
+                <%= a.text_field :state,  label: "#{t 'labels.address_attribures.state'}", class: 'form-control' %>
               </div>
             </div>
         <% end %>

@@ -9,7 +9,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <%= link_to 'New User', master_registration_users_path, class: 'btn btn-success' %>
+      <%= link_to "#{t 'labels.user_attribures.new_user'}", master_registration_users_path, class: 'btn btn-success' %>
     </div>
   </div>
   <hr>
@@ -17,10 +17,10 @@
       <% content_tag :label do %>
           Search by:
           <%= text_field_tag :search_members, params[:search] %>
-          <input type="radio" name="search_by" value="members.member_name" checked="true">Name
+          <input type="radio" name="search_by" value="members.member_name" checked="true"><%= t 'labels.user_attribures.name' %>
           <input type="radio" name="search_by" value="email">Email
           <br>
-          <small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>
+            <%= raw t 'labels.user_attribures.search_helper_user'%>
       <% end %>
   <% end %>
   <%= render 'form_master_user' %>

@@ -2,7 +2,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="row">
     <div class="col-md-12">
-      <h1>Users </h1>
+      <h1><%= t 'labels.user_attribures.user' %> </h1>
     </div>
   </div>
   <hr>
@@ -15,10 +15,10 @@
   <table class="table table-bordered table-condensed responsive">
     <thead>
     <th>Id</th>
-    <th>Nome</th>
+    <th><%= t 'labels.user_attribures.name'%></th>
     <th>Email</th>
     <th>Status</th>
-    <th colspan="2">Actions</th>
+    <th colspan="2"></th>
     </thead>
     <tbody>
     <% @users.each do |user| %>
@@ -36,15 +36,15 @@
             <% unless user == current_user %>
                 <%= form_for(user) do |f| %>
                     <%= f.select(:status, User.statuses.keys.map { |status| [status.titleize, status] }) %>
-                    <%= f.submit 'Change Status', :class => 'button-xs' %>
+                    <%= f.submit "#{t 'labels.change_status'}", :class => 'button-xs' %>
                 <% end %>
             <% end %>
           </td>
           <td>
-            <%= link_to("Edid user", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
+            <%= link_to("#{t 'labels.buttons.edit'}", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
           </td>
           <td>
-            <%= link_to("Delete user", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
+            <%= link_to("#{t 'labels.buttons.delete'}", user_path(user), :data => {:confirm => "#{t 'labels.are_you_sure'}"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
           </td>
         </tr>
     <% end %>

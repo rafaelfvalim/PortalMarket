@@ -3,12 +3,12 @@
   <div class="col-lg-12">
     <div class="pull-left">
       <%= link_to edit_script_path(id: @script.id), :class => 'btn btn-primary' do %>
-          <i class="fa fa-chevron-left"></i> Back
+          <i class="fa fa-chevron-left"></i> <%= t 'labels.buttons.back' %>>
       <% end %>
     </div>
     <div class="pull-right">
       <%= link_to next_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
-          <i class="fa fa-chevron-right"></i> Next
+          <i class="fa fa-chevron-right"></i> <%= t 'labels.buttons.next' %>
       <% end %>
     </div>
   </div>
@@ -17,14 +17,12 @@
 <div class="row">
   <div class="ibox float-e-margins">
     <div class="ibox-title">
-      <h5>Requerimentos e Depencias
-        <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
-      </h5>
+      <%= raw t 'labels.additional_information.panel_requierement_header'%>
     </div>
     <div class="ibox-content">
       <div class="row">
         <div class="col-md-12">
-          <smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span></smal>
+          <%= raw t 'labels.additional_information.search_scripts'%>
           <%= form_tag request.path, method: :get, remote: true do %>
               <div class="input-group">
                 <%= text_field_tag :search, params[:search], class: 'form-control' %>
@@ -36,24 +34,25 @@
               </div>
               <div class="row">
                 <div class="col-sm-2">
-                    <label>Find by: </label>
+                  <label><%= t 'labels.find_by' %>: </label>
                 </div>
                 <div class="col-sm-2">
 
-                  <label>  <input type="radio" checked="true" value="name" id="select_field1" name="select_field">
-                   name </label></div>
+                  <label> <input type="radio" checked="true" value="name" id="select_field1" name="select_field">
+                    <%= t 'labels.script_attributes.name'%> </label></div>
                 <div class="col-sm-2">
                   <label> <input type="radio" value="description" id="select_field2" name="select_field">
-                    description </label>
+                    <%= t 'labels.script_attributes.description' %> </label>
                 </div>
                 <div class="col-sm-2">
                   <label> <input type="radio" value="platform" id="select_field3" name="select_field">
-                    platform </label>
+                    <%= t 'labels.script_attributes.platform' %></label>
                 </div>
               </div>
               <%= hidden_field_tag :script_id, @script.id %>
           <% end %>
           <br>
+
           <div id="results">
             <%= render partial: 'results', locals: {found_scripts: @found_scripts, script: @script} %>
           </div>
@@ -62,10 +61,10 @@
       <div class="hr-line-dashed"></div>
       <div class="row">
         <div class="col-md-6">
-          <h5>Requirements</h5>
-          <%= form_tag create_requeriement_wizard_scripts_path , remote: true, method: :post  do %>
+          <h5><%= t 'labels.additional_information.requirements'%></h5>
+          <%= form_tag create_requeriement_wizard_scripts_path, remote: true, method: :post do %>
               <div class="input-group">
-                <%= text_field_tag 'requirement[requirement]', nil,  class: 'form-control' %>
+                <%= text_field_tag 'requirement[requirement]', nil, class: 'form-control' %>
                 <span class="input-group-btn">
                 <%= button_tag(type: "submit", class: "btn btn-default") do %>
                  <i class="fa fa-plus"></i>
@@ -83,9 +82,10 @@
 
         </div>
         <div class="col-md-6">
-          <h5>Related Scripts</h5>
+          <h5><%= t 'labels.additional_information.related' %></h5>
           <br>
           <br>
+
           <div id="related_list">
             <%= render partial: 'related_list', locals: {related_scripts: @related_scripts, script: @script} %>
           </div>

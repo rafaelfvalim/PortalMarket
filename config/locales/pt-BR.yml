@@ -32,8 +32,14 @@ pt-BR:
         pdf_file_accept_formats: Formato aceito = .pdf
         pdf_file_size: Máx 2MB
         donwload_model: Donwload Modelo
+        find_by: Busca por
+        are_you_sure: Você tem certeza?
+        change_status: Mudar status
+        change_role: Mudar regra
+        email:
+          resent_confirmation : Reenviar email de confirmação
         menu:
-          find_solutions: Buscar Soluções
+          find_solutions: Buscar Scripts
           dash_board: Dashboard
           script: Scripts
           checking_account: Conta Corrente
@@ -90,6 +96,7 @@ pt-BR:
           definition: Obs
           script_file: Upload Script
           pdf_file: Upload PDF
+          id: Id
         searchs:
           page_header: Busca
           results:
@@ -116,13 +123,93 @@ pt-BR:
           back: Voltar
           next: Próximo
           new: Novo
+          save: Salvar
           cancel: Cancelar
           submit: Submeter
           Ok: Ok
           show: Mostrar
           edit: Editar
           delete: Excluir
-  simple_form:
-    labels:
-      script:
-        name: Nome
+          action: Ação
+          go: Ir
+        script_create:
+          page_header: '<h5>Dados básicos do Script
+                                  <small>informe os dados do script que você criou.</small>
+                                </h5>'
+        additional_information:
+          panel_requierement_header:  '<h5>Requerimentos e Depencias
+                                                         <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
+                                                       </h5>'
+          search_scripts:  '<smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span>
+                                    </smal>'
+          requirements: Requeridos
+          related: Relatados
+          description: Descrição
+        user_attribures:
+          user: Usuário
+          name: Nome
+          cnpj: CNPJ
+          company_name: Nome Empresa
+          password: Senha
+          password_confirmation: Confirmar Senha
+          confirmed: Confirmado
+          new_user: Novo Usuário
+          search_helper_user: '<small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>'
+          current_sign: Login
+          last_sign: Último login
+          last_sign_ip: IP último login
+          current_sign_ip: IP logado
+          confirmation_token: Token de confirmação
+        classification:
+          process: Processo
+        final:
+         messages: Mensagens
+         version: versão
+         create_by: Criado por
+         version: Versão
+         last_update: atualizado em
+         created: Criado em
+         classification: Cassificação
+         requeriment_scripts: Scripts Requeridos
+         related_scripts: Scripts Relacionados
+         define_participation: Definir Participação
+         participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
+         search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa</small>'
+        process_tracker:
+          create: Criar
+          additional_information: Dados Adicionais
+          classification: Classificação
+          final: Final
+        value_chain:
+            classification: Classificação
+            category: Categoria
+        member_attributes:
+          member_type: Tipo de Membro
+          member_name: Nome
+          member_last_name: Segundo Nome
+          bank: Banco
+          bank_ag: Agência
+          bank_cc: Conta Corrente
+          bank_cc_dg: Digito
+          company_name: Empresa
+          cnpj: CNPJ
+          cpf: CPF
+          phone_number: Tel
+          cellphone_number: Cel
+        address_attribures:
+          zip_code: Codigo Postal
+          patio_type: Tipo Logradouro
+          patio: Logradouro
+          number: Number
+          neighbordhood: Bairro
+          city: Cidade
+          state: Estado
+          complement: Complemento
+          birthday: Data Nasc.
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-4 col-md-2" id="row_panel_process">
     <%= link_to :back, class: 'btn btn-primary next' do %>
-        <i class="fa fa-chevron-left"> Cancel</i>
+        <i class="fa fa-chevron-left"> <%= t 'labels.buttons.cancel' %></i>
     <% end %>
   </div>
 </div>
@@ -18,7 +18,7 @@
           <div class="ibox-content product-box">
 
             <div class="product-desc">
-              <small class="text-muted">Category</small>
+              <small class="text-muted"><%= t 'labels.value_chain.category' %></small>
               <a href="#" class="product-name"><%= @process_module.description %></a>
 
               <div class="small m-t-xs">
