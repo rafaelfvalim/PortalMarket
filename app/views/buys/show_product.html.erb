@@ -7,11 +7,11 @@
           <h3><%= @script.name %> </h3>
         </div>
         <div class="col-md-3">
-          <h4>
-            <strong><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></strong>
-          </h4>
+          <!--<h4>-->
+            <!--<strong><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></strong>-->
+          <!--</h4>-->
           <h4><strong>
-            <small>Price :</small>
+            <small><%= t 'labels.script_attributes.price' %> :</small>
             R$ <%= @price.value %></strong></h4>
         </div>
         <div class="col-md-3">
@@ -19,10 +19,10 @@
 
           <div class="pull-rigth">
             <%= link_to searches_path, class: 'btn btn-primary' do %>
-                <i class="fa fa-chevron-left"> Back</i>
+                <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back'%></i>
             <% end %>
-            <%= button_tag(type: "submit", class: "btn btn-success", id: "submit_invoice", data: {confirm: 'Add item to cart?'}) do %>
-                <i class="fa fa-cart-plus"></i> Add To Cart
+            <%= button_tag(type: "submit", class: "btn btn-success", id: "submit_invoice", data: {confirm: "#{t 'labels.add_item_to_cart'}"}) do %>
+                <i class="fa fa-cart-plus"></i> <%= t 'labels.buttons.add_to_cart' %>
             <% end %>
           </div>
         </div>
@@ -37,25 +37,25 @@
           <br>
 
           <p>
-            <strong>Definition:</strong>
+            <strong><%= t 'labels.script_attributes.definition'%>:</strong>
             <%= @script.definition %>
           </p>
           <br>
 
           <p>
-            <strong>Platform:</strong>
+            <strong><%= t 'labels.script_attributes.platform'%>:</strong>
             <%= @script.platform %>
           </p>
           <br>
 
           <p>
-            <strong>Industry:</strong>
+            <strong><%= t 'labels.script_attributes.industry'%>:</strong>
             <%= @script.industry %>
           </p>
           <br>
 
           <p>
-            <strong>Requeriments :</strong>
+            <strong><%= t 'labels.script_attributes.requirements'%> :</strong>
             <% if @script.requirements.size > 0 %>
               <ul>
                 <% @script.requirements.each do |requirement| %>
@@ -67,7 +67,7 @@
           <% end %>
           </p>
           <p>
-            <strong>Processos :</strong>
+            <strong><%= t 'labels.script_attributes.process'%> :</strong>
 
           <p>
             <% show_process_chain(@script.id).each do |process| %>
@@ -79,25 +79,25 @@
         </div>
         <div class="col-md-6">
           <p>
-            <strong>Description:</strong>
+            <strong><%= t 'labels.script_attributes.description'%>:</strong>
             <%= @script.description %>
           </p>
           <br>
 
           <p>
-            <strong>Long text:</strong>
+            <strong><%= t 'labels.script_attributes.long_description'%>:</strong>
             <%= @script.long_text %>
           </p>
           <br>
 
           <p>
-            <strong>Solution type:</strong>
+            <strong><%= t 'labels.script_attributes.solution_type'%>:</strong>
             <%= @script.solution_type_id %>
           </p>
           <br>
 
           <p>
-            <strong>Contributor :</strong>
+            <strong><%= t 'labels.script_attributes.contributor'%> :</strong>
             <% @script.members.each do |member| %>
                 <% if @script.members.size > 1 %>
                     <%= "#{member.member_name} #{ member.member_last_name}" %>,
@@ -113,7 +113,7 @@
           <br>
           <% if @script.related_scripts.size > 0 %>
               <p>
-                <strong>Relateds Scripts :</strong>
+                <strong><%= t 'labels.show_product.related_scripts'%> :</strong>
               <ul>
                 <% @script.related_scripts.each do |related_script| %>
                     <% @related_script = Script.find_by id: related_script.script_id %>
@@ -131,11 +131,8 @@
       </div>
       <hr>
       <div class="panel panel-default">
-        <div class="panel-heading"><strong>To organization:
-          <small>*system where you will install the script</small>
-        </strong></div>
-        <div class="well"> Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo</div>
-
+        <div class="panel-heading"><%= raw t 'labels.show_product.to_organization'%></div>
+        <div class="well"> <%= raw t 'labels.show_product.to_erp_message'%></div>
         <div class="panel-body">
           <%= c.fields_for :workplace do |w| %>
               <div class="col-md-6">

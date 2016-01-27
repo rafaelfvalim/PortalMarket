@@ -2,8 +2,7 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="page-header text-center">
-      <h4> Compra realizada com sucesso !</h4>
-      <h4> Os links para download foram enviados para seu email </h4>
+     <%= raw t 'labels.buys.page_header'%>
     </div>
   </div>
   <div class="row">
@@ -17,7 +16,7 @@
         <thead>
         <tr>
           <td>Script:</td>
-          <td>Price:</td>
+          <td><%=t 'labels.script_attributes.price' %>:</td>
         </tr>
         </thead>
         <tbody>

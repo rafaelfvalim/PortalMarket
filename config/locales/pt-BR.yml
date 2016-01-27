@@ -37,6 +37,7 @@ pt-BR:
         change_status: Mudar status
         change_role: Mudar regra
         search_by: Buscar por
+        add_item_to_cart: Adicionar item ao carrinho?
         email:
           resent_confirmation : Reenviar email de confirmação
         menu:
@@ -98,6 +99,11 @@ pt-BR:
           script_file: Upload Script
           pdf_file: Upload PDF
           id: Id
+          price: Preço
+          paper: Paper
+          requirements: Requeridos
+          process: Processos
+          contributor: Colaborador
         searchs:
           page_header: Busca
           results:
@@ -133,6 +139,11 @@ pt-BR:
           delete: Excluir
           action: Ação
           go: Ir
+          finalize: Finalizar
+          remover: Remover
+          add_to_cart: Comprar
+          details: Detalhes
+          show_paper: Mostrar Paper
         script_create:
           page_header: '<h5>Dados básicos do Script
                                   <small>informe os dados do script que você criou.</small>
@@ -210,7 +221,16 @@ pt-BR:
           complement: Complemento
         master_user:
           page_header: Administração Usuários
-
+        cart:
+         page_header: Carrinho
+         resume_cart: Verificar Compras
+        buys:
+          page_header: <h4> Compra realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
+        show_product:
+         related_scripts: Scripts Relacionados
+         requirement_scripts: Scripts Requeridos
+         to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
+         to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
 
 
 
