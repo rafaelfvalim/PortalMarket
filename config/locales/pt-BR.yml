@@ -24,8 +24,14 @@ pt-BR:
       messages:
         carrierwave_processing_error: falha a ser processado
         carrierwave_integrity_error: tipo de arquivo não permitido
-        carrierwave_processing_error: "Não foi possível redimensionar imagem."
   labels:
+        information: Informação
+        select: Selecione ...
+        script_file_accept_formats: Formato aceito = .edy
+        script_file_size: Máx 2MB
+        pdf_file_accept_formats: Formato aceito = .pdf
+        pdf_file_size: Máx 2MB
+        donwload_model: Donwload Modelo
         menu:
           find_solutions: Buscar Soluções
           dash_board: Dashboard
@@ -43,3 +49,80 @@ pt-BR:
           adm_user: Adm Usuarios
           sql_admin: SqlAdmin
           users: Usuários
+        dash_incomplete: Incompletos!
+        contributor:
+          page_header: Dashboard Membros
+          page_header_title:   "<h3>
+                                Este painel de você receber seus notificações e alertas referentes a operação do portal
+                                </h3>"
+        customer:
+          page_header: Dashboard Membros
+          page_header_title:   "<h3>
+                                Este painel de você receber seus notificações e alertas referentes a operação do portal
+                                </h3>"
+        dash_orders: Novas Ordens!
+        dash_view_details: Detalhes
+        contributor:
+          page_header: Member Dashboard
+          page_header_title:  "<h3>Nesse dashboard receberá notificações e alertas referente a sua operação no  portal</h3>"
+        checking_account:
+          page_header: Conta Corrente
+          page_data_table_header: Scripts em processo de venda
+        script_attributes:
+          code: Cod
+          name: Nome
+          script: Script
+          description: Descrição
+          payment_date: Data Pag.
+          moviment_date: Data Mov.
+          status: Status
+          value: Valor
+          interest: Interesse
+          commission: Comissão
+          currency: Moeda
+          platform: Plaforma
+          industry: Industria
+          complexity: Complexidade
+          long_description: Decrição Longa
+          platform: Plataforma
+          industry: Industria
+          solution_type: Tipo Solução
+          definition: Obs
+          script_file: Upload Script
+          pdf_file: Upload PDF
+        searchs:
+          page_header: Busca
+          results:
+            plataform: Plataforma
+            tags: Tags
+            code: Cod
+            pag: Pag
+            details: Detalhes
+            reuslts: resultados
+            pages: paginas
+            per_page: Por Pagina
+            total_pages: Total Paginas
+            contributor: Colaborador(es)
+          filters:
+            process: Processos
+            clear: Limpar
+        publications:
+          page_header: Publicações
+          new: Nova
+          visited: Visitado
+          folder: PASTAS
+          added: Adicionado
+        buttons:
+          back: Voltar
+          next: Próximo
+          new: Novo
+          cancel: Cancelar
+          submit: Submeter
+          Ok: Ok
+          show: Mostrar
+          edit: Editar
+          delete: Excluir
+  simple_form:
+    labels:
+      script:
+        name: Nome

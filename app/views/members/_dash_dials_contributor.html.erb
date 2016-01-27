@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="ibox">
       <div class="ibox-title">
-        <h5>Panel
+        <h5><%= t 'labels.customer.page_header' %>
         </h5>
       </div>
       <div class="ibox-content">
@@ -14,7 +14,7 @@
                   <i class="fa fa-exclamation fa-5x"></i>
                 </div>
                 <div class="col-xs-8 text-right">
-                  <h4>Not Complete!</h4>
+                  <h4><%= t 'labels.dash_incomplete' %></h4>
                   <h2 class="font-bold"><%= Script.joins(:member_scripts).where(status_id: Status::INICIAL, member_scripts: {:member_id => current_user.member.id}).count %></h2>
                 </div>
               </div>
@@ -22,7 +22,7 @@
               <div class="row">
                 <div class="col-xs-12 dash_links">
                   <%= link_to contributor_incomplete_actions_members_path do %>
-                      <span clis_ass="pull-left">View Details</span>
+                      <span clis_ass="pull-left"><%= t 'labels.dash_view_details'%></span>
                       <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                       <div class="clearfix"></div>
                   <% end %>
@@ -37,7 +37,7 @@
                   <i class="fa fa-shopping-cart fa-5x"></i>
                 </div>
                 <div class="col-xs-8 text-right">
-                  <h4>New Orders!</h4>
+                  <h4><%= t 'labels.dash_orders'%></h4>
                   <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', current_user.member.id).count %></h2>
                 </div>
               </div>
@@ -45,7 +45,7 @@
               <div class="row">
                 <div class="col-xs-12 dash_links">
                   <%= link_to checking_accounts_path do %>
-                      <span class="pull-left">View Details</span>
+                      <span class="pull-left"><%= t 'labels.dash_view_details'%></span>
                       <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                       <div class="huge"></div>
                       <div class="clearfix"></div>

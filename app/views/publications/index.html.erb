@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-9">
-    <h2>Publications</h2>
+    <h2><%= t 'labels.publications.page_header'%></h2>
   </div>
 </div>
 <div class="wrapper wrapper-content">
@@ -9,7 +9,7 @@
       <div class="ibox float-e-margins">
         <div class="ibox-content">
           <div class="file-manager">
-            <h5>Folders</h5>
+            <h5><%= t 'labels.publications.folder'%></h5>
             <ul class="folder-list" style="padding: 0">
               <% Folder.all.each do |f| %>
                   <li>
@@ -19,14 +19,6 @@
                   </li>
               <% end %>
             </ul>
-            <!--<h5 class="tag-title">Tags</h5>-->
-            <!--<ul class="tag-list" style="padding: 0">-->
-            <!--
-            <% FileTag.all.each do |t| %>-->
-                <!--<li><a href=""><%= t.name %></a></li>-->
-                <!--
-            <% end %>-->
-            <!--</ul>-->
             <div class="clearfix"></div>
           </div>
         </div>
@@ -39,9 +31,9 @@
               <div class="file-box">
                 <div class="file">
                   <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
-                      <span class="label label-primary" id="visited-<%= p.id %>">New</span>
+                      <span class="label label-primary" id="visited-<%= p.id %>"><%= t 'labels.publications.new'%></span>
                   <% else %>
-                      <span class="label label-success">Visited</span>
+                      <span class="label label-success"><%= t 'labels.publications.visited'%></span>
                   <% end %>
 
                   <a href="#">
@@ -52,7 +44,7 @@
                     <div class="file-name">
                       <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
                       <br/>
-                      <small>Added: <%= format_date(p.created_at) %></small>
+                      <small><%= t 'labels.publications.added'%>: <%= format_date(p.created_at) %></small>
                     </div>
                   </a>
                 </div>

@@ -3,10 +3,10 @@
       <div class="col-md-12">
         <p>
           <small>
-            <%= scripts.total_count %> results |
-            <%= scripts.current_page %> pages |
-            Per Page: <%= scripts.per_page %>  |
-            Total Pages: <%= scripts.total_pages %>
+            <%= scripts.total_count %> <%= t 'labels.searchs.results.reuslts'%> |
+            <%= scripts.current_page %> <%= t 'labels.searchs.results.page'%> |
+            <%= t 'labels.searchs.results.per_page'%>: <%= scripts.per_page %>  |
+            <%= t 'labels.searchs.results.total_pages'%>: <%= scripts.total_pages %>
           </small>
         </p>
       </div>
@@ -28,11 +28,11 @@
                                 <%= number_to_currency_br(script.price.value) %>
                                 </span>
                       <div class="row">
-                        Platform: <%= script.platform %></br>
-                        Tags: <%= "#{script.industry} #{script.complexity}" %></br>
-                        Cod: <%= script.id %></br>
+                        <%= t 'labels.searchs.results.plataform'%>: <%= script.platform %></br>
+                        <%= t 'labels.searchs.results.tags'%>: <%= "#{script.industry} #{script.complexity}" %></br>
+                        <%= t 'labels.searchs.results.code'%>: <%= script.id %></br>
                         <div class="small m-t-xs">
-                          Contributor(s):
+                          <%= t 'labels.searchs.results.contributor'%>:
                           <% script.members.each do |member| %>
                               <% if script.members.size > 1 %>
                                   <%= "#{member.member_name} #{ member.member_last_name}" %>  ,
@@ -67,10 +67,10 @@
       <div class="col-md-12">
         <p>
           <small>
-            0 results |
-            0 pages |
-            Per Page: 0 |
-            Total Pages: 0
+            0  <%= t 'labels.searchs.results.reuslts'%> |
+            0  <%= t 'labels.searchs.results.pages'%> |
+            <%= t 'labels.searchs.results.per_page'%>: 0 |
+            <%= t 'labels.searchs.results.total_pages'%>: 0
           </small>
         </p>
       </div>
