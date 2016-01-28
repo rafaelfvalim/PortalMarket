@@ -19,6 +19,25 @@ module MembersHelper
         'fa fa-check-square-o fa-5x'
     end
   end
+  def dash_description(status)
+    case status
+      when 'Gravado' then
+        'Gravado(s) '
+      when 'Verificação de Duplicidade' then
+        'Verif. Duplicidade'
+      when 'Verificação de Consistência' then
+        'Verif. Consistência'
+      when 'Verficação de Complexidade' then
+        'Verif. Complexidade'
+      when 'Aprovado' then
+        'Aprovado(s)'
+      when 'Sem preço' then
+        'Sem preço'
+      when 'Incompleto' then
+        'Incompleto(s)'
+    end
+
+  end
 
   def dash_admin_panel_color(id)
     case id

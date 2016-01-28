@@ -38,6 +38,12 @@ pt-BR:
         change_role: Mudar regra
         search_by: Buscar por
         add_item_to_cart: Adicionar item ao carrinho?
+        dash_without_price: Sem Preço
+        dash_not_complete: Incompleto
+        dash_script_header: '<h5>Scripts Workflow
+                                       <small>Controle o status dos scripts</small>
+                                     </h5>'
+        dash_invoice_header: '<h5>Faturas Workflow<small>Controle o status das faturas</small> </h5>'
         email:
           resent_confirmation : Reenviar email de confirmação
         menu:
