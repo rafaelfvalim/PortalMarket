@@ -2,13 +2,13 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <h2>Detail Script : <%= @script.description %> </h2>
+      <h2><%=t 'labels.details_script' %> : <%= @script.description %> </h2>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-12">
-      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+      <%= link_to "#{t 'labels.buttons.back'}", :back, class: 'btn btn-primary' %>
     </div>
   </div>
   <br>
@@ -24,40 +24,40 @@
 
     <div class="col-md-12">
       <dl>
-        <dt>Name:</dt>
+        <dt><%= t 'labels.script_attributes.name' %>:</dt>
         <dd><%= @script.name %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Definition:</dt>
+        <dt><%= t 'labels.script_attributes.definition' %>:</dt>
         <dd><%= @script.definition %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Long text:</dt>
+        <dt><%= t 'labels.script_attributes.long_description' %>t:</dt>
         <dd><%= @script.long_text %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Platform:</dt>
+        <dt><%= t 'labels.script_attributes.platform' %>:</dt>
         <dd><%= @script.platform %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Industry:</dt>
+        <dt><%= t 'labels.script_attributes.industry' %>:</dt>
         <dd><%= @script.industry %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Complexity:</dt>
+        <dt><%= t 'labels.script_attributes.complexity' %>:</dt>
         <dd><%= @script.complexity %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Solution Type:</dt>
+        <dt><%= t 'labels.script_attributes.solution_type' %>:</dt>
         <dd><%= @script.solution_type.id %></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Script File:</dt>
+        <dt><%= t 'labels.script_attributes.script_file' %>:</dt>
         <dd>
           <%= File.basename(@script.script_file.to_s) %>
           <% if current_user.is_god? %>
-              <%= link_to 'Download file', @script.script_file.url %>
+              <%= link_to 'Download', @script.script_file.url %>
           <% end %>
         </dd>
         <div class="hr-line-dashed"></div>
-        <dt>Pdf File:</dt>
+        <dt><%= t 'labels.script_attributes.pdf_file' %>:</dt>
         <dd>
           <%= File.basename(@script.pdf_file.to_s) %>
           <% if current_user.is_god? %>
-              <%= link_to 'Download file', @script.pdf_file.url %>
+              <%= link_to 'Download', @script.pdf_file.url %>
           <% end %>
         </dd>
       </dl>
