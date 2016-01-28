@@ -144,6 +144,7 @@ pt-BR:
           add_to_cart: Comprar
           details: Detalhes
           show_paper: Mostrar Paper
+          close: Fechar
         script_create:
           page_header: '<h5>Dados básicos do Script
                                   <small>informe os dados do script que você criou.</small>
@@ -199,7 +200,7 @@ pt-BR:
         member_attributes:
           member_type: Tipo de Membro
           member_name: Nome
-          member_last_name: Segundo Nome
+          member_last_name: Sobrenome
           bank: Banco
           bank_ag: Agência
           bank_cc: Conta Corrente
@@ -212,9 +213,9 @@ pt-BR:
           birthday: Data Nasc
         address_attribures:
           zip_code: Codigo Postal
-          patio_type: Tipo Logradouro
+          patio_type: Tipo
           patio: Logradouro
-          number: Number
+          number: Numero
           neighbordhood: Bairro
           city: Cidade
           state: Estado
@@ -231,6 +232,45 @@ pt-BR:
          requirement_scripts: Scripts Requeridos
          to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
          to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
+        devise:
+          resend_confirmation_instrucions: Reenviar instruções de confirmação
+          password: Senha
+          new_password: Nova senha
+          confirm_password: Confirmar Senha
+          change_passwrod: Alterar minha senha
+          forgot_password:  '<h3>Esqueceu sua senha?</h3><p>Enviaremos as instruções de reset.</p>'
+          forgot_password_login: Esqueceu a senha?
+          resend_confiramtion_login: Reenviar confirmação?
+          reset_password: Resetar Senha
+          edit: Editar
+          remove: Remover
+          alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
+          cancel_account: Cancelar minha conta
+          remember_me: Lembrar.
+          cancel_account_header: '<h3> Cancelar conta </ h3> <p> infeliz? Vamos estar triste em partir :( . </ p>'
+          register_to_klustter_header: '<h3> Registre-se no Kluster </h3> <p> Crie uma conta para vê-lo em ação. </ p>'
+          aleredy_have_account: <small>Já possui um usuário?</small>
+          do_not_have_an_account: <small>Não possui um usuário?</small>
+          create_account: Criar um usuário
+          modal_registration: '<div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                       <h4 class="modal-title">Profiles:</h4>
+                                     </div>
+                                     <div class="modal-body">
+                                       <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
+                                         <strong>contributor</strong>
+                                       </p>
+
+                                       <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
+                                         <strong>customer</strong></p>
+                                     </div>'
+          login_wellcome: '  <h2 class="font-bold">Bem vindo a Klustter</h2>
+                                 <p>
+                                   Texto de boas vindas.
+                                 </p>
+                                   <small> Texto pequeno
+                                   </small>
+                                 </p>'
 
 
 

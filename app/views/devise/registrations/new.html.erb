@@ -3,9 +3,7 @@
     <div>
       <h1 class="logo-name">K</h1>
     </div>
-    <h3>Register to Klustter</h3>
-
-    <p>Create account to see it in action.</p>
+    <%= raw t 'labels.devise.register_to_klustter_header' %>
     <%= simple_form_for(@user, :html => {class: 'form-horizontal', id: 'singup_form'}) do |f| %>
         <div class="row row-centered">
           <p class="text-center">
@@ -32,22 +30,17 @@
             </div>
             <div class="row  row-centered hidden" id="company_name">
               <div class="col-lg-6 col-centered ">
-                <%= member.input :company_name, label: 'Company Name:' %>
+                <%= member.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
               </div>
             </div>
             <div class="row  row-centered " id="name">
               <div class="col-lg-6 col-centered ">
-                <%= member.input :member_name, label: 'Name:', class: 'form-control' %>
+                <%= member.input :member_name, label:"#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered " id="last_name">
               <div class="col-lg-6 col-centered">
-                <%= member.input :member_last_name, label: 'Last Name:', class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row  row-centered hidden" id="birthday">
-              <div class="col-lg-6 col-centered">
-                <%= member.input :birthday, start_year: Date.today.year - 110 , end_year: Date.today.year, as: :date, label: 'Birthday:' %>
+                <%= member.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
               </div>
             </div>
 
@@ -63,18 +56,18 @@
             </div>
             <div class="row row-centered" id="phone">
               <div class="col-lg-6 col-centered">
-                <%= member.input :phone_number, label: 'Phone:', input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
+                <%= member.input :phone_number, label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
               </div>
             </div>
             <div class="row row-centered" id="cellphone">
               <div class="col-lg-6 col-centered">
-                <%= member.input :cellphone_number, label: 'Cell Phone:', input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
+                <%= member.input :cellphone_number, label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
               </div>
             </div>
 
             <div class="row row-centered hidden" id="select_bank">
               <div class="col-lg-6 col-centered">
-                <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "Choose Bank:", include_blank: 'Please Select..' %>
+                <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
               </div>
             </div>
             <div class="row  row-centered hidden  " id="bank_cc">
@@ -88,7 +81,7 @@
               </div>
 
               <div class="col-lg-1 col-centered">
-                <%= member.input :bank_cc_digit, label: 'Digit:', class: 'form-control' %>
+                <%= member.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
               </div>
 
             </div>
@@ -104,48 +97,48 @@
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.input :password, class: 'form-control' %>
+            <%= f.input :password, label:"#{t 'labels.devise.password'}" , class: 'form-control' %>
           </div>
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.input :password_confirmation, class: 'form-control' %>
+            <%= f.input :password_confirmation,label:"#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
           </div>
         </div>
         <%= f.simple_fields_for :address_attributes, @user.address do |address| %>
             <div class="row  row-centered">
               <div class="col-lg-4 col-centered">
-                <%= address.input :zip_code, label: 'Digite seu CEP:', class: 'form-control' %>
+                <%= address.input :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
               </div>
               <div class="col-lg-2 col-centered"></div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-1 col-centered">
-                <%= address.input :patio_type, label: 'Tipo Log:', class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
+                <%= address.input :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
               </div>
               <div class="col-lg-4 col-centered">
-                <%= address.input :patio, label: 'Logradouro:', class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
+                <%= address.input :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
               </div>
               <div class="col-lg-1 col-centered">
-                <%= address.input :number, label: 'Numero:', class: 'form-control' %>
+                <%= address.input :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-6 col-centered">
-                <%= address.input :neighborhood, label: 'Bairro:', class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
+                <%= address.input :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-6 col-centered">
-                <%= address.input :complement, label: 'Complemento:', class: 'form-control' %>
+                <%= address.input :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered">
               <div class="col-lg-4 col-centered">
-                <%= address.input :city, label: 'Cidade:', class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
+                <%= address.input :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
               </div>
               <div class="col-lg-2 col-centered">
-                <%= address.input :state, label: 'Estado:', class: 'form-control', input_html: {data: {cep: 'uf'}} %>
+                <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
               </div>
             </div>
         <% end %>
@@ -159,7 +152,7 @@
 
     <% end %>
     <p class="text-muted text-center">
-      <small>Already have an account?</small>
+     <%= raw t 'labels.devise.aleredy_have_account' %>
     </p>
     <div class="row row-centered">
       <div class="col-lg-2 col-centered"></div>
@@ -178,20 +171,9 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Profiles:</h4>
-      </div>
-      <div class="modal-body">
-        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-          <strong>contributor</strong>
-        </p>
-
-        <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
-          <strong>customer</strong></p>
-      </div>
+       <%= raw t 'labels.devise.modal_registration' %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t 'labels.buttons.close'%></button>
       </div>
     </div>
 

@@ -9,16 +9,14 @@
               </div>
           <% end %>
           <div class="text-center">
-            <h3>Forgot your password?</h3>
-
-            <p>We'll send password reset instructions.</p>
+            <%= raw t 'labels.devise.forgot_password' %>
             <%= devise_error_messages! %>
 
             <div class="form-group">
               <%= f.label 'Email:' %>
               <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
             </div>
-            <%= f.submit 'Reset Password', :class => 'btn btn-success' %>
+            <%= f.submit "#{t 'labels.devise.reset_password'}", :class => 'btn btn-success' %>
             <br>
             <br>
             <%= link_to 'Sign in', '/users/sign_in', :class => 'btn btn-primary' %>
