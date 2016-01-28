@@ -1,12 +1,12 @@
 <%= render 'layouts/messages' %>
 <div class="row wrapper border-bottom white-bg page-heading">
 
-  <h1>Listing Process Modules</h1>
+  <h1><%=t 'labels.process_modules.page_header' %></h1>
   <br>
 
   <div class="row">
     <div class="col-md-12">
-      <%= link_to 'New Process module', new_process_module_path, class: 'btn btn-primary' %>
+      <%= link_to "#{t 'labels.process_modules.new_process_module'}", new_process_module_path, class: 'btn btn-primary' %>
     </div>
   </div>
   <br>
@@ -17,9 +17,9 @@
         <thead>
         <tr>
           <th>Id</th>
-          <th>Image</th>
-          <th>Description</th>
-          <th>Referrer Process Module</th>
+          <th><%=t 'labels.process_modules_attributtes.image' %></th>
+          <th><%=t 'labels.process_modules_attributtes.description' %></th>
+          <th><%=t 'labels.process_modules_attributtes.referrer_processos' %></th>
           <th colspan="3"></th>
         </tr>
         </thead>
@@ -31,15 +31,15 @@
                 <% if process_module.image.present? %>
                     <img src="<%= process_module.image.thumb.url.to_s %>"/> <br>
                     <%= link_to remove_image_process_modules_path(id: process_module.id) do %>
-                        <i class="fa fa-times-circle color-red" style="color: red;">Remove Image</i>
+                        <i class="fa fa-times-circle color-red" style="color: red;"><%=t 'labels.process_modules.remove_image' %></i>
                     <% end %>
                 <% end %>
               </td>
               <td><%= process_module.description %></td>
               <td><%= "#{process_module.referrer_process_module_id} -  #{ process_module.referrer_process_module_id.present? ? ProcessModule.find(process_module.referrer_process_module_id).description : ''}" %></td>
-              <td><%= link_to 'Show', process_module, class: 'btn btn-success btn-xs' %></td>
-              <td><%= link_to 'Edit', edit_process_module_path(process_module), class: 'btn btn-primary btn-xs' %></td>
-              <td><%= link_to 'Destroy', process_module, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %></td>
+              <td><%= link_to "#{t 'labels.buttons.show'}", process_module, class: 'btn btn-success btn-xs' %></td>
+              <td><%= link_to "#{t 'labels.buttons.edit'}", edit_process_module_path(process_module), class: 'btn btn-primary btn-xs' %></td>
+              <td><%= link_to "#{t 'labels.buttons.delete'}", process_module, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %></td>
             </tr>
         <% end %>
         </tbody>

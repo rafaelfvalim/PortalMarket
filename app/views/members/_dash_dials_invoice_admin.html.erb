@@ -22,7 +22,7 @@
                   <div class="row">
                     <div class="col-xs-12 dash_links">
                       <%= link_to invoice_orchestration_invoices_path(invoice_status_id: invoice_status.id) do %>
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left"><%= t 'labels.buttons.details' %></span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                       <% end %>
@@ -46,7 +46,7 @@
               <div class="row">
                 <div class="col-xs-12 dash_links">
                   <%= link_to invoices_path do %>
-                      <span class="pull-left">View Details</span>
+                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
                       <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                       <div class="clearfix"></div>
                   <% end %>

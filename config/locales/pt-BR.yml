@@ -65,7 +65,7 @@ pt-BR:
           checking_account: Conta Corrente
           invoices: Faturas
           process_modules: Modulos de Processos
-          reports: Reports
+          reports: Relatórios
           server_tools: Ferramentas Servidor
           analytics: Analise de Buscas
           publications: Publicações
@@ -122,6 +122,14 @@ pt-BR:
           requirements: Requeridos
           process: Processos
           contributor: Colaborador
+          script_id: Script Id
+          script_name: Script Name
+          platform: Platforma
+          system: Sistema
+          s_n: S/N
+          value: Valor
+          sent_to: Enviado p/
+          created_at: Criação
         searchs:
           page_header: Busca
           results:
@@ -163,6 +171,9 @@ pt-BR:
           details: Detalhes
           show_paper: Mostrar Paper
           close: Fechar
+          days: Dias
+          actions: Actions]
+          select_status: Selecione Status
         script_create:
           page_header: '<h5>Dados básicos do Script
                                   <small>informe os dados do script que você criou.</small>
@@ -192,6 +203,7 @@ pt-BR:
           last_sign_ip: IP último login
           current_sign_ip: IP logado
           confirmation_token: Token de confirmação
+          buyer: Comprador
         classification:
           process: Processo
         final:
@@ -289,6 +301,38 @@ pt-BR:
                                    <small> Texto pequeno
                                    </small>
                                  </p>'
+        invoices:
+          page_header: Faturas
+        process_modules:
+          page_header: Modulos de Processo
+          new_process_module: Novo Modulo de Processo
+          remove_image: Remover Imagems
+        process_modules_attributtes:
+          image: Imagem
+          description: Descrição
+          referrer_processos: Processos Referenciados
+        reports:
+          page_header: Relatórios
+          invoice_report_created: Faturas criadas
+          invoice_created_at: Faturas criadas em
+          start_date: data inicio
+          end_date: data final
+          generate_report: Gerar Relatório
+        script_orchestration:
+          page_header: Orquestração para status
+        invoice_orchestration:
+          page_header: Orquestração para status
+          user_invoice: Invoice Usuário
+          script_code: Cod Script
+          value: Valor
+          script_to_Orgranization: P/ Empresa
+          system_id: Numero do Systema
+          invoice_date: Data Invoice
+          pay_date: Data Pag.
+          ship_date: Data Env.
+          shipped_to: Env. Para
+          time: Tempo
+
 
 
 

@@ -2,7 +2,7 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <h2>Orchestration for status: <%= @invoice_status.description %> </h2>
+      <h2><%= t 'labels.invoice_orchestration.page_header'%>: <%= @invoice_status.description %> </h2>
     </div>
   </div>
   <%= form_for :script, url: process_orchestration_invoices_path, method: :get, remote: true, :html => {id: 'orchestration_form'} do |f| %>
@@ -20,10 +20,10 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="pull-left">
-                      <%= collection_select(:invoice_status, :id, @invoice_statuses, :id, :description, {:prompt => true, :include_blank => 'Select status', :selected => 'Select status'}, {:class => 'form-control'}) %>
+                      <%= collection_select(:invoice_status, :id, @invoice_statuses, :id, :description, {:prompt => true, :include_blank => "#{t 'labels.buttons.select_status'}", :selected => "#{t 'labels.buttons.select_status'}"}, {:class => 'form-control'}) %>
                     </div>
                     <div class="pull-right">
-                      <input type="submit" class="btn btn-success" value="Submit Status">
+                      <input type="submit" class="btn btn-success" value="<%=t 'labels.buttons.submit' %>">
                     </div>
                   </div>
                 </div>

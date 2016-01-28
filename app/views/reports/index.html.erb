@@ -2,25 +2,25 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <h2>Reports </h2>
+      <h2><%= t 'labels.reports.page_header'%> </h2>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Invoice Report Created</div>
+        <div class="panel-heading"><%= t 'labels.reports.invoice_report_created' %></div>
         <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
               <%= form_tag(invoice_report_per_date_reports_path, method: :get) do %>
-                  <p> Invoice(s) Created in :</p>
+                  <p> <%= t 'labels.reports.invoice_created_at' %> :</p>
 
                   <p>
-                    Start date: <%= date_field_tag 'invoices_start_date', class: 'form-control' %>
-                    End date: <%= date_field_tag 'invoices_end_date' %>
+                    <%= t 'labels.reports.start_date' %>: <%= date_field_tag 'invoices_start_date', class: 'form-control' %>
+                    <%= t 'labels.reports.end_date' %>: <%= date_field_tag 'invoices_end_date' %>
                     Status: <%= select_tag "invoice_status_id", options_from_collection_for_select(InvoiceStatus.all, :id, :description) %>
-                    <%= submit_tag 'Generate report', class: 'btn btn-success btn-xs' %>
+                    <%= submit_tag "#{t 'labels.reports.generate_report'}", class: 'btn btn-success btn-xs' %>
                   </p>
               <% end %>
             </div>

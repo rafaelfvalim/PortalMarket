@@ -2,14 +2,14 @@
   <thead>
   <tr>
     <th><input type="checkbox" id="check_all_orchestration" onclick="$('input:checkbox').not(this).prop('checked', this.checked)"></th>
-    <th>Code</th>
-    <th>Status</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Platform</th>
-    <th>Complexity</th>
-    <th>Days</th>
-    <th>Actions</th>
+    <th><%= t 'labels.script_attributes.code'%></th>
+    <th><%= t 'labels.script_attributes.status'%></th>
+    <th><%= t 'labels.script_attributes.name'%></th>
+    <th><%= t 'labels.script_attributes.description'%></th>
+    <th><%= t 'labels.script_attributes.platform'%></th>
+    <th><%= t 'labels.script_attributes.complexity'%></th>
+    <th><%= t 'labels.buttons.days'%></th>
+    <th><%= t 'labels.buttons.actions'%></th>
   </tr>
   </thead>
   <tbody>
