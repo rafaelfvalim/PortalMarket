@@ -1,7 +1,8 @@
 class BanksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_bank, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
+  before_action :acess_control
   # GET /banks
   # GET /banks.json
   def index

@@ -1,6 +1,7 @@
 class ValueChainsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_value_chain, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /value_chains
   # GET /value_chains.json

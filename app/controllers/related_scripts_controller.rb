@@ -1,6 +1,7 @@
 class RelatedScriptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_related_script, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /related_scripts
   # GET /related_scripts.json

@@ -1,7 +1,8 @@
 class PaysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_pay, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
+  before_action :acess_control
   # GET /pays
   # GET /pays.json
   def index

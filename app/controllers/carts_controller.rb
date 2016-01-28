@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
   # GET /carts
   # GET /carts.json
   def index

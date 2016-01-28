@@ -1,6 +1,7 @@
 class PricesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_price, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /prices
   # GET /prices.json

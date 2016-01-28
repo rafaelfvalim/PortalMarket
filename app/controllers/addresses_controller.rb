@@ -1,6 +1,8 @@
 class AddressesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
+  before_action :acess_control
   # GET /addresses
   # GET /addresses.json
   def index

@@ -1,6 +1,7 @@
 class MemberScriptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_member_script, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /member_scripts
   # GET /member_scripts.json

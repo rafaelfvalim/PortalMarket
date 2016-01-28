@@ -1,7 +1,8 @@
 class StatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_status, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
+  before_action :acess_control
   # GET /statuses
   # GET /statuses.json
   def index

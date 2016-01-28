@@ -1,6 +1,7 @@
 class CheckingAccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_checking_account, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /checking_accounts
   # GET /checking_accounts.json

@@ -1,7 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :user_active
+  before_action :user_active, if: :signed_in?
+
 
   # GET /members
   # GET /members.json

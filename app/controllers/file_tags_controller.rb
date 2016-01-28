@@ -1,6 +1,9 @@
 class FileTagsController < ApplicationController
   before_action :set_file_tag, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :user_active, if: :signed_in?
+  before_action :acess_control
+
   # GET /file_tags
   # GET /file_tags.json
   def index

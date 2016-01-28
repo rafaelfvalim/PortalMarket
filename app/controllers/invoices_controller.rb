@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_invoice, only: [:show, :edit, :update, :destroy, :resend_invoice]
+  before_action :user_active, if: :signed_in?
 
   # GET /invoices
   # GET /invoices.json

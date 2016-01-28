@@ -68,6 +68,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def acess_control
+    unless current_user.is_god?
+      redirect_to members_path , :alert => "Restricted access! "
+    end
+  end
 
   private
   def layout_by_resource

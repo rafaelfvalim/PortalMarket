@@ -1,9 +1,11 @@
 class WizardScriptsController < ApplicationController
   include Wicked::Wizard
   before_action :authenticate_user!
-  steps :additional_data, :value_chain, :final
+  before_action :user_active, if: :signed_in?
   #before_action :set_script, only: [:show, :edit, :update, :destroy]
   before_action :set_script, only: [:show]
+
+  steps :additional_data, :value_chain, :final
 
   def show
     set_tracker_step(step)

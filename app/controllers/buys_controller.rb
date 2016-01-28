@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_buy, only: [:show, :edit, :update, :destroy]
-
+  before_action :user_active, if: :signed_in?
   # GET /buys
   # GET /buys.json
   def index

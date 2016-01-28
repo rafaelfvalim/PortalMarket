@@ -1,6 +1,7 @@
 class ViewPublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_view_publication, only: [:show, :edit, :update, :destroy]
+  before_action :user_active, if: :signed_in?
 
   # GET /view_publications
   # GET /view_publications.json

@@ -1,6 +1,8 @@
 class FoldersController < ApplicationController
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :user_active, if: :signed_in?
+
   # GET /folders
   # GET /folders.json
   def index

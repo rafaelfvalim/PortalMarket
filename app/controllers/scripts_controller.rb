@@ -1,7 +1,7 @@
 class ScriptsController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update, :destroy_incomplete_script]
+  before_action :user_active, if: :signed_in?
 
   # GET /scripts
   # GET /scripts.json

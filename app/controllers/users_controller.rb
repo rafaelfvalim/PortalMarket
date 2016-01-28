@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
   before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar, :resend_confirmation_email]
+  before_action :user_active, if: :signed_in?
 
   def self.default_timezone
     :utc
