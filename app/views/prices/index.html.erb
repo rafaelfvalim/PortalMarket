@@ -13,11 +13,11 @@
     <thead>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Currency</th>
-      <th>Currency data</th>
-      <th>Actions</th>
+      <th><%= t 'labels.script_attributes.name'%></th>
+      <th><%= t'labels.script_attributes.value'%></th>
+      <th><%= t 'labels.script_attributes.currency' %></th>
+      <th><%= t 'labels.script_price.currency_date' %></th>
+      <th><%= t 'labels.buttons.actions'%></th>
     </tr>
     </thead>
 
@@ -29,7 +29,7 @@
           <td><%= price.value %></td>
           <td><%= Currency.find(price.currency_id).description %></td>
           <td><%= price.currency_data %></td>
-          <td><%= link_to 'Edit', edit_price_path(price), class: 'btn btn-primary' %></td>
+          <td><%= link_to "#{t 'labels.buttons.edit'}", edit_price_path(price), class: 'btn btn-primary' %></td>
         </tr>
     <% end %>
     </tbody>

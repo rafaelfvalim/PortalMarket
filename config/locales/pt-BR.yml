@@ -20,6 +20,322 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt-BR:
+  registration:
+    successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para ativar sua conta!'
+  labels:
+        information: Informação
+        select: Selecione ...
+        script_file_accept_formats: Formato aceito = .edy
+        script_file_size: Máx 2MB
+        pdf_file_accept_formats: Formato aceito = .pdf
+        pdf_file_size: Máx 2MB
+        donwload_model: Donwload Modelo
+        find_by: Busca por
+        are_you_sure: Você tem certeza?
+        change_status: Mudar status
+        change_role: Mudar regra
+        search_by: Buscar por
+        add_item_to_cart: Adicionar item ao carrinho?
+        dash_without_price: Sem Preço
+        dash_not_complete: Incompleto
+        details_script: Detalhes do Script
+        dash_script_header: '<h5>Scripts Workflow
+                                       <small>Controle o status dos scripts</small>
+                                     </h5>'
+        dash_invoice_header: '<h5>Faturas Workflow<small>Controle o status das faturas</small> </h5>'
+        members_louge: ' <h1>Bem Vindo!</h1>
+                                <br>
+                                <p>Você esta na area de <%= member_type_description %> </p>
+
+                                <p>Mas por enquando parece que seu usuário esta aguardando ativação </p>
+
+                                <p>Logo entraremos em contato para confirmar seus dados e realizar a ativação dos seu usuário </p>
+                                <hr>
+                                <p>Klustter Code Store </p>
+
+                                <p>Tel: 3333-3333 </p>'
+        email:
+          resent_confirmation : Reenviar email de confirmação
+        menu:
+          find_solutions: Buscar Scripts
+          dash_board: Dashboard
+          script: Scripts
+          checking_account: Conta Corrente
+          invoices: Faturas
+          process_modules: Modulos de Processos
+          reports: Relatórios
+          server_tools: Ferramentas Servidor
+          analytics: Analise de Buscas
+          publications: Publicações
+          publications_news: Novas
+        nav_bar:
+          edit_account: Editar Conta
+          adm_user: Adm Usuarios
+          sql_admin: SqlAdmin
+          users: Usuários
+        dash_incomplete: Incompletos!
+        contributor:
+          page_header: Dashboard Membros
+          page_header_title:   "<h3>
+                                Este painel de você receber seus notificações e alertas referentes a operação do portal
+                                </h3>"
+        customer:
+          page_header: Dashboard Membros
+          page_header_title:   "<h3>
+                                Este painel de você receber seus notificações e alertas referentes a operação do portal
+                                </h3>"
+        dash_orders: Novas Ordens!
+        dash_view_details: Detalhes
+        contributor:
+          page_header: Member Dashboard
+          page_header_title:  "<h3>Nesse dashboard receberá notificações e alertas referente a sua operação no  portal</h3>"
+        checking_account:
+          page_header: Conta Corrente
+          page_data_table_header: Scripts em processo de venda
+        script_attributes:
+          code: Cod
+          name: Nome
+          script: Script
+          description: Descrição
+          payment_date: Data Pag.
+          moviment_date: Data Mov.
+          status: Status
+          value: Valor
+          interest: Interesse
+          commission: Comissão
+          currency: Moeda
+          platform: Plaforma
+          industry: Industria
+          complexity: Complexidade
+          long_description: Decrição Longa
+          platform: Plataforma
+          industry: Industria
+          solution_type: Tipo Solução
+          definition: Obs
+          script_file:  Arquivo Script
+          pdf_file: Arquivo PDF
+          id: Id
+          price: Preço
+          paper: Paper
+          requirements: Requeridos
+          process: Processos
+          contributor: Colaborador
+          script_id: Script Id
+          script_name: Script Name
+          platform: Platforma
+          system: Sistema
+          s_n: S/N
+          value: Valor
+          sent_to: Enviado p/
+          created_at: Criação
+        searchs:
+          page_header: Busca
+          results:
+            plataform: Plataforma
+            tags: Tags
+            code: Cod
+            pag: Pag
+            details: Detalhes
+            reuslts: resultados
+            pages: paginas
+            per_page: Por Pagina
+            total_pages: Total Paginas
+            contributor: Colaborador(es)
+          filters:
+            process: Processos
+            clear: Limpar
+        publications:
+          page_header: Publicações
+          new: Nova
+          visited: Visitado
+          folder: PASTAS
+          added: Adicionado
+        buttons:
+          back: Voltar
+          next: Próximo
+          new: Novo
+          save: Salvar
+          cancel: Cancelar
+          submit: Submeter
+          Ok: Ok
+          show: Mostrar
+          edit: Editar
+          delete: Excluir
+          action: Ação
+          go: Ir
+          finalize: Finalizar
+          remover: Remover
+          add_to_cart: Comprar
+          details: Detalhes
+          show_paper: Mostrar Paper
+          close: Fechar
+          days: Dias
+          actions: Actions
+          select_status: Selecione Status
+        script_create:
+          page_header: '<h5>Dados básicos do Script
+                                  <small>informe os dados do script que você criou.</small>
+                                </h5>'
+        additional_information:
+          panel_requierement_header:  '<h5>Requerimentos e Depencias
+                                                         <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
+                                                       </h5>'
+          search_scripts:  '<smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span>
+                                    </smal>'
+          requirements: Requeridos
+          related: Relatados
+          description: Descrição
+        user_attribures:
+          user: Usuário
+          users: Usuários
+          name: Nome
+          cnpj: CNPJ
+          company_name: Nome Empresa
+          password: Senha
+          password_confirmation: Confirmar Senha
+          confirmed: Confirmado
+          new_user: Novo Usuário
+          search_helper_user: '<small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>'
+          current_sign: Login
+          last_sign: Último login
+          last_sign_ip: IP último login
+          current_sign_ip: IP logado
+          confirmation_token: Token de confirmação
+          buyer: Comprador
+        classification:
+          process: Processo
+        final:
+         messages: Mensagens
+         version: versão
+         create_by: Criado por
+         version: Versão
+         last_update: atualizado em
+         created: Criado em
+         classification: Cassificação
+         requeriment_scripts: Scripts Requeridos
+         related_scripts: Scripts Relacionados
+         define_participation: Definir Participação
+         participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
+         search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa</small>'
+        process_tracker:
+          create: Criar
+          additional_information: Dados Adicionais
+          classification: Classificação
+          final: Final
+        value_chain:
+            classification: Classificação
+            category: Categoria
+        member_attributes:
+          member_type: Tipo de Membro
+          member_name: Nome
+          member_last_name: Sobrenome
+          bank: Banco
+          bank_ag: Agência
+          bank_cc: Conta Corrente
+          bank_cc_dg: Digito
+          company_name: Empresa
+          cnpj: CNPJ
+          cpf: CPF
+          phone_number: Tel
+          cellphone_number: Cel
+          birthday: Data Nasc
+        address_attribures:
+          zip_code: Codigo Postal
+          patio_type: Tipo
+          patio: Logradouro
+          number: Numero
+          neighbordhood: Bairro
+          city: Cidade
+          state: Estado
+          complement: Complemento
+        master_user:
+          page_header: Administração Usuários
+        cart:
+         page_header: Carrinho
+         resume_cart: Verificar Compras
+        buys:
+          page_header: <h4> Compra realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
+        show_product:
+         related_scripts: Scripts Relacionados
+         requirement_scripts: Scripts Requeridos
+         to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
+         to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
+        devise:
+          resend_confirmation_instrucions: Reenviar instruções de confirmação
+          password: Senha
+          new_password: Nova senha
+          confirm_password: Confirmar Senha
+          change_passwrod: Alterar minha senha
+          forgot_password:  '<h3>Esqueceu sua senha?</h3><p>Enviaremos as instruções de reset.</p>'
+          forgot_password_login: Esqueceu a senha?
+          resend_confiramtion_login: Reenviar confirmação?
+          reset_password: Resetar Senha
+          edit: Editar
+          remove: Remover
+          alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
+          cancel_account: Cancelar minha conta
+          remember_me: Lembrar.
+          cancel_account_header: '<h3> Cancelar conta </ h3> <p> infeliz? Vamos estar triste em partir :( . </ p>'
+          register_to_klustter_header: '<h3> Registre-se no Kluster </h3> <p> Crie uma conta para vê-lo em ação. </ p>'
+          aleredy_have_account: <small>Já possui um usuário?</small>
+          do_not_have_an_account: <small>Não possui um usuário?</small>
+          create_account: Criar um usuário
+          modal_registration: '<div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                       <h4 class="modal-title">Profiles:</h4>
+                                     </div>
+                                     <div class="modal-body">
+                                       <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
+                                         <strong>contributor</strong>
+                                       </p>
+
+                                       <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
+                                         <strong>customer</strong></p>
+                                     </div>'
+          login_wellcome: '  <h2 class="font-bold">Bem vindo a Klustter</h2>
+                                 <p>
+                                   Texto de boas vindas.
+                                 </p>
+                                   <small> Texto pequeno
+                                   </small>
+                                 </p>'
+        invoices:
+          page_header: Faturas
+        process_modules:
+          page_header: Modulos de Processo
+          new_process_module: Novo Modulo de Processo
+          remove_image: Remover Imagems
+        process_modules_attributtes:
+          image: Imagem
+          description: Descrição
+          referrer_processos: Processos Referenciados
+        reports:
+          page_header: Relatórios
+          invoice_report_created: Faturas criadas
+          invoice_created_at: Faturas criadas em
+          start_date: data inicio
+          end_date: data final
+          generate_report: Gerar Relatório
+        script_orchestration:
+          page_header: Orquestração para status
+        invoice_orchestration:
+          page_header: Orquestração para status
+          user_invoice: Invoice Usuário
+          script_code: Cod Script
+          value: Valor
+          script_to_Orgranization: P/ Empresa
+          system_id: Numero do Systema
+          invoice_date: Data Invoice
+          pay_date: Data Pag.
+          ship_date: Data Env.
+          shipped_to: Env. Para
+          time: Tempo
+        script_price:
+          aggregate_percentage: '% Agregado'
+          currency_date: Data moeda
+          time: Tempo
+          show_prices: Mostrar Preços
+
   activerecord:
     errors:
       messages:
@@ -257,316 +573,7 @@ pt-BR:
       messages:
         carrierwave_processing_error: falha a ser processado
         carrierwave_integrity_error: tipo de arquivo não permitido
-  registration:
-    successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para ativar sua conta!'
-  labels:
-        information: Informação
-        select: Selecione ...
-        script_file_accept_formats: Formato aceito = .edy
-        script_file_size: Máx 2MB
-        pdf_file_accept_formats: Formato aceito = .pdf
-        pdf_file_size: Máx 2MB
-        donwload_model: Donwload Modelo
-        find_by: Busca por
-        are_you_sure: Você tem certeza?
-        change_status: Mudar status
-        change_role: Mudar regra
-        search_by: Buscar por
-        add_item_to_cart: Adicionar item ao carrinho?
-        dash_without_price: Sem Preço
-        dash_not_complete: Incompleto
-        details_script: Detalhes do Script
-        dash_script_header: '<h5>Scripts Workflow
-                                       <small>Controle o status dos scripts</small>
-                                     </h5>'
-        dash_invoice_header: '<h5>Faturas Workflow<small>Controle o status das faturas</small> </h5>'
-        members_louge: ' <h1>Bem Vindo!</h1>
-                                <br>
-                                <p>Você esta na area de <%= member_type_description %> </p>
 
-                                <p>Mas por enquando parece que seu usuário esta aguardando ativação </p>
-
-                                <p>Logo entraremos em contato para confirmar seus dados e realizar a ativação dos seu usuário </p>
-                                <hr>
-                                <p>Klustter Code Store </p>
-
-                                <p>Tel: 3333-3333 </p>'
-        email:
-          resent_confirmation : Reenviar email de confirmação
-        menu:
-          find_solutions: Buscar Scripts
-          dash_board: Dashboard
-          script: Scripts
-          checking_account: Conta Corrente
-          invoices: Faturas
-          process_modules: Modulos de Processos
-          reports: Relatórios
-          server_tools: Ferramentas Servidor
-          analytics: Analise de Buscas
-          publications: Publicações
-          publications_news: Novas
-        nav_bar:
-          edit_account: Editar Conta
-          adm_user: Adm Usuarios
-          sql_admin: SqlAdmin
-          users: Usuários
-        dash_incomplete: Incompletos!
-        contributor:
-          page_header: Dashboard Membros
-          page_header_title:   "<h3>
-                                Este painel de você receber seus notificações e alertas referentes a operação do portal
-                                </h3>"
-        customer:
-          page_header: Dashboard Membros
-          page_header_title:   "<h3>
-                                Este painel de você receber seus notificações e alertas referentes a operação do portal
-                                </h3>"
-        dash_orders: Novas Ordens!
-        dash_view_details: Detalhes
-        contributor:
-          page_header: Member Dashboard
-          page_header_title:  "<h3>Nesse dashboard receberá notificações e alertas referente a sua operação no  portal</h3>"
-        checking_account:
-          page_header: Conta Corrente
-          page_data_table_header: Scripts em processo de venda
-        script_attributes:
-          code: Cod
-          name: Nome
-          script: Script
-          description: Descrição
-          payment_date: Data Pag.
-          moviment_date: Data Mov.
-          status: Status
-          value: Valor
-          interest: Interesse
-          commission: Comissão
-          currency: Moeda
-          platform: Plaforma
-          industry: Industria
-          complexity: Complexidade
-          long_description: Decrição Longa
-          platform: Plataforma
-          industry: Industria
-          solution_type: Tipo Solução
-          definition: Obs
-          script_file:  Arquivo Script
-          pdf_file: Arquivo PDF
-          id: Id
-          price: Preço
-          paper: Paper
-          requirements: Requeridos
-          process: Processos
-          contributor: Colaborador
-          script_id: Script Id
-          script_name: Script Name
-          platform: Platforma
-          system: Sistema
-          s_n: S/N
-          value: Valor
-          sent_to: Enviado p/
-          created_at: Criação
-        searchs:
-          page_header: Busca
-          results:
-            plataform: Plataforma
-            tags: Tags
-            code: Cod
-            pag: Pag
-            details: Detalhes
-            reuslts: resultados
-            pages: paginas
-            per_page: Por Pagina
-            total_pages: Total Paginas
-            contributor: Colaborador(es)
-          filters:
-            process: Processos
-            clear: Limpar
-        publications:
-          page_header: Publicações
-          new: Nova
-          visited: Visitado
-          folder: PASTAS
-          added: Adicionado
-        buttons:
-          back: Voltar
-          next: Próximo
-          new: Novo
-          save: Salvar
-          cancel: Cancelar
-          submit: Submeter
-          Ok: Ok
-          show: Mostrar
-          edit: Editar
-          delete: Excluir
-          action: Ação
-          go: Ir
-          finalize: Finalizar
-          remover: Remover
-          add_to_cart: Comprar
-          details: Detalhes
-          show_paper: Mostrar Paper
-          close: Fechar
-          days: Dias
-          actions: Actions]
-          select_status: Selecione Status
-        script_create:
-          page_header: '<h5>Dados básicos do Script
-                                  <small>informe os dados do script que você criou.</small>
-                                </h5>'
-        additional_information:
-          panel_requierement_header:  '<h5>Requerimentos e Depencias
-                                                         <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
-                                                       </h5>'
-          search_scripts:  '<smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span>
-                                    </smal>'
-          requirements: Requeridos
-          related: Relatados
-          description: Descrição
-        user_attribures:
-          user: Usuário
-          users: Usuários
-          name: Nome
-          cnpj: CNPJ
-          company_name: Nome Empresa
-          password: Senha
-          password_confirmation: Confirmar Senha
-          confirmed: Confirmado
-          new_user: Novo Usuário
-          search_helper_user: '<small>Aperte Enter para iniciar a pesquisa e para buscar todos apenas digite Enter</small>'
-          current_sign: Login
-          last_sign: Último login
-          last_sign_ip: IP último login
-          current_sign_ip: IP logado
-          confirmation_token: Token de confirmação
-          buyer: Comprador
-        classification:
-          process: Processo
-        final:
-         messages: Mensagens
-         version: versão
-         create_by: Criado por
-         version: Versão
-         last_update: atualizado em
-         created: Criado em
-         classification: Cassificação
-         requeriment_scripts: Scripts Requeridos
-         related_scripts: Scripts Relacionados
-         define_participation: Definir Participação
-         participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
-         search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa</small>'
-        process_tracker:
-          create: Criar
-          additional_information: Dados Adicionais
-          classification: Classificação
-          final: Final
-        value_chain:
-            classification: Classificação
-            category: Categoria
-        member_attributes:
-          member_type: Tipo de Membro
-          member_name: Nome
-          member_last_name: Sobrenome
-          bank: Banco
-          bank_ag: Agência
-          bank_cc: Conta Corrente
-          bank_cc_dg: Digito
-          company_name: Empresa
-          cnpj: CNPJ
-          cpf: CPF
-          phone_number: Tel
-          cellphone_number: Cel
-          birthday: Data Nasc
-        address_attribures:
-          zip_code: Codigo Postal
-          patio_type: Tipo
-          patio: Logradouro
-          number: Numero
-          neighbordhood: Bairro
-          city: Cidade
-          state: Estado
-          complement: Complemento
-        master_user:
-          page_header: Administração Usuários
-        cart:
-         page_header: Carrinho
-         resume_cart: Verificar Compras
-        buys:
-          page_header: <h4> Compra realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
-        show_product:
-         related_scripts: Scripts Relacionados
-         requirement_scripts: Scripts Requeridos
-         to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
-         to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
-        devise:
-          resend_confirmation_instrucions: Reenviar instruções de confirmação
-          password: Senha
-          new_password: Nova senha
-          confirm_password: Confirmar Senha
-          change_passwrod: Alterar minha senha
-          forgot_password:  '<h3>Esqueceu sua senha?</h3><p>Enviaremos as instruções de reset.</p>'
-          forgot_password_login: Esqueceu a senha?
-          resend_confiramtion_login: Reenviar confirmação?
-          reset_password: Resetar Senha
-          edit: Editar
-          remove: Remover
-          alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
-          cancel_account: Cancelar minha conta
-          remember_me: Lembrar.
-          cancel_account_header: '<h3> Cancelar conta </ h3> <p> infeliz? Vamos estar triste em partir :( . </ p>'
-          register_to_klustter_header: '<h3> Registre-se no Kluster </h3> <p> Crie uma conta para vê-lo em ação. </ p>'
-          aleredy_have_account: <small>Já possui um usuário?</small>
-          do_not_have_an_account: <small>Não possui um usuário?</small>
-          create_account: Criar um usuário
-          modal_registration: '<div class="modal-header">
-                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                       <h4 class="modal-title">Profiles:</h4>
-                                     </div>
-                                     <div class="modal-body">
-                                       <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-                                         <strong>contributor</strong>
-                                       </p>
-
-                                       <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
-                                         <strong>customer</strong></p>
-                                     </div>'
-          login_wellcome: '  <h2 class="font-bold">Bem vindo a Klustter</h2>
-                                 <p>
-                                   Texto de boas vindas.
-                                 </p>
-                                   <small> Texto pequeno
-                                   </small>
-                                 </p>'
-        invoices:
-          page_header: Faturas
-        process_modules:
-          page_header: Modulos de Processo
-          new_process_module: Novo Modulo de Processo
-          remove_image: Remover Imagems
-        process_modules_attributtes:
-          image: Imagem
-          description: Descrição
-          referrer_processos: Processos Referenciados
-        reports:
-          page_header: Relatórios
-          invoice_report_created: Faturas criadas
-          invoice_created_at: Faturas criadas em
-          start_date: data inicio
-          end_date: data final
-          generate_report: Gerar Relatório
-        script_orchestration:
-          page_header: Orquestração para status
-        invoice_orchestration:
-          page_header: Orquestração para status
-          user_invoice: Invoice Usuário
-          script_code: Cod Script
-          value: Valor
-          script_to_Orgranization: P/ Empresa
-          system_id: Numero do Systema
-          invoice_date: Data Invoice
-          pay_date: Data Pag.
-          ship_date: Data Env.
-          shipped_to: Env. Para
-          time: Tempo
 
 
 
