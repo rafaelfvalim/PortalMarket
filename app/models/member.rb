@@ -21,8 +21,8 @@ class Member < ActiveRecord::Base
   validates :bank_cc_digit, presence: true, allow_blank: true
   validates :phone_number, presence: true, allow_blank: true
   validates :cellphone_number, presence: true, allow_blank: true
-  validates_uniqueness_of :cnpj, allow_blank: true, allow_nil: true
-  validates_uniqueness_of :cpf, allow_blank: true, allow_nil: true
+  validates_uniqueness_of :cnpj, allow_blank: true, allow_nil: true, on: :create
+  validates_uniqueness_of :cpf, allow_blank: true, allow_nil: true, on: :create
 
   CONTRIBUTOR = 'contributor'
   CUSTOMER = 'customer'

@@ -16,6 +16,7 @@
     <thead>
     <th>Id</th>
     <th><%= t 'labels.user_attribures.name'%></th>
+    <th>Profile</th>
     <th>Email</th>
     <th>Status</th>
     <th colspan="2"></th>
@@ -28,6 +29,9 @@
           </td>
           <td>
             <%= user.full_name %>
+          </td>
+          <td>
+            <%= user.member.member_type.description.humanize %>
           </td>
           <td>
             <%= link_to user.email, user %>

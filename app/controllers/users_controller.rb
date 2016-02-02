@@ -96,7 +96,7 @@ class UsersController < ApplicationController
     if @user.update(secure_params)
       redirect_to edit_user_registration_path
     else
-      redirect_to edit_user_registration_path , :alert => "Error :: Verifique o formato eo tamanho do arquivo"
+      redirect_to edit_user_registration_path, :alert => "Error :: Verifique o formato eo tamanho do arquivo"
     end
   end
 
@@ -114,7 +114,8 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:name,
+    params.require(:user).permit(:id,
+                                 :name,
                                  :email,
                                  :password,
                                  :password_confirmation,

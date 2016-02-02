@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-md-12">
         <%= f.fields_for :member_type do |mt| %>
-            <%= mt.collection_select :id, MemberType.all, :id, :description, {label: "Member Type:"} %>
+            <%= mt.collection_select :id, MemberType.all, :id, :description, {label: "#{t 'labels.member_attributes.member_type'}"} %>
         <% end %>
       </div>
     </div>
@@ -42,23 +42,23 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "#{t 'labels.member_attributes.banco'}"} %>
+                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "#{t 'labels.member_attributes.bank'}"} %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2">
-                <%= m.text_field :bank_ag,label: "#{t 'labels.member_attributes.banco_agencia'}" , class: 'form-control' %>
+                <%= m.text_field :bank_ag,label: "#{t 'labels.member_attributes.bank_ag'}" , class: 'form-control' %>
               </div>
               <div class="col-md-8">
-                <%= m.text_field :bank_cc,label: "#{t 'labels.member_attributes.banco_conta_corrente'}", class: 'form-control' %>
+                <%= m.text_field :bank_cc,label: "#{t 'labels.member_attributes.bank_cc'}", class: 'form-control' %>
               </div>
               <div class="col-md-2">
-                <%= m.text_field :bank_cc_digit,label: "#{t 'labels.member_attributes.banco_conta_corrente_digito'}", class: 'form-control' %>
+                <%= m.text_field :bank_cc_digit,label: "#{t 'labels.member_attributes.bank_cc_dg'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.banco_conta_corrente_digito'}", class: 'form-control' %>
+                <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
               </div>
             </div>
         <% else %>
