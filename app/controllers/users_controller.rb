@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search])
+      @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search],params[:attribute])
     else
       @users = User.all.paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     end
@@ -37,8 +37,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(secure_params)
+      p 'user update'
       redirect_to users_path, :notice => "User updated."
     else
+      p @user.errors
       redirect_to users_path, :alert => "Unable to update user."
     end
   end
@@ -141,7 +143,8 @@ class UsersController < ApplicationController
                                       :updated_at
                                      ],
                                  member_type_attributes:
-                                     [:id],
+                                     [:id,
+                                      :description],
                                  address_attributes:
                                      [:zip_code,
                                       :patio_type,

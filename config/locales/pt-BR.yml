@@ -190,6 +190,7 @@ pt-BR:
           users: Usuários
           name: Nome
           cnpj: CNPJ
+          email: E-mail
           company_name: Nome Empresa
           password: Senha
           password_confirmation: Confirmar Senha

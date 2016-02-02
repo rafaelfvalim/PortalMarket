@@ -7,15 +7,22 @@
   </div>
   <hr>
   <%= form_tag request.path, :method => 'get' do %>
-      <% content_tag :label do %>
-          Search by Name:
-          <%= text_field_tag :search, params[:search] %>
-      <% end %>
+      <%= text_field_tag :search, params[:search] %>
+      <label> <%= t 'labels.find_by' %></label>
+      <label> Id:</label>
+      <input type="radio" checked="true" value="id" id="select_field1" name="attribute">
+      <label> Email:</label>
+      <input type="radio" checked="true" value="email" id="select_field2" name="attribute">
+      <label> Profile:</label>
+      <input type="radio" checked="false" value="member_types.description" id="select_field3" name="attribute">
+      <label> Status:</label>
+      <input type="radio" checked="false" value="status" id="select_field4" name="attribute">
   <% end %>
+  <br>
   <table class="table table-bordered table-condensed responsive">
     <thead>
     <th>Id</th>
-    <th><%= t 'labels.user_attribures.name'%></th>
+    <th><%= t 'labels.user_attribures.name' %></th>
     <th>Profile</th>
     <th>Email</th>
     <th>Status</th>

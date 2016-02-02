@@ -6,7 +6,7 @@
         </div>
         <div class="pull-left">
           <%= link_to :back, class: 'btn btn-primary next' do %>
-              <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back'%></i>
+              <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
           <% end %>
         </div>
       </div>
@@ -17,13 +17,7 @@
         <%= f.text_field :id, readonly: :true, class: 'form-control' %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.fields_for :member_type do |mt| %>
-            <%= mt.collection_select :id, MemberType.all, :id, :description, {label: "#{t 'labels.member_attributes.member_type'}"} %>
-        <% end %>
-      </div>
-    </div>
+
     <div class="row">
       <div class="col-md-12">
         <%= f.text_field :email, class: 'form-control' %>
@@ -31,10 +25,15 @@
     </div>
 
     <%= f.fields_for :member do |m| %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= m.collection_select :member_type_id, MemberType.all, :id, :description, {label: "#{t 'labels.member_attributes.member_type'}"} %>
+          </div>
+        </div>
         <% if @user.member_type.id == 1 %>
             <div class="row">
               <div class="col-md-6">
-                <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}",  class: 'form-control' %>
+                <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
               </div>
               <div class="col-md-6">
                 <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
@@ -47,13 +46,13 @@
             </div>
             <div class="row">
               <div class="col-md-2">
-                <%= m.text_field :bank_ag,label: "#{t 'labels.member_attributes.bank_ag'}" , class: 'form-control' %>
+                <%= m.text_field :bank_ag, label: "#{t 'labels.member_attributes.bank_ag'}", class: 'form-control' %>
               </div>
               <div class="col-md-8">
-                <%= m.text_field :bank_cc,label: "#{t 'labels.member_attributes.bank_cc'}", class: 'form-control' %>
+                <%= m.text_field :bank_cc, label: "#{t 'labels.member_attributes.bank_cc'}", class: 'form-control' %>
               </div>
               <div class="col-md-2">
-                <%= m.text_field :bank_cc_digit,label: "#{t 'labels.member_attributes.bank_cc_dg'}", class: 'form-control' %>
+                <%= m.text_field :bank_cc_digit, label: "#{t 'labels.member_attributes.bank_cc_dg'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
@@ -64,11 +63,11 @@
         <% else %>
             <div class="row">
               <div class="col-md-12">
-                <%= m.text_field :company_name,label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
+                <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">c
+              <div class="col-md-12">
                 <%= m.text_field :cnpj, class: 'form-control' %>
               </div>
             </div>
@@ -79,7 +78,7 @@
                 <%= a.text_field :id, readonly: :true, label: 'Id', class: 'form-control' %>
               </div>
               <div class="col-md-10">
-                <%= a.text_field :zip_code , label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
+                <%= a.text_field :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
               </div>
 
             </div>
@@ -109,7 +108,7 @@
                 <%= a.text_field :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control' %>
               </div>
               <div class="col-md-6">
-                <%= a.text_field :state,  label: "#{t 'labels.address_attribures.state'}", class: 'form-control' %>
+                <%= a.text_field :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control' %>
               </div>
             </div>
         <% end %>

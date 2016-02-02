@@ -69,9 +69,9 @@ class User < ActiveRecord::Base
     self.member.master_user_id.nil?
   end
 
-  def self.search(search)
+  def self.search(search, attributes = 'member_name')
     if search
-      User.joins(:member).where('member_name LIKE ?', "%#{search}%").all
+      User.joins(:member, :member_type).where("#{attributes} LIKE ?", "%#{search}%").all
     else
       scoped
     end
