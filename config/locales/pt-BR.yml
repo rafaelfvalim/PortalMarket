@@ -331,6 +331,7 @@ pt-BR:
           shipped_to: Env. Para
           time: Tempo
         script_price:
+          page_header: Preços x Scripts
           aggregate_percentage: '% Agregado'
           currency_date: Data moeda
           time: Tempo

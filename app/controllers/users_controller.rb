@@ -119,6 +119,7 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation,
                                  :avatar,
+                                 :status,
                                  member_attributes:
                                      [:id,
                                       :member_type_id,
