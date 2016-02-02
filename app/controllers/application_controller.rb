@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
 
   def acess_control
     unless current_user.is_god?
-      redirect_to members_path , :alert => "Restricted access! "
+      redirect_to members_path, :alert => "Restricted access! "
     end
   end
 
@@ -94,9 +94,13 @@ class ApplicationController < ActionController::Base
       return 'empty'
     end
 
-     if controller_name == 'confirmations'
-       return 'empty'
-     end
+    if controller_name == 'confirmations'
+      return 'empty'
+    end
+
+    if controller_name == 'emails'
+      return 'application'
+    end
   end
 
   def set_timezone

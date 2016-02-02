@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Maily::Engine, at: 'maily'
   resources :view_publications
   resources :file_tags
   resources :folders

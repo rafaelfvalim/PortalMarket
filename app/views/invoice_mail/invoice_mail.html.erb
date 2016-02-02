@@ -1,146 +1,165 @@
-<!-- HEADER -->
-<table class="head-wrap" bgcolor="#999999">
-  <tr>
-    <td></td>
-    <td class="header container">
-      <div class="content">
-        <table bgcolor="#999999">
-          <tr>
-            <td><img src="http://placehold.it/200x50/"/></td>
-            <td align="right"><h6 class="collapse">Klustter &lt;/&gt; CODE STORE</h6></td>
+<body>
+<div class="background">
+  <div id="header">
+    <%= image_tag("klustter_logo.png", height: '100px', width: '300px') %>
+    <br>
+    <p>
+     <h1 color="orange"><font size="7"><b>Obrigado.</b> </font></h1>
+    </p>
+  </div>
 
-          </tr>
-        </table>
-      </div>
-    </td>
-    <td></td>
-  </tr>
-</table>
-<table class="body-wrap">
-  <tr>
-    <td></td>
-    <td class="container" bgcolor="#FFFFFF">
-      <div class="content">
-        <table>
-          <tr>
-            <td>
-              <h3>Parabéns, <%= "#{@user.member.member_name} #{@user.member.member_last_name}" %></h3>
+  <div id="section">
+    <table>
+      <tbody>
+      <tr>
+        <td><h3><strong>Você fez o consumo do script :</strong></h3></td>
+        <td><h3><strong><%= @invoice.script.name %></strong></h3></td>
+      </tr>
+      <tr>
+        <td><h3><strong>Invoice </strong></h3></td>
+        <td><h3><strong><%= @invoice.id%></strong></h3></td>
+      </tr>
+      <tr>
+        <td><h3><strong>Data do Consumo</strong></h3></td>
+        <td><h3><strong><%= @invoice.created_at.strftime("%b, %m %Y - %H:%M") %></strong></h3></td>
+      </tr>
+      <tr>
+        <td><h3><strong>Valor </strong></h3></td>
+        <td><h3><strong><%= @invoice.value %></strong></h3></td>
+      </tr>
+      <tr>
+        <td><h3><strong><%=  link_to "Download Aqui!", @link_to_file %></strong></h3></td>
+      </tr>
+      </tbody>
+    </table>
+    <p>
 
-              <p class="lead">Voê acaba de adquirir um dos nossos scripts!</p>
+    <h3>A invoice para pagamento está disponível no seu extrato e o prazo para pagamento está
+      dentro dos acordos comerciais previamente definidos na assinatura do contrato. </h3>
+    </p>
 
-              <p><img src="http://placehold.it/600x300"/></p><!-- /hero -->
-              <p class="callout">
-                Agora você pode realizar o download do script <a href="<%=@link_to_file %>"> aqui</a>
-              </p>
+    <p>
 
-              <h3>Próximos passos:</h3>
+    <h3>Precisa de ajuda ?</h3></p>
+    <p>
 
-              <p>Com o script em mãos você esta pronto para no seu sistema!</p>
+    <h3>Contacte o canal de parceiros com o número da invoice em mãos.</h3></p>
 
-              <p>Siga os passos a seguir para realizar essa instalação:</p>
-              <ul>
-                <li>Baixe o app no JAVA <a href="#">aqui</a></li>
-                <li>Execute os passo 1..</li>
-                <li>Execute os passo 2..</li>
-                <li>Execute os passo 3..</li>
-              </ul>
-              <hr>
-              <fieldset>
-                <br>
-                <legend>Detalhes:</legend>
-                <p>
-                  <strong>Definição:</strong>
-                  <br>
-                  <span><%= @invoice.script.definition %></span>
-                </p>
+    <table>
+      <tbody>
+      <tr>
+        <td><h3>Telefone:</h3></td>
+        <td><h3>xx xxx x xxxx-xxxx</h3></td>
+      </tr>
+      <tr>
+        <td><h3>Email:</h3></td>
+        <td><h3><a href="emailto:parceiros@klustter.com">parceiros@klustter.com</a></h3></td>
+      </tr>
+      </tbody>
+    </table>
+    <p>
 
-                <p>
-                  <strong>Descrição: </strong>
-                  <br>
-                  <span><%= @invoice.script.long_text %></span>
-                </p>
+    <h3>Não responda essa mensagem.</h3></p>
 
-                <p>
-                  <strong>Plataforma: </strong>
-                  <span><%= @invoice.script.platform %></span>
-                </p>
-                <% if @invoice.script.requirements.size > 0 %>
-                    <p>
-                      <strong>Requerimentos: </strong>
-                    </p>
+  </div>
 
-                    <div>
-                      <ul>
-                        <% @invoice.script.requirements.each do |requirement| %>
-                            <li><%= requirement.requirement %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                <% end %>
-                <hr>
-                <p class="callout">Valor: <%= @invoice.script.price.value %> </p>
-              </fieldset>
-              <hr>
-              <br>
-              <table class="social" width="100%">
-                <tr>
-                  <td>
-                    <table align="left" class="column">
-                      <tr>
-                        <td>
-                          <h5 class="">Redes Sociais:</h5>
+  <div id="footer">
+    <%= image_tag("klustter_logo.png", height: '60px', width: '170px') %>
+    <p>
 
-                          <p class="">
-                            <a href="#" class="soc-btn fb">Facebook</a>
-                            <a href="#" class="soc-btn tw">Twitter</a>
-                            <a href="#" class="soc-btn gp">Google+</a>
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
-                    <table align="left" class="column">
-                      <tr>
-                        <td>
-                          <h5 class="">Contato:</h5>
+    <h3>Saiba mais sobre nós, acesse <a href="www.klustter.com.br">www.klustter.com.br</a></h3>
 
-                          <p>Fone: <strong>(11) 2173-7650</strong><br/>
-                            Email:<strong><a href="emailto:klustter.codestore@gilioconsultoria.com">klustter.codestore@gilioconsultoria.com</a></strong>
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
-                    <span class="clear"></span>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </td>
-    <td></td>
-  </tr>
-</table>
-<table class="footer-wrap">
-  <tr>
-    <td></td>
-    <td class="container">
-      <div class="content">
-        <table>
-          <tr>
-            <td align="center">
-              <p>
-                <a href="#">Termos</a> |
-                <a href="#">Privacidade</a> |
-                <a href="#">
-                  <unsubscribe>Unsubscribe</unsubscribe>
-                </a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </td>
-    <td></td>
-  </tr>
-</table>
+    <h3>Siga-nos </h3>
+    </p>
+    <a href="#"><image src="<%= image_url("logo/face_logo.png") %>" height= "60px" width="60px"/>  </a>
+    <a href="#"><image src="<%= image_url("logo/google_logo.png") %>" height= "60px" width="60px"/> </a>
+    <a href="#"><image src="<%= image_url("logo/twitter_logo.png") %>" height= "60px" width="60px" /></a>
+    <a href="#"><image src="<%= image_url("logo/youtube_logo.png") %>" height= "60px" width="60px" /> </a>
+    <a href="#"><image src="<%= image_url("logo/instagram_logo.png") %>" height= "60px" width="60px" /> </a>
+
+  </div>
+</div>
+</body>
+
+<style>
+
+
+    h1 {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 26.4px;
+    }
+
+    h3 {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 15.4px;
+    }
+
+    p {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    blockquote {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 21px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        line-height: 30px;
+    }
+
+    pre {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        line-height: 18.5714px;
+    }
+
+    h1 {
+        color: orange
+    }
+
+    #header {
+        background-color: white;
+        color: black;
+        text-align: left;
+        padding: 5px;
+    }
+
+    #nav {
+        line-height: 30px;
+        background-color: #eeeeee;
+        height: 300px;
+        width: 100px;
+        float: left;
+        padding: 5px;
+    }
+
+    #section {
+        width: 650px;
+        float: left;
+        padding: 10px;
+    }
+
+    #footer {
+        background-color: white;
+        color: black;
+        clear: both;
+        text-align: left;
+        padding: 5px;
+    }
+</style>

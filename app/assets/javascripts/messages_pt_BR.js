@@ -9,7 +9,7 @@ $.extend( $.validator.messages, {
     passwordMatch: "Senhas não são identicas",
     cnpj: "Informe um CNPJ v&aacute;lido.",
     numbersOnly: "Informe apenas numeros.",
-    required: "Este campo &eacute; requerido.",
+    required: "Campo obrigatório.",
     remote: "Por favor, corrija este campo.",
     email: "Por favor, forne&ccedil;a um endere&ccedil;o de email v&aacute;lido.",
     url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",

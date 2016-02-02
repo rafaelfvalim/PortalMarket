@@ -16,8 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_to do |format|
 
       if @user.save
-        format.html { redirect_to root_path, notice: 'Welcome! Your account has been created successfully. A confirmation link has been sent to your email address.' }
-        format.json { render json: root_path, status: :created, location: @user }
+        flash[:notice] = "#{t 'registration.successful'}"
+        format.html { redirect_to '/users/sign_in' }
+        format.json { render json: '/users/sign_in', status: :created, location: @user }
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }

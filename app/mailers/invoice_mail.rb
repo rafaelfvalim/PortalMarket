@@ -3,10 +3,14 @@ class InvoiceMail < ApplicationMailer
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::UrlHelper
 
-  def invoice_mail(user, invoice)
+  def invoice_mail(user, invoice, is_preview = false)
     @user = user
     @invoice = invoice
-    @link_to_file = "#{Rails.configuration.absolute_site_url}#{download_invoices_path(url: invoice.encrypt_url)}"
+    unless is_preview
+      @link_to_file = "#{Rails.configuration.absolute_site_url}#{download_invoices_path(url: invoice.encrypt_url)}"
+    else
+      @link_to_file = "dummy.com.br"
+    end
     mail(to: @user.email, subject: 'Klustter Code Store')
   end
 
