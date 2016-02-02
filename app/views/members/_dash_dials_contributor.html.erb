@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-xs-8 text-right">
                   <h4><%= t 'labels.dash_incomplete' %></h4>
-                  <h2 class="font-bold"><%= Script.joins(:member_scripts).where(status_id: Status::INICIAL, member_scripts: {:member_id => current_user.member.id}).count %></h2>
+                  <h2 class="font-bold"><%= Script.joins(:member_scripts).where(status_id: Status.INICIAL, member_scripts: {:member_id => current_user.member.id}).count %></h2>
                 </div>
               </div>
               <hr>
