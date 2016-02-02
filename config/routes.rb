@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'errors_controller/show'
+
   mount Maily::Engine, at: 'maily'
   resources :view_publications
   resources :file_tags
@@ -127,6 +129,11 @@ Rails.application.routes.draw do
   end
   authenticate :user, lambda { |user| user.is_god? } do
     mount Searchjoy::Engine, at: 'admin/searchjoy'
+  end
+
+  # error pages
+  %w( 404 422 500 503 ).each do |code|
+    get code, :to => "errors#show", :code => code
   end
 
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get

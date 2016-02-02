@@ -101,6 +101,10 @@ class ApplicationController < ActionController::Base
     if controller_name == 'emails'
       return 'application'
     end
+
+    if controller_name == 'errors'
+      return 'empty'
+    end
   end
 
   def set_timezone
