@@ -14,7 +14,7 @@ class InvoiceReportService
         t.add_column(:value, :value)
         t.add_column(:script_file, :script_file)
         t.add_column(:shipped_to, :shipped_to)
-        t.add_column(:date, :created_at)
+        t.add_column(:date) { |t| t.created_at.strftime("%d/%m/%Y - %H:%M")}
         t.add_column(:pay_method) { |p| p.pay_method.name }
       end
     end
