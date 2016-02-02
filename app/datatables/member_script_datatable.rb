@@ -41,11 +41,11 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           record.status.description,
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
 
-          unless record.has_price && record.status_id != Status.GRAVADO && record.status_id != Status.INICIAL
+          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price
             link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs')
           end,
 
-          unless record.has_price && record.status_id != Status.GRAVADO && record.status_id != Status.INICIAL
+          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price
             link_to('Delete', roll_back_script_scripts_path(id: record.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs')
           end
       ]
