@@ -125,7 +125,7 @@ Rails.application.routes.draw do
       get :lounge
     end
   end
-  authenticate :user, lambda { |user| user.admin? } do
+  authenticate :user, lambda { |user| user.is_god? } do
     mount Searchjoy::Engine, at: 'admin/searchjoy'
   end
 
