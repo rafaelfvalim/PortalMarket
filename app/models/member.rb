@@ -24,9 +24,9 @@ class Member < ActiveRecord::Base
   validates_uniqueness_of :cnpj, allow_blank: true, allow_nil: true, on: :create
   validates_uniqueness_of :cpf, allow_blank: true, allow_nil: true, on: :create
 
-  CONTRIBUTOR = 1
-  CUSTOMER = 2
-  GOD = 3
+  CONTRIBUTOR = 'contributor'
+  CUSTOMER = 'customer'
+  GOD = 'god'
 
   def init
     #self.bank_id ||= 0   #will set the default value only if it's nil
