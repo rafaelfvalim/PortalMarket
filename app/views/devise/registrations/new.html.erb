@@ -20,9 +20,8 @@
               <div class="col-lg-6 col-centered ">
                 <%= member.input :member_type_id,
                                  as: :radio_buttons,
-                                 item_wrapper_class: 'inline',
-                                 collection: MemberType.where("description != 'god'"),
-                                 label_method: lambda { |m| "#{m.description.humanize}" },
+                                 item_wrapper_class: 'radio',
+                                 collection: [['Cliente', 2], ['Colaborador', 1]],
                                  checked: selected_profile(@user),
                                  label: "Profile <a href='#' data-toggle='modal' data-target='#help_modal'>?</a><br>".html_safe
                 %>
@@ -35,7 +34,7 @@
             </div>
             <div class="row  row-centered " id="name">
               <div class="col-lg-6 col-centered ">
-                <%= member.input :member_name, label:"#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
+                <%= member.input :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row  row-centered " id="last_name">
@@ -97,12 +96,12 @@
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.input :password, label:"#{t 'labels.devise.password'}" , class: 'form-control' %>
+            <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control' %>
           </div>
         </div>
         <div class="row  row-centered">
           <div class="col-lg-6 col-centered">
-            <%= f.input :password_confirmation,label:"#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
+            <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
           </div>
         </div>
         <%= f.simple_fields_for :address_attributes, @user.address do |address| %>
@@ -152,8 +151,9 @@
 
     <% end %>
     <p class="text-muted text-center">
-     <%= raw t 'labels.devise.aleredy_have_account' %>
+      <%= raw t 'labels.devise.aleredy_have_account' %>
     </p>
+
     <div class="row row-centered">
       <div class="col-lg-2 col-centered"></div>
       <div class="col-lg-2 col-centered">
@@ -171,9 +171,9 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-       <%= raw t 'labels.devise.modal_registration' %>
+      <%= raw t 'labels.devise.modal_registration' %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t 'labels.buttons.close'%></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t 'labels.buttons.close' %></button>
       </div>
     </div>
 

@@ -6,6 +6,9 @@ pt-BR:
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
       send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta.'
       send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá uma mensagem com instruções para confirmação da sua conta.'
+    sessions:
+      user:
+        already_signed_out: 'Usuário ja efetuou o logout'
     failure:
       already_authenticated: 'Você já está logado.'
       inactive: 'Sua conta ainda não foi ativada.'

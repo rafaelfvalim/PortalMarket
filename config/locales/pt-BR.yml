@@ -287,11 +287,11 @@ pt-BR:
                                      </div>
                                      <div class="modal-body">
                                        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-                                         <strong>contributor</strong>
+                                         <strong>colaborador</strong>
                                        </p>
 
                                        <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
-                                         <strong>customer</strong></p>
+                                         <strong>cliente</strong></p>
                                      </div>'
           login_wellcome: '  <h2 class="font-bold">Bem vindo a Klustter</h2>
                                  <p>
