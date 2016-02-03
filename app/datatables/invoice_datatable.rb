@@ -32,8 +32,7 @@ class InvoiceDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-          link_to(record.id, record),
-          link_to(record.user.full_name, record.user),
+          record.user.full_name,
           link_to(record.script.id, record.script),
           record.script.name,
           record.script.platform,
@@ -42,6 +41,7 @@ class InvoiceDatatable < AjaxDatatablesRails::Base
           record.value,
           record.shipped_to,
           record.created_at.strftime("%d/%m/%Y %I:%M %p"),
+          link_to('Detalhes', record, class: 'btn btn-primary'),
       ]
     end
   end
