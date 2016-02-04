@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @function_transaction_type.user_id %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @function_transaction_type.script_id %>
+</p>
+
+<p>
+  <strong>Function type:</strong>
+  <%= @function_transaction_type.function_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @function_transaction_type.description %>
+</p>
+
+<p>
+  <strong>Number of referenced files:</strong>
+  <%= @function_transaction_type.number_of_referenced_files %>
+</p>
+
+<p>
+  <strong>Number of data types:</strong>
+  <%= @function_transaction_type.number_of_data_types %>
+</p>
+
+<p>
+  <strong>Complexity:</strong>
+  <%= @function_transaction_type.complexity %>
+</p>
+
+<p>
+  <strong>Number of function points:</strong>
+  <%= @function_transaction_type.number_of_function_points %>
+</p>
+
+<%= link_to 'Edit', edit_function_transaction_type_path(@function_transaction_type) %> |
+<%= link_to 'Back', function_transaction_types_path %>

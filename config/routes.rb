@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :function_transaction_types
+  resources :function_data_types
+  resources :function_points
   get 'errors_controller/show'
 
   mount Maily::Engine, at: 'maily'

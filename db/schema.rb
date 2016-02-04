@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123080901) do
+ActiveRecord::Schema.define(version: 20160204045321) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -102,6 +102,38 @@ ActiveRecord::Schema.define(version: 20160123080901) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "function_data_types", force: :cascade do |t|
+    t.string   "function_type",             limit: 255
+    t.integer  "user_id",                   limit: 4
+    t.integer  "script_id",                 limit: 4
+    t.string   "description",               limit: 255
+    t.integer  "number_of_registers_types", limit: 4
+    t.integer  "number_of_data_types",      limit: 4
+    t.string   "complexity",                limit: 255
+    t.integer  "number_of_function_points", limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "function_data_types", ["script_id"], name: "fk_rails_aae462e65e", using: :btree
+  add_index "function_data_types", ["user_id"], name: "fk_rails_06efc31e37", using: :btree
+
+  create_table "function_transaction_types", force: :cascade do |t|
+    t.string   "function_type",              limit: 255
+    t.integer  "user_id",                    limit: 4
+    t.integer  "script_id",                  limit: 4
+    t.string   "description",                limit: 255
+    t.integer  "number_of_referenced_files", limit: 4
+    t.integer  "number_of_data_types",       limit: 4
+    t.string   "complexity",                 limit: 255
+    t.integer  "number_of_function_points",  limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "function_transaction_types", ["script_id"], name: "fk_rails_cbde0d620c", using: :btree
+  add_index "function_transaction_types", ["user_id"], name: "fk_rails_d193f93b2a", using: :btree
 
   create_table "invoice_statuses", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -389,6 +421,10 @@ ActiveRecord::Schema.define(version: 20160123080901) do
   add_foreign_key "checking_accounts", "currencies"
   add_foreign_key "checking_accounts", "members"
   add_foreign_key "checking_accounts", "scripts"
+  add_foreign_key "function_data_types", "scripts"
+  add_foreign_key "function_data_types", "users"
+  add_foreign_key "function_transaction_types", "scripts"
+  add_foreign_key "function_transaction_types", "users"
   add_foreign_key "invoices", "invoice_statuses"
   add_foreign_key "invoices", "pay_methods"
   add_foreign_key "invoices", "scripts"

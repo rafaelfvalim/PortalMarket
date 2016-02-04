@@ -23,7 +23,7 @@ module ScriptsHelper
 
   def get_industries
     @industries ||= Array.new
-    @industries = ['Aerospace and Defense', 'Automotive', 'Banking', 'Chemicals', 'Consumer Products', 'Defense and Security', 'Engineering, Construction, and Operations', 'Healthcare', 'High Tech', 'Higher Education and Research', 'Industrial Machinery and Components', 'Insurance', 'Life Sciences', 'Media', 'Mill Products', 'Mining', 'Oil and Gas', 'Professional Services', 'Public Sector', 'Retail', 'Sports and Entertainment', 'Telecommunications', 'Travel and Transportation', 'Utilities', 'Wholesale Distribution']
+    @industries = ['All', 'Aerospace and Defense', 'Automotive', 'Banking', 'Chemicals', 'Consumer Products', 'Defense and Security', 'Engineering, Construction, and Operations', 'Healthcare', 'High Tech', 'Higher Education and Research', 'Industrial Machinery and Components', 'Insurance', 'Life Sciences', 'Media', 'Mill Products', 'Mining', 'Oil and Gas', 'Professional Services', 'Public Sector', 'Retail', 'Sports and Entertainment', 'Telecommunications', 'Travel and Transportation', 'Utilities', 'Wholesale Distribution', 'Outra']
   end
 
 

@@ -1,0 +1,2 @@
+module FunctionDataTypesHelper
+end

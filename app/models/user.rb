@@ -10,9 +10,11 @@ class User < ActiveRecord::Base
   has_many :workplaces, through: :member
   has_one :member_type, through: :member, autosave: true
   has_many :invoice
-  belongs_to :address
+  belongs_to :address, dependent: :destroy
   has_many :publications
-  has_many :view_publications
+  has_many :view_publications, dependent: :destroy
+  has_many :function_data_types, dependent: :destroy
+  has_many :function_transaction_types, dependent: :destroy
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :member_type
   accepts_nested_attributes_for :workplaces

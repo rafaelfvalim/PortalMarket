@@ -1,0 +1,1 @@
+json.extract! @function_data_type, :id, :function_type, :user_id, :script_id, :description, :number_of_registers_types, :number_of_data_types, :complexity, :number_of_function_points, :created_at, :updated_at

@@ -1,0 +1,2 @@
+module FunctionTransactionTypesHelper
+end

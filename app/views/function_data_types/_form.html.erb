@@ -1,0 +1,18 @@
+<%= simple_form_for(@function_data_type) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :function_type %>
+    <%= f.input :user_id %>
+    <%= f.input :script_id %>
+    <%= f.input :description %>
+    <%= f.input :number_of_registers_types %>
+    <%= f.input :number_of_data_types %>
+    <%= f.input :complexity %>
+    <%= f.input :number_of_function_points %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

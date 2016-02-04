@@ -341,10 +341,28 @@ pt-BR:
           show_prices: Mostrar Preços
 
   activerecord:
+    models:
+      user: "Usuário"
+      script: "Script"
+    attributes:
+      user:
+        email: 'E-mail'
+      script:
+         name: 'Nome'
+         description: 'Descrição'
+         definition: 'Definition'
+         long_text: 'Texto Longo'
+         platform: 'Plataforma'
+         industry: 'Industria'
+         solution_type: 'Tipo Solução'
+         script_file: 'Arquivo Script'
+         pdf_file: 'Arquivo PDF'
+         complexity: 'Complexidade'
+         has_price: 'Possui Preço'
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
-        blank: "Por favor preencha o %{model}'s %{attribute}"
+        blank: "não pode ser nulo(a)"
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
@@ -369,7 +387,13 @@ pt-BR:
                confirmation: 'Senhas não são iguais'
             current_password:
                invalid: 'Senha inválida'
-
+        script:
+          attributes:
+            name:
+              too_short: '**mínimo de 5 letras'
+              taken: 'Nome ja esta em uso'
+            description:
+              too_short: '**mínimo de 10 letras'
   date:
     abbr_day_names:
     - Dom

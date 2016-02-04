@@ -26,65 +26,77 @@
       </div>
       <div class="ibox-content">
         <div class="row">
-          <div class="col-lg-7">
+          <div class="col-lg-6">
             <%= f.text_field :name, label: "#{t 'labels.script_attributes.name'}", :onclick => "set_message_info('#{set_info_script_messages(:name)}')" %>
-            <div class="hr-line-dashed"></div>
-
+          </div>
+          <div class="col-lg-6">
+            <%= f.select :complexity, get_complexities, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.complexity'}"}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6">
             <%= f.text_field :description, label: "#{t 'labels.script_attributes.description'}", :onclick => "set_message_info('#{set_info_script_messages(:description)}')" %>
-            <div class="hr-line-dashed"></div>
+          </div>
 
-            <%= f.text_area :long_text, label: "#{t 'labels.script_attributes.long_description'}", :onclick => "set_message_info('#{set_info_script_messages(:long_text)}')" %>
-            <div class="hr-line-dashed"></div>
-            <%= f.select :platform, get_platforms, {prompt: "Please Select ..." , label: "#{t 'labels.script_attributes.platform'}"} %>
-            <div class="hr-line-dashed"></div>
-
-            <%= f.select :industry, get_industries, {prompt: "Please Select ...", label: "#{t 'labels.script_attributes.industry'}"} %>
-            <div class="hr-line-dashed"></div>
-
-            <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "Please Select ...", label: "#{t 'labels.script_attributes.solution_type'}"} %>
-            <div class="hr-line-dashed"></div>
-
-            <%= f.select :complexity, get_complexities, {prompt: "Please Select ..." , label: "#{t 'labels.script_attributes.complexity'}"}, :onchange => "set_message_info('#{set_info_script_messages(:complexity)}')" %>
-            <div class="hr-line-dashed"></div>
-
-            <%= f.text_area :definition, label: "#{t 'labels.script_attributes.definition'}", :onclick => "set_message_info('#{set_info_script_messages(:definition)}')" %>
-            <div class="hr-line-dashed"></div>
-
+          <div class="col-lg-6">
+            <%= f.select :platform, get_platforms, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.platform'}"} %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6">
+            <%= f.select :industry, get_industries, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.industry'}"} %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.solution_type'}"} %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6">
+            <%= f.text_area :long_text, label: "#{t 'labels.script_attributes.long_description'}" %>
+          </div>
+          <div class="col-lg-6">
+            <%= f.text_area :definition, label: "#{t 'labels.script_attributes.definition'}" %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="well">
+              <p>modelo do paper pode ser baixado na area de publicações</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
             <!--Upload de arquivos -->
             <%= f.file_field :script_file, label: "#{t 'labels.script_attributes.script_file'}", :onclick => "set_message_info('#{set_info_script_messages(:script_file)}')" %>
-            <div class="hr-line-dashed"></div>
             <%= f.hidden_field :script_file_cache %>
             <div class="well">
               <ul>
-                <li><strong><%=t 'labels.script_file_accept_formats' %> </strong></li>
+                <li><strong><%= t 'labels.script_file_accept_formats' %> </strong></li>
                 <li><strong><%= t 'labels.script_file_size' %> </strong></li>
               </ul>
             </div>
             <div id="upload_script">
               <%= render partial: 'scripts/upload_scrip', script: @script %>
             </div>
-            <div class="hr-line-dashed"></div>
+          </div>
+
+          <div class="col-lg-6">
             <%= f.file_field :pdf_file, label: "#{t 'labels.script_attributes.pdf_file'}", :onclick => "set_message_info('#{set_info_script_messages(:pdf_file)}')" %>
-            <div class="hr-line-dashed"></div>
             <%= f.hidden_field :pdf_file_cache %>
             <div class="well">
               <ul>
-                <li>
-                  <%= link_to(t('labels.download_model'), download_documento_modelo_scripts_path) %>
-                </li>
-                <li><strong><%= t 'labels.pdf_file_accept_formats'%> </strong></li>
+                <li><strong><%= t 'labels.pdf_file_accept_formats' %> </strong></li>
                 <li><strong><%= t 'labels.pdf_file_size' %> </strong></li>
               </ul>
             </div>
             <div id="upload_pdf">
               <%= render partial: 'scripts/upload_pdf', script: @script %>
             </div>
-          </div>
-          <div class="col-lg-5" id="info-message">
-            <fieldset class="scheduler-border">
-              <legend class="scheduler-border"><%= t 'labels.information'%></legend>
-              <p></p>
-            </fieldset>
           </div>
         </div>
       </div>

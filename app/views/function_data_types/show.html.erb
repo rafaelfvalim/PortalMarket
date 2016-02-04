@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Function type:</strong>
+  <%= @function_data_type.function_type %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @function_data_type.user_id %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @function_data_type.script_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @function_data_type.description %>
+</p>
+
+<p>
+  <strong>Number of registers types:</strong>
+  <%= @function_data_type.number_of_registers_types %>
+</p>
+
+<p>
+  <strong>Number of data types:</strong>
+  <%= @function_data_type.number_of_data_types %>
+</p>
+
+<p>
+  <strong>Complexity:</strong>
+  <%= @function_data_type.complexity %>
+</p>
+
+<p>
+  <strong>Number of function points:</strong>
+  <%= @function_data_type.number_of_function_points %>
+</p>
+
+<%= link_to 'Edit', edit_function_data_type_path(@function_data_type) %> |
+<%= link_to 'Back', function_data_types_path %>
