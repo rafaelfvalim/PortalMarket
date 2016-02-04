@@ -172,6 +172,7 @@ pt-BR:
           days: Dias
           actions: Actions
           select_status: Selecione Status
+          update: Atualizar
         script_create:
           page_header: '<h5>Dados básicos do Script
                                   <small>informe os dados do script que você criou.</small>
@@ -264,6 +265,7 @@ pt-BR:
         devise:
           resend_confirmation_instrucions: Reenviar instruções de confirmação
           password: Senha
+          current_password: Senha atual
           new_password: Nova senha
           confirm_password: Confirmar Senha
           change_passwrod: Alterar minha senha
@@ -276,7 +278,7 @@ pt-BR:
           alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
           cancel_account: Cancelar minha conta
           remember_me: Lembrar.
-          cancel_account_header: '<h3> Cancelar conta </ h3> <p> infeliz? Vamos estar triste em partir :( . </ p>'
+          cancel_account_header: '<p> infeliz? Vamos ficar tristes em ve-lo partir :( . </ p>'
           register_to_klustter_header: '<h3> Registre-se no Kluster </h3> <p> Crie uma conta para vê-lo em ação. </ p>'
           aleredy_have_account: <small>Já possui um usuário?</small>
           do_not_have_an_account: <small>Não possui um usuário?</small>
@@ -361,6 +363,12 @@ pt-BR:
           attributes:
             email:
               taken: 'Email já esta sendo utilizado'
+            password:
+               too_short: 'Senha deve conter mais de 8 caracteres'
+            password_confirmation:
+               confirmation: 'Senhas não são iguais'
+            current_password:
+               invalid: 'Senha inválida'
 
   date:
     abbr_day_names:

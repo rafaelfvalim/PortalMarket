@@ -139,15 +139,15 @@
       <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-          <%= raw t 'alter_informations_password_confirm' %>
-          <%= f.input :current_password, class: 'form-control' %>
+          <%= raw t 'labels.devise.alter_informations_password_confirm' %>
+          <%= f.input :current_password, label: "#{t 'labels.devise.current_password'}", class: 'form-control' %>
         </div>
         <div class="col-lg-4"></div>
       </div>
       <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 text-center">
-          <%= f.submit 'Update', :class => 'btn btn-success btn-lock' %>
+          <%= f.submit t 'labels.buttons.update', :class => 'btn btn-success btn-lock' %>
         </div>
         <div class="col-lg-4"></div>
       </div>

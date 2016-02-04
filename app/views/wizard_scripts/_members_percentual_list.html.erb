@@ -18,7 +18,7 @@
                 <%= hidden_field_tag :script_id, script.id %>
             <% end %>
           </td>
-          <td><%= link_to("#{t 'label.buttons.delete'}", remove_participation_member_wizard_scripts_path(member_script_id: ms.id, script_id: script.id), class: "btn btn-primary btn-xs", remote: true, method: :get) unless ms.member_id == current_user.member.id %></td>
+          <td><%= link_to("#{t 'labels.buttons.delete'}", remove_participation_member_wizard_scripts_path(member_script_id: ms.id, script_id: script.id), class: "btn btn-primary btn-xs", remote: true, method: :get) unless ms.member_id == current_user.member.id %></td>
         </tr>
     <% end %>
     </tbody>
