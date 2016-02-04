@@ -49,5 +49,7 @@ module CodeStore
     config.download_url_days_expires = 60
     config.absolute_site_url = 'http://10.11.50.132'
     config.adm_server = 'http://10.11.50.132:10000'
+    # load models into subfolders
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
   end
 end
