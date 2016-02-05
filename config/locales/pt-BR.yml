@@ -26,9 +26,9 @@ pt-BR:
         information: Informação
         select: Selecione ...
         script_file_accept_formats: Formato aceito = .edy
-        script_file_size: Máx 2MB
+        script_file_size: Máx 10MB
         pdf_file_accept_formats: Formato aceito = .pdf
-        pdf_file_size: Máx 2MB
+        pdf_file_size: Máx 10MB
         donwload_model: Donwload Modelo
         find_by: Busca por
         are_you_sure: Você tem certeza?
@@ -112,8 +112,8 @@ pt-BR:
           industry: Industria
           solution_type: Tipo Solução
           definition: Obs
-          script_file:  Arquivo Script
-          pdf_file: Arquivo PDF
+          script_file: Script
+          pdf_file: PDF
           id: Id
           price: Preço
           paper: Paper

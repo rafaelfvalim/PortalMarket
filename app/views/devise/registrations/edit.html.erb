@@ -1,23 +1,27 @@
 <%= render 'layouts/messages' %>
 
 <div class="wrapper wrapper-content animated fadeIn">
-  <h3><%= t 'labels.devise.edit'  %> <%= resource_name.to_s.humanize %></h3>
+  <h3><%= t 'labels.buttons.edit' %> <%= resource_name.to_s.humanize %></h3>
 
-  <div class="row">
+  <div class="row row-centered">
     <div class="col-lg-12">
-      <% unless @current_user.avatar_url.present? %>
-          <a href='#' data-toggle='modal' data-target='#avatar_modal'>
-            <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
-          </a>
-      <% else %>
-          <a href='#' data-toggle='modal' data-target='#avatar_modal'>
-            <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
-          </a>
-          <br>
-          <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
-              <i class="fa fa-trash"></i> <%= t 'labels.devise.remove'  %>
-          <% end %>
-      <% end %>
+      <div class="well">
+        <% unless @current_user.avatar_url.present? %>
+            <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+              <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+            </a>
+        <% else %>
+            <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+              <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
+            </a>
+            <br>
+            <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
+                <i class="fa fa-trash"></i> <%= t 'labels.devise.remove' %>
+            <% end %>
+        <% end %>
+        <br>
+        <smal>Clique sobre a imagem para alterar o avatar</smal>
+      </div>
     </div>
   </div>
 
@@ -52,7 +56,7 @@
           <% if current_user.is_contributor? %>
               <div class="row">
                 <div class="col-lg-6 ">
-                  <%= m.input :bank_id, collection: all_banks, label_method: :description, label:"#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
+                  <%= m.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
                 </div>
               </div>
               <div class="row">
@@ -127,10 +131,10 @@
           </div>
           <div class="row">
             <div class="col-lg-6">
-              <%= f.input :password ,label: "#{t 'labels.devise.password'}", class: 'form-control' %>
+              <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control' %>
             </div>
             <div class="col-lg-6">
-              <%= f.input :password_confirmation , label: "#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
+              <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -147,7 +151,7 @@
       <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4 text-center">
-          <%= f.submit t 'labels.buttons.update', :class => 'btn btn-success btn-lock' %>
+          <%= f.submit "#{t 'labels.buttons.update'}", :class => 'btn btn-success btn-lock' %>
         </div>
         <div class="col-lg-4"></div>
       </div>
@@ -176,6 +180,7 @@
         <%= simple_form_for @current_user, url: upload_avatar_users_path(id: @current_user.id), html: {id: 'upload_avatar', method: :put, multipart: true} do |u| %>
 
             <div class="row">
+
               <div class="col-lg-12 thumbnail">
                 <% unless @current_user.avatar_url.present? %>
                     <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
@@ -183,6 +188,7 @@
                     <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
                 <% end %>
               </div>
+
             </div>
             <div class="row">
               <div class="col-lg-12 ">
