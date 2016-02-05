@@ -7,12 +7,6 @@ class Script < ActiveRecord::Base
   validate :check_presence_of_script , :file_size_script
   validate :check_presence_of_pdf, :file_size_pdf
 
-  validates_integrity_of :script_file
-  validates_integrity_of :pdf_file
-  validates_processing_of :script_file
-  validates_processing_of :pdf_file
-
-
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 50}, presence: true
   validates :platform, presence: true
@@ -71,14 +65,14 @@ class Script < ActiveRecord::Base
   def file_size_pdf
     if self.pdf_file.size > 10.megabytes
       errors.add(:pdf_file, "PDF presecisa ser abaixo de  10MB")
-      errors.add(:script_file, "selecione novamente ") if self.pdf_file.size <= 0
+      errors.add(:script_file, "selecione novamente ") if self.script_file.size <= 0
     end
   end
 
   def file_size_script
     if self.script_file.size > 10.megabytes
       errors.add(:script_file, "Scrip presecisa ser abaixo de  10MB")
-      errors.add(:pdf_file, "selecione novamente ") if self.script_file.size <= 0
+      errors.add(:pdf_file, "selecione novamente ") if self.pdf_file.size <= 0
     end
   end
 
