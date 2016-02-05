@@ -65,7 +65,7 @@ class Script < ActiveRecord::Base
 
   def check_presence_of_pdf
     errors.add(:pdf_file, "selecione pelo menos um arquivo") if self.pdf_file.size <= 0
-    errors.add(:script_file, "selecione novamente ") if self.pdf_file.size <= 0
+    errors.add(:script_file, "selecione novamente ") if self.script_file.size <= 0
   end
 
   def file_size_pdf
@@ -76,9 +76,9 @@ class Script < ActiveRecord::Base
   end
 
   def file_size_script
-    if self.script_file.size > 2.megabytes
+    if self.script_file.size > 10.megabytes
       errors.add(:script_file, "Scrip presecisa ser abaixo de  10MB")
-      errors.add(:pdf_file, "selecione novamente ") if self.pdf_file.size <= 0
+      errors.add(:pdf_file, "selecione novamente ") if self.script_file.size <= 0
     end
   end
 
