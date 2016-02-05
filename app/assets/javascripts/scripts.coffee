@@ -2,15 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('#new_script').validate
-    rules:
-      'script[script_file]':
-        required: true
-        extension: "edy"
-      'script[pdf_file]':
-        required: true
-        extension: "pdf"
-
 #  Autocomplete
   $('#requeriment').autocomplete
     source: (request, response) ->

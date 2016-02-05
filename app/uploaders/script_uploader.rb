@@ -5,7 +5,7 @@ class ScriptUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-
+  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -39,7 +39,7 @@ class ScriptUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
    def extension_white_list
-     %w(edy)
+     %w(edy EDY)
    end
 
   # Override the filename of the uploaded files:
