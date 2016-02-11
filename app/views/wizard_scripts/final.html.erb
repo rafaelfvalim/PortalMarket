@@ -1,3 +1,4 @@
+<%= render 'layouts/messages' %>
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
@@ -6,15 +7,16 @@
         <div class="col-lg-12">
           <div class="pull-left">
             <%= link_to previous_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
-                <i class="fa fa-chevron-left"></i> <%=t 'labels.buttons.back' %>
+                <i class="fa fa-chevron-left"></i> <%= t 'labels.buttons.back' %>
             <% end %>
           </div>
           <div class="pull-right">
-            <%= link_to  "#{t 'labels.buttons.save'}",update_status_scripts_path(id: @script.id), :class => 'btn btn-primary', :id=> 'save_final_step' %>
+            <%= link_to "#{t 'labels.buttons.save'}", update_status_scripts_path(id: @script.id, step: 'final'), :class => 'btn btn-primary', :id => 'save_final_step' %>
           </div>
         </div>
       </div>
       <br>
+
       <div class="ibox">
         <div class="ibox-content">
           <div class="row">
@@ -31,7 +33,7 @@
                 <% @script.member_scripts.each do |ms| %>
                     <dd><%= "#{ms.member.member_name} #{ms.member.member_last_name}  " %></dd>
                 <% end %>
-                <dt><%= t 'labels.final.messages'%>:</dt>
+                <dt><%= t 'labels.final.messages' %>:</dt>
                 <dd>0</dd>
                 <dt><%= t 'labels.final.version' %>:</dt>
                 <dd> v1</dd>
@@ -41,7 +43,7 @@
               <dl class="dl-horizontal">
                 <dt><%= t 'labels.final.last_update' %>:</dt>
                 <dd><%= format_date(@script.updated_at) %></dd>
-                <dt><%= t'labels.final.created' %></dt>
+                <dt><%= t 'labels.final.created' %></dt>
                 <dd><%= format_date(@script.created_at) %></dd>
               </dl>
             </div>
@@ -52,69 +54,20 @@
                 <div class="panel-heading">
                   <div class="panel-options">
                     <ul class="nav nav-tabs">
-                      <li class="active"><a href="#tab-1" data-toggle="tab">Script</a></li>
-                      <li class=""><a href="#tab-2" data-toggle="tab"><%= t 'labels.final.classification'%></a></li>
-                      <li class=""><a href="#tab-3" data-toggle="tab"><%= t 'labels.final.requeriment_scripts'%></a></li>
-                      <li class=""><a href="#tab-4" data-toggle="tab"><%= t 'labels.final.related_scripts'%></a></li>
-                      <li class=""><a href="#tab-5" data-toggle="tab"><%= t 'labels.final.define_participation'%></a></li>
+                      <li class="active"><a href="#tab-0" data-toggle="tab"><%= t 'labels.final.define_participation' %></a>
+                      </li>
+                      <li class=""><a href="#tab-1" data-toggle="tab">Script</a></li>
+                      <li class=""><a href="#tab-2" data-toggle="tab"><%= t 'labels.final.classification' %></a></li>
+                      <li class=""><a href="#tab-3" data-toggle="tab"><%= t 'labels.final.requeriment_scripts' %></a>
+                      </li>
+                      <li class=""><a href="#tab-4" data-toggle="tab"><%= t 'labels.final.related_scripts' %></a></li>
+
                     </ul>
                   </div>
                 </div>
                 <div class="panel-body">
                   <div class="tab-content">
-                    <div class="tab-pane active" id="tab-1">
-                      <div class="col-lg-8">
-                        <dl class="dl-horizontal">
-                          <dt><%= t 'labels.script_attributes.definition'%>:</dt>
-                          <dd><%= @script.definition %></dd>
-                          <dt><%= t 'labels.script_attributes.long_description'%>:</dt>
-                          <dd><%= @script.long_text %></dd>
-                          <dt><%= t 'labels.script_attributes.platform'%>:</dt>
-                          <dd> <%= @script.platform %></dd>
-                          <dt><%= t 'labels.script_attributes.industry'%>:</dt>
-                          <dd> <%= @script.industry %></dd>
-                          <dt><%= t 'labels.script_attributes.solution_type'%>:</dt>
-                          <dd> <%= @script.solution_type_id %></dd>
-                        </dl>
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="tab-2">
-                      <div class="col-lg-8">
-                        <dl class="dl-horizontal">
-                          <dd>Process:</dd>
-                          <%= render 'breadcrumb_value_chain' %>
-                        </dl>
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="tab-3">
-                      <div class="col-lg-8">
-                        <dl class="dl-horizontal">
-                          <% if @script.requirements.size > 0 %>
-                              <% @script.requirements.each do |requirement| %>
-                                  <% unless requirement.id.present? %>
-                                      <dd><%= requirement.requirement %></dd>
-                                  <% else %>
-                                      <dt><%= requirement.script_id_requirement %></dt>
-                                      <dd><%= requirement.script.name %></dd>
-                                  <% end %>
-                              <% end %>
-                          <% end %>
-                        </dl>
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="tab-4">
-                      <div class="col-lg-8">
-                        <dl class="dl-horizontal">
-                          <% if @script.related_scripts.size > 0 %>
-                              <% @script.related_scripts.each do |r| %>
-                                  <dt><%= r.script.id %></dt>
-                                  <dd><%= r.script.name %></dd>
-                              <% end %>
-                          <% end %>
-                        </dl>
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="tab-5">
+                    <div class="tab-pane fade in active" id="tab-0">
                       <div class="row">
                         <div class="col-lg-12">
                           <%= raw t 'labels.final.participation_header' %>
@@ -128,11 +81,11 @@
                           </div>
                         </div>
                         <!--<div class="col-lg-6">-->
-                          <!--<input type="button" value="Equalize %" class="btn btn-success" onclick="equalize_percentual();">-->
+                        <!--<input type="button" value="Equalize %" class="btn btn-success" onclick="equalize_percentual();">-->
                         <!--</div>-->
                         <div class="col-lg-12">
                           <hr>
-                          <%= raw t 'labels.final.search_pariticipation_helper'%>
+                          <%= raw t 'labels.final.search_pariticipation_helper' %>
                           <%= form_tag request.path, method: :get, remote: true do %>
                               <div class="input-group">
                                 <%= text_field_tag :search, params[:search], class: 'form-control', id: 'query_search' %>
@@ -157,11 +110,64 @@
                           <div id="participation">
                             <%= render partial: "participation_list", locals: {script: @script, members_participation: @members_participation} %>
                           </div>
+
                         </div>
 
                         <hr>
                       </div>
 
+                    </div>
+                    <div class="tab-pane fade in" id="tab-1">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dt><%= t 'labels.script_attributes.definition' %>:</dt>
+                          <dd><%= @script.definition %></dd>
+                          <dt><%= t 'labels.script_attributes.long_description' %>:</dt>
+                          <dd><%= @script.long_text %></dd>
+                          <dt><%= t 'labels.script_attributes.platform' %>:</dt>
+                          <dd> <%= @script.platform %></dd>
+                          <dt><%= t 'labels.script_attributes.industry' %>:</dt>
+                          <dd> <%= @script.industry %></dd>
+                          <dt><%= t 'labels.script_attributes.solution_type' %>:</dt>
+                          <dd> <%= @script.solution_type_id %></dd>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade in" id="tab-2">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <dd>Process:</dd>
+                          <%= render 'breadcrumb_value_chain' %>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade in" id="tab-3">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <% if @script.requirements.size > 0 %>
+                              <% @script.requirements.each do |requirement| %>
+                                  <% unless requirement.id.present? %>
+                                      <dd><%= requirement.requirement %></dd>
+                                  <% else %>
+                                      <dt><%= requirement.script_id_requirement %></dt>
+                                      <dd><%= requirement.script.name %></dd>
+                                  <% end %>
+                              <% end %>
+                          <% end %>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade in" id="tab-4">
+                      <div class="col-lg-8">
+                        <dl class="dl-horizontal">
+                          <% if @script.related_scripts.size > 0 %>
+                              <% @script.related_scripts.each do |r| %>
+                                  <dt><%= r.script.id %></dt>
+                                  <dd><%= r.script.name %></dd>
+                              <% end %>
+                          <% end %>
+                        </dl>
+                      </div>
                     </div>
                   </div>
                 </div>

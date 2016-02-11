@@ -1,6 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update, :destroy_incomplete_script]
+  before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update, :destroy_incomplete_script, :update_status]
   before_action :user_active, if: :signed_in?
 
   # GET /scripts
@@ -198,9 +198,12 @@ class ScriptsController < ApplicationController
   end
 
   def update_status
+
     respond_to do |format|
-      @script = Script.find_by id: params[:id]
-      if @script.update_attribute(:status_id, 1)
+      if @script.member_scripts.sum(:percentual) < 100.0
+        format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id) , alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
+      else
+        @script.update_attribute(:status_id, 1)
         format.html { redirect_to contributor_members_path }
       end
     end

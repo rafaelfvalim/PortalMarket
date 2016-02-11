@@ -1,1 +1,0 @@
-(function(){$(function(){return $("#orchestration_form").validate({rules:{"status[id]":{required:!0}}})})}).call(this);

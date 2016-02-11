@@ -1,6 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('body').on 'click', '#participation .pagination a', (e) ->
+    e.preventDefault()
+    $.getScript @href
+    return false
 
 window.percentage_participation = (e) ->
   enable_save_final_step
@@ -16,6 +21,15 @@ window.percentage_participation = (e) ->
 
   return
 
+window.enable_save_final_step = () ->
+  total_percent = Number($('#total_percent').val())
+  alert total_percent
+  if total_percent == 100
+    $('#save_final_step').attr('disbled', 'false')
+  else
+    $('#save_final_step').attr('disbled', 'true')
+return
+
 #window.equalize_percentual = ()->
 #  i = 0
 #  $('#percent').find('input[type=text]').each ->
@@ -30,16 +44,10 @@ window.percentage_participation = (e) ->
 #    return
 #return
 
-window.enable_save_final_step = () ->
-  total_percent = Number($('#total_percent').val())
-  alert total_percent
-  if total_percent == 100
-    $('#save_final_step').attr('disbled', 'false')
-  else
-    $('#save_final_step').attr('disbled', 'true')
-return
 
-$ ->
+
+
+
 
 
 

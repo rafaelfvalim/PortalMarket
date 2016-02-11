@@ -1,1 +1,0 @@
-(function(){$(function(){return $("#master_user_form").validate({ignore:":hidden",rules:{"user[member_attributes][cpf]":{cpfBR:!0,required:!0},"user[member_attributes][cnpj]":{cnpj:!0,required:!0}}})})}).call(this);

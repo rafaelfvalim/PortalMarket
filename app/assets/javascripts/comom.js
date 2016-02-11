@@ -1,6 +1,5 @@
 var ready;
 ready = function () {
-
     //alert delay de mensagem de erro
     alert_delay();
 
@@ -13,7 +12,6 @@ ready = function () {
     $("#singup_form input[type='radio']").click(function () {
         form_singup_member($(this).val());
     });
-
 
 };
 

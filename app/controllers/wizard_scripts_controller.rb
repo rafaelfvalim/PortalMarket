@@ -126,6 +126,7 @@ class WizardScriptsController < ApplicationController
   end
 
   def search_company_controller(search, field = 'company_name')
+
     if search.present?
       @members_participation = Member.includes(:user).paginate(:page => params[:page], :per_page => 10).search_company(search, field)
     else

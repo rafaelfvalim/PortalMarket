@@ -1,1 +1,0 @@
-var Models={init:function(){return console.log("Init Models JS...")},Search:{init:function(){console.log("Init Models.Search JS...")}}};null==window.Upmin&&(window.Upmin={}),window.Upmin.Models=Models;

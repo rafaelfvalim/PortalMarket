@@ -47,8 +47,8 @@ module CodeStore
     config.downloads_path = "#{Rails.public_path}/downloads/"
     config.uploads_path = "#{Rails.public_path}/uploads/"
     config.download_url_days_expires = 60
-    config.absolute_site_url = 'http://10.11.50.132'
-    config.adm_server = 'http://10.11.50.132:10000'
+    config.absolute_site_url = 'http://10.11.50.154'
+    config.adm_server = 'http://10.11.50.154:10000'
     # load models into subfolders
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
   end
