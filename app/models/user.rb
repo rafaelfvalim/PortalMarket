@@ -7,12 +7,12 @@ class User < ActiveRecord::Base
 
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
-  has_many :workplaces, through: :member
+  has_many :workplaces, through: :member , dependent: :destroy
   has_many :member_scripts, through: :member , dependent: :destroy
   has_one :member_type, through: :member, autosave: true
-  has_many :invoice
+  has_many :invoice, dependent: :destroy
   belongs_to :address, dependent: :destroy
-  has_many :publications
+  has_many :publications, dependent: :destroy
   has_many :view_publications, dependent: :destroy
   has_many :function_data_types, dependent: :destroy
   has_many :function_transaction_types, dependent: :destroy

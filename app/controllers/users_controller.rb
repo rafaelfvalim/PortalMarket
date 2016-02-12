@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, only: [:index]
-  before_action :set_user, only: [:edit, :update, :show, :show_master_user, :edit_master_user,:update_master_user ,:remove_avatar, :upload_avatar, :resend_confirmation_email]
+  before_action :set_user, only: [:edit, :update, :show, :show_master_user, :edit_master_user, :update_master_user, :remove_avatar, :upload_avatar, :resend_confirmation_email]
   before_action :user_active, if: :signed_in?
 
   def self.default_timezone
@@ -88,8 +88,11 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    redirect_to users_path, :notice => "User deleted."
+    if user.destroy
+      redirect_to users_path, :notice => t('labels.user_messages.delete')
+    else
+      redirect_to users_path, :notice => t('labels.user_messages.delete_error')
+    end
   end
 
   def create_sub_user

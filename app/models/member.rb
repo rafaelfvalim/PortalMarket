@@ -4,7 +4,7 @@ class Member < ActiveRecord::Base
   has_many :member_scripts , dependent: :destroy
   has_many :checking_accounts , dependent: :destroy
   has_many :carts , dependent: :destroy
-  belongs_to :member_type , dependent: :destroy
+  belongs_to :member_type
   has_many :workplaces , dependent: :destroy
   belongs_to :bank
   accepts_nested_attributes_for :user
