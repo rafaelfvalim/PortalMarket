@@ -1,11 +1,11 @@
 class Member < ActiveRecord::Base
   after_initialize :init
   belongs_to :user
-  has_many :member_scripts
-  has_many :checking_accounts
-  has_many :carts
-  belongs_to :member_type
-  has_many :workplaces
+  has_many :member_scripts , dependent: :destroy
+  has_many :checking_accounts , dependent: :destroy
+  has_many :carts , dependent: :destroy
+  belongs_to :member_type , dependent: :destroy
+  has_many :workplaces , dependent: :destroy
   belongs_to :bank
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :member_type

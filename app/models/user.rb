@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
   has_many :workplaces, through: :member
+  has_many :member_scripts, through: :member , dependent: :destroy
   has_one :member_type, through: :member, autosave: true
   has_many :invoice
   belongs_to :address, dependent: :destroy
@@ -21,6 +22,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :invoice
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :publications
+  accepts_nested_attributes_for :member_scripts
   validates :email, confirmation: true
   #validate :validate_email_unique, on: :create
   #validate :validate_member_name_unique, on: :create
