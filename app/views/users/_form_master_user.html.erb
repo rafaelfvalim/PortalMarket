@@ -1,44 +1,14 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-striped table-condensed responsive" id="master-user-table" data-source="<%= master_user_ajax_users_path(current_user: current_user, format: :json) %>">
   <thead>
   <th>Id</th>
   <th><%= t 'labels.member_attributes.member_name' %></th>
   <th><%= t 'labels.member_attributes.company_name' %></th>
   <th>Email</th>
   <th>Status</th>
-  <th><%= t 'labels.member_attributes.confirmed' %></th>
-  <th colspan="3"></th>
+  <th>Confirmado?</th>
+  <th></th>
+  <th></th>
   </thead>
   <tbody>
-  <% @users.each do |user| %>
-      <tr>
-        <td>
-          <%= user.id %>
-        </td>
-        <td>
-          <%= user.full_name %>
-        </td>
-        <td>
-          <%= user.member.company_name %>
-        </td>
-        <td>
-          <%= link_to user.email, user %>
-        </td>
-        <td>
-          <%= user.status %>
-        </td>
-        <td>
-          <%= user.confirmed_at.present? %>
-        </td>
-        <td>
-          <%= link_to("#{t 'labels.buttons.edit'}", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
-        </td>
-        <td>
-          <%= link_to("#{t 'labels.buttons.delete'}", user_path(user), :data => {:confirm => "#{t 'labels.are_you_sure'}"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
-        </td>
-        <td>
-        </td>
-      </tr>
-  <% end %>
   </tbody>
 </table>
-<%= will_paginate @users %>

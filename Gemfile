@@ -56,9 +56,6 @@ gem 'rubyzip'
 gem 'maskedinput-rails'
 #https://github.com/markets/maily
 gem 'maily'
-#https://richonrails.com/articles/debugging-emails-with-mailcatcher
-gem 'mailcatcher', '~> 0.5.12'
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

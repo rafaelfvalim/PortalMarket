@@ -114,11 +114,16 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :master_user
+      get :show_master_user
+      get :edit_master_user
+      put :update_master_user
       get :master_registration
       post :create_sub_user
       get :remove_avatar
       put :upload_avatar
       get :resend_confirmation_email
+      get :master_user_ajax
+      get :admin_user_ajax
     end
   end
   resources :members do
@@ -138,7 +143,6 @@ Rails.application.routes.draw do
   %w( 404 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code
   end
-
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
   match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain

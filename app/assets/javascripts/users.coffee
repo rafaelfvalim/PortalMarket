@@ -11,3 +11,9 @@ $ ->
       'user[member_attributes][cnpj]':
         cnpj: true
         required: true
+  $('#master-user-table').dataTable
+    processing: true
+    serverSide: true
+    ajax: $('#master-user-table').data('source')
+    sPaginationType: 'full'
+    columnDefs: [ { orderable: false, targets: [6,7] } ]

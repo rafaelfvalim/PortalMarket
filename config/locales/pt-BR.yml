@@ -38,6 +38,14 @@ pt-BR:
   registration:
     successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para ativar sua conta!'
   labels:
+        user_messages:
+          update: 'Usuário atualizado com sucesso!'
+          save: 'Usuário salvo com sucesso!'
+          delete: 'Usuário deletado com sucesso!'
+          update_error: 'Não foi possível atulizar, contacte o administrador do portal Klusster'
+          save_error: 'Não foi possivel salvar, contacte o administrador do portal Klusster'
+          delete_error: 'Não foi possível excluir, contacte o administrador do portal Klusster'
+          acess_denied: 'Acesso negado!'
         contributors: Parceiro(s)
         information: Informação
         select: Selecione ...
@@ -86,9 +94,9 @@ pt-BR:
           publications_news: Novas
         nav_bar:
           edit_account: Editar Conta
-          adm_user: Adm Usuarios
+          my_team: Minha Equipe
           sql_admin: SqlAdmin
-          users: Usuários
+          users: Adm Usuários
         dash_incomplete: Incompletos!
         contributor:
           page_header: Dashboard Membros
@@ -267,8 +275,10 @@ pt-BR:
           city: Cidade
           state: Estado
           complement: Complemento
+        admin_user:
+          page_header: Administração de Usuários
         master_user:
-          page_header: Administração Usuários
+          page_header: Administrar Minha Equipe
         cart:
          page_header: Carrinho
          resume_cart: Verificar Compras

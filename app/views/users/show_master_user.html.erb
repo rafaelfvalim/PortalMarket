@@ -9,10 +9,12 @@
   <div class="row">
     <div class="col-md-12">
       <div class="pull-left">
-        <%= link_to users_path, class: 'btn btn-primary' do %>
-            Adm Usuários
+
+        <%= link_to master_user_users_path, class: 'btn btn-primary' do %>
+            <%= t 'labels.nav_bar.my_team' %>
         <% end %>
-        <%= link_to edit_user_path(@user), class: 'btn btn-primary' do %>
+
+        <%= link_to edit_master_user_users_path(id:@user.id), class: 'btn btn-primary' do %>
             <%= t 'labels.buttons.edit' %>
         <% end %>
       </div>

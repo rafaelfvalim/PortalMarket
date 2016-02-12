@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, :except => :show
-  before_action :set_user, only: [:edit, :update, :show, :remove_avatar, :upload_avatar, :resend_confirmation_email]
+  before_action :admin_only, only: [:index]
+  before_action :set_user, only: [:edit, :update, :show, :show_master_user, :edit_master_user,:update_master_user ,:remove_avatar, :upload_avatar, :resend_confirmation_email]
   before_action :user_active, if: :signed_in?
 
   def self.default_timezone
     :utc
   end
 
-
   def index
     if params[:search].present?
-      @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search],params[:attribute])
+      @users = User.paginate(:page => params[:page], :per_page => 30).search(params[:search], params[:attribute])
     else
       @users = User.all.paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     end
+
   end
 
   def resend_confirmation_email
@@ -23,21 +23,34 @@ class UsersController < ApplicationController
   end
 
   def show
-
     unless current_user.admin? || current_user.is_god?
-      unless @user == current_user
+      if @user.member.master_user_id != current_user.id
         redirect_to :back, :alert => "Access denied."
       end
     end
   end
 
+  def show_master_user
+
+  end
+
+  def edit_master_user
+  end
+
+  def update_master_user
+
+    if @user.update(secure_params)
+      redirect_to master_user_users_path, :notice => t('labels.user_messages.update')
+    else
+      redirect_to master_user_users_path, :alert => t('labels.user_messages.update_error')
+    end
+  end
+
   def update
     if @user.update(secure_params)
-      p 'user update'
-      redirect_to users_path, :notice => "User updated."
+      redirect_to users_path, :notice => t('labels.user_messages.update')
     else
-      p @user.errors
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to users_path, :alert => t('labels.user_messages.update_error')
     end
   end
 
@@ -46,6 +59,20 @@ class UsersController < ApplicationController
       @users = User.paginate(:page => params[:page], :per_page => 30).search_members(params[:search_members], params[:search_by], current_user)
     else
       @users = User.joins(:member).where("members.master_user_id = ?", current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    end
+  end
+
+  def master_user_ajax
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: MasterUserAdminDatatable.new(view_context, {current_user: current_user}) }
+    end
+  end
+
+  def admin_user_ajax
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: UserAdminDatatable.new(view_context) }
     end
   end
 

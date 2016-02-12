@@ -6,22 +6,11 @@
     </div>
   </div>
   <br>
-
   <div class="row">
     <div class="col-md-12">
       <%= link_to "#{t 'labels.user_attribures.new_user'}", master_registration_users_path, class: 'btn btn-success' %>
     </div>
   </div>
   <hr>
-  <%= form_tag request.path, :method => 'get' do %>
-      <% content_tag :label do %>
-          <%=t 'labels.search_by' %>:
-          <%= text_field_tag :search_members, params[:search] %>
-          <input type="radio" name="search_by" value="members.member_name" checked="true"><%= t 'labels.user_attribures.name' %>
-          <input type="radio" name="search_by" value="email">Email
-          <br>
-            <%= raw t 'labels.user_attribures.search_helper_user'%>
-      <% end %>
-  <% end %>
   <%= render 'form_master_user' %>
 </div>

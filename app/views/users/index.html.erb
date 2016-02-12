@@ -2,63 +2,23 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="row">
     <div class="col-md-12">
-      <h1><%= t 'labels.user_attribures.users' %> </h1>
+      <h1><%= t 'labels.admin_user.page_header'%> </h1>
     </div>
   </div>
   <hr>
-  <%= form_tag request.path, :method => 'get' do %>
-      <%= text_field_tag :search, params[:search] %>
-      <label> <%= t 'labels.find_by' %></label>
-      <label> Id:</label>
-      <input type="radio" checked="true" value="users.id" id="select_field1" name="attribute">
-      <label> Email:</label>
-      <input type="radio" checked="true" value="email" id="select_field2" name="attribute">
-      <label> Profile:</label>
-      <input type="radio" checked="false" value="member_types.description" id="select_field3" name="attribute">
-      <label> Status:</label>
-      <input type="radio" checked="false" value="status" id="select_field4" name="attribute">
-  <% end %>
   <br>
-  <table class="table table-bordered table-condensed responsive">
+  <table class="table table-striped table-condensed responsive" id="master-user-table" data-source="<%= admin_user_ajax_users_path(format: :json) %>">
     <thead>
     <th>Id</th>
-    <th><%= t 'labels.user_attribures.name' %></th>
-    <th>Profile</th>
+    <th><%= t 'labels.member_attributes.member_name' %></th>
+    <th><%= t 'labels.member_attributes.company_name' %></th>
     <th>Email</th>
     <th>Status</th>
-    <th colspan="2"></th>
+    <th>Confirmado?</th>
+    <th></th>
+    <th></th>
     </thead>
     <tbody>
-    <% @users.each do |user| %>
-        <tr>
-          <td>
-            <%= user.id %>
-          </td>
-          <td>
-            <%= user.full_name %>
-          </td>
-          <td>
-            <%= user.member.member_type.description.humanize %>
-          </td>
-          <td>
-            <%= link_to user.email, user %>
-          </td>
-          <td>
-            <% unless user == current_user %>
-                <%= form_for(user) do |f| %>
-                    <%= f.select(:status, User.statuses.keys.map { |status| [status.titleize, status] }) %>
-                    <%= f.submit "#{t 'labels.change_status'}", :class => 'button-xs' %>
-                <% end %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to("#{t 'labels.buttons.edit'}", edit_user_path(user), :class => 'btn btn-info btn-xs') unless user == current_user %>
-          </td>
-          <td>
-            <%= link_to("#{t 'labels.buttons.delete'}", user_path(user), :data => {:confirm => "#{t 'labels.are_you_sure'}"}, :method => :delete, :class => 'btn btn-danger btn-xs') unless user == current_user %>
-          </td>
-        </tr>
-    <% end %>
     </tbody>
   </table>
   <%= will_paginate @users %>

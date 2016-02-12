@@ -44,6 +44,9 @@ Rails.application.configure do
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
 
+  #http://www.rubydoc.info/gems/mailcatcher
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
