@@ -99,7 +99,7 @@ class ApplicationController < ActionController::Base
     end
 
     if controller_name == 'emails'
-      return 'application'
+      return 'empty'
     end
 
     if controller_name == 'errors'

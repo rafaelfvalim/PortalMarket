@@ -1,1 +1,0 @@
-(function(){window.readURL=function(a){return $("#upload_avatar").submit()}}).call(this);

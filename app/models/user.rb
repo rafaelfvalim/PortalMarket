@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :invoice
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :publications
+  validates :email, confirmation: true
   #validate :validate_email_unique, on: :create
   #validate :validate_member_name_unique, on: :create
   #validate :validate_member_cpf_unique, on: :create

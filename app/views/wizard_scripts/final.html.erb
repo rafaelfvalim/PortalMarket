@@ -11,7 +11,7 @@
             <% end %>
           </div>
           <div class="pull-right">
-            <%= link_to "#{t 'labels.buttons.save'}", update_status_scripts_path(id: @script.id, step: 'final'), :class => 'btn btn-primary', :id => 'save_final_step' %>
+            <%= link_to "#{t 'labels.buttons.save'}", update_status_scripts_path(id: @script.id, step: 'final'), :onclick => 'final_validations()',:class => 'btn btn-primary', :id => 'save_final_step' %>
           </div>
         </div>
       </div>

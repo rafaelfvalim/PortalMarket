@@ -1,1 +1,0 @@
-(function(){$(function(){return $("#invoice-table").dataTable({processing:!0,serverSide:!0,ajax:$("#invoice-table").data("source"),sPaginationType:"full"})})}).call(this);

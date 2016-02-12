@@ -28,10 +28,6 @@ class UsersController < ApplicationController
       unless @user == current_user
         redirect_to :back, :alert => "Access denied."
       end
-    else
-      if current_user.id != @user.member.master_user_id
-        redirect_to :back, :alert => "Access denied."
-      end
     end
   end
 

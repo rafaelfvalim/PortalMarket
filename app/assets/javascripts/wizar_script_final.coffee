@@ -7,6 +7,15 @@ $ ->
     $.getScript @href
     return false
 
+
+window.final_validations = () ->
+  if $('#total_percent').text() != '100.0'
+    $("#dialog_percent").dialog();
+    $('#modal-percent').modal('show')
+    $(window).scrollTop($('#tab-0').offset().top);
+    event.preventDefault();
+  return false;
+
 window.percentage_participation = (e) ->
   enable_save_final_step
   sum = Number(0)

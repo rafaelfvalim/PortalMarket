@@ -38,6 +38,7 @@ pt-BR:
   registration:
     successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para ativar sua conta!'
   labels:
+        contributors: Parceiro(s)
         information: Informação
         select: Selecione ...
         script_file_accept_formats: Formato aceito = .edy
@@ -232,6 +233,7 @@ pt-BR:
          requeriment_scripts: Scripts Requeridos
          related_scripts: Scripts Relacionados
          define_participation: Definir Participação
+         participation: Participações
          participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
          search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa</small>'
         process_tracker:

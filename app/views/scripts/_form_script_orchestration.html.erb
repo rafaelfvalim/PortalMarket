@@ -4,6 +4,7 @@
     <th><input type="checkbox" id="check_all_orchestration" onclick="$('input:checkbox').not(this).prop('checked', this.checked)"></th>
     <th><%= t 'labels.script_attributes.code'%></th>
     <th><%= t 'labels.script_attributes.status'%></th>
+    <th><%= t 'labels.contributors'%></th>
     <th><%= t 'labels.script_attributes.name'%></th>
     <th><%= t 'labels.script_attributes.description'%></th>
     <th><%= t 'labels.script_attributes.platform'%></th>
@@ -18,6 +19,7 @@
         <td><%= check_box_tag "script_ids[]", script.id %></td>
         <td><%= script.id %></td>
         <td><%= script.status.description %></td>
+        <td><%= script.member_scripts.map(&:member).map{|m| link_to "#{m.company_name}-#{m.cnpj}" , user_path(m.user) }.join('<br>').html_safe %></td>
         <td><%= script.name %></td>
         <td><%= script.description %></td>
         <td><%= script.platform %></td>
