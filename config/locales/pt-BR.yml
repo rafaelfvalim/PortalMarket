@@ -78,6 +78,7 @@ pt-BR:
         tel: '+55 11 3333-4454'
         email:
           resent_confirmation : Reenviar email de confirmação
+          confirmation_instructions : Um outro email vou enviado com o link de confirmação
         menu:
           find_solutions: Buscar Scripts
           dash_board: Dashboard
@@ -288,7 +289,7 @@ pt-BR:
          to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
          to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
         devise:
-          resend_confirmation_instrucions: Reenviar instruções de confirmação
+          resend_confirmation_instrucions: Reenviar link de confirmação
           password: Senha
           current_password: Senha atual
           new_password: Nova senha
