@@ -294,10 +294,10 @@ pt-BR:
           new_password: Nova senha
           confirm_password: Confirmar Senha
           change_passwrod: Alterar minha senha
-          forgot_password:  '<h3>Esqueceu sua senha?</h3><p>Enviaremos as instruções de reset.</p>'
+          forgot_password:  '<p>Enviaremos o link para redefinir a sua senha.</p>'
           forgot_password_login: Esqueceu a senha?
           resend_confiramtion_login: Reenviar confirmação?
-          reset_password: Resetar Senha
+          reset_password: Redefinir Senha
           edit: Editar
           remove: Remover
           alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
