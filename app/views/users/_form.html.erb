@@ -13,15 +13,8 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <%= f.text_field :id, readonly: :true, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.fields_for :member_type do |mt| %>
-            <%= mt.text_field :description , readonly: !current_user.is_god?, class: 'form-control' %>
-        <% end %>
       </div>
     </div>
     <div class="row">
@@ -32,11 +25,10 @@
 
     <%= f.fields_for :member do |m| %>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <%= m.collection_select :member_type_id, MemberType.all, :id, :description, {label: "#{t 'labels.member_attributes.member_type'}"} %>
           </div>
         </div>
-        <% if @user.member_type.id == 1 %>
             <div class="row">
               <div class="col-md-6">
                 <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
@@ -66,7 +58,6 @@
                 <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
               </div>
             </div>
-        <% else %>
             <div class="row">
               <div class="col-md-12">
                 <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
@@ -77,7 +68,6 @@
                 <%= m.text_field :cnpj, class: 'form-control' %>
               </div>
             </div>
-        <% end %>
         <%= f.fields_for :address do |a| %>
             <div class="row">
               <div class="col-md-2">

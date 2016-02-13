@@ -7,6 +7,7 @@ class MasterUserAdminDatatable < AjaxDatatablesRails::Base
   def_delegator :@view, :humanize
   def_delegator :@view, :show_master_user_users_path
   def_delegator :@view, :destroy_master_user_users_path
+  def_delegator :@view, :simple_form_for
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -42,7 +43,9 @@ class MasterUserAdminDatatable < AjaxDatatablesRails::Base
           record.full_name,
           record.member.company_name,
           record.email,
-          "<b>#{record.status.humanize}</b>".html_safe,
+          simple_form_for(record) do |u|
+            u.input :status, as: :select, :collection => User.statuses.keys.to_a, label: false, include_blank: false, :input_html => {:onchange => "this.form.submit();"}
+          end,
           if record.confirmed_at.present?
             '<i class="fa fa-check" style="color: green;"></i>'.html_safe
           else
@@ -52,7 +55,7 @@ class MasterUserAdminDatatable < AjaxDatatablesRails::Base
             link_to("Show", show_master_user_users_path(id: record.id), :class => 'btn btn-info btn-xs')
           end,
           unless record.id == options[:current_user].id
-            link_to("Delete", destroy_master_user_users_path(id: record.id), :data => {:confirm => "Deseja excluir usuário?"}, :method => :get, :class => 'btn btn-danger btn-xs')
+            link_to("Delete", destroy_master_user_users_path(id: record.id), :data => {:confirm => "Deseja excluir usuário?"}, :method => :get, :class => 'btn btn-danger btn-xs', disabled: true)
           end
       ]
     end
