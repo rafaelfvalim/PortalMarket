@@ -6,6 +6,7 @@ class MasterUserAdminDatatable < AjaxDatatablesRails::Base
   def_delegator :@view, :html_safe
   def_delegator :@view, :humanize
   def_delegator :@view, :show_master_user_users_path
+  def_delegator :@view, :destroy_master_user_users_path
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -48,10 +49,10 @@ class MasterUserAdminDatatable < AjaxDatatablesRails::Base
             '<i class="fa fa-times" style="color: red;"></i>'.html_safe
           end,
           unless record.id == options[:current_user].id
-            link_to("Show", show_master_user_users_path(id:record.id), :class => 'btn btn-info btn-xs')
+            link_to("Show", show_master_user_users_path(id: record.id), :class => 'btn btn-info btn-xs')
           end,
           unless record.id == options[:current_user].id
-            link_to("Delete", user_path(record), :data => {:confirm => "Deseja excluir usuário?"}, :method => :delete, :class => 'btn btn-danger btn-xs')
+            link_to("Delete", destroy_master_user_users_path(id: record.id), :data => {:confirm => "Deseja excluir usuário?"}, :method => :get, :class => 'btn btn-danger btn-xs')
           end
       ]
     end

@@ -14,7 +14,7 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
         'Member.company_name',
         'User.email',
         'User.status',
-        'User.confirmed_at..present?'
+        'User.confirmed_at'
     ]
   end
 

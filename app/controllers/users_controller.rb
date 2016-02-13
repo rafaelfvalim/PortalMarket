@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, only: [:index]
+  before_action :admin_only, only: [:index ]
   before_action :set_user, only: [:edit, :update, :show, :show_master_user, :edit_master_user, :update_master_user, :remove_avatar, :upload_avatar, :resend_confirmation_email]
   before_action :user_active, if: :signed_in?
 
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def update_master_user
-
     if @user.update(secure_params)
       redirect_to master_user_users_path, :notice => t('labels.user_messages.update')
     else
@@ -92,6 +91,15 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => t('labels.user_messages.delete')
     else
       redirect_to users_path, :notice => t('labels.user_messages.delete_error')
+    end
+  end
+
+  def destroy_master_user
+    user = User.find(params[:id])
+    if user.destroy
+      redirect_to master_user_users_path, :notice => t('labels.user_messages.delete')
+    else
+      redirect_to master_user_users_path, :notice => t('labels.user_messages.delete_error')
     end
   end
 

@@ -118,6 +118,7 @@ Rails.application.routes.draw do
       get :edit_master_user
       put :update_master_user
       get :master_registration
+      get :destroy_master_user
       post :create_sub_user
       get :remove_avatar
       put :upload_avatar

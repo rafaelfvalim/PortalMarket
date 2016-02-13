@@ -82,9 +82,6 @@
         <div class="col-lg-6 ">
           <%= f.input :email, class: 'form-control' %>
         </div>
-        <div class="col-lg-6 ">
-          <%= f.input :email_confirmation, class: 'form-control' %>
-        </div>
       </div>
       <%= f.fields_for :address, @user.address do |address| %>
           <div class="row">
