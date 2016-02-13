@@ -13,61 +13,65 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <%= f.text_field :id, readonly: :true, class: 'form-control' %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.text_field :email, class: 'form-control' %>
+    <div class="well">
+      <div class="row">
+        <div class="col-md-12">
+          <small>Por medida de segurança, qualquer alteração de email o sistema enviará um novo email de confirmação
+          </small>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
       </div>
     </div>
 
     <%= f.fields_for :member do |m| %>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <%= m.collection_select :member_type_id, MemberType.all, :id, :description, {label: "#{t 'labels.member_attributes.member_type'}"} %>
           </div>
         </div>
-            <div class="row">
-              <div class="col-md-6">
-                <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
-              </div>
-              <div class="col-md-6">
-                <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "#{t 'labels.member_attributes.bank'}"} %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-2">
-                <%= m.text_field :bank_ag, label: "#{t 'labels.member_attributes.bank_ag'}", class: 'form-control' %>
-              </div>
-              <div class="col-md-8">
-                <%= m.text_field :bank_cc, label: "#{t 'labels.member_attributes.bank_cc'}", class: 'form-control' %>
-              </div>
-              <div class="col-md-2">
-                <%= m.text_field :bank_cc_digit, label: "#{t 'labels.member_attributes.bank_cc_dg'}", class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <%= m.text_field :cnpj, class: 'form-control' %>
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
+          </div>
+          <div class="col-md-6">
+            <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= m.collection_select :bank_id, Bank.all, :id, :description, {label: "#{t 'labels.member_attributes.bank'}"} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <%= m.text_field :bank_ag, label: "#{t 'labels.member_attributes.bank_ag'}", class: 'form-control' %>
+          </div>
+          <div class="col-md-8">
+            <%= m.text_field :bank_cc, label: "#{t 'labels.member_attributes.bank_cc'}", class: 'form-control' %>
+          </div>
+          <div class="col-md-2">
+            <%= m.text_field :bank_cc_digit, label: "#{t 'labels.member_attributes.bank_cc_dg'}", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= m.text_field :cnpj, class: 'form-control' %>
+          </div>
+        </div>
         <%= f.fields_for :address do |a| %>
             <div class="row">
               <div class="col-md-2">
