@@ -1,109 +1,121 @@
 <%= render 'layouts/messages' %>
 <div class="row wrapper border-bottom white-bg page-heading">
-  <div class="row">
-    <div class="col-md-12">
-      <h1><%= t 'labels.user_attribures.user' %> </h1>
-    </div>
+  <div class="col-lg-10">
+    <h2>Profile</h2>
+    <%= link_to master_user_users_path, class: 'btn btn-primary' do %>
+        Adm Usuários
+    <% end %>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="pull-left">
-
-        <%= link_to master_user_users_path, class: 'btn btn-primary' do %>
-            <%= t 'labels.nav_bar.my_team' %>
-        <% end %>
-
-        <%= link_to edit_master_user_users_path(id:@user.id), class: 'btn btn-primary' do %>
-            <%= t 'labels.buttons.edit' %>
-        <% end %>
-      </div>
-      <div class="pull-right">
-        <% if @user.is_my_master(current_user) %>
-            <%= link_to "#{t 'labels.email.resent_confirmation'}", resend_confirmation_email_users_path(id: @user.id), class: 'btn btn-primary' %>
-        <% end %>
+</div>
+<div class="wrapper wrapper-content">
+  <div class="row animated fadeInRight">
+    <div class="col-md-4">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Detalhes</h5>
+        </div>
+        <div>
+          <div class="ibox-content no-padding border-left-right">
+            <% if @user.avatar_url.present? %>
+                <img alt="image" class="img-responsive" src="<%= @user.avatar_url %>">
+            <% end %>
+          </div>
+          <div class="ibox-content profile-content">
+            <h4><strong><%= @user.full_name %></strong></h4>
+            <!--<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>-->
+            <!--<h5>-->
+            <!--About me-->
+            <!--</h5>-->
+            <!--<p>-->
+            <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.-->
+            <!--</p>-->
+            <div class="user-button">
+              <div class="row">
+                <div class="col-md-4">
+                  <%= link_to edit_master_user_users_path(id: @user), class: 'btn btn-primary btn-sm' do %>
+                      <%= t 'labels.buttons.edit' %>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <% if @user.is_my_master(current_user) %>
+                      <%= link_to "#{t 'labels.email.resent_confirmation'}", resend_confirmation_email_users_path(id: @user.id), class: 'btn btn-primary btn-sm' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <br>
+    <div class="col-md-8">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Dados</h5>
 
-  <div class="row">
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div>
+            <div class="client-detail">
+              <div class="full-height-scroll">
 
-    <div class="col-md-6">
-      <p>
-      <h4><strong>Email: </strong> <%= @user.email if @user.email %></h4>
-      </p>
-      <hr>
-      <p>
-      <h4><strong>Email Não Confirmado: </strong> <%= @user.unconfirmed_email if @user.email %></h4>
-      </p>
-      <hr>
-      <p>
-      <h4><strong><%= t 'labels.member_attributes.member_type' %>: </strong> <%= @user.member.member_type.description %>
-      </h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.member_attributes.member_name' %>: </strong> <%= @user.full_name %></h4></p>
-      <hr>
+                <ul class="list-group clear-list">
+                  <li class="list-group-item fist-item"><strong>Email: </strong> <%= @user.email if @user.email %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_type' %>: </strong></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_name' %>: </strong> <%= @user.full_name %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.bank' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank.description %></li>
+                  <li class="list-group-item"><strong> <%= t 'labels.member_attributes.bank_ag' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_ag %></h4></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.bank_cc' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_cc %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.bank_cc_dg' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_cc_digit %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.cpf' %>: </strong> <%= @user.member.cpf %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.cnpj' %>: </strong> <%= @user.member.cnpj %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.company_name' %>: </strong> <%= @user.member.company_name %></li>
+                  <li class="list-group-item"><strong>Created at: </strong> <%= @user.created_at %></li>
+                  <li class="list-group-item"><strong>Updated at: </strong> <%= @user.updated_at %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.cpf' %>? : </strong> <%= @user.confirmed_at.present? ? 'yes' : 'no' %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.confirmed' %> At : </strong> <%= @user.confirmed_at %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.current_sign' %>: </strong> <%= @user.current_sign_in_at %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.last_sign' %>: </strong> <%= @user.last_sign_in_at %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.last_sign' %>: </strong> <%= @user.last_sign_in_ip %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.last_sign_ip' %>: </strong> <%= @user.last_sign_in_ip %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.confirmation_token' %>: </strong> <%= @user.confirmation_token %></li>
+                  <% if @user.address.present? %>
+                      <li class="list-group-item"><strong><%= t 'labels.address_attribures.zip_code' %>: </strong> <%= @user.address.zip_code %></li>
+                      <li class="list-group-item"><strong><%= t 'labels.address_attribures.patio' %>: </strong> <%= @user.address.patio %></li>
+                      <li class="list-group-item"><strong><%= t 'labels.address_attribures.neighbordhood' %>: </strong> <%= @user.address.neighborhood %></li>
+                      <li class="list-group-item"><strong><%= t 'labels.address_attribures.city' %>: </strong> <%= @user.address.city %></li>
+                      <li class="list-group-item"><strong><%= t 'labels.address_attribures.state' %>: </strong> <%= @user.address.state %></li>
+                  <% end %>
+                </ul>
+                <!--<strong>Notes</strong>-->
+                <!--<p>-->
+                <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+                <!--tempor incididunt ut labore et dolore magna aliqua.-->
+                <!--</p>-->
+              </div>
+            </div>
+          </div>
 
-      <p><h4><strong><%= t 'labels.member_attributes.bank' %>
-      : </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank.description %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.member_attributes.bank_ag' %>
-      : </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_ag %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.member_attributes.bank_cc' %>
-      : </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_cc %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.member_attributes.bank_cc_dg' %>
-      : </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_cc_digit %></h4></p>
-      <hr>
-
-      <p><h4><strong><%= t 'labels.member_attributes.cpf' %>: </strong> <%= @user.member.cpf %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.member_attributes.cnpj' %>: </strong> <%= @user.member.cnpj %></h4></p>
-      <hr>
-      <p>
-      <h4><strong><%= t 'labels.member_attributes.company_name' %>: </strong> <%= @user.member.company_name %></h4></p>
-      <hr>
-      <p><h4><strong>Created at: </strong> <%= @user.created_at %></h4></p>
-      <hr>
-      <p><h4><strong>Updated at: </strong> <%= @user.updated_at %></h4></p>
-      <hr>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <p>
-      <h4>
-        <strong><%= t 'labels.member_attributes.cpf' %>? : </strong> <%= @user.confirmed_at.present? ? 'yes' : 'no' %>
-      </h4></p>
-      <hr>
-      <h4>
-        <strong><%= t 'labels.user_attribures.confirmed' %> At : </strong> <%= @user.confirmed_at %>
-      </h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.user_attribures.current_sign' %>: </strong> <%= @user.current_sign_in_at %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.user_attribures.last_sign' %>: </strong> <%= @user.last_sign_in_at %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.user_attribures.last_sign' %>: </strong> <%= @user.last_sign_in_ip %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.user_attribures.last_sign_ip' %>: </strong> <%= @user.last_sign_in_ip %></h4></p>
-      <hr>
-      <p><h4><strong><%= t 'labels.user_attribures.confirmation_token' %>: </strong> <%= @user.confirmation_token %>
-    </h4></p>
-      <hr>
-      <% if @user.address.present? %>
-          <p><h4><strong><%= t 'labels.address_attribures.zip_code' %>: </strong> <%= @user.address.zip_code %></h4></p>
-          <hr>
-          <p><h4><strong><%= t 'labels.address_attribures.patio' %>: </strong> <%= @user.address.patio %></h4></p>
-          <hr>
-          <p><h4><strong><%= t 'labels.address_attribures.neighbordhood' %>: </strong> <%= @user.address.neighborhood %>
-    </h4></p>
-          <hr>
-          <p><h4><strong><%= t 'labels.address_attribures.city' %>: </strong> <%= @user.address.city %></h4></p>
-          <hr>
-          <p><h4><strong><%= t 'labels.address_attribures.state' %>: </strong> <%= @user.address.state %></h4></p>
-          <hr>
-      <% end %>
+    <div class="col-md-8">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Atividades</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+        </div>
+      </div>
     </div>
   </div>
 </div>
