@@ -86,21 +86,25 @@ class UsersController < ApplicationController
   end
 
   def destroy
+
     user = User.find(params[:id])
     if user.destroy
       redirect_to users_path, :notice => t('labels.user_messages.delete')
     else
       redirect_to users_path, :notice => t('labels.user_messages.delete_error')
     end
+
   end
 
   def destroy_master_user
+
     user = User.find(params[:id])
     if user.destroy
       redirect_to master_user_users_path, :notice => t('labels.user_messages.delete')
     else
       redirect_to master_user_users_path, :notice => t('labels.user_messages.delete_error')
     end
+
   end
 
   def create_sub_user

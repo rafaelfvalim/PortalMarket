@@ -5,6 +5,7 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
   def_delegator :@view, :user_path
   def_delegator :@view, :html_safe
   def_delegator :@view, :humanize
+  def_delegator :@view, :simple_form_for
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -40,7 +41,9 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
           record.full_name,
           record.member.company_name,
           record.email,
-          "<b>#{record.status.humanize}</b>".html_safe,
+          simple_form_for(record) do |u|
+            u.input :status, as: :select, :collection => User.statuses.keys.to_a, label: false, include_blank: false, :input_html => {:onchange => "this.form.submit();"}
+          end,
           if record.confirmed_at.present?
             '<i class="fa fa-check" style="color: green;"></i>'.html_safe
           else

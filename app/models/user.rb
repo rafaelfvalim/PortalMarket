@@ -2,13 +2,13 @@ class User < ActiveRecord::Base
   #enum standart do devise de role - não utilizado no sistema
   enum role: [:user, :vip, :admin, :god]
   # enum de status self.ativo? , self.inativo?
-  enum status: {inativo: 'inativo', ativo: 'ativo', cancelado: 'cancelado'}
+  enum status: {inativo: 'inativo', ativo: 'ativo', bloqueado: 'bloqueado'}
   after_initialize :set_default_role, :if => :new_record?
 
   has_many :messages
   has_one :member, dependent: :destroy, autosave: true
-  has_many :workplaces, through: :member , dependent: :destroy
-  has_many :member_scripts, through: :member , dependent: :destroy
+  has_many :workplaces, through: :member, dependent: :destroy
+  has_many :member_scripts, through: :member, dependent: :destroy
   has_one :member_type, through: :member, autosave: true
   has_many :invoice, dependent: :destroy
   belongs_to :address, dependent: :destroy
@@ -146,6 +146,22 @@ class User < ActiveRecord::Base
         errors.add(:company_name, 'format not permited')
       end
     end
+  end
+
+
+  def active_for_authentication?
+    super && self.permit_login # i.e. super && self.is_active
+  end
+
+  def inactive_message
+     I18n.t("labels.user_messages.user_block").html_safe
+  end
+
+  def permit_login
+    if self.bloqueado?
+      return false
+    end
+    return true
   end
 
 end
