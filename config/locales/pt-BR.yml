@@ -140,8 +140,8 @@ pt-BR:
           id: Id
           price: Preço
           paper: Paper
-          requirements: Requeridos
-          process: Processos
+          requirements: Requesitos
+          process: Cadeia de Processos
           contributor: Colaborador
           script_id: Script Id
           script_name: Script Name
@@ -206,7 +206,7 @@ pt-BR:
                                                        </h5>'
           search_scripts:  '<smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span>
                                     </smal>'
-          requirements: Requeridos
+          requirements: Requisitos
           related: Relatados
           description: Descrição
         user_attribures:
@@ -286,7 +286,7 @@ pt-BR:
         show_product:
          related_scripts: Scripts Relacionados
          requirement_scripts: Scripts Requeridos
-         to_organization: <strong> Para organização:<small> * sistema onde você irá instalar o script </ small></ strong>
+         to_organization: <strong>Para a Empresa:<small> * Informe um apelido e o numero do sistema onde o script irá ser instalado </ small></ strong>
          to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
         devise:
           resend_confirmation_instrucions: Reenviar link de confirmação
