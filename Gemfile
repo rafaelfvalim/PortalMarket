@@ -56,6 +56,9 @@ gem 'rubyzip'
 gem 'maskedinput-rails'
 #https://github.com/markets/maily
 gem 'maily'
+#https://github.com/TwilightCoders/foo_table-rails
+gem 'foo_table-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

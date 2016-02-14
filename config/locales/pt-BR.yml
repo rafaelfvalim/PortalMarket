@@ -165,7 +165,7 @@ pt-BR:
             total_pages: Total Paginas
             contributor: Colaborador(es)
           filters:
-            process: Processos
+            process: Filtros de pesquisa
             clear: Limpar
         publications:
           page_header: Publicações

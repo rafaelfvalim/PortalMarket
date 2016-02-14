@@ -62,6 +62,8 @@ clearFilters = ->
 
 
 $ ->
+  $('.footable').footable();
+
   $("#link_show_process_filters").click () ->
     if $("#link_show_process_filters i").hasClass("fa fa-plus")
       $("#link_show_process_filters i").removeClass("fa fa-plus")
@@ -70,6 +72,9 @@ $ ->
       $("#link_show_process_filters i").removeClass("fa fa-minus")
       $("#link_show_process_filters i").addClass("fa fa-plus")
       clearFilters()
+    return
 
   $("#clear_filters").click () ->
     clearFilters()
+    return
+
