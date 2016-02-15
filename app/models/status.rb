@@ -7,5 +7,4 @@ class Status < ActiveRecord::Base
   VERIFICACAO_APROVADO = 5
   INICIAL = 6
 
-
 end

@@ -2,7 +2,7 @@
 <div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <h2> Status <%= @status.description %></h2>
+      <h2> Status:  <%= @status.description == 'Inicial' ? 'Incompleto' : @status.description %></h2>
     </div>
   </div>
   <hr>

@@ -16,14 +16,12 @@
     </div>
   </div>
   <br>
-
   <div class="row">
     <div class="col-md-12">
       <%= render 'status_script' %>
     </div>
   </div>
   <br>
-
   <div class="ibox">
     <div class="ibox-content">
       <div class="row">
@@ -82,7 +80,7 @@
                           <% @script.member_scripts.each do |m| %>
                               <%= "<li><b> #{m.member.company_name} </b>
                               <br> CNPJ: <b>  #{m.member.cnpj} </b>
-                              <br> Percentual: <b>  #{m.percentual}%</b> </li> ".html_safe %>
+                              <br> Percentual: <b>  #{m.percentual} %</b> </li> ".html_safe %>
                           <% end %>
                         </ul>
                       </div>
