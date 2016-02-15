@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       put :admin_update
       get :destroy_incomplete_script
       get :download_documento_modelo
+      get :contributor
     end
   end
   resources :member_scripts
@@ -132,7 +133,6 @@ Rails.application.routes.draw do
       get :contributor
       get :customer
       get :admin
-      get :contributor_incomplete_actions
       get :lounge
     end
   end

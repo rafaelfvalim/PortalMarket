@@ -2,7 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-#  Autocomplete
+  $('#contributors-table').dataTable
+    processing: true
+    serverSide: true
+    ajax: $('#master-user-table').data('source')
+    sPaginationType: 'full'
+    bAutoWidth: false,
+    columnDefs: [
+      {orderable: false, targets: [7]},
+    ]
+  #  Autocomplete
   $('#requeriment').autocomplete
     source: (request, response) ->
       $.ajax(
@@ -48,13 +57,12 @@ $ ->
 
     select: (event, ui) ->
       $("#related_script_related_script_id").val(ui.item.id);
-#    focus: (event , ui) ->
-#      console.log(ui)
-#      if ui != null
-#        defaultVal = ui.item.label;
-#      else
-#        defaultVal = ''
-#
-#    close:(event , ui) ->
-#      $("#related_script").val(defaultVal);
-
+  #    focus: (event , ui) ->
+  #      console.log(ui)
+  #      if ui != null
+  #        defaultVal = ui.item.label;
+  #      else
+  #        defaultVal = ''
+  #
+  #    close:(event , ui) ->
+  #      $("#related_script").val(defaultVal);

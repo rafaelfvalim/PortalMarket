@@ -19,7 +19,7 @@
                   <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', current_user.member.id).count %></h2>
                 </div>
               </div>
-              <hr>
+
               <div class="row">
                 <div class="col-xs-12 dash_links">
                   <%= link_to checking_accounts_path do %>

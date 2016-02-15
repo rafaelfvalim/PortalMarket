@@ -96,7 +96,7 @@ pt-BR:
           my_team: Minha Equipe
           sql_admin: SqlAdmin
           users: Adm Usuários
-        dash_incomplete: Incompletos!
+        dash_incomplete: Script(s) Incompletos!
         contributor:
           page_header: Dashboard Membros
           page_header_title:   "<h3>

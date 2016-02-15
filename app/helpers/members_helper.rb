@@ -17,6 +17,8 @@ module MembersHelper
         'fa fa-cogs fa-5x'
       when 5 then
         'fa fa-check-square-o fa-5x'
+      when 6 then
+        'fa fa-exclamation fa-5x'
     end
   end
   def dash_description(status)
@@ -33,7 +35,7 @@ module MembersHelper
         'Aprovado(s)'
       when 'Sem preço' then
         'Sem preço'
-      when 'Incompleto' then
+      when 'Inicial' then
         'Incompleto(s)'
     end
 
@@ -51,6 +53,8 @@ module MembersHelper
         'navy-bg'
       when 5 then #Aprovado
         'lazur-bg'
+      when 6 then #Gravado
+        'red-bg'
     end
   end
 

@@ -98,7 +98,6 @@ class ScriptsController < ApplicationController
   end
 
   def script_orchestration
-
     @scripts = Script.where(:status_id => params[:status_id]).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
     @status = Status.find(params[:status_id])
     @statuses = Status.where('id != ?', params[:status_id])
@@ -198,7 +197,6 @@ class ScriptsController < ApplicationController
   end
 
   def update_status
-
     respond_to do |format|
       if @script.member_scripts.sum(:percentual) < 100.0
         format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id) , alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
@@ -244,6 +242,14 @@ class ScriptsController < ApplicationController
     # )
     @file_name = "#{Rails.root}/public/uploads/documentos_portal/Documento_Geral_do_Script.docx"
     send_file(@file_name, :filename => "paper_modelo.docx")
+  end
+
+  def contributor
+    @status = Status.find(params[:status_id])
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: ScriptDatatable.new(view_context, params) }
+    end
   end
 
   private

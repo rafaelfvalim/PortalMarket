@@ -4,15 +4,15 @@ class Script < ActiveRecord::Base
   mount_uploader :pdf_file, PdfUploader
   mount_uploader :script_file, ScriptUploader
 
-  validate :check_presence_of_script , :file_size_script
+  validate :check_presence_of_script, :file_size_script
   validate :check_presence_of_pdf, :file_size_pdf
 
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 50}, presence: true
   validates :platform, presence: true
-  validates :definition , length: {minimum: 10, maximum: 200}, allow_blank: true
-  validates :long_text, length: {minimum: 10, maximum: 200} , allow_blank: true
-  validates :industry, presence: true , allow_blank: true
+  validates :definition, length: {minimum: 10, maximum: 200}, allow_blank: true
+  validates :long_text, length: {minimum: 10, maximum: 200}, allow_blank: true
+  validates :industry, presence: true, allow_blank: true
   #validates :solution_type_id, presence: true
   validates :complexity, presence: true
 
@@ -23,13 +23,14 @@ class Script < ActiveRecord::Base
   scope :search_import, -> { includes(:process_modules) }
 
   has_many :member_scripts, dependent: :destroy
+
   has_many :requirements, dependent: :destroy
   has_many :related_scripts, dependent: :destroy
   has_many :checking_account, dependent: :destroy
   has_many :members, through: :member_scripts
   has_one :price, dependent: :destroy
   has_many :carts, dependent: :destroy
-  has_many :value_chains, dependent:  :destroy
+  has_many :value_chains, dependent: :destroy
   has_many :process_modules, through: :value_chains
 
   has_many :function_data_types, dependent: :destroy
@@ -37,7 +38,7 @@ class Script < ActiveRecord::Base
 
   belongs_to :solution_type
   belongs_to :status
-  has_many :invoice,  :dependent => :destroy
+  has_many :invoice, dependent: :destroy
 
   accepts_nested_attributes_for :requirements
   accepts_nested_attributes_for :member_scripts

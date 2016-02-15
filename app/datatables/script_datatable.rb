@@ -1,20 +1,18 @@
 class ScriptDatatable < AjaxDatatablesRails::Base
-  # uncomment the appropriate paginator module,
-  # depending on gems available in your project.
-  #include AjaxDatatablesRails::Extensions::Kaminari
   include AjaxDatatablesRails::Extensions::WillPaginate
-  #include AjaxDatatablesRails::Extensions::SimplePaginator
+  def_delegator :@view, :link_to
+  def_delegator :@view, :current_user
 
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
+    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.complexity', 'Script.pdf_file', 'Script.script_file']
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.description', 'Script.platform', 'Script.industry', 'Script.complexity']
+    @searchable_columns ||= ['Script.id', 'Script.name','Script.description', 'Script.platform', 'Script.complexity', 'Script.pdf_file', 'Script.script_file']
   end
 
   private
@@ -25,19 +23,19 @@ class ScriptDatatable < AjaxDatatablesRails::Base
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
           record.id,
-          record.description,
+          record.status.id,
+          record.name,
           record.platform,
-          record.industry,
-          record.solution_type_id,
-          record.script_file,
-          record.pdf_file,
-          record.complexity
+          record.complexity,
+          File.basename(record.pdf_file_url),
+          File.basename(record.script_file_url),
+          link_to('Detalhes', record, :class => 'btn btn-info btn-xs'),
       ]
     end
   end
 
   def get_raw_records
-    # insert query here
+    Script.joins(:member_scripts, :status).where('member_scripts.member_id = ? and status_id = ?', current_user.member.id, params[:status_id])
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

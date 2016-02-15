@@ -9,6 +9,10 @@
   <div class="row">
     <div class="col-md-12">
       <%= link_to "#{t 'labels.buttons.back'}", :back, class: 'btn btn-primary' %>
+      <% if @script.status_id == 1 || @script.status_id == 6 %>
+          <%= link_to("#{t 'labels.buttons.edit'}", edit_script_path(@script), :class => 'btn btn-success') %>
+          <%= link_to("#{t 'labels.buttons.delete'}", roll_back_script_scripts_path(id: @script.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger') %>
+      <% end %>
     </div>
   </div>
   <br>
@@ -76,7 +80,9 @@
                       <div id="members_percental">
                         <ul>
                           <% @script.member_scripts.each do |m| %>
-                              <%= "<li><b> #{m.member.company_name} </b> <br> CNPJ: <b>  #{m.member.cnpj} </b> </li> ".html_safe %>
+                              <%= "<li><b> #{m.member.company_name} </b>
+                              <br> CNPJ: <b>  #{m.member.cnpj} </b>
+                              <br> Percentual: <b>  #{m.percentual}%</b> </li> ".html_safe %>
                           <% end %>
                         </ul>
                       </div>
@@ -105,7 +111,9 @@
                     <dl class="dl-horizontal">
                       <dd>Processos:</dd>
                       <% show_process_chain(@script.id).each do |process| %>
-                          <%= build_list_chain(process, @script.id, false) %>
+                          <% if process.size > 0 %>
+                              <%= build_list_chain(process, @script.id, false) %>
+                          <% end %>
                       <% end %>
                     </dl>
                   </div>
@@ -118,8 +126,8 @@
                               <% unless requirement.id.present? %>
                                   <dd><%= requirement.requirement %></dd>
                               <% else %>
-                                  <dt><%= requirement.script_id_requirement %></dt>
-                                  <dd><%= requirement.script.name %></dd>
+                                  <dt>Cod: <%= requirement.script_id_requirement %></dt>
+                                  <dd>Nome: <%= requirement.script.name %></dd>
                               <% end %>
                           <% end %>
                       <% end %>
@@ -131,8 +139,8 @@
                     <dl class="dl-horizontal">
                       <% if @script.related_scripts.size > 0 %>
                           <% @script.related_scripts.each do |r| %>
-                              <dt><%= r.script.id %></dt>
-                              <dd><%= r.script.name %></dd>
+                              <dt>Cod: <%= r.script.id %></dt>
+                              <dd>Nome: <%= r.script.name %></dd>
                           <% end %>
                       <% end %>
                     </dl>
