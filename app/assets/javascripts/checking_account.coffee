@@ -2,10 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('#script-table').dataTable
+  $('#checking-account-table').dataTable
     processing: true
     serverSide: true
-    ajax: $('#script-table').data('source')
+    ajax: $('#checking-account-table').data('source')
     sPaginationType: 'full'
     bAutoWidth: true
     columnDefs: [{orderable: false, targets: [6, 7]}]

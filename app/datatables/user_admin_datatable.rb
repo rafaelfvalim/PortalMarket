@@ -12,6 +12,8 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
     @sortable_columns ||= [
         'User.id',
         'User.name',
+        'Member.cnpj',
+        'Member.cpf',
         'Member.company_name',
         'User.email',
         'User.status',
@@ -24,6 +26,8 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
     @searchable_columns ||= [
         'User.id',
         'User.name',
+        'Member.cnpj',
+        'Member.cpf',
         'Member.company_name',
         'User.email',
         'User.status'
@@ -39,6 +43,7 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
           # example: record.attribute,
           record.id,
           record.full_name,
+          record.member.cnpj.present? ? record.member.cnpj : record.member.cpf,
           record.member.company_name,
           record.email,
           simple_form_for(record) do |u|

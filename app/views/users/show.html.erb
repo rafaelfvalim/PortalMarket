@@ -65,7 +65,7 @@
 
                 <ul class="list-group clear-list">
                   <li class="list-group-item fist-item"><strong>Email: </strong> <%= @user.email if @user.email %></li>
-                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_type' %>: </strong></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_type' %>: <%= @user.member_type.description.humanize %> </strong></li>
                   <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_name' %>: </strong> <%= @user.full_name %></li>
                   <li class="list-group-item"><strong><%= t 'labels.member_attributes.bank' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank.description %></li>
                   <li class="list-group-item"><strong> <%= t 'labels.member_attributes.bank_ag' %>: </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank_ag %></h4></li>
