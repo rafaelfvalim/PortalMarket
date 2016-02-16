@@ -304,8 +304,8 @@ pt-BR:
           alter_informations_password_confirm: <p>Para efetivar as alterações por favor informe sua senha atual</p>
           cancel_account: Cancelar minha conta
           remember_me: Lembrar.
-          cancel_account_header: '<p> infeliz? Vamos ficar tristes em ve-lo partir :( . </ p>'
-          register_to_klustter_header: '<h3> Registre-se no Kluster </h3> <p> Crie uma conta para vê-lo em ação. </ p>'
+          cancel_account_header: '<p> Infeliz? Vamos ficar tristes em ve-lo partir :( . </ p>'
+          register_to_klustter_header: '<h4> Registre-se no Klustter </h4>'
           aleredy_have_account: <small>Já possui um usuário?</small>
           do_not_have_an_account: <small>Não possui um usuário?</small>
           create_account: Criar um usuário

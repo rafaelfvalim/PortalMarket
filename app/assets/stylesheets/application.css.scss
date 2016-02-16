@@ -40,7 +40,10 @@ label.required:after {
 .row-centered {
   text-align: center;
 }
-
+.center {
+  margin: 0 auto;
+  width: 80%;
+}
 .col-centered {
   display: inline-block;
   float: none;

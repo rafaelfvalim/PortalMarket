@@ -11,11 +11,8 @@ window.form_singup_member = (e) ->
     contributor_fields_singup 'hide'
 
 customer_fields_singup = (action) ->
-  if action == 'show'
-    $('#company_name').removeClass 'hidden'
   if action == 'hide'
     $('#user_member_attributes_cnpj').val ''
-    $('#company_name').addClass 'hidden'
     $('#user_member_attributes_company_name').val ''
 
 contributor_fields_singup = (action) ->
@@ -23,6 +20,7 @@ contributor_fields_singup = (action) ->
     $('#select_bank').removeClass 'hidden'
     $('#bank_cc').removeClass 'hidden'
     $('#birthday').removeClass 'hidden'
+
   if action == 'hide'
     $('#select_bank').addClass 'hidden'
     $('#user_member_attributes_bank_id select').val 'Please Select ...'
