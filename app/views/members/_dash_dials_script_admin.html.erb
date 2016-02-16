@@ -61,6 +61,31 @@
               </div>
             </div>
           </div>
+          <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="widget style1 green-bg">
+              <div class="row">
+                <div class="col-xs-4">
+                  <i class="fa fa-usd fa-5x"></i>
+                </div>
+                <div class="col-xs-8">
+                  <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_with_price' %></h4></div>
+                  <h2 class="font-bold"><%= Script.where('has_price is not null or has_price != 0 ').count %></h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-xs-12 dash_links">
+                  <%= link_to prices_path do %>
+                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                      <div class="clearfix"></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <div class="col-md-3 col-sm-4 col-xs-6">
             <div class="widget style1 red-bg">
@@ -87,6 +112,33 @@
               </div>
             </div>
           </div>
+
+          <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="widget style1 blue-bg">
+              <div class="row">
+                <div class="col-xs-4">
+                  <i class="fa fa-eye fa-5x"></i>
+                </div>
+                <div class="col-xs-8">
+                  <div style="width: 40px; height: 40px"><h4><%= t 'labels.all_scripts' %> </h4></div>
+
+                  <h2 class="font-bold"><%= Script.all.count %></h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-xs-12 dash_links">
+                  <%= link_to all_scripts_member_scripts_path do %>
+                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                      <div class="clearfix"></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

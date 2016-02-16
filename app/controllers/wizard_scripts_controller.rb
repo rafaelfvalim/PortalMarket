@@ -138,7 +138,7 @@ class WizardScriptsController < ApplicationController
     if search.present?
       @found_scripts = Script.includes(:related_scripts).paginate(:page => params[:page], :per_page => 10).search_related(search, field)
     else
-      @found_scripts = Script.where("has_price = 1 AND status_id != 6").paginate(:page => params[:page], :per_page => 10).order('updated_at ASC')
+      @found_scripts = Script.where("has_price = 1 AND status_id = 5").paginate(:page => params[:page], :per_page => 10).order('updated_at ASC')
     end
   end
 

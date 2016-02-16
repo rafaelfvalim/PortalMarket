@@ -21,6 +21,7 @@ module MembersHelper
         'fa fa-exclamation fa-5x'
     end
   end
+
   def dash_description(status)
     case status
       when 'Gravado' then
@@ -82,5 +83,10 @@ module MembersHelper
       when current_user.is_customer? then
         'Cliente'
     end
+  end
+
+
+  def cpf_cnpj(member)
+    member.cnpj.present? ? "<b> CNPJ: </b> #{member.cnpj}".html_safe : "<b>CPF: </b> #{member.cpf}".html_safe
   end
 end

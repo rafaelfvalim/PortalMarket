@@ -1,4 +1,4 @@
-class MemberScriptDatatable < AjaxDatatablesRails::Base
+class MemberAllScriptsDatatable < AjaxDatatablesRails::Base
   # uncomment the appropriate paginator module,
   # depending on gems available in your project.
   include AjaxDatatablesRails::Extensions::Kaminari
@@ -43,20 +43,14 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
             '<i class="fa fa-times" style="color: red;"></i>'.html_safe
           end,
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
-
-          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price
-            link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs')
-          end,
-
-          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price
-            link_to('Delete', roll_back_script_scripts_path(id: record.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-primary btn-xs')
-          end
+          link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs'),
+          link_to('Delete', roll_back_script_scripts_path(id: record.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger btn-xs', disabled: true)
       ]
     end
   end
 
   def get_raw_records
-    Script.joins(:member_scripts, :members).where(' member_scripts.member_id = ? ', params[:member_id]).group('scripts.id')
+    Script.joins(:member_scripts, :members).all.group('scripts.id')
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

@@ -70,6 +70,7 @@ class Script < ActiveRecord::Base
     end
   end
 
+
   def file_size_script
     if self.script_file.size > 10.megabytes
       errors.add(:script_file, "Scrip presecisa ser abaixo de  10MB")
@@ -80,7 +81,7 @@ class Script < ActiveRecord::Base
 
   def self.search_related(search, field)
     if search
-      Script.where(" has_price = 1 AND status_id != 6 AND #{field} LIKE ?", "%#{search}%")
+      Script.where(" has_price = 1 AND status_id = 5 AND #{field} LIKE ?", "%#{search}%")
     else
       scoped
     end

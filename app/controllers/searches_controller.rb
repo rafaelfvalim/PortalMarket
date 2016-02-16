@@ -11,15 +11,19 @@ class SearchesController < ApplicationController
 
 
     if params[:query].present? && params[:process_description_selected].present?
-      @scripts = Script.search params[:query], where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, track: {user_id: current_user.id}, page: params[:page], per_page: 12
+      @scripts = Script.search params[:query], where: {
+                                                 has_price: present?,
+                                                 status_id: 5,
+                                                 process_module_description: params[:process_description_selected].to_s
+                                                }, track: {user_id: current_user.id}, page: params[:page], per_page: 12
     end
 
     if !params[:query].present? && params[:process_description_selected].present?
-      @scripts = Script.search '*', where: {has_price: present?, process_module_description: params[:process_description_selected].to_s}, track: {user_id: current_user.id}, page: params[:page], per_page: 12
+      @scripts = Script.search '*', where: {has_price: present?, status_id: 5, process_module_description: params[:process_description_selected].to_s}, track: {user_id: current_user.id}, page: params[:page], per_page: 12
     end
 
     if params[:query].present? && !params[:process_description_selected].present?
-      @scripts = Script.search params[:query], where: {has_price: present?}, track: {user_id: current_user.id}, page: params[:page], per_page: 12
+      @scripts = Script.search params[:query], where: {has_price: present?, status_id: 5 }, track: {user_id: current_user.id}, page: params[:page], per_page: 12
     end
 
     respond_to do |format|

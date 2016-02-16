@@ -95,7 +95,11 @@ Rails.application.routes.draw do
       get :contributor
     end
   end
-  resources :member_scripts
+  resources :member_scripts do
+    collection do
+      get :all_scripts
+    end
+  end
   resources :publications do
     collection do
       get :admin

@@ -141,13 +141,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def admin_only
-    unless current_user.admin? || current_user.is_god?
-      redirect_to :back, :alert => "Access denied."
-    end
-  end
-
 # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])

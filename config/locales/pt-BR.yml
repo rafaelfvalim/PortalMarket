@@ -62,7 +62,9 @@ pt-BR:
         search_by: Buscar por
         add_item_to_cart: Adicionar item ao carrinho?
         dash_without_price: Sem Preço
-        dash_not_complete: Incompleto
+        dash_with_price: Com Preço
+        dash_not_complete: Incompleto(s)
+        all_scripts: Todos
         details_script: Detalhes do Script
         dash_script_header: '<h5>Scripts Workflow
                                        <small>Controle o status dos scripts</small>
@@ -82,7 +84,7 @@ pt-BR:
         menu:
           find_solutions: Buscar Scripts
           dash_board: Dashboard
-          script: Scripts
+          my_scripts: Meus Scripts
           checking_account: Conta Corrente
           invoices: Faturas
           process_modules: Modulos de Processos
@@ -364,7 +366,7 @@ pt-BR:
           aggregate_percentage: '% Agregado'
           currency_date: Data moeda
           time: Tempo
-          show_prices: Mostrar Preços
+          show_prices: Todos os preços
 
   activerecord:
     models:

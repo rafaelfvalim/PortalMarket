@@ -16,12 +16,14 @@
     </div>
   </div>
   <br>
+
   <div class="row">
     <div class="col-md-12">
       <%= render 'status_script' %>
     </div>
   </div>
   <br>
+
   <div class="ibox">
     <div class="ibox-content">
       <div class="row">
@@ -42,6 +44,12 @@
             <dd>0</dd>
             <dt><%= t 'labels.final.version' %>:</dt>
             <dd> v1</dd>
+            <dt><%= t 'labels.script_attributes.price' %></dt>
+            <% if @script.price.present? %>
+                <dd><%= number_to_currency(@script.price.value.to_s) %></dd>
+            <% else %>
+                <dd>Não Possui</dd>
+            <% end %>
           </dl>
         </div>
         <div class="col-lg-7" id="cluster_info">
@@ -79,8 +87,8 @@
                         <ul>
                           <% @script.member_scripts.each do |m| %>
                               <%= "<li><b> #{m.member.company_name} </b>
-                              <br> CNPJ: <b>  #{m.member.cnpj} </b>
-                              <br> Percentual: <b>  #{m.percentual} %</b> </li> ".html_safe %>
+                              <br> #{cpf_cnpj(m.member)} </b>
+                              <br> <b> Percentual: </b>  #{m.percentual} % </li> ".html_safe %>
                           <% end %>
                         </ul>
                       </div>
@@ -137,8 +145,8 @@
                     <dl class="dl-horizontal">
                       <% if @script.related_scripts.size > 0 %>
                           <% @script.related_scripts.each do |r| %>
-                              <dt>Cod: <%= r.script.id %></dt>
-                              <dd>Nome: <%= r.script.name %></dd>
+                              <dt>Cod: <%= r.script.id %> </dt>
+                              <dd>Nome: <%= r.script.name %> <%= link_to 'Detalhes', show_product_buys_path(id: r.id) %></dd>
                           <% end %>
                       <% end %>
                     </dl>

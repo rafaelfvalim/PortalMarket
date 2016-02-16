@@ -1,5 +1,6 @@
 class MemberScriptsController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin_only, only: [:all_scripts ]
   before_action :set_member_script, only: [:show, :edit, :update, :destroy]
   before_action :user_active, if: :signed_in?
 
@@ -9,7 +10,6 @@ class MemberScriptsController < ApplicationController
    #passando via parâmetros para class MemberScriptDatatable
     p = params
     p[:member_id] = current_user.member.id
-
     respond_to do |format|
       format.html #new.html.erb
       format.json { render json: MemberScriptDatatable.new(view_context, params) }
@@ -24,6 +24,13 @@ class MemberScriptsController < ApplicationController
   # GET /member_scripts/new
   def new
     @member_script = MemberScript.new
+  end
+
+  def all_scripts
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: MemberAllScriptsDatatable.new(view_context) }
+    end
   end
 
   # GET /member_scripts/1/edit

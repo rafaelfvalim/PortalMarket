@@ -112,4 +112,10 @@ class ApplicationController < ActionController::Base
     Time.zone = tz || ActiveSupport::TimeZone["Brasilia"]
   end
 
+  def admin_only
+    unless current_user.admin? || current_user.is_god?
+      redirect_to :back, :alert => "Access denied."
+    end
+  end
+
 end
