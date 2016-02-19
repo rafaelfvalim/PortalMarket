@@ -3,6 +3,7 @@
   <tr>
     <th>Cod</th>
     <th><%= t 'labels.script_attributes.name' %></th>
+    <th><%= t 'labels.script_attributes.status' %></th>
     <th><%= t 'labels.script_attributes.platform' %></th>
     <th><%= t 'labels.script_attributes.complexity' %></th>
     <th><%= t 'labels.script_attributes.value' %></th>
@@ -19,8 +20,10 @@
           <tr>
             <td><%= script.id %></td>
             <td><%= link_to script.name, script %></td>
+            <td><%= script.status.description.humanize %></td>
             <td><%= script.platform %></td>
             <td><%= s.select :complexity, get_complexities, {prompt: "Please Select ..."}, class: 'form-control' %> </td>
+
             <%= s.fields_for :price do |p| %>
                 <td width="100px"><%= p.text_field :value, class: 'form-control money' %></td>
                 <td width="100px"><%= p.text_field :aggregate_percentage, class: 'form-control number' %></td>

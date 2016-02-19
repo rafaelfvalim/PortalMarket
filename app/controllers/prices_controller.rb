@@ -6,7 +6,7 @@ class PricesController < ApplicationController
   # GET /prices
   # GET /prices.json
   def index
-    @prices = Price.all
+    @prices = Price.all.paginate(:page => params[:page], :per_page => 15).order('updated_at ASC')
   end
 
   # GET /prices/1
@@ -67,7 +67,7 @@ class PricesController < ApplicationController
 
 
   def script_prices
-    @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 15).order('updated_at ASC')
   end
 
   def create_prices

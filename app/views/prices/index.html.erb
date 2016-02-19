@@ -11,6 +11,7 @@
     <tr>
       <th>Id</th>
       <th><%= t 'labels.script_attributes.name'%></th>
+      <th><%= t 'labels.script_attributes.status'%></th>
       <th><%= t'labels.script_attributes.value'%></th>
       <th><%= t 'labels.script_attributes.currency' %></th>
       <th><%= t 'labels.script_price.currency_date' %></th>
@@ -23,7 +24,8 @@
         <tr>
           <td><%= link_to price.script_id , price.script %></td>
           <td><%= price.script.name %></td>
-          <td><%= price.value %></td>
+          <td><%= price.script.status.description.humanize %></td>
+          <td><%= number_to_currency(price.value) %></td>
           <td><%= Currency.find(price.currency_id).description %></td>
           <td><%= price.currency_data %></td>
           <td><%= link_to "#{t 'labels.buttons.edit'}", edit_price_path(price), class: 'btn btn-primary' %></td>
@@ -31,6 +33,7 @@
     <% end %>
     </tbody>
   </table>
+  <%= will_paginate @scripts %>
 
   <br>
 </div>
