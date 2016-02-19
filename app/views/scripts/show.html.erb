@@ -45,7 +45,11 @@
             <dt><%= t 'labels.final.version' %>:</dt>
             <dd> v1</dd>
             <dt><%= t 'labels.script_attributes.price' %></dt>
-
+            <% if @script.price.present? %>
+                <dd><%= number_to_currency(@script.price.value) %></dd>
+            <% else %>
+                <dd>Não Possui</dd>
+            <% end %>
           </dl>
         </div>
         <div class="col-lg-7" id="cluster_info">
@@ -81,7 +85,11 @@
                     <div class="col-lg-12">
                       <div id="members_percental">
                         <ul>
-
+                          <% @script.member_scripts.each do |m| %>
+                              <%= "<li><b> #{m.member.company_name} </b>
+                              <br> #{cpf_cnpj(m.member)} </b>
+                              <br> <b> Percentual: </b>  #{m.percentual} % </li> ".html_safe %>
+                          <% end %>
                         </ul>
                       </div>
                     </div>
