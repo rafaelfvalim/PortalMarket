@@ -68,13 +68,13 @@
                           <% end %>
                     <% end %>
 
-                    <dt><%= t 'labels.script_attributes.process' %></dt>
                     <% show_process_chain(@script.id).each do |process| %>
+                        <dt><%= t 'labels.script_attributes.process' %></dt>
                         <dd><%= build_list_chain(process, @script.id, false) %></dd>
                     <% end %>
 
-                    <dt><%= t 'labels.script_attributes.contributor' %> </dt>
                     <% @script.members.each do |member| %>
+                        <dt><%= t 'labels.script_attributes.contributor' %> </dt>
                         <dd> <%= "#{member.member_name} #{ member.member_last_name}" %></dd>
                     <% end %>
 
