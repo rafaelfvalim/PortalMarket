@@ -1,13 +1,15 @@
 class JavaService
   require 'open3'
 
-  def cripty_file_job(input_file, output_file)
+  def cripty_file_job(input_file, output_file, system_number)
     params ||= Array.new
     params << "#{Rails.public_path}#{input_file}"
     params << "#{Rails.public_path}#{output_file}"
+    params << system_number
 
     Rails.logger.info input_file
     Rails.logger.info output_file
+    Rails.logger.info system_number
     return execute_jar(Rails.configuration.jar_encrypt, params)
   end
 

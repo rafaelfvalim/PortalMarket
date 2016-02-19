@@ -137,8 +137,8 @@ pt-BR:
           industry: Industria
           solution_type: Tipo Solução
           definition: Obs
-          script_file: Script
-          pdf_file: PDF
+          script_file: Arquivo Script
+          pdf_file: Arquivo PDF
           id: Id
           price: Preço
           paper: Paper
@@ -236,7 +236,7 @@ pt-BR:
          version: versão
          create_by: Criado por
          version: Versão
-         last_update: atualizado em
+         last_update: Atualizado em
          created: Criado em
          classification: Cassificação
          requeriment_scripts: Scripts Requeridos

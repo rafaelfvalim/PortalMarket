@@ -36,6 +36,8 @@
       <div class="row">
         <div class="col-lg-5">
           <dl class="dl-horizontal">
+            <dt>Cod</dt>
+            <dd><%= @script.id %></dd>
             <dt><%= t 'labels.final.create_by' %></dt>
             <% @script.member_scripts.each do |ms| %>
                 <dd><%= "#{ms.member.member_name} #{ms.member.member_last_name}  " %></dd>
@@ -56,8 +58,12 @@
           <dl class="dl-horizontal">
             <dt><%= t 'labels.final.last_update' %>:</dt>
             <dd><%= format_date(@script.updated_at) %></dd>
-            <dt><%= t 'labels.final.created' %></dt>
+            <dt><%= t 'labels.final.created' %>:</dt>
             <dd><%= format_date(@script.created_at) %></dd>
+            <dt><%= t 'labels.script_attributes.script_file' %>:</dt>
+            <dd><%= link_to File.basename(@script.script_file.to_s) , @script.script_file_url %></dd>
+            <dt><%= t 'labels.script_attributes.pdf_file' %>:</dt>
+            <dd><%= link_to File.basename(@script.pdf_file.to_s), @script.pdf_file_url  %></dd>
           </dl>
         </div>
       </div>

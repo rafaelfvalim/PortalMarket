@@ -14,7 +14,7 @@ class InvoiceService
   def create_download_file(invoice)
     input_file = invoice.script.script_file_url
     output_file = invoice.invoice_script_url
-    return JavaService.new.cripty_file_job(input_file, output_file)
+    return JavaService.new.cripty_file_job(input_file, output_file,invoice.workplace.system_number)
   end
 
   def generate_invoice_script_file(user, script)
