@@ -16,13 +16,25 @@ class MemberAllScriptsDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @sortable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity', 'Status.description']
+    @sortable_columns ||= ['Script.id',
+                           'Script.name',
+                           'Script.description',
+                           'Script.platform',
+                           'Status.description',
+                           'Script.has_price'
+                           ]
   end
 
   def searchable_columns
     # list columns inside the Array in string dot notation.
     # Example: 'users.email'
-    @searchable_columns ||= ['Script.id', 'Script.name', 'Script.description', 'Script.platform', 'Script.industry', 'Script.complexity', 'Status.description']
+    @searchable_columns ||= ['Script.id',
+                             'Script.name',
+                             'Script.description',
+                             'Script.platform',
+                             'Script.industry',
+                             'Script.complexity',
+                             'Status.description']
   end
 
   private
@@ -50,7 +62,7 @@ class MemberAllScriptsDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Script.joins(:member_scripts, :members).all.group('scripts.id')
+    Script.joins(:member_scripts, :members, :status).all.group('scripts.id')
   end
 
   # ==== Insert 'presenter'-like methods below if necessary
