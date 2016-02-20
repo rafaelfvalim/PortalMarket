@@ -1,6 +1,7 @@
 class ScriptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_script, only: [:show, :edit, :update, :destroy, :remove_file_script, :remove_file_pdf, :admin_update, :destroy_incomplete_script, :update_status]
+  before_action :secure_action_script, only: [:edit, :update, :destroy]
   before_action :user_active, if: :signed_in?
 
   # GET /scripts
@@ -44,6 +45,7 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
+
     set_tracker_step(:create)
   end
 
@@ -172,7 +174,6 @@ class ScriptsController < ApplicationController
     @script = Script.find_by id: params[:id]
     if !@script.blank?
       @member_script = MemberScript.find_by_script_id(@script.id)
-
       if @member_script.blank?
         @member_script.destroy
       end
@@ -192,14 +193,14 @@ class ScriptsController < ApplicationController
       @script.destroy
     end
     respond_to do |format|
-      format.html { redirect_to contributor_members_path }
+      format.html { redirect_to current_member_path }
     end
   end
 
   def update_status
     respond_to do |format|
       if @script.member_scripts.sum(:percentual) < 100.0
-        format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id) , alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
+        format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id), alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
       else
         @script.update_attribute(:status_id, 1)
         format.html { redirect_to contributor_members_path }
@@ -262,6 +263,38 @@ class ScriptsController < ApplicationController
   def script_params
     params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, :script_file_cache, :pdf_file_cache, requirements_attributes: [:id, :script_id, :requirement])
   end
+
+  def secure_action_script
+    message = ""
+    case action_name
+      when 'edit' then
+        message = "Não é permitido editar esse Script, Acesso Negado!"
+      when 'destroy' then
+        message = "Não é possivel excluir esse Script, Acesso negado!"
+      when 'roll_back_script' then
+        message = "Não é possivel excluir esse Script, Acesso negado!"
+      when 'update' then
+        message = "Não é possivel atualizar esse Script, Acesso negado!"
+    end
+    unless current_user.is_god?
+      unless @script.status_id == Status::INICIAL || @script.status_id == Status::GRAVADO
+        redirect_to current_member_path, alert: message
+      end
+    end
+  end
+
+  def current_member_path
+    if current_user.is_god?
+      return admin_members_path
+    end
+    if current_user.is_contributor?
+      return contributor_members_path
+    end
+    if current_user.is_customer?
+      return customer_members_path
+    end
+  end
+
 
   def download
     path = "/#{script.script}"

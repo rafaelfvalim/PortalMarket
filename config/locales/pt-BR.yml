@@ -46,7 +46,7 @@ pt-BR:
           save_error: 'Não foi possivel salvar, contacte o administrador do portal Klusster'
           delete_error: 'Não foi possível excluir, contacte o administrador do portal Klusster'
           acess_denied: 'Acesso negado!'
-          user_block: "Erro na conta de usuário, Favor entrar em contato com o administrador ou Portal Klustter"
+          user_block: "Usuário bloqueado ou não confirmado"
         contributors: Parceiro(s)
         information: Informação
         select: Selecione ...
