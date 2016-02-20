@@ -8,4 +8,6 @@ $ ->
     ajax: $('#member-script-table').data('source')
     sPaginationType: 'full'
     bAutoWidth: true
-    columnDefs: [{orderable: false, targets: [8, 9,10]}]
+    columnDefs:[
+      {orderable: false, targets: [6,7,8]}
+    ]
