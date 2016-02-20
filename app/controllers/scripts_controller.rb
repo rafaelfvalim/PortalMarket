@@ -139,7 +139,6 @@ class ScriptsController < ApplicationController
 
   def admin_update
     respond_to do |format|
-
       if @script.update(script_params)
         if params[:status_id].nil?
           format.html { redirect_to admin_update_scripts_path }
