@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   mount Maily::Engine, at: 'maily'
   resources :view_publications
-  resources :file_tags
+  #resources :file_tags TODO nuvem de tags
   resources :folders
-  resources :addresses
-  resources :systems
+  #resources :addresses // não utilizado
+  #resources :systems  TODO Cadastro de sistemas
   resources :workplaces
-  resources :banks
+  #resources :banks TODO Cadastro de Bancos
   resources :carts
   resources :reports do
     collection do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get :invoices_ajax
     end
   end
-  resources :messages
+  #resources :messages // TODO Chat do portal
 
   resources :prices do
     collection do
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       put :create_prices
     end
   end
-  resources :statuses
+  #resources :statuses //não utilizado
   resources :workplaces
   resources :wizard_scripts do
     collection do
