@@ -10,20 +10,20 @@
         <!--</li>-->
         <li>
           <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-gear fa-fw"></i>  <%= t 'labels.nav_bar.edit_account' %></a>
+              <i class="fa fa-gear fa-fw" aria-hidden="true"></i>  <%= t 'labels.nav_bar.edit_account' %></a>
           <% end %>
         </li>
         <li class="divider"></li>
         <% if current_user.is_master_user_id?&& current_user.ativo? %>
             <li>
               <%= link_to master_user_users_path do %>
-                  <i class="fa fa-users"></i> <%= t 'labels.nav_bar.my_team' %>
+                  <i class="fa fa-users fa-fw" aria-hidden="true"></i> <%= t 'labels.nav_bar.my_team' %>
               <% end %>
             </li>
         <% end %>
         <li>
           <%= link_to destroy_user_session_path, :method => 'delete' do %>
-              <i class="fa fa-sign-out fa-fw"></i> Logout
+              <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout
           <% end %>
         </li>
       </ul>
@@ -31,11 +31,11 @@
     </li>
 <% else %>
     <li><%= link_to new_user_session_path do %>
-          <i class="fa fa-sign-in"></i> Sing in
+          <i class="fa fa-sign-in fa-fw"></i> Sing in
       <% end %>
     </li>
     <li><%= link_to new_user_registration_path do %>
-          <i class="fa fa-caret-square-o-up"></i> Sing up
+          <i class="fa fa-caret-square-o-up fa-fw"></i> Sing up
       <% end %>
     </li>
 <% end %>
