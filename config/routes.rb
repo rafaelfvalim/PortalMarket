@@ -118,6 +118,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', confirmations: 'users/confirmations', sessions: 'users/sessions'}
   resources :users do
     collection do
+      get :authenticator
       get :master_user
       get :show_master_user
       get :edit_master_user

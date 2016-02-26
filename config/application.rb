@@ -43,6 +43,7 @@ module CodeStore
 
     #Custom configs for Klustter Portal - Code Store
     config.jar_encrypt = 'Dummy.jar'
+    config.jar_token = 'TokenGenerator.jar'
     config.jars_path = "#{Rails.public_path}/jars/"
     config.downloads_path = "#{Rails.public_path}/downloads/"
     config.uploads_path = "#{Rails.public_path}/uploads/"

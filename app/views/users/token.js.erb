@@ -1,0 +1,14 @@
+$('#token').html("<%= escape_javascript(render partial: "users/token") %>");
+$(".second").knob({
+    'min': 0,
+    'max': 60,
+    'readOnly': true,
+    'width': 200,
+    'height': 200,
+    'fgColor': '#2f4050',
+    'dynamicDraw': true,
+    'thickness': 0.2,
+    'tickColorizeValues': true,
+    'skin': 'tron',
+    'inputColor': '#1AB394'
+});

@@ -6,11 +6,14 @@ class JavaService
     params << "#{Rails.public_path}#{input_file}"
     params << "#{Rails.public_path}#{output_file}"
     params << system_number
-
-    Rails.logger.info input_file
-    Rails.logger.info output_file
-    Rails.logger.info system_number
     return execute_jar(Rails.configuration.jar_encrypt, params)
+  end
+
+  def generateToken(member_cpf)
+    # params ||= Array.new
+    # params << member_cpf
+    # return execute_jar(Rails.configuration.jar_token, params)
+    return Date.now
   end
 
   def execute_jar(jar_path = Rails.public_path, jar_file, params)

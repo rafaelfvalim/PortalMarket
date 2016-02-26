@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, only: [:index ]
+  before_action :admin_only, only: [:index]
   before_action :set_user, only: [:edit, :update, :show, :show_master_user, :edit_master_user, :update_master_user, :remove_avatar, :upload_avatar, :resend_confirmation_email]
   before_action :user_active, if: :signed_in?
 
@@ -35,6 +35,15 @@ class UsersController < ApplicationController
   end
 
   def edit_master_user
+  end
+
+  def authenticator
+    user_service = UserService.new
+    @token = user_service.generateToken(current_user.member.cpf)
+    respond_to do |format|
+      format.js { render "users/token" }
+      format.html {}
+    end
   end
 
   def update_master_user

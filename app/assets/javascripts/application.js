@@ -26,6 +26,7 @@
 //= require moment
 //= require moment/pt-br.js
 //= require jquery_cep/jquery.cep.js
+//= require jquery_knob/jquery.knob
 //= require bootstrap-datetimepicker
 //= require jquery.tooltipster.min.js
 //= require maskedinput

@@ -22,6 +22,11 @@
             </li>
         <% end %>
         <li>
+          <%= link_to authenticator_users_path do %>
+              <i class="fa fa-key fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.authenticator' %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to destroy_user_session_path, :method => 'delete' do %>
               <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout
           <% end %>
