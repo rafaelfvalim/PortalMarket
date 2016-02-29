@@ -4,6 +4,9 @@ $ ->
     return
   ), 1000)
 
+  clip = new Clipboard('#token_button')
+  console.log clip
+
   myDelay()
   $('.second').knob
     'min': 0
@@ -17,6 +20,7 @@ $ ->
     'tickColorizeValues': true
     'skin': 'tron'
     'inputColor': '#1AB394'
+
 
 
 window.myDelay = ->

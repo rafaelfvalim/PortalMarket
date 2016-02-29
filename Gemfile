@@ -58,6 +58,8 @@ gem 'maskedinput-rails'
 gem 'maily'
 #https://github.com/TwilightCoders/foo_table-rails
 gem 'foo_table-rails'
+#https://github.com/sadiqmmm/clipboard-rails
+gem 'clipboard-rails'
 
 group :development, :test do
   gem 'byebug'

@@ -2,5 +2,10 @@
   <input type="text" value="75" class="second">
 </div>
 <div class="row row-centered">
-  <h2><i class="fa fa-key"> </i> <%= @token.to_s %></h2>
+  <h2><i class="fa fa-key"> </i><span id="token-field"> <%= @token.to_s %> </span></h2>
+</div>
+<div class="row row-centered">
+  <button class="btn btn-success " id="token_button" data-clipboard-action="copy" data-clipboard-target="#token-field">
+    Copiar Token
+  </button>
 </div>

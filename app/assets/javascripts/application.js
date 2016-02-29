@@ -36,6 +36,7 @@
 //= require slimscroll/jquery.slimscroll.min.js
 //= require inspinia.js
 //= require footable.core
+//= require clipboard
 //= require_tree .
 
 
