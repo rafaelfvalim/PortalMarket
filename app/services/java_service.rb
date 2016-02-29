@@ -8,14 +8,7 @@ class JavaService
     params << system_number
     return execute_jar(Rails.configuration.jar_encrypt, params)
   end
-
-  def generateToken(member_cpf)
-    # params ||= Array.new
-    # params << member_cpf
-    # return execute_jar(Rails.configuration.jar_token, params)
-    return Date.now
-  end
-
+' '
   def execute_jar(jar_path = Rails.public_path, jar_file, params)
     cmd = "java -jar #{jar_file} #{params.join(' ')}"
     cmdout_read = ''

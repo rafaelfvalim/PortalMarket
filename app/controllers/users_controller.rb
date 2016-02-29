@@ -44,6 +44,7 @@ class UsersController < ApplicationController
       format.js { render "users/token" }
       format.html {}
     end
+
   end
 
   def update_master_user
