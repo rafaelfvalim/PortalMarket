@@ -131,10 +131,10 @@
           </div>
           <div class="row">
             <div class="col-lg-6">
-              <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control' %>
+              <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control' ,input_html: { autocomplete: 'off' } %>
             </div>
             <div class="col-lg-6">
-              <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control' %>
+              <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control',input_html: { autocomplete: 'off' } %>
             </div>
           </div>
         </div>
