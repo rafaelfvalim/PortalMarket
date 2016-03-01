@@ -18,7 +18,6 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 pt-BR:
   will_paginate:
     next_label: Próximos &#8594;
@@ -416,6 +415,8 @@ pt-BR:
                confirmation: 'Senhas não são iguais'
             current_password:
                invalid: 'Senha inválida'
+            confirmation_token:
+               invalid: 'Token de confirmação inválido, favor entrar em contato com o suporte'
         script:
           attributes:
             name:
