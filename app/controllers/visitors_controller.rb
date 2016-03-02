@@ -9,7 +9,7 @@ class VisitorsController < ApplicationController
         redirect_to members_path
       end
     else
-      render :layout => "empty"
+      render :layout => "teaser"
     end
 
   end

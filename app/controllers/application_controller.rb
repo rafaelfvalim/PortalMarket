@@ -76,6 +76,8 @@ class ApplicationController < ActionController::Base
 
   private
   def layout_by_resource
+    p controller_name
+
     if controller_name == 'registrations'
       #algumas paginas do devise devem aparecer dentro do site
       case action_name

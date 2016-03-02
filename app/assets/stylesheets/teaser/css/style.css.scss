@@ -1,0 +1,262 @@
+/* Fontes */
+@font-face {
+    font-family: ExoLight;
+    src: asset-url('teaser/fonts/Exo2-Light.ttf');
+}
+
+@font-face {
+    font-family: ExoSemiBold;
+    src: asset-url('teaser/fonts/Exo2-SemiBold.ttf');
+}
+
+/* Default */
+html {
+    min-height: 100%;
+}
+
+body {
+    background-color: #293551;
+}
+
+.bg-main {
+    background: asset-url('teaser/logo-meio.png') no-repeat center top;
+    background-size: contain !important;
+    margin-top: -90px;
+}
+
+.box-txt {
+    margin-top: -180px;
+}
+
+.bg-left {
+    background: asset-url('teaser/box-left.png') no-repeat center top;
+    background-size: cover !important;
+}
+
+.bg-right {
+    background: asset-url('teaser/box-right.png') no-repeat center top;
+    background-size: cover !important;
+}
+
+.btn-send {
+    padding: 15px 20px;
+    background: white;
+    border-radius: 3px;
+    font-family: "ExoSemiBold";
+    font-size: 12pt;
+}
+
+p, span, div, h1, h2, h3, h4, h5, h6, label {
+    font-family: "ExoLight";
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 20pt;
+}
+
+h3 {
+    font-size: 12pt;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.navbar-default {
+    margin-bottom: 0;
+    border: 0;
+    background: transparent !important;
+    padding-top: 20px;
+}
+
+.navbar-right li:last-child {
+    margin-right: 0;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+.navbar-nav li a {
+    font-family: 'MyriadWebPro-Bold';
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #008951;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #333;
+}
+
+.navbar-toggle {
+    margin-top: 20px;
+}
+
+.carousel-caption {
+    bottom: inherit !important;
+}
+
+footer p {
+    font-family: "ExoLight";
+    letter-spacing: 1px;
+    font-size: 25pt;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+a.btn-buy:hover {
+    color: #ffffff;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+a.underline {
+    text-decoration: underline;
+}
+
+.navbar-brand {
+    height: 75px;
+    padding: 10px 0;
+}
+
+/* Alinhamentos */
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.margin-t-75 {
+    margin-top: 75px;
+}
+
+.m-left-5 {
+    margin-left: -5px;
+}
+
+.m-t-r-25 {
+    margin-top: -25px;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.padding-t-8 {
+    padding-top: 8px;
+}
+
+.padding-t-10 {
+    padding-top: 10px;
+}
+
+.padding-t-20 {
+    padding-top: 20px;
+}
+
+.padding-t-30 {
+    padding-top: 30px;
+}
+
+.padding-10 {
+    padding: 10px 15px;
+}
+
+.form-control:focus {
+    border-color: #c1c1c1;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Tamanhos */
+.s-12 {
+    font-size: 12px;
+}
+
+.s-16 {
+    font-size: 16px;
+}
+
+.s-17 {
+    font-size: 17px;
+}
+
+.s-18 {
+    font-size: 18px;
+}
+
+.s-22 {
+    font-size: 22px;
+}
+
+.s-26 {
+    font-size: 26px;
+}
+
+.lh-0 {
+    line-height: 0;
+}
+
+.lh-16 {
+    line-height: 16px;
+}
+
+.lh-20 {
+    line-height: 20px;
+}
+
+.lh-25 {
+    line-height: 25px;
+}
+
+.lh-30 {
+    line-height: 30px;
+}
+
+.bold {
+    font-family: "MyriadWebPro-Bold";
+}
+
+/* Cores */
+.orange {
+    color: #D68411;
+}
+
+.blue {
+    color: #35A0A6;
+}
+
+.white {
+    color: #FFFFFF;
+}
+
+.grey {
+    color: grey;
+}
+
+.green {
+    color: #008951;
+}
+
+.greenAl {
+    color: #008951 !important;
+}
+
+.cleargrey {
+    color: #008951;
+}
