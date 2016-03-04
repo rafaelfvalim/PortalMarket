@@ -60,6 +60,7 @@ pickle-email-*.html
 # scm revert files
 **.orig
 
+/config/initializers/devise.rb
 # Mac finder artifacts
 .DS_Store
 

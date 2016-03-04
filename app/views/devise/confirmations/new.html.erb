@@ -2,25 +2,28 @@
   <div class="row">
     <div class="col-md-12">
       <div class="ibox-content">
-        <h2 class="font-bold"> <%= t 'labels.devise.resent_confirmation' %></h2>
-
-        <p>
-          <%= t 'labels.devise.resend_confirmation_instrucions' %>
-        </p>
-
+        <h2 class="font-bold"><%= t 'labels.devise.resend_confirmation_instrucions' %></h2>
         <div class="row">
           <div class="col-lg-12">
             <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'm-t'}) do |f| %>
                 <%= devise_error_messages! %>
+                <% if alert.present? %>
+                    <div class="alert alert-danger">
+                      <%= alert %>
+                    </div>
+                <% end %>
+                <% if notice.present? %>
+                    <div class="alert alert-success">
+                      <%= notice %>
+                    </div>
+                <% end %>
                 <%= f.label 'Email:' %><br/>
                 <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control' %>
                 <br>
                 <%= f.submit "#{t 'labels.devise.resend_confirmation_instrucions'}", class: 'btn btn-primary block full-width m-b' %>
             <% end %>
             <div>
-              <center>
-                <%= render "devise/shared/links" %>
-              </center>
+              <%= link_to 'Ja possui conta?', '/users/sign_in', :class => 'btn btn-success block full-width m-b' %>
             </div>
           </div>
         </div>

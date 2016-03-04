@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_to do |format|
 
       if @user.save
-        flash[:notice] = "#{t 'registration.successful'}"
+        flash[:notice] = "#{t 'registration.successful', email: @user.email}"
         format.html { redirect_to '/users/sign_in' }
         format.json { render json: '/users/sign_in', status: :created, location: @user }
       else
@@ -58,6 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       u.permit(:id,
                :name,
                :email,
+               :email_confirmation,
                :password,
                :password_confirmation,
                member_attributes:
@@ -94,6 +95,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
                :current_password,
                :name,
                :email,
+               :email_confirmation,
                :password,
                :password_confirmation,
                :avatar,
@@ -142,6 +144,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:id,
                                  :name,
                                  :email,
+                                 :email_confirmation,
                                  :password,
                                  :password_confirmation,
                                  :current_password,

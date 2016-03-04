@@ -35,7 +35,7 @@ pt-BR:
     page_gap: "&hellip;"
     previous_label: "&#8592; Anteriores"
   registration:
-    successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para ativar sua conta!'
+    successful: 'Registro efeturado com sucesso , enviamos um email de confirmação para %{email} com um link para ativação'
   labels:
         user_messages:
           update: 'Usuário atualizado com sucesso!'

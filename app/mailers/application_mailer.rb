@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "klustter.codestore@gilioconsultoria.com"
+  default from: "no-reply@klustter.com.br"
   layout 'mailer'
 end

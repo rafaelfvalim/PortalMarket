@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
 
   def validate_email_unique
     if User.where(email: email).exists?
-      errors.add(:email, 'already exists 222')
+      errors.add(:email, 'already exists')
     end
   end
 
