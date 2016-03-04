@@ -323,13 +323,7 @@ pt-BR:
                                        <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
                                          <strong>cliente</strong></p>
                                      </div>'
-          login_wellcome: '  <h2 class="font-bold">Bem vindo a Klustter</h2>
-                                 <p>
-                                   Texto de boas vindas.
-                                 </p>
-                                   <small> Texto pequeno
-                                   </small>
-                                 </p>'
+          login_wellcome: Bem Vindo
         invoices:
           page_header: Faturas
         process_modules:

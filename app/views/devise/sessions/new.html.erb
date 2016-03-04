@@ -1,67 +1,62 @@
-<div class="loginColumns animated fadeInDown">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:role => 'form', :class => 'm-t'}) do |f| %>
-      <div class="row">
-        <div class="col-md-12">
-          <% if alert.present? %>
-              <div class="alert alert-danger">
-                <%= alert %>
-              </div>
-          <% end %>
-          <% if notice.present? %>
-              <div class="alert alert-success">
-                <%= notice %>
-              </div>
-          <% end %>
-        </div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:role => 'form', :class => 'm-t'}) do |f| %>
+    <!--Inicio  Mensagens -->
+    <div class="row">
+      <div class="col-md-12">
+        <% if alert.present? %>
+            <div class="alert alert-danger">
+              <%= alert %>
+            </div>
+        <% end %>
+        <% if notice.present? %>
+            <div class="alert alert-success">
+              <%= notice %>
+            </div>
+        <% end %>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= raw t 'labels.devise.login_wellcome' %>
+    </div>
+    <!--Fim Menagens -->
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+      <div>
+        <div>
+          <h1 class="logo-name"><%= image_tag 'login/logo-login.png' %></h1>
         </div>
-        <div class="col-md-6">
-          <div class="ibox-content">
+        <h3> <%= t 'labels.devise.login_wellcome' %></h3>
 
-            <div class="form-group">
-              <%= f.email_field :email, :autofocus => true, class: 'form-control', :placeholder => 'Email ' %>
-            </div>
-            <div class="form-group">
-              <%= f.password_field :password, class: 'form-control', :placeholder => "#{t 'labels.devise.password'}" %>
-            </div>
-            <%= f.submit 'Entrar', :class => 'btn btn-primary block full-width m-b' %>
-            <% if devise_mapping.rememberable? -%>
-                <div class="checkbox" style="width:150px">
-                  <label>
-                    <%= f.check_box :remember_me %> <%= t 'labels.devise.remember_me' %>
-                  </label>
-                </div>
-            <% end -%>
-            <p class="text-muted text-center">
-              <%= raw t 'labels.devise.do_not_have_an_account' %>
-            </p>
-            <%- if devise_mapping.registerable? %>
-                <%= link_to "#{t 'labels.devise.create_account'}", new_registration_path(resource_name), class: 'btn btn-sm btn-info btn-block' %>
-            <% end -%>
-            <br>
-            <%- if devise_mapping.recoverable? %>
-                <small>
-                  <%= link_to "#{t 'labels.devise.forgot_password_login'}", new_password_path(resource_name), class: 'center' %>
-                </small>
-                <br>
-                <small>
-                  <%= link_to "#{t 'labels.devise.resend_confiramtion_login'}", '/users/confirmation/new', class: 'center' %>
-                </small>
-            <% end -%>
-          </div>
+        <!--<p>-->
+          <!--Perfectly designed and precisely-->
+          <!--prepared admin theme with over 50-->
+          <!--pages with extra new web app viws.-->
+        <!--</p>-->
+
+        <!--<p>Entre para ve-lo em ação.</p>-->
+        <br>
+        <div class="form-group">
+          <%= f.email_field :email, :autofocus => true, class: 'form-control', :placeholder => 'Email ' %>
         </div>
+        <div class="form-group">
+          <%= f.password_field :password, class: 'form-control', :placeholder => "#{t 'labels.devise.password'}" %>
+        </div>
+        <%= f.submit 'Entrar', :class => 'btn btn-primary block full-width m-b' %>
+        <%- if devise_mapping.recoverable? %>
+            <small>
+              <%= link_to "#{t 'labels.devise.forgot_password_login'}", new_password_path(resource_name), class: 'orange' %>
+            </small>
+        <% end -%>
+        <p class="text-muted text-center">
+          <%= raw t 'labels.devise.do_not_have_an_account' %>
+        </p>
+        <%- if devise_mapping.registerable? %>
+            <%= link_to "#{t 'labels.devise.create_account'}", new_registration_path(resource_name), class: 'btn btn-sm btn-white btn-block grey' %>
+        <% end -%>
+        <br>
+        <%- if devise_mapping.recoverable? %>
+            <small>
+              <%= link_to "#{t 'labels.devise.resend_confiramtion_login'}", '/users/confirmation/new', class: 'center' %>
+            </small>
+        <% end %>
+        <p class="m-t">
+          <small>Klustter Script Inovation &copy; 2016</small>
+        </p>
       </div>
-      <hr/>
-      <div class="row">
-        <div class="col-md-6">
-          Copyright Klustter Script Inovation
-        </div>
-        <div class="col-md-6 text-right">
-          <small>© 2015-2016</small>
-        </div>
-      </div>
-  <% end %>
-</div>
+    </div>
+<% end %>

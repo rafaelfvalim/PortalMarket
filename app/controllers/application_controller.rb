@@ -91,8 +91,9 @@ class ApplicationController < ActionController::Base
     if controller_name == 'passwords'
       return 'empty'
     end
+
     if controller_name == 'sessions'
-      return 'empty'
+      return 'klustter_empty'
     end
 
     if controller_name == 'confirmations'
