@@ -4,10 +4,6 @@
  *   version 2.3
  *
 */
-
-// Google Fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
-
 // Bootstra
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -18,7 +14,7 @@
 
 // INSPINIA Theme Elements
 @import "base/typography";
-@import "base/navigation";
+//@import "base/navigation";
 @import "base/top_navigation";
 @import "base/buttons";
 @import "base/badgets_labels";
@@ -53,6 +49,10 @@
 //Custom style
 //Btns custom klustter style
 @import "base/bootstrap-custom-btn";
+
+//Klustter Custom
+@import "base/klustter_base";
+
 
 .orange{
   color: #FAA81E;

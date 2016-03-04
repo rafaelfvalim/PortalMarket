@@ -60,9 +60,7 @@ module ApplicationHelper
     html.html_safe
   end
 
-
   def navbar_render
-
       case
         when current_user.is_god? then
           render "layouts/navbar_god"
@@ -71,6 +69,17 @@ module ApplicationHelper
         when current_user.is_customer? then
           render "layouts/navbar_customer"
       end
+  end
+
+  def drop_down_render
+    case
+      when current_user.is_god? then
+        render "layouts/dropdown_god"
+      when current_user.is_contributor? then
+        render "layouts/dropdown_contributor"
+      when current_user.is_customer? then
+        render "layouts/dropdown_customer"
+    end
   end
 
   def format_date(date)

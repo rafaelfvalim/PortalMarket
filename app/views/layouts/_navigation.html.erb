@@ -2,7 +2,9 @@
   <div class="sidebar-collapse">
     <ul class="nav metismenu" id="side-menu">
       <li class="nav-header">
-
+        <div class="profile-logo">
+          <%= image_tag 'logo-klustter.png' %>
+        </div>
         <div class="dropdown profile-element">
                      <span>
                        <%= link_to edit_user_registration_path do %>
@@ -16,27 +18,17 @@
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                           <span class="block m-t-xs">
-                                <strong class="font-bold"><%= current_user.full_name %></strong>
+                            <strong class="font-bold"><%= current_user.full_name %></strong>
                           </span>
-                          <span class="text-muted text-xs block"><%= get_function %></span>
+                          <span class="text-muted text-xs block"><%= get_function %> <b class="caret"></b></span>
                         </span>
-
-          </a>
-          <!--  <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                <li><a href="">Profile</a>
-                </li>
-                <li><a href="">Contacts</a>
-                </li>
-                <li><a href="">Mailbox</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="">Logout</a>
-                </li>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+              <%= drop_down_render %>
             </ul>
-          -->
+          </a>
         </div>
         <div class="logo-element">
-          &lt;&#47;&gt;
+
         </div>
       </li>
       <% if current_user.is_customer? %>

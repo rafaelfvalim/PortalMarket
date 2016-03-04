@@ -1,0 +1,28 @@
+<li>
+  <%= link_to edit_user_registration_path do %>
+      <i class="fa fa-gear fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.edit_account' %></a>
+  <% end %>
+</li>
+<li class="divider"></li>
+<% if current_user.is_master_user_id? && current_user.ativo? %>
+    <li>
+      <%= link_to master_user_users_path do %>
+          <i class="fa fa-users fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.my_team' %>
+      <% end %>
+    </li>
+<% end %>
+<li>
+  <%= link_to users_path do %>
+      <i class="fa fa-users fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.users' %>
+  <% end %>
+</li>
+<li>
+  <%= link_to '/iddqd' do %>
+      <i class="fa fa-laptop fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.sql_admin' %>
+  <% end %>
+</li>
+<li>
+  <%= link_to authenticator_users_path do %>
+      <i class="fa fa-key fa-fw" aria-hidden="true"></i><%= t 'labels.nav_bar.authenticator' %>
+  <% end %>
+</li>

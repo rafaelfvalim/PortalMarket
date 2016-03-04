@@ -1,10 +1,8 @@
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <span class="badge">
-              <% @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id) %>
-              <%= @carts.size %>
+<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+  <i class="typcn typcn-shopping-cart"></i>
+        <span class="label label-primary label-purple">
+              <%= @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id).size %>
             </span>
-  <i class="fa fa-shopping-cart fa-fw"></i>
-  <i class="fa fa-caret-down"></i>
 </a>
 <ul class="dropdown-menu">
   <li>

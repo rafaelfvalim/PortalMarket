@@ -92,6 +92,13 @@ $(document).ready(function () {
     $('.navbar-minimalize').click(function () {
         $("body").toggleClass("mini-navbar");
         SmoothlyMenu();
+        $('.profile-logo').toggle();
+        if($('i',this).hasClass('typcn-chevron-left'))
+        {
+            $('i',this).removeClass('typcn-chevron-left').addClass('typcn-chevron-right');
+        }else{
+            $('i',this).removeClass('typcn-chevron-right').addClass('typcn-chevron-left');
+        }
 
     });
 

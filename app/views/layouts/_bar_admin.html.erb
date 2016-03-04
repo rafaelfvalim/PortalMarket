@@ -2,7 +2,7 @@
 <!--Inicio Pesquisa-->
 <li>
   <%= link_to searches_path do %>
-      <i class="fa fa-search fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-zoom" aria-hidden="true"></i>
       <span class="nav-label"><%= t 'labels.menu.find_solutions' %> </span>
   <% end %>
 </li>
@@ -10,7 +10,7 @@
 <!--Inicio Dashboard-->
 <li>
   <%= link_to admin_members_path do %>
-      <i class="fa fa-th-large fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-th-large-outline" aria-hidden="true"></i>
       <span class="nav-label"><%= t 'labels.menu.dash_board' %></span>
   <% end %>
 </li>
@@ -19,7 +19,7 @@
 <!--Inicio Scripts-->
 <li>
   <%= link_to member_scripts_path do %>
-      <i class="fa fa-file-code-o fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-code" aria-hidden="true"></i>
       <span class="nav-label"> <%= t 'labels.menu.my_scripts' %> </span>
   <% end %>
 </li>
@@ -28,7 +28,7 @@
 <!--Incio Conta Corrente-->
 <li>
   <%= link_to checking_accounts_path do %>
-      <i class="fa fa-cc fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-credit-card" aria-hidden="true"></i>
       <span class="nav-label"> <%= t 'labels.menu.checking_account' %> </span>
   <% end %>
 </li>
@@ -38,7 +38,7 @@
 <!--Incio Invoices-->
 <li>
   <%= link_to invoices_path do %>
-      <i class="fa fa-database fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-database" aria-hidden="true"></i>
       <span class="nav-label"> <%= t 'labels.menu.invoices' %> </span>
   <% end %>
 </li>
@@ -47,7 +47,7 @@
 <!--Incio ProcessModules-->
 <li>
   <%= link_to process_modules_path do %>
-      <i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-flow-children" aria-hidden="true"></i>
       <span class="nav-label"><%= t 'labels.menu.process_modules' %></span>
   <% end %>
 </li>
@@ -55,7 +55,7 @@
 <!--Incio Reports-->
 <li>
   <%= link_to reports_path do %>
-      <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-chart-bar-outline" aria-hidden="true"></i>
       <span class="nav-label"> <%= t 'labels.menu.reports' %></span>
   <% end %>
 </li>
@@ -63,7 +63,7 @@
 <!--Incio  Server Tools-->
 <li>
   <%= link_to Rails.configuration.adm_server do %>
-      <i class="fa fa-server fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-device-desktop" aria-hidden="true"></i>
       <span class="nav-label"><%= t 'labels.menu.server_tools' %></span>
   <% end %>
 </li>
@@ -72,7 +72,7 @@
 <!--Incio Searchjoy-->
 <li>
   <%= link_to '/admin/searchjoy' do %>
-      <i class="fa fa-line-chart fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-chart-line-outline" aria-hidden="true"></i>
       <span class="nav-label"><%= t 'labels.menu.analytics' %></span>
   <% end %>
 </li>
@@ -80,7 +80,7 @@
 <!--Inicial Publications-->
 <li>
   <%= link_to publications_path do %>
-      <i class="fa fa-files-o fa-fw" aria-hidden="true"> </i>
+      <i class="typcn typcn-document-text" aria-hidden="true"> </i>
       <span class="nav-label"> <%= t 'labels.menu.publications' %></span>
       <span class="label label-primary" id="count-new"> <%= t 'labels.menu.publications_news' %> <%= Publication.all.count - ViewPublication.where(user_id: current_user.id).count %></span>
   <% end %>
@@ -91,7 +91,7 @@
 <!--Inicio maily-->
 <li>
   <%= link_to '/maily' do %>
-      <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-mail" aria-hidden="true"></i>
       <span class="nav-label"> Maily </span>
   <% end %>
 </li>
@@ -99,7 +99,7 @@
 <!--Inicio maily-->
 <li>
   <%= link_to Rails.configuration.mailcatcher, :target => "_blank" do %>
-      <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
+      <i class="typcn typcn-mail typcn-fw" aria-hidden="true"></i>
       <span class="nav-label"> MailCatcher </span>
   <% end %>
 </li>
