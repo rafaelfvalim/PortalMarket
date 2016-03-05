@@ -1,148 +1,153 @@
+<%= raw t 'labels.dash_script_header' %>
+<hr>
 <div class="row">
-  <div class="col-lg-12">
-    <div class="ibox">
-      <div class="ibox-title">
-        <%=raw t 'labels.dash_script_header' %>
+  <% Status.all.each do |status| %>
+      <% if status.id != 6 %>
+          <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="widget style1 <%= dash_admin_panel_color(status.id) %>">
+              <div class="row">
+                <div class="col-xs-4">
+                  <i class="<%= dash_admin_icon(status.id) %>"></i>
+                </div>
+                <div class="col-xs-8">
+                  <div style="width: 40px; height: 40px"><h4><%= dash_description(status.description) %></h4></div>
+
+                  <h2 class="font-bold"><%= @status_count = Script.where('status_id = ?', status.id).count %></h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-xs-12 dash_links">
+                  <%= link_to script_orchestration_scripts_path(status_id: status.id) do %>
+                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                      <div class="clearfix"></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+  <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="widget style1 red-bg">
+      <div class="row">
+        <div class="col-xs-4">
+          <i class="fa fa-exclamation fa-5x"></i>
+        </div>
+        <div class="col-xs-8">
+          <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_without_price' %></h4></div>
+
+          <h2 class="font-bold"><%= Script.where('has_price is null or has_price = 0 ').count %></h2>
+        </div>
       </div>
-      <div class="ibox-content">
-        <div class="row">
-          <% Status.all.each do |status| %>
-              <% if status.id != 6 %>
-                  <div class="col-md-3 col-sm-4 col-xs-6">
-                    <div class="widget style1 <%= dash_admin_panel_color(status.id) %>">
-                      <div class="row">
-                        <div class="col-xs-4">
-                          <i class="<%= dash_admin_icon(status.id) %>"></i>
-                        </div>
-                        <div class="col-xs-8">
-                          <div style="width: 40px; height: 40px"><h4><%= dash_description(status.description) %></h4></div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 dash_links">
+          <%= link_to script_prices_prices_path do %>
+              <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-                          <h2 class="font-bold"><%= @status_count = Script.where('status_id = ?', status.id).count %></h2>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-xs-12 dash_links">
-                          <%= link_to script_orchestration_scripts_path(status_id: status.id) do %>
-                              <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                              <div class="clearfix"></div>
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              <% end %>
+              <div class="clearfix"></div>
           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="widget style1 green-bg">
+      <div class="row">
+        <div class="col-xs-4">
+          <i class="fa fa-usd fa-5x"></i>
+        </div>
+        <div class="col-xs-8">
+          <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_with_price' %></h4></div>
+          <h2 class="font-bold"><%= Script.where('has_price is not null or has_price != 0 ').count %></h2>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 dash_links">
+          <%= link_to prices_path do %>
+              <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-          <div class="col-md-3 col-sm-4 col-xs-6">
-            <div class="widget style1 red-bg">
-              <div class="row">
-                <div class="col-xs-4">
-                  <i class="fa fa-exclamation fa-5x"></i>
-                </div>
-                <div class="col-xs-8">
-                  <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_without_price' %></h4></div>
+              <div class="clearfix"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="widget style1 red-bg">
+      <div class="row">
+        <div class="col-xs-4">
+          <i class="fa fa-exclamation fa-5x"></i>
+        </div>
+        <div class="col-xs-8">
+          <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_not_complete' %></h4></div>
 
-                  <h2 class="font-bold"><%= Script.where('has_price is null or has_price = 0 ').count %></h2>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-xs-12 dash_links">
-                  <%= link_to script_prices_prices_path do %>
-                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <h2 class="font-bold"><%= Script.where('status_id = 6 and DATE(created_at) < ?', Date.today).count %></h2>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 dash_links">
+          <%= link_to script_orchestration_scripts_path(status_id: 6) do %>
+              <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-                      <div class="clearfix"></div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-6">
-            <div class="widget style1 green-bg">
-              <div class="row">
-                <div class="col-xs-4">
-                  <i class="fa fa-usd fa-5x"></i>
-                </div>
-                <div class="col-xs-8">
-                  <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_with_price' %></h4></div>
-                  <h2 class="font-bold"><%= Script.where('has_price is not null or has_price != 0 ').count %></h2>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-xs-12 dash_links">
-                  <%= link_to prices_path do %>
-                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+              <div class="clearfix"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="widget style1 blue-bg">
+      <div class="row">
+        <div class="col-xs-4">
+          <i class="fa fa-eye fa-5x"></i>
+        </div>
+        <div class="col-xs-8">
+          <div style="width: 40px; height: 40px"><h4><%= t 'labels.all_scripts' %> </h4></div>
 
-                      <div class="clearfix"></div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h2 class="font-bold"><%= Script.all.count %></h2>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 dash_links">
+          <%= link_to all_scripts_member_scripts_path do %>
+              <span class="pull-left"><%= t 'labels.buttons.details' %></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-
-          <div class="col-md-3 col-sm-4 col-xs-6">
-            <div class="widget style1 red-bg">
-              <div class="row">
-                <div class="col-xs-4">
-                  <i class="fa fa-exclamation fa-5x"></i>
-                </div>
-                <div class="col-xs-8">
-                  <div style="width: 40px; height: 40px"> <h4><%= t 'labels.dash_not_complete' %></h4></div>
-
-                  <h2 class="font-bold"><%= Script.where('status_id = 6 and DATE(created_at) < ?', Date.today).count %></h2>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-xs-12 dash_links">
-                  <%= link_to script_orchestration_scripts_path(status_id: 6) do %>
-                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                      <div class="clearfix"></div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-sm-4 col-xs-6">
-            <div class="widget style1 blue-bg">
-              <div class="row">
-                <div class="col-xs-4">
-                  <i class="fa fa-eye fa-5x"></i>
-                </div>
-                <div class="col-xs-8">
-                  <div style="width: 40px; height: 40px"><h4><%= t 'labels.all_scripts' %> </h4></div>
-
-                  <h2 class="font-bold"><%= Script.all.count %></h2>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-xs-12 dash_links">
-                  <%= link_to all_scripts_member_scripts_path do %>
-                      <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                      <div class="clearfix"></div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-
+              <div class="clearfix"></div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<br>
+<table class="table">
+  <tbody>
+  <tr>
+    <td>
+      <button type="button" class="btn btn-danger m-r-sm"><%= Invoice.where('DATE(pay_date) = ? ', Date.today).count %></button>
+      Scripts vendidos hoje
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary m-r-sm"><%= Invoice.where('DATE(pay_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_week, Date.today.end_of_week).count %> </button>
+      Scripts vendidos essa semana
+    </td>
+    <td>
+      <button type="button" class="btn btn-info m-r-sm"><%= Invoice.where('DATE(pay_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_month, Date.today.end_of_month).count %> </button>
+      Scripts vendidos esse mês
+    </td>
+  </tr>
+  </tbody>
+</table>
 
 

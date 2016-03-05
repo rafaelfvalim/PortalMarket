@@ -1,86 +1,31 @@
-<div class="row">
-  <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-      <div class="ibox-title">
-        <h5>Script Panel
-          <small class="m-l-sm">notifications</small>
-        </h5>
-        <div class="ibox-tools">
-          <a class="collapse-link">
-            <i class="fa fa-chevron-up"></i>
-          </a>
-
-        </div>
-      </div>
-      <div class="ibox-content">
-        <div class="list-group">
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-money fa-fw"></i> Script(s) Sold Today
-                                    <span class="pull-right text-muted small"><em><%= Invoice.where('DATE(pay_date) = ? ', Date.today).count %></em>
-                                    </span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-money fa-fw"></i> Script(s) Sold This Week
-                                    <span class="pull-right text-muted small"><em><%= Invoice.where('DATE(pay_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_week, Date.today.end_of_week).count %> </em>
-                                    </span>
-          </a>
-          <a href="#" class="list-group-item">
-            <i class="fa fa-money fa-fw"></i> Script(s) Sold This Month
-                                    <span class="pull-right text-muted small"><em><%= Invoice.where('DATE(pay_date) > ? and DATE(ship_date) <= ? ', Date.today.beginning_of_month, Date.today.end_of_month).count %> </em>
-                                    </span>
-          </a>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Script Sold
-          </div>
-          <div class="panel-body">
-            <%= line_chart Invoice.group_by_day(:pay_date).count %>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Script Created
-          </div>
-          <div class="panel-body">
-            <%= line_chart Script.group_by_day(:created_at).count %>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Script Platform
-          </div>
-          <div class="panel-body">
-            <%= pie_chart Script.group(:platform).count %>
-          </div>
-          <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Script Industry
-          </div>
-          <div class="panel-body">
-            <%= pie_chart Script.group(:industry).count %>
-          </div>
-          <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Script Complexity
-          </div>
-          <div class="panel-body">
-            <%= pie_chart Script.group(:complexity).count %>
-          </div>
-          <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
-        </div>
-      </div>
-      <div class="ibox-footer">
-                        <span class="pull-right">
-                          Code Store
-                    </span>
-        Klustter
-      </div>
-    </div>
+<h3>Painel Scripts</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Scripts Vendidos
+  </div>
+  <div class="panel-body">
+    <%= line_chart Invoice.group_by_day(:pay_date).count %>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Scripts Criados
+  </div>
+  <div class="panel-body">
+    <%= line_chart Script.group_by_day(:created_at).count %>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Scripts Status
+  </div>
+  <div class="panel-body">
+    1-Gravado <br>
+    2-Verificação de Duplicidade<br>
+    3-Verificação de Consistência<br>
+    4-Verficação de Complexidade<br>
+    5-Aprovado<br>
+    6-Inicial
+    <%= pie_chart Script.group(:status_id).count %>
   </div>
 </div>

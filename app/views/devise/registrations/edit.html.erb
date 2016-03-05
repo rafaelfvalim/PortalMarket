@@ -1,173 +1,175 @@
 <%= render 'layouts/messages' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="wrapper wrapper-content animated fadeIn">
+      <h3><%= t 'labels.buttons.edit' %> <%= resource_name.to_s.humanize %></h3>
 
-<div class="wrapper wrapper-content animated fadeIn">
-  <h3><%= t 'labels.buttons.edit' %> <%= resource_name.to_s.humanize %></h3>
-
-  <div class="row row-centered">
-    <div class="col-lg-12">
-      <div class="well">
-        <% unless @current_user.avatar_url.present? %>
-            <a href='#' data-toggle='modal' data-target='#avatar_modal'>
-              <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
-            </a>
-        <% else %>
-            <a href='#' data-toggle='modal' data-target='#avatar_modal'>
-              <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
-            </a>
+      <div class="row row-centered">
+        <div class="col-lg-12">
+          <div class="well">
+            <% unless @current_user.avatar_url.present? %>
+                <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+                  <img class="img-circle" src="<%= image_url 'avatar-n-60x60.png' %>"/>
+                </a>
+            <% else %>
+                <a href='#' data-toggle='modal' data-target='#avatar_modal'>
+                  <img class="img-circle" src="<%= image_url @current_user.avatar.circle_avatar.url.to_s %>"/>
+                </a>
+                <br>
+                <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
+                    <i class="fa fa-trash"></i> <%= t 'labels.devise.remove' %>
+                <% end %>
+            <% end %>
             <br>
-            <%= link_to remove_avatar_users_path(id: @current_user.id) do %>
-                <i class="fa fa-trash"></i> <%= t 'labels.devise.remove' %>
-            <% end %>
-        <% end %>
-        <br>
-        <smal>Clique sobre a imagem para alterar o avatar</smal>
-      </div>
-    </div>
-  </div>
-
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', id: 'edit_profile_form'}) do |f| %>
-      <%= f.fields_for :member, resource.member do |m| %>
-          <div class="row">
-            <div class="col-lg-6 ">
-              <%= m.input :member_name, label: "#{t 'labels.member_attributes.member_name'}", :autofocus => true, class: 'form-control' %>
-            </div>
-            <div class="col-lg-6 ">
-              <%= m.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 ">
-              <%= m.input :phone_number, class: 'form-control', label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}} %>
-            </div>
-            <div class="col-lg-6 ">
-              <%= m.input :cellphone_number, class: 'form-control', label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}} %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 ">
-              <%= m.input :cpf, class: 'form-control', label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}} %>
-            </div>
-            <% unless current_user.member.master_user_id? %>
-                <div class="col-lg-6 ">
-                  <%= m.input :cnpj, class: 'form-control', label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}} %>
-                </div>
-            <% end %>
-          </div>
-          <% if current_user.is_contributor? %>
-              <div class="row">
-                <div class="col-lg-6 ">
-                  <%= m.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-1 ">
-                  <%= m.input :bank_ag, label: 'Ag:', class: 'form-control' %>
-                </div>
-                <div class="col-lg-4 ">
-                  <%= m.input :bank_cc, label: 'Cc:', class: 'form-control' %>
-                </div>
-                <div class="col-lg-1">
-                  <%= m.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
-                </div>
-              </div>
-          <% elsif current_user.is_customer? %>
-              <div class="row">
-                <div class="col-lg-6 ">
-                  <%= m.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
-                </div>
-              </div>
-          <% end %>
-      <% end %>
-      <div class="row">
-        <div class="col-lg-6 ">
-          <%= f.input :email, class: 'form-control' %>
-        </div>
-      </div>
-      <%= f.fields_for :address, @user.address do |address| %>
-          <div class="row">
-            <div class="col-lg-4">
-              <%= address.input :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
-            </div>
-            <div class="col-lg-2">
-              <%= address.input :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
-            </div>
-            <div class="col-lg-4">
-              <%= address.input :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
-            </div>
-            <div class="col-lg-2">
-              <%= address.input :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <%= address.input :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
-            </div>
-            <div class="col-lg-6">
-              <%= address.input :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <%= address.input :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
-            </div>
-            <div class="col-lg-2">
-              <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
-            </div>
-          </div>
-      <% end %>
-      <div class="row">
-        <div class="col-lg-6 ">
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
-        </div>
-      </div>
-      <div class="well well-lg">
-        <div class="text-center">
-          <div class="row">
-            <div class="col-lg-12">
-              <%= t 'labels.devise.change_passwrod' %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control' ,input_html: { autocomplete: 'off' } %>
-            </div>
-            <div class="col-lg-6">
-              <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control',input_html: { autocomplete: 'off' } %>
-            </div>
+            <smal>Clique sobre a imagem para alterar o avatar</smal>
           </div>
         </div>
       </div>
 
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', id: 'edit_profile_form'}) do |f| %>
+          <%= f.fields_for :member, resource.member do |m| %>
+              <div class="row">
+                <div class="col-lg-6 ">
+                  <%= m.input :member_name, label: "#{t 'labels.member_attributes.member_name'}", :autofocus => true, class: 'form-control' %>
+                </div>
+                <div class="col-lg-6 ">
+                  <%= m.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 ">
+                  <%= m.input :phone_number, class: 'form-control', label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}} %>
+                </div>
+                <div class="col-lg-6 ">
+                  <%= m.input :cellphone_number, class: 'form-control', label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}} %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 ">
+                  <%= m.input :cpf, class: 'form-control', label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}} %>
+                </div>
+                <% unless current_user.member.master_user_id? %>
+                    <div class="col-lg-6 ">
+                      <%= m.input :cnpj, class: 'form-control', label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}} %>
+                    </div>
+                <% end %>
+              </div>
+              <% if current_user.is_contributor? %>
+                  <div class="row">
+                    <div class="col-lg-6 ">
+                      <%= m.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-1 ">
+                      <%= m.input :bank_ag, label: 'Ag:', class: 'form-control' %>
+                    </div>
+                    <div class="col-lg-4 ">
+                      <%= m.input :bank_cc, label: 'Cc:', class: 'form-control' %>
+                    </div>
+                    <div class="col-lg-1">
+                      <%= m.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
+                    </div>
+                  </div>
+              <% elsif current_user.is_customer? %>
+                  <div class="row">
+                    <div class="col-lg-6 ">
+                      <%= m.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
+          <div class="row">
+            <div class="col-lg-6 ">
+              <%= f.input :email, class: 'form-control' %>
+            </div>
+          </div>
+          <%= f.fields_for :address, @user.address do |address| %>
+              <div class="row">
+                <div class="col-lg-4">
+                  <%= address.input :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
+                </div>
+                <div class="col-lg-2">
+                  <%= address.input :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
+                </div>
+                <div class="col-lg-4">
+                  <%= address.input :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
+                </div>
+                <div class="col-lg-2">
+                  <%= address.input :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <%= address.input :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
+                </div>
+                <div class="col-lg-6">
+                  <%= address.input :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <%= address.input :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
+                </div>
+                <div class="col-lg-2">
+                  <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
+                </div>
+              </div>
+          <% end %>
+          <div class="row">
+            <div class="col-lg-6 ">
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="well well-lg">
+            <div class="text-center">
+              <div class="row">
+                <div class="col-lg-12">
+                  <%= t 'labels.devise.change_passwrod' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
+                </div>
+                <div class="col-lg-6">
+                  <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+              <%= raw t 'labels.devise.alter_informations_password_confirm' %>
+              <%= f.input :current_password, label: "#{t 'labels.devise.current_password'}", class: 'form-control' %>
+            </div>
+            <div class="col-lg-4"></div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 text-center">
+              <%= f.submit "#{t 'labels.buttons.update'}", :class => 'btn btn-success btn-lock' %>
+            </div>
+            <div class="col-lg-4"></div>
+          </div>
+      <% end %>
       <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-          <%= raw t 'labels.devise.alter_informations_password_confirm' %>
-          <%= f.input :current_password, label: "#{t 'labels.devise.current_password'}", class: 'form-control' %>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+          <%= raw t 'labels.devise.cancel_account_header' %>
+          <%= button_to "#{t 'labels.devise.cancel_account'}", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-warning' %>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-md-4"></div>
       </div>
-      <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 text-center">
-          <%= f.submit "#{t 'labels.buttons.update'}", :class => 'btn btn-success btn-lock' %>
-        </div>
-        <div class="col-lg-4"></div>
-      </div>
-  <% end %>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-      <%= raw t 'labels.devise.cancel_account_header' %>
-      <%= button_to "#{t 'labels.devise.cancel_account'}", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-warning' %>
+      <br>
+      <br>
     </div>
-    <div class="col-md-4"></div>
   </div>
-  <br>
-  <br>
 </div>
-
 <div id="avatar_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->

@@ -1,76 +1,79 @@
 <%= render 'layouts/messages' %>
-<div class="wrapper wrapper-content animated fadeIn">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Detail Invoce ID: <%= @invoice.id %> </h2>
-    </div>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Detalhe da Fatura ID: <%= @invoice.id %> </h2>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render 'status_invoice_steps' %>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "Voltar", :back, class: 'btn btn-success' %>
   </div>
-  <br>
+</div>
+<br>
 
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to "Back", :back , class: 'btn btn-success' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'status_invoice_steps' %>
+      </div>
     </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <strong>User:</strong> <br> <%= @invoice.user.full_name %>
-      <hr>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <strong>User:</strong> <br> <%= @invoice.user.full_name %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>Script Name:</strong> <br>  <%= @invoice.script.name %>
+        <hr>
+      </div>
     </div>
-    <div class="col-md-6"><strong>Script Name:</strong> <br>  <%= @invoice.script.name %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>Invoice Value: </strong> <br><%= @invoice.value %>
+        <hr>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>To Orgranization :</strong> <br><%= @invoice.workplace.organization_name %>
+        <hr>
+      </div>
     </div>
-    <div class="col-md-6"><strong>Invoice Value: </strong> <br><%= @invoice.value %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>To System Number:</strong> <br> <%= @invoice.workplace.system_number %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>Invoice Date:</strong> <br><%= format_date(@invoice.invoice_date) %>
+        <hr>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>Script Author:</strong> <br><%= get_script_author(@invoice.script).user.full_name %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Pay Date:</strong> <br> <%= format_date(@invoice.pay_date) %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>Invoice Ship Date:</strong> <br>   <%= format_date(@invoice.ship_date) %>
+        <hr>
+      </div>
     </div>
-    <div class="col-md-6"><strong>To Orgranization :</strong> <br><%= @invoice.workplace.organization_name %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Shipped To: </strong> <br>  <%= @invoice.shipped_to %>
+        <hr>
+      </div>
+      <div class="col-md-6"><strong>Invoice Shipped Via: </strong> <br>   <%= @invoice.shipped_via %>
+        <hr>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>To System Number:</strong> <br> <%= @invoice.workplace.system_number %>
-      <hr>
+    <div class="row">
+      <div class="col-md-6"><strong>Invoice Pay Methodo: </strong> <br> <%= @invoice.pay_method.name %>
+        <hr>
+      </div>
+      <div class="col-md-6"></div>
     </div>
-    <div class="col-md-6"><strong>Invoice Date:</strong> <br><%= format_date(@invoice.invoice_date) %>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>Invoice Pay Date:</strong> <br> <%= format_date(@invoice.pay_date) %>
-      <hr>
-    </div>
-    <div class="col-md-6"><strong>Invoice Ship Date:</strong> <br>   <%= format_date(@invoice.ship_date) %>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>Invoice Shipped To: </strong> <br>  <%= @invoice.shipped_to %>
-      <hr>
-    </div>
-    <div class="col-md-6"><strong>Invoice Shipped Via: </strong> <br>   <%= @invoice.shipped_via %>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><strong>Invoice Pay Methodo: </strong> <br> <%= @invoice.pay_method.name %>
-      <hr>
-    </div>
-    <div class="col-md-6"></div>
+
   </div>
 </div>

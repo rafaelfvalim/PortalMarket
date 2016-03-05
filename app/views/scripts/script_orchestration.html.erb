@@ -1,18 +1,17 @@
 <%= render 'layouts/messages' %>
-<div class="wrapper wrapper-content animated fadeIn">
-  <div class="row">
-    <div class="col-md-12">
-      <h2><%= t 'labels.script_orchestration.page_header'%> <%= @status.description %> </h2>
-    </div>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2><%= t 'labels.script_orchestration.page_header'%> <%= @status.description %> </h2>
   </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
   <%= form_for :script, url: process_orchestration_scripts_path, method: :get, remote: true, :html => {id: 'orchestration_form'} do |f| %>
       <!-- /.row -->
       <div class="row">
-        <hr>
         <%= link_to 'Admin Dashboard', admin_members_path, class: 'btn btn-primary' %>
         <br>
         <br>
-
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default center">

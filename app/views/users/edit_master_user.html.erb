@@ -1,10 +1,11 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
-  <div class="row">
-    <div class="col-md-12">
-      <h1><%= t 'labels.user_attribures.user' %> </h1>
-    </div>
+
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2><%= t 'labels.user_attribures.user' %></h2>
   </div>
-  <hr>
+</div>
+
+<div class="row wrapper border-bottom">
   <div><%= render 'users/form_master_edit' %></div>
 </div>

@@ -1,12 +1,20 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
-  <h1>New Process Module</h1>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Novo Modulo de Processo</h2>
+  </div>
+</div>
 
+<div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
     <div class="col-md-12">
-      <%= link_to 'Back', process_modules_path, class:'btn btn-primary' %>
+      <%= link_to 'Voltar', process_modules_path, class: 'btn btn-primary' %>
     </div>
   </div>
   <br>
-  <%= render 'form' %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render 'form' %>
+    </div>
+  </div>
 </div>

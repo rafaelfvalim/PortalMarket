@@ -1,30 +1,43 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
-  <p>
-    <strong>Image:</strong> <br>
-    <img src="<%= @process_module.image.thumb.url.to_s %>" />
-  </p>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Processo <%= @process_module.description %> </h2>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRigh">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Editar', edit_process_module_path(@process_module), class: 'btn btn-primary' %>
+      <%= link_to 'Voltar', process_modules_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>
+        <strong>Image:</strong> <br>
+        <img src="<%= @process_module.image.thumb.url.to_s %>"/>
+      </p>
 
-  <p>
-    <strong>Id:</strong>
-    <%= @process_module.id %>
-  </p>
+      <p>
+        <strong>Id:</strong>
+        <%= @process_module.id %>
+      </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @process_module.description %>
-  </p>
+      <p>
+        <strong>Description:</strong>
+        <%= @process_module.description %>
+      </p>
 
-  <p>
-    <strong>Long Decription:</strong>
-    <%= @process_module.long_description %>
-  </p>
+      <p>
+        <strong>Long Decription:</strong>
+        <%= @process_module.long_description %>
+      </p>
 
-  <p>
-    <strong>Referrer Process:</strong>
-    <%= @process_module.referrer_process_module_id %>
-  </p>
-
-  <%= link_to 'Edit', edit_process_module_path(@process_module), class: 'btn btn-primary' %>
-  <%= link_to 'Back', process_modules_path, class: 'btn btn-primary' %>
+      <p>
+        <strong>Referrer Process:</strong>
+        <%= @process_module.referrer_process_module_id %>
+      </p>
+    </div>
+  </div>
 </div>

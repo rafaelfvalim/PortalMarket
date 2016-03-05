@@ -1,19 +1,16 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper page-heading">
   <div class="col-lg-10">
     <h2>Scripts</h2>
   </div>
 </div>
-
-<div class="wrapper wrapper-content animated fadeIn">
-  <div class="ibox-content m-b-sm border-bottom">
-    <div class="row">
-      <dl class="dl-horizontal">
-        <dt>Total:</dt>
-        <dd><%= Script.all.count %>
-        </dd>
-      </dl>
-    </div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Total:</dt>
+      <dd><%= Script.all.count %>
+      </dd>
+    </dl>
   </div>
 </div>
 

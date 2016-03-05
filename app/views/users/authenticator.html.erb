@@ -1,15 +1,18 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Autenticador</h1>
-      <p>Geração do token para login na aplicão JAVA Client Klustter</p>
-      <smal>Este token é gerado automaticamente a cada 60 segundos</smal>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h1>Autenticador</h1>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Geração do token para login na aplicão JAVA Client Klustter</p>
+    <smal>Este token é gerado automaticamente a cada 60 segundos</smal>
+    <hr>
+    <div id="token">
+      <%= render 'users/token' %>
     </div>
   </div>
-  <hr>
-  <br>
-  <did id="token">
-    <%= render 'users/token' %>
-  </did>
 </div>

@@ -1,9 +1,10 @@
 <%= render 'layouts/messages' %>
-
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper page-heading">
   <div class="col-lg-10">
     <h2><%= t 'labels.searchs.page_header' %></h2>
   </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
   <div class="row">
     <div class="col-md-12">
       <%= form_tag searches_path, id: 'search_form', method: :get, remote: true do %>
@@ -22,6 +23,6 @@
   </div>
   <br>
   <div id="search_results">
-    <%= render partial: 'results', locals: {scripts: @scripts} %>
+        <%= render partial: 'results', locals: {scripts: @scripts} %>
   </div>
 </div>

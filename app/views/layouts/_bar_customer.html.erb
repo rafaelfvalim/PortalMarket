@@ -2,28 +2,33 @@
 <!--Inicio Pesquisa-->
 <li>
   <%= link_to searches_path do %>
-      <i class="fa fa-search fa-fw" aria-hidden="true"></i><span class="nav-label">  <%= t 'labels.menu.find_solutions' %> </span>
+      <i class="typcn typcn-zoom" aria-hidden="true"></i>
+      <span class="nav-label">  <%= t 'labels.menu.find_solutions' %> </span>
   <% end %>
 </li>
 <!--Fim Pesquisa -->
 <!--Inicio Dashboard-->
 <li>
   <%= link_to members_path do %>
-      <i class="fa fa-th-large" aria-hidden="true"></i> <span class="nav-label"> <%= t 'labels.menu.dash_board' %></span>
+      <i class="typcn typcn-th-large-outline" aria-hidden="true"></i>
+      <span class="nav-label"> <%= t 'labels.menu.dash_board' %></span>
   <% end %>
 </li>
 <!--Fim Dashboard-->
 <!--Incio Conta Corrente-->
 <li>
   <%= link_to checking_accounts_path do %>
-      <i class="fa fa-cc fa-fw" aria-hidden="true"></i> <span class="nav-label"> <%= t 'labels.menu.checking_account' %></span>
+      <i class="typcn typcn-credit-card" aria-hidden="true"></i>
+      <span class="nav-label"> <%= t 'labels.menu.checking_account' %></span>
   <% end %>
 </li>
 <!--Fim Conta Corrente-->
 <!--Inicial Publications-->
 <li>
   <%= link_to publications_path do %>
-      <i class="fa fa-files-o fa-fw" aria-hidden="true"> </i> <span class="nav-label">  <%= t 'labels.menu.publications' %></span> <span class="label label-primary" id="count-new">  <%= t 'labels.menu.publications_news' %> <%=  Publication.all.count -  ViewPublication.where(user_id: current_user.id).count  %></span>
+      <i class="typcn typcn-document-text " aria-hidden="true"> </i>
+      <span class="nav-label">  <%= t 'labels.menu.publications' %></span>
+      <span class="label label-primary" id="count-new">  <%= t 'labels.menu.publications_news' %> <%=  Publication.all.count -  ViewPublication.where(user_id: current_user.id).count  %></span>
   <% end %>
 </li>
 <!--Fim Publications-->

@@ -4,6 +4,8 @@
  *   version 2.3
  *
 */
+
+
 // Bootstra
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -11,6 +13,10 @@
 // Variables, Mixins
 @import "base/variables";
 @import "base/mixins";
+
+//Klustter Custom
+@import "base/klustter_base";
+
 
 // INSPINIA Theme Elements
 @import "base/typography";
@@ -20,7 +26,7 @@
 @import "base/badgets_labels";
 @import "base/elements";
 @import "base/sidebar";
-@import "base/base";
+//@import "base/base";
 @import "base/pages";
 @import "base/chat";
 @import "base/metismenu";
@@ -50,8 +56,6 @@
 //Btns custom klustter style
 @import "base/bootstrap-custom-btn";
 
-//Klustter Custom
-@import "base/klustter_base";
 
 
 .orange{

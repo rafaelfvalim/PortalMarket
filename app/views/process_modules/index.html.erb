@@ -1,8 +1,11 @@
 <%= render 'layouts/messages' %>
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2><%= t 'labels.process_modules.page_header' %></h2>
+  </div>
+</div>
 
-  <h1><%=t 'labels.process_modules.page_header' %></h1>
-  <br>
+<div class="wrapper wrapper-content animated fadeInRight">
 
   <div class="row">
     <div class="col-md-12">
@@ -11,39 +14,43 @@
   </div>
   <br>
 
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>Id</th>
-          <th><%=t 'labels.process_modules_attributtes.image' %></th>
-          <th><%=t 'labels.process_modules_attributtes.description' %></th>
-          <th><%=t 'labels.process_modules_attributtes.referrer_processos' %></th>
-          <th colspan="3"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @process_modules.each do |process_module| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
             <tr>
-              <td><%= process_module.id %></td>
-              <td>
-                <% if process_module.image.present? %>
-                    <img src="<%= process_module.image.thumb.url.to_s %>"/> <br>
-                    <%= link_to remove_image_process_modules_path(id: process_module.id) do %>
-                        <i class="fa fa-times-circle color-red" style="color: red;"><%=t 'labels.process_modules.remove_image' %></i>
-                    <% end %>
-                <% end %>
-              </td>
-              <td><%= process_module.description %></td>
-              <td><%= "#{process_module.referrer_process_module_id} -  #{ process_module.referrer_process_module_id.present? ? ProcessModule.find(process_module.referrer_process_module_id).description : ''}" %></td>
-              <td><%= link_to "#{t 'labels.buttons.show'}", process_module, class: 'btn btn-success btn-xs' %></td>
-              <td><%= link_to "#{t 'labels.buttons.edit'}", edit_process_module_path(process_module), class: 'btn btn-primary btn-xs' %></td>
-              <td><%= link_to "#{t 'labels.buttons.delete'}", process_module, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %></td>
+              <th>Id</th>
+              <th><%= t 'labels.process_modules_attributtes.image' %></th>
+              <th><%= t 'labels.process_modules_attributtes.description' %></th>
+              <th><%= t 'labels.process_modules_attributtes.referrer_processos' %></th>
+              <th colspan="3"></th>
             </tr>
-        <% end %>
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            <% @process_modules.each do |process_module| %>
+                <tr>
+                  <td><%= process_module.id %></td>
+                  <td>
+                    <% if process_module.image.present? %>
+                        <img src="<%= process_module.image.thumb.url.to_s %>"/> <br>
+                        <%= link_to remove_image_process_modules_path(id: process_module.id) do %>
+                            <i class="fa fa-times-circle color-red" style="color: red;"><%= t 'labels.process_modules.remove_image' %></i>
+                        <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= process_module.description %></td>
+                  <td><%= "#{process_module.referrer_process_module_id} -  #{ process_module.referrer_process_module_id.present? ? ProcessModule.find(process_module.referrer_process_module_id).description : ''}" %></td>
+                  <td><%= link_to "#{t 'labels.buttons.show'}", process_module, class: 'btn btn-success btn-xs' %></td>
+                  <td><%= link_to "#{t 'labels.buttons.edit'}", edit_process_module_path(process_module), class: 'btn btn-primary btn-xs' %></td>
+                  <td><%= link_to "#{t 'labels.buttons.delete'}", process_module, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

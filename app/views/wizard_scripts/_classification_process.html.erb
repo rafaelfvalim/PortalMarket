@@ -5,37 +5,41 @@
     <% end %>
   </div>
 </div>
-<hr>
-<div class="row">
-  <%= form_tag create_ajax_value_chains_path, id: 'value_chains_form', method: :get do %>
-      <div class="col-md-3" id="value_chain_process">
-        <%= hidden_field_tag 'script_id', @script_id, id: 'script_id' %>
-        <%= hidden_field_tag 'sub_action', @sub_action, id: 'script_id' %>
-        <%= hidden_field_tag 'step', '1' %>
-        <input type="hidden" name="process[][id]" id="process_id" value="<%= @process_module.id %>">
+<br>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <%= form_tag create_ajax_value_chains_path, id: 'value_chains_form', method: :get do %>
+          <div class="col-md-3" id="value_chain_process">
+            <%= hidden_field_tag 'script_id', @script_id, id: 'script_id' %>
+            <%= hidden_field_tag 'sub_action', @sub_action, id: 'script_id' %>
+            <%= hidden_field_tag 'step', '1' %>
+            <input type="hidden" name="process[][id]" id="process_id" value="<%= @process_module.id %>">
 
-        <div class="ibox">
-          <div class="ibox-content product-box">
+            <div class="ibox">
+              <div class="ibox-content product-box">
 
-            <div class="product-desc">
-              <small class="text-muted"><%= t 'labels.value_chain.category' %></small>
-              <a href="#" class="product-name"><%= @process_module.description %></a>
+                <div class="product-desc">
+                  <small class="text-muted"><%= t 'labels.value_chain.category' %></small>
+                  <a href="#" class="product-name"><%= @process_module.description %></a>
 
-              <div class="small m-t-xs">
-                <%= @process_module.long_description %>
-              </div>
-              <div class="m-t text-righ">
+                  <div class="small m-t-xs">
+                    <%= @process_module.long_description %>
+                  </div>
+                  <div class="m-t text-righ">
 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row row-horizon" id="list_process_chain">
-      </div>
-  <% end %>
+          <div class="row row-horizon" id="list_process_chain">
+          </div>
+      <% end %>
 
+    </div>
+  </div>
 </div>
 
 

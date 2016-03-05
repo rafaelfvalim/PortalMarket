@@ -1,110 +1,117 @@
-<%= bootstrap_form_for @user, url: update_master_user_users_path(id: @user.id), method: :put do |f| %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="pull-right">
-          <%= f.submit 'Save', class: 'btn btn-success' %>
-        </div>
-        <div class="pull-left">
-          <%= link_to :back, class: 'btn btn-primary next' do %>
-              <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.text_field :id, readonly: :true, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.fields_for :member_type do |mt| %>
-            <%= mt.text_field :description, label: 'Perfil', readonly: true, class: 'form-control' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="well">
-    <div class="row">
-      <div class="col-md-12">
-        <small>Por medida de segurança, qualquer alteração de email o sistema enviará um novo email de confirmação
-        </small>
-        <%= f.text_field :email, class: 'form-control' %>
-      </div>
-    </div>
-    </div>
-
-    <%= f.fields_for :member do |m| %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= bootstrap_form_for @user, url: update_master_user_users_path(id: @user.id), method: :put do |f| %>
         <div class="row">
-          <div class="col-md-6">
-            <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
+          <div class="col-md-12">
+            <div class="pull-right">
+              <%= f.submit 'Save', class: 'btn btn-success' %>
+            </div>
+            <div class="pull-left">
+              <%= link_to :back, class: 'btn btn-primary next' do %>
+                  <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
+              <% end %>
+            </div>
           </div>
-          <div class="col-md-6">
-            <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.text_field :id, readonly: :true, class: 'form-control' %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
+            <%= f.fields_for :member_type do |mt| %>
+                <%= mt.text_field :description, label: 'Perfil', readonly: true, class: 'form-control' %>
+            <% end %>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
+        <div class="well">
+          <div class="row">
+            <div class="col-md-12">
+              <small>Por medida de segurança, qualquer alteração de email o sistema enviará um novo email de confirmação
+              </small>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
           </div>
         </div>
-        <!--<div class="row">-->
-        <!--<div class="col-md-12">-->
-        <!--<%= m.text_field :cnpj, label: "#{t 'labels.member_attributes.cnpj'}", class: 'form-control' %>-->
-        <!--</div>-->
-        <!--</div>-->
-        <%= f.fields_for :address do |a| %>
-            <div class="row">
-              <div class="col-md-2">
-                <%= a.text_field :id, readonly: :true, label: 'Id endereço', class: 'form-control' %>
-              </div>
-              <div class="col-md-10">
-                <%= a.text_field :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
-              </div>
 
-            </div>
+        <%= f.fields_for :member do |m| %>
             <div class="row">
-              <div class="col-md-2">
-                <%= a.text_field :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control' %>
+              <div class="col-md-6">
+                <%= m.text_field :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
               </div>
-              <div class="col-md-8">
-                <%= a.text_field :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control' %>
-              </div>
-              <div class="col-md-2">
-                <%= a.text_field :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
+              <div class="col-md-6">
+                <%= m.text_field :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= a.text_field :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control' %>
+                <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <%= a.text_field :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
+                <%= m.text_field :company_name, label: "#{t 'labels.member_attributes.company_name'}", class: 'form-control' %>
               </div>
             </div>
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<%= m.text_field :cnpj, label: "#{t 'labels.member_attributes.cnpj'}", class: 'form-control' %>-->
+            <!--</div>-->
+            <!--</div>-->
+            <%= f.fields_for :address do |a| %>
+                <div class="row">
+                  <div class="col-md-2">
+                    <%= a.text_field :id, readonly: :true, label: 'Id endereço', class: 'form-control' %>
+                  </div>
+                  <div class="col-md-10">
+                    <%= a.text_field :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control' %>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <%= a.text_field :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control' %>
+                  </div>
+                  <div class="col-md-8">
+                    <%= a.text_field :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control' %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= a.text_field :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= a.text_field :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= a.text_field :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= a.text_field :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control' %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= a.text_field :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control' %>
+                  </div>
+                </div>
+            <% end %>
             <div class="row">
               <div class="col-md-6">
-                <%= a.text_field :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control' %>
+                <%= m.text_field :created_at, readonly: :true, class: 'form-control' %>
               </div>
               <div class="col-md-6">
-                <%= a.text_field :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control' %>
+                <%= m.text_field :updated_at, readonly: :true, class: 'form-control' %>
               </div>
             </div>
         <% end %>
-        <div class="row">
-          <div class="col-md-6">
-            <%= m.text_field :created_at, readonly: :true, class: 'form-control' %>
-          </div>
-          <div class="col-md-6">
-            <%= m.text_field :updated_at, readonly: :true, class: 'form-control' %>
-          </div>
-        </div>
     <% end %>
-<% end %>
+  </div>
+</div>
+<br>
+<br>

@@ -1,1 +1,6 @@
 //= require objects/tables
+
+//problema de pagina muito grande
+.members-admin {
+  overflow-y: hidden;
+}

@@ -1,33 +1,43 @@
 <%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Finalização de Compra(s)</h2>
+  </div>
+</div>
+
 <div class="wrapper wrapper-content animated fadeIn">
-  <div class="row">
-    <div class="page-header text-center">
-      <%= raw t 'labels.buys.page_header' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <h5><b>Total: <%= get_total(@carts) %></b></h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <td>Script:</td>
-          <td><%= t 'labels.script_attributes.price' %>:</td>
-        </tr>
-        </thead>
-        <tbody>
-        <% @carts.each do |cart| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="page-header text-center">
+          <%= raw t 'labels.buys.page_header' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <h5><b>Total: <%= get_total(@carts) %></b></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <table class="table table-striped">
+            <thead>
             <tr>
-              <td><%= cart.script.name %></td>
-              <td><%= cart.price.value %></td>
+              <td>Script:</td>
+              <td><%= t 'labels.script_attributes.price' %>:</td>
             </tr>
-        <% end %>
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            <% @carts.each do |cart| %>
+                <tr>
+                  <td><%= cart.script.name %></td>
+                  <td><%= cart.price.value %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

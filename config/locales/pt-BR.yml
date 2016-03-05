@@ -68,7 +68,7 @@ pt-BR:
         dash_script_header: '<h5>Scripts Workflow
                                        <small>Controle o status dos scripts</small>
                                      </h5>'
-        dash_invoice_header: '<h5>Faturas Workflow<small>Controle o status das faturas</small> </h5>'
+        dash_invoice_header: '<h5>Faturas Workflow <small>Controle o status das faturas</small> </h5>'
         members_louge: '         <p>Você esta na area de visitante
                                 Mas por enquando parece que seu usuário esta aguardando ativação </p>
                                 Logo entraremos em contato para confirmar seus dados e realizar a ativação dos seu usuário </p>
@@ -78,7 +78,7 @@ pt-BR:
                                 <p>Tel: 3333-3333 </p>'
         tel: '+55 11 3333-4454'
         email:
-          resent_confirmation : Reenviar email de confirmação
+          resent_confirmation : Reenviar Confirmação
           confirmation_instructions : Um outro email vou enviado com o link de confirmação
         menu:
           find_solutions: Buscar Scripts

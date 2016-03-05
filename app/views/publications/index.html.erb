@@ -1,55 +1,60 @@
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper page-heading">
   <div class="col-lg-9">
-    <h2><%= t 'labels.publications.page_header'%></h2>
+    <h2><%= t 'labels.publications.page_header' %></h2>
   </div>
 </div>
-<div class="wrapper wrapper-content">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="ibox float-e-margins">
-        <div class="ibox-content">
-          <div class="file-manager">
-            <h5><%= t 'labels.publications.folder'%></h5>
-            <ul class="folder-list" style="padding: 0">
-              <% Folder.all.each do |f| %>
-                  <li>
-                    <%= link_to publications_path(query: f.name) do %>
-                        <i class="fa fa-folder"></i> <%= f.name %>
-                    <% end %>
-                  </li>
-              <% end %>
-            </ul>
-            <div class="clearfix"></div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="ibox float-e-margins">
+            <div class="ibox-content">
+              <div class="file-manager">
+                <h5><%= t 'labels.publications.folder' %></h5>
+                <ul class="folder-list" style="padding: 0">
+                  <% Folder.all.each do |f| %>
+                      <li>
+                        <%= link_to publications_path(query: f.name) do %>
+                            <i class="fa fa-folder"></i> <%= f.name %>
+                        <% end %>
+                      </li>
+                  <% end %>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-9 animated fadeInRight">
-      <div class="row">
-        <div class="col-lg-12">
-          <% @publications.each do |p| %>
-              <div class="file-box">
-                <div class="file">
-                  <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
-                      <span class="label label-primary" id="visited-<%= p.id %>"><%= t 'labels.publications.new'%></span>
-                  <% else %>
-                      <span class="label label-success"><%= t 'labels.publications.visited'%></span>
-                  <% end %>
+        <div class="col-lg-9 animated fadeInRight">
+          <div class="row">
+            <div class="col-lg-12">
+              <% @publications.each do |p| %>
+                  <div class="file-box">
+                    <div class="file">
+                      <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
+                          <span class="label label-primary" id="visited-<%= p.id %>"><%= t 'labels.publications.new' %></span>
+                      <% else %>
+                          <span class="label label-success"><%= t 'labels.publications.visited' %></span>
+                      <% end %>
 
-                  <a href="#">
-                    <span class="corner"></span>
-                    <div class="icon">
-                      <i class="<%= get_icon_file(p.file_name) %>"></i>
+                      <a href="#">
+                        <span class="corner"></span>
+
+                        <div class="icon">
+                          <i class="<%= get_icon_file(p.file_name) %>"></i>
+                        </div>
+                        <div class="file-name">
+                          <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
+                          <br/>
+                          <small><%= t 'labels.publications.added' %>: <%= format_date(p.created_at) %></small>
+                        </div>
+                      </a>
                     </div>
-                    <div class="file-name">
-                      <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
-                      <br/>
-                      <small><%= t 'labels.publications.added'%>: <%= format_date(p.created_at) %></small>
-                    </div>
-                  </a>
-                </div>
-              </div>
-          <% end %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -19,13 +19,12 @@
  *require_tree .
  *= require_self
  *= require animate/animate.css
- *= require style
  *= require bootstrap-horizon
  *= require registrations
  *= require bootstrap-nav-wizard
- *= require base/variables
  *= require font-awesome
  *= require typicons/typicons.css.scss
+ *= require style
  */
 
 .inactiveLink {
@@ -94,4 +93,6 @@ label.required:after {
 .dash_links a {
   color: #fff !important;
 }
+
+
 
