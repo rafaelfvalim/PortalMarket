@@ -71,6 +71,17 @@ module ApplicationHelper
       end
   end
 
+  def side_bar_render
+    case
+      when current_user.is_god? then
+        render "layouts/bar_admin"
+      when current_user.is_contributor? then
+        render "layouts/bar_contributor"
+      when current_user.is_customer? then
+        render "layouts/bar_customer"
+    end
+  end
+
   def drop_down_render
     case
       when current_user.is_god? then

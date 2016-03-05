@@ -63,6 +63,7 @@ h5 {
 .navbar-static-top{
   z-index:9999;
 }
+
 .profile-logo{
   margin-top: -15px;
   margin-bottom: 30px;
@@ -136,6 +137,15 @@ h5 {
 .body-small .navbar-top-links li:last-child {
   margin-right: 0;
 }
+
+li.user-options {
+  visibility: hidden;
+}
+
+.body-small li.user-options {
+  visibility: visible;
+}
+
 .navbar-top-links li a {
   padding: 20px 10px;
   min-height: 50px;

@@ -5,6 +5,20 @@
       </a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
+      <li class="user-options">
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+          <i class="typcn typcn-user" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <%= drop_down_render  %>
+        </ul>
+      </li>
+      <!--<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">-->
+      <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">-->
+      <!--<li>adasd</li>-->
+      <!--</ul>-->
+      <!--</button>-->
+
       <%= navbar_render %>
     </ul>
   </nav>

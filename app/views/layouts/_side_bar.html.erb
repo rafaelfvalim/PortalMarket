@@ -1,7 +1,1 @@
-<% if current_user.is_customer? %>
-    <%= render 'layouts/bar_customer' %>
-<% elsif current_user.is_contributor? %>
-    <%= render 'layouts/bar_contributor' %>
-<% elsif current_user.is_god? %>
-    <%= render 'layouts/bar_admin' %>
-<% end %>
+<%= side_bar_render %>
