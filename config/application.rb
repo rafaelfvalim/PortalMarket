@@ -1,5 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-
+# chat
 require 'rails/all'
 require 'net/http'
 

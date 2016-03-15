@@ -1,25 +1,57 @@
-<h1>Messages</h1>
-
-<div id="users">
-  <ol>
-  <% @members.each do |member| %>
-      <li><%= link_to  full_name member %></li>
-  <% end %>
-    </ol>
+<%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Mensagens Parceiros</h2>
+  </div>
 </div>
-
-<div id="messages">
-  <ol>
-    <% @messages.each do |message| %>
-        <li><%= message.content %></li>
-    <% end %>
-  </ol>
+<div class="wrapper wrapper-content animated fadeIn grey-color ">
+  <div class="row m-t-lg">
+    <div class="col-lg-8">
+      <div class="ibox float-e-margins ">
+        <div class="ibox-content panel-height chat_box">
+          <div>
+            <div class="chat-activity-list" id="chat">
+              <% unless @messages.nil? %>
+                  <% @messages.each do |message| %>
+                      <%= chat(message) %>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="chat-form">
+          <%= simple_form_for @message, html: {role: "form"}, remote: true do |f| %>
+              <div class="form-group">
+                <%= f.input :content, class: 'form-control', placeholder: 'Mensagem...', id: 'message_content' %>
+              </div>
+              <%= f.hidden_field :message_to, :value => params[:message_to] , disabled: params[:message_to].nil? %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <div class="text-right">
+                <%= f.submit "Enviar", disabled: params[:message_to].nil?  , class: 'btn btn-sm btn-primary m-t-n-xs' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <div>
+            <div id="users">
+              <% User.joins(:member).where("members.member_type_id = 3").each do |user| %>
+                  <% unless user.id == current_user.id %>
+                      <div class="chat-element left">
+                        <a href='#' class="pull-left"><%= get_cicle_avatar(user) %></a>
+                        <div class="media-body text-left ">
+                          <%= link_to user.full_name, messages_path(message_to: user.id) %>
+                        </div>
+                      </div>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= form_for @message, remote: true do |f| %>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <%= f.hidden_field :message_to, :value => current_user.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "Send" %>
-<% end %>

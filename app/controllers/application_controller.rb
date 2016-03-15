@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_user!
   before_action :user_active, if: :signed_in?
   before_action :set_timezone, if: :current_user
+  before_action :chat_user_data
   layout :layout_by_resource
 
   helper_method :app_get_breadcrumb_value_chain
@@ -74,6 +75,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def chat_user_data
+    unless current_user.nil?
+      gon.user_name = current_user.full_name
+      gon.user_phone = current_user.member.cellphone_number
+      gon.email = current_user.email
+      gon.description = "Protocolo: #{current_user.id}#{Time.now.strftime('%Y%m%d%H%M%S')}"
+      gon.custom_data = "Protocolo: #{current_user.id}#{Time.now.strftime('%Y%m%d%H%M%S')}"
+    end
+  end
+
   private
   def layout_by_resource
 
@@ -119,5 +130,6 @@ class ApplicationController < ActionController::Base
       redirect_to :back, :alert => "Access denied."
     end
   end
+
 
 end

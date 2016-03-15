@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get :invoices_ajax
     end
   end
-  #resources :messages // TODO Chat do portal
+  # resources :messages
 
   resources :prices do
     collection do

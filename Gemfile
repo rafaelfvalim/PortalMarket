@@ -60,6 +60,8 @@ gem 'maily'
 gem 'foo_table-rails'
 #https://github.com/sadiqmmm/clipboard-rails
 gem 'clipboard-rails'
+#https://github.com/rails/rails-html-sanitizer
+gem 'rails-html-sanitizer'
 
 group :development, :test do
   gem 'byebug'

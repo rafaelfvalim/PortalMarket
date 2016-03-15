@@ -37,7 +37,10 @@
 //= require inspinia.js
 //= require footable.core
 //= require clipboard
+//= require jivosite/jivosite.js
 //= require_tree .
+
+
 
 
 

@@ -2,6 +2,54 @@
  * Created by root on 10/18/15.
  */
 <% broadcast "/chat" do %>
-$("#messages ol").append($("<li><%= @message.content %></li>"));
+
+
+
+<% user = User.find(@message.user_id); %>
+//    classes css
+    class_element = "chat-element ";
+    class_element_link = "pull-left";
+    class_media_body = "media-body ";
+    class_media_body_small = "pull-right text-navy";
+
+//elementos
+    div_chat_element = $("<div>");
+    div_chat_element.addClass(class_element)
+
+    link_pull = $("<a>");
+    link_pull.addClass(class_element_link);
+    image = $("<img>");
+    image.addClass("img-circle");
+    image.attr("src", "<%= get_url_avatar(user)%>");
+    link_pull.append(image)
+
+    div_media_body = $("<div>");
+    div_media_body.addClass(class_media_body);
+
+    small_time = $("<small>");
+    small_time.addClass(class_media_body_small);
+    small_time.append("<%= time_ago_in_words(@message.created_at) %>");
+
+    strong = $("<strong>");
+    strong.append("<%= user.full_name %>");
+
+    p = $("<p>");
+    p.addClass("m-b-xs");
+    p.html("<%= message_chat_filter @message.content %>");
+
+    small = $("<small>");
+    small.addClass("text-muted");
+    small.append("<%= format_date(@message.created_at) %>");
+    div_media_body.append(small_time);
+    div_media_body.append(strong);
+    div_media_body.append(p);
+    div_media_body.append(small);
+    div_chat_element.append(link_pull);
+    div_chat_element.append(div_media_body);
+
+    $("#chat").append(div_chat_element);
+    $(".chat_box").scrollTo('100%');
+
 <% end %>
+
 $("#message_content").val('');

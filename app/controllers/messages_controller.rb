@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    #@messages = Message.all
-    @members = Member.all
-    @messages = Message.where(user_id: current_user.id)
+    if params[:message_to].present?
+      @messages = Message.where("user_id = ? and message_to = ?  or user_id = ? and message_to = ? ", current_user.id, params[:message_to], params[:message_to], current_user.id).order(created_at: :asc)
+    end
     @message = Message.new
   end
 

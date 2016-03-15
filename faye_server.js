@@ -11,8 +11,9 @@ var Logger = {
 };
 var server = http.createServer(),
     bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 45});
-bayeux.attach(server);
-server.listen(9292);
+    bayeux.attach(server);
+    bayeux.addExtension(Logger);
+    server.listen(9292);
 //var bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 60});
 //bayeux.addExtension(Logger);
 //bayeux.listen(9292);
