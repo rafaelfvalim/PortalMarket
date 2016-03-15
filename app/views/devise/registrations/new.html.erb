@@ -61,7 +61,7 @@
                         </div>
                         <div class="row row-centered hidden" id="select_bank">
                           <div class="col-lg-9 col-centered">
-                            <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..' %>
+                            <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..', class: 'form-control'%>
                           </div>
                         </div>
                         <div class="row row-centered hidden" id="bank_cc">
