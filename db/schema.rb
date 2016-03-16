@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315223751) do
+ActiveRecord::Schema.define(version: 20160316032146) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -259,6 +259,7 @@ ActiveRecord::Schema.define(version: 20160315223751) do
     t.integer  "file_tag_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "view_group",  limit: 255
   end
 
   add_index "publications", ["file_tag_id"], name: "fk_rails_781b7a040a", using: :btree

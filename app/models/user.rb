@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :function_data_types, dependent: :destroy
   has_many :function_transaction_types, dependent: :destroy
 
-  has_many :reservations, class_name: Reservation , foreign_key: :owner_user_id
-  has_many :reservations, class_name: Reservation , foreign_key: :reserve_for
+  has_many :reservations, class_name: Reservation, foreign_key: :owner_user_id
+  has_many :reservations, class_name: Reservation, foreign_key: :reserve_for
 
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :member_type
@@ -76,6 +76,22 @@ class User < ActiveRecord::Base
 
   def is_master_user_id?
     self.member.master_user_id.nil?
+  end
+
+  def publication_group
+
+    if self.is_customer?
+      return "Cliente"
+    end
+
+    if self.is_contributor?
+      return "Parceiro"
+    end
+
+    if self.is_god?
+      return "Todos"
+    end
+
   end
 
   def self.search(search, attributes = 'member_name')
@@ -158,7 +174,7 @@ class User < ActiveRecord::Base
   end
 
   def inactive_message
-     I18n.t("labels.user_messages.user_block").html_safe
+    I18n.t("labels.user_messages.user_block").html_safe
   end
 
   def permit_login

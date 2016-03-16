@@ -4,6 +4,7 @@
     <div class="form-inputs">
       <%= f.input :folder_id, collection: Folder.all, prompt: 'Select ...' %>
       <%= f.input :file_name %>
+      <%= f.input :view_group, collection: Publication.view_groups.values ,  prompt: 'Selecione ...' %>
     </div>
 
     <div class="form-actions">

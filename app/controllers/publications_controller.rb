@@ -7,9 +7,9 @@ class PublicationsController < ApplicationController
   # GET /publications.json
   def index
     if params[:query].present? && params[:query] != 'All'
-      @publications = Publication.search(params[:query])
+      @publications = Publication.search(params[:query], current_user.publication_group)
     else
-      @publications = Publication.all
+      @publications = Publication.where('view_group = ? or view_group = ?', current_user.publication_group, 'Todos')
     end
     if current_user.is_god?
       redirect_to admin_publications_path
@@ -46,7 +46,7 @@ class PublicationsController < ApplicationController
 
   def get_news_count
     ViewPublication.where(publication_id: @publication.id, visited: true, user_id: current_user.id).first_or_create
-    count = Publication.all.count -  ViewPublication.where(user_id: current_user.id).count
+    count = Publication.all.count - ViewPublication.where(user_id: current_user.id).count
     respond_to do |format|
       format.html
       format.json { render json: count }
@@ -78,8 +78,8 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
-        format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
-        format.json { render :show, status: :ok, location: @publication }
+        format.html { redirect_to publications_path, notice: 'Publication was successfully updated.' }
+        format.json { render :index, status: :ok, location: @publication }
       else
         format.html { render :edit }
         format.json { render json: @publication.errors, status: :unprocessable_entity }
@@ -97,7 +97,6 @@ class PublicationsController < ApplicationController
     end
   end
 
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_publication
@@ -106,6 +105,6 @@ class PublicationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def publication_params
-    params.require(:publication).permit(:file_name, :file_type, :user_id, :folder_id, :tag_id)
+    params.require(:publication).permit(:file_name, :file_type, :user_id, :folder_id, :tag_id, :view_group)
   end
 end

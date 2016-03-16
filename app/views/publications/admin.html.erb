@@ -80,6 +80,19 @@
                           <br/>
                           <small>Added: <%= format_date(p.created_at) %></small>
                           <%= link_to 'Remove', p, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %>
+                          <%= simple_form_for(p, id: 'publication_view_group') do |f| %>
+                              <hr>
+                              <div class="form-inputs">
+                                <%= f.input :view_group, collection: Publication.view_groups.keys,
+                                            label: "<small>Group</small>".html_safe,
+                                            prompt: 'Selecione ...',
+                                            :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
+                                <%= f.input :folder_id , collection: Folder.all,
+                                            label: "<small>Folder</small>".html_safe,
+                                            prompt: 'Selecione ...',
+                                            :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
+                              </div>
+                          <% end %>
                         </div>
                       </a>
                     </div>
@@ -111,7 +124,8 @@
 
             <div class="form-inputs">
               <%= f.input :file_name %>
-              <%= f.input :folder_id, collection: Folder.all, prompt: 'Select ...' %>
+              <%= f.input :folder_id, collection: Folder.all, prompt: 'Selecione ...' %>
+              <%= f.input :view_group, collection: Publication.view_groups.values, prompt: 'Selecione ...' %>
             </div>
             </div>
             <div class="modal-footer">
