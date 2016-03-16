@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204045321) do
+ActiveRecord::Schema.define(version: 20160315223751) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -282,6 +282,19 @@ ActiveRecord::Schema.define(version: 20160204045321) do
   add_index "requirements", ["script_id"], name: "fk_rails_ef7ba3079c", using: :btree
   add_index "requirements", ["script_id_requirement"], name: "fk_rails_0be59936c9", using: :btree
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "script_id",       limit: 4
+    t.integer  "owner_user_id",   limit: 4
+    t.integer  "reserve_for",     limit: 4
+    t.datetime "expiration_time"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "reservations", ["owner_user_id"], name: "fk_rails_7baa41912e", using: :btree
+  add_index "reservations", ["reserve_for"], name: "fk_rails_77c12ec4f5", using: :btree
+  add_index "reservations", ["script_id"], name: "fk_rails_a99ec70b48", using: :btree
+
   create_table "scripts", force: :cascade do |t|
     t.string   "name",             limit: 255
     t.string   "description",      limit: 255
@@ -448,6 +461,9 @@ ActiveRecord::Schema.define(version: 20160204045321) do
   add_foreign_key "related_scripts", "scripts", on_update: :nullify, on_delete: :nullify
   add_foreign_key "requirements", "scripts"
   add_foreign_key "requirements", "scripts", column: "script_id_requirement"
+  add_foreign_key "reservations", "scripts"
+  add_foreign_key "reservations", "users", column: "owner_user_id"
+  add_foreign_key "reservations", "users", column: "reserve_for"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
   add_foreign_key "searchjoy_searches", "users"

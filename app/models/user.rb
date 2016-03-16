@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :view_publications, dependent: :destroy
   has_many :function_data_types, dependent: :destroy
   has_many :function_transaction_types, dependent: :destroy
+
+  has_many :reservations, class_name: Reservation , foreign_key: :owner_user_id
+  has_many :reservations, class_name: Reservation , foreign_key: :reserve_for
+
   accepts_nested_attributes_for :member
   accepts_nested_attributes_for :member_type
   accepts_nested_attributes_for :workplaces

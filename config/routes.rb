@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   resources :function_transaction_types
   resources :function_data_types
   resources :function_points
