@@ -58,7 +58,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       u.permit(:id,
                :name,
                :email,
-               :email_confirmation,
                :password,
                :password_confirmation,
                member_attributes:
@@ -95,7 +94,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
                :current_password,
                :name,
                :email,
-               :email_confirmation,
                :password,
                :password_confirmation,
                :avatar,
@@ -144,7 +142,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:id,
                                  :name,
                                  :email,
-                                 :email_confirmation,
                                  :password,
                                  :password_confirmation,
                                  :current_password,

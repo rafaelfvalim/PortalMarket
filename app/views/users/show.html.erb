@@ -92,10 +92,9 @@
                   </li>
                   <li class="list-group-item"><strong>Created at: </strong> <%= @user.created_at %></li>
                   <li class="list-group-item"><strong>Updated at: </strong> <%= @user.updated_at %></li>
-                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.cpf' %>?
-                    : </strong> <%= @user.confirmed_at.present? ? 'yes' : 'no' %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.user_attribures.confirmed' %>?: </strong> <%= @user.confirmed_at.present? ? 'Sim' : 'Não' %></li>
                   <li class="list-group-item">
-                    <strong><%= t 'labels.user_attribures.confirmed' %> At : </strong> <%= @user.confirmed_at %></li>
+                    <strong><%= t 'labels.user_attribures.confirmed' %> em : </strong> <%= @user.confirmed_at %></li>
                   <li class="list-group-item">
                     <strong><%= t 'labels.user_attribures.current_sign' %>: </strong> <%= @user.current_sign_in_at %>
                   </li>
