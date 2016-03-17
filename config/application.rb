@@ -51,6 +51,7 @@ module CodeStore
     config.absolute_site_url = 'http://191.241.240.51/'
     config.adm_server = 'http://10.11.50.154:10000'
     config.mailcatcher = 'http://localhost:1080'
+    config.elasticsearch = 'http://localhost:9200/_plugin/HQ/'
     # load models into subfolders
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
   end

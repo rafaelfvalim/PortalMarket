@@ -1,5 +1,3 @@
-
-
 <!--Fim Avatar-->
 <!--Inicio Pesquisa-->
 <li>
@@ -79,6 +77,15 @@
   <% end %>
 </li>
 <!--Fim Searchjoy-->
+
+<!--Incio Elastic-->
+<li>
+  <%= link_to Rails.configuration.elasticsearch, :target => "_blank" do %>
+      <i class="typcn typcn-chart-line-outline" aria-hidden="true"></i>
+      <span class="nav-label">ElasticHQ</span>
+  <% end %>
+</li>
+<!--Fim Elastic-->
 <!--Inicial Publications-->
 <li>
   <%= link_to publications_path do %>
