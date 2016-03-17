@@ -288,7 +288,7 @@ pt-BR:
         show_product:
          related_scripts: Scripts Relacionados
          requirement_scripts: Scripts Requeridos
-         to_organization: <strong>Para a Empresa:<small> * Informe um apelido e o numero do sistema onde o script irá ser instalado </ small></ strong>
+         to_organization: Os campos abaixo seão necessários oara executar a compra do um Script. Obtenha-os com o administrador do ambiente que o Script será aplciado.
          to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
         devise:
           resend_confirmation_instrucions: Reenviar link de confirmação

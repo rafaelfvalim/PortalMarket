@@ -27,8 +27,8 @@
                           <i class="fa fa-cart-plus"></i> <%= t 'labels.buttons.add_to_cart' %>
                       <% end %>
                       <h1 class="product-main-price"><%= number_to_currency_br(@price.value) %>
-                        <small class="text-muted">Valor estabelecido através das métricas
-                          <a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>
+                        <!--<small class="text-muted">Valor estabelecido através das métricas-->
+                          <!--<a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>-->
                       </h1>
                     </div>
                     <hr>
@@ -80,7 +80,7 @@
                       <% end %>
 
                       <dt>Criado em</dt>
-                      <dd><strong>created at : <%= @script.created_at.to_s(:custom_datetime) %></strong></dd>
+                      <dd><%= @script.created_at.to_s(:custom_datetime) %></dd>
 
                       <dt><%= t 'labels.script_attributes.definition' %></dt>
                       <dd><%= @script.definition %></dd>
