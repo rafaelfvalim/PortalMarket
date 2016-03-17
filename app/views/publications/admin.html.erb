@@ -52,56 +52,52 @@
                         <%= link_to g, admin_publications_path(query: params[:query], view_group: g) %>
                       </li>
                   <% end %>
-                  <li> <%= link_to 'Nenhum', admin_publications_path(query: params[:query])%></li>
+                  <li> <%= link_to 'Nenhum', admin_publications_path(query: params[:query]) %></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="cx'ol-lg-9 animated fadeInRight">
-          <div class="row">
-            <div class="col-lg-12">
-              <% @publications.each do |p| %>
-                  <div class="file-box">
-                    <div class="file">
-                      <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
-                          <span class="label label-primary" id="visited-<%= p.id %>">New</span>
-                      <% else %>
-                          <span class="label label-success">Visited</span>
-                      <% end %>
+        <div class="col-lg-9 animated fadeInRight">
+          <% @publications.each do |p| %>
+              <div class="file-box">
+                <div class="file">
+                  <% if ViewPublication.find_by(user_id: current_user.id, publication: p.id).nil? %>
+                      <span class="label label-primary" id="visited-<%= p.id %>">New</span>
+                  <% else %>
+                      <span class="label label-success">Visited</span>
+                  <% end %>
 
-                      <a href="#">
-                        <span class="corner"></span>
+                  <a href="#">
+                    <span class="corner"></span>
 
-                        <div class="icon">
-                          <i class="<%= get_icon_file(p.file_name) %>"></i>
-                        </div>
-                        <div class="file-name">
-                          <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
-                          <br/>
-                          <small>Added: <%= format_date(p.created_at) %></small>
-                          <%= link_to 'Remove', p, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %>
-                          <%= simple_form_for(p, id: 'publication_view_group') do |f| %>
-                              <hr>
-                              <div class="form-inputs">
-                                <%= f.input :view_group, collection: Publication.view_groups.keys,
-                                            label: "<small>Grupo</small>".html_safe,
-                                            prompt: 'Selecione ...',
-                                            :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
-                                <%= f.input :folder_id, collection: Folder.all,
-                                            label: "<small>Pasta</small>".html_safe,
-                                            prompt: 'Selecione ...',
-                                            :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
-                              </div>
-                          <% end %>
-                        </div>
-                      </a>
+                    <div class="icon">
+                      <i class="<%= get_icon_file(p.file_name) %>"></i>
                     </div>
-                  </div>
-              <% end %>
-            </div>
-          </div>
+                    <div class="file-name">
+                      <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
+                      <br/>
+                      <small>Added: <%= format_date(p.created_at) %></small>
+                      <%= link_to 'Remove', p, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %>
+                      <%= simple_form_for(p, id: 'publication_view_group') do |f| %>
+                          <hr>
+                          <div class="form-inputs">
+                            <%= f.input :view_group, collection: Publication.view_groups.keys,
+                                        label: "<small>Grupo</small>".html_safe,
+                                        prompt: 'Selecione ...',
+                                        :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
+                            <%= f.input :folder_id, collection: Folder.all,
+                                        label: "<small>Pasta</small>".html_safe,
+                                        prompt: 'Selecione ...',
+                                        :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
+                          </div>
+                      <% end %>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -120,7 +116,7 @@
         <h4 class="modal-title">Upload Publication</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(@publication) do  |f| %>
+        <%= simple_form_for(@publication) do |f| %>
             <%= f.error_notification %>
             <strong>.pdf, doc, docx, xls, xlsx</strong>
 
