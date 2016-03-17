@@ -9,9 +9,16 @@ class Publication < ActiveRecord::Base
   accepts_nested_attributes_for :file_tag
   enum view_group: {cliente: 'Cliente', parceiro: 'Parceiro', todos: 'Todos'}
 
+  validates :file_name, presence: true
+  validates :view_group, presence: true
+
   def self.search(search, view_group)
     if search
-      Publication.joins(:folder).where('folders.name LIKE ? and view_group = ?', "%#{search}%", view_group)
+      if view_group
+        Publication.joins(:folder).where('folders.name = ? and view_group = ?', search, view_group)
+      else
+        Publication.joins(:folder).where('folders.name = ? ', search)
+      end
     else
       scoped
     end

@@ -11,7 +11,8 @@
           <div class="ibox float-e-margins">
             <div class="ibox-content">
               <div class="file-manager">
-                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal_upload">Upload Files
+                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal_upload">Upload
+                  Files
                 </button>
                 <div class="hr-line-dashed"></div>
                 <h5>Folders</h5>
@@ -33,7 +34,7 @@
                             <i class="fa fa-folder"></i> <%= f.name %>
                         <% end %>
                       </li>
-                      <% if f.name != 'All' %>
+                      <% if f.name != 'Todos' %>
                           <li>
                             <%= link_to f, method: :delete, data: {confirm: 'Are you sure?'} do %>
                                 <i class="fa fa-times-circle color-red" style="color: red;"></i>
@@ -44,14 +45,15 @@
                       <% end %>
                   <% end %>
                 </ul>
-                <!--<h5 class="tag-title">Tags</h5>-->
-                <!--<ul class="tag-list" style="padding: 0">-->
-                <!--
-            <% FileTag.all.each do |t| %>-->
-                    <!--<li><a href=""><%= t.name %></a></li>-->
-                    <!--
-            <% end %>-->
-                <!--</ul>-->
+                <h5 class="tag-title">Grupos</h5>
+                <ul class="tag-list" style="padding: 0">
+                  <% Publication.view_groups.values.each do |g| %>
+                      <li>
+                        <%= link_to g, admin_publications_path(query: params[:query], view_group: g) %>
+                      </li>
+                  <% end %>
+                  <li> <%= link_to 'Nenhum', admin_publications_path(query: params[:query])%></li>
+                </ul>
                 <div class="clearfix"></div>
               </div>
             </div>
@@ -84,11 +86,11 @@
                               <hr>
                               <div class="form-inputs">
                                 <%= f.input :view_group, collection: Publication.view_groups.keys,
-                                            label: "<small>Group</small>".html_safe,
+                                            label: "<small>Grupo</small>".html_safe,
                                             prompt: 'Selecione ...',
                                             :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
-                                <%= f.input :folder_id , collection: Folder.all,
-                                            label: "<small>Folder</small>".html_safe,
+                                <%= f.input :folder_id, collection: Folder.all,
+                                            label: "<small>Pasta</small>".html_safe,
                                             prompt: 'Selecione ...',
                                             :input_html => {:onchange => "this.form.submit();", autocomplete: 'off'} %>
                               </div>
@@ -118,7 +120,7 @@
         <h4 class="modal-title">Upload Publication</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(@publication) do |f| %>
+        <%= simple_form_for(@publication) do  |f| %>
             <%= f.error_notification %>
             <strong>.pdf, doc, docx, xls, xlsx</strong>
 

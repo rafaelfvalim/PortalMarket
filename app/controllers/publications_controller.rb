@@ -25,10 +25,14 @@ class PublicationsController < ApplicationController
     unless current_user.is_god?
       redirect_to publications_path
     end
-    if params[:query].present? && params[:query] != 'All'
-      @publications = Publication.search(params[:query])
+    if params[:query].present? && params[:query] != 'Todos'
+      @publications = Publication.search(params[:query], params[:view_group])
     else
-      @publications = Publication.all
+      if params[:view_group].present?
+        @publications = Publication.joins(:folder).where(:view_group => params[:view_group])
+      else
+        @publications = Publication.joins(:folder).all
+      end
     end
     @publication = Publication.new
     @folder = Folder.new
