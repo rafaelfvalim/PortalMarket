@@ -4,6 +4,7 @@
     <%= bootstrap_form_for(@cart, remote: true, :html => {id: 'cart_form'}) do |c| %>
         <!--voltado para analise de pesquisa x compra-->
         <%= hidden_field_tag :id_search, @id_search %>
+        <%= hidden_field_tag :already_in_cart, cart_already_in(@script.id, current_user.id) %>
         <%= c.hidden_field :script_id, value: @script.id %>
         <div class="row">
           <div class="col-lg-12">
@@ -23,12 +24,12 @@
                     </h2>
                     <small>Comercializado segundo os direitos pré estabelecidos em contrato com o autor</small>
                     <div>
-                      <%= button_tag(type: "submit", class: "btn btn-primary pull-right", id: "submit_invoice", data: {confirm: "#{t 'labels.add_item_to_cart'}"}) do %>
+                      <%= button_tag(type: "submit", class: "btn btn-primary pull-right", id: "submit_invoice") do %>
                           <i class="fa fa-cart-plus"></i> <%= t 'labels.buttons.add_to_cart' %>
                       <% end %>
                       <h1 class="product-main-price"><%= number_to_currency_br(@price.value) %>
                         <!--<small class="text-muted">Valor estabelecido através das métricas-->
-                          <!--<a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>-->
+                        <!--<a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>-->
                       </h1>
                     </div>
                     <hr>
@@ -90,7 +91,7 @@
                       <div class="panel-body">
                         <%= c.fields_for :workplace do |w| %>
                             <div class="col-md-6">
-                              <%= w.text_field :organization_name, label: 'System Alias:', class: 'form-control autocomplete' %>
+                              <%= w.text_field :organization_name, label: 'Organização:', class: 'form-control autocomplete' %>
                             </div>
                             <div class="col-md-6">
                               <%= w.text_field :system_number, label: choose_label_system_number(@script.platform) %>

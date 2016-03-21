@@ -29,6 +29,7 @@ class CartsController < ApplicationController
     @cart.full_sale = false
     @cart.member_id = current_user.member.id
     @cart.price_id = @cart.script.price.id
+    @cart.workplace.member_id = current_user.member.id
 
     workplace = Workplace.where('member_id = ? and organization_name = ? and system_number = ?',params[:cart][:workplace_attributes][:member_id], params[:cart][:workplace_attributes][:organization_name], params[:cart][:workplace_attributes][:system_number]).first
     unless workplace.nil?

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       get :show_product
       get :autocomplete_organization
       get :final
+      get :verify_workplace_cart
     end
   end
   resources :checking_accounts do
@@ -152,6 +153,7 @@ Rails.application.routes.draw do
   end
   match '/uploads/:id/:basename.:extension', controller: 'script', action: 'download', via: :get
   match 'process_modules/:id/get_list_ajax', controller: 'process_modules', action: 'get_list_ajax', via: :get, as: :list_ajax
+  # match 'buys/:script_id/:organization_name/:system_number/verify_workplace_cart', controller: 'buys', action: 'verify_workplace_cart', via: :get
   match 'value_chains/set_classification/:id/:script_id', controller: 'value_chains', action: 'classification', via: :get, as: :classification_value_chain
   match 'related_scripts/destroy_ajax/:id', controller: 'related_scripts', action: 'destroy_ajax', via: :get
   match 'value_chains/build/:id', controller: 'value_chains', action: 'build', via: :get, as: :build_value_chain

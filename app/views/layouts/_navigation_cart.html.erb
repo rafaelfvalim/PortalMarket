@@ -1,11 +1,19 @@
-<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-  <i class="typcn typcn-shopping-cart"></i>
-        <span class="label label-primary label-purple">
+<%= link_to  carts_path , class: 'count-info' do %>
+    <i class="typcn typcn-shopping-cart"></i>
+    <span class="label label-primary label-purple">
               <%= @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id).size %>
             </span>
-</a>
-<ul class="dropdown-menu">
-  <li>
-    <%= link_to "#{t 'labels.cart.resume_cart'}", carts_path %>
-  </li>
-</ul>
+<% end %>
+
+
+<!--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">-->
+  <!--<i class="typcn typcn-shopping-cart"></i>-->
+        <!--<span class="label label-primary label-purple">-->
+              <!--<%= @carts = Cart.where('member_id = ? and full_sale = false', current_user.member.id).size %>-->
+            <!--</span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu">-->
+  <!--<li>-->
+    <!--<%= link_to "#{t 'labels.cart.resume_cart'}", carts_path %>-->
+  <!--</li>-->
+<!--</ul>-->

@@ -38,6 +38,7 @@
 //= require footable.core
 //= require clipboard
 //= require jivosite/jivosite.js
+//= require bootbox/bootbox.min.js
 //= require_tree .
 
 

@@ -23,6 +23,8 @@ class BuysController < ApplicationController
     gon.price_id = @price.id
     gon.member_id = current_user.member.id
     gon.pdf_file = @script.pdf_file
+
+    @workplaces = Workplace.where(member_id: current_user.member.id)
   end
 
   # GET /buys/new
@@ -58,6 +60,18 @@ class BuysController < ApplicationController
       format.html
       #format.json { render json: @requirements.map(&:requirement) }
       format.json { render json: @workplace.to_json }
+    end
+  end
+
+  def verify_workplace_cart
+    respond_to do |format|
+      p params[:script_id]
+      p current_user.member.id
+      p params[:organization_name]
+      p params[:system_number]
+      if format.html
+        format.json { render json: Cart.joins(:workplace).where('script_id = ? and carts.member_id = ? and full_sale = 0 and workplaces.organization_name = ? and workplaces.system_number = ?', params[:script_id], current_user.member.id, params[:organization_name], params[:system_number]).count > 0 }
+      end
     end
   end
 
