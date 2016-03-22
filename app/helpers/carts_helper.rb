@@ -4,7 +4,7 @@ module CartsHelper
     carts.each do |cart|
       total+= cart.price.value
     end
-    return total
+    return number_to_currency_br(total)
   end
 
   def choose_label_system_number(plataform)
