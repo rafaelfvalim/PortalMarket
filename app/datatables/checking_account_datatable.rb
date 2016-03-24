@@ -7,13 +7,11 @@ class CheckingAccountDatatable < AjaxDatatablesRails::Base
 
 
   def sortable_columns
-    # Declare strings in this format: ModelName.column_name
-    @sortable_columns ||= ['Script.description', 'CheckingAccount.description', 'CheckingAccount.payment_date_time', 'CheckingAccount.movement_date_time']
+      @sortable_columns ||= ['CheckingAccount.id', 'CheckingAccount.description', 'CheckingAccount.payment_date_time', 'CheckingAccount.movement_date_time', 'CheckingAccount.status', 'CheckingAccount.value', 'CheckingAccount.interest', 'CheckingAccount.commission']
   end
 
   def searchable_columns
-    # Declare strings in this format: ModelName.column_name
-    @searchable_columns ||= ['Script.description', 'CheckingAccount.description', 'CheckingAccount.payment_date_time', 'CheckingAccount.movement_date_time']
+    @searchable_columns ||= ['CheckingAccount.id', 'CheckingAccount.description', 'CheckingAccount.payment_date_time', 'CheckingAccount.movement_date_time', 'CheckingAccount.status', 'CheckingAccount.value', 'CheckingAccount.interest', 'CheckingAccount.commission','CheckingAccount.currency_id']
   end
 
   private
@@ -21,26 +19,22 @@ class CheckingAccountDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-          record.script.description,
+          record.id,
+          record.invoice_id,
           record.description,
           record.payment_date_time,
           record.movement_date_time,
-          record.status,
+          record.status.humanize,
           record.value,
           record.interest,
           record.commission,
           record.currency_id,
-          link_to('Show', record, :class => 'btn btn-info btn-xs'),
-          link_to('Edit', edit_checking_account_path(record), :class => 'btn btn-primary btn-xs'),
-      # comma separated list of the values for each cell of a table row
-      # example: record.attribute,
       ]
     end
   end
 
   def get_raw_records
-    CheckingAccount.joins(:script).where(' checking_accounts.member_id = ?', params[:member_id])
+    CheckingAccount.joins(:invoice).where('invoices.user_id = ?', params[:user_id])
   end
 
-  # ==== Insert 'presenter'-like methods below if necessary
 end

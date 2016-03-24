@@ -25,7 +25,7 @@
       </tr>
       <tr>
         <td><h3><strong>Valor </strong></h3></td>
-        <td><h3><strong><%= @invoice.value %></strong></h3></td>
+        <td><h3><strong><%= number_to_currency_br(@invoice.value) %></strong></h3></td>
       </tr>
       <tr>
         <td><h3><strong><%=  link_to "Download Aqui!", @link_to_file %></strong></h3></td>

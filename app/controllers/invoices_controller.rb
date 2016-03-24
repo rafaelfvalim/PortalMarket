@@ -41,6 +41,7 @@ class InvoicesController < ApplicationController
     @cart_ids = params[:cart]
     @carts = Cart.where(id: @cart_ids)
     invoice_service = InvoiceService.new
+    checkig_accoutn_service = CheckingAccountService.new
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
@@ -54,6 +55,7 @@ class InvoicesController < ApplicationController
           java_execution = invoice_service.create_download_file(i)
           if java_execution.blank?
             invoice_service.send_invoice(i.user_id, i)
+            checkig_accoutn_service.initialize_checking_account(i)
           else
             logger.info java_execution
           end

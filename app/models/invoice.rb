@@ -5,6 +5,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :user
   belongs_to :script
   has_one :member, through: :user
+  has_one :checking_account, dependent: :destroy
   accepts_nested_attributes_for :workplace
   accepts_nested_attributes_for :user
 

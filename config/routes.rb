@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   end
   resources :checking_accounts do
     collection do
-      get :member_ajax
+      get :get_data_ajax
     end
   end
   resources :related_scripts do

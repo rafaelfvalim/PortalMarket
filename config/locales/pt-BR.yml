@@ -74,7 +74,7 @@ pt-BR:
                                 Logo entraremos em contato para confirmar seus dados e realizar a ativação dos seu usuário </p>
                                 <hr>
                                 </p>
-                                <p>Klustter Code Store </p>
+                                <p>Klustter Script Store </p>
                                 <p>Tel: 3333-3333 </p>'
         tel: '+55 11 3333-4454'
         email:
@@ -188,7 +188,7 @@ pt-BR:
           delete: Excluir
           action: Ação
           go: Ir
-          finalize: Finalizar Compra
+          finalize: Finalizar Consumo
           remover: Remover
           add_to_cart: Adicionar ao Carrinho
           details: Detalhes
@@ -282,13 +282,13 @@ pt-BR:
           page_header: Administrar Minha Equipe
         cart:
          page_header: Carrinho
-         resume_cart: Verificar Compras
+         resume_cart: Verificar Consumos
         buys:
-          page_header: <h4> Compra realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
+          page_header: <h4> Consumo realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
         show_product:
          related_scripts: Scripts Relacionados
          requirement_scripts: Scripts Requeridos
-         to_organization: Os campos abaixo seão necessários oara executar a compra do um Script. Obtenha-os com o administrador do ambiente que o Script será aplciado.
+         to_organization: Os campos abaixo seão necessários oara executar o cosumo do um Script. Obtenha-os com o administrador do ambiente que o Script será aplciado.
          to_erp_message: Informe aqui um Alias para seu ERP juntamente com o SN/ SID do mesmo
         devise:
           resend_confirmation_instrucions: Reenviar link de confirmação
@@ -320,7 +320,7 @@ pt-BR:
                                          <strong>colaborador</strong>
                                        </p>
 
-                                       <p class="lead"> Se você pretende comprar scripts para utiliza-los em seus sistemas selecione a opção
+                                       <p class="lead"> Se você pretende consumir scripts para utiliza-los em seus sistemas selecione a opção
                                          <strong>cliente</strong></p>
                                      </div>'
           login_wellcome: Bem Vindo

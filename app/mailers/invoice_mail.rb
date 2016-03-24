@@ -2,6 +2,8 @@ class InvoiceMail < ApplicationMailer
   default from: "no-reply@klustter.com.br"
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::UrlHelper
+  helper ApplicationHelper
+  helper PricesHelper
 
   def invoice_mail(user, invoice, is_preview = false)
     @user = user

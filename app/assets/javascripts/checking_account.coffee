@@ -8,4 +8,4 @@ $ ->
     ajax: $('#checking-account-table').data('source')
     sPaginationType: 'full'
     bAutoWidth: true
-    columnDefs: [{orderable: false, targets: [6, 7]}]
+    columnDefs: [{orderable: false, targets: [9]}]
