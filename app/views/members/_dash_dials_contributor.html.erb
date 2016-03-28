@@ -6,7 +6,7 @@
       </div>
       <div class="col-xs-8">
         <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_orders' %></h4></div>
-        <h2 class="font-bold"><%= CheckingAccount.where('member_id = ?', current_user.member.id).count %></h2>
+        <h2 class="font-bold"><%= CheckingAccount.joins(:invoice).where('invoices.user_id = ?', current_user.id).count %></h2>
       </div>
     </div>
     <hr>

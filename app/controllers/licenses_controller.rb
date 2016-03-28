@@ -1,5 +1,8 @@
 class LicensesController < ApplicationController
   before_action :set_license, only: [:show, :edit, :update, :destroy, :generate_key]
+  before_action :authenticate_user!
+  before_action :user_active, if: :signed_in?
+  before_action :only_contributors, if: :signed_in?
 
   # GET /licenses
   # GET /licenses.json
@@ -49,7 +52,7 @@ class LicensesController < ApplicationController
     checking_account = CheckingAccount.find_by_invoice_id(params[:invoice_id])
     checking_account.bloqueado!
     respond_to do |format|
-        format.js { render 'licenses/licenses_table_form' }
+      format.js { render 'licenses/licenses_table_form' }
     end
   end
 
@@ -102,5 +105,11 @@ class LicensesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def license_params
     params.require(:license).permit(:invoice_id, :description, :key, :expiration_date, :valid, :obs)
+  end
+
+  def only_contributors
+    unless current_user.is_customer? || current_user.is_god?
+      redirect_to members_path, :alert => "Acesso negado!"
+    end
   end
 end
