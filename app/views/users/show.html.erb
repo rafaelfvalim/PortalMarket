@@ -73,8 +73,9 @@
                   <li class="list-group-item fist-item"><strong>Email: </strong> <%= @user.email if @user.email %></li>
                   <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_type' %>
                     : <%= @user.member_type.description.humanize %> </strong></li>
-                  <li class="list-group-item">
-                    <strong><%= t 'labels.member_attributes.member_name' %>: </strong> <%= @user.full_name %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.member_name' %>: </strong> <%= @user.full_name %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.phone_number' %>: </strong> <%= @user.member.phone_number %></li>
+                  <li class="list-group-item"><strong><%= t 'labels.member_attributes.cellphone_number' %>: </strong> <%= @user.member.cellphone_number %></li>
                   <li class="list-group-item"><strong><%= t 'labels.member_attributes.bank' %>
                     : </strong> <%= @user.member.bank.nil? ? '' : @user.member.bank.description %></li>
                   <li class="list-group-item"><strong> <%= t 'labels.member_attributes.bank_ag' %>

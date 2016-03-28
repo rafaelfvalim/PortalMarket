@@ -47,6 +47,14 @@
               </div>
             </div>
             <div class="row">
+              <div class="col-md-6">
+                <%= m.text_field :cellphone_number, label: "#{t 'labels.member_attributes.cellphone_number'}", class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= m.text_field :phone_number, label: "#{t 'labels.member_attributes.phone_number'}", class: 'form-control' %>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-12">
                 <%= m.text_field :cpf, label: "#{t 'labels.member_attributes.cpf'}", class: 'form-control' %>
               </div>
