@@ -1,0 +1,14 @@
+$("#licenses_table_form").html("<%= escape_javascript(render "licenses/licenses_table_form") %>");
+$('#license-table').dataTable({
+  processing: true,
+  serverSide: true,
+  ajax: $('#license-table').data('source'),
+  sPaginationType: 'full',
+  bAutoWidth: true,
+  columnDefs: [
+    {
+      orderable: false,
+      targets: [5, 7]
+    }
+  ]
+});

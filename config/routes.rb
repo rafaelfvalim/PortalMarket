@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :licenses do
+    collection do
+      get :get_data_ajax
+      get :cancel_license
+      get :generate_key
+    end
+  end
   resources :reservations
   resources :function_transaction_types
   resources :function_data_types

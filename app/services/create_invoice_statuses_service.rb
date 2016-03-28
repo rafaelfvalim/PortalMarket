@@ -4,5 +4,6 @@ class CreateInvoiceStatusesService
     InvoiceStatus.create( description:"Sent")
     InvoiceStatus.create( description:"Complete")
     InvoiceStatus.create( description:"Canceled")
+    InvoiceStatus.create( description:"Backoff")
   end
 end

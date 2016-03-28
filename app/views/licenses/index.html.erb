@@ -1,0 +1,25 @@
+<%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Minhas Licenças</h2>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to :back, class: 'btn btn-primary next' do %>
+          <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row" id="licenses_table_form">
+        <div class="col-md-12">
+          <%= render "licenses/licenses_table_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

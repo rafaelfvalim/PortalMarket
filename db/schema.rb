@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324141626) do
+ActiveRecord::Schema.define(version: 20160324193048) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -162,6 +162,18 @@ ActiveRecord::Schema.define(version: 20160324141626) do
   add_index "invoices", ["script_id"], name: "fk_rails_6cb6b0f3a2", using: :btree
   add_index "invoices", ["user_id"], name: "fk_rails_3d1522a0d8", using: :btree
   add_index "invoices", ["workplace_id"], name: "fk_rails_6662a5dccf", using: :btree
+
+  create_table "licenses", force: :cascade do |t|
+    t.integer  "invoice_id",      limit: 4
+    t.string   "description",     limit: 255
+    t.string   "license_key",     limit: 255
+    t.datetime "expiration_date"
+    t.text     "obs",             limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "licenses", ["invoice_id"], name: "fk_rails_f15eaa4d76", using: :btree
 
   create_table "member_scripts", force: :cascade do |t|
     t.integer  "member_id",     limit: 4
@@ -441,6 +453,7 @@ ActiveRecord::Schema.define(version: 20160324141626) do
   add_foreign_key "invoices", "scripts"
   add_foreign_key "invoices", "users"
   add_foreign_key "invoices", "workplaces"
+  add_foreign_key "licenses", "invoices"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
   add_foreign_key "members", "banks"

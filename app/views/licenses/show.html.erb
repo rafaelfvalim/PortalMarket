@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @license.invoice_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @license.description %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @license.key %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @license.expiration_date %>
+</p>
+
+<p>
+  <strong>Valid:</strong>
+  <%= @license.valid %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @license.obs %>
+</p>
+
+<%= link_to 'Edit', edit_license_path(@license) %> |
+<%= link_to 'Back', licenses_path %>
