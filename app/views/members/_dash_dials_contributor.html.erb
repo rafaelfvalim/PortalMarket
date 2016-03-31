@@ -1,53 +1,19 @@
-<div class="col-md-3 col-sm-4 col-xs-6 ">
-  <div class="widget style1 navy-bg">
-    <div class="row">
-      <div class="col-xs-4">
-        <i class="fa fa-shopping-cart fa-5x"></i>
-      </div>
-      <div class="col-xs-8">
-        <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_orders' %></h4></div>
-        <h2 class="font-bold"><%= CheckingAccount.joins(:invoice).where('invoices.user_id = ?', current_user.id).count %></h2>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 dash_links">
-        <%= link_to checking_accounts_path do %>
-            <span class="pull-left"><%= t 'labels.dash_view_details' %></span>
-            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+<%=
+  color = 'navy-bg'
+  icon = 'typcn typcn-shopping-cart typcn-4x typcn-dash'
+  header_description = t 'labels.dash_orders'
+  header_count = CheckingAccount.joins(:invoice).where('invoices.user_id = ?', current_user.id).count
+  link_path = checking_accounts_path
+  widget_dash_board(color, icon, header_description, header_count, link_path)
+%>
 
-            <div class="huge"></div>
-            <div class="clearfix"></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 <% Status.all.each do |status| %>
-    <div class="col-md-3 col-sm-4 col-xs-6">
-      <div class="widget style1 <%= dash_admin_panel_color(status.id) %>">
-        <div class="row">
-          <div class="col-xs-4">
-            <i class="<%= dash_admin_icon(status.id) %>"></i>
-          </div>
-          <div class="col-xs-8">
-            <div style="width: 40px; height: 40px">
-              <h4><%= "Script(s) #{dash_description(status.description)}" %></h4>
-            </div>
-            <h2 class="font-bold"><%= get_all_my_scripts(current_user.member.id, status.id).count %></h2>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-xs-12 dash_links">
-            <%= link_to contributor_scripts_path(status_id: status.id) do %>
-                <span class="pull-left"><%= t 'labels.buttons.details' %></span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                <div class="clearfix"></div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%=
+      color = dash_status_script_panel_color(status.id)
+      icon = dash_status_script_icon(status.id)
+      header_description = dash_status_script_friendly_description(status.description)
+      header_count = get_all_my_scripts(current_user.member.id, status.id).count
+      link_path = contributor_scripts_path(status_id: status.id)
+      widget_dash_board(color, icon, header_description, header_count, link_path)
+    %>
 <% end %>

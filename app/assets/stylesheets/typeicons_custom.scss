@@ -1,0 +1,41 @@
+// Place all the styles related to the addresses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.typcn-1x {
+  font-size: 1em;
+}
+
+.typcn-2x {
+  font-size: 2em;
+}
+
+.typcn-3x {
+  font-size: 3em;
+}
+
+.typcn-4x {
+  font-size: 4em;
+}
+
+.typcn-5x {
+  font-size: 5em;
+}
+
+.typcn-6x {
+  font-size: 6em;
+}
+
+.typcn-7x {
+  font-size: 7em;
+}
+
+.typcn-dash {
+  position: absolute;
+  line-height: 1em;
+  margin: -6px 0px 0px -7px;
+}
+
+.typcn-arrow:before {
+  content: url('icons/arrow.svg');
+}

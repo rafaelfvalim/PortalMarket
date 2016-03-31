@@ -1,25 +1,12 @@
-<div class="col-md-3 col-sm-4 col-xs-6 ">
-  <div class="widget style1 navy-bg">
-    <div class="row">
-      <div class="col-xs-4">
-        <i class="fa fa-shopping-cart fa-5x"></i>
-      </div>
-      <div class="col-xs-8">
-        <div style="width: 40px; height: 40px"><h4><%= t 'labels.dash_orders' %></h4></div>
-        <h2 class="font-bold"><%= CheckingAccount.joins(:invoice).where('invoices.user_id = ?', current_user.id).count %></h2>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 dash_links">
-        <%= link_to checking_accounts_path do %>
-            <span class="pull-left"><%= t 'labels.dash_view_details' %></span>
-            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-            <div class="huge"></div>
-            <div class="clearfix"></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+<div class="row">
+  <% CheckingAccount.statuses.values.each do |status| %>
+      <%=
+        color = dash_checking_account_panel_color(status)
+        icon = dash_checking_account_icon(status)
+        header_description = status
+        header_count = get_status_checking_account_by_profile(status)
+        link_path = customer_member_scripts_path(status: status)
+        widget_dash_board(color, icon, header_description, header_count, link_path)
+      %>
+  <% end %>
 </div>

@@ -11,3 +11,9 @@ $ ->
     columnDefs:[
       {orderable: false, targets: [6,7,8]}
     ]
+  $('#costumer-table').dataTable
+    processing: true
+    serverSide: true
+    ajax: $('#costumer-table').data('source')
+    sPaginationType: 'full'
+    bAutoWidth: true

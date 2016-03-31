@@ -107,6 +107,8 @@ Rails.application.routes.draw do
   resources :member_scripts do
     collection do
       get :all_scripts
+      get :customer
+      get :get_data_grid_customer_ajax
     end
   end
   resources :publications do

@@ -26,7 +26,7 @@ class Script < ActiveRecord::Base
 
   has_many :requirements, dependent: :destroy
   has_many :related_scripts, dependent: :destroy
-  has_many :checking_account, dependent: :destroy
+
   has_many :members, through: :member_scripts
   has_one :price, dependent: :destroy
   has_many :carts, dependent: :destroy
@@ -38,13 +38,14 @@ class Script < ActiveRecord::Base
 
   belongs_to :solution_type
   belongs_to :status
-  has_many :invoice, dependent: :destroy
+  has_many :invoices, dependent: :destroy
+  has_many :checking_accounts, dependent: :destroy
   has_many :reservations
   accepts_nested_attributes_for :requirements
   accepts_nested_attributes_for :member_scripts
   accepts_nested_attributes_for :related_scripts
-  accepts_nested_attributes_for :checking_account
   accepts_nested_attributes_for :value_chains
+  accepts_nested_attributes_for :checking_accounts
 
   def search_data
     attributes.merge(

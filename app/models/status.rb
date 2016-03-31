@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-
+  has_one :script
   GRAVADO = 1
   VERIFICACAO_DUPLICIDADE = 2
   VERIFICACAO_CONSISTENCIA = 3

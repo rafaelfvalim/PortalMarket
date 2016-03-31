@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324193048) do
+ActiveRecord::Schema.define(version: 20160330205920) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -78,10 +78,12 @@ ActiveRecord::Schema.define(version: 20160324193048) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.integer  "invoice_id",         limit: 4
+    t.integer  "script_id",          limit: 4
   end
 
   add_index "checking_accounts", ["currency_id"], name: "fk_rails_b7c2ffc1f2", using: :btree
   add_index "checking_accounts", ["invoice_id"], name: "fk_rails_8f01c3c48b", using: :btree
+  add_index "checking_accounts", ["script_id"], name: "fk_rails_c8832132dc", using: :btree
 
   create_table "currencies", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -444,6 +446,7 @@ ActiveRecord::Schema.define(version: 20160324193048) do
   add_foreign_key "carts", "workplaces"
   add_foreign_key "checking_accounts", "currencies"
   add_foreign_key "checking_accounts", "invoices"
+  add_foreign_key "checking_accounts", "scripts"
   add_foreign_key "function_data_types", "scripts"
   add_foreign_key "function_data_types", "users"
   add_foreign_key "function_transaction_types", "scripts"

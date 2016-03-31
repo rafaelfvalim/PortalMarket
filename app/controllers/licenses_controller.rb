@@ -50,7 +50,7 @@ class LicensesController < ApplicationController
     invoice.update_attributes(invoice_status_id: 5)
     # Bloqueia a conta corrente para processamento do cancelamento
     checking_account = CheckingAccount.find_by_invoice_id(params[:invoice_id])
-    checking_account.bloqueado!
+    checking_account.desistencia!
     respond_to do |format|
       format.js { render 'licenses/licenses_table_form' }
     end

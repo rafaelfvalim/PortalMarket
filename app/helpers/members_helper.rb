@@ -5,24 +5,30 @@ module MembersHelper
     "#{member.member_name} #{member.member_last_name}"
   end
 
-  def dash_admin_icon(id)
+  def dash_status_script_icon(id)
     case id
       when 1 then
-        'fa fa-floppy-o fa-5x'
+        #Gravado
+        'tronik tronik-floppy tronik-3x'
       when 2 then
-        'fa fa-files-o fa-5x'
+        # Verificação de Duplicidade
+        'tronik tronik-popup tronik-3x'
       when 3 then
-        'fa fa-database fa-5x'
+        # Verificação de Consistência
+        'tronik tronik-database tronik-3x'
       when 4 then
-        'fa fa-cogs fa-5x'
+        # Verficação de Complexidade
+        'tronik tronik-puzzle tronik-3x'
       when 5 then
-        'fa fa-check-square-o fa-5x'
+        # Aprovado
+        'tronik tronik-thumbs-up tronik-3x'
       when 6 then
-        'fa fa-exclamation fa-5x'
+        # Inicial
+        'tronik tronik-puzzle-outline tronik-3x'
     end
   end
 
-  def dash_description(status)
+  def dash_status_script_friendly_description(status)
     case status
       when 'Gravado' then
         'Gravado(s) '
@@ -42,7 +48,7 @@ module MembersHelper
 
   end
 
-  def dash_admin_panel_color(id)
+  def dash_status_script_panel_color(id)
     case id
       when 1 then #Gravado
         'red-bg'

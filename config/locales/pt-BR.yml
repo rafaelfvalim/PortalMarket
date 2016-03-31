@@ -60,8 +60,8 @@ pt-BR:
         change_role: Mudar regra
         search_by: Buscar por
         add_item_to_cart: Adicionar item ao carrinho?
-        dash_without_price: Sem Preço
-        dash_with_price: Com Preço
+        dash_without_price: 'Sem Preço'
+        dash_with_price: 'Com Preço'
         dash_not_complete: Incompleto(s)
         all_scripts: Todos
         details_script: Detalhes do Script
@@ -101,12 +101,12 @@ pt-BR:
           authenticator: Autenticador
         dash_incomplete: Script(s) Incompletos!
         contributor:
-          page_header: Dashboard Membros
+          page_header: Dashboard
           page_header_title:   "<h3>
                                 Este painel de você receber seus notificações e alertas referentes a operação do portal
                                 </h3>"
         customer:
-          page_header: Dashboard Membros
+          page_header: Dashboard
           page_header_title:   "<h3>
                                 Este painel de você receber seus notificações e alertas referentes a operação do portal
                                 </h3>"

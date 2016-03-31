@@ -1,13 +1,13 @@
 class MemberScriptsController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, only: [:all_scripts ]
+  before_action :admin_only, only: [:all_scripts]
   before_action :set_member_script, only: [:show, :edit, :update, :destroy]
   before_action :user_active, if: :signed_in?
 
   # GET /member_scripts
   # GET /member_scripts.json
   def index
-   #passando via parâmetros para class MemberScriptDatatable
+    #passando via parâmetros para class MemberScriptDatatable
     p = params
     p[:member_id] = current_user.member.id
     respond_to do |format|
@@ -50,6 +50,18 @@ class MemberScriptsController < ApplicationController
         format.html { render :new }
         format.json { render json: @member_script.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def customer
+  end
+
+  def get_data_grid_customer_ajax
+    p = params
+    p[:user_id] = current_user.id
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: CustomerScriptDatatable.new(view_context, params) }
     end
   end
 

@@ -9,22 +9,26 @@
   <!-- /.row -->
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-striped table-condensed table-responsive" id="contributors-table" data-source="<%= contributor_scripts_path(status_id: @status.id, format: :json) %>">
-      <thead>
-        <tr>
-          <th><%= t 'labels.script_attributes.code' %></th>
-          <th><%= t 'labels.script_attributes.status' %></th>
-          <th><%= t 'labels.script_attributes.name' %></th>
-          <th><%= t 'labels.script_attributes.platform' %></th>
-          <th><%= t 'labels.script_attributes.complexity' %></th>
-          <th><%= t 'labels.script_attributes.pdf_file' %></th>
-          <th><%= t 'labels.script_attributes.script_file' %></th>
-          <th><%= t 'labels.buttons.actions' %></th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class="panel panel-default center">
+        <div class="panel-body">
+          <table class="table table-striped table-condensed table-responsive" id="contributors-table" data-source="<%= contributor_scripts_path(status_id: @status.id, format: :json) %>">
+            <thead>
+            <tr>
+              <th><%= t 'labels.script_attributes.code' %></th>
+              <th><%= t 'labels.script_attributes.status' %></th>
+              <th><%= t 'labels.script_attributes.name' %></th>
+              <th><%= t 'labels.script_attributes.platform' %></th>
+              <th><%= t 'labels.script_attributes.complexity' %></th>
+              <th><%= t 'labels.script_attributes.pdf_file' %></th>
+              <th><%= t 'labels.script_attributes.script_file' %></th>
+              <th><%= t 'labels.buttons.actions' %></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

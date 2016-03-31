@@ -9,6 +9,8 @@ class Invoice < ActiveRecord::Base
   has_one :checking_account, dependent: :destroy
   accepts_nested_attributes_for :workplace
   accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :script
+  has_one :status, through: :script
 
   def invoice_script_url
     "/downloads/script/script_file/#{self.id}/#{self.user_id}/#{self.script_file}"

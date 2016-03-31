@@ -721,7 +721,7 @@ button.DTTT_button:hover:not(.DTTT_disabled), div.DTTT_button:hover:not(.DTTT_di
 /* WIDGETS */
 
 .widget {
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 15px 20px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -730,6 +730,16 @@ button.DTTT_button:hover:not(.DTTT_disabled), div.DTTT_button:hover:not(.DTTT_di
 .widget.style1 h2 {
   font-size: 30px;
 }
+
+
+.widget.style1 h3 {
+  font-size: 20px;
+}
+.widget.style1 h4 {
+  font-size: 17px;
+  font-weight: 500;
+}
+
 
 .widget h2, .widget h3 {
   margin-top: 5px;
