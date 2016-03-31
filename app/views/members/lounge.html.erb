@@ -1,26 +1,17 @@
-
-<div class="wrapper wrapper-content  animated fadeInRight article">
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
-        <div class="ibox">
-          <div class="ibox-content">
-            <div class="text-center article-title">
-              <h1>
-                Bem Vindo
-              </h1>
-            </div>
-            <p><h4>Você esta na area de visitante, por enquando seu usuário esta aguardando ativação da equipe Klustter </h4></p>
-            <p><h4>Até esse momento você não tem acesso as funcionadlidades!</h4></p>
-            <p><h4>Logo entraremos em contato para confirmar seus dados e realizar a ativação</h4></p>
-            <hr>
-            <p><h3>Klustter Code Store</h3> </p>
-            <p><h3><%= t 'labels.tel'%> </h3></p>'
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2>Area Inicial</h2>
   </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="panel panel-default center">
+    <div class="panel-body">
+      <%= get_message_lounge %>
+    </div>
+  </div>
+</div>
+
 
 

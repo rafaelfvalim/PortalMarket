@@ -76,7 +76,7 @@ pt-BR:
                                 </p>
                                 <p>Klustter Script Store </p>
                                 <p>Tel: 3333-3333 </p>'
-        tel: '+55 11 3333-4454'
+        tel: +55 11 3333-4454
         email:
           resent_confirmation : Reenviar Confirmação
           confirmation_instructions : Um outro email vou enviado com o link de confirmação
