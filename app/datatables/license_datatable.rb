@@ -38,7 +38,7 @@ class LicenseDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    License.joins(:invoice).where('invoices.user_id = ?', current_user.id).order(:expiration_date)
+    License.joins(:invoice).where('invoices.user_id = ?', current_user.id)
   end
 
 end

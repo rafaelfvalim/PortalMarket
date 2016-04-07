@@ -21,7 +21,7 @@ class JavaService
         cmdout_read = stdout.read
       end
     end
-    p "ERRORS OUTPUT: #{cmdout_read}"
+    p "OUTPUT: #{cmdout_read}"
     #return cmdout.gsub(/\n/,'') == 'sucess' ? true : false
     p "===========================END SERVICE JAVA LOG================================="
     return cmdout_read

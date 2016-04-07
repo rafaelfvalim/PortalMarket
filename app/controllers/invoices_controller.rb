@@ -42,6 +42,7 @@ class InvoicesController < ApplicationController
     @carts = Cart.where(id: @cart_ids)
     invoice_service = InvoiceService.new
     checkig_accoutn_service = CheckingAccountService.new
+    license_service = LicenseService.new
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
@@ -56,6 +57,7 @@ class InvoicesController < ApplicationController
           if java_execution.blank?
             invoice_service.send_invoice(i.user_id, i)
             checkig_accoutn_service.initialize_checking_account(i)
+            license_service.initialize_license(i)
           else
             logger.info java_execution
           end

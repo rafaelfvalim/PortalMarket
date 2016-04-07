@@ -7,7 +7,7 @@ class LicensesController < ApplicationController
   # GET /licenses
   # GET /licenses.json
   def index
-    @licenses = License.joins(:invoice).where('invoices.user_id = ?', current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
+    # @licenses = License.joins(:invoice).where('invoices.user_id = ?', current_user.id).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
   end
 
   # GET /licenses/1
