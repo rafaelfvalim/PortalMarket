@@ -15,4 +15,5 @@ class PriceService
     end
     prices
   end
+
 end

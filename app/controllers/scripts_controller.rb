@@ -55,8 +55,13 @@ class ScriptsController < ApplicationController
     params[:script][:status_id] = Status::INICIAL
     @script = Script.new(script_params)
     @user = current_user
+
     respond_to do |format|
       if @script.save
+        price = Price.new
+        price.attributes = {script_id: script.id}
+        price.save
+
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 100.0, participation: 0, partner: false)
         @member_script.save
         format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
@@ -128,6 +133,10 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       if @script.update(script_params)
         set_tracker_step(:create)
+        price = Price.new
+        price.attributes = {script_id: @script.id}
+        price.save
+
         format.html { redirect_to wizard_script_path(id: :additional_data, script_id: @script.id) }
       else
         set_tracker_step(:create)

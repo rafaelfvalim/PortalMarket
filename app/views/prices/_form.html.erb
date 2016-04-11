@@ -1,46 +1,58 @@
-<%= form_for(@price) do |f| %>
-    <div class="actions">
-      <%= f.button :Back, class: 'btn btn-primary' do %>
-          <i class="fa fa-chevron-left"> Back</i>
-      <% end %>
-      <%= f.submit 'Atualizar', class: 'btn btn-success' %>
+<%= simple_form_for(@price) do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= errors_for(@price) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label 'Id Script' %>
+        <%= f.text_field :script_id, value: params[:script_id], class: 'form-control', disabled: true %>
+        <%= f.hidden_field :script_id, value: params[:script_id] %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label 'Valor R$' %>
+        <%= f.text_field :value, :value => number_to_currency(f.object.value, :precision => 3), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label 'Agregado %' %>
+        <%= f.text_field :aggregate_percentage, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label 'Moeda' %>
+        <%= f.collection_select :currency_id, Currency.all, :id, :description, {prompt: "#{ t 'labels.select'}"}, class: 'form-control' %>
+      </div>
     </div>
     <br>
-
-    <% if @price.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@price.errors.count, "error") %> prohibited this price from being saved:</h2>
-          <ul>
-            <% @price.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label 'Data Moeda' %>
+          <div class='input-group date'>
+            <%= f.text_field :currency_data, class: 'form-control', data: {date_format: 'DD/MM/YYYY HH:mm', date_pickDate: 'false'} %>
+            <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+          </div>
         </div>
-    <% end %>
-
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :script_id %>
-        <%= f.number_field :script_id, class: 'form-control', readonly: :true %>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :value %><br>
-        <%= f.text_field :value, class: 'form-control' %>
+        <div class="pull-left">
+          <%= link_to script_prices_prices_path, class: 'btn btn-success' do %>
+              <i class="fa fa-chevron-left"> Voltar</i>
+          <% end %>
+        </div>
+        <div class="pull-right">
+          <%= f.submit 'Salvar', class: 'btn btn-success' %>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :currency_id %><br>
-        <%= f.collection_select :currency_id, Currency.all, :id, :description, {prompt: "Select ..."}, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :currency_data %><br>
-        <%= f.date_select :currency_data, class: 'form-control' %>
-      </div>
-    </div>
-    <br>
 <% end %>

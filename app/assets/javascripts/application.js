@@ -39,6 +39,7 @@
 //= require clipboard
 //= require jivosite/jivosite.js
 //= require bootbox/bootbox.min.js
+//= require jquery.mask.js
 //= require_tree .
 
 

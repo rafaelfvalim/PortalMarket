@@ -367,7 +367,15 @@ pt-BR:
     models:
       user: "Usuário"
       script: "Script"
+      price: "Preço"
     attributes:
+      price:
+        id: "id"
+        script_id: "Script Id"
+        value: "Valor"
+        currency_id: "Moeda"
+        currency_data: "Data Moeda"
+        aggregate_percentage: "Percentual Agregado"
       user:
         email: 'E-mail'
       script:

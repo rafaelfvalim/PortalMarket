@@ -9,6 +9,20 @@ class PricesController < ApplicationController
     @prices = Price.all.paginate(:page => params[:page], :per_page => 15).order('updated_at ASC')
   end
 
+  def get_data_ajax
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: ScriptPriceDatatable.new(view_context) }
+    end
+  end
+  def get_price_data_ajax
+    respond_to do |format|
+      format.html #new.html.erb
+      format.json { render json: PriceDatatable.new(view_context) }
+    end
+  end
+
+
   # GET /prices/1
   # GET /prices/1.json
   def show
@@ -21,18 +35,20 @@ class PricesController < ApplicationController
 
   # GET /prices/1/edit
   def edit
+    params[:script_id] = @price.script_id
   end
 
   # POST /prices
   # POST /prices.json
   def create
     @price = Price.new(price_params)
-
     respond_to do |format|
       if @price.save
-        format.html { redirect_to @price, notice: 'Price was successfully created.' }
+        script_has_price(@price)
+        format.html { redirect_to script_prices_prices_path, notice: 'Price was successfully created.' }
         format.json { render :show, status: :created, location: @price }
       else
+        params[:script_id] = @price.script_id
         format.html { render :new }
         format.json { render json: @price.errors, status: :unprocessable_entity }
       end
@@ -44,10 +60,12 @@ class PricesController < ApplicationController
   def update
     respond_to do |format|
       if @price.update(price_params)
+        script_has_price(@price)
         #format.html { redirect_to @price, notice: 'Price was successfully updated.' }
         format.html { redirect_to prices_path, notice: 'Price was successfully updated.' }
         format.json { render :show, status: :ok, location: @price }
       else
+        params[:script_id] = @price.script_id
         format.html { render :edit }
         format.json { render json: @price.errors, status: :unprocessable_entity }
       end
@@ -63,8 +81,6 @@ class PricesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
   def script_prices
     @scripts = Script.where('has_price is null or has_price = 0 ').paginate(:page => params[:page], :per_page => 15).order('updated_at ASC')
@@ -94,7 +110,12 @@ class PricesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def price_params
-    params.require(:price).permit(:script_id, :value, :currency_id, :currency_data)
+    params.require(:price).permit(:script_id, :aggregate_percentage, :value, :currency_id, :currency_data)
+  end
+
+  def script_has_price(price)
+    script = Script.find(price.script_id)
+    script.update_attribute(:has_price, true)
   end
 
 end

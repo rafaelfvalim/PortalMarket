@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     collection do
       get :script_prices
       put :create_prices
+      get :get_data_ajax
+      get :get_price_data_ajax
     end
   end
   #resources :statuses //não utilizado
