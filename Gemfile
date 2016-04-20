@@ -78,6 +78,8 @@ gem 'upmin-admin'
 gem 'bootstrap_form'
 #https://github.com/plataformatec/simple_form
 gem 'simple_form'
+#http://savonrb.com/
+gem 'savon', '~> 2.0'
 
 group :development do
   gem 'better_errors'

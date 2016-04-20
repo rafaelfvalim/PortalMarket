@@ -12,15 +12,15 @@ class InvoiceService
   end
 
   def create_download_file(invoice)
-    input_file = invoice.script.script_file_url
-    output_file = invoice.invoice_script_url
-    system_number = invoice.workplace.system_number
-    console = JavaService.new.cripty_file_job(input_file, output_file,system_number)
-    return console
+    # input_file = invoice.script.script_file_url
+    # output_file = invoice.invoice_script_url
+    # system_number = invoice.workplace.system_number
+    # console = JavaService.new.cripty_file_job(input_file, output_file,system_number)
+    return ScriptWebService.new.generate_file_script(invoice)
   end
 
-  def generate_invoice_script_file(user, script)
-    "#{File.basename(script.script_file_url.gsub(/.edy/, "_#{Time.now.strftime("%Y%m%d%H%M%S")}.edy"))}"
+  def generate_invoice_script_file(invoice)
+    "#{File.basename(invoice.script_file_url.gsub(/.edy/, "_#{Time.now.strftime("%Y%m%d%H%M%S")}.edy"))}"
   end
 
   def url_get_invoice_id(user_id, url_encrypt)

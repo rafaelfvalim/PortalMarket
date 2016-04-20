@@ -16,6 +16,15 @@ class Invoice < ActiveRecord::Base
     "/downloads/script/script_file/#{self.id}/#{self.user_id}/#{self.script_file}"
   end
 
+  def invoice_script_path
+    "/downloads/script/script_file/#{self.id}/#{self.user_id}/"
+  end
+
+  def script_file_generated
+    name = self.script_file.split('.')[0]
+    "#{name}_#{Time.now.to_formatted_s(:number)}.edy"
+  end
+
   def encrypt_url
     url = {}
     url['url'] = {}

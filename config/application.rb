@@ -53,6 +53,9 @@ module CodeStore
     config.adm_server = 'http://10.11.50.154:10000'
     config.mailcatcher = 'http://localhost:1080'
     config.elasticsearch = 'http://localhost:9200/_plugin/HQ/'
+    config.webservice_generate_file = 'http://localhost:8080/KlustterService/services/ServiceScriptWeb?wsdl'
+    config.webservice_generate_key = 'http://localhost:8080/KlustterService/services/ServiceScriptWeb?wsdl'
+    config.webservice_user_token = 'http://localhost:8080/KlustterService/services/ServiceUserWeb?wsdl'
     # load models into subfolders
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
   end

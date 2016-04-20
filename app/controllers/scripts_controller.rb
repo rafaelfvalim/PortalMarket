@@ -59,7 +59,7 @@ class ScriptsController < ApplicationController
     respond_to do |format|
       if @script.save
         price = Price.new
-        price.attributes = {script_id: script.id}
+        price.attributes = {script_id: @script.id}
         price.save
 
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 100.0, participation: 0, partner: false)

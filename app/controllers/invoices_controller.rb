@@ -53,14 +53,10 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoices.each(&:save)
         @invoices.each do |i|
-          java_execution = invoice_service.create_download_file(i)
-          if java_execution.blank?
-            invoice_service.send_invoice(i.user_id, i)
-            checkig_accoutn_service.initialize_checking_account(i)
-            license_service.initialize_license(i)
-          else
-            logger.info java_execution
-          end
+          invoice_service.create_download_file(i)
+          invoice_service.send_invoice(i.user_id, i)
+          checkig_accoutn_service.initialize_checking_account(i)
+          license_service.initialize_license(i)
         end
         flash[:cart_ids] = @cart_ids
         format.html { redirect_to final_buys_path }
