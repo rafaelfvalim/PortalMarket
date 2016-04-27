@@ -56,6 +56,8 @@ module CodeStore
     config.webservice_generate_file = 'http://10.11.50.144:8080/KlustterWS/services/ServiceScriptWeb?wsdl'
     config.webservice_generate_key = 'http://10.11.50.144:8080/KlustterWS/services/ServiceScriptWeb?wsdl'
     config.webservice_user_token = 'http://10.11.50.144:8080/KlustterWS/services/ServiceUserWeb?wsdl'
+    config.telefone_contato = 'XXXXXXXXXX'
+
     # load models into subfolders
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
   end

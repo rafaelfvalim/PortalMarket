@@ -46,9 +46,8 @@ Rails.application.configure do
 
   #http://www.rubydoc.info/gems/mailcatcher
   #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
-
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.asset_host = 'http://localhost:3000'
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
@@ -63,4 +62,5 @@ Rails.application.configure do
 
   # Route exceptions to the application router vs. default
   config.exceptions_app = self.routes
+
 end

@@ -15,5 +15,4 @@ class UserWebService
     p '>>>>>>> send userservice generate token'
   end
 
-
 end
