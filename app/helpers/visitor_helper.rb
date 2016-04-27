@@ -1,4 +1,5 @@
 module VisitorHelper
+
   def get_message_lounge
     imgage = image_tag "KLU001-logotipo_simbolo-positivo.png", crop: :fill, class: "klustter-lounge-logo"
     telefone = t 'labels.tel'
@@ -32,8 +33,9 @@ module VisitorHelper
           </div>
         </div>
       HTML
-      html_customer.html_safe
+     return  html_customer.html_safe
     end
+
     if current_user.is_contributor?
       html_contributor = <<-HTML
        <div class="row">
@@ -58,8 +60,9 @@ module VisitorHelper
           </div>
         </div>
       HTML
-      html_contributor.html_safe
+      return html_contributor.html_safe
     end
+
     if current_user.is_god?
       html_contributor = <<-HTML
        <div class="row">
@@ -81,7 +84,8 @@ module VisitorHelper
           </div>
         </div>
       HTML
-      html_contributor.html_safe
+      return html_contributor.html_safe
     end
+
   end
 end
