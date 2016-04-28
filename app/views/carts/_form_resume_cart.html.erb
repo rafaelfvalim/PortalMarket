@@ -3,9 +3,6 @@
     <%= form_tag({:controller => :invoices, :action => :create}, {:id => 'form_end_buy'}) do %>
         <div class="row-fluid">
           <div class="col-md-10">
-            <%= link_to :back, class: 'btn btn-primary' do %>
-                <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
-            <% end %>
             <% if carts.size > 0 %>
                 <%= button_tag(type: "submit", class: "btn btn-success", id: "submit_invoice") do %>
                     <%= t 'labels.buttons.finalize' %>
