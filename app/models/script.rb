@@ -7,12 +7,13 @@ class Script < ActiveRecord::Base
   validate :check_presence_of_script, :file_size_script
   validate :check_presence_of_pdf, :file_size_pdf
 
-  validates :name, presence: true, length: {minimum: 5, maximum: 100}, uniqueness: true
+  validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 200}, presence: true
   validates :platform, presence: true
-  validates :definition, length: {minimum: 10, maximum: 3000}, allow_blank: true
-  validates :long_text, length: {minimum: 10, maximum: 3000}, allow_blank: true
-  validates :industry, presence: true, allow_blank: true
+  validates :definition, length: {minimum: 10, maximum: 3000}
+  validates :long_text, length: {minimum: 10, maximum: 3000}
+  validates :industry, presence: true
+  validates :solution_type_id, presence: true
   #validates :solution_type_id, presence: true
   validates :complexity, presence: true
 

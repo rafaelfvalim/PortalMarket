@@ -4,7 +4,7 @@
   <th class="col-xs-1"></th>
   </thead>
   <tbody>
-  <% Requirement.where("script_id = ? ", script.id).each do |r| %>
+  <% Requirement.includes(:script).where("script_id = ? ", script.id).each do |r| %>
       <tr>
         <% if r.requirement == '' %>
             <td><%= Script.find(r.script_id_requirement).name %></td>

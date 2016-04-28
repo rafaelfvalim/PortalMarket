@@ -11,7 +11,7 @@ class WizardScriptsController < ApplicationController
     set_tracker_step(step)
     case step
       when :additional_data then
-        search_script(params[:search], params[:select_field])
+        search_script(params[:search], params[:page])
       when :value_chain then
         @value_chain = ValueChain.new
         @process_modules = ProcessModule.where('referrer_process_module_id is null')
@@ -50,7 +50,7 @@ class WizardScriptsController < ApplicationController
     @related_script = RelatedScript.new(related_script_params)
     respond_to do |format|
       set_script
-      search_script(params[:search], params[:select_field])
+      search_script(params[:search], params[:page])
 
       if @related_script.save
         format.js { render "related_list" }
@@ -126,7 +126,6 @@ class WizardScriptsController < ApplicationController
   end
 
   def search_company_controller(search, field = 'company_name')
-
     if search.present?
       @members_participation = Member.includes(:user).paginate(:page => params[:page], :per_page => 10).search_company(search, field)
     else
@@ -134,11 +133,12 @@ class WizardScriptsController < ApplicationController
     end
   end
 
-  def search_script(search, field = 'name')
-    if search.present?
-      @found_scripts = Script.includes(:related_scripts).paginate(:page => params[:page], :per_page => 10).search_related(search, field)
+  def search_script(query_search, page)
+    Script.reindex
+    if query_search.present?
+      @found_scripts = Script.search query_search, where: {has_price: present?, status_id: 5}, page: page, per_page: 12
     else
-      @found_scripts = Script.where("has_price = 1 AND status_id = 5").paginate(:page => params[:page], :per_page => 10).order('updated_at ASC')
+      @found_scripts = Script.search '*', where: {has_price: present?, status_id: 5}, page: page, per_page: 12
     end
   end
 

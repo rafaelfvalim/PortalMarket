@@ -1,7 +1,41 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
 $ ->
+  $("#script_name").maxlength
+    events: []
+    maxCharacters: 50
+    status: true
+    statusClass: 'status'
+    statusText: 'letras restantes'
+    notificationClass: 'notification'
+    showAlert: true
+    alertText: 'Você excedeu a quantidade de caracteres do campo!'
+    slider: true
+
+  $("#script_description").maxlength
+    events: []
+    maxCharacters: 200
+    status: true
+    statusClass: 'status'
+    statusText: 'letras restantes'
+    notificationClass: 'notification'
+    showAlert: true
+    alertText: 'Você excedeu a quantidade de caracteres do campo!'
+    slider: true
+
+  $("#script_long_text, #script_definition").maxlength
+    events: []
+    maxCharacters: 3000
+    status: true
+    statusClass: 'status'
+    statusText: 'letras restantes'
+    notificationClass: 'notification'
+    showAlert: true
+    alertText: 'Você excedeu a quantidade de caracteres do campo!'
+    slider: true
+
   $('#contributors-table').dataTable
     processing: true
     serverSide: true
@@ -66,3 +100,7 @@ $ ->
   #
   #    close:(event , ui) ->
   #      $("#related_script").val(defaultVal);
+
+
+
+

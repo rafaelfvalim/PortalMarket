@@ -95,6 +95,38 @@ clear_chain = (selected) ->
   )
 
 $ ->
+  $("#requirement_requirement").maxlength
+    events: []
+    maxCharacters: 200
+    status: true
+    statusClass: 'status'
+    statusText: 'letras restantes'
+    notificationClass: 'notification'
+    showAlert: true
+    alertText: 'Você excedeu a quantidade de caracteres do campo!'
+    slider: false
+
+  $('#add_requisitos input[type="text"]').tooltipster
+    trigger: 'custom'
+    onlyOne: false
+
+  $('#add_requisitos').validate
+    errorPlacement: (error, element) ->
+      lastError = $(element).data('lastError')
+      newError = $(error).text()
+      $(element).data 'lastError', newError
+      if newError != '' and newError != lastError
+        $(element).tooltipster 'content', newError
+        $(element).tooltipster 'show'
+    success: (label, element) ->
+      $(element).tooltipster 'hide'
+    ignore: ':hidden'
+    rules:
+      'requirement[requirement]':
+        maxlength: 200
+        minlength: 10
+
+
   if $(".breadcrumb").length == 0
     $("#process_badge").text(0)
   else
@@ -132,3 +164,6 @@ $ ->
 
   $('.first').click ->
     $('#myWizard a:first').tab 'show'
+
+
+

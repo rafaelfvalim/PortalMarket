@@ -27,7 +27,7 @@
       <div class="ibox-content">
         <div class="row">
           <div class="col-lg-6">
-            <%= f.text_field :name, label: "#{t 'labels.script_attributes.name'}" %>
+            <%= f.text_field :name, label: "#{t 'labels.script_attributes.name'}" '  <small>(max. 50 letras)</small>'.html_safe%>
           </div>
           <div class="col-lg-6">
             <%= f.select :complexity, get_complexities, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.complexity'}"} %>
@@ -36,7 +36,7 @@
         <div class="hr-line-dashed"></div>
         <div class="row">
           <div class="col-lg-6">
-            <%= f.text_field :description, label: "#{t 'labels.script_attributes.description'}" %>
+            <%= f.text_field :description, label: "#{t 'labels.script_attributes.description'}" '  <small>(max. 200 letras)</small>'.html_safe %>
           </div>
 
           <div class="col-lg-6">
@@ -55,10 +55,10 @@
         <div class="hr-line-dashed"></div>
         <div class="row">
           <div class="col-lg-6">
-            <%= f.text_area :long_text, label: "#{t 'labels.script_attributes.long_description'}" %>
+            <%= f.text_area :long_text, label: "#{t 'labels.script_attributes.long_description'}" '  <small>(max. 3000 letras)</small>'.html_safe %>
           </div>
           <div class="col-lg-6">
-            <%= f.text_area :definition, label: "#{t 'labels.script_attributes.definition'}" %>
+            <%= f.text_area :definition, label: "#{t 'labels.script_attributes.definition'}" '  <small>(max. 3000 letras)</small>'.html_safe%>
           </div>
         </div>
         <div class="hr-line-dashed"></div>

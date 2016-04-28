@@ -207,10 +207,9 @@ pt-BR:
           panel_requierement_header:  '<h5>Requerimentos e Depencias
                                                          <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
                                                        </h5>'
-          search_scripts:  '<smal>Busque os scripts para adicionar as dependências <span>digite ENTER para realizar a pesquisa</span>
-                                    </smal>'
+          search_scripts:  '<smal>Busque os scripts para adicionar como requesitos e relacionados</smal>'
           requirements: Requisitos
-          related: Relatados
+          related: Relacionados
           description: Descrição
         user_attribures:
           user: Usuário
@@ -423,9 +422,13 @@ pt-BR:
         script:
           attributes:
             name:
-              too_short: '**mínimo de 5 letras'
+              too_short: '**mínimo de 10 letras'
               taken: 'Nome ja esta em uso'
             description:
+              too_short: '**mínimo de 10 letras'
+            long_text:
+              too_short: '**mínimo de 10 letras'
+            definition:
               too_short: '**mínimo de 10 letras'
   date:
     abbr_day_names:
