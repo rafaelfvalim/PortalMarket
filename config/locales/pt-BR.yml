@@ -313,11 +313,11 @@ pt-BR:
           create_account: Criar um usuário
           modal_registration: '<div class="modal-header">
                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                       <h4 class="modal-title">Profiles:</h4>
+                                       <h4 class="modal-title">Perfil:</h4>
                                      </div>
                                      <div class="modal-body">
                                        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-                                         <strong>colaborador</strong>
+                                         <strong>parceiro</strong>
                                        </p>
 
                                        <p class="lead"> Se você pretende consumir scripts para utiliza-los em seus sistemas selecione a opção

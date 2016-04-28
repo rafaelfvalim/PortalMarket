@@ -3,171 +3,174 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
-  <div class="container">
-    <div class="row-centered">
-      <div class="col-lg-1"></div>
-      <div class="col-lg-10">
-            <%= raw t 'labels.devise.register_to_klustter_header' %>
-            </h5>
-            <div class="container">
-              <div class="row-centered">
-                <%= simple_form_for(@user, :html => {class: 'form-horizontal', id: 'singup_form'}) do |f| %>
-                    <div class="row">
-                      <div class="col-lg-9 col-centered ">
-                        <%= f.error_notification %>
-                      </div>
+  <div class="container col-lg-offset-1">
+    <div class="row row-centered">
+        <div class="col-lg-10">
+          <%= raw t 'labels.devise.register_to_klustter_header' %>
+          <div class="container">
+            <div class="row-centered">
+              <%= simple_form_for(@user, :html => {class: 'form-horizontal', id: 'singup_form'}) do |f| %>
+                  <div class="row">
+                    <div class="col-lg-10 col-xs-10 col-md-10 col-centered ">
+                      <%= f.error_notification %>
                     </div>
-                    <%= f.simple_fields_for :member_attributes, @user.member do |member| %>
-                        <div class="row row-centered">
-                          <div class="col-lg-9 col-centered ">
-                            <%= member.input :member_type_id,
-                                             as: :radio_buttons,
-                                             item_wrapper_class: 'radio',
-                                             collection: [['Cliente', 2], ['Colaborador', 1]],
-                                             checked: 2,
-                                             label: "Profile <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe %>
-                          </div>
-                        </div>
-                        <div class="row row-centered" id="company_name">
-                          <div class="col-lg-9 col-centered ">
-                            <%= member.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
-                          </div>
-                        </div>
-                        <div class="row row-centered" id="name">
-                          <div class="col-lg-9 col-centered ">
-                            <%= member.input :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered" id="last_name">
-                          <div class="col-lg-9 col-centered">
-                            <%= member.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered" id="cpf">
-                          <div class="col-lg-4 col-centered">
-                            <%= member.input :cpf, label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
-                          </div>
-                          <div class="col-lg-4 col-md-offset-1 col-centered">
-                            <%= member.input :cnpj, label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}}, class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered" id="phone">
-                          <div class="col-lg-4 col-centered">
-                            <%= member.input :phone_number, label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
-                          </div>
-                          <div class="col-lg-4 col-md-offset-1 col-centered">
-                            <%= member.input :cellphone_number, label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered hidden" id="select_bank">
-                          <div class="col-lg-9 col-centered">
-                            <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Please Select..', class: 'form-control'%>
-                          </div>
-                        </div>
-                        <div class="row row-centered hidden" id="bank_cc">
-                          <div class="col-lg-1 col-centered ">
-                            <%= member.input :bank_ag, label: 'Ag:', class: 'form-control' %>
-                          </div>
-                          <div class="col-lg-5 col-md-offset-1 col-centered">
-                            <%= member.input :bank_cc, label: 'Cc:', class: 'form-control' %>
-                          </div>
-                          <div class="col-lg-1 col-md-offset-1 col-centered">
-                            <%= member.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
-                          </div>
-                        </div>
-                    <% end %>
-                    <div class="row row-centered">
-                      <div class="col-lg-4 col-centered">
-                        <%= f.input :email, label: 'Email:', class: 'form-control' %>
-                      </div>
-                      <div class="col-lg-4 col-md-offset-1 col-centered">
-                        <%= f.input :email_confirmation, label: 'Confirme o e-mail:', class: 'form-control' %>
-                      </div>
-                    </div>
-                    <div class="row row-centered">
-                      <div class="col-lg-4 col-centered">
-                        <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
-                      </div>
-                      <div class="col-lg-4 col-md-offset-1 col-centered">
-                        <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
-                      </div>
-                    </div>
-                    <%= f.simple_fields_for :address_attributes, @user.address do |address| %>
-                        <div class="row row-centered">
-                          <div class="col-lg-4 col-centered">
-                            <%= address.input :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
-                          </div>
-                        </div>
-                        <div class="row row-centered">
-                          <div class="col-lg-1 col-centered">
-                            <%= address.input :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
-                          </div>
-                          <div class="col-lg-5 col-md-offset-1 col-centered">
-                            <%= address.input :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
-                          </div>
-                          <div class="col-lg-1 col-md-offset-1 col-centered">
-                            <%= address.input :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered">
-                          <div class="col-lg-4 col-centered">
-                            <%= address.input :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
-                          </div>
-                          <div class="col-lg-4 col-md-offset-1 col-centered">
-                            <%= address.input :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
-                          </div>
-                        </div>
-                        <div class="row row-centered">
-                          <div class="col-lg-4 col-centered">
-                            <%= address.input :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
-                          </div>
-                          <div class="col-lg-4 col-md-offset-1 col-centered">
-                            <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
-                          </div>
-                        </div>
-                    <% end %>
-                    <br>
-
-                    <div class="row row-centered">
-                      <div class="col-lg-3 col-centered"></div>
-                      <div class="col-lg-3 col-centered">
-                        <%= f.submit 'Inscrever-se', class: 'btn btn-primary block full-width m-b' %>
-                      </div>
-                      <div class="col-lg-3 col-centered"></div>
-                    </div>
-                <% end %>
-
-                <div class="row row-centered">
-                  <div class="col-lg-3 col-centered"></div>
-                  <div class="col-lg-3 col-centered">
-                    <small> Ja possui uma conta?</small>
                   </div>
-                  <div class="col-lg-3 col-centered"></div>
-                </div>
+                  <%= f.simple_fields_for :member_attributes, @user.member do |member| %>
+                      <div class="row row-centered">
+                        <div class="col-lg-10 col-centered  col-md-12 col-xs-12">
+                          <%= member.input :member_type_id,
+                                           as: :radio_buttons,
+                                           item_wrapper_class: 'radio',
+                                           collection: [['Cliente', 2], ['Parceiro', 1]],
+                                           checked: 2,
+                                           label: "Perfil <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe %>
+                        </div>
+                      </div>
+                      <div class="row row-centered" id="company_name">
+                        <div class="col-lg-10 col-md-12 col-xs-12 col-centered ">
+                          <%= member.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
+                        </div>
+                      </div>
+                      <div class="row row-centered" id="name">
+                        <div class="col-lg-10 col-md-12 col-xs-12 col-centered ">
+                          <%= member.input :member_name, label: "#{t 'labels.member_attributes.member_name'}", class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row row-centered" id="last_name">
+                        <div class="col-lg-10 col-md-12 col-xs-12 col-centered">
+                          <%= member.input :member_last_name, label: "#{t 'labels.member_attributes.member_last_name'}", class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row" id="cpf">
+                        <div class="col-lg-4  col-md-5 col-xs-12 col-centered">
+                          <%= member.input :cpf, label: 'CPF:', input_html: {data: {mask: '999.999.999-99'}}, class: 'form-control', id: 'cpf_field' %>
+                        </div>
+                        <div class="col-lg-4 col-lg-offset-2 col-xs-12 col-md-5 col-md-offset-2  col-centered">
+                          <%= member.input :cnpj, label: 'CNPJ:', input_html: {data: {mask: '99.999.999/9999-99'}}, class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row row-centered" id="phone">
+                        <div class="col-lg-4 col-md-5  col-xs-12 col-centered">
+                          <%= member.input :phone_number, label: "#{t 'labels.member_attributes.phone_number'}", input_html: {data: {mask: '(99) 9999-9999'}}, class: 'form-control' %>
+                        </div>
+                        <div class="col-lg-4  col-md-5  col-xs-12 col-lg-offset-2  col-md-offset-2 col-centered">
+                          <%= member.input :cellphone_number, label: "#{t 'labels.member_attributes.cellphone_number'}", input_html: {data: {mask: '(99) 99999-9999'}}, class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row row-centered hidden" id="select_bank">
+                        <div class="col-lg-10 col-md-5  col-xs-12 col-centered">
+                          <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Selecione..', class: 'form-control' %>
+                        </div>
+                      </div>
 
-                <div class="row row-centered">
-                  <div class="col-lg-3 col-centered"></div>
-                  <div class="col-lg-3 col-centered">
-                    <a class="btn btn-sm btn-info btn-block" href="/users/sign_in">Entrar</a>
+                     <!--informações bancárias-->
+                      <div class="row row-centered hidden" id="bank_cc">
+                        <div class="col-lg-1 col-md-2  col-xs-12 col-centered ">
+                          <%= member.input :bank_ag, label: 'Ag:', class: 'form-control' %>
+                        </div>
+                        <div class="col-lg-6 col-md-6  col-xs-12 col-lg-offset-1  col-md-offset-1 col-centered">
+                          <%= member.input :bank_cc, label: 'Cc:', class: 'form-control' %>
+                        </div>
+                        <div class="col-lg-1 col-md-2  col-xs-12  col-lg-offset-1 col-md-offset-1 col-centered">
+                          <%= member.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
+                        </div>
+                      </div>
+                  <% end %>
+                  <!--email-->
+                  <div class="row row-centered">
+                    <div class="col-lg-4 col-md-5  col-xs-12  col-centered">
+                      <%= f.input :email, label: 'Email:', class: 'form-control' %>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-xs-12  col-lg-offset-2 col-md-offset-2 col-centered">
+                      <%= f.input :email_confirmation, label: 'Confirme o e-mail:', class: 'form-control' %>
+                    </div>
                   </div>
-                  <div class="col-lg-3 col-centered"></div>
+                  <!--senha-->
+                  <div class="row row-centered">
+                    <div class="col-lg-4 col-md-5  col-xs-12 col-centered">
+                      <%= f.input :password, label: "#{t 'labels.devise.password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
+                    </div>
+                    <div class="col-lg-4 col-md-5  col-xs-12 col-md-offset-2 col-lg-offset-2 col-centered">
+                      <%= f.input :password_confirmation, label: "#{t 'labels.devise.confirm_password'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
+                    </div>
+                  </div>
+                  <!--Endereço-->
+                  <%= f.simple_fields_for :address_attributes, @user.address do |address| %>
+
+                      <div class="row row-centered">
+                        <div class="col-lg-4 col-md-5 col-xs-12  col-centered">
+                          <%= address.input :zip_code, label: "#{t 'labels.address_attribures.zip_code'}", class: 'form-control', input_html: {autocomplete: 'off'} %>
+                        </div>
+                      </div>
+                      <div class="row row-centered">
+                        <div class="col-lg-1 col-md-2  col-xs-12 col-centered">
+                          <%= address.input :patio_type, label: "#{t 'labels.address_attribures.patio_type'}", class: 'form-control', input_html: {data: {cep: 'tipo_logradouro'}} %>
+                        </div>
+                        <div class="col-lg-6 col-md-6  col-xs-12 col-md-offset-1 col-lg-offset-1 col-centered">
+                          <%= address.input :patio, label: "#{t 'labels.address_attribures.patio'}", class: 'form-control', input_html: {data: {cep: 'logradouro'}} %>
+                        </div>
+                        <div class="col-lg-1 col-md-2  col-xs-12 col-md-offset-1 col-lg-offset-1 col-centered">
+                          <%= address.input :number, label: "#{t 'labels.address_attribures.number'}", class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row row-centered">
+                        <div class="col-lg-4 col-md-5  col-xs-12 col-centered">
+                          <%= address.input :neighborhood, label: "#{t 'labels.address_attribures.neighbordhood'}", class: 'form-control', input_html: {data: {cep: 'bairro'}} %>
+                        </div>
+                        <div class="col-lg-4 col-md-5  col-xs-12 col-md-offset-2 col-lg-offset-2 col-centered">
+                          <%= address.input :complement, label: "#{t 'labels.address_attribures.complement'}", class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="row row-centered">
+                        <div class="col-lg-4 col-md-5  col-xs-12 col-centered">
+                          <%= address.input :city, label: "#{t 'labels.address_attribures.city'}", class: 'form-control', input_html: {data: {cep: 'cidade'}} %>
+                        </div>
+                        <div class="col-lg-4 col-md-5  col-xs-12 col-md-offset-2 col-lg-offset-2 col-centered">
+                          <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
+                        </div>
+                      </div>
+                  <% end %>
+                  <br>
+
+                  <div class="row row-centered">
+                    <div class="col-lg-3  col-md-4 col-centered"></div>
+                    <div class="col-lg-4 col-md-4  col-xs-12 col-centered">
+                      <%= f.submit 'Inscrever-se', class: 'btn btn-primary block full-width m-b' %>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-centered"></div>
+                  </div>
+              <% end %>
+
+              <div class="row row-centered">
+                <div class="col-lg-3 col-md-4 col-centered"></div>
+                <div class="col-lg-4 col-md-4  col-xs-12 col-centered">
+                  <small> Ja possui uma conta?</small>
                 </div>
+                <div class="col-lg-3 col-md-4 col-centered"></div>
+              </div>
+              <div class="row row-centered">
+                <div class="col-lg-3 col-md-4  col-centered"></div>
+                <div class="col-lg-4 col-md-4  col-xs-12 col-centered">
+                  <a class="btn btn-sm btn-info btn-block" href="/users/sign_in">Entrar</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-centered"></div>
               </div>
             </div>
-            <p class="m-t">
-              <small>Klustter Script Inovations &copy; 2016</small>
-            </p>
-      </div>
+          </div>
+          <p class="m-t">
+            <small>Klustter Script Inovations &copy; 2016</small>
+          </p>
+        </div>
     </div>
   </div>
 </div>
-<div id="help_modal" class="modal fade" role="dialog">
+<div id="help_modal" class="modal fade color-black" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <%= raw t 'labels.devise.modal_registration' %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t 'labels.buttons.close' %></button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><%= t 'labels.buttons.close' %></button>
       </div>
     </div>
   </div>
