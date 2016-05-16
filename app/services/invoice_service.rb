@@ -19,8 +19,8 @@ class InvoiceService
     return ScriptWebService.new.generate_file_script(invoice)
   end
 
-  def generate_invoice_script_file(invoice)
-    "#{File.basename(invoice.script_file_url.gsub(/.edy/, "_#{Time.now.strftime("%Y%m%d%H%M%S")}.edy"))}"
+  def generate_invoice_script_file(script)
+    "#{File.basename(script.script_file_url.gsub(/.edy/, "_#{Time.now.strftime("%Y%m%d%H%M%S")}.edy"))}"
   end
 
   def url_get_invoice_id(user_id, url_encrypt)

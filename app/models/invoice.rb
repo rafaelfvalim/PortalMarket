@@ -12,11 +12,11 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :script
   has_one :status, through: :script
 
-  def invoice_script_url
+  def script_url
     "/downloads/script/script_file/#{self.id}/#{self.user_id}/#{self.script_file}"
   end
 
-  def invoice_script_path
+  def script_path
     "/downloads/script/script_file/#{self.id}/#{self.user_id}/"
   end
 

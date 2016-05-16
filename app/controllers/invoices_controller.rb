@@ -46,7 +46,7 @@ class InvoicesController < ApplicationController
     @carts.each do |cart|
       @invoice = Invoice.new
       @checking_account = CheckingAccount.new
-      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, script_file: invoice_service.generate_invoice_script_file(current_user, cart.script), notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
+      @invoice.attributes = {user_id: current_user.id, script_id: cart.script_id, value: cart.price.value, invoice_status_id: 1, script_file: invoice_service.generate_invoice_script_file(cart.script), notes: '', pay_date: nil, ship_date: nil, shipped_to: current_user.email, shipped_via: 'email', pay_method_id: 1, workplace_id: cart.workplace_id}
       @invoices.push(@invoice)
       cart.update_attribute(:full_sale, true)
     end
@@ -73,7 +73,7 @@ class InvoicesController < ApplicationController
     invoice_id = invoice_service.url_get_invoice_id(current_user.id, params[:url])
     unless invoice_id.nil?
       invoice = Invoice.find(invoice_id)
-      send_file "#{Rails.public_path}#{invoice.invoice_script_url}", :disposition => 'attachment'
+      send_file "#{Rails.public_path}#{invoice.script_url}", :disposition => 'attachment'
     else
       respond_to do |format|
         format.html { render :download }
