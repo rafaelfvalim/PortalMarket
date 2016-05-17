@@ -29,6 +29,7 @@
  *= require typeicons_custom
  *= require fontello_custom
  *= require visitors
+ *= require sweetalert2
  */
 
 .inactiveLink {
@@ -98,7 +99,7 @@ label.required:after {
   color: #fff !important;
 }
 
-.select option{
+.select option {
   color: black;
 }
 
@@ -107,6 +108,6 @@ label.required:after {
 }
 
 .color-black {
- color: #0c0c0c;
+  color: #0c0c0c;
 }
 

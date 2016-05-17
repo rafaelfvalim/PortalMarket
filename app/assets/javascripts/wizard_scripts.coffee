@@ -18,7 +18,7 @@ window.process_call_ajax = (id, e) ->
     success: (data) ->
       processListFactory($("#list_process_chain"), data, e)
     errors: (data) ->
-      alert('error')
+      swal('error')
 
 processListFactory = (root_element, data, element) ->
   selected = parseInt($(element).attr("data-level"), 10)

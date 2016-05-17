@@ -383,6 +383,8 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     subexec (0.2.2)
+    sweetalert2 (0.0.4)
+      railties (>= 3.1.0)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -497,6 +499,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   spring-commands-rspec
+  sweetalert2
   thin
   to_factory
   tooltipster-rails

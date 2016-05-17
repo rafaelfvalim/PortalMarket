@@ -45,7 +45,7 @@ $ ->
         $("#related_script_script_id").val('');
         $("#related_script_related_script_id").val('');
         $("#related_script").val('');
-        alert 'Please select a value from the list'
+        swal 'Please select a value from the list'
 
     select: (event, ui) ->
       $("#related_script_related_script_id").val(ui.item.id);

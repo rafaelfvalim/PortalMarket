@@ -51,7 +51,7 @@ getProcessById = (id, element) ->
         if !$.isEmptyObject(data)
           appendComboChield(createComboChield(data), element)
       errors: (data) ->
-        alert 'erro' + data
+        swal 'erro' + data
 clearFilters = ->
   arrayLevels.forEach (el) ->
     data_level = parseInt($(el).attr("data-level"), 10)

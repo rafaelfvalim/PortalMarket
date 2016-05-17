@@ -24,7 +24,7 @@
                     </h2>
                     <small>Comercializado segundo os direitos pré estabelecidos em contrato com o autor</small>
                     <div>
-                      <%= button_tag(type: "submit", class: "btn btn-primary pull-right", id: "submit_invoice") do %>
+                      <%= button_tag(type: "button", class: "btn btn-primary pull-right", id: "submit_invoice") do %>
                           <i class="fa fa-cart-plus"></i> <%= t 'labels.buttons.add_to_cart' %>
                       <% end %>
                       <h1 class="product-main-price"><%= number_to_currency_br(@price.value) %>

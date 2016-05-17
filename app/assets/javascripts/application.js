@@ -23,6 +23,7 @@
 //= require jquery.scrollTo
 //= require bootstrap-typeahead-rails
 //= jquery.validate.localization/messages_pt_BR.js
+//= require sweetalert2
 //= require moment
 //= require moment/pt-br.js
 //= require jquery_cep/jquery.cep.js
@@ -41,6 +42,7 @@
 //= require bootbox/bootbox.min.js
 //= require jquery.mask.js
 //= require jquery.maxlength.js
+//= require common
 //= require_tree .
 
 

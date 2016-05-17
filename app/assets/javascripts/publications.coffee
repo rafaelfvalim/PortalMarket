@@ -13,7 +13,7 @@ window.countNews = (id) ->
      $('#count-new').text('')
      $('#count-new').text('News ' + data)
     errors: (data) ->
-     alert('error on get count news')
+      swal "error on get count news"
 $ ->
   $('#new_folder').validate
     ignore: ':hidden'

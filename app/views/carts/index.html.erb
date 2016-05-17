@@ -5,7 +5,21 @@
   </div>
 </div>
 <div class="row wrapper border-bottom">
-  <div id="form_resume_cart">
-    <%= render 'carts/form_resume_cart', carts: @carts %>
-  </div>
+  <% if @carts.size > 0 %>
+      <div id="form_resume_cart">
+        <%= render 'carts/form_resume_cart', carts: @carts %>
+      </div>
+  <% else %>
+      <div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row-fluid">
+              <div class="col-md-10">
+                <p>Sem itens no carrinho</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>

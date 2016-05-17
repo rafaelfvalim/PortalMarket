@@ -61,7 +61,7 @@
             // Shows an alert msg
             function showAlert() {
                 if (settings.showAlert) {
-                    alert(settings.alertText);
+                    mensagem(settings.alertText);
                 }
             }
 

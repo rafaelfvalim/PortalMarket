@@ -148,7 +148,7 @@ pt-BR:
           contributor: Colaborador
           script_id: Script Id
           script_name: Script Name
-          platform: Platforma
+          platform: Plataforma
           system: Sistema
           s_n: S/N
           value: Valor
@@ -204,8 +204,8 @@ pt-BR:
                                   <small>informe os dados do script que você criou.</small>
                                 </h5>'
         additional_information:
-          panel_requierement_header:  '<h5>Requerimentos e Depencias
-                                                         <small>indique as condições para que o script nessecita para funcionar se ouverem.</small>
+          panel_requierement_header:  '<h5>Requerimentos e Dependências
+                                                         <small>informe os pré-requesitos se houverem </small>
                                                        </h5>'
           search_scripts:  '<smal>Busque os scripts para adicionar como requesitos e relacionados</smal>'
           requirements: Requisitos

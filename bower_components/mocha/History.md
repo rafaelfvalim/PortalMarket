@@ -223,8 +223,8 @@
   * add support to multiple `Mocha#globals()` calls, and strings
   * add `mocha.reporter()` constructor support [jfirebaugh]
   * add `mocha.timeout()`
-  * move query-string parser to utils.js
-  * move highlight code to utils.js
+  * move query-string parser to javascriptUtils.js
+  * move highlight code to javascriptUtils.js
   * fix third-party reporter support [exogen]
   * fix client-side API to match node-side [jfirebaugh]
   * fix mocha in iframe [joliss]

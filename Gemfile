@@ -62,6 +62,8 @@ gem 'foo_table-rails'
 gem 'clipboard-rails'
 #https://github.com/rails/rails-html-sanitizer
 gem 'rails-html-sanitizer'
+#https://github.com/KMontag42/sweetalert2-rails
+gem 'sweetalert2'
 
 group :development, :test do
   gem 'byebug'

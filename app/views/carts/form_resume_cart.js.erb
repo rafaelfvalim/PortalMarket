@@ -1,2 +1,27 @@
 $('#form_resume_cart').html("<%= escape_javascript(render "carts/form_resume_cart", carts: @carts ) %>");
 $('#navigation_cart').html("<%= escape_javascript(render "layouts/navigation_cart", carts: @carts ) %>");
+
+$("[data-behavior='remover']").on("click", function(e) {
+  swal({
+    title: 'Atenção',
+    text: 'Deseja mesmo remover esse item?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Não',
+    closeOnConfirm: true,
+    closeOnCancel: true
+  }, (function(_this) {
+    return function(confirmed) {
+      if (confirmed) {
+        $.ajax({
+          url: $(_this).attr("href"),
+          dataType: "script",
+          method: "DELETE"
+        });
+      }
+    };
+  })(this));
+  return false;
+});

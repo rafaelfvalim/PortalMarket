@@ -10,10 +10,9 @@ $ ->
 
   $('#form_end_buy').on 'submit', (e) ->
     if $('#agree').val() != 'yes'
-      bootbox.alert 'Por favor aceite os termos para finalizar'
+      swal 'Atenção','Aceite os termos para finalizar', 'info'
       e.preventDefault()
     return
-
 
   $('#agreeButton, #disagreeButton').on 'click', ->
     console.log 'adasd'

@@ -5657,7 +5657,7 @@ exports.highlightTags = function(name) {
   }
 };
 
-}); // module: utils.js
+}); // module: javascriptUtils.js
 // The global object is "self" in Web Workers.
 global = (function() { return this; })();
 
