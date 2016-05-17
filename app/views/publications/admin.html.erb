@@ -45,7 +45,7 @@
                       <% end %>
                   <% end %>
                 </ul>
-                <h5 class="tag-title">Grupos</h5>
+                <h5 class="tag-title">Filtros de grupos</h5>
                 <ul class="tag-list" style="padding: 0">
                   <% Publication.view_groups.values.each do |g| %>
                       <li>
@@ -73,7 +73,7 @@
                     <span class="corner"></span>
 
                     <div class="icon">
-                      <i class="<%= get_icon_file(p.file_name) %>"></i>
+                      <%= get_icon_file(p.file_name) %>
                     </div>
                     <div class="file-name">
                       <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>

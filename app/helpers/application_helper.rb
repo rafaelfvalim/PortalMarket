@@ -74,11 +74,11 @@ module ApplicationHelper
   def side_bar_render
     case
       when current_user.is_god? then
-        render "layouts/bar_admin"
+        render "layouts/left_menu_admin"
       when current_user.is_contributor? then
-        render "layouts/bar_contributor"
+        render "layouts/left_menu_contributor"
       when current_user.is_customer? then
-        render "layouts/bar_customer"
+        render "layouts/left_menu_customer"
     end
   end
 

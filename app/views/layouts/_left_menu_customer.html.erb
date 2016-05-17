@@ -38,7 +38,7 @@
   <%= link_to publications_path do %>
       <i class="typcn typcn-document-text " aria-hidden="true"> </i>
       <span class="nav-label">  <%= t 'labels.menu.publications' %></span>
-      <span class="label label-primary" id="count-new">  <%= t 'labels.menu.publications_news' %> <%=  Publication.all.count -  ViewPublication.where(user_id: current_user.id).count  %></span>
+      <span class="label label-primary" id="count-new">  <%= t 'labels.menu.publications_news' %> <%= publication_count %></span>
   <% end %>
 </li>
 <!--Fim Publications-->

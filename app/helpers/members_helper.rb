@@ -85,7 +85,7 @@ module MembersHelper
       when current_user.is_god? then
         'Administrador'
       when current_user.is_contributor? then
-        'Colaborador'
+        'Parceiro'
       when current_user.is_customer? then
         'Cliente'
     end

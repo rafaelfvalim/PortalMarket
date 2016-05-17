@@ -27,13 +27,7 @@
 
         </div>
       </li>
-      <% if current_user.is_customer? %>
-          <%= render 'layouts/bar_customer' %>
-      <% elsif current_user.is_contributor? %>
-          <%= render 'layouts/bar_contributor' %>
-      <% elsif current_user.is_god? %>
-          <%= render 'layouts/bar_admin' %>
-      <% end %>
+      <%= lef_menu_builder %>
     </ul>
   </div>
 </nav>

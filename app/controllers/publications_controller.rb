@@ -6,7 +6,7 @@ class PublicationsController < ApplicationController
   # GET /publications
   # GET /publications.json
   def index
-    if params[:query].present? && params[:query] != 'All'
+    if params[:query].present? && params[:query] != 'Todos'
       @publications = Publication.search(params[:query], current_user.publication_group)
     else
       @publications = Publication.where('view_group = ? or view_group = ?', current_user.publication_group, 'Todos')
@@ -50,7 +50,10 @@ class PublicationsController < ApplicationController
 
   def get_news_count
     ViewPublication.where(publication_id: @publication.id, visited: true, user_id: current_user.id).first_or_create
-    count = Publication.all.count - ViewPublication.where(user_id: current_user.id).count
+    view_group = Array.new
+    view_group << 'Todos'
+    view_group << current_user.publication_group
+    count = Publication.where('view_group in (?)', view_group).count - ViewPublication.where(user_id: current_user.id).count
     respond_to do |format|
       format.html
       format.json { render json: count }

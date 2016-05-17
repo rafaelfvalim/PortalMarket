@@ -87,7 +87,7 @@
                       <dd><%= @script.definition %></dd>
                     </dl>
                     <div class="panel panel-default">
-                      <div class="panel-heading"><%= raw t 'labels.show_product.to_organization' %></div>
+                      <div class="panel-heading"><font color="red"> <%= raw t 'labels.show_product.to_organization' %> </font></div>
                       <div class="panel-body">
                         <%= c.fields_for :workplace do |w| %>
                             <div class="col-md-6">

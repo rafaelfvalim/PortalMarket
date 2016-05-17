@@ -3,13 +3,13 @@
   <%= link_to members_path do %>
       <i class="typcn typcn-th-large-outline" aria-hidden="true"></i>
       <span class="nav-label"> <%= t 'labels.menu.dash_board' %></span>
-<% end %>
+  <% end %>
 </li>
 <!--Fim Dashboard-->
 
 <!--Inicio Scripts-->
 <li>
-  <%= link_to member_scripts_path  do %>
+  <%= link_to member_scripts_path do %>
       <i class="typcn typcn-code" aria-hidden="true"></i>
       </i> <span class="nav-label"> <%= t 'labels.menu.my_scripts' %> </span>
   <% end %>
@@ -29,7 +29,7 @@
   <%= link_to publications_path do %>
       <i class="typcn typcn-document-text " aria-hidden="true"> </i>
       <span class="nav-label"> <%= t 'labels.menu.publications' %></span>
-      <span class="label label-primary" id="count-new"> <%= t 'labels.menu.publications_news' %> <%=  Publication.all.count -  ViewPublication.where(user_id: current_user.id).count  %></span>
+      <span class="label label-primary" id="count-new"> <%= t 'labels.menu.publications_news' %> <%= publication_count %></span>
   <% end %>
 </li>
 <!--Fim Publications-->

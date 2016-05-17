@@ -41,14 +41,17 @@
   <!-- Page wraper -->
   <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
 
-    <!-- Page wrapper -->
+    <!-- Start Top Navbar -->
     <%= render 'layouts/topnavbar' %>
+    <!-- End Top Navbar -->
 
-    <!-- Main view  -->
+    <!-- Start Main view  -->
     <%= yield %>
-    <br>
-    <!-- Footer -->
+    <!-- End Main view  -->
+
+    <!-- Start Footer -->
     <%= render 'layouts/footer' %>
+    <!-- End Footer -->
 
   </div>
   <!-- End page wrapper-->
