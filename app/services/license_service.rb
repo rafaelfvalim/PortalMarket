@@ -7,13 +7,13 @@ class LicenseService
     # params << "#{Rails.public_path}#{invoice.invoice_script_url}"
     # key = JavaService.new.execute_jar(Rails.configuration.jar_license, params)
     key = ScriptWebService.new.generate_key_script(invoice)
-    key = key.gsub!(/\s+/, '')
+    # key = key.gsub!(/\s+/, '')
     return key.chars.each_slice(6).map(&:join).join('-')
   end
 
   def initialize_license(invoice)
     license = License.new
-    license.attributes = { invoice_id: invoice.id, description: invoice.script.description}
+    license.attributes = {invoice_id: invoice.id, description: invoice.script.description}
     license.save
   end
 

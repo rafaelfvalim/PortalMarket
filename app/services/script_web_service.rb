@@ -26,7 +26,7 @@ class ScriptWebService
 
   def generate_key_script(invoice)
     nome_arquivo = File.basename(invoice.script_url.to_s)
-    aquivo = File.read("#{Rails.public_path}#{invoice.invoice_script_url.to_s}")
+    aquivo = File.read("#{Rails.public_path}#{invoice.script_url.to_s}")
     url = Rails.configuration.webservice_generate_key
     client = Savon.client(wsdl: url)
     client.operations
@@ -35,9 +35,7 @@ class ScriptWebService
       return response.body[:gerar_key_response][:gerar_key_return]
     end
   rescue Savon::SOAPFault => error
-    fault_code = error.to_hash[:fault][:faultcode]
-    p '>>>>>>> start webservice generate key'
-    p fault_code
-    p '>>>>>>> send webservice generate key'
+    # fault_code = error.to_hash[:fault][:faultcode]
+    p '-'
   end
 end

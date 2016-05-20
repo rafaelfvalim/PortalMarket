@@ -6,6 +6,7 @@ class LicenseDatatable < AjaxDatatablesRails::Base
   def_delegator :@view, :button_tag
   def_delegator :@view, :cancel_license_licenses_path
   def_delegator :@view, :generate_key_licenses_path
+  def_delegator :@view, :enableGenerateLicense
 
   def sortable_columns
     # list columns inside the Array in string dot notation.
@@ -32,7 +33,7 @@ class LicenseDatatable < AjaxDatatablesRails::Base
           "<small>#{record.license_key}</small>",
           record.expiration_date.nil? ? '' : record.expiration_date.strftime("%d/%m/%Y"),
           link_to('Gerar licença', generate_key_licenses_path(id: record.id, invoice_id: record.invoice_id), :class => 'btn btn-info btn-xs', disabled: record.license_key.present? || record.invoice.invoice_status_id == 5, remote: true),
-          link_to('Desisitir', cancel_license_licenses_path(invoice_id: record.invoice_id), class: 'btn btn-warning btn-xs ', disabled: record.created_at > 30.days.ago || record.invoice.invoice_status_id == 5 || record.license_key.present?, remote: true),
+          link_to('Desisitir', cancel_license_licenses_path(invoice_id: record.invoice_id), class: 'btn btn-warning btn-xs ', disabled: enableGenerateLicense(record), remote: true),
       ]
     end
   end
