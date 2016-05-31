@@ -10,6 +10,7 @@
         <td class="col-xs-1"><%= link_to "Remove", {controller: :wizard_scripts, action: :destroy_related, related_script_id: r.id, script_id: script.id}, class: "btn btn-primary btn-xs", remote: true %></td>
       </tr>
   <% end %>
+
   </tbody>
 </table>
 
