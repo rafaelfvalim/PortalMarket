@@ -215,6 +215,7 @@ pt-BR:
           user: Usuário
           users: Usuários
           name: Nome
+          last_name: Sobrenome
           cnpj: CNPJ
           email: E-mail
           company_name: Nome Empresa
@@ -244,7 +245,7 @@ pt-BR:
          define_participation: Definir Participação
          participation: Participações
          participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
-         search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa</small>'
+         search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa / Apenas Enter com o campo em branco para Todos</small>'
         process_tracker:
           create: Criar
           additional_information: Dados Adicionais
@@ -317,11 +318,13 @@ pt-BR:
                                      </div>
                                      <div class="modal-body">
                                        <p class="lead"> Se você pretente criar scripts afim de comercializar selecione a opção
-                                         <strong>parceiro</strong>
+                                         <strong>Parceiro</strong>
                                        </p>
 
                                        <p class="lead"> Se você pretende consumir scripts para utiliza-los em seus sistemas selecione a opção
-                                         <strong>cliente</strong></p>
+                                         <strong>Cliente</strong></p>
+
+                                         <p class="lead">Você também pode selecionar a opção <strong>Cliente/Parceiro</strong> se deseja executar as duas funções</p>
                                      </div>'
           login_wellcome: Bem Vindo
         invoices:
@@ -423,7 +426,7 @@ pt-BR:
           attributes:
             name:
               too_short: '**mínimo de 10 letras'
-              taken: 'Nome ja esta em uso'
+              taken: 'ja esta em uso'
             description:
               too_short: '**mínimo de 10 letras'
             long_text:
@@ -549,7 +552,7 @@ pt-BR:
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
       required: deve existir
-      taken: já está em uso
+      taken: já está em uso.
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
         other: 'é muito longo (máximo: %{count} caracteres)'

@@ -27,17 +27,17 @@ module ApplicationHelper
     if object.errors.any?
       content_tag(:div, class: "panel panel-danger") do
         concat(content_tag(:div, class: "panel-heading") do
-                 concat(content_tag(:h4, class: "panel-title") do
-                          concat "#{pluralize(object.errors.count, "erro")} Proibindo esse #{object.class.name.downcase} de ser salvo:"
-                        end)
-               end)
+          concat(content_tag(:h4, class: "panel-title") do
+            concat "#{pluralize(object.errors.count, "erro")} Proibindo esse #{object.class.name.downcase} de ser salvo:"
+          end)
+        end)
         concat(content_tag(:div, class: "panel-body") do
-                 concat(content_tag(:ul) do
-                          object.errors.full_messages.each do |msg|
-                            concat content_tag(:li, msg)
-                          end
-                        end)
-               end)
+          concat(content_tag(:ul) do
+            object.errors.full_messages.each do |msg|
+              concat content_tag(:li, msg)
+            end
+          end)
+        end)
       end
     end
   end
@@ -61,14 +61,16 @@ module ApplicationHelper
   end
 
   def navbar_render
-      case
-        when current_user.is_god? then
-          render "layouts/navbar_god"
-        when current_user.is_contributor? then
-          render "layouts/navbar_contributor"
-        when current_user.is_customer? then
-          render "layouts/navbar_customer"
-      end
+    case
+      when current_user.is_god? then
+        render "layouts/navbar_god"
+      when current_user.is_contributor? then
+        render "layouts/navbar_contributor"
+      when current_user.is_customer? then
+        render "layouts/navbar_customer"
+      when current_user.is_customer_contributor? then
+        render "layouts/navbar_customer_contributor"
+    end
   end
 
   def side_bar_render
@@ -79,6 +81,8 @@ module ApplicationHelper
         render "layouts/left_menu_contributor"
       when current_user.is_customer? then
         render "layouts/left_menu_customer"
+      when current_user.is_customer_contributor? then
+        render "layouts/left_menu_customer_contributor"
     end
   end
 
@@ -90,6 +94,8 @@ module ApplicationHelper
         render "layouts/dropdown_contributor"
       when current_user.is_customer? then
         render "layouts/dropdown_customer"
+      when current_user.is_customer_contributor? then
+        render "layouts/dropdown_customer_contributor"
     end
   end
 

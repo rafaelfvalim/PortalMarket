@@ -96,13 +96,21 @@
                                 </span>
                               </div>
                               <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                   <label>
                                     <input type="radio" checked="true" value="company_name" id="select_field1" name="select_field">
                                     <%= t 'labels.user_attribures.company_name' %> </label></div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                   <label> <input type="radio" value="cnpj" id="select_field2" name="select_field">
                                     <%= t 'labels.user_attribures.cnpj' %> </label>
+                                </div>
+                                <div class="col-sm-2">
+                                  <label> <input type="radio" value="member_name" id="select_field3" name="select_field">
+                                    <%= t 'labels.user_attribures.name' %> </label>
+                                </div>
+                                <div class="col-sm-2">
+                                  <label> <input type="radio" value="member_last_name" id="select_field4" name="select_field">
+                                    <%= t 'labels.user_attribures.last_name' %> </label>
                                 </div>
                               </div>
                               <%= hidden_field_tag :script_id, @script.id %>

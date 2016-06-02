@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :industries
   resources :licenses do
     collection do
       get :get_data_ajax
@@ -150,6 +151,7 @@ Rails.application.routes.draw do
     collection do
       get :contributor
       get :customer
+      get :customer_contributor
       get :admin
       get :lounge
     end

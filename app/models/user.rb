@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     self.member.member_type.description == Member::GOD
   end
 
+  def is_customer_contributor?
+    self.member.member_type.description == Member::CUSTOMER_CONTRIBUTOR
+  end
+
   def is_master_user_id?
     self.member.master_user_id.nil?
   end
@@ -90,6 +94,10 @@ class User < ActiveRecord::Base
 
     if self.is_god?
       return "Todos"
+    end
+
+    if self.is_customer_contributor?
+      return "Cliente Parceiro"
     end
 
   end

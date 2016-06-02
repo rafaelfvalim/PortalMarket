@@ -23,7 +23,7 @@ window.percentage_participation = (e) ->
     sum += Number($(this).val())
     return
   if sum > Number(100.0)
-    swal 'values \u200b\u200bshould be less than 100 %'
+    swal 'Atenção', 'O valor total deve ser menor que 100%, distribua a porcentagem corretamente'
     $(e).val '0'
   else
     $(e).closest('form').submit()

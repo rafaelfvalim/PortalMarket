@@ -43,7 +43,7 @@ $ ->
           text: 'Adicionar novamente?'
           type: 'warning'
           showCancelButton: true
-          confirmButtonColor: '#DD6B55'
+          confirmButtonColor: '#2b64ff'
           confirmButtonText: 'Sim'
           cancelButtonText: 'Não'
           closeOnConfirm: true
@@ -57,7 +57,7 @@ $ ->
           title: 'Adicionar item ao carrinho?'
           type: 'warning'
           showCancelButton: true
-          confirmButtonColor: '#DD6B55'
+          confirmButtonColor: '#2b64ff'
           confirmButtonText: 'Sim'
           cancelButtonText: 'Não'
           closeOnConfirm: true

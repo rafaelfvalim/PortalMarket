@@ -27,6 +27,7 @@ class Member < ActiveRecord::Base
   CONTRIBUTOR = 'contributor'
   CUSTOMER = 'customer'
   GOD = 'god'
+  CUSTOMER_CONTRIBUTOR = 'customer_contributor'
 
   def init
     #self.bank_id ||= 0   #will set the default value only if it's nil

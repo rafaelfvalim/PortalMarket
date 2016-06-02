@@ -22,6 +22,11 @@ class MembersController < ApplicationController
         format.html { redirect_to contributor_members_path }
       end
     end
+    if current_user.is_customer_contributor?
+      respond_to do |format|
+        format.html { redirect_to customer_contributor_members_path }
+      end
+    end
   end
 
   # GET /members/1
@@ -38,6 +43,8 @@ class MembersController < ApplicationController
           when current_user.is_customer? then
             format.html { redirect_to members_path }
           when current_user.is_contributor? then
+            format.html { redirect_to members_path }
+          when current_user.is_customer_contributor? then
             format.html { redirect_to members_path }
         end
       end
@@ -111,6 +118,13 @@ class MembersController < ApplicationController
 
   def contributor
     unless current_user.is_contributor?
+      respond_to do |format|
+        format.html { redirect_to members_path }
+      end
+    end
+  end
+  def customer_contributor
+    unless current_user.is_customer_contributor?
       respond_to do |format|
         format.html { redirect_to members_path }
       end

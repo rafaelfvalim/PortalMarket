@@ -35,3 +35,6 @@ CreateStatusesService.new.call
 
 puts '---CREATE SYSTEMS-----'
 CreateSystemsService.new.call
+
+puts '---CREATE COMPLEXITIES-----'
+CreateComplexitiesService.new.call

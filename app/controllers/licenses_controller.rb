@@ -108,7 +108,7 @@ class LicensesController < ApplicationController
   end
 
   def only_contributors
-    unless current_user.is_customer? || current_user.is_god?
+    unless current_user.is_customer? || current_user.is_god? || current_user.is_customer_contributor?
       redirect_to members_path, :alert => "Acesso negado!"
     end
   end

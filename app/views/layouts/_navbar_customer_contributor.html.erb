@@ -1,0 +1,10 @@
+<li class="dropdown" id="navigation_cart">
+  <%= render 'layouts/navigation_cart' %>
+</li>
+<li>
+  <%= link_to destroy_user_session_path, :method => 'delete', :class => 'log-out' do %>
+      <i class="typcn typcn-power"></i> Log out
+  <% end %>
+</li>
+</ul>
+

@@ -9,6 +9,9 @@ window.form_singup_member = (e) ->
   if e == '2'
     customer_fields_singup 'show'
     contributor_fields_singup 'hide'
+  if e == '4'
+    customer_fields_singup 'show'
+    contributor_fields_singup 'show'
 
 customer_fields_singup = (action) ->
   if action == 'hide'

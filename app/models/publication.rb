@@ -7,7 +7,7 @@ class Publication < ActiveRecord::Base
   accepts_nested_attributes_for :folder
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :file_tag
-  enum view_group: {cliente: 'Cliente', parceiro: 'Parceiro', todos: 'Todos'}
+  enum view_group: {cliente: 'Cliente', parceiro: 'Parceiro', todos: 'Todos' , cliente_parceiro: 'Cliente Parceiro'}
 
   validates :file_name, presence: true
   validates :view_group, presence: true

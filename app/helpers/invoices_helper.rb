@@ -74,4 +74,22 @@ module InvoicesHelper
         'lazur-bg'
     end
   end
+
+  def get_status_description_by_lang(status)
+    if I18n.locale == 'pt-BR'
+      case status
+        when 'Sent' then
+          'Enviado'
+        when 'Complete' then
+          'Completo'
+        when 'Canceled' then
+          'Cancelado'
+        when 'Backoff' then
+          'Desistência'
+      end
+    else
+      status
+    end
+
+  end
 end

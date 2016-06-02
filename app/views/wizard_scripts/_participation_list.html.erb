@@ -3,6 +3,8 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
   <th><%= t 'labels.user_attribures.name'%></th>
+  <th><%= t 'labels.user_attribures.sobrenome'%></th>
+  <th><%= t 'labels.user_attribures.company_name'%></th>
   <th><%= t 'labels.user_attribures.cnpj'%></th>
   <th></th>
   </thead>
@@ -10,6 +12,8 @@
   <% member_scripts = MemberScript.where(script_id: script.id) %>
   <% members_participation.each do |m| %>
       <tr>
+        <td><%= m.member_name %></td>
+        <td><%= m.member_last_name %></td>
         <td><%= m.company_name %></td>
         <td><%= m.cnpj %></td>
         <td><%= link_to "Add", add_participation_member_wizard_scripts_path(member_id: m.id, script_id: script.id), class: "btn btn-primary btn-xs", remote: true, method: :get, disabled: member_scripts.map(&:member_id).include?(m.id) %></td>

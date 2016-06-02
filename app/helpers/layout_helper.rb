@@ -7,6 +7,8 @@ module LayoutHelper
       render 'layouts/left_menu_contributor'
     elsif current_user.is_god?
       render 'layouts/left_menu_admin'
+    elsif current_user.is_customer_contributor?
+      render 'layouts/left_menu_customer_contributor'
     end
   end
 

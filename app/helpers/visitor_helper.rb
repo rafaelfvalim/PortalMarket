@@ -63,6 +63,34 @@ module VisitorHelper
       return html_contributor.html_safe
     end
 
+    if current_user.is_customer_contributor?
+      html_contributor = <<-HTML
+       <div class="row">
+          <div class="col-lg-4">
+            #{imgage}
+          </div>
+          <div class="col-lg-7">
+            <h2 class="header-lounge"><b>Bem vindo ao universo Klustter.</b></h2>
+            <p>Agora você está conectado em universo de conhecimento compartilhado.
+               Falta pouco para que um universo de clientes tenha acesso às tuas soluções.</p>
+            <p>Próximos Passos:</p>
+            <ol>
+              <li>O pessoal de Canal de Parceiros entrará em contato para que questões as jurídicas sejam apresentadas.</li>
+              <li>Depois é só assinar o contrato e ampliar o seu universo de cliente.</li>
+            </ol>
+
+            <hr>
+            <p>Precisa de ajuda ?</p>
+            <p>Contacte o B2B</p>
+            <p>Telefone: #{telefone} </p>
+            <p>Email: #{mail} </p>
+          </div>
+        </div>
+      HTML
+      return html_contributor.html_safe
+    end
+
+
     if current_user.is_god?
       html_contributor = <<-HTML
        <div class="row">

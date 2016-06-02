@@ -72,11 +72,13 @@ module MembersHelper
   def member_type_description
     case
       when current_user.is_god? then
-        'administradores'
+        'administrador'
       when current_user.is_contributor? then
-        'colaboradores'
+        'parceiro'
       when current_user.is_customer? then
-        'empresas'
+        'cliente'
+      when current_user.is_customer_contributor? then
+        'cliente parceiro'
     end
   end
 
@@ -88,6 +90,8 @@ module MembersHelper
         'Parceiro'
       when current_user.is_customer? then
         'Cliente'
+      when current_user.is_customer_contributor? then
+        'Cliente/Parceiro'
     end
   end
 
