@@ -122,6 +122,10 @@ class User < ActiveRecord::Base
     self.member.master_user_id == user.id
   end
 
+  def who_is_my_master?
+    User.find self.member.master_user_id
+  end
+
   def validate_email_unique
     if User.where(email: email).exists?
       errors.add(:email, 'already exists')
