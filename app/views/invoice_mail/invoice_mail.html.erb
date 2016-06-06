@@ -4,7 +4,7 @@
     <%= image_tag("klustter_logo.png", height: '100px', width: '300px') %>
     <br>
     <p>
-     <h1 color="orange"><font size="7"><b>Obrigado.</b> </font></h1>
+    <h1 color="orange"><font size="7"><b>Obrigado.</b> </font></h1>
     </p>
   </div>
 
@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td><h3><strong>Protocolo de Consumo</strong></h3></td>
-        <td><h3><strong><%= @invoice.id%></strong></h3></td>
+        <td><h3><strong><%= @invoice.id %></strong></h3></td>
       </tr>
       <tr>
         <td><h3><strong>Data do Consumo</strong></h3></td>
@@ -28,12 +28,19 @@
         <td><h3><strong><%= number_to_currency_br(@invoice.value) %></strong></h3></td>
       </tr>
       <tr>
-        <td><h3><strong><%=  link_to "Download Aqui!", @link_to_file %></strong></h3></td>
+        <td><h3><strong><%= link_to "Download Aqui!", @link_to_file %></strong></h3></td>
       </tr>
       </tbody>
     </table>
-    <p>
-
+    <% if @attachment_docs.empty? %>
+        <p> Estamos enviando alguns arquivos que o parceiro anexou a o script, esses arquivos contem
+          informações importantes sobre o seu script.</p>
+        <p>
+          <% @attachment_docs.each do |att| %>
+            <p><%= link_to att.file_name.to_s, "#{Rails.configuration.absolute_site_url} #{att.file_name_url}" %>
+              %></p>
+        <% end %>
+    <% end %>
     <h3>O pagamento está disponível no seu extrato de consumo e o prazo para pagamento está
       dentro dos acordos comerciais previamente definidos na assinatura do contrato. </h3>
     </p>
@@ -69,11 +76,21 @@
 
     <h3>Siga-nos </h3>
     </p>
-    <a href="#"><image src="<%= image_url("logo/face_logo.png") %>" height= "60px" width="60px"/>  </a>
-    <a href="#"><image src="<%= image_url("logo/google_logo.png") %>" height= "60px" width="60px"/> </a>
-    <a href="#"><image src="<%= image_url("logo/twitter_logo.png") %>" height= "60px" width="60px" /></a>
-    <a href="#"><image src="<%= image_url("logo/youtube_logo.png") %>" height= "60px" width="60px" /> </a>
-    <a href="#"><image src="<%= image_url("logo/instagram_logo.png") %>" height= "60px" width="60px" /> </a>
+    <a href="#">
+      <image src="<%= image_url("logo/face_logo.png") %>" height="60px" width="60px"/>
+    </a>
+    <a href="#">
+      <image src="<%= image_url("logo/google_logo.png") %>" height="60px" width="60px"/>
+    </a>
+    <a href="#">
+      <image src="<%= image_url("logo/twitter_logo.png") %>" height="60px" width="60px"/>
+    </a>
+    <a href="#">
+      <image src="<%= image_url("logo/youtube_logo.png") %>" height="60px" width="60px"/>
+    </a>
+    <a href="#">
+      <image src="<%= image_url("logo/instagram_logo.png") %>" height="60px" width="60px"/>
+    </a>
 
   </div>
 </div>
@@ -82,82 +99,82 @@
 <style>
 
 
-    h1 {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 24px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: 500;
-        line-height: 26.4px;
-    }
+  h1 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+  }
 
-    h3 {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: 500;
-        line-height: 15.4px;
-    }
+  h3 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.4px;
+  }
 
-    p {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: 400;
-        line-height: 20px;
-    }
+  p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
 
-    blockquote {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 21px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: 400;
-        line-height: 30px;
-    }
+  blockquote {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+  }
 
-    pre {
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 13px;
-        font-style: normal;
-        font-variant: normal;
-        font-weight: 400;
-        line-height: 18.5714px;
-    }
+  pre {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714px;
+  }
 
-    h1 {
-        color: orange
-    }
+  h1 {
+    color: orange
+  }
 
-    #header {
-        background-color: white;
-        color: black;
-        text-align: left;
-        padding: 5px;
-    }
+  #header {
+    background-color: white;
+    color: black;
+    text-align: left;
+    padding: 5px;
+  }
 
-    #nav {
-        line-height: 30px;
-        background-color: #eeeeee;
-        height: 300px;
-        width: 100px;
-        float: left;
-        padding: 5px;
-    }
+  #nav {
+    line-height: 30px;
+    background-color: #eeeeee;
+    height: 300px;
+    width: 100px;
+    float: left;
+    padding: 5px;
+  }
 
-    #section {
-        width: 650px;
-        float: left;
-        padding: 10px;
-    }
+  #section {
+    width: 650px;
+    float: left;
+    padding: 10px;
+  }
 
-    #footer {
-        background-color: white;
-        color: black;
-        clear: both;
-        text-align: left;
-        padding: 5px;
-    }
+  #footer {
+    background-color: white;
+    color: black;
+    clear: both;
+    text-align: left;
+    padding: 5px;
+  }
 </style>

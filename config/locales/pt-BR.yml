@@ -51,7 +51,7 @@ pt-BR:
         select: Selecione ...
         script_file_accept_formats: Formato aceito = .edy
         script_file_size: Máx 10MB
-        pdf_file_accept_formats: Formato aceito = .pdf
+        pdf_file_accept_formats: Formatos aceito =.jpeg .png .doc .docx .xls .xlsx .pdf .txt .csv
         pdf_file_size: Máx 10MB
         donwload_model: Donwload Modelo
         find_by: Busca por
@@ -154,6 +154,8 @@ pt-BR:
           value: Valor
           sent_to: Enviado p/
           created_at: Criação
+        add_docs:
+          header: Adicionar documentação anexa ao script
         searchs:
           page_header: Busca
           results:
@@ -242,12 +244,14 @@ pt-BR:
          classification: Cassificação
          requeriment_scripts: Scripts Requeridos
          related_scripts: Scripts Relacionados
+         attachment_docs: Arquivos Anexos
          define_participation: Definir Participação
          participation: Participações
          participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'
          search_pariticipation_helper: '<small>Tecle ENTER para realizar a pesquisa / Apenas Enter com o campo em branco para Todos</small>'
         process_tracker:
           create: Criar
+          adicionar_arquivos: Adicionar Anexos
           additional_information: Dados Adicionais
           classification: Classificação
           final: Final

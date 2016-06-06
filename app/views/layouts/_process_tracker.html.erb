@@ -1,6 +1,6 @@
 <div class="row">
     <div class="row bs-wizard" style="border-bottom:0;">
-      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step1 or 'disabled'}" do -%>
+      <%= content_tag :div, class: "col-bs-wizard bs-wizard-step #{@criar_script or 'disabled'}" do -%>
           <div class="text-center bs-wizard-stepnum">1</div>
           <div class="progress">
             <div class="progress-bar"></div>
@@ -8,8 +8,16 @@
           <a href="#" class="bs-wizard-dot"></a>
           <div class="bs-wizard-info text-center"><%= t 'labels.process_tracker.create'%></div>
       <% end %>
-      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step2 or 'disabled'}" do -%>
+      <%= content_tag :div, class: "col-bs-wizard bs-wizard-step #{@adicionar_aqruivos or 'disabled'}" do -%>
           <div class="text-center bs-wizard-stepnum">2</div>
+          <div class="progress">
+            <div class="progress-bar"></div>
+          </div>
+          <a href="#" class="bs-wizard-dot"></a>
+          <div class="bs-wizard-info text-center"><%= t 'labels.process_tracker.adicionar_arquivos'%></div>
+      <% end %>
+      <%= content_tag :div, class: "col-bs-wizard bs-wizard-step #{@dados_adicionais or 'disabled'}" do -%>
+          <div class="text-center bs-wizard-stepnum">3</div>
           <div class="progress">
             <div class="progress-bar"></div>
           </div>
@@ -17,8 +25,8 @@
 
           <div class="bs-wizard-info text-center"><%= t 'labels.process_tracker.additional_information' %></div>
       <% end %>
-      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@step3 or 'disabled'}" do -%>
-          <div class="text-center bs-wizard-stepnum">3</div>
+      <%= content_tag :div, class: "col-bs-wizard bs-wizard-step #{@classificacao or 'disabled'}" do -%>
+          <div class="text-center bs-wizard-stepnum">4</div>
           <div class="progress">
             <div class="progress-bar"></div>
           </div>
@@ -26,8 +34,8 @@
 
           <div class="bs-wizard-info text-center"><%= t 'labels.process_tracker.classification' %></div>
       <% end %>
-      <%= content_tag :div, class: "col-xs-3 bs-wizard-step #{@final or 'disabled'}" do -%>
-          <div class="text-center bs-wizard-stepnum">4</div>
+      <%= content_tag :div, class: "col-bs-wizard bs-wizard-step #{@final or 'disabled'}" do -%>
+          <div class="text-center bs-wizard-stepnum">5</div>
           <div class="progress">
             <div class="progress-bar"></div>
           </div>

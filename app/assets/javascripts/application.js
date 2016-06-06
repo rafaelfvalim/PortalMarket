@@ -43,6 +43,7 @@
 //= require jquery.mask.js
 //= require jquery.maxlength.js
 //= require common
+//= require dropzone.js
 //= require_tree .
 
 

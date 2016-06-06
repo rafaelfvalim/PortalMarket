@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attachment Docs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Script</th>
+      <th>File name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attachment_docs.each do |attachment_doc| %>
+      <tr>
+        <td><%= attachment_doc.script_id %></td>
+        <td><%= attachment_doc.file_name %></td>
+        <td><%= link_to 'Show', attachment_doc %></td>
+        <td><%= link_to 'Edit', edit_attachment_doc_path(attachment_doc) %></td>
+        <td><%= link_to 'Destroy', attachment_doc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attachment doc', new_attachment_doc_path %>

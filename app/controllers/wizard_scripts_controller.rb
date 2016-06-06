@@ -5,11 +5,13 @@ class WizardScriptsController < ApplicationController
   #before_action :set_script, only: [:show, :edit, :update, :destroy]
   before_action :set_script, only: [:show]
 
-  steps :additional_data, :value_chain, :final
+  steps :add_docs, :additional_data, :value_chain, :final
 
   def show
     set_tracker_step(step)
     case step
+      when :add_docs then
+        @attachment_docs = AttachmentDoc.where(script_id:@script.id)
       when :additional_data then
         search_script(params[:search], params[:page])
       when :value_chain then
@@ -17,6 +19,7 @@ class WizardScriptsController < ApplicationController
         @process_modules = ProcessModule.where('referrer_process_module_id is null')
       when :final then
         search_company_controller(params[:search], params[:select_field])
+        @attachment_docs = AttachmentDoc.where(script_id:@script.id)
     end
     render_wizard
   end

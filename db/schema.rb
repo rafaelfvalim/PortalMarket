@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531202838) do
+ActiveRecord::Schema.define(version: 20160602211147) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160531202838) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "attachment_docs", force: :cascade do |t|
+    t.integer  "script_id",  limit: 4
+    t.string   "file_name",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "attachment_docs", ["script_id"], name: "fk_rails_76eb8ec028", using: :btree
 
   create_table "banks", force: :cascade do |t|
     t.string   "code",        limit: 255, null: false
@@ -436,6 +445,7 @@ ActiveRecord::Schema.define(version: 20160531202838) do
   add_index "workplaces", ["member_id"], name: "fk_rails_39fe69f690", using: :btree
   add_index "workplaces", ["system_id"], name: "fk_rails_7f06ffdf18", using: :btree
 
+  add_foreign_key "attachment_docs", "scripts"
   add_foreign_key "carts", "members"
   add_foreign_key "carts", "prices"
   add_foreign_key "carts", "scripts"

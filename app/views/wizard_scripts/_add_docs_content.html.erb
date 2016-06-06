@@ -1,0 +1,117 @@
+<%= render 'layouts/process_tracker' %>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="pull-left">
+      <%= link_to edit_script_path(id: @script.id), :class => 'btn btn-primary' do %>
+          <i class="fa fa-chevron-left"></i> <%= t 'labels.buttons.back' %>
+      <% end %>
+    </div>
+    <div class="pull-right">
+      <%= link_to next_wizard_path(script_id: @script.id), :class => 'btn btn-primary' do %>
+          <i class="fa fa-chevron-right"></i> <%= t 'labels.buttons.next' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row" style="margin-top: 10px;">
+  <div class="col-lg-12 ">
+    <div class="well">
+      <h4><b>Media</b></h4>
+      <hr>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="well">
+            <p>Adicionar um ou mais arquivos necessários que documente o script e ou seus processos</p>
+            <p>O modelo do paper pode ser baixado na área de publicações <%= link_to 'publicações', publications_path %></p>
+            <p>Atenção! o script deve ao menos conter o paper que descreva seus processos, os aquivos anexos influenciam direamente na publicação e exposição do mesmo, caso não haja nenhum documento técnico anexo o script não será publicado</p>
+          </div>
+          <%= form_tag delete_attachments_attachment_docs_path do %>
+              <%= hidden_field_tag :script_id, @script.id %>
+              <div class="pull-left">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Carregar
+                  Arquivo
+                </button>
+              </div>
+              <div class="pull-right">
+                <%= submit_tag 'Apagar Selecionados', id: 'delete', class: 'btn btn-danger', disabled: @attachment_docs.empty? %>
+                <%= link_to 'Apagar Todos', delete_all_attachment_docs_path(script_id: @script.id), method: :get, id: 'delete-all', class: 'btn btn-danger', disabled: @attachment_docs.empty? %>
+              </div>
+
+              <br><br>
+              <div class="row">
+                <div class="col-lg-12">
+                  <table class="table" id="table_documents">
+                    <thead>
+                    <tr>
+                      <th>Tipo</th>
+                      <th>Nome</th>
+                      <th></th>
+                    <tr>
+                    </thead>
+                    <tbody>
+                    <% if @attachment_docs.empty? %>
+                        <h5 id="no-media">No Media Found</h5>
+                    <% else %>
+                        <% @attachment_docs.each do |att| %>
+                            <%= attachment_icon(File.basename(att.file_name.to_s).to_s, att.id) %>
+                        <% end %>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Carregar novo </h4>
+      </div>
+      <div class="modal-body">
+
+        <%= form_tag '/attachment_docs', method: :post, class: 'dropzone form', id: 'media-dropzone' do %>
+            <div class="fallback">
+              <%= file_field_tag 'media', multiple: true %>
+            </div>
+            <%= hidden_field_tag :script_id, @script.id %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="wrapper wrapper-content animated fadeIn">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-12">-->
+<!--<div class="ibox float-e-margins">-->
+<!--<div class="ibox-title">-->
+<!--<h5><%= t 'labels.add_docs.header' %></h5>-->
+<!--</div>-->
+<!--<div class="ibox-content">-->
+<!--<form id="my-awesome-dropzone" class="dropzone" action="/attachment_docs" method="post" enctype="multipart/form-data">-->
+<!--<div class="dropzone-previews"></div>-->
+<!--<button type="submit" class="btn btn-primary pull-right"><%= t 'labels.buttons.submit' %> </button>-->
+<!--</form>-->
+<!--<div>-->
+<!--<div class="m text-right">-->
+<!--<small>DropzoneJS is an open source library that provides drag'n'drop file uploads with image previews:-->
+<!--<a href="https://github.com/enyo/dropzone" target="_blank">https://github.com/enyo/dropzone</a></small>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

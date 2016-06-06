@@ -11,7 +11,7 @@
             <% end %>
           </div>
           <div class="pull-right">
-            <%= link_to "#{t 'labels.buttons.save'}", update_status_scripts_path(id: @script.id, step: 'final'), :onclick => 'final_validations()',:class => 'btn btn-primary', :id => 'save_final_step' %>
+            <%= link_to "#{t 'labels.buttons.save'}", update_status_scripts_path(id: @script.id, step: 'final'), :onclick => 'final_validations()', :class => 'btn btn-primary', :id => 'save_final_step' %>
           </div>
         </div>
       </div>
@@ -54,14 +54,15 @@
                 <div class="panel-heading">
                   <div class="panel-options">
                     <ul class="nav nav-tabs">
-                      <li class="active"><a href="#tab-0" data-toggle="tab"><%= t 'labels.final.define_participation' %></a>
+                      <li class="active">
+                        <a href="#tab-0" data-toggle="tab"><%= t 'labels.final.define_participation' %></a>
                       </li>
                       <li class=""><a href="#tab-1" data-toggle="tab">Script</a></li>
                       <li class=""><a href="#tab-2" data-toggle="tab"><%= t 'labels.final.classification' %></a></li>
                       <li class=""><a href="#tab-3" data-toggle="tab"><%= t 'labels.final.requeriment_scripts' %></a>
                       </li>
                       <li class=""><a href="#tab-4" data-toggle="tab"><%= t 'labels.final.related_scripts' %></a></li>
-
+                      <li class=""><a href="#tab-5" data-toggle="tab"><%= t 'labels.final.attachment_docs' %></a></li>
                     </ul>
                   </div>
                 </div>
@@ -105,11 +106,13 @@
                                     <%= t 'labels.user_attribures.cnpj' %> </label>
                                 </div>
                                 <div class="col-sm-2">
-                                  <label> <input type="radio" value="member_name" id="select_field3" name="select_field">
+                                  <label>
+                                    <input type="radio" value="member_name" id="select_field3" name="select_field">
                                     <%= t 'labels.user_attribures.name' %> </label>
                                 </div>
                                 <div class="col-sm-2">
-                                  <label> <input type="radio" value="member_last_name" id="select_field4" name="select_field">
+                                  <label>
+                                    <input type="radio" value="member_last_name" id="select_field4" name="select_field">
                                     <%= t 'labels.user_attribures.last_name' %> </label>
                                 </div>
                               </div>
@@ -177,15 +180,43 @@
                         </dl>
                       </div>
                     </div>
+                    <div class="tab-pane fade in" id="tab-5">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <table class="table" id="table_documents">
+                            <thead>
+                            <tr>
+                              <th>Tipo</th>
+                              <th>Nome</th>
+                            <tr>
+                            </thead>
+                            <tbody>
+                            <% if @attachment_docs.empty? %>
+                                <h5 id="no-media">No Media Found</h5>
+                            <% else %>
+                                <% @attachment_docs.each do |att| %>
+                                    <tr>
+                                      <td> <%= get_icon_file(att.file_name.to_s, '35') %></td>
+                                      <td> <%= File.basename(att.file_name.to_s) %> </td>
+                                      <td><%= link_to 'Remover', attachment_doc_path(script_id: att.script_id, path: :final, attachment_docs: att), class: "btn btn-primary", method: :delete, data: {confirm: 'Deseja mesmo remover ?'} %></td>
+                                    </tr>
+                                <% end %>
+                            <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
+</div>
 </div>
 

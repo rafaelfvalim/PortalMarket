@@ -94,7 +94,51 @@ clear_chain = (selected) ->
       $(element).remove()
   )
 
+appendContent = (imageUrl, mediaId) ->
+  ext = imageUrl.replace(/^.*\./, '');
+  filename = imageUrl.replace(/^.*[\\\/]/, '')
+  #  $('#media-contents').append ' <div class="col-lg-3">' + '<div class="thumbnail text-center"> <div class="icon"> <img src="/assets/file_types/file_' + ext + '.png" width="60" height="60"/> </div>  <div class="file-name"> ' + filename + ' </div>' + '<div class="caption">' + '<input id="media_contents_" name="media_contents[]" value="' + mediaId + '" type="checkbox">' + '</div>' + '</div></div>'
+  $('#table_documents tr:last').after '<tr> <td><img src="/assets/file_types/file_' + ext + '.png" width="35" height="35"/></td><td>' + filename + '</td><td><input id="media_contents_" name="media_contents[]" value="' + mediaId + '" type="checkbox"></td></tr>'
+  $('#delete').removeAttr 'disabled'
+  $('#delete-all').removeAttr 'disabled'
+  $('#no-media').html ''
+
 $ ->
+  if $('#media-dropzone').length
+    mediaDropzone = new Dropzone('#media-dropzone')
+    Dropzone.options.mediaDropzone = false
+    mediaDropzone.options.acceptedFiles = '.jpeg,.jpg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.avi,.asf,.mov,.qt,.avchd,.flv,.swf,.mpg,.mp4,.wmv,.txt,.log'
+    mediaDropzone.on 'complete', (files) ->
+      _this = this
+      if _this.getUploadingFiles().length == 0 and _this.getQueuedFiles().length == 0
+        setTimeout (->
+          $('#myModal').modal 'hide'
+          acceptedFiles = _this.getAcceptedFiles()
+          rejectedFiles = _this.getRejectedFiles()
+          index = 0
+          while index < acceptedFiles.length
+            file = acceptedFiles[index]
+            response = JSON.parse(file.xhr.response)
+            appendContent response.file_name.url, response.id
+            index++
+          if acceptedFiles.length != 0
+            console.log 'aceito' + acceptedFiles.length
+            swal(
+              'Perfeito!',
+              acceptedFiles.length + ' arquivo(s) anexados com sucesso',
+              'success'
+            )
+          if rejectedFiles.length != 0
+            swal(
+              'Erro!',
+              rejectedFiles.length +' arquivo(s) com erro ao anexar',
+                'error'
+            )
+          _this.removeAllFiles()
+          return
+        ), 2000
+      return
+
   $("#requirement_requirement").maxlength
     events: []
     maxCharacters: 200
@@ -164,6 +208,8 @@ $ ->
 
   $('.first').click ->
     $('#myWizard a:first').tab 'show'
+
+
 
 
 

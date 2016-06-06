@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @attachment_doc.script_id %>
+</p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @attachment_doc.file_name %>
+</p>
+
+<%= link_to 'Edit', edit_attachment_doc_path(@attachment_doc) %> |
+<%= link_to 'Back', attachment_docs_path %>

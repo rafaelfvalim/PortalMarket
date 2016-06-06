@@ -5,7 +5,6 @@ class Script < ActiveRecord::Base
   mount_uploader :script_file, ScriptUploader
 
   validate :check_presence_of_script, :file_size_script
-  validate :check_presence_of_pdf, :file_size_pdf
 
   validates :name, presence: true, length: {minimum: 5, maximum: 50}, uniqueness: true
   validates :description, length: {minimum: 10, maximum: 200}, presence: true
@@ -37,6 +36,8 @@ class Script < ActiveRecord::Base
   has_many :function_data_types, dependent: :destroy
   has_many :function_transaction_types, dependent: :destroy
 
+  has_many :attachment_docs , dependent: :destroy
+
   belongs_to :solution_type
   belongs_to :status
   has_many :invoices, dependent: :destroy
@@ -47,6 +48,7 @@ class Script < ActiveRecord::Base
   accepts_nested_attributes_for :related_scripts
   accepts_nested_attributes_for :value_chains
   accepts_nested_attributes_for :checking_accounts
+  accepts_nested_attributes_for :attachment_docs
 
   def search_data
     attributes.merge(
@@ -57,21 +59,7 @@ class Script < ActiveRecord::Base
 
   def check_presence_of_script
     errors.add(:script_file, "selecione pelo menos um arquivo") if self.script_file.size <= 0
-    errors.add(:pdf_file, "selecione novamente") if self.pdf_file.size <= 0
   end
-
-  def check_presence_of_pdf
-    errors.add(:pdf_file, "selecione pelo menos um arquivo") if self.pdf_file.size <= 0
-    errors.add(:script_file, "selecione novamente ") if self.script_file.size <= 0
-  end
-
-  def file_size_pdf
-    if self.pdf_file.size > 10.megabytes
-      errors.add(:pdf_file, "PDF presecisa ser abaixo de  10MB")
-      errors.add(:script_file, "selecione novamente ") if self.script_file.size <= 0
-    end
-  end
-
 
   def file_size_script
     if self.script_file.size > 10.megabytes

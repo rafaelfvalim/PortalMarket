@@ -14,6 +14,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
+    @attachment_docs = AttachmentDoc.where(script_id: @script.id)
     respond_to do |format|
       case
         when request.referrer.include?('edit')
@@ -45,7 +46,6 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
-
     set_tracker_step(:create)
   end
 
@@ -64,7 +64,7 @@ class ScriptsController < ApplicationController
 
         @member_script = MemberScript.new(script_id: @script.id, member_id: @user.member.id, percentual: 100.0, participation: 0, partner: false)
         @member_script.save
-        format.html { redirect_to wizard_scripts_path(id: 'additional_data', script_id: @script.id) }
+        format.html { redirect_to wizard_scripts_path(id: 'add_docs', script_id: @script.id) }
       else
         flash.now[:danger] = "Script can not be saved, check the fields!"
         set_tracker_step(:create)
@@ -137,7 +137,7 @@ class ScriptsController < ApplicationController
         price.attributes = {script_id: @script.id}
         price.save
 
-        format.html { redirect_to wizard_script_path(id: :additional_data, script_id: @script.id) }
+        format.html { redirect_to wizard_script_path(id: :add_docs, script_id: @script.id) }
       else
         set_tracker_step(:create)
         format.html { render :edit }

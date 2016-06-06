@@ -65,6 +65,9 @@ gem 'rails-html-sanitizer'
 #https://github.com/KMontag42/sweetalert2-rails
 gem 'sweetalert2'
 
+#https://github.com/semaperepelitsa/jquery.fileupload-rails
+gem 'jquery.fileupload-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

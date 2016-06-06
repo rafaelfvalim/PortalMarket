@@ -10,10 +10,11 @@ class InvoiceMail < ApplicationMailer
     @invoice = invoice
     unless is_preview
       @link_to_file = "#{Rails.configuration.absolute_site_url}#{download_invoices_path(url: invoice.encrypt_url)}"
+      @attachment_docs = AttachmentDoc.where(script_id: invoice.script_id)
     else
       @link_to_file = "dummy.com.br"
     end
-    mail(to: @user.email, subject: 'Klustter Code Store')
+    mail(to: @user.email, subject: 'KlustterScript compra de script')
   end
 
 end

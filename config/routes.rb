@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :attachment_docs do
+    collection do
+      get :delete_all
+      post :delete_attachments
+    end
+  end
   resources :industries
   resources :licenses do
     collection do

@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="pull-left">
-      <%= link_to edit_script_path(id: @script.id), :class => 'btn btn-primary' do %>
+      <%= link_to wizard_path(:add_docs, script_id: @script.id), :class => 'btn btn-primary' do %>
           <i class="fa fa-chevron-left"></i> <%= t 'labels.buttons.back' %>
       <% end %>
     </div>

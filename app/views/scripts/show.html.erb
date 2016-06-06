@@ -72,8 +72,8 @@
               <dd><%= format_date(@script.created_at) %></dd>
               <dt><%= t 'labels.script_attributes.script_file' %>:</dt>
               <dd><%= link_to File.basename(@script.script_file.to_s), @script.script_file_url %></dd>
-              <dt><%= t 'labels.script_attributes.pdf_file' %>:</dt>
-              <dd><%= link_to File.basename(@script.pdf_file.to_s), @script.pdf_file_url %></dd>
+              <!--<dt><%= t 'labels.script_attributes.pdf_file' %>:</dt>-->
+              <!--<dd><%= link_to File.basename(@script.pdf_file.to_s), @script.pdf_file_url %></dd>-->
             </dl>
           </div>
         </div>
@@ -90,7 +90,7 @@
                     <li class=""><a href="#tab-3" data-toggle="tab"><%= t 'labels.final.requeriment_scripts' %></a>
                     </li>
                     <li class=""><a href="#tab-4" data-toggle="tab"><%= t 'labels.final.related_scripts' %></a></li>
-
+                    <li class=""><a href="#tab-5" data-toggle="tab"><%= t 'labels.final.attachment_docs' %></a></li>
                   </ul>
                 </div>
               </div>
@@ -166,6 +166,33 @@
                             <% end %>
                         <% end %>
                       </dl>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade in" id="tab-5">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <table class="table" id="table_documents">
+                          <thead>
+                          <tr>
+                            <th>Tipo</th>
+                            <th>Nome</th>
+                          <tr>
+                          </thead>
+                          <tbody>
+                          <% if @attachment_docs.empty? %>
+                              <h5 id="no-media">No Media Found</h5>
+                          <% else %>
+                              <% @attachment_docs.each do |att| %>
+                                  <tr>
+                                    <td> <%= get_icon_file(att.file_name.to_s, '35') %></td>
+                                    <td> <%= File.basename(att.file_name.to_s) %> </td>
+                                    <td><%= link_to 'Donwload', att.file_name_url, class: 'btn btn-success' %></td>
+                                  </tr>
+                              <% end %>
+                          <% end %>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>

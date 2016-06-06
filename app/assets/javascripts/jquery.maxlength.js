@@ -61,7 +61,7 @@
             // Shows an alert msg
             function showAlert() {
                 if (settings.showAlert) {
-                    mensagem(settings.alertText);
+                    swal('Atenção!',settings.alertText, 'error');
                 }
             }
 

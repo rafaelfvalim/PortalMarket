@@ -45,20 +45,26 @@ class ApplicationController < ActionController::Base
   def set_tracker_step(action)
     case action
       when :create then
-        @step1 = 'active'
+        @criar_script = 'active'
       when :edit then
-        @step1 = 'active'
+        @criar_script = 'active'
+      when :add_docs then
+        @criar_script = 'complete'
+        @adicionar_aqruivos = 'active'
       when :additional_data then
-        @step1 = 'complete'
-        @step2 = 'active'
+        @criar_script = 'complete'
+        @adicionar_aqruivos = 'complete'
+        @dados_adicionais = 'active'
       when :value_chain then
-        @step1 = 'complete'
-        @step2 = 'complete'
-        @step3 = 'active'
+        @criar_script = 'complete'
+        @adicionar_aqruivos = 'complete'
+        @dados_adicionais = 'complete'
+        @classificacao = 'active'
       when :final then
-        @step1 = 'complete'
-        @step2 = 'complete'
-        @step3 = 'complete'
+        @criar_script = 'complete'
+        @adicionar_aqruivos = 'complete'
+        @dados_adicionais = 'complete'
+        @classificacao = 'complete'
         @final = 'active'
     end
   end
