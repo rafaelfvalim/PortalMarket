@@ -81,9 +81,10 @@
         </div>
         <div class="hr-line-dashed"></div>
         <div class="row">
-          <div  id="section_script_upload" class="col-lg-12 col-md-12 col-xs-12 hidden">
+          <div  id="section_script_upload" class="col-lg-6 col-md-6 col-xs-12 hidden">
             <!--Upload de arquivos -->
-            <%= f.input :script_file, as: :file, label: "#{t 'labels.script_attributes.script_file'}" %>
+            <label><%= "#{t 'labels.script_attributes.script_file'}" %></label>
+            <%= f.file_field :script_file%>
             <%= f.hidden_field :script_file_cache %>
             <div class="well">
               <p>O script formato .edy e gerado apartir da aplicação Klustter Script Java</p>
@@ -96,10 +97,9 @@
               <%= render partial: 'scripts/upload_scrip', script: @script %>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-xs-12">
-            <%= f.input :pdf_file, as: :file, label: "#{t 'labels.script_attributes.pdf_file'}" %>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <label><%=  "#{t 'labels.script_attributes.pdf_file'}" %></label>
+            <%= f.file_field :pdf_file %>
             <%= f.hidden_field :pdf_file_cache %>
             <div class="well">
               <ul>
