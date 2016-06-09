@@ -15,13 +15,17 @@ window.countNews = (id) ->
     errors: (data) ->
       swal "error on get count news"
 $ ->
-  $('#new_folder').validate
+  $('#new_publication').validate
     ignore: ':hidden'
     rules:
       'folder[name]':
         required: true
+      'publication[folder_id]':
+        required: true
+      'publication[view_group]':
+        required: true
     error: (label) ->
+      swal "Por favor selecione todos folder e view group"
       $(this).addClass 'error'
-      return
     errorPlacement: ->
       return false
