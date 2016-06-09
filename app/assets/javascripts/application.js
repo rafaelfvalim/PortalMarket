@@ -11,7 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.jcrop
+//Ajuste formulario ajax parou de funcionar adicionado jquery_ujs
+//= require jquery_ujs
 //= require jquery.validate
 //= require jquery-ui
 //= require jquery-ui/autocomplete
@@ -45,6 +46,7 @@
 //= require common
 //= require dropzone.js
 //= require bootstrap-filestyle
+//= require jquery.jcrop
 //= require_tree .
 
 

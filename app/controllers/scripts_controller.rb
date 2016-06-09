@@ -115,10 +115,10 @@ class ScriptsController < ApplicationController
     @status_id = params[:status][:id]
     current_status = params[:current_status]
     scripts = Script.where(id: params[:script_ids])
-
     respond_to do |format|
       if @status_id.nil?
         format.js { render "form_script_orchestration" }
+        format.html {}
       elsif scripts.map { |s| s.update_attribute(:status_id, @status_id) }
         @scripts = Script.where(:status_id => current_status).paginate(:page => params[:page], :per_page => 30).order('updated_at ASC')
         format.js { render "form_script_orchestration" }
