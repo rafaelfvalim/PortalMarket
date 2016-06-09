@@ -11,6 +11,29 @@ module CheckingAccountsHelper
   end
 
 
+  def dash_checking_account_get_description(status)
+    case status
+      when 'Aguardando Pagamento' then
+        'Aguardando Pagamento'
+      when 'Pago e Consumido' then
+        'Pago e Consumido'
+      when 'Pago Aguardando Consumo' then
+        'Pago Aguar. Consumo'
+      when 'Aguardando Consumo' then
+        'Aguardando Consumo'
+      when 'Bloqueado' then
+        'Bloqueado'
+      when 'Analise de Consumo' then
+        'Analise de Consumo'
+      when 'Em Processamento' then
+        'Em Processamento'
+      when 'Pago' then
+        'Pago'
+      when 'Desistência' then
+        'Desistência'
+    end
+  end
+
   def dash_checking_account_panel_color(status)
     case status
       when 'Aguardando Pagamento' then

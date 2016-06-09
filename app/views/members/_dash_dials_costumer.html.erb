@@ -3,7 +3,7 @@
       <%=
         color = dash_checking_account_panel_color(status)
         icon = dash_checking_account_icon(status)
-        header_description = status
+        header_description = dash_checking_account_get_description(status)
         header_count = get_status_checking_account_by_profile(status)
         link_path = customer_member_scripts_path(status: status)
         widget_dash_board(color, icon, header_description, header_count, link_path)
