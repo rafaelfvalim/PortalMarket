@@ -39,10 +39,12 @@ class UsersController < ApplicationController
 
   def authenticator
     user_service = UserService.new
-    @token = user_service.generateToken(current_user.member.cpf)
-    respond_to do |format|
-      format.js { render "users/token" }
-      format.html {}
+    if NetService.new.up?(Rails.configuration.webservice_user_token)
+      @token = user_service.generateToken(current_user.member.cpf)
+      respond_to do |format|
+        format.js { render "users/token" }
+        format.html {}
+      end
     end
 
   end
@@ -57,7 +59,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(secure_params)
-      redirect_to users_path, :notice => t('labels.user_messages.update')
+      if params[:user][:avatar].present?
+        render :crop ## Render the view for cropping
+      else
+        redirect_to users_path, :notice => t('labels.user_messages.update')
+      end
     else
       redirect_to users_path, :alert => t('labels.user_messages.update_error')
     end
@@ -96,7 +102,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
     user = User.find(params[:id])
     if user.destroy
       redirect_to users_path, :notice => t('labels.user_messages.delete')
@@ -107,7 +112,6 @@ class UsersController < ApplicationController
   end
 
   def destroy_master_user
-
     user = User.find(params[:id])
     if user.destroy
       redirect_to master_user_users_path, :notice => t('labels.user_messages.delete')
@@ -144,7 +148,7 @@ class UsersController < ApplicationController
 
   def upload_avatar
     if @user.update(secure_params)
-      redirect_to edit_user_registration_path
+       redirect_to edit_user_registration_path
     else
       redirect_to edit_user_registration_path, :alert => "Error :: Verifique o formato eo tamanho do arquivo"
     end
@@ -164,6 +168,7 @@ class UsersController < ApplicationController
                                  :password_confirmation,
                                  :avatar,
                                  :status,
+                                 :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  member_attributes:
                                      [:id,
                                       :member_type_id,

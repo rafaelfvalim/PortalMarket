@@ -7,61 +7,65 @@ module MembersHelper
 
   def dash_status_script_icon(id)
     case id
-      when 1 then
-        #Gravado
+      when Status::GRAVADO then
         'tronik tronik-floppy tronik-3x'
-      when 2 then
-        # Verificação de Duplicidade
+      when Status::VERIFICACAO_DUPLICIDADE then
         'tronik tronik-popup tronik-3x'
-      when 3 then
-        # Verificação de Consistência
+      when Status::VERIFICACAO_CONSISTENCIA then
         'tronik tronik-database tronik-3x'
-      when 4 then
-        # Verficação de Complexidade
+      when Status::VERIFICACAO_COMPLEXIDADE then
         'tronik tronik-puzzle tronik-3x'
-      when 5 then
-        # Aprovado
+      when Status::APROVADO then
         'tronik tronik-thumbs-up tronik-3x'
-      when 6 then
-        # Inicial
+      when Status::INICIAL then
         'tronik tronik-puzzle-outline tronik-3x'
+      when Status::PRE_LANCAMENTO then
+        'fa fa-star-o fa-4x'
+      when Status::PRE_LANCAMENTO_APROVADO then
+        'fa fa-star-o fa-4x'
     end
   end
 
   def dash_status_script_friendly_description(status)
     case status
-      when 'Gravado' then
+      when Status::GRAVADO then
         'Gravado(s) '
-      when 'Verificação de Duplicidade' then
+      when Status::VERIFICACAO_DUPLICIDADE then
         'Verif. Duplicidade'
-      when 'Verificação de Consistência' then
+      when Status::VERIFICACAO_CONSISTENCIA then
         'Verif. Consistência'
-      when 'Verficação de Complexidade' then
+      when Status::VERIFICACAO_COMPLEXIDADE then
         'Verif. Complexidade'
-      when 'Aprovado' then
+      when Status::APROVADO then
         'Aprovado(s)'
-      when 'Sem preço' then
-        'Sem preço'
-      when 'Inicial' then
+      when Status::INICIAL then
         'Incompleto(s)'
+      when Status::PRE_LANCAMENTO then
+        'Pré Lançamento'
+      when Status::PRE_LANCAMENTO_APROVADO then
+        'Pré Lanç. Apr.'
     end
 
   end
 
   def dash_status_script_panel_color(id)
     case id
-      when 1 then #Gravado
+      when Status::GRAVADO then #Gravado
         'red-bg'
-      when 2 then #Verificação de Duplicidade
+      when Status::VERIFICACAO_DUPLICIDADE then
         'yellow-bg'
-      when 3 then #Verificação de Consistência
+      when Status::VERIFICACAO_CONSISTENCIA then
         'orange-bg'
-      when 4 then #Verficação de Complexidade
+      when Status::VERIFICACAO_COMPLEXIDADE then
         'navy-bg'
-      when 5 then #Aprovado
+      when Status::APROVADO then
         'lazur-bg'
-      when 6 then #Gravado
+      when Status::INICIAL then
+        'lazur-bg'
+      when Status::PRE_LANCAMENTO then
         'red-bg'
+      when Status::PRE_LANCAMENTO_APROVADO then
+        'orange-bg'
     end
   end
 

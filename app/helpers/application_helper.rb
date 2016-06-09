@@ -99,10 +99,17 @@ module ApplicationHelper
     end
   end
 
-  def format_date(date)
+  def format_date_time(date)
     # formatting date: Aug, 31 2007 - 9:55PM
     unless date.nil?
       date.strftime("%b, %m %Y - %H:%M")
+    end
+  end
+
+  def format_date(date)
+    # formatting date: Aug, 31 2007 - 9:55PM
+    unless date.nil?
+      date.strftime("%b, %m %Y")
     end
   end
 end

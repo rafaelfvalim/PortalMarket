@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :service_monitors
   resources :attachment_docs do
     collection do
       get :delete_all
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
   resources :buys do
     collection do
       get :show_product
+      get :show_product_pre_lanc
       get :autocomplete_organization
       get :final
       get :verify_workplace_cart

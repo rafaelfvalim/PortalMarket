@@ -14,7 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     respond_to do |format|
-
       if @user.save
         flash[:notice] = "#{t 'registration.successful', email: @user.email}"
         format.html { redirect_to '/users/sign_in' }

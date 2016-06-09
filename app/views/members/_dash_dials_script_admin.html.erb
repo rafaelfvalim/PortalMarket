@@ -2,11 +2,11 @@
 <hr>
 <div class="row">
   <% Status.all.each do |status| %>
-      <% if status.id != 6 %>
+      <% if status.id != Status::INICIAL %>
           <%=
             color = dash_status_script_panel_color(status.id)
             icon = dash_status_script_icon(status.id)
-            header_description = dash_status_script_friendly_description(status.description)
+            header_description = dash_status_script_friendly_description(status.id)
             header_count = Script.where('status_id = ?', status.id).count
             link_path = script_orchestration_scripts_path(status_id: status.id)
             widget_dash_board(color, icon, header_description, header_count, link_path)
@@ -36,8 +36,8 @@
     color = 'red-bg'
     icon = 'tronik tronik-puzzle-outline tronik-3x'
     header_description = t 'labels.dash_not_complete'
-    header_count = Script.where('status_id = 6 and DATE(created_at) < ?', Date.today).count
-    link_path = script_orchestration_scripts_path(status_id: 6)
+    header_count = Script.where("status_id = #{Status::INICIAL} and DATE(created_at) < ?", Date.today).count
+    link_path = script_orchestration_scripts_path(status_id: Status::INICIAL)
     widget_dash_board(color, icon, header_description, header_count, link_path)
   %>
   <%=

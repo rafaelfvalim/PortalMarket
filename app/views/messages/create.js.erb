@@ -39,7 +39,7 @@
 
     small = $("<small>");
     small.addClass("text-muted");
-    small.append("<%= format_date(@message.created_at) %>");
+    small.append("<%= format_date_time(@message.created_at) %>");
     div_media_body.append(small_time);
     div_media_body.append(strong);
     div_media_body.append(p);

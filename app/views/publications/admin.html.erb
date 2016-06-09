@@ -84,7 +84,7 @@
                     <div class="file-name">
                       <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
                       <br/>
-                      <small>Added: <%= format_date(p.created_at) %></small>
+                      <small>Added: <%= format_date_time(p.created_at) %></small>
                       <%= link_to 'Remove', p, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-warning btn-xs' %>
 
                       <%= simple_form_for(p, id: 'publication_view_group') do |f| %>

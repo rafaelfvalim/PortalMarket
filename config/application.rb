@@ -60,5 +60,6 @@ module CodeStore
 
     # load models into subfolders
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '*/')]
+
   end
 end

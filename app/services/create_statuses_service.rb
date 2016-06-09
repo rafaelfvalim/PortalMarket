@@ -6,5 +6,7 @@ class CreateStatusesService
     Status.create( description:"Verficação de Complexidade" )
     Status.create( description:"Aprovado" )
     Status.create( description:"Inicial" )
+    Status.create( description:"Pre Lançamento" )
+    Status.create( description:"Pre Lançamento Aprovado" )
   end
 end

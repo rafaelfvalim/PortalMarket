@@ -10,10 +10,10 @@ module MessagesHelper
   def chat(message)
     user = User.find(message.user_id);
 
-      class_element = 'chat-element left'
-      class_element_link = 'pull-left'
-      class_media_body = 'media-body text-left '
-      class_media_body_small = 'pull-right text-navy'
+    class_element = 'chat-element left'
+    class_element_link = 'pull-left'
+    class_media_body = 'media-body text-left '
+    class_media_body_small = 'pull-right text-navy'
 
     html = <<-HTML
       <div class= "#{class_element}">
@@ -22,7 +22,7 @@ module MessagesHelper
         <small class= "#{class_media_body_small}">#{time_ago_in_words(message.created_at)}</small>
           <strong>#{user.full_name}</strong>
         <p class='m-b-xs'>#{message.content }</p>
-        <small class='text-muted'>#{format_date(message.created_at) }</small>
+        <small class='text-muted'>#{format_date_time(message.created_at) }</small>
         </div>
       </div>
     HTML
@@ -38,5 +38,124 @@ module MessagesHelper
       white_list_sanitizer.sanitize(message, tags: html_white_list).gsub(/[\r\n]+/, "<br>").html_safe
     end
   end
+
+  def get_portal_alerts
+    @script_gravados = Script.where(status_id: Status::GRAVADO).count
+    @script_verificacao_duplicidade = Script.where(status_id: Status::VERIFICACAO_DUPLICIDADE).count
+    @script_verificacao_consistencia = Script.where(status_id: Status::VERIFICACAO_CONSISTENCIA).count
+    @script_verificacao_complexidade = Script.where(status_id: Status::VERIFICACAO_COMPLEXIDADE).count
+    @script_inicial = Script.where(status_id: Status::INICIAL).count
+    @script_prelancamento = Script.where(status_id: Status::PRE_LANCAMENTO).count
+    @statuses = [Status::GRAVADO, Status::VERIFICACAO_DUPLICIDADE, Status::VERIFICACAO_CONSISTENCIA, Status::VERIFICACAO_COMPLEXIDADE, Status::INICIAL, Status::PRE_LANCAMENTO]
+    @scripts_sem_preco = Script.where(has_price: [nil, false]).count
+    @statuses_total = Script.where(status_id: @statuses).group_by(&:status_id).count
+    @statuses_total += @scripts_sem_preco > 0 ? 1 : 0
+
+    html = ''
+    html << <<-HTML
+    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+      <i class="fa fa-bell"></i>  <span class="label label-primary">#{@statuses_total}</span>
+    </a>
+    <ul class="dropdown-menu dropdown-alerts">
+    HTML
+
+
+    if @script_gravados > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_orchestration_scripts_path(status_id: Status::GRAVADO)}>
+        <div>
+          #{@script_gravados} Gravados
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @script_verificacao_duplicidade > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_DUPLICIDADE)}>
+        <div>
+          #{@script_verificacao_duplicidade} Verificação de Duplicidade
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @script_verificacao_consistencia > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_CONSISTENCIA)}>
+        <div>
+          #{@script_verificacao_consistencia} Verificação de Consistencia
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @script_verificacao_complexidade > 0
+      html << <<-HTML
+     <li>
+         <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_COMPLEXIDADE)}>
+        <div>
+          #{@script_verificacao_complexidade} Verificação de Complexidade
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @script_inicial > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_orchestration_scripts_path(status_id: Status::INICIAL)}>
+        <div>
+          #{@script_inicial} verificação Status Inicial
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @script_prelancamento > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_orchestration_scripts_path(status_id: Status::PRE_LANCAMENTO)}>
+        <div>
+          #{@script_prelancamento}  Verificação em Pre Lançamento
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @scripts_sem_preco > 0
+      html << <<-HTML
+     <li>
+      <a href=#{script_prices_prices_path}>
+        <div>
+          #{@scripts_sem_preco} Sem Preço
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    html << <<-HTML
+        <li>
+           <div class="text-center link-block">
+             <a href=#{members_path}>
+             <strong>Veja todos os alertas</strong>
+             </a>
+           </div>
+        </li>
+    </ul>
+    HTML
+    html.html_safe
+  end
+
 
 end

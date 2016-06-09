@@ -1,0 +1,124 @@
+<%= render 'layouts/messages' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox product-detail">
+          <div class="ibox-content">
+            <div class="text-right">
+              <h2>Script em Pré Lançamento</h2>
+              <h3>Data prevista: <%= format_date @script.end_development_date %></h3>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="font-bold m-b-xs">
+                  <%= @script.name %>
+                </h2>
+                <small>Comercializado segundo os direitos pré estabelecidos em contrato com o autor</small>
+                <div>
+                  <%= link_to 'Voltar', searches_path, class: "btn btn-primary pull-right" %>
+                  <h1 class="product-main-price"><%= number_to_currency_br(@price.value) %>
+                    <!--<small class="text-muted">Valor estabelecido através das métricas-->
+                    <!--<a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>-->
+                  </h1>
+                </div>
+                <hr>
+                <h4><%= t 'labels.script_attributes.description' %></h4>
+
+                <div>
+                  <%= @script.description %>
+                  <br/>
+                </div>
+                <h4><%= t 'labels.script_attributes.long_description' %></h4>
+
+                <div>
+                  <%= @script.long_text %>
+                </div>
+                <h4> <%= t 'labels.script_attributes.complexity' %></h4>
+                <div><%= @script.complexity %></div>
+
+                <dl class="dl-horizontal m-t-md">
+                  <dt>Script Cod</dt>
+                  <dd><%= @script.id %></dd>
+
+                  <dt><%= t 'labels.script_attributes.platform' %></dt>
+                  <dd><%= @script.platform %></dd>
+
+                  <dt><%= t 'labels.script_attributes.industry' %></dt>
+                  <dd><%= @script.industry %></dd>
+
+                  <% if @script.requirements.size > 0 %>
+                      <dt><%= t 'labels.script_attributes.requirements' %></dt>
+                      <% @script.requirements.each do |requirement| %>
+                          <dd><%= requirement.requirement %></dd>
+                      <% end %>
+                  <% end %>
+
+                  <% if @script.related_scripts.size > 0 %>
+                      <dt> <%= t 'labels.show_product.related_scripts' %></dt>
+                      <% @script.related_scripts.each do |related_script| %>
+                          <% @related_script = Script.find_by id: related_script.script_id %>
+                          <dd><%= @related_script.name %></dd>
+                      <% end %>
+                  <% end %>
+
+                  <% show_process_chain(@script.id).each do |process| %>
+                      <dt><%= t 'labels.script_attributes.process' %></dt>
+                      <dd><%= build_list_chain(process, @script.id, false) %></dd>
+                  <% end %>
+
+                  <% @script.members.each do |member| %>
+                      <dt><%= t 'labels.script_attributes.contributor' %> </dt>
+                      <dd> <%= "#{member.member_name} #{ member.member_last_name}" %></dd>
+                  <% end %>
+
+                  <dt>Criado em</dt>
+                  <dd><%= @script.created_at.to_s(:custom_datetime) %></dd>
+
+                  <dt><%= t 'labels.script_attributes.definition' %></dt>
+                  <dd><%= @script.definition %></dd>
+                </dl>
+              </div>
+            </div>
+            <h2>Arquivos anexos</h2>
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table" id="table_documents">
+                  <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th>Nome</th>
+                    <th></th>
+                  <tr>
+                  </thead>
+                  <tbody>
+                  <% if @script.attachment_docs.empty? %>
+                      <tr class="text-center">
+                        <td colspan="3"><h2 id="no-media">No Media Found</h2></td>
+                      </tr>
+                  <% else %>
+                      <% @script.attachment_docs.each do |att| %>
+                          <%= attachment_icon(File.basename(att.file_name.to_s).to_s, att.id) %>
+                      <% end %>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <hr>
+            <h2>Paper do Script:</h2>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="product-images">
+                  <div>
+                    <iframe src="<%= @script.pdf_file.url %>#toolbar=false&navpanes=0&scrollbar=0" width="100%" height="1075" frameborder="0"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

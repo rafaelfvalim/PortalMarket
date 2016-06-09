@@ -37,9 +37,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true, allow_blank: true
   validates_format_of :email, :with => Devise::email_regexp
   validates_uniqueness_of :email
+  # Uploader
   mount_uploader :avatar, AvatarUploader
-  validate :file_size_avatar
+  crop_uploaded :avatar
 
+  validate :file_size_avatar
   validates_integrity_of :avatar
   validates_processing_of :avatar
 

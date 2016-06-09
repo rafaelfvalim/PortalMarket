@@ -47,7 +47,7 @@ class LicensesController < ApplicationController
   def cancel_license
     # Envia a nota para status wating
     invoice = Invoice.find(params[:invoice_id])
-    invoice.update_attributes(invoice_status_id: 5)
+    invoice.update_attributes(invoice_status_id: InvoiceStatus::DEVOLUCAO)
     # Bloqueia a conta corrente para processamento do cancelamento
     checking_account = CheckingAccount.find_by_invoice_id(params[:invoice_id])
     checking_account.desistencia!

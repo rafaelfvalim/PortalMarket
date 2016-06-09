@@ -48,15 +48,15 @@
       <div class="col-md-6"><strong>To System Number:</strong> <br> <%= @invoice.workplace.system_number %>
         <hr>
       </div>
-      <div class="col-md-6"><strong>Invoice Date:</strong> <br><%= format_date(@invoice.invoice_date) %>
+      <div class="col-md-6"><strong>Invoice Date:</strong> <br><%= format_date_time(@invoice.invoice_date) %>
         <hr>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6"><strong>Invoice Pay Date:</strong> <br> <%= format_date(@invoice.pay_date) %>
+      <div class="col-md-6"><strong>Invoice Pay Date:</strong> <br> <%= format_date_time(@invoice.pay_date) %>
         <hr>
       </div>
-      <div class="col-md-6"><strong>Invoice Ship Date:</strong> <br>   <%= format_date(@invoice.ship_date) %>
+      <div class="col-md-6"><strong>Invoice Ship Date:</strong> <br>   <%= format_date_time(@invoice.ship_date) %>
         <hr>
       </div>
     </div>

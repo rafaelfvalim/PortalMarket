@@ -16,6 +16,21 @@ module ScriptsHelper
     end
   end
 
+  def process_tracker_li(status, script)
+    if script.status_id.nil?
+      content_tag(:li, status.description)
+    else
+      case
+        when status.id < script.status_id
+          content_tag(:li, status.description, class:'progtrckr-done')
+        when status.id == script.status_id
+          content_tag(:li, status.description, class:'progtrckr-done')
+        when status.id > script.status_id
+          content_tag(:li, status.description, class:'progtrckr-todo')
+      end
+    end
+  end
+
   def get_platforms
     @platform_array ||= Array.new
     @platform_array = ['SAP', 'Oracle', 'TOTVS', 'Java', 'PHP']
@@ -58,18 +73,21 @@ module ScriptsHelper
 
   def get_action_for_script(status_id, script)
     case status_id
-      when 1 then
+      when Status::GRAVADO then # 1
         link_to "Show", script_path(script.id), class: 'btn btn-info'
-      when 2 then
+      when Status::VERIFICACAO_DUPLICIDADE then # 2
         link_to "Show", script_path(script.id), class: 'btn btn-info'
-      when 3 then
+      when Status::VERIFICACAO_CONSISTENCIA then # 3
         link_to "Show", script_path(script.id), class: 'btn btn-info'
-      when 4 then
+      when Status::VERIFICACAO_COMPLEXIDADE then # 4
         link_to "Check Complexity", check_complexity_scripts_path(script_id: script.id), class: 'btn btn-info'
-      when 5 then
+      when Status::APROVADO then # 5
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
+      when Status::PRE_LANCAMENTO then # 7
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
+      when Status::PRE_LANCAMENTO_APROVADO then # 7
         link_to "Show", script_path(script.id), class: 'btn btn-info'
     end
-
   end
 
   def get_all_my_scripts(member_id, status_id)

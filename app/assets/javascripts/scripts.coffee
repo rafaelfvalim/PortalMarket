@@ -66,7 +66,6 @@ $ ->
       if ui.item == null
         $("#requirement_script_id_requirement").val('');
 
-
   defaultVal = '';
   #  Autocomplete with response map for related_scripts
   $('#related_script').autocomplete
@@ -87,7 +86,7 @@ $ ->
       if ui.item == null
         $("#related_script_script_id").val('');
         $("#related_script_related_script_id").val('');
-        swal '!','Please select a value from the list'
+        swal '!', 'Please select a value from the list'
 
     select: (event, ui) ->
       $("#related_script_related_script_id").val(ui.item.id);
@@ -101,6 +100,18 @@ $ ->
   #    close:(event , ui) ->
   #      $("#related_script").val(defaultVal);
 
+#  Regra de prelançamento
+  if  $('#script_status_id').is(':checked')
+    $("#prelancamento").removeClass 'hidden'
+    $("#section_script_upload").addClass 'hidden'
+  else
+    $("#prelancamento").addClass 'hidden'
+    $("#section_script_upload").removeClass 'hidden'
 
-
-
+  $('#script_status_id').click ->
+    if $(this).is(':checked')
+      $("#prelancamento").removeClass 'hidden'
+      $("#section_script_upload").addClass 'hidden'
+    else
+      $("#prelancamento").addClass 'hidden'
+      $("#section_script_upload").removeClass 'hidden'

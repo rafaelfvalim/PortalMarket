@@ -27,8 +27,8 @@ class ScriptDatatable < AjaxDatatablesRails::Base
           record.name,
           record.platform,
           record.complexity,
-          File.basename(record.pdf_file_url),
-          File.basename(record.script_file_url),
+          File.basename(record.pdf_file_url.to_s),
+          File.basename(record.script_file_url.to_s),
           link_to('Detalhes', record, :class => 'btn btn-info btn-xs'),
       ]
     end

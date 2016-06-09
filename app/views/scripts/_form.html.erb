@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@script, label_errors: true, :html => {:multipart => true}) do |f| %>
+<%= simple_form_for(@script, label_errors: true, :html => {:multipart => true}) do |f| %>
     <div class="row">
       <div class="col-md-12">
         <%= render 'layouts/process_tracker' %>
@@ -13,7 +13,7 @@
           <% end %>
         </div>
         <div class="pull-right">
-          <%= f.button :submit, class: 'btn btn-primary' do %>
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
               <%= t 'labels.buttons.next' %> <i class="fa fa-chevron-right"></i>
           <% end %>
         </div>
@@ -26,55 +26,67 @@
       </div>
       <div class="ibox-content">
         <div class="row">
-          <div class="col-lg-6">
-            <%= f.text_field :name, label: "#{t 'labels.script_attributes.name'}" '  <small>(max. 50 letras)</small>'.html_safe %>
-          </div>
-          <div class="col-lg-6">
-            <%= f.select :complexity, get_complexities, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.complexity'}"} %>
-          </div>
-        </div>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-          <div class="col-lg-6">
-            <%= f.text_field :description, label: "#{t 'labels.script_attributes.description'}" '  <small>(max. 200 letras)</small>'.html_safe %>
-          </div>
-
-          <div class="col-lg-6">
-            <%= f.select :platform, get_platforms, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.platform'}"} %>
-          </div>
-        </div>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-          <div class="col-lg-6">
-            <%= f.select :industry, get_industries, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.industry'}"} %>
-          </div>
-          <div class="col-lg-6">
-            <%= f.collection_select :solution_type_id, SolutionType.all, :id, :description, {prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.solution_type'}"} %>
-          </div>
-        </div>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-          <div class="col-lg-6">
-            <%= f.text_area :long_text, label: "#{t 'labels.script_attributes.long_description'}" '  <small>(max. 3000 letras)</small>'.html_safe %>
-          </div>
-          <div class="col-lg-6">
-            <%= f.text_area :definition, label: "#{t 'labels.script_attributes.definition'}" '  <small>(max. 3000 letras)</small>'.html_safe %>
-          </div>
-        </div>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12 col-md-12 col-xs-12 ">
             <div class="well">
-              <p>O script formato .edy e gerado apartir da aplicação Klustter Script Java</p>
+              <p>Realize um pré-lançamento informando a data estimada da publicação do script</p>
+              <p>No pré-lançamento serão considerados apenas os valores estimados</p>
+              </ul>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-3 col-md-3 col-xs-3">
+            <%= f.input :status_id, as: :boolean, checked_value: Status::PRE_LANCAMENTO, unchecked_value: Status::INICIAL, label:'<b>Pré-lançamento</b>'.html_safe  %>
+          </div>
+          <div id="prelancamento" class="col-lg-7 col-md-7 col-xs-7  hidden">
+            <%= f.input :end_development_date, as: :date, html5: true, label: "#{t 'labels.script_attributes.end_development_date'}"%>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6 ">
+            <%= f.input :name, label: "#{t 'labels.script_attributes.name'}" '  <small>(max. 50 letras)</small>'.html_safe %>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :complexity, collection: get_complexities, prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.complexity'}" %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :description, label: "#{t 'labels.script_attributes.description'}" '  <small>(max. 200 letras)</small>'.html_safe %>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :platform, collection: get_platforms, prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.platform'}" %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :industry, collection: Industry.all, label_method: :description, prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.industry'}" %>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :solution_type_id, collection: SolutionType.all, label_method: :description, prompt: "#{t 'labels.select'}", label: "#{t 'labels.script_attributes.solution_type'}" %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :long_text, as: :text, label: "#{t 'labels.script_attributes.long_description'}" '  <small>(max. 3000 letras)</small>'.html_safe %>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <%= f.input :definition, as: :text, label: "#{t 'labels.script_attributes.definition'}" '  <small>(max. 3000 letras)</small>'.html_safe %>
+          </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+          <div  id="section_script_upload" class="col-lg-12 col-md-12 col-xs-12 hidden">
             <!--Upload de arquivos -->
-            <%= f.file_field :script_file, label: "#{t 'labels.script_attributes.script_file'}" %>
+            <%= f.input :script_file, as: :file, label: "#{t 'labels.script_attributes.script_file'}" %>
             <%= f.hidden_field :script_file_cache %>
             <div class="well">
+              <p>O script formato .edy e gerado apartir da aplicação Klustter Script Java</p>
               <ul>
                 <li><strong><%= t 'labels.script_file_accept_formats' %> </strong></li>
                 <li><strong><%= t 'labels.script_file_size' %> </strong></li>
@@ -82,6 +94,23 @@
             </div>
             <div id="upload_script">
               <%= render partial: 'scripts/upload_scrip', script: @script %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <%= f.input :pdf_file, as: :file, label: "#{t 'labels.script_attributes.pdf_file'}" %>
+            <%= f.hidden_field :pdf_file_cache %>
+            <div class="well">
+              <ul>
+                <p>O modelo do paper pode ser baixado na área de
+                  publicações <%= link_to 'publicações', publications_path %></p>
+                <li><strong><%= t 'labels.pdf_file_accept_formats' %> </strong></li>
+                <li><strong><%= t 'labels.pdf_file_size' %> </strong></li>
+              </ul>
+            </div>
+            <div id="upload_pdf">
+              <%= render partial: 'scripts/upload_pdf', script: @script %>
             </div>
           </div>
         </div>

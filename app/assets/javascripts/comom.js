@@ -14,6 +14,8 @@ ready = function () {
         form_singup_member($(this).val());
     });
 
+
+
     //message chat
     //var faye_client = new Faye.Client('http://10.11.50.108:9292/faye');
     //faye_client.subscribe('/chat', function (data) {

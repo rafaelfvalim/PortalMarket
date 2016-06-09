@@ -125,6 +125,8 @@ pt-BR:
           description: Descrição
           payment_date: Data Pag.
           moviment_date: Data Mov.
+          start_development_date: Inicio da data de desenvolvimento
+          end_development_date: Fim da data de desenvolvimento
           status: Status
           value: Valor
           interest: Interesse
@@ -396,6 +398,8 @@ pt-BR:
          pdf_file: 'Arquivo PDF'
          complexity: 'Complexidade'
          has_price: 'Possui Preço'
+         end_development_date: 'Data final de desenvolvimento'
+         start_development_date: 'Data incial de desenvolvimento'
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

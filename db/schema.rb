@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602211147) do
+ActiveRecord::Schema.define(version: 20160606190237) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -315,20 +315,22 @@ ActiveRecord::Schema.define(version: 20160602211147) do
   add_index "reservations", ["script_id"], name: "fk_rails_a99ec70b48", using: :btree
 
   create_table "scripts", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.string   "description",      limit: 255
-    t.text     "definition",       limit: 65535
-    t.text     "long_text",        limit: 65535
-    t.string   "platform",         limit: 255
-    t.string   "industry",         limit: 255
-    t.integer  "solution_type_id", limit: 4
-    t.string   "script_file",      limit: 255
-    t.string   "pdf_file",         limit: 255
-    t.string   "complexity",       limit: 255
-    t.boolean  "has_price",        limit: 1
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "status_id",        limit: 4
+    t.string   "name",                   limit: 255
+    t.string   "description",            limit: 255
+    t.text     "definition",             limit: 65535
+    t.text     "long_text",              limit: 65535
+    t.string   "platform",               limit: 255
+    t.string   "industry",               limit: 255
+    t.integer  "solution_type_id",       limit: 4
+    t.string   "script_file",            limit: 255
+    t.string   "pdf_file",               limit: 255
+    t.string   "complexity",             limit: 255
+    t.boolean  "has_price",              limit: 1
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "status_id",              limit: 4
+    t.date     "start_development_date"
+    t.date     "end_development_date"
   end
 
   add_index "scripts", ["solution_type_id"], name: "fk_rails_7ad93069c3", using: :btree

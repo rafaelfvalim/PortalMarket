@@ -46,7 +46,7 @@
                         <div class="file-name">
                           <%= link_to File.basename(p.file_name.to_s), download_publications_path(id: p.id), onclick: "countNews(#{p.id});" %>
                           <br/>
-                          <small><%= t 'labels.publications.added' %>: <%= format_date(p.created_at) %></small>
+                          <small><%= t 'labels.publications.added' %>: <%= format_date_time(p.created_at) %></small>
                         </div>
                       </a>
                     </div>

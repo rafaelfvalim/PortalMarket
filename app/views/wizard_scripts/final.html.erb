@@ -42,9 +42,9 @@
             <div class="col-lg-7" id="cluster_info">
               <dl class="dl-horizontal">
                 <dt><%= t 'labels.final.last_update' %>:</dt>
-                <dd><%= format_date(@script.updated_at) %></dd>
+                <dd><%= format_date_time(@script.updated_at) %></dd>
                 <dt><%= t 'labels.final.created' %></dt>
-                <dd><%= format_date(@script.created_at) %></dd>
+                <dd><%= format_date_time(@script.created_at) %></dd>
               </dl>
             </div>
           </div>

@@ -52,10 +52,11 @@ class ScriptsController < ApplicationController
   # POST /scripts
   # POST /scripts.json
   def create
-    params[:script][:status_id] = Status::INICIAL
+    # params[:script][:status_id] = Status::INICIAL
     @script = Script.new(script_params)
-    @user = current_user
+    p @script.status_id
 
+    @user = current_user
     respond_to do |format|
       if @script.save
         price = Price.new
@@ -211,8 +212,13 @@ class ScriptsController < ApplicationController
       if @script.member_scripts.sum(:percentual) < 100.0
         format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id), alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
       else
-        @script.update_attribute(:status_id, 1)
-        format.html { redirect_to contributor_members_path }
+        # Regra de prelançamento
+        if @status_id == Status::PRE_LANCAMENTO
+          format.html { redirect_to contributor_members_path }
+        else
+          @script.update_attribute(:status_id, Status::INICIAL)
+          format.html { redirect_to contributor_members_path }
+        end
       end
     end
   end
@@ -271,7 +277,7 @@ class ScriptsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def script_params
-    params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, :script_file_cache, :pdf_file_cache, requirements_attributes: [:id, :script_id, :requirement])
+    params.require(:script).permit(:id, :name, :description, :definition, :long_text, :platform, :industry, :solution_type_id, :script_file, :pdf_file, :complexity, :status_id, :script_file_cache, :pdf_file_cache, :end_development_date, :start_development_date, requirements_attributes: [:id, :script_id, :requirement])
   end
 
   def secure_action_script

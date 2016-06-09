@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <% if @script.status_id == 1 || @script.status_id == 6 %>
+        <% if @script.status_id == Status::GRAVADO || @script.status_id == Status::PRE_LANCAMENTO %>
             <%= link_to("#{t 'labels.buttons.edit'}", edit_script_path(@script), :class => 'btn btn-success') %>
             <%= link_to("#{t 'labels.buttons.delete'}", roll_back_script_scripts_path(id: @script.id), data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger') %>
         <% end %>
@@ -67,9 +67,9 @@
           <div class="col-lg-7" id="cluster_info">
             <dl class="dl-horizontal">
               <dt><%= t 'labels.final.last_update' %>:</dt>
-              <dd><%= format_date(@script.updated_at) %></dd>
+              <dd><%= format_date_time(@script.updated_at) %></dd>
               <dt><%= t 'labels.final.created' %>:</dt>
-              <dd><%= format_date(@script.created_at) %></dd>
+              <dd><%= format_date_time(@script.created_at) %></dd>
               <dt><%= t 'labels.script_attributes.script_file' %>:</dt>
               <dd><%= link_to File.basename(@script.script_file.to_s), @script.script_file_url %></dd>
               <!--<dt><%= t 'labels.script_attributes.pdf_file' %>:</dt>-->

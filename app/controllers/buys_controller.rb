@@ -25,6 +25,16 @@ class BuysController < ApplicationController
     gon.pdf_file = @script.pdf_file
 
     @workplaces = Workplace.where(member_id: current_user.member.id)
+
+    if @script.status_id == Status::PRE_LANCAMENTO_APROVADO
+      redirect_to show_product_pre_lanc_buys_path(id: @script.id)
+    end
+  end
+
+  def show_product_pre_lanc
+    @script = Script.find_by id: params[:id]
+    @id_search = params[:id_search] #SearchJoy Analitics
+    @price = Price.find_by_script_id(@script.id)
   end
 
   # GET /buys/new

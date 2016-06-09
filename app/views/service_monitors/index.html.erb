@@ -1,0 +1,55 @@
+<%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="row">
+    <div class="col-lg-10">
+      <h2>Monitor de Serviços </h2>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table" id="table_documents">
+      <thead>
+      <tr>
+        <th>Seriço</th>
+        <th>URl</th>
+        <th>Status</th>
+        <th></th>
+      <tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Administrator Service</td>
+        <td><%= Rails.configuration.adm_server %></td>
+        <td><%=  check_url Rails.configuration.adm_server %></td>
+      </tr>
+      <tr>
+        <td>Mailcatcher</td>
+        <td><%= Rails.configuration.mailcatcher %></td>
+        <td><%= check_url  Rails.configuration.mailcatcher %></td>
+      </tr>
+      <tr>
+        <td>Elasticsearch</td>
+        <td><%= Rails.configuration.elasticsearch %></td>
+        <td><%= check_url Rails.configuration.elasticsearch %></td>
+      </tr>
+      <tr>
+        <td>Generate Script File</td>
+        <td><%= Rails.configuration.webservice_generate_file %></td>
+        <td><%= check_url Rails.configuration.webservice_generate_file %></td>
+      </tr>
+      <tr>
+        <td>Generate Key File</td>
+        <td><%= Rails.configuration.webservice_generate_key %></td>
+        <td><%= check_url Rails.configuration.webservice_generate_key %></td>
+      </tr>
+      <tr>
+        <td>Generate Token</td>
+        <td><%= Rails.configuration.webservice_user_token %></td>
+        <td><%= check_url Rails.configuration.webservice_user_token %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -56,7 +56,7 @@ class MemberScriptDatatable < AjaxDatatablesRails::Base
           end,
           link_to('Show', record, :class => 'btn btn-info btn-xs'),
 
-          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price
+          if record.status_id == Status::INICIAL && !record.has_price || record.status_id == Status::GRAVADO && !record.has_price  || record.status_id == Status::PRE_LANCAMENTO
             link_to('Edit', edit_script_path(record), :class => 'btn btn-primary btn-xs')
           end,
 

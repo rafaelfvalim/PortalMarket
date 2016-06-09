@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery.jcrop
 //= require jquery.validate
 //= require jquery-ui
 //= require jquery-ui/autocomplete
@@ -44,6 +44,7 @@
 //= require jquery.maxlength.js
 //= require common
 //= require dropzone.js
+//= require bootstrap-filestyle
 //= require_tree .
 
 

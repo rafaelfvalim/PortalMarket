@@ -23,8 +23,6 @@
         <div class="col-lg-12">
           <div class="well">
             <p>Adicionar um ou mais arquivos necessários que documente o script e ou seus processos</p>
-            <p>O modelo do paper pode ser baixado na área de publicações <%= link_to 'publicações', publications_path %></p>
-            <p>Atenção! o script deve ao menos conter o paper que descreva seus processos, os aquivos anexos influenciam direamente na publicação e exposição do mesmo, caso não haja nenhum documento técnico anexo o script não será publicado</p>
           </div>
           <%= form_tag delete_attachments_attachment_docs_path do %>
               <%= hidden_field_tag :script_id, @script.id %>

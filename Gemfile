@@ -68,6 +68,16 @@ gem 'sweetalert2'
 #https://github.com/semaperepelitsa/jquery.fileupload-rails
 gem 'jquery.fileupload-rails'
 
+gem 'net-ping'
+#https://github.com/kirtithorat/carrierwave-crop
+gem 'carrierwave-crop'
+
+#https://github.com/evg2108/carrierwave-crop-on-fly
+#gem 'carrierwave-crop-on-fly'
+
+#https://github.com/mauriciopasquier/bootstrap-filestyle-rails
+gem 'bootstrap-filestyle-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

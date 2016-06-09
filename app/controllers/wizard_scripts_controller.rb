@@ -139,9 +139,9 @@ class WizardScriptsController < ApplicationController
   def search_script(query_search, page)
     Script.reindex
     if query_search.present?
-      @found_scripts = Script.search query_search, where: {has_price: present?, status_id: 5}, page: page, per_page: 12
+      @found_scripts = Script.search query_search, where: {has_price: present?, status_id: Status::APROVADO}, page: page, per_page: 12
     else
-      @found_scripts = Script.search '*', where: {has_price: present?, status_id: 5}, page: page, per_page: 12
+      @found_scripts = Script.search '*', where: {has_price: present?, status_id: Status::APROVADO}, page: page, per_page: 12
     end
   end
 
