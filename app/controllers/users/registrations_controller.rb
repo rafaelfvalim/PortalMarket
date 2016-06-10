@@ -7,11 +7,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_member
     @user.build_address
+    @select_perfil = MemberType.where(id: [MemberType::CONTRIBUTOR,MemberType::CUSTOMER,MemberType::CUSTOMER_CONTRIBUTOR])
     render layout: "empty"
   end
 
 # POST /resource
   def create
+    @select_perfil = MemberType.where(id: [MemberType::CONTRIBUTOR,MemberType::CUSTOMER,MemberType::CUSTOMER_CONTRIBUTOR])
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save

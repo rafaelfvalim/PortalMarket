@@ -17,15 +17,17 @@
                 </div>
                 <%= f.simple_fields_for :member_attributes, @user.member do |member| %>
                     <div class="row row-centered">
-                      <div class="col-lg-10 col-centered  col-md-12 col-xs-12">
+                      <div class="col-lg-4 col-centered  col-md-4 col-xs-4">
                         <%= member.input :member_type_id,
-                                         as: :radio_buttons,
-                                         item_wrapper_class: 'radio',
-                                         collection: [['Cliente', 2], ['Parceiro', 1], ['Cliente/Parceiro', 4]],
-                                         checked: 2,
-                                         label: "Perfil <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe %>
+                                         collection: @select_perfil,
+                                         label_method: :description_pt_br,
+                                         include_blank: 'Selecione',
+                                         input_html: {onchange: "form_singup_member(this)"},
+                                         label: "Perfil  <a href='#' data-toggle='modal' data-target='#help_modal'>?</a>".html_safe
+                        %>
                       </div>
                     </div>
+
                     <div class="row row-centered" id="company_name">
                       <div class="col-lg-10 col-md-12 col-xs-12 col-centered ">
                         <%= member.input :company_name, label: "#{t 'labels.member_attributes.company_name'}" %>
@@ -62,7 +64,6 @@
                         <%= member.input :bank_id, collection: all_banks, label_method: :description, label: "#{t 'labels.member_attributes.bank'}", include_blank: 'Selecione..', class: 'form-control' %>
                       </div>
                     </div>
-
                     <!--informações bancárias-->
                     <div class="row row-centered hidden" id="bank_cc">
                       <div class="col-lg-1 col-md-2  col-xs-12 col-centered ">
@@ -75,6 +76,7 @@
                         <%= member.input :bank_cc_digit, label: 'Dg:', class: 'form-control' %>
                       </div>
                     </div>
+
                 <% end %>
                 <!--email-->
                 <div class="row row-centered">
@@ -129,6 +131,7 @@
                         <%= address.input :state, label: "#{t 'labels.address_attribures.state'}", class: 'form-control', input_html: {data: {cep: 'uf'}} %>
                       </div>
                     </div>
+
                 <% end %>
                 <br>
 
@@ -139,6 +142,7 @@
                   </div>
                   <div class="col-lg-3 col-md-4 col-centered"></div>
                 </div>
+
             <% end %>
 
             <div class="row row-centered">
@@ -155,6 +159,7 @@
               </div>
               <div class="col-lg-3 col-md-4 col-centered"></div>
             </div>
+
           </div>
         </div>
         <p class="m-t">

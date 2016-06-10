@@ -3,13 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 window.form_singup_member = (e) ->
-  if e == '1'
+  console.log e.value
+  if e.value == '1'
     customer_fields_singup 'hide'
     contributor_fields_singup 'show'
-  if e == '2'
+  if e.value == '2'
     customer_fields_singup 'show'
     contributor_fields_singup 'hide'
-  if e == '4'
+  if e.value == '4'
     customer_fields_singup 'show'
     contributor_fields_singup 'show'
 
@@ -35,6 +36,8 @@ $ ->
   $('#singup_form').validate
     ignore: ':hidden'
     rules:
+      'user[member_attributes][member_type_id]':
+        required: true
       'user[member_attributes][cpf]':
         cpfBR: true
         required: true
