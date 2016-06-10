@@ -4,7 +4,7 @@
     <%= image_tag("klustter_logo.png", height: '100px', width: '300px') %>
     <br>
     <p>
-    <h1 color="orange"><font size="7"><b>Obrigado.</b> </font></h1>
+    <h1 color="orange"><font size="5"><b>Obrigado.</b> </font></h1>
     </p>
   </div>
 
@@ -12,67 +12,63 @@
     <table>
       <tbody>
       <tr>
-        <td><h3><strong>Você fez o consumo do script :</strong></h3></td>
-        <td><h3><strong><%= @invoice.script.name %></strong></h3></td>
+        <td>Você fez o consumo do script :</td>
+        <td><%= @invoice.script.name %></td>
       </tr>
       <tr>
-        <td><h3><strong>Protocolo de Consumo</strong></h3></td>
-        <td><h3><strong><%= @invoice.id %></strong></h3></td>
+        <td>Protocolo de Consumo</td>
+        <td><%= @invoice.id %></td>
       </tr>
       <tr>
-        <td><h3><strong>Data do Consumo</strong></h3></td>
-        <td><h3><strong><%= @invoice.created_at.strftime("%b, %m %Y - %H:%M") %></strong></h3></td>
+        <td>Data do Consumo</td>
+        <td><%= @invoice.created_at.strftime("%b, %m %Y - %H:%M") %></td>
       </tr>
       <tr>
-        <td><h3><strong>Valor </strong></h3></td>
-        <td><h3><strong><%= number_to_currency_br(@invoice.value) %></strong></h3></td>
+        <td>Valor</td>
+        <td><%= number_to_currency_br(@invoice.value) %></td>
       </tr>
       <tr>
-        <td><h3><strong><%= link_to "Download Aqui!", @link_to_file %></strong></h3></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= link_to "Download Aqui!", @link_to_file %></td>
       </tr>
       </tbody>
     </table>
+    <br>
     <% if @attachment_docs.empty? %>
         <p> Estamos enviando alguns arquivos que o parceiro anexou a o script, esses arquivos contem
           informações importantes sobre o seu script.</p>
-        <p>
           <% @attachment_docs.each do |att| %>
             <p><%= link_to att.file_name.to_s, "#{Rails.configuration.absolute_site_url} #{att.file_name_url}" %>
               %></p>
         <% end %>
     <% end %>
-    <h3>O pagamento está disponível no seu extrato de consumo e o prazo para pagamento está
-      dentro dos acordos comerciais previamente definidos na assinatura do contrato. </h3>
-    </p>
-    <p>
-    <h3>Precisa de ajuda ?</h3></p>
-    <p>
-
-    <h3>Contacte o canal de parceiros com o número do protocolo de consumo em mãos.</h3></p>
-
+    <p> O pagamento está disponível no seu extrato de consumo e o prazo para pagamento está
+      dentro dos acordos comerciais previamente definidos na assinatura do contrato.</p>
+    <p>Precisa de ajuda ?</p>
+    <p>Contacte o canal de parceiros com o número do protocolo de consumo em mãos.</p>
     <table>
       <tbody>
       <tr>
-        <td><h3>Telefone:</h3></td>
-        <td><h3><%= Rails.configuration.telefone_contato %></h3></td>
+        <td>Telefone:</td>
+        <td>+55 11 5102-4856</td>
       </tr>
       <tr>
-        <td><h3>Entrar em contato com B2B:</h3></td>
-        <td><h3><a href="emailto:b2b@klustter.com.br">b2b@klustter.com.br</a></h3></td>
+        <td>Entrar em contato com B2B:</td>
+        <td><a href="emailto:b2b@klustterscript.com">b2b@klustterscript.com</a></td>
       </tr>
       </tbody>
     </table>
-    <p>
-
-    <h3>Não responda essa mensagem.</h3></p>
-
+    <p>Não responda essa mensagem.</p>
   </div>
 
   <div id="footer">
     <%= image_tag("klustter_logo.png", height: '60px', width: '170px') %>
     <p>
 
-    <h3>Saiba mais sobre nós, acesse <a href="www.klustter.com.br">www.klustter.com.br</a></h3>
+    <h3>Saiba mais sobre nós, acesse <a href="http://klustterscript.com" target="_blank">http://klustterscript.com</a>
+    </h3>
 
     <h3>Siga-nos </h3>
     </p>
