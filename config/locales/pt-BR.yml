@@ -291,7 +291,7 @@ pt-BR:
          page_header: Carrinho
          resume_cart: Verificar Consumos
         buys:
-          page_header: <h4> Consumo realizada com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
+          page_header: <h4> Consumo realizado com sucesso !</h4> <h4> Os links para download foram enviados para seu email </h4>
         show_product:
          related_scripts: Scripts Relacionados
          requirement_scripts: Scripts Requeridos
