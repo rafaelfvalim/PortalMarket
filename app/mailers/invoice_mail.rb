@@ -1,5 +1,5 @@
 class InvoiceMail < ApplicationMailer
-  default from: "no-reply@klustter.com.br"
+  default from: "no-reply@klustterscript.com"
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::UrlHelper
   helper ApplicationHelper
