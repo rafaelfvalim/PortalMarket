@@ -77,6 +77,10 @@ gem 'carrierwave-crop'
 
 #https://github.com/mauriciopasquier/bootstrap-filestyle-rails
 gem 'bootstrap-filestyle-rails'
+#http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-ruby-on-rails-apps/
+gem 'remote_syslog_logger'
+#https://github.com/roidrage/lograge
+gem 'lograge'
 
 group :development, :test do
   gem 'byebug'

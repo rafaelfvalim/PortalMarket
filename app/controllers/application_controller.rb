@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :chat_user_data
   layout :layout_by_resource
 
+
   helper_method :app_get_breadcrumb_value_chain
   helper_method :app_get_system_id_by_name
 
@@ -91,9 +92,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def append_info_to_payload(payload)
+    super
+    payload[:user_id] = current_user.try(:id)
+    payload[:user_name] = current_user.member.try(:member_name)
+    payload[:host] = request.host
+    payload[:source_ip] = request.remote_ip
+  end
   private
   def layout_by_resource
-
     if controller_name == 'registrations'
       #algumas paginas do devise devem aparecer dentro do site
       case action_name

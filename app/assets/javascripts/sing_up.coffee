@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 window.form_singup_member = (e) ->
-  console.log e.value
   if e.value == '1'
     customer_fields_singup 'hide'
     contributor_fields_singup 'show'
