@@ -3,8 +3,9 @@ module VisitorHelper
   def get_message_lounge
     imgage = image_tag "KLU001-logotipo_simbolo-positivo.png", crop: :fill, class: "klustter-lounge-logo"
     telefone = t 'labels.tel'
-    mail_customer = mail_to 'canaldeparceiros@klustterscript.com'
-    mail_contributor = mail_to 'b2b@klustterscript.com'
+    mail_customer = mail_to 'b2b@klustterscript.com'
+    mail_contributor = mail_to 'canaldeparceiros@klustterscript.com'
+
     if current_user.is_customer?
       html_customer = <<-HTML
        <div class="row">
@@ -115,7 +116,7 @@ module VisitorHelper
             <p>Precisa de ajuda ?</p>
             <p>Contacte o B2B</p>
             <p>Telefone: #{telefone} </p>
-            <p>Email: #{mail} </p>
+            <p>Email: #{mail_customer} </p>
           </div>
         </div>
       HTML
