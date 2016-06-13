@@ -1,176 +1,290 @@
-<body>
-<div class="background">
-  <div id="header">
-    <%= image_tag("klustter_logo.png", height: '100px', width: '300px') %>
-    <br>
-    <p>
-    <h1 color="orange"><font size="5"><b>Obrigado.</b> </font></h1>
-    </p>
-  </div>
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Klustter Script Inovation</title>
+  <style>
+    /* -------------------------------------
+        GLOBAL
+    ------------------------------------- */
+    * {
+      font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+      font-size: 100%;
+      line-height: 1.6em;
+      margin: 0;
+      padding: 0;
+    }
 
-  <div id="section">
-    <table>
-      <tbody>
-      <tr>
-        <td>Você fez o consumo do script :</td>
-        <td><%= @invoice.script.name %></td>
-      </tr>
-      <tr>
-        <td>Protocolo de Consumo</td>
-        <td><%= @invoice.id %></td>
-      </tr>
-      <tr>
-        <td>Data do Consumo</td>
-        <td><%= @invoice.created_at.strftime("%b, %m %Y - %H:%M") %></td>
-      </tr>
-      <tr>
-        <td>Valor</td>
-        <td><%= number_to_currency_br(@invoice.value) %></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td><%= link_to "Download Aqui!", @link_to_file %></td>
-      </tr>
-      </tbody>
-    </table>
-    <br>
-    <% if @attachment_docs.empty? %>
-        <p> Estamos enviando alguns arquivos que o parceiro anexou a o script, esses arquivos contem
-          informações importantes sobre o seu script.</p>
-          <% @attachment_docs.each do |att| %>
-            <p><%= link_to att.file_name.to_s, "#{Rails.configuration.absolute_site_url} #{att.file_name_url}" %>
-              %></p>
-        <% end %>
-    <% end %>
-    <p> O pagamento está disponível no seu extrato de consumo e o prazo para pagamento está
-      dentro dos acordos comerciais previamente definidos na assinatura do contrato.</p>
-    <p>Precisa de ajuda ?</p>
-    <p>Contacte o canal de parceiros com o número do protocolo de consumo em mãos.</p>
-    <table>
-      <tbody>
-      <tr>
-        <td>Telefone:</td>
-        <td>+55 11 5102-4856</td>
-      </tr>
-      <tr>
-        <td>Entrar em contato com B2B:</td>
-        <td><a href="emailto:b2b@klustterscript.com">b2b@klustterscript.com</a></td>
-      </tr>
-      </tbody>
-    </table>
-    <p>Não responda essa mensagem.</p>
-  </div>
+    img {
+      max-width: 600px;
+      width: auto;
+    }
 
-  <div id="footer">
-    <%= image_tag("klustter_logo.png", height: '60px', width: '170px') %>
-    <p>
+    body {
+      -webkit-font-smoothing: antialiased;
+      height: 100%;
+      -webkit-text-size-adjust: none;
+      width: 100% !important;
+    }
 
-    <h3>Saiba mais sobre nós, acesse <a href="http://klustterscript.com" target="_blank">http://klustterscript.com</a>
-    </h3>
+    /* -------------------------------------
+        ELEMENTS
+    ------------------------------------- */
+    a {
+      color: #348eda;
+    }
 
-    <h3>Siga-nos </h3>
-    </p>
-    <a href="#">
-      <image src="<%= image_url("logo/face_logo.png") %>" height="60px" width="60px"/>
-    </a>
-    <a href="#">
-      <image src="<%= image_url("logo/google_logo.png") %>" height="60px" width="60px"/>
-    </a>
-    <a href="#">
-      <image src="<%= image_url("logo/twitter_logo.png") %>" height="60px" width="60px"/>
-    </a>
-    <a href="#">
-      <image src="<%= image_url("logo/youtube_logo.png") %>" height="60px" width="60px"/>
-    </a>
-    <a href="#">
-      <image src="<%= image_url("logo/instagram_logo.png") %>" height="60px" width="60px"/>
-    </a>
+    .btn-primary {
+      Margin-bottom: 10px;
+      width: auto !important;
+    }
 
-  </div>
-</div>
+    .btn-primary td {
+      background-color: #348eda;
+      border-radius: 25px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-size: 14px;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .btn-primary td a {
+      background-color: #348eda;
+      border: solid 1px #348eda;
+      border-radius: 25px;
+      border-width: 10px 20px;
+      display: inline-block;
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 2;
+      text-decoration: none;
+    }
+
+    .last {
+      margin-bottom: 0;
+    }
+
+    .first {
+      margin-top: 0;
+    }
+
+    .padding {
+      padding: 10px 0;
+    }
+
+    /* -------------------------------------
+        BODY
+    ------------------------------------- */
+    table.body-wrap {
+      padding: 20px;
+      width: 100%;
+    }
+
+    table.body-wrap .container {
+      border: 1px solid #f0f0f0;
+    }
+
+    /* -------------------------------------
+        FOOTER
+    ------------------------------------- */
+    table.footer-wrap {
+      clear: both !important;
+      width: 100%;
+    }
+
+    .footer-wrap .container p {
+      color: #666666;
+      font-size: 12px;
+
+    }
+
+    table.footer-wrap a {
+      color: #999999;
+    }
+
+    /* -------------------------------------
+        TYPOGRAPHY
+    ------------------------------------- */
+    h1,
+    h2,
+    h3 {
+      color: #111111;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 200;
+      line-height: 1.2em;
+      margin: 40px 0 10px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    p,
+    ul,
+    ol {
+      font-size: 14px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    ul li,
+    ol li {
+      margin-left: 5px;
+      list-style-position: inside;
+    }
+
+    /* ---------------------------------------------------
+        RESPONSIVENESS
+    ------------------------------------------------------ */
+
+    /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+    .container {
+      clear: both !important;
+      display: block !important;
+      Margin: 0 auto !important;
+      max-width: 600px !important;
+    }
+
+    /* Set the padding on the td rather than the div for Outlook compatibility */
+    .body-wrap .container {
+      padding: 20px;
+    }
+
+    /* This should also be a block element, so that it will fill 100% of the .container */
+    .content {
+      display: block;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    /* Let's make sure tables in the content area are 100% wide */
+    .content table {
+      width: 100%;
+    }
+
+  </style>
+</head>
+
+<body bgcolor="#f6f6f6">
+
+<!-- body -->
+<table class="body-wrap" bgcolor="#f6f6f6">
+  <tr>
+    <td></td>
+    <td class="container" bgcolor="#FFFFFF">
+      <!-- content -->
+      <div class="content">
+        <table>
+          <tr>
+            <td>
+              <p><h5>Olá <%= @user.member.member_name %>,</h5></p>
+              <p><h5>Parabéns pela compra!</h5></p>
+              <table>
+                <tbody>
+                <tr>
+                  <td>Script :</td>
+                  <td> <%= @invoice.script.name %> </td>
+                </tr>
+                <tr>
+                  <td>Protocolo de Consumo:</td>
+                  <td><%= @invoice.id %></td>
+                </tr>
+                <tr>
+                  <td>Data do Consumo:</td>
+                  <td><%= @invoice.created_at.strftime("%b, %m %Y - %H:%M") %></td>
+                </tr>
+                <tr>
+                  <td>Valor:</td>
+                  <td><%= number_to_currency_br(@invoice.value) %></td>
+                </tr>
+                </tbody>
+              </table>
+              <br>
+              <!-- button -->
+              <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+                    <%= link_to "Download", @link_to_file %>
+                  </td>
+                </tr>
+              </table>
+              <!-- /button -->
+
+              <% if @attachment_docs.empty? %>
+                  <p> Estamos enviando alguns arquivos que o parceiro anexou a o script, esses arquivos contem
+                    informações importantes sobre o seu script.</p>
+                  <% @attachment_docs.each do |att| %>
+                      <p><%= link_to att.file_name.to_s, "#{Rails.configuration.absolute_site_url} #{att.file_name_url}" %>
+                        %></p>
+                  <% end %>
+              <% end %>
+              <p> O pagamento está disponível no seu extrato de consumo e o prazo para pagamento está
+                dentro dos acordos comerciais previamente definidos na assinatura do contrato.</p>
+              <p>Precisa de ajuda ?</p>
+              <p>Contacte o canal de parceiros com o número do protocolo de consumo em mãos.</p>
+              <table>
+                <tbody>
+                <tr>
+                  <td>Telefone:</td>
+                  <td>+55 11 5102-4856</td>
+                </tr>
+                <tr>
+                  <td>Entrar em contato com B2B:</td>
+                  <td><a href="emailto:b2b@klustterscript.com">b2b@klustterscript.com</a></td>
+                </tr>
+                </tbody>
+              </table>
+              <br>
+              <p><h5>Atenciosamente.</h5></p>
+              <%= image_tag("klustter_logo.png", height: '100px', width: '300px') %>
+              <p>Não responda essa mensagem.</p>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- /content -->
+    </td>
+    <td></td>
+  </tr>
+</table>
+<!-- /body -->
+
+<!-- footer -->
+<table class="footer-wrap">
+  <tr>
+    <td></td>
+    <td class="container">
+
+      <!-- content -->
+      <p class="content">
+        <table>
+          <tr>
+            <td align="center">
+                   <p> Klustter Script Inovation
+                    <strong>Copyright</strong> Klustter &copy; 2015-2016
+                 </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- /content -->
+
+    </td>
+    <td></td>
+  </tr>
+</table>
+<!-- /footer -->
+
 </body>
-
-<style>
-
-
-  h1 {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 26.4px;
-  }
-
-  h3 {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 15.4px;
-  }
-
-  p {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 20px;
-  }
-
-  blockquote {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 21px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 30px;
-  }
-
-  pre {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 18.5714px;
-  }
-
-  h1 {
-    color: orange
-  }
-
-  #header {
-    background-color: white;
-    color: black;
-    text-align: left;
-    padding: 5px;
-  }
-
-  #nav {
-    line-height: 30px;
-    background-color: #eeeeee;
-    height: 300px;
-    width: 100px;
-    float: left;
-    padding: 5px;
-  }
-
-  #section {
-    width: 650px;
-    float: left;
-    padding: 10px;
-  }
-
-  #footer {
-    background-color: white;
-    color: black;
-    clear: both;
-    text-align: left;
-    padding: 5px;
-  }
-</style>
+</html>
