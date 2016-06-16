@@ -29,6 +29,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  # def filename
+  #   @name ||= "#{timestamp}-#{super}" if original_filename.present? and super.present?
+  # end
+  #
+  # def timestamp
+  #   var = :"@#{mounted_as}_timestamp"
+  #   model.instance_variable_get(var) or model.instance_variable_set(var, Time.now.to_i)
+  # end
 
   # Create different versions of your uploaded files:
   version :thumb do
