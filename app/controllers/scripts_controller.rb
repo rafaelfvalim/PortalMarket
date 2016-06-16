@@ -213,7 +213,7 @@ class ScriptsController < ApplicationController
         format.html { redirect_to wizard_script_path(id: :final, script_id: @script.id), alert: 'Por favor verifique se a distribuição de percentual esta correta, Total de ser de 100% ' }
       else
         # Regra de prelançamento
-        if @status_id == Status::PRE_LANCAMENTO
+        if @script.status_id == Status::PRE_LANCAMENTO
           format.html { redirect_to contributor_members_path }
         else
           @script.update_attribute(:status_id, Status::INICIAL)
@@ -293,7 +293,7 @@ class ScriptsController < ApplicationController
         message = "Não é possivel atualizar esse Script, Acesso negado!"
     end
     unless current_user.is_god?
-      unless @script.status_id == Status::INICIAL || @script.status_id == Status::GRAVADO
+      unless @script.status_id == Status::INICIAL || @script.status_id == Status::GRAVADO || @script.status_id == Status::PRE_LANCAMENTO
         redirect_to current_member_path, alert: message
       end
     end
@@ -302,6 +302,9 @@ class ScriptsController < ApplicationController
   def current_member_path
     if current_user.is_god?
       return admin_members_path
+    end
+    if current_user.is_customer_contributor?
+      return customer_contributor_members_path
     end
     if current_user.is_contributor?
       return contributor_members_path
