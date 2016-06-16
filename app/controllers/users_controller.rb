@@ -149,6 +149,7 @@ class UsersController < ApplicationController
 
   def upload_avatar
     if @user.update(secure_params)
+      @user.avatar.cache_stored_file!
       @user.avatar.recreate_versions!
       redirect_to edit_user_registration_path
     else
