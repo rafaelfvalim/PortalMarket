@@ -59,6 +59,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(secure_params)
+      @user.avatar.recreate_versions!
       if params[:user][:avatar].present?
         render :crop ## Render the view for cropping
       else
@@ -148,7 +149,8 @@ class UsersController < ApplicationController
 
   def upload_avatar
     if @user.update(secure_params)
-       redirect_to edit_user_registration_path
+      @user.avatar.recreate_versions!
+      redirect_to edit_user_registration_path
     else
       redirect_to edit_user_registration_path, :alert => "Error :: Verifique o formato eo tamanho do arquivo"
     end
