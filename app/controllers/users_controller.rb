@@ -148,10 +148,9 @@ class UsersController < ApplicationController
   end
 
   def upload_avatar
-    @user.avatar.cache_stored_file!
-    @user.avatar.recreate_versions!(:thumb, :circle_avatar)
-
     if @user.update(secure_params)
+      @user.avatar.cache_stored_file!
+      @user.avatar.recreate_versions!(:thumb, :circle_avatar)
       redirect_to edit_user_registration_path
     else
       redirect_to edit_user_registration_path, :alert => "Error :: Verifique o formato eo tamanho do arquivo"
