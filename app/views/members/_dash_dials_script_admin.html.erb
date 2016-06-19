@@ -36,7 +36,7 @@
     color = 'red-bg'
     icon = 'tronik tronik-puzzle-outline tronik-3x'
     header_description = t 'labels.dash_not_complete'
-    header_count = Script.where("status_id = #{Status::INICIAL} and DATE(created_at) < ?", Date.today).count
+    header_count = Script.where("status_id = #{Status::INICIAL}").count
     link_path = script_orchestration_scripts_path(status_id: Status::INICIAL)
     widget_dash_board(color, icon, header_description, header_count, link_path)
   %>

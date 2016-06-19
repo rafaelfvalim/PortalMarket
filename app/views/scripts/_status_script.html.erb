@@ -1,24 +1,12 @@
-<!--<div class="row">-->
-<!--<div class="col-md-12">-->
-<!--<ul class='nav nav-wizard'>-->
-<!--
-<% Status.all.each do |status| %>-->
-    <!--
-    <% unless status.description == 'Inicial' %>-->
-        <!--<%= generate_statsus_li status, @script %>-->
-        <!--
-    <% end %>-->
-    <!--
-<% end %>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</div>-->
+
 
 <ol class="progtrckr" data-progtrckr-steps="<%= Status.all.count %>">
   <% if @script.status_id == Status::PRE_LANCAMENTO %>
       <label> PRÉ LANÇAMENTO</label>
   <% elsif @script.status.id == Status::PRE_LANCAMENTO_APROVADO %>
       <label> PRÉ LANÇAMENTO APROVADO</label>
+  <% elsif @script.status.id == Status::INICIAL %>
+      <h2>Script ainda Incompleto</h2><smal>em processo de cadastro</smal>
   <% else %>
       <% Status.all.each do |status| %>
           <% unless status.id == Status::INICIAL %>

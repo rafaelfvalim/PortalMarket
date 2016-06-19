@@ -8,8 +8,7 @@ module ScriptsHelper
         when status.id < script.status_id
           content_tag(:li, status.description)
         when status.id == script.status_id
-          content_tag(:li, status.description,
-                      class: "active")
+          content_tag(:li, status.description, class: "active")
         when status.id > script.status_id
           content_tag(:li, status.description)
       end
@@ -22,11 +21,11 @@ module ScriptsHelper
     else
       case
         when status.id < script.status_id
-          content_tag(:li, status.description, class:'progtrckr-done')
+          content_tag(:li, status.description, class: 'progtrckr-done')
         when status.id == script.status_id
-          content_tag(:li, status.description, class:'progtrckr-done')
+          content_tag(:li, status.description, class: 'progtrckr-done')
         when status.id > script.status_id
-          content_tag(:li, status.description, class:'progtrckr-todo')
+          content_tag(:li, status.description, class: 'progtrckr-todo')
       end
     end
   end
@@ -73,6 +72,7 @@ module ScriptsHelper
 
   def get_action_for_script(status_id, script)
     case status_id
+
       when Status::GRAVADO then # 1
         link_to "Show", script_path(script.id), class: 'btn btn-info'
       when Status::VERIFICACAO_DUPLICIDADE then # 2
@@ -82,6 +82,8 @@ module ScriptsHelper
       when Status::VERIFICACAO_COMPLEXIDADE then # 4
         link_to "Check Complexity", check_complexity_scripts_path(script_id: script.id), class: 'btn btn-info'
       when Status::APROVADO then # 5
+        link_to "Show", script_path(script.id), class: 'btn btn-info'
+      when Status::INICIAL then # 6
         link_to "Show", script_path(script.id), class: 'btn btn-info'
       when Status::PRE_LANCAMENTO then # 7
         link_to "Show", script_path(script.id), class: 'btn btn-info'

@@ -216,7 +216,7 @@ class ScriptsController < ApplicationController
         if @script.status_id == Status::PRE_LANCAMENTO
           format.html { redirect_to contributor_members_path }
         else
-          @script.update_attribute(:status_id, Status::INICIAL)
+          @script.update_attribute(:status_id, Status::GRAVADO)
           format.html { redirect_to contributor_members_path }
         end
       end
