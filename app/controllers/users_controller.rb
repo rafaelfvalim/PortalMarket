@@ -59,12 +59,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(secure_params)
-      @user.avatar.recreate_versions!
       if params[:user][:avatar].present?
-        render :crop ## Render the view for cropping
-      else
-        redirect_to users_path, :notice => t('labels.user_messages.update')
+        @user.avatar.recreate_versions!
       end
+      redirect_to users_path, :notice => t('labels.user_messages.update')
     else
       redirect_to users_path, :alert => t('labels.user_messages.update_error')
     end
