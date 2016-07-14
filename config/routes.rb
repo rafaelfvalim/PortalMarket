@@ -136,7 +136,7 @@ Rails.application.routes.draw do
     end
   end
   mount Upmin::Engine => '/iddqd'
-  root to: 'visitors#index'
+  root to: redirect("/users")
   devise_for :users, controllers: {registrations: 'users/registrations', confirmations: 'users/confirmations', sessions: 'users/sessions'}
   resources :users do
     collection do

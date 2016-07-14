@@ -100,6 +100,10 @@ gem 'simple_form'
 #http://savonrb.com/
 gem 'savon', '~> 2.0'
 
+group :production do
+
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
