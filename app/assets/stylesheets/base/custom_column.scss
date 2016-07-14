@@ -1,8 +1,10 @@
-.col-md-3point5 {
-  position: relative;
-  float: left;
-  width: 24.75%;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+@media (min-width: 992px) {
+  .col-md-3point5 {
+    position: relative;
+    float: left;
+    width: 24.75%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
