@@ -1,0 +1,29 @@
+<%= raw t 'labels.dash_users_control_header' %>
+<hr>
+<div class="row">
+  <%=
+    color = 'navy-bg'
+    icon = 'typcn typcn-group typcn-4x typcn-dash'
+    header_description = t 'labels.dash_users_control_users_inative'
+    header_count = User.inativo.count
+    link_path = users_path(status: 'inativo')
+    widget_dash_board(color, icon, header_description, header_count, link_path)
+  %>
+  <%=
+    color = 'green-bg'
+    icon = 'typcn typcn-mail typcn-4x typcn-dash'
+    header_description = t 'labels.dash_users_control_users_uncofrimed'
+    header_count = User.where(confirmed_at: nil).count
+    link_path = users_path(unconfirmed: true)
+    widget_dash_board(color, icon, header_description, header_count, link_path)
+  %>
+  <%=
+    color = 'yellow-bg'
+    icon = 'typcn typcn-user-delete typcn-4x typcn-dash'
+    header_description = t 'labels.dash_users_control_users_blocked'
+    header_count = User.bloqueado.count
+    link_path = users_path(status: 'bloqueado')
+    widget_dash_board(color, icon, header_description, header_count, link_path)
+  %>
+</div>
+

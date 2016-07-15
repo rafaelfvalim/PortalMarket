@@ -48,13 +48,18 @@ module MessagesHelper
     @script_prelancamento = Script.where(status_id: Status::PRE_LANCAMENTO).count
     @statuses = [Status::GRAVADO, Status::VERIFICACAO_DUPLICIDADE, Status::VERIFICACAO_CONSISTENCIA, Status::VERIFICACAO_COMPLEXIDADE, Status::INICIAL, Status::PRE_LANCAMENTO]
     @scripts_sem_preco = Script.where(has_price: [nil, false]).count
-    @statuses_total = Script.where(status_id: @statuses).group_by(&:status_id).count
-    @statuses_total += @scripts_sem_preco > 0 ? 1 : 0
+    @users_intaive = User.inativo.count
+    @users_unconfirmed = User.where(confirmed_at: nil).count
+
+    @alerts_total = Script.where(status_id: @statuses).group_by(&:status_id).count
+    @alerts_total += @scripts_sem_preco > 0 ? 1 : 0
+    @alerts_total += @users_intaive > 0 ? 1 : 0
+    @alerts_total += @users_unconfirmed > 0 ? 1 : 0
 
     html = ''
     html << <<-HTML
     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-      <i class="fa fa-bell"></i>  <span class="label label-primary">#{@statuses_total}</span>
+      <i class="fa fa-bell"></i>  <span class="label label-primary">#{@alerts_total}</span>
     </a>
     <ul class="dropdown-menu dropdown-alerts">
     HTML
@@ -138,6 +143,30 @@ module MessagesHelper
       <a href=#{script_prices_prices_path}>
         <div>
           #{@scripts_sem_preco} Sem Preço
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @users_intaive > 0
+      html << <<-HTML
+     <li>
+      <a href=#{users_path(status: 'inativo')}>
+        <div>
+          #{@users_intaive} Usuário(s) inativos
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+      HTML
+    end
+    if @users_unconfirmed > 0
+      html << <<-HTML
+     <li>
+      <a href=#{users_path(unconfirmed: true)}>
+        <div>
+          #{@users_unconfirmed} Usuário(s) Ñ confirmados
         </div>
       </a>
     </li>

@@ -55,13 +55,20 @@ class UserAdminDatatable < AjaxDatatablesRails::Base
             '<i class="fa fa-times" style="color: red;"></i>'.html_safe
           end,
           link_to("Show", user_path(record), :class => 'btn btn-info btn-xs'),
-          link_to("Delete", user_path(record), :data => {:confirm => "Deseja excluir usuário?"}, :method => :delete, :class => 'btn btn-danger btn-xs',disabled: true)
+          link_to("Delete", user_path(record), :data => {:confirm => "Deseja excluir usuário?"}, :method => :delete, :class => 'btn btn-danger btn-xs', disabled: true)
       ]
     end
   end
 
   def get_raw_records
-    User.joins(:member).all
+
+    if params[:status].present?
+      User.joins(:member).where('status = ?', params[:status])
+    elsif params[:unconfirmed] == 'true'
+      User.joins(:member).where confirmed_at: nil
+    else
+      User.joins(:member).all
+    end
   end
 
 end

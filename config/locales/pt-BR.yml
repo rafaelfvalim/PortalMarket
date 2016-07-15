@@ -62,6 +62,10 @@ pt-BR:
         add_item_to_cart: Adicionar item ao carrinho?
         dash_without_price: 'Sem Preço'
         dash_with_price: 'Com Preço'
+        dash_users_control_users_inative: 'Inativos'
+        dash_users_control_users_uncofrimed: 'Não Confirmados'
+        dash_users_control_users_blocked: 'Bloqueados'
+        dash_users_control_header: 'Usuários <small> Controle de usuários</small>'
         dash_not_complete: Incompleto(s)
         all_scripts: Todos
         details_script: Detalhes do Script

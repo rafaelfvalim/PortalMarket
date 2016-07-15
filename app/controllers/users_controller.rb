@@ -84,9 +84,10 @@ class UsersController < ApplicationController
   end
 
   def admin_user_ajax
+
     respond_to do |format|
       format.html #new.html.erb
-      format.json { render json: UserAdminDatatable.new(view_context) }
+      format.json { render json: UserAdminDatatable.new(view_context, {status: params[:status], unconfirmed: params[:unconfirmed]}) }
     end
   end
 
