@@ -8,7 +8,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <table class="table table-striped table-condensed responsive" id="master-user-table" data-source="<%= admin_user_ajax_users_path(format: :json, status: params[:status], unconfirmed: params[:unconfirmed]) %>">
+    <table class="table table-striped table-condensed display responsive no-wrap" id="master-user-table" data-source="<%= admin_user_ajax_users_path(format: :json, status: params[:status], unconfirmed: params[:unconfirmed]) %>">
       <thead>
       <th>Id</th>
       <th><%= t 'labels.member_attributes.member_name' %></th>

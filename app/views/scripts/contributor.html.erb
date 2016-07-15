@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <div class="panel panel-default center">
         <div class="panel-body">
-          <table class="table table-striped table-condensed table-responsive" id="contributors-table" data-source="<%= contributor_scripts_path(status_id: @status.id, format: :json) %>">
+          <table class="table table-striped table-condensed display responsive no-wrap" id="contributors-table" data-source="<%= contributor_scripts_path(status_id: @status.id, format: :json) %>">
             <thead>
             <tr>
               <th><%= t 'labels.script_attributes.code' %></th>

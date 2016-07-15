@@ -39,6 +39,7 @@ module MessagesHelper
     end
   end
 
+
   def get_portal_alerts
     @script_gravados = Script.where(status_id: Status::GRAVADO).count
     @script_verificacao_duplicidade = Script.where(status_id: Status::VERIFICACAO_DUPLICIDADE).count
@@ -63,115 +64,32 @@ module MessagesHelper
     </a>
     <ul class="dropdown-menu dropdown-alerts">
     HTML
-
-
     if @script_gravados > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_orchestration_scripts_path(status_id: Status::GRAVADO)}>
-        <div>
-          #{@script_gravados} Gravados
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::GRAVADO), "#{@script_gravados} Gravados")
     end
     if @script_verificacao_duplicidade > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_DUPLICIDADE)}>
-        <div>
-          #{@script_verificacao_duplicidade} Verificação de Duplicidade
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::VERIFICACAO_DUPLICIDADE), " #{@script_verificacao_duplicidade} Verificação de Duplicidade")
     end
     if @script_verificacao_consistencia > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_CONSISTENCIA)}>
-        <div>
-          #{@script_verificacao_consistencia} Verificação de Consistencia
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::VERIFICACAO_CONSISTENCIA), " #{@script_verificacao_consistencia} Verificação de Consistencia")
     end
     if @script_verificacao_complexidade > 0
-      html << <<-HTML
-     <li>
-         <a href=#{script_orchestration_scripts_path(status_id: Status::VERIFICACAO_COMPLEXIDADE)}>
-        <div>
-          #{@script_verificacao_complexidade} Verificação de Complexidade
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::VERIFICACAO_COMPLEXIDADE), " #{@script_verificacao_complexidade} Verificação de Complexidade")
     end
     if @script_inicial > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_orchestration_scripts_path(status_id: Status::INICIAL)}>
-        <div>
-          #{@script_inicial} verificação Status Inicial
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::INICIAL), "#{@script_inicial} verificação Status Inicial")
     end
     if @script_prelancamento > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_orchestration_scripts_path(status_id: Status::PRE_LANCAMENTO)}>
-        <div>
-          #{@script_prelancamento}  Verificação em Pre Lançamento
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_orchestration_scripts_path(status_id: Status::PRE_LANCAMENTO), "#{@script_prelancamento}  Verificação em Pre Lançamento")
     end
     if @scripts_sem_preco > 0
-      html << <<-HTML
-     <li>
-      <a href=#{script_prices_prices_path}>
-        <div>
-          #{@scripts_sem_preco} Sem Preço
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(script_prices_prices_path, "#{@scripts_sem_preco} Sem Preço")
     end
     if @users_intaive > 0
-      html << <<-HTML
-     <li>
-      <a href=#{users_path(status: 'inativo')}>
-        <div>
-          #{@users_intaive} Usuário(s) inativos
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(users_path(status: 'inativo'), "#{@users_intaive} Usuário(s) inativos")
     end
     if @users_unconfirmed > 0
-      html << <<-HTML
-     <li>
-      <a href=#{users_path(unconfirmed: true)}>
-        <div>
-          #{@users_unconfirmed} Usuário(s) Ñ confirmados
-        </div>
-      </a>
-    </li>
-    <li class="divider"></li>
-      HTML
+      html << li_alerts_html_generator(users_path(unconfirmed: true), "#{@users_unconfirmed} Usuário(s) Ñ confirmados")
     end
     html << <<-HTML
         <li>
@@ -186,5 +104,18 @@ module MessagesHelper
     html.html_safe
   end
 
+  def li_alerts_html_generator(path, counter_message)
+    html = ''
+    html << <<-HTML
+     <li>
+      <a href=#{path}>
+        <div>
+          #{counter_message}
+        </div>
+      </a>
+    </li>
+    <li class="divider"></li>
+    HTML
+  end
 
 end
