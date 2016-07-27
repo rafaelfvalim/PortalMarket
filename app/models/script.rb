@@ -24,8 +24,11 @@ class Script < ActiveRecord::Base
   scope :search_import, -> { includes(:price) }
   scope :search_import, -> { includes(:value_chains) }
   scope :search_import, -> { includes(:process_modules) }
+  scope :search_import, -> { includes(:script_category) }
+  scope :search_import, -> { includes(:script_like) }
 
   has_many :member_scripts, dependent: :destroy
+  has_one :script_like, dependent: :destroy
 
   has_many :requirements, dependent: :destroy
   has_many :related_scripts, dependent: :destroy
@@ -41,6 +44,8 @@ class Script < ActiveRecord::Base
 
   has_many :attachment_docs, dependent: :destroy
 
+  has_one :script_category, dependent: :destroy
+  has_one :category , through: :script_categories
   belongs_to :solution_type
   belongs_to :status
   has_many :invoices, dependent: :destroy

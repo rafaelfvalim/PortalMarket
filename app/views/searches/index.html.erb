@@ -1,7 +1,7 @@
 <%= render 'layouts/messages' %>
 <div class="row wrapper page-heading">
   <div class="col-lg-10">
-    <h2><%= t 'labels.searchs.page_header' %></h2>
+    <h2>Scripts <%= @category.present? ? @category.description : "" %></h2>
   </div>
 </div>
 <div class="wrapper wrapper-content animated fadeIn">
@@ -10,6 +10,7 @@
       <%= form_tag searches_path, id: 'search_form', method: :get, remote: true do %>
           <div class="input-group">
             <%= text_field_tag :query, params[:query], class: 'form-control', id: 'query_search' %>
+            <%= hidden_field_tag :category_id, params[:category_id] %>
             <span class="input-group-btn">
                 <%= button_tag(type: "submit", class: "btn btn-success", id: "submit_search") do %>
                   <i class="fa fa-search"></i>

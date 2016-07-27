@@ -12,25 +12,29 @@
               <div class="ibox-content">
                 <div class="text-right">
                   <div class="btn-group">
-                    <button class="btn btn-white btn-sm" disabled="true"><i class="fa fa-star"></i>Favoritar</button>
                     <button class="btn btn-white btn-sm" disabled="true"><i class="fa fa-envelope"></i>Contate o Autor
                     </button>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-12 col-lg-12 col-xs-12">
                     <h2 class="font-bold m-b-xs">
                       <%= @script.name %>
                     </h2>
                     <small>Comercializado segundo os direitos pré estabelecidos em contrato com o autor</small>
-                    <div>
-                      <%= button_tag(type: "button", class: "btn btn-primary pull-right", id: "submit_invoice") do %>
+                    <div class="row">
+                      <div class="col-md-12 col-lg-12 col-xs-12">
+                      <%= button_tag(type: "button", class: "btn btn-primary pull-right margem-vertical-spacer", id: "submit_invoice") do %>
                           <i class="fa fa-cart-plus"></i> <%= t 'labels.buttons.add_to_cart' %>
                       <% end %>
-                      <h1 class="product-main-price"><%= number_to_currency_br(@price.value) %>
+
+                        <%= link_to 'Voltar', searches_path, class: "btn btn-primary pull-right" %>
+
+                      <h1 class="product-main-price pull-left"><%= number_to_currency_br(@price.value) %>
                         <!--<small class="text-muted">Valor estabelecido através das métricas-->
                         <!--<a href="http://www.ifpug.org/" target="_blank">IFPUG</a></small>-->
                       </h1>
+                    </div>
                     </div>
                     <hr>
                     <h4><%= t 'labels.script_attributes.description' %></h4>
@@ -87,7 +91,8 @@
                       <dd><%= @script.definition %></dd>
                     </dl>
                     <div class="panel panel-default">
-                      <div class="panel-heading"><font color="red"> <%= raw t 'labels.show_product.to_organization' %> </font></div>
+                      <div class="panel-heading">
+                        <font color="red"> <%= raw t 'labels.show_product.to_organization' %> </font></div>
                       <div class="panel-body">
                         <%= c.fields_for :workplace do |w| %>
                             <div class="col-md-6">

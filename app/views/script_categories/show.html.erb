@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @script_category.category_id %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @script_category.script_id %>
+</p>
+
+<%= link_to 'Edit', edit_script_category_path(@script_category) %> |
+<%= link_to 'Back', script_categories_path %>

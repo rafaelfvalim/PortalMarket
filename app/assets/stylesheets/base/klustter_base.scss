@@ -6387,13 +6387,25 @@ del {
   color: #bebec3;
   font-weight: 600;
 }
+.product-imitation-klustter {
+  text-align: center;
+  padding: 40px 0;
+  background-color: #f8f8f9;
+  color: #bebec3;
+  font-weight: 600;
+}
 
 .product-imitation.xl {
   padding: 120px 0;
 }
 
+
 .product-desc {
   padding: 20px;
+  position: relative;
+}
+.product-desc-klustter {
+  padding: 5px;
   position: relative;
 }
 
@@ -6414,6 +6426,13 @@ del {
 }
 
 .product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #676a6c;
+  display: block;
+  margin: 2px 0 5px 0;
+}
+.product-name-klustter {
   font-size: 16px;
   font-weight: 600;
   color: #676a6c;

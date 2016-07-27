@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @script_like.script_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @script_like.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_script_like_path(@script_like) %> |
+<%= link_to 'Back', script_likes_path %>

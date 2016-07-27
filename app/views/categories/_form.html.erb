@@ -1,0 +1,52 @@
+<%= render 'layouts/messages' %>
+<div class="row wrapper page-heading">
+  <div class="col-lg-10">
+    <h2><%= t 'labels.category.page_header' %></h2>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to :back, class: 'btn btn-primary next' do %>
+          <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %></i>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default center">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-5 col-xs-12 col-lg-5">
+
+              <img alt="image" class="img-circle" style="width: 70px; height: 70px" src="<%= image_path(@category.image_dummy_url) %>">
+              <br>
+              <br>
+              <%= simple_form_for(@category) do |f| %>
+                  <%= f.error_notification %>
+                  <div class="form-inputs">
+                    <%= f.input :description %>
+                  </div>
+                  <div class="form-inputs">
+                    <%= f.input :search_param %>
+                  </div>
+                  <div class="form-inputs">
+                    <%= f.input :image_dummy, as: :file %>
+                  </div>
+
+                  <div class="form-actions">
+                    <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,88 +1,54 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <% if scripts.present? %>
-        <div class="row">
-          <div class="col-md-12">
-            <small>
-              <%= scripts.total_count %> <%= t 'labels.searchs.results.reuslts' %> |
-              <%= scripts.current_page %> <%= t 'labels.searchs.results.page' %> |
-              <%= t 'labels.searchs.results.per_page' %>: <%= scripts.per_page %>  |
-              <%= t 'labels.searchs.results.total_pages' %>: <%= scripts.total_pages %>
-            </small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ibox">
-              <div class="ibox-content">
-                <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
-                  <thead>
-                  <tr>
-                    <th data-toggle="true">Cod</th>
-                    <th data-toggle="true">Nome</th>
-                    <th data-toggle="true">Pré Lanç.</th>
-                    <th data-hide="phone">Plataforma</th>
-                    <th data-hide="phone">Preço</th>
-                    <th data-hide="all">Descrição</th>
-                    <th data-hide="all">Descrição Longa</th>
-                    <th data-hide="all">Industria</th>
-                    <th data-hide="all">Obs</th>
-                    <th data-hide="phone,tablet">Autores</th>
-                    <th data-sort-ignore="true">Ações</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% scripts.each do |script| %>
-                      <tr>
-                        <td><%= script.id %> </td>
-                        <td><%= script.name %> </td>
-                        <td class="text-center"><%= script.status_id == Status::PRE_LANCAMENTO_APROVADO ?  '<i class="fa fa-v fa-rocket fa-2x" style="color: red;"></i>'.html_safe : ' ' %> </td>
-                        <td><%= script.platform %></td>
-                        <td><%= number_to_currency_br(script.price.value) %></td>
-                        <td><%= script.description %></td>
-                        <td><%= script.long_text %></td>
-                        <td><%= script.industry %></td>
-                        <td><%= script.definition %></td>
-                        <td>
-                          <% script.members.each do |member| %>
-                              <% if script.members.size > 1 %>
-                                  <%= "#{member.member_name} #{ member.member_last_name} ," %>
-                              <% else %>
-                                  <%= "#{member.member_name} #{ member.member_last_name}" %>
-                              <% end %>
-                          <% end %>
-                        </td>
-                        <td>
-                          <%= link_to "Vizualizar", show_product_buys_path(id: script, id_search: scripts.search.id), class: "btn-success btn btn-xs" %>
-                        </td>
-                      </tr>
-                  <% end %>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <td colspan="6">
-                      <%= paginate scripts %>
-                    </td>
-                  </tr>
-                  </tfoot>
-                </table>
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-xs-2">
+        <%= link_to "Todos", searches_path, class: " btn btn-success btn-block btn-outline" %>
+        <% Category.all.each do |c| %>
+            <%= link_to c.description, searches_path(category_id: c.id), class: " btn btn-success btn-block btn-outline" %>
+        <% end %>
+      </div>
+      <div class="col-lg-10 col-md-10 col-xs-10">
+        <% if scripts.present? %>
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-xs-10">
+                <small>
+                  <%= scripts.total_count %> <%= t 'labels.searchs.results.reuslts' %> |
+                  <%= scripts.current_page %> <%= t 'labels.searchs.results.page' %> |
+                  <%= t 'labels.searchs.results.per_page' %>: <%= scripts.per_page %>  |
+                  <%= t 'labels.searchs.results.total_pages' %>: <%= scripts.total_pages %>
+                </small>
               </div>
             </div>
-          </div>
-        </div>
-    <% else %>
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              <small>
-                0  <%= t 'labels.searchs.results.reuslts' %> |
-                0  <%= t 'labels.searchs.results.pages' %> |
-                <%= t 'labels.searchs.results.per_page' %>: 0 |
-                <%= t 'labels.searchs.results.total_pages' %>: 0
-              </small>
-            </p>
-          </div>
-        </div>
-    <% end %>
+            <hr>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-xs-12">
+                <% scripts.each do |s| %>
+                    <div class="col-lg-4">
+                      <div class="contact-box center-version">
+                        <a href="<%= show_product_buys_path(id: s, id_search: scripts.search.id) %>">
+                          <img alt="image" class="img-circle" src="<%= image_path(s.script_category.nil? ? 'dummy_category.png' : s.script_category.image_category_url) %>">
+                          <div class="font-bold">Cod: <%= s.id %></div>
+                          <h3 class="m-b-xs truncate"><strong><%= s.name %></strong></h3>
+                          <div class="font-bold"><%= s.platform %></div>
+                          <div class="font-bold"><%= number_to_currency(s.price.value) %></div>
+                          <div class="m-t-md searchDescription">
+                            <%= s.status_id == Status::PRE_LANCAMENTO_APROVADO ? ' <div class="font-bold"> <i class="fa fa-v fa-star">PRÉ LANÇAMENTO</i></div>'.html_safe : ' ' %>
+                            <%= s.description %>
+                          </div>
+                        </a>
+                        <div class="contact-box-footer" id="likes_<%= s.id %>">
+                          <%= render partial: 'likes', locals: {script: s} %>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+            <%= will_paginate @scripts %>
+      <% end %>
+      </div>
+
+    </div>
+
   </div>
 </div>

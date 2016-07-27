@@ -1,0 +1,11 @@
+<div class="m-t-xs btn-group">
+  <% unless script.script_like.present? %>
+      <%= link_to like_searches_path(script_id: script.id), remote: true, class: 'btn btn-white' do %>
+          <i class="fa fa-thumbs-o-up "></i> Like
+      <% end %>
+  <% else %>
+      <%= link_to like_searches_path(script_like_id: script.script_like.id, script_id: script.id), remote: true, class: 'btn btn-white', remote: true do %>
+          <i class="fa fa-thumbs-o-up "></i> Unlike
+      <% end %>
+  <% end %>
+</div>

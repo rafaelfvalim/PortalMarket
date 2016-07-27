@@ -6,7 +6,7 @@ $ ->
   $('#price-table').dataTable
     processing: true
     serverSide: true
-    ajax: $('#script-price-table').data('source')
+    ajax: $('#price-table').data('source')
     sPaginationType: 'full'
     columnDefs: [ { orderable: false, targets: [5,6,7] } ]
 
@@ -16,6 +16,8 @@ $ ->
     ajax: $('#script-price-table').data('source')
     sPaginationType: 'full'
     bAutoWidth: true
+    columnDefs: [ {className: "td_description", targets: [1]} ]
+
 
   $('.input-group.date').datetimepicker({minDate: +0, locale: 'pt-br'});
 

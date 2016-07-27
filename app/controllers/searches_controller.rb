@@ -7,29 +7,76 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     Script.reindex
+    per_page = 12
     @process_modules = ProcessModule.where('referrer_process_module_id is null')
+    if params[:category_id].present?
+      @category = Category.find params[:category_id]
+      query = params[:query].present? ? params[:query] : "*"
 
+      case @category.search_param
+        when 'prelancamento' then
+          if params[:process_description_selected].present?
+            @scripts = Script.search query, where: {
+                has_price: present?,
+                status_id: [Status::PRE_LANCAMENTO_APROVADO],
+                process_module_description: params[:process_description_selected].to_s,
+            }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+          else
+            @scripts = Script.search query, where: {
+                has_price: present?,
+                status_id: [Status::PRE_LANCAMENTO_APROVADO]
+            }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+          end
+        else
+          if params[:process_description_selected].present?
+            clausula_where = @category << query
+            @scripts = Script.search clausula_where, where: {
+                has_price: present?,
+                status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO],
+                process_module_description: params[:process_description_selected].to_s,
+            }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+          else
+            clausula_where = @category << query
+            @scripts = Script.search clausula_where, where: {
+                has_price: present?,
+                status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO]
+            }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+          end
 
-    if params[:query].present? && params[:process_description_selected].present?
-      @scripts = Script.search params[:query], where: {
-                                                 has_price: present?,
-                                                 status_id: [Status::APROVADO,Status::PRE_LANCAMENTO_APROVADO],
-                                                 process_module_description: params[:process_description_selected].to_s,
-                                                  }, track: {user_id: current_user.id}, page: params[:page], per_page: 12
-    end
+      end
 
-    if !params[:query].present? && params[:process_description_selected].present?
-      @scripts = Script.search '*', where: {has_price: present?,
-                                            status_id: [Status::APROVADO,Status::PRE_LANCAMENTO_APROVADO],
-                                            process_module_description: params[:process_description_selected].to_s,
-                                            }, track: {user_id: current_user.id}, page: params[:page], per_page: 12
-    end
+    else
 
-    if params[:query].present? && !params[:process_description_selected].present?
-      @scripts = Script.search params[:query], where: {
-                                                        has_price: present?,
-                                                        status_id: [Status::APROVADO,Status::PRE_LANCAMENTO_APROVADO]
-                                                      }, track: {user_id: current_user.id}, page: params[:page], per_page: 12
+      if params[:query].present?
+        if params[:process_description_selected].present?
+          @scripts = Script.search params[:query], where: {
+              has_price: present?,
+              status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO],
+              process_module_description: params[:process_description_selected].to_s,
+          }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+        else
+          @scripts = Script.search params[:query], where: {
+              has_price: present?,
+              status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO]
+          }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+
+        end
+
+      end
+      unless params[:query].present?
+        if params[:process_description_selected].present?
+          @scripts = Script.search '*', where: {has_price: present?,
+                                                status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO],
+                                                process_module_description: params[:process_description_selected].to_s,
+          }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+        else
+          @scripts = Script.search '*', where: {
+              has_price: present?,
+              status_id: [Status::APROVADO, Status::PRE_LANCAMENTO_APROVADO]
+          }, track: {user_id: current_user.id}, page: params[:page], per_page: per_page
+        end
+      end
+
     end
 
     respond_to do |format|
@@ -39,13 +86,27 @@ class SearchesController < ApplicationController
 
   end
 
+  def like
+    @script = Script.find(params[:script_id])
+    if params[:script_like_id].present?
+      ScriptLike.destroy params[:script_like_id]
+    else
+      like = ScriptLike.new script_id: params[:script_id], user_id: current_user.id
+      like.save
+    end
+
+    respond_to do |format|
+      format.js { render "searches/likes" }
+      format.html {}
+    end
+  end
+
   # GET /searches/1
   # GET /searches/1.json
   def show
   end
 
   def find_process
-
   end
 
   # GET /searches/new
@@ -81,4 +142,6 @@ class SearchesController < ApplicationController
   def search_params
     params[:search]
   end
+
+
 end

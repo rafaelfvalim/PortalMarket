@@ -1,0 +1,1 @@
+$(<%= escape_javascript("likes_#{@script.id}") %>).html("<%= escape_javascript(render partial: "searches/likes", locals: {script: @script}) %>");

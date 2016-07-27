@@ -7,10 +7,15 @@ $ ->
     serverSide: true
     ajax: $('#invoice-table').data('source')
     sPaginationType: 'full'
+    columnDefs: [
+      {orderable: false, targets: [6, 7, 8]}
+      {className: "td_description", targets: [1, 2, 3]}
+      {with: "5%", targets: [1, 3, 4]}
+    ]
 
   $('#form_end_buy').on 'submit', (e) ->
     if $('#agree').val() != 'yes'
-      swal 'Atenção','Aceite os termos para finalizar', 'info'
+      swal 'Atenção', 'Aceite os termos para finalizar', 'info'
       e.preventDefault()
     return
 

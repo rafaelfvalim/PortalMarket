@@ -23,6 +23,15 @@
     widget_dash_board(color, icon, header_description, header_count, link_path)
   %>
   <%=
+    # Sem Categoriar
+    color = 'lazur-bg'
+    icon = 'tronik tronik-tag tronik-3x'
+    header_description = t 'labels.dash_categoria'
+    header_count = Script.all.count - Script.joins(:script_category).count
+    link_path = script_categories_path
+    widget_dash_board(color, icon, header_description, header_count, link_path)
+  %>
+  <%=
     # Com preço
     color = 'green-bg'
     icon = 'tronik tronik-tag tronik-3x'

@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :script_likes
+  resources :script_categories do
+    collection  do
+      get :get_data_ajax
+    end
+  end
+  resources :categories do
+    collection do
+      get :get_data_ajax
+    end
+  end
   resources :service_monitors
   resources :attachment_docs do
     collection do
@@ -133,6 +144,7 @@ Rails.application.routes.draw do
   resources :searches do
     collection do
       get :find_process
+      get :like
     end
   end
   mount Upmin::Engine => '/iddqd'

@@ -61,6 +61,7 @@ pt-BR:
         search_by: Buscar por
         add_item_to_cart: Adicionar item ao carrinho?
         dash_without_price: 'Sem Preço'
+        dash_categoria: 'Categorizar'
         dash_with_price: 'Com Preço'
         dash_users_control_users_inative: 'Inativos'
         dash_users_control_users_uncofrimed: 'Não Confirmados'
@@ -86,6 +87,8 @@ pt-BR:
           confirmation_instructions : Um outro email vou enviado com o link de confirmação
         menu:
           find_solutions: Buscar Scripts
+          category: Cadastro Categorias
+          categorizing: Categorizar Script
           dash_board: Dashboard
           licesnses:  Minhas Licenças
           my_scripts: Meus Scripts
@@ -119,9 +122,18 @@ pt-BR:
         contributor:
           page_header: Member Dashboard
           page_header_title:  "<h3>Nesse dashboard receberá notificações e alertas referente a sua operação no  portal</h3>"
+        script_category:
+          page_header: Categoria Script
+        category:
+          page_header: Categorias
+          page_header_edit: Editar e
+          page_header_new: Criar Categoria
         checking_account:
           page_header: Conta Corrente
           page_data_table_header: Scripts em processo de venda
+        category_attributes:
+          description: Descrição
+          search_param: Parâmetro de busca
         script_attributes:
           code: Cod
           name: Nome

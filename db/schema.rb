@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606190237) do
+ActiveRecord::Schema.define(version: 20160725194658) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20160606190237) do
   add_index "carts", ["price_id"], name: "fk_rails_5fc637dbef", using: :btree
   add_index "carts", ["script_id"], name: "fk_rails_2c575d99c1", using: :btree
   add_index "carts", ["workplace_id"], name: "fk_rails_4c065256ce", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "description",  limit: 255
+    t.string   "search_param", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "image_dummy",  limit: 255
+  end
 
   create_table "checking_accounts", force: :cascade do |t|
     t.string   "description",        limit: 255
@@ -314,6 +322,27 @@ ActiveRecord::Schema.define(version: 20160606190237) do
   add_index "reservations", ["reserve_for"], name: "fk_rails_77c12ec4f5", using: :btree
   add_index "reservations", ["script_id"], name: "fk_rails_a99ec70b48", using: :btree
 
+  create_table "script_categories", force: :cascade do |t|
+    t.integer  "category_id",    limit: 4
+    t.integer  "script_id",      limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "image_category", limit: 255
+  end
+
+  add_index "script_categories", ["category_id"], name: "fk_rails_b6ae6aec01", using: :btree
+  add_index "script_categories", ["script_id"], name: "fk_rails_f1a4b2b721", using: :btree
+
+  create_table "script_likes", force: :cascade do |t|
+    t.integer  "script_id",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "script_likes", ["script_id"], name: "fk_rails_5522a6f4d4", using: :btree
+  add_index "script_likes", ["user_id"], name: "fk_rails_749427a8ad", using: :btree
+
   create_table "scripts", force: :cascade do |t|
     t.string   "name",                   limit: 255
     t.string   "description",            limit: 255
@@ -486,6 +515,10 @@ ActiveRecord::Schema.define(version: 20160606190237) do
   add_foreign_key "reservations", "scripts"
   add_foreign_key "reservations", "users", column: "owner_user_id"
   add_foreign_key "reservations", "users", column: "reserve_for"
+  add_foreign_key "script_categories", "categories"
+  add_foreign_key "script_categories", "scripts"
+  add_foreign_key "script_likes", "scripts"
+  add_foreign_key "script_likes", "users"
   add_foreign_key "scripts", "solution_types"
   add_foreign_key "scripts", "statuses", on_update: :nullify, on_delete: :nullify
   add_foreign_key "searchjoy_searches", "users"

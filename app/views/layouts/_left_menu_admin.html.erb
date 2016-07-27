@@ -7,6 +7,24 @@
   <% end %>
 </li>
 <!--Fim Pesquisa -->
+
+<!--Inicio categorizing-->
+<li>
+  <%= link_to script_categories_path do %>
+      <i class="typcn typcn-th-list-outline" aria-hidden="true"></i>
+      <span class="nav-label"><%= t 'labels.menu.categorizing' %> </span>
+  <% end %>
+</li>
+<!--Fim categorizing -->
+
+<!--Inicio Categogrizar-->
+<li>
+  <%= link_to categories_path do %>
+      <i class="typcn typcn-th-list-outline" aria-hidden="true"></i>
+      <span class="nav-label"><%= t 'labels.menu.category' %> </span>
+  <% end %>
+</li>
+<!--Fim Categogrizar -->
 <!--Inicio Dashboard-->
 <li>
   <%= link_to admin_members_path do %>
