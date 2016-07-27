@@ -91,7 +91,8 @@ class SearchesController < ApplicationController
     if params[:script_like_id].present?
       ScriptLike.destroy params[:script_like_id]
     else
-      like = ScriptLike.new script_id: params[:script_id], user_id: current_user.id
+      location = GeolocationService.new.get_by_ip(current_user.current_sign_in_ip)
+      like = ScriptLike.new script_id: params[:script_id], user_id: current_user.id, country: location.country, city: location.city, countryCode: location.countryCode, regionName: location.regionName, region: location.region
       like.save
     end
 

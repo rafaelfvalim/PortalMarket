@@ -180,11 +180,15 @@ GEM
       tilt
     hashie (3.4.2)
     high_voltage (2.4.0)
+    hoe (3.15.1)
+      rake (>= 0.8, < 12.0)
     httpi (2.4.1)
       rack
     hub (1.12.4)
     i18n (0.7.0)
     interception (0.5)
+    ipgeolocation (0.1.0)
+      hoe (>= 1.11.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -480,6 +484,7 @@ DEPENDENCIES
   guard-rspec
   high_voltage
   hub
+  ipgeolocation (~> 0.1.0)
   jbuilder (~> 2.0)
   jquery-datatables-rails!
   jquery-rails
@@ -532,5 +537,8 @@ DEPENDENCIES
   wicked
   will_paginate (~> 3.0.6)
 
+RUBY VERSION
+   ruby 2.0.0p648
+
 BUNDLED WITH
-   1.11.2
+   1.12.5

@@ -32,7 +32,7 @@
                           <div class="font-bold"><%= s.platform %></div>
                           <div class="font-bold"><%= number_to_currency(s.price.value) %></div>
                           <div class="m-t-md searchDescription">
-                            <%= s.status_id == Status::PRE_LANCAMENTO_APROVADO ? ' <div class="font-bold"> <i class="fa fa-v fa-star">PRÉ LANÇAMENTO</i></div>'.html_safe : ' ' %>
+                            <%= s.status_id == Status::PRE_LANCAMENTO_APROVADO ? ' <div class="font-bold" style="color:red"> <i class="fa fa-v fa-star">PRÉ LANÇAMENTO</i></div>'.html_safe : ' ' %>
                             <%= s.description %>
                           </div>
                         </a>

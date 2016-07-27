@@ -263,6 +263,7 @@ pt-BR:
          requeriment_scripts: Scripts Requeridos
          related_scripts: Scripts Relacionados
          attachment_docs: Arquivos Anexos
+         statistics: Estatisticas
          define_participation: Definir Participação
          participation: Participações
          participation_header: '<strong>Inclua os parceiros do seu projeto script bem como defina o percentual do lucro</strong>'

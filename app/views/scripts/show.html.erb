@@ -33,7 +33,6 @@
       </div>
     </div>
     <br>
-
     <div class="ibox">
       <div class="ibox-content">
         <div class="row">
@@ -77,7 +76,7 @@
             </dl>
           </div>
         </div>
-        <div class="row m-t-sm">
+        <div class="row painel-tabs-script">
           <div class="col-lg-12">
             <div class="panel blank-panel">
               <div class="panel-heading">
@@ -200,7 +199,30 @@
             </div>
           </div>
         </div>
-
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-thumbs-o-up "></i> Likes <span class="pull-right"> Total de Curtidas: <%= ScriptLike.where(script_id: @script.id).count %>  </span>
+              </div>
+              <div class="panel-body">
+                <%= area_chart ScriptLike.where(script_id: @script.id).group_by_day(:created_at).count %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-thumbs-o-up "></i> Geo Likes
+              </div>
+              <div class="panel-body">
+                <%= geo_chart ScriptLike.where(script_id: @script.id).group(:country).count %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

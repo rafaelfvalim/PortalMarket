@@ -24,8 +24,14 @@ class ScriptLikesController < ApplicationController
   # POST /script_likes
   # POST /script_likes.json
   def create
+    location = GeolocationService.new.get_by_ip(current_user.current_sign_in_ip)
     @script_like = ScriptLike.new(script_like_params)
-
+    @script_like.country = location.country
+    @script_like.city = location.city
+    @script_like.countryCode = location.countryCode
+    @script_like.regionName = location.regionName
+    @script_like.region = location.region
+    p location
     respond_to do |format|
       if @script_like.save
         format.html { redirect_to @script_like, notice: 'Script like was successfully created.' }
@@ -62,13 +68,13 @@ class ScriptLikesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_script_like
-      @script_like = ScriptLike.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_script_like
+    @script_like = ScriptLike.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def script_like_params
-      params.require(:script_like).permit(:script_id, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def script_like_params
+    params.require(:script_like).permit(:script_id, :user_id, :city, :country, :countryCode, :regionName, :region)
+  end
 end

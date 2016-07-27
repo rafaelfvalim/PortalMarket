@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725194658) do
+ActiveRecord::Schema.define(version: 20160727204640) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -334,10 +334,15 @@ ActiveRecord::Schema.define(version: 20160725194658) do
   add_index "script_categories", ["script_id"], name: "fk_rails_f1a4b2b721", using: :btree
 
   create_table "script_likes", force: :cascade do |t|
-    t.integer  "script_id",  limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "script_id",   limit: 4
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "city",        limit: 255
+    t.string   "country",     limit: 255
+    t.string   "countryCode", limit: 255
+    t.string   "regionName",  limit: 255
+    t.string   "region",      limit: 255
   end
 
   add_index "script_likes", ["script_id"], name: "fk_rails_5522a6f4d4", using: :btree

@@ -1,5 +1,4 @@
 
-
 <ol class="progtrckr" data-progtrckr-steps="<%= Status.all.count %>">
   <% if @script.status_id == Status::PRE_LANCAMENTO %>
       <label> PRÉ LANÇAMENTO</label>
@@ -9,7 +8,7 @@
       <h2>Script ainda Incompleto</h2><smal>em processo de cadastro</smal>
   <% else %>
       <% Status.all.each do |status| %>
-          <% unless status.id == Status::INICIAL %>
+          <% unless status.id == Status::INICIAL || status.id == Status::PRE_LANCAMENTO_APROVADO || status.id == Status::PRE_LANCAMENTO  %>
               <%= process_tracker_li status, @script %>
           <% end %>
       <% end %>

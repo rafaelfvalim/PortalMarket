@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //=require bs-wizard
 //=require bootstrap-nav-wizard
-
+.painel-tabs-script {
+  height: 350px;
+}
 .ui-autocomplete {
   position: absolute;
   z-index: 1000;
