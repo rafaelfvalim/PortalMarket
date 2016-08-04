@@ -47,6 +47,8 @@
 //= require dropzone.js
 //= require bootstrap-filestyle
 //= require jquery.jcrop
+//= require slick/slick.min.js
+//= require visitors
 //= require_tree .
 
 

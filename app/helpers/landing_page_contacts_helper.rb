@@ -1,0 +1,2 @@
+module LandingPageContactsHelper
+end

@@ -6,3 +6,26 @@
 .header-lounge{
   color: #FBA51A;
 }
+
+.slick .ibox-content {
+  margin: 0 10px;
+}
+
+.slick .ibox-content img {
+  margin-left: 70px;
+}
+
+.slick .ibox-content img .truncate{
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.landing-page-box-results {
+  height: 563px;
+}
+.landing-contatc-form{
+  margin-left: 332px;
+  width:80%
+}

@@ -4,11 +4,12 @@ class ScriptCategoriesController < ApplicationController
   # GET /script_categories
   # GET /script_categories.json
   def index
+    per_page = 6
     query = params[:query].present? ? params[:query] : "*"
     if params[:status_id].present?
-      @scripts = Script.search query, where: {status_id: params[:status_id]}, page: params[:page], per_page: 20
+      @scripts = Script.search query, where: {status_id: params[:status_id]}, page: params[:page], per_page: 2
     else
-      @scripts = Script.search query, page: params[:page], per_page: 20
+      @scripts = Script.search query, page: params[:page], per_page: 2
     end
     @script_categories = ScriptCategory.all
   end
@@ -38,6 +39,7 @@ class ScriptCategoriesController < ApplicationController
   # POST /script_categories.json
   def create
     @script_category = ScriptCategory.new(script_category_params)
+    p @script_category
     @script_category.image_category = @script_category.category.image_dummy
     respond_to do |format|
       if @script_category.save

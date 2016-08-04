@@ -1,0 +1,18 @@
+<%= simple_form_for(@landing_page_contact) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :name, label: "Name" %>
+      <%= f.input :email, label: "Email" %>
+      <%= f.input :phone, label: "Telefone" , input_html: {data: {mask: '(99) 9999-9999'}} %>
+      <%= f.input :cellphone, label: "Celular" , input_html: {data: {mask: '(99) 99999-9999'}} %>
+      <%= f.input :area, as: :select, :collection => LandingPageContact.areas.values.to_a ,label: "Plataforma", include_blank: 'Selecione ...' %>
+      <%= f.input :industry_id, label: "Industria", collection: Industry.all, label_method: :description, include_blank: 'Selecione ...' %>
+      <%= f.input :suggestion, label: "Sugestão", input_html: {style: 'resize:none;', rows: 4} %>
+    </div>
+    <div class="form-actions">
+      <div class="text-center">
+        <%= f.submit 'Enviar', class: 'btn btn-success' %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+<% end %>

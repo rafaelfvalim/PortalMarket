@@ -65,7 +65,7 @@
             </thead>
             <tbody>
             <% @scripts.each_with_index do |s, index| %>
-                <% c = ScriptCategory.new(script_id: s.id) %>
+                <% c = get_instace_script_category(s.id) %>
                 <% ct = ScriptCategory.find_by_script_id(s.id) %>
                 <tr>
                   <td><%= index %></td>
@@ -77,8 +77,7 @@
                     <%= simple_form_for(c) do |ss| %>
                         <%= ss.input :category_id, collection: Category.all, label_method: :description, label: false, include_blank: 'Selecione ...', :selected => ct.nil? ? 'Selecione ...' : ct.category.id, :input_html => {:onchange => "this.form.submit();"} %>
                         <%= ss.hidden_field :script_id, value: s.id %>
-                        <%= ss.hidden_field :id, value: c.id %>
-                        <%= ss.hidden_field :id, value: c.id %>
+                        <%= ss.hidden_field :id, value: c.id  %>
                     <% end %>
                   </td>
                   <td>

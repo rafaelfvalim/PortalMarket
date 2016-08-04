@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @landing_page_contact.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @landing_page_contact.phone %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @landing_page_contact.area %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @landing_page_contact.industry_id %>
+</p>
+
+<p>
+  <strong>Suggestion:</strong>
+  <%= @landing_page_contact.suggestion %>
+</p>
+
+<%= link_to 'Edit', edit_landing_page_contact_path(@landing_page_contact) %> |
+<%= link_to 'Back', landing_page_contacts_path %>

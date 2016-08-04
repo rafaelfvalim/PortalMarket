@@ -1,0 +1,32 @@
+
+<%= link_to :back, class: 'btn btn-primary next' do %>
+    <i class="fa fa-chevron-left"> <%= t 'labels.buttons.back' %> </i>
+<% end %>
+<%= simple_form_for(@landing_page_banner) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :position %>
+      <%= f.input :landing_text_id,
+                  collection: LandingText.all,
+                  label_method: :location_name,
+                  include_blank: 'Selecione'
+      %>
+      <%= f.input :landing_page_image_id,
+                  collection: LandingPageImage.all,
+                  label_method: :name,
+                  include_blank: 'Selecione'
+      %>
+      <%= f.input :background_image,
+                  collection: LandingPageImage.all,
+                  label_method: :name,
+                  include_blank: 'Selecione'
+      %>
+
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+    </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @landing_text.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @landing_text.subtitle %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @landing_text.content %>
+</p>
+
+<p>
+  <strong>Location name:</strong>
+  <%= @landing_text.location_name %>
+</p>
+
+<%= link_to 'Edit', edit_landing_text_path(@landing_text) %> |
+<%= link_to 'Back', landing_texts_path %>

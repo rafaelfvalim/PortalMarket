@@ -5,4 +5,13 @@ module VisitorsHelper
     end
     1
   end
+
+  def landing_page_tabs_showcase(category_id)
+    @scripts = Script.joins(:script_category).where('script_categories.category_id = ?', category_id)
+  end
+
+
+
+
+
 end

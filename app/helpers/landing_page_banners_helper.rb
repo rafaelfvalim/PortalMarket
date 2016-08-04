@@ -1,0 +1,3 @@
+module LandingPageBannersHelper
+
+end

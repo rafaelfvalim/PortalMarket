@@ -99,7 +99,9 @@ class ApplicationController < ActionController::Base
     payload[:host] = request.host
     payload[:source_ip] = request.remote_ip
   end
+
   private
+
   def layout_by_resource
     if controller_name == 'registrations'
       #algumas paginas do devise devem aparecer dentro do site
@@ -131,6 +133,11 @@ class ApplicationController < ActionController::Base
     if controller_name == 'errors'
       return 'empty'
     end
+
+    if controller_name == 'visitors'
+      return 'landpage'
+    end
+
   end
 
   def set_timezone

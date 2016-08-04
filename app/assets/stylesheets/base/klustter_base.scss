@@ -418,6 +418,10 @@ body.login {
   background-size: cover;
 }
 
+body.landing {
+  background-size: cover;
+}
+
 body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-second-level,
 .mini-navbar .nav li:focus > .nav-second-level {
   display: block;
@@ -3985,13 +3989,29 @@ body.login {
   color: #A1ADBD;
   overflow-x: hidden;
 }
+body,
+body.landing {
+  font-family: "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #2f4050;
+  font-size: 13px;
+  /*color: #676a6c;*/
+  color: #A1ADBD;
+  overflow-x: hidden;
+}
 
 body.login {
+  color: #E6EBE7;
+}
+body.landing {
   color: #E6EBE7;
 }
 
 //Ajuste de input type color
 body.login input[type=email], input[type=password], input[type=text], input[type=tel] {
+  color: #101010;
+}
+//Ajuste de input type color
+body.landing input[type=email], input[type=password], input[type=text], input[type=tel] {
   color: #101010;
 }
 
@@ -5354,8 +5374,20 @@ body.mini-navbar.fixed-sidebar .logo-element {
   padding: 20px;
   text-align: center;
 }
+.contact-box.center-version > div {
+  display: block;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
 
 .contact-box.center-version > a img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.contact-box.center-version > div img {
   width: 80px;
   height: 80px;
   margin-top: 10px;
@@ -7868,7 +7900,7 @@ body.body-small .vote-icon {
 body.landing-page {
   color: #676a6c;
   font-family: 'Exo 2', helvetica, arial, sans-serif;
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 .landing-page {

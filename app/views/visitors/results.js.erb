@@ -1,0 +1,4 @@
+$('#search_results').html("<%= escape_javascript(render partial: "visitors/results", locals: {scripts: @scripts}) %>");
+$(".link-disable").click(function(e) {
+  e.preventDefault();
+});

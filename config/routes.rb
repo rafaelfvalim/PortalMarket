@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  resources :landing_page_contacts
+  resources :landing_page_banners do
+    collection do
+      get :ajax
+    end
+  end
+  resources :landing_page_admins
+
+  resources :landing_page_images do
+    collection do
+      get :ajax
+    end
+  end
+  resources :landing_texts do
+    collection do
+      get :texts_ajax
+    end
+  end
+  resources :visitors
   resources :script_likes
   resources :script_categories do
     collection  do
@@ -148,7 +167,7 @@ Rails.application.routes.draw do
     end
   end
   mount Upmin::Engine => '/iddqd'
-  root to: redirect("/members")
+  root to: "visitors#index"
   devise_for :users, controllers: {registrations: 'users/registrations', confirmations: 'users/confirmations', sessions: 'users/sessions'}
   resources :users do
     collection do

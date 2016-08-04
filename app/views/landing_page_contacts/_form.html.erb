@@ -1,0 +1,13 @@
+<%= simple_form_for(@landing_page_contact) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :name, label: "Name" %>
+      <%= f.input :phone, label: "Telefone" %>
+      <%= f.input :area, label: "Area" %>
+      <%= f.input :industry_id, label: "Industria", collection: Industry.all, label_method: :description, label: false, include_blank: 'Selecione ...' %>
+      <%= f.input :suggestion, label: "Sugestão", input_html: {style: 'resize:none;', rows: 4} %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit 'Enviar', class: 'btn btn-primary btn-xs' %>
+    </div>
+<% end %>

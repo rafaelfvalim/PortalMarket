@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @landing_page_image.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @landing_page_image.image %>
+</p>
+
+<%= link_to 'Edit', edit_landing_page_image_path(@landing_page_image) %> |
+<%= link_to 'Back', landing_page_images_path %>

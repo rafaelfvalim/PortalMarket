@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Klustter</title>
+  <title><%= content_for?(:title) ? yield(:title) : "Klustter" %></title>
   <%= favicon_link_tag 'favicon.ico' %>
   <!-- Include style per-controller - vendor plugins -->
   <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
-
   <!-- Main css styles -->
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <!-- Main javascript files -->

@@ -14,8 +14,9 @@ ready = function () {
         form_singup_member($(this).val());
     });
 
-
-
+    $(".link-disable").click(function(e) {
+        e.preventDefault();
+    });
     //message chat
     //var faye_client = new Faye.Client('http://10.11.50.108:9292/faye');
     //faye_client.subscribe('/chat', function (data) {
@@ -32,6 +33,7 @@ alert_delay = function () {
     $(".alert").delay(7000).slideUp(200, function () {
         $(this).alert('close');
     });
+
 }
 
 var scrollPosition;

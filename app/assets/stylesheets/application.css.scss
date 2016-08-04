@@ -34,6 +34,9 @@
  *= require dropzone/basic.css
  *= require trackig_steps
  *= require jquery.jcrop
+ *= require slick/slick.css
+ *= require slick/slick-theme.css
+ *= require pagination
  */
 
 .inactiveLink {
@@ -137,4 +140,9 @@ label.required:after {
 }
 .margem-vertical-spacer {
   margin-left: 5px;
+}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
 }

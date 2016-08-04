@@ -46,6 +46,7 @@ class Script < ActiveRecord::Base
 
   has_one :script_category, dependent: :destroy
   has_one :category , through: :script_categories
+
   belongs_to :solution_type
   belongs_to :status
   has_many :invoices, dependent: :destroy

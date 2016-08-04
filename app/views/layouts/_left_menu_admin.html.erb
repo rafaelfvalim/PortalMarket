@@ -1,4 +1,12 @@
 <!--Fim Avatar-->
+<!--Inicio Dashboard-->
+<li>
+  <%= link_to admin_members_path do %>
+      <i class="typcn typcn-th-large-outline" aria-hidden="true"></i>
+      <span class="nav-label"><%= t 'labels.menu.dash_board' %></span>
+  <% end %>
+</li>
+<!--Fim Dashboard-->
 <!--Inicio Pesquisa-->
 <li>
   <%= link_to searches_path do %>
@@ -7,6 +15,15 @@
   <% end %>
 </li>
 <!--Fim Pesquisa -->
+
+<!--Inicio Landing Page Admin-->
+<li>
+  <%= link_to landing_page_admins_path do %>
+      <i class="typcn typcn-news" aria-hidden="true"></i>
+      <span class="nav-label">Lading Page Admin </span>
+  <% end %>
+</li>
+<!--Fim Landing Page Admin -->
 
 <!--Inicio categorizing-->
 <li>
@@ -25,14 +42,6 @@
   <% end %>
 </li>
 <!--Fim Categogrizar -->
-<!--Inicio Dashboard-->
-<li>
-  <%= link_to admin_members_path do %>
-      <i class="typcn typcn-th-large-outline" aria-hidden="true"></i>
-      <span class="nav-label"><%= t 'labels.menu.dash_board' %></span>
-  <% end %>
-</li>
-<!--Fim Dashboard-->
 
 <!--Inicio Scripts-->
 <li>

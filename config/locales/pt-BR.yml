@@ -394,6 +394,12 @@ pt-BR:
       script: "Script"
       price: "Preço"
     attributes:
+      landing_page_contacts:
+        name: "Nome"
+        phone: "Telefone"
+        area: "Area"
+        industry_id: "Industria"
+        suggestion: "Sugestão"
       price:
         id: "id"
         script_id: "Script Id"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727204640) do
+ActiveRecord::Schema.define(version: 20160803182434) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "zip_code",     limit: 255
@@ -179,6 +179,53 @@ ActiveRecord::Schema.define(version: 20160727204640) do
   add_index "invoices", ["user_id"], name: "fk_rails_3d1522a0d8", using: :btree
   add_index "invoices", ["workplace_id"], name: "fk_rails_6662a5dccf", using: :btree
 
+  create_table "landing_page_banners", force: :cascade do |t|
+    t.string   "name",                  limit: 255
+    t.integer  "landing_text_id",       limit: 4
+    t.integer  "landing_page_image_id", limit: 4
+    t.integer  "background_image",      limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "position",              limit: 4
+    t.string   "item_list",             limit: 255
+  end
+
+  add_index "landing_page_banners", ["background_image"], name: "fk_rails_115beb576d", using: :btree
+  add_index "landing_page_banners", ["landing_page_image_id"], name: "fk_rails_6de68d2e11", using: :btree
+  add_index "landing_page_banners", ["landing_text_id"], name: "fk_rails_5a4d3c1f33", using: :btree
+
+  create_table "landing_page_contacts", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "email",       limit: 255
+    t.string   "phone",       limit: 255
+    t.string   "cellphone",   limit: 255
+    t.string   "area",        limit: 255
+    t.integer  "industry_id", limit: 4
+    t.text     "suggestion",  limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "landing_page_contacts", ["industry_id"], name: "fk_rails_dd5bbf187d", using: :btree
+
+  create_table "landing_page_images", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "landing_texts", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.string   "subtitle",            limit: 255
+    t.text     "content",             limit: 65535
+    t.string   "location_name",       limit: 255
+    t.string   "carousel_image",      limit: 255
+    t.string   "carousel_background", limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
   create_table "licenses", force: :cascade do |t|
     t.integer  "invoice_id",      limit: 4
     t.string   "description",     limit: 255
@@ -331,7 +378,8 @@ ActiveRecord::Schema.define(version: 20160727204640) do
   end
 
   add_index "script_categories", ["category_id"], name: "fk_rails_b6ae6aec01", using: :btree
-  add_index "script_categories", ["script_id"], name: "fk_rails_f1a4b2b721", using: :btree
+  add_index "script_categories", ["id", "script_id"], name: "index_script_categories_on_id_and_script_id", using: :btree
+  add_index "script_categories", ["script_id"], name: "index_script_categories_on_script_id", using: :btree
 
   create_table "script_likes", force: :cascade do |t|
     t.integer  "script_id",   limit: 4
@@ -498,6 +546,10 @@ ActiveRecord::Schema.define(version: 20160727204640) do
   add_foreign_key "invoices", "scripts"
   add_foreign_key "invoices", "users"
   add_foreign_key "invoices", "workplaces"
+  add_foreign_key "landing_page_banners", "landing_page_images"
+  add_foreign_key "landing_page_banners", "landing_page_images", column: "background_image"
+  add_foreign_key "landing_page_banners", "landing_texts"
+  add_foreign_key "landing_page_contacts", "industries"
   add_foreign_key "licenses", "invoices"
   add_foreign_key "member_scripts", "members"
   add_foreign_key "member_scripts", "scripts"
