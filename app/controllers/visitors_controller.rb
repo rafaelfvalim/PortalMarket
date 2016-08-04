@@ -15,7 +15,7 @@ class VisitorsController < ApplicationController
       end
     else
       @users = User.order("RAND()").limit(3)
-      per_page = 6
+      per_page = 8
       query = params[:query].present? ? params[:query] : "*"
       @scripts = Script.search query, where: {
           has_price: present?,
